@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/4/
 
 Music_WhiteTreehollowWhite2:
+music_header
 	channel_count 4
 	channel 1, Music_WhiteTreehollowWhite2_Ch1
 	channel 2, Music_WhiteTreehollowWhite2_Ch2
@@ -11,6 +12,7 @@ Music_WhiteTreehollowWhite2:
 	channel 4, Music_WhiteTreehollowWhite2_Ch4
 
 Music_WhiteTreehollowWhite2_Ch1:
+music_label
 	tempo 176
 	volume 7, 7
 	duty_cycle 3
@@ -29,6 +31,7 @@ Music_WhiteTreehollowWhite2_Ch1:
 	note D#, 1
 	note G#, 1
 Music_WhiteTreehollowWhite2_Ch1_loop:
+music_label
 	octave 4
 	duty_cycle 3
 	volume_envelope 6, 2
@@ -454,6 +457,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	sound_jump Music_WhiteTreehollowWhite2_Ch1_loop
 
 Music_WhiteTreehollowWhite2_Ch1_branch_1:
+music_label
 	volume_envelope 6, 2
 	octave 4
 	note A#, 8
@@ -469,6 +473,7 @@ Music_WhiteTreehollowWhite2_Ch1_branch_1:
 	sound_ret
 
 Music_WhiteTreehollowWhite2_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 18, 2, 5
 	pitch_offset 1
@@ -705,6 +710,7 @@ Music_WhiteTreehollowWhite2_Ch2:
 	sound_jump Music_WhiteTreehollowWhite2_Ch2
 
 Music_WhiteTreehollowWhite2_Ch2_branch_1:
+music_label
 	volume_envelope 8, 0
 	octave 2
 	note G#, 4
@@ -735,6 +741,7 @@ Music_WhiteTreehollowWhite2_Ch2_branch_1:
 	sound_ret
 
 Music_WhiteTreehollowWhite2_Ch3:
+music_label
 	note_type 12, 1, 0
 	vibrato 18, 2, 5
 	octave 5
@@ -983,10 +990,13 @@ Music_WhiteTreehollowWhite2_Ch3:
 	sound_jump Music_WhiteTreehollowWhite2_Ch3
 
 Music_WhiteTreehollowWhite2_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 Music_WhiteTreehollowWhite2_Ch4_loop_main:
+music_label
 Music_WhiteTreehollowWhite2_Ch4_loop_1:
+music_label
 	drum_note 4, 4
 	drum_note 1, 3
 	drum_note 4, 3
@@ -994,6 +1004,7 @@ Music_WhiteTreehollowWhite2_Ch4_loop_1:
 	drum_note 1, 4
 	sound_loop 10, Music_WhiteTreehollowWhite2_Ch4_loop_1
 Music_WhiteTreehollowWhite2_Ch4_loop_2:
+music_label
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1
@@ -1008,6 +1019,7 @@ Music_WhiteTreehollowWhite2_Ch4_loop_2:
 	rest 16
 	rest 16
 Music_WhiteTreehollowWhite2_Ch4_loop_3:
+music_label
 	drum_note 4, 4
 	drum_note 1, 3
 	drum_note 4, 2

@@ -1,4 +1,5 @@
 Music_UnionCave:
+music_header
 	channel_count 4
 	channel 1, Music_UnionCave_Ch1
 	channel 2, Music_UnionCave_Ch2
@@ -6,6 +7,7 @@ Music_UnionCave:
 	channel 4, Music_UnionCave_Ch4
 
 Music_UnionCave_Ch1:
+music_label
 	tempo 160
 	volume 7, 7
 	duty_cycle 1
@@ -13,11 +15,14 @@ Music_UnionCave_Ch1:
 	vibrato 24, 3, 4
 	stereo_panning FALSE, TRUE
 Music_UnionCave_branch_f5c7b:
+music_label
 	note_type 12, 11, 3
 Music_UnionCave_branch_f5c7e:
+music_label
 	sound_call Music_UnionCave_branch_f5ccf
 	sound_loop 4, Music_UnionCave_branch_f5c7e
 Music_UnionCave_branch_f5c85:
+music_label
 	octave 2
 	note G#, 2
 	octave 3
@@ -28,6 +33,7 @@ Music_UnionCave_branch_f5c85:
 	note F_, 4
 	sound_loop 8, Music_UnionCave_branch_f5c85
 Music_UnionCave_branch_f5c91:
+music_label
 	octave 2
 	note A_, 2
 	octave 3
@@ -66,6 +72,7 @@ Music_UnionCave_branch_f5c91:
 	sound_jump Music_UnionCave_branch_f5c7b
 
 Music_UnionCave_branch_f5ccf:
+music_label
 	octave 2
 	note G#, 2
 	octave 3
@@ -74,9 +81,11 @@ Music_UnionCave_branch_f5ccf:
 	sound_ret
 
 Music_UnionCave_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 8, 2, 4
 Music_UnionCave_branch_f5cda:
+music_label
 	note_type 12, 12, 4
 	sound_call Music_UnionCave_branch_f5d34
 	volume_envelope 12, 5
@@ -135,6 +144,7 @@ Music_UnionCave_branch_f5cda:
 	sound_jump Music_UnionCave_branch_f5cda
 
 Music_UnionCave_branch_f5d34:
+music_label
 	octave 4
 	note C_, 4
 	octave 3
@@ -167,6 +177,7 @@ Music_UnionCave_branch_f5d34:
 	sound_ret
 
 Music_UnionCave_branch_f5d52:
+music_label
 	octave 2
 	note G#, 2
 	octave 3
@@ -175,15 +186,18 @@ Music_UnionCave_branch_f5d52:
 	sound_ret
 
 Music_UnionCave_Ch3:
+music_label
 	note_type 12, 1, 6
 	stereo_panning TRUE, FALSE
 Music_UnionCave_branch_f5d5d:
+music_label
 	rest 16
 	sound_loop 7, Music_UnionCave_branch_f5d5d
 	rest 14
 	octave 4
 	note C_, 2
 Music_UnionCave_branch_f5d65:
+music_label
 	rest 2
 	octave 3
 	note E_, 2
@@ -196,6 +210,7 @@ Music_UnionCave_branch_f5d65:
 	note C_, 2
 	sound_loop 4, Music_UnionCave_branch_f5d65
 Music_UnionCave_branch_f5d73:
+music_label
 	rest 2
 	octave 3
 	note F_, 2
@@ -220,6 +235,7 @@ Music_UnionCave_branch_f5d73:
 	note B_, 8
 	note A#, 8
 Music_UnionCave_branch_f5d8d:
+music_label
 	note A_, 4
 	note G_, 4
 	note A#, 2
@@ -233,14 +249,17 @@ Music_UnionCave_branch_f5d8d:
 	note G_, 4
 	note A#, 8
 Music_UnionCave_branch_f5d9c:
+music_label
 	rest 16
 	sound_loop 4, Music_UnionCave_branch_f5d9c
 	sound_jump Music_UnionCave_branch_f5d5d
 
 Music_UnionCave_Ch4:
+music_label
 	toggle_noise 1
 	drum_speed 12
 Music_UnionCave_branch_f5da9:
+music_label
 	stereo_panning TRUE, FALSE
 	drum_note 5, 4
 	stereo_panning TRUE, TRUE

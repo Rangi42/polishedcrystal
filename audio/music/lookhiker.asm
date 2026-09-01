@@ -1,4 +1,5 @@
 Music_LookHiker:
+music_header
 	channel_count 4
 	channel 1, Music_LookHiker_Ch1
 	channel 2, Music_LookHiker_Ch2
@@ -6,6 +7,7 @@ Music_LookHiker:
 	channel 4, Music_LookHiker_Ch4
 
 Music_LookHiker_Ch1:
+music_label
 	tempo 132
 	volume 7, 7
 	pitch_offset 1
@@ -18,6 +20,7 @@ Music_LookHiker_Ch1:
 	note F_, 2
 	note F#, 8
 Music_LookHiker_branch_f7433:
+music_label
 	note D_, 2
 	note D#, 2
 	note E_, 2
@@ -33,6 +36,7 @@ Music_LookHiker_branch_f7433:
 	sound_jump Music_LookHiker_branch_f7433
 
 Music_LookHiker_Ch2:
+music_label
 	duty_cycle 0
 	note_type 12, 10, 1
 	rest 4
@@ -50,6 +54,7 @@ Music_LookHiker_Ch2:
 	note D_, 1
 	volume_envelope 10, 1
 Music_LookHiker_branch_f7457:
+music_label
 	octave 1
 	note B_, 1
 	note B_, 2
@@ -69,6 +74,7 @@ Music_LookHiker_branch_f7457:
 	sound_jump Music_LookHiker_branch_f7457
 
 Music_LookHiker_Ch3:
+music_label
 	vibrato 18, 2, 4
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
@@ -77,6 +83,7 @@ Music_LookHiker_Ch3:
 	note A#, 2
 	note B_, 8
 Music_LookHiker_branch_f7477:
+music_label
 	octave 5
 	note D#, 2
 	note D_, 2
@@ -91,6 +98,7 @@ Music_LookHiker_branch_f7477:
 	sound_jump Music_LookHiker_branch_f7477
 
 Music_LookHiker_branch_f748a:
+music_label
 	octave 4
 	note B_, 2
 	rest 4
@@ -103,11 +111,13 @@ Music_LookHiker_branch_f748a:
 	sound_ret
 
 Music_LookHiker_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	drum_note 6, 4
 	rest 16
 Music_LookHiker_branch_f749a:
+music_label
 	drum_note 4, 2
 	drum_note 8, 2
 	drum_note 3, 2

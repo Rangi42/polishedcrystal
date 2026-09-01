@@ -1,4 +1,5 @@
 Music_AfterTheRivalFight:
+music_header
 	channel_count 4
 	channel 1, Music_AfterTheRivalFight_Ch1
 	channel 2, Music_AfterTheRivalFight_Ch2
@@ -6,6 +7,7 @@ Music_AfterTheRivalFight:
 	channel 4, Music_AfterTheRivalFight_Ch4
 
 Music_AfterTheRivalFight_Ch1:
+music_label
 	tempo 112
 	volume 7, 7
 	duty_cycle 0
@@ -25,6 +27,7 @@ Music_AfterTheRivalFight_Ch1:
 	sound_jump Music_AfterTheRivalFight_branch_f4fb1
 
 Music_AfterTheRivalFight_Ch2:
+music_label
 	duty_cycle 1
 	vibrato 6, 3, 5
 	stereo_panning FALSE, TRUE
@@ -40,6 +43,7 @@ Music_AfterTheRivalFight_Ch2:
 	sound_jump Music_AfterTheRivalFight_branch_f502e
 
 Music_AfterTheRivalFight_Ch3:
+music_label
 	note_type 12, 2, 8
 	octave 3
 	note D#, 2
@@ -53,6 +57,7 @@ Music_AfterTheRivalFight_Ch3:
 	sound_jump Music_AfterTheRivalFight_branch_f509d
 
 Music_AfterTheRivalFight_Ch4:
+music_label
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
 	drum_speed 12

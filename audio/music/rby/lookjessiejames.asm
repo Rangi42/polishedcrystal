@@ -3,12 +3,14 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/meetjessiejames.asm
 
 Music_LookJessieJames:
+music_header
 	channel_count 3
 	channel 1, Music_LookJessieJames_Ch1
 	channel 2, Music_LookJessieJames_Ch2
 	channel 3, Music_LookJessieJames_Ch3
 
 Music_LookJessieJames_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
@@ -28,6 +30,7 @@ Music_LookJessieJames_Ch1:
 	note D#, 12
 	note C_, 4
 Music_LookJessieJames_branch_83187:
+music_label
 	note_type 12, 11, 2
 	octave 4
 	note D_, 16
@@ -85,6 +88,7 @@ Music_LookJessieJames_branch_83187:
 	note A#, 4
 	sound_jump Music_LookJessieJames_branch_83187
 Music_LookJessieJames_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 6, 1, 5
 	note_type 12, 12, 2
@@ -104,6 +108,7 @@ Music_LookJessieJames_Ch2:
 	octave 4
 	note C#, 4
 Music_LookJessieJames_branch_831df:
+music_label
 	note_type 12, 12, 2
 	octave 3
 	note C#, 1
@@ -169,6 +174,7 @@ Music_LookJessieJames_branch_831df:
 	note D#, 8
 	sound_jump Music_LookJessieJames_branch_831df
 Music_LookJessieJames_Ch3:
+music_label
 	note_type 12, 1, 0
 	rest 16
 	rest 8
@@ -180,6 +186,7 @@ Music_LookJessieJames_Ch3:
 	note C_, 2
 	note D#, 2
 Music_LookJessieJames_branch_83235:
+music_label
 	note D_, 1
 	rest 1
 	note A_, 1

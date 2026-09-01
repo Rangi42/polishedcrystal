@@ -3,12 +3,14 @@
 ; Revised by NotFroggestSpirit
 
 Music_TrainerBattlePrism:
+music_header
 	channel_count 3
 	channel 1, Music_TrainerBattlePrism_Ch2
 	channel 2, Music_TrainerBattlePrism_Ch1
 	channel 3, Music_TrainerBattlePrism_Ch3
 
 Music_TrainerBattlePrism_Ch1:
+music_label
 	duty_cycle 1
 	note_type 12, 12, 7
 	octave 5
@@ -60,6 +62,7 @@ Music_TrainerBattlePrism_Ch1:
 	octave 4
 	note G_, 4
 Music_TrainerBattlePrism_L1:
+music_label
 	note F_, 8
 	note D#, 5
 	note E_, 1
@@ -323,6 +326,7 @@ Music_TrainerBattlePrism_L1:
 	sound_jump Music_TrainerBattlePrism_L1
 
 Music_TrainerBattlePrism_Ch2:
+music_label
 	tempo 102
 	duty_cycle 3
 	note_type 12, 11, 4
@@ -380,6 +384,7 @@ Music_TrainerBattlePrism_Ch2:
 	note C_, 2
 	note C#, 4
 Music_TrainerBattlePrism_L2:
+music_label
 	octave 3
 	sound_call Music_TrainerBattlePrism_P6
 	note G#, 12
@@ -443,6 +448,7 @@ Music_TrainerBattlePrism_L2:
 	volume_envelope 8, 4
 	vibrato 0, 0, 0
 Music_TrainerBattlePrism_L3:
+music_label
 	sound_call Music_TrainerBattlePrism_P7
 	sound_call Music_TrainerBattlePrism_P7
 	sound_call Music_TrainerBattlePrism_P8
@@ -538,6 +544,7 @@ Music_TrainerBattlePrism_L3:
 	octave 2
 	note F_, 2
 Music_TrainerBattlePrism_L4:
+music_label
 	octave 4
 	note C_, 6
 	note C#, 10
@@ -578,11 +585,13 @@ Music_TrainerBattlePrism_L4:
 	sound_jump Music_TrainerBattlePrism_L2
 
 Music_TrainerBattlePrism_Ch3:
+music_label
 	note_type 12, 1, 9
 	octave 3
 	note C_, 16
 	note C#, 16
 Music_TrainerBattlePrism_L5:
+music_label
 	note C_, 2
 	note G_, 2
 	note F_, 2
@@ -593,6 +602,7 @@ Music_TrainerBattlePrism_L5:
 	note D#, 2
 	sound_loop 8, Music_TrainerBattlePrism_L5
 Music_TrainerBattlePrism_L6:
+music_label
 	note C_, 4
 	note D#, 2
 	note G_, 2
@@ -602,6 +612,7 @@ Music_TrainerBattlePrism_L6:
 	note F_, 2
 	note G#, 2
 Music_TrainerBattlePrism_L7:
+music_label
 	note C#, 2
 	note G#, 2
 	note F_, 2
@@ -614,6 +625,7 @@ Music_TrainerBattlePrism_L7:
 	sound_call Music_TrainerBattlePrism_P9
 	sound_call Music_TrainerBattlePrism_P9
 Music_TrainerBattlePrism_L8:
+music_label
 	octave 2
 	note A#, 2
 	octave 3
@@ -630,6 +642,7 @@ Music_TrainerBattlePrism_L8:
 	octave 3
 	note D#, 2
 Music_TrainerBattlePrism_L9:
+music_label
 	octave 2
 	note G_, 2
 	octave 3
@@ -727,21 +740,25 @@ Music_TrainerBattlePrism_L9:
 	sound_call Music_TrainerBattlePrism_P12
 	sound_call Music_TrainerBattlePrism_P11
 Music_TrainerBattlePrism_L11:
+music_label
 	octave 2
 	note A_, 2
 	octave 3
 	note F_, 2
 	sound_loop 4, Music_TrainerBattlePrism_L11
 Music_TrainerBattlePrism_L12:
+music_label
 	note C_, 2
 	note F_, 2
 	sound_loop 4, Music_TrainerBattlePrism_L12
 	sound_call Music_TrainerBattlePrism_P12
 Music_TrainerBattlePrism_L13:
+music_label
 	note D_, 2
 	note G_, 2
 	sound_loop 4, Music_TrainerBattlePrism_L13
 Music_TrainerBattlePrism_L14:
+music_label
 	octave 2
 	note A#, 2
 	octave 3
@@ -809,6 +826,7 @@ Music_TrainerBattlePrism_L14:
 	sound_jump Music_TrainerBattlePrism_L6
 
 Music_TrainerBattlePrism_P1:
+music_label
 	note C_, 6
 	note D#, 6
 	note C#, 4
@@ -818,6 +836,7 @@ Music_TrainerBattlePrism_P1:
 	sound_ret
 
 Music_TrainerBattlePrism_P2:
+music_label
 	note F_, 2
 	note F_, 2
 	note F_, 2
@@ -828,6 +847,7 @@ Music_TrainerBattlePrism_P2:
 	sound_ret
 
 Music_TrainerBattlePrism_P3:
+music_label
 	note E_, 2
 	note E_, 2
 	note E_, 2
@@ -838,6 +858,7 @@ Music_TrainerBattlePrism_P3:
 	sound_ret
 
 Music_TrainerBattlePrism_P4:
+music_label
 	note G_, 6
 	note G#, 6
 	note A#, 4
@@ -848,6 +869,7 @@ Music_TrainerBattlePrism_P4:
 	sound_ret
 
 Music_TrainerBattlePrism_P5:
+music_label
 	note G_, 2
 	note C_, 2
 	note F_, 2
@@ -863,6 +885,7 @@ Music_TrainerBattlePrism_P5:
 	sound_ret
 
 Music_TrainerBattlePrism_P6:
+music_label
 	note C_, 6
 	note G_, 6
 	note F_, 4
@@ -877,6 +900,7 @@ Music_TrainerBattlePrism_P6:
 	sound_ret
 
 Music_TrainerBattlePrism_P7:
+music_label
 	note F_, 2
 	note C_, 2
 	note F_, 2
@@ -890,6 +914,7 @@ Music_TrainerBattlePrism_P7:
 	sound_ret
 
 Music_TrainerBattlePrism_P8:
+music_label
 	note E_, 2
 	note C_, 2
 	note E_, 2
@@ -903,6 +928,7 @@ Music_TrainerBattlePrism_P8:
 	sound_ret
 
 Music_TrainerBattlePrism_P9:
+music_label
 	note C_, 2
 	note G_, 2
 	note D#, 2
@@ -911,28 +937,33 @@ Music_TrainerBattlePrism_P9:
 	sound_ret
 
 Music_TrainerBattlePrism_P10:
+music_label
 	octave 2
 	note A#, 2
 	octave 3
 	note F_, 2
 	sound_loop 8, Music_TrainerBattlePrism_P10
 .loop2
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 8, .loop2
 	sound_ret
 
 Music_TrainerBattlePrism_P11:
+music_label
 	note C_, 2
 	note F_, 2
 	sound_loop 4, Music_TrainerBattlePrism_P11
 .loop2
+music_label
 	octave 2
 	note A_, 2
 	octave 3
 	note E_, 2
 	sound_loop 4, .loop2
 .loop3
+music_label
 	octave 2
 	note G_, 2
 	octave 3
@@ -941,6 +972,7 @@ Music_TrainerBattlePrism_P11:
 	sound_ret
 
 Music_TrainerBattlePrism_P12:
+music_label
 	octave 2
 	note A_, 2
 	octave 3

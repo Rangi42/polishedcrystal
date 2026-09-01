@@ -6,6 +6,37 @@
 ; 	FadeMusic
 ; 	PlayStereoSFX
 
+DEF music_huffman_parent_nodes = 0
+DEF music_huffman_prefix_0 EQUS ""
+
+MACRO _music_huffman_branch
+	REDEF _music_huffman_code EQUS "{music_huffman_prefix_{d:\1}}\2"
+	if DEF(___music_huffman_escape_{_music_huffman_code})
+		db MUSIC_HUFFMAN_ESCAPE_LEAF
+	elif DEF(___music_huffman_leaf_{_music_huffman_code})
+		db ___music_huffman_leaf_{_music_huffman_code}
+	else
+		DEF music_huffman_parent_nodes += 1
+		DEF music_huffman_prefix_{d:music_huffman_parent_nodes} EQUS #_music_huffman_code
+		db music_huffman_parent_nodes
+	endc
+ENDM
+
+MusicHuffmanTree:
+	for music_huffman_parent, 0, MUSIC_HUFFMAN_FIRST_LEAF
+		if !DEF(music_huffman_prefix_{d:music_huffman_parent})
+			break
+		endc
+		_music_huffman_branch music_huffman_parent, 0
+		_music_huffman_branch music_huffman_parent, 1
+	endr
+	assert music_huffman_parent_nodes == MUSIC_HUFFMAN_FIRST_LEAF - 2
+
+MusicHuffmanLeaves:
+	for music_huffman_leaf, NUM_MUSIC_HUFFMAN_DIRECT_LEAVES
+		db MUSIC_HUFFMAN_LEAF_{d:music_huffman_leaf}
+	endr
+
 _InitSound::
 ; restart sound operation
 ; clear all relevant hardware registers & wram
@@ -1260,7 +1291,7 @@ MusicCommands:
 	dw DoNothing ; $F5
 	dw DoNothing ; $F6
 	dw DoNothing ; $F7
-	dw DoNothing ; $F8
+	dw AlignMusicStream ; align compressed fall-through labels
 	dw Music_ChangeNoiseSampleSet ; noisesampleset
 	dw Music_SetCondition ; setcondition
 	dw Music_JumpIf ; jumpif
@@ -1271,6 +1302,12 @@ MusicCommands:
 	assert_table_length $100 - FIRST_MUSIC_CMD
 
 
+AlignMusicStream:
+	ld hl, wChannel1MusicBitsLeft - wChannel1
+	add hl, bc
+	ld [hl], 0
+	ret
+
 Music_EndChannel:
 ; called when $ff is encountered w/ subroutine flag set
 ; end music stream
@@ -1280,28 +1317,35 @@ Music_EndChannel:
 	add hl, bc
 	res SOUND_SUBROUTINE, [hl]
 	; copy LastMusicAddress to MusicAddress
-	ld hl, wChannel1LastMusicAddress + 1 - wChannel1
+	ld hl, wChannel1LastMusicAddress - wChannel1
 	add hl, bc
-	ld a, [hld]
-	ld e, [hl]
-	dec hl ; no-optimize b|c|d|e = *hl++|*hl--
-	ld [hld], a
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld hl, wChannel1MusicAddress - wChannel1
+	add hl, bc
 	ld [hl], e
+	inc hl
+	ld [hl], d
+	call AlignMusicStream
 	ret
 
 Music_CallChannel:
 ; call music stream (subroutine)
 ; parameters: ll hh ; pointer to subroutine
 	; get pointer from next 2 bytes
-	call GetMusicWord
+	call GetMusicPointer
 	push de
 	; copy MusicAddress to LastMusicAddress
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
-	inc hl ; no-optimize b|c|d|e = *hl++|*hl--
-	ld [hli], a
+	ld e, a
+	ld hl, wChannel1LastMusicAddress - wChannel1
+	add hl, bc
+	ld [hl], e
+	inc hl
 	ld [hl], d
 	; load pointer into MusicAddress
 	pop de
@@ -1320,7 +1364,7 @@ Music_JumpChannel:
 ; jump
 ; parameters: ll hh ; pointer
 	; get pointer from next 2 bytes
-	call GetMusicWord
+	call GetMusicPointer
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
 	ld a, e
@@ -1365,6 +1409,7 @@ Music_LoopChannel:
 	add hl, bc
 	res SOUND_LOOPING, [hl]
 	; skip to next command
+	call AlignMusicStream
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
 	ld a, [hli]
@@ -1407,6 +1452,7 @@ Music_JumpIf:
 	jr z, Music_JumpChannel
 ; skip to next command
 	; get address
+	call AlignMusicStream
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
 	ld a, [hli]
@@ -1763,8 +1809,16 @@ Music_RestartChannel:
 	; update music bank
 	ld a, [hl]
 	ld [wMusicBank], a
+	ld hl, wChannel1Flags - wChannel1
+	add hl, bc
+	xor a
+	bit SOUND_COMPRESSED, [hl]
+	jr z, .got_compression
+	inc a
+.got_compression
+	ld [wMusicCompressed], a
 	; get pointer to new channel header
-	call GetMusicWord
+	call GetMusicPointer
 	ld l, e
 	ld h, d
 	ld a, [hli]
@@ -1792,6 +1846,12 @@ GetMusicByte:
 ; input: bc = start of current channel
 	push hl
 	push de
+	ld hl, wChannel1Flags - wChannel1
+	add hl, bc
+	bit SOUND_COMPRESSED, [hl]
+	jr nz, .compressed
+
+	; Uncompressed SFX and cry data.
 	; load address into de
 	ld hl, wChannel1MusicAddress + 1 - wChannel1
 	add hl, bc
@@ -1813,12 +1873,104 @@ GetMusicByte:
 	pop hl
 	ret
 
+.compressed
+	xor a ; root parent node
+.decode
+	ld d, a
+	call GetMusicBit
+	ld a, d
+	rla ; node * 2 + branch bit
+	ld l, a
+	ld h, 0
+	ld de, MusicHuffmanTree
+	add hl, de
+	ld a, [hl]
+	cp MUSIC_HUFFMAN_FIRST_LEAF
+	jr c, .decode
+	cp MUSIC_HUFFMAN_ESCAPE_LEAF
+	jr z, .escaped
+	sub MUSIC_HUFFMAN_FIRST_LEAF
+	ld l, a
+	ld h, 0
+	ld de, MusicHuffmanLeaves
+	add hl, de
+	ld a, [hl]
+	jr .decoded
+
+.escaped
+	; Escape leaves are followed by one literal byte.
+	ld de, 8
+.literal_loop
+	call GetMusicBit
+	rl d
+	dec e
+	jr nz, .literal_loop
+	ld a, d
+
+.decoded
+	ld [wCurMusicByte], a
+	pop de
+	pop hl
+	ret
+
+GetMusicBit:
+; Return the next compressed source bit in carry.
+; Input: bc = start of current channel.
+; Clobbers hl; preserves de.
+	push de
+	ld hl, wChannel1MusicBitsLeft - wChannel1
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr nz, .have_bits
+
+	ld [hl], 8
+	ld hl, wChannel1MusicAddress + 1 - wChannel1
+	add hl, bc
+	ld a, [hld]
+	ld d, a
+	ld a, [hld]
+	ld e, a
+	ld a, [hl] ; MusicBank
+	call _LoadMusicByte
+	push af
+	inc de
+	ld hl, wChannel1MusicAddress - wChannel1
+	add hl, bc
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld hl, wChannel1MusicBits - wChannel1
+	add hl, bc
+	pop af
+	ld [hl], a ; MusicBits
+	ld hl, wChannel1MusicBitsLeft - wChannel1
+	add hl, bc
+
+.have_bits
+	dec [hl]
+	dec hl ; MusicBits
+	sla [hl]
+	pop de
+	ret
+
 GetMusicWord:
 ; returns word from current address in de
 ; advances to next byte in music data
 ; input: bc = start of current channel
+	call GetMusicByte
+	ld e, a
+	call GetMusicByte
+	ld d, a
+	ret
+
+GetMusicPointer:
+; Relocatable pointers in compressed music are byte-aligned and stored raw.
+; This also works for uncompressed SFX and cry streams.
 	push hl
-	; load address into de
+	ld hl, wChannel1MusicBitsLeft - wChannel1
+	add hl, bc
+	ld [hl], 0
 	ld hl, wChannel1MusicAddress + 1 - wChannel1
 	add hl, bc
 	ld a, [hld]
@@ -1827,7 +1979,7 @@ GetMusicWord:
 	ld e, a
 	; load bank into a
 	ld a, [hl]
-	; get byte
+	; get raw pointer
 	call _LoadMusicWord ; load data into hl
 	push hl
 	; update channeldata address
@@ -2054,9 +2206,12 @@ _PlayMusic::
 	ld [hli], a ; song number
 	ld [hl], d ; wMusicIDHi (always 0)
 	ld hl, Music
-	add hl, de ; three
-	add hl, de ; byte
-	add hl, de ; pointer
+	add hl, de ; four-byte
+	add hl, de ; compression flag,
+	add hl, de ; bank,
+	add hl, de ; and pointer
+	ld a, [hli]
+	ld [wMusicCompressed], a
 	ld a, [hli]
 	ld [wMusicBank], a
 	ld a, [hli]
@@ -2088,9 +2243,10 @@ _PlayCry::
 ;	wCryLength
 
 	call MusicOff
+	xor a
+	ld [wMusicCompressed], a
 
 ; Initialize the pitch sweep
-	xor a
 	ld [wSoundInput], a
 	ldh [rAUD1SWEEP], a
 
@@ -2221,6 +2377,8 @@ PlayStereoSFX::
 	ld [wNoiseSampleAddressHi], a
 
 .chscleared
+	xor a
+	ld [wMusicCompressed], a
 	ld hl, wMusicID
 	ld a, e
 	ld [hli], a
@@ -2310,7 +2468,13 @@ LoadChannel:
 	ld [hli], a
 	; load music bank
 	ld a, [wMusicBank]
-	ld [hl], a
+	ld [hli], a
+	ld a, [wMusicCompressed]
+	and a
+	ret z
+	ld hl, wChannel1Flags - wChannel1
+	add hl, bc
+	set SOUND_COMPRESSED, [hl]
 	ret
 
 ChannelInit:

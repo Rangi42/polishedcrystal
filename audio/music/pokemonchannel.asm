@@ -1,4 +1,5 @@
 Music_PokemonChannel:
+music_header
 	channel_count 4
 	channel 1, Music_PokemonChannel_Ch1
 	channel 2, Music_PokemonChannel_Ch2
@@ -6,6 +7,7 @@ Music_PokemonChannel:
 	channel 4, Music_PokemonChannel_Ch4
 
 Music_PokemonChannel_Ch1:
+music_label
 	tempo 128
 	volume 7, 7
 	vibrato 8, 3, 8
@@ -76,6 +78,7 @@ Music_PokemonChannel_Ch1:
 	sound_ret
 
 Music_PokemonChannel_Ch2:
+music_label
 	duty_cycle 1
 	vibrato 8, 3, 8
 	stereo_panning TRUE, TRUE
@@ -146,6 +149,7 @@ Music_PokemonChannel_Ch2:
 	sound_ret
 
 Music_PokemonChannel_Ch3:
+music_label
 	vibrato 8, 3, 8
 	note_type 12, 2, 5
 	stereo_panning TRUE, FALSE
@@ -202,9 +206,11 @@ Music_PokemonChannel_Ch3:
 	sound_ret
 
 Music_PokemonChannel_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 Music_PokemonChannel_branch_ee54d:
+music_label
 	drum_note 11, 3
 	drum_note 11, 1
 	drum_note 3, 2

@@ -1,4 +1,5 @@
 Music_Evolution:
+music_header
 	channel_count 4
 	channel 1, Music_Evolution_Ch1
 	channel 2, Music_Evolution_Ch2
@@ -6,6 +7,7 @@ Music_Evolution:
 	channel 4, Music_Evolution_Ch4
 
 Music_Evolution_Ch1:
+music_label
 	tempo 132
 	volume 7, 7
 	vibrato 6, 3, 4
@@ -25,6 +27,7 @@ Music_Evolution_Ch1:
 	duty_cycle 3
 	stereo_panning FALSE, TRUE
 Music_Evolution_branch_f0713:
+music_label
 	sound_call Music_Evolution_branch_f0737
 	note_type 12, 10, 4
 	note F#, 4
@@ -41,6 +44,7 @@ Music_Evolution_branch_f0713:
 	sound_jump Music_Evolution_branch_f0713
 
 Music_Evolution_branch_f0737:
+music_label
 	note_type 12, 10, 2
 	octave 3
 	note C_, 4
@@ -53,6 +57,7 @@ Music_Evolution_branch_f0737:
 	sound_ret
 
 Music_Evolution_branch_f0743:
+music_label
 	note_type 12, 10, 2
 	octave 3
 	note D_, 4
@@ -65,6 +70,7 @@ Music_Evolution_branch_f0743:
 	sound_ret
 
 Music_Evolution_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 8, 2, 5
 	note_type 12, 10, 2
@@ -77,6 +83,7 @@ Music_Evolution_Ch2:
 	duty_cycle 3
 	stereo_panning TRUE, FALSE
 Music_Evolution_branch_f0761:
+music_label
 	sound_call Music_Evolution_branch_f0787
 	note_type 12, 11, 5
 	note A_, 4
@@ -95,6 +102,7 @@ Music_Evolution_branch_f0761:
 	sound_jump Music_Evolution_branch_f0761
 
 Music_Evolution_branch_f0787:
+music_label
 	note_type 12, 11, 2
 	octave 3
 	note G_, 4
@@ -107,6 +115,7 @@ Music_Evolution_branch_f0787:
 	sound_ret
 
 Music_Evolution_branch_f0793:
+music_label
 	note_type 12, 11, 2
 	octave 3
 	note A_, 4
@@ -119,9 +128,11 @@ Music_Evolution_branch_f0793:
 	sound_ret
 
 Music_Evolution_Ch3:
+music_label
 	note_type 12, 1, 6
 	rest 8
 Music_Evolution_branch_f07a3:
+music_label
 	sound_call Music_Evolution_branch_f07bf
 	octave 3
 	note A_, 4
@@ -138,6 +149,7 @@ Music_Evolution_branch_f07a3:
 	sound_jump Music_Evolution_branch_f07a3
 
 Music_Evolution_branch_f07bf:
+music_label
 	octave 2
 	note A_, 2
 	rest 2
@@ -162,6 +174,7 @@ Music_Evolution_branch_f07bf:
 	sound_ret
 
 Music_Evolution_branch_f07d5:
+music_label
 	octave 2
 	note B_, 2
 	rest 2
@@ -186,10 +199,12 @@ Music_Evolution_branch_f07d5:
 	sound_ret
 
 Music_Evolution_Ch4:
+music_label
 	toggle_noise 5
 	drum_speed 12
 	rest 8
 Music_Evolution_branch_f07f0:
+music_label
 	stereo_panning TRUE, FALSE
 	drum_note 11, 6
 	drum_note 11, 4

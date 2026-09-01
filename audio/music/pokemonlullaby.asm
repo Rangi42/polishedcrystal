@@ -1,15 +1,18 @@
 Music_PokemonLullaby:
+music_header
 	channel_count 3
 	channel 1, Music_PokemonLullaby_Ch1
 	channel 2, Music_PokemonLullaby_Ch2
 	channel 3, Music_PokemonLullaby_Ch3
 
 Music_PokemonLullaby_Ch1:
+music_label
 	tempo 224
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 1
 Music_PokemonLullaby_branch_f6d8c:
+music_label
 	note_type 12, 10, 7
 	octave 3
 	note G_, 16
@@ -55,10 +58,12 @@ Music_PokemonLullaby_branch_f6d8c:
 	sound_jump Music_PokemonLullaby_branch_f6d8c
 
 Music_PokemonLullaby_Ch2:
+music_label
 	vibrato 16, 1, 4
 	duty_cycle 0
 	note_type 12, 11, 4
 Music_PokemonLullaby_branch_f6dcc:
+music_label
 	rest 16
 	rest 10
 	octave 4
@@ -105,8 +110,10 @@ Music_PokemonLullaby_branch_f6dcc:
 	sound_jump Music_PokemonLullaby_branch_f6dcc
 
 Music_PokemonLullaby_Ch3:
+music_label
 	note_type 12, 1, 1
 Music_PokemonLullaby_branch_f6e06:
+music_label
 	stereo_panning TRUE, FALSE
 	octave 4
 	note C_, 2

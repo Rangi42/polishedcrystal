@@ -3,6 +3,7 @@
 ; https://github.com/huderlem/pokestyle-music-devamps/blob/master/music/kalos_titlescreen.asm
 
 Music_TitleScreenXY:
+music_header
 	channel_count 4
 	channel 1, Music_TitleScreenXY_Ch1
 	channel 2, Music_TitleScreenXY_Ch2
@@ -10,15 +11,18 @@ Music_TitleScreenXY:
 	channel 4, Music_TitleScreenXY_Ch4
 
 Music_TitleScreenXY_Ch1:
+music_label
 	tempo 125
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	vibrato 16, 3, 3
 	pitch_sweep 0, 0
 Music_TitleScreenXY_Ch1_b0:
+music_label
 	duty_cycle 0
 	note_type 8, 8, 7
 Music_TitleScreenXY_Ch1_b1:
+music_label
 	octave 3
 	note G#, 2
 	octave 4
@@ -30,6 +34,7 @@ Music_TitleScreenXY_Ch1_b1:
 	sound_loop 8, Music_TitleScreenXY_Ch1_b1
 	note_type 8, 9, 7
 Music_TitleScreenXY_Ch1_b2:
+music_label
 	octave 3
 	note B_, 2
 	octave 4
@@ -41,6 +46,7 @@ Music_TitleScreenXY_Ch1_b2:
 	sound_loop 4, Music_TitleScreenXY_Ch1_b2
 	note_type 8, 11, 7
 Music_TitleScreenXY_Ch1_b3:
+music_label
 	octave 4
 	note D_, 2
 	note G_, 2
@@ -248,6 +254,7 @@ Music_TitleScreenXY_Ch1_b3:
 	sound_jump Music_TitleScreenXY_Ch1_b0
 
 Music_TitleScreenXY_Ch1_b5:
+music_label
 	octave 3
 	note G#, 9
 	octave 4
@@ -282,12 +289,15 @@ Music_TitleScreenXY_Ch1_b5:
 	sound_ret
 
 Music_TitleScreenXY_Ch2:
+music_label
 	vibrato 16, 3, 3
 	stereo_panning TRUE, FALSE
 	duty_cycle 1
 Music_TitleScreenXY_Ch2_b0:
+music_label
 	note_type 8, 9, 7
 Music_TitleScreenXY_Ch2_b1:
+music_label
 	octave 2
 	note G#, 2
 	octave 3
@@ -299,6 +309,7 @@ Music_TitleScreenXY_Ch2_b1:
 	sound_loop 8, Music_TitleScreenXY_Ch2_b1
 	note_type 8, 10, 7
 Music_TitleScreenXY_Ch2_b2:
+music_label
 	octave 2
 	note B_, 2
 	octave 3
@@ -310,6 +321,7 @@ Music_TitleScreenXY_Ch2_b2:
 	sound_loop 4, Music_TitleScreenXY_Ch2_b2
 	note_type 8, 12, 7
 Music_TitleScreenXY_Ch2_b3:
+music_label
 	octave 3
 	note D_, 2
 	note G_, 2
@@ -512,6 +524,7 @@ Music_TitleScreenXY_Ch2_b3:
 	note G#, 2
 	rest 4
 Music_TitleScreenXY_Ch2_b4:
+music_label
 	note F#, 1
 	rest 1
 	sound_loop 5, Music_TitleScreenXY_Ch2_b4
@@ -532,8 +545,10 @@ Music_TitleScreenXY_Ch2_b4:
 	sound_jump Music_TitleScreenXY_Ch2_b0
 
 Music_TitleScreenXY_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 Music_TitleScreenXY_Ch3_b0:
+music_label
 	note_type 8, 1, 2
 	rest 12
 	octave 3
@@ -606,6 +621,7 @@ Music_TitleScreenXY_Ch3_b0:
 	note G_, 1
 	rest 1
 Music_TitleScreenXY_Ch3_b1:
+music_label
 	sound_call Music_TitleScreenXY_Ch3_b2
 	sound_call Music_TitleScreenXY_Ch3_b3
 	sound_call Music_TitleScreenXY_Ch3_b2
@@ -820,6 +836,7 @@ Music_TitleScreenXY_Ch3_b1:
 	sound_jump Music_TitleScreenXY_Ch3_b0
 
 Music_TitleScreenXY_Ch3_b2:
+music_label
 	octave 2
 	note G#, 2
 	octave 3
@@ -839,6 +856,7 @@ Music_TitleScreenXY_Ch3_b2:
 	sound_ret
 
 Music_TitleScreenXY_Ch3_b3:
+music_label
 	octave 2
 	note F#, 2
 	note A#, 2
@@ -859,8 +877,10 @@ Music_TitleScreenXY_Ch3_b3:
 	sound_ret
 
 Music_TitleScreenXY_Ch4:
+music_label
 	toggle_noise 3
 Music_TitleScreenXY_Ch4_b0:
+music_label
 	drum_speed 12
 	rest 16
 	rest 12
@@ -899,6 +919,7 @@ Music_TitleScreenXY_Ch4_b0:
 	drum_note 3, 4
 	drum_note 3, 4
 Music_TitleScreenXY_Ch4_b1:
+music_label
 	sound_call Music_TitleScreenXY_Ch4_b2
 	sound_call Music_TitleScreenXY_Ch4_b2
 	sound_call Music_TitleScreenXY_Ch4_b2
@@ -959,6 +980,7 @@ Music_TitleScreenXY_Ch4_b1:
 	sound_jump Music_TitleScreenXY_Ch4_b0
 
 Music_TitleScreenXY_Ch4_b2:
+music_label
 	drum_note 3, 8
 	drum_note 3, 12
 	drum_note 3, 4

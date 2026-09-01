@@ -1,4 +1,5 @@
 Music_HallOfFame:
+music_header
 	channel_count 4
 	channel 1, Music_HallOfFame_Ch1
 	channel 2, Music_HallOfFame_Ch2
@@ -6,6 +7,7 @@ Music_HallOfFame:
 	channel 4, Music_HallOfFame_Ch4
 
 Music_HallOfFame_Ch1:
+music_label
 	tempo 112
 	volume 7, 7
 	duty_cycle 2
@@ -23,6 +25,7 @@ Music_HallOfFame_Ch1:
 	note F_, 1
 	note F#, 1
 Music_HallOfFame_branch_f05e6:
+music_label
 	volume_envelope 9, 7
 	octave 4
 	note C_, 8
@@ -48,9 +51,11 @@ Music_HallOfFame_branch_f05e6:
 	sound_jump Music_HallOfFame_branch_f05e6
 
 Music_HallOfFame_Ch2:
+music_label
 	vibrato 8, 2, 5
 	duty_cycle 3
 Music_HallOfFame_branch_f0610:
+music_label
 	note_type 12, 12, 4
 	octave 3
 	note G_, 2
@@ -78,9 +83,12 @@ Music_HallOfFame_branch_f0610:
 	sound_jump Music_HallOfFame_branch_f0610
 
 Music_HallOfFame_Ch3:
+music_label
 Music_HallOfFame_branch_f062e:
+music_label
 	note_type 12, 2, 8
 Music_HallOfFame_branch_f0631:
+music_label
 	octave 3
 	note D_, 2
 	note G_, 2
@@ -137,6 +145,7 @@ Music_HallOfFame_branch_f0631:
 	sound_jump Music_HallOfFame_branch_f062e
 
 Music_HallOfFame_Ch4:
+music_label
 	toggle_noise 5
 	drum_speed 12
 	rest 16
@@ -145,6 +154,7 @@ Music_HallOfFame_Ch4:
 	rest 16
 	drum_speed 6
 Music_HallOfFame_branch_f0677:
+music_label
 	stereo_panning FALSE, TRUE
 	drum_note 11, 4
 	drum_note 11, 8

@@ -3,12 +3,14 @@
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/audio/music/custom/vsWCS.asm
 
 Music_WCSBattleBW:
+music_header
 	channel_count 3
 	channel 1, Music_WCSBattleBW_Ch1
 	channel 2, Music_WCSBattleBW_Ch2
 	channel 3, Music_WCSBattleBW_Ch3
 
 Music_WCSBattleBW_Ch2:
+music_label
 	duty_cycle 2
 	note_type 12, 8, -4
 	octave 2
@@ -81,6 +83,7 @@ Music_WCSBattleBW_Ch2:
 	octave 4
 	note C_, 16
 Music_WCSBattleBW_Ch2_L:
+music_label
 	volume_envelope 14, 7
 	vibrato 0, 0, 0
 	note C_, 8
@@ -308,6 +311,7 @@ Music_WCSBattleBW_Ch2_L:
 	sound_jump Music_WCSBattleBW_Ch2_L
 
 Music_WCSBattleBW_Ch1:
+music_label
 	tempo 105
 	volume 7, 7
 	duty_cycle 2
@@ -378,6 +382,7 @@ Music_WCSBattleBW_Ch1:
 	note D_, 16
 	note E_, 16
 Music_WCSBattleBW_Ch1_L:
+music_label
 	volume_envelope 14, 7
 	vibrato 0, 0, 0
 	octave 3
@@ -666,6 +671,7 @@ Music_WCSBattleBW_Ch1_L:
 	sound_jump Music_WCSBattleBW_Ch1_L
 
 Music_WCSBattleBW_Ch3:
+music_label
 	note_type 12, 1, 6
 	octave 4
 	rest 16
@@ -994,6 +1000,7 @@ Music_WCSBattleBW_Ch3:
 	note D_, 1
 	rest 1
 Music_WCSBattleBW_Ch3_L:
+music_label
 	volume_envelope 1, 5
 	octave 3
 	note C_, 1
@@ -1016,18 +1023,21 @@ Music_WCSBattleBW_Ch3_L:
 	rest 6
 	volume_envelope 1, 8
 Music_WCSBattleBW_Ch3_L1:
+music_label
 	octave 2
 	note G_, 2
 	octave 3
 	note D_, 2
 	sound_loop 8, Music_WCSBattleBW_Ch3_L1
 Music_WCSBattleBW_Ch3_L2:
+music_label
 	octave 2
 	note G_, 2
 	octave 3
 	note C_, 2
 	sound_loop 8, Music_WCSBattleBW_Ch3_L2
 Music_WCSBattleBW_Ch3_L3:
+music_label
 	octave 2
 	note G_, 2
 	octave 3
@@ -1103,42 +1113,50 @@ Music_WCSBattleBW_Ch3_L3:
 	note A#, 2
 	octave 3
 Music_WCSBattleBW_Ch3_L4:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 7, Music_WCSBattleBW_Ch3_L4
 	note G#, 2
 	note G_, 2
 Music_WCSBattleBW_Ch3_L5:
+music_label
 	note C#, 2
 	note G#, 2
 	sound_loop 7, Music_WCSBattleBW_Ch3_L5
 	note A#, 2
 	note G#, 2
 Music_WCSBattleBW_Ch3_L6:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 7, Music_WCSBattleBW_Ch3_L6
 	note A#, 2
 	note A_, 2
 Music_WCSBattleBW_Ch3_L7:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 12, Music_WCSBattleBW_Ch3_L7
 Music_WCSBattleBW_Ch3_L8:
+music_label
 	note D#, 2
 	note A#, 2
 	sound_loop 4, Music_WCSBattleBW_Ch3_L8
 Music_WCSBattleBW_Ch3_L9:
+music_label
 	note D#, 2
 	note G_, 2
 	sound_loop 4, Music_WCSBattleBW_Ch3_L9
 Music_WCSBattleBW_Ch3_L10:
+music_label
 	octave 3
 	note F_, 2
 	octave 4
 	note C_, 2
 	sound_loop 8, Music_WCSBattleBW_Ch3_L10
 Music_WCSBattleBW_Ch3_L11:
+music_label
 	octave 3
 	note F#, 2
 	octave 4
@@ -1152,6 +1170,7 @@ Music_WCSBattleBW_Ch3_L11:
 	note A_, 2
 	note F#, 2
 Music_WCSBattleBW_Ch3_L12:
+music_label
 	octave 3
 	note F_, 2
 	octave 4
@@ -1161,6 +1180,7 @@ Music_WCSBattleBW_Ch3_L12:
 	note F_, 2
 	note E_, 2
 Music_WCSBattleBW_Ch3_L13:
+music_label
 	note D#, 2
 	note A#, 2
 	sound_loop 5, Music_WCSBattleBW_Ch3_L13
@@ -1177,14 +1197,17 @@ Music_WCSBattleBW_Ch3_L13:
 	note G_, 2
 	note C_, 2
 Music_WCSBattleBW_Ch3_L14:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 6, Music_WCSBattleBW_Ch3_L14
 Music_WCSBattleBW_Ch3_L15:
+music_label
 	note D#, 2
 	note A#, 2
 	sound_loop 8, Music_WCSBattleBW_Ch3_L15
 Music_WCSBattleBW_Ch3_L16:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 6, Music_WCSBattleBW_Ch3_L16
@@ -1193,6 +1216,7 @@ Music_WCSBattleBW_Ch3_L16:
 	note D#, 2
 	note D_, 2
 Music_WCSBattleBW_Ch3_L17:
+music_label
 	note D#, 2
 	note A#, 2
 	sound_loop 7, Music_WCSBattleBW_Ch3_L17
@@ -1200,6 +1224,7 @@ Music_WCSBattleBW_Ch3_L17:
 	note C#, 2
 	volume_envelope 1, 5
 Music_WCSBattleBW_Ch3_L18:
+music_label
 	octave 3
 	note C_, 1
 	octave 2
@@ -1209,6 +1234,7 @@ Music_WCSBattleBW_Ch3_L18:
 	sound_jump Music_WCSBattleBW_Ch3_L
 
 Music_WCSBattleBW_Ch3_P1:
+music_label
 	octave 3
 	note C_, 1
 	note C_, 1

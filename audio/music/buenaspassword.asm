@@ -1,4 +1,5 @@
 Music_BuenasPassword:
+music_header
 	channel_count 4
 	channel 1, Music_BuenasPassword_Ch1
 	channel 2, Music_BuenasPassword_Ch2
@@ -6,12 +7,14 @@ Music_BuenasPassword:
 	channel 4, Music_BuenasPassword_Ch4
 
 Music_BuenasPassword_Ch1:
+music_label
 	tempo 136
 	volume 7, 7
 	pitch_offset 1
 	note_type 12, 11, 3
 	rest 8
 Music_BuenasPassword_branch_17816b:
+music_label
 	stereo_panning TRUE, TRUE
 	rest 16
 	rest 16
@@ -140,6 +143,7 @@ Music_BuenasPassword_branch_17816b:
 	sound_jump Music_BuenasPassword_branch_17816b
 
 Music_BuenasPassword_branch_178204:
+music_label
 	stereo_panning FALSE, TRUE
 	note_type 6, 8, 4
 	octave 4
@@ -163,6 +167,7 @@ Music_BuenasPassword_branch_178204:
 	sound_ret
 
 Music_BuenasPassword_branch_178222:
+music_label
 	octave 3
 	note D#, 1
 	rest 1
@@ -180,6 +185,7 @@ Music_BuenasPassword_branch_178222:
 	sound_ret
 
 Music_BuenasPassword_Ch2:
+music_label
 	vibrato 18, 3, 4
 	duty_cycle 2
 	note_type 12, 10, 5
@@ -187,6 +193,7 @@ Music_BuenasPassword_Ch2:
 	octave 3
 	note F#, 1
 Music_BuenasPassword_branch_17823c:
+music_label
 	stereo_panning TRUE, TRUE
 	sound_call Music_BuenasPassword_branch_1782df
 	sound_call Music_BuenasPassword_branch_1782a4
@@ -273,6 +280,7 @@ Music_BuenasPassword_branch_17823c:
 	sound_jump Music_BuenasPassword_branch_17823c
 
 Music_BuenasPassword_branch_1782a4:
+music_label
 	octave 3
 	note G#, 1
 	rest 1
@@ -306,6 +314,7 @@ Music_BuenasPassword_branch_1782a4:
 	sound_ret
 
 Music_BuenasPassword_branch_1782cc:
+music_label
 	octave 4
 	note G#, 2
 	rest 2
@@ -327,6 +336,7 @@ Music_BuenasPassword_branch_1782cc:
 	sound_ret
 
 Music_BuenasPassword_branch_1782df:
+music_label
 	octave 3
 	note G#, 1
 	rest 1
@@ -379,9 +389,11 @@ Music_BuenasPassword_branch_1782df:
 	sound_ret
 
 Music_BuenasPassword_Ch3:
+music_label
 	note_type 12, 1, 4
 	rest 8
 Music_BuenasPassword_branch_178315:
+music_label
 	sound_call Music_BuenasPassword_branch_1783a7
 	sound_call Music_BuenasPassword_branch_1783a7
 	sound_call Music_BuenasPassword_branch_1783a7
@@ -514,6 +526,7 @@ Music_BuenasPassword_branch_178315:
 	sound_jump Music_BuenasPassword_branch_178315
 
 Music_BuenasPassword_branch_1783a7:
+music_label
 	octave 2
 	note G#, 1
 	rest 1
@@ -537,6 +550,7 @@ Music_BuenasPassword_branch_1783a7:
 	sound_ret
 
 Music_BuenasPassword_branch_1783bc:
+music_label
 	octave 2
 	note G#, 1
 	rest 1
@@ -559,6 +573,7 @@ Music_BuenasPassword_branch_1783bc:
 	sound_ret
 
 Music_BuenasPassword_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	drum_note 4, 2
@@ -567,6 +582,7 @@ Music_BuenasPassword_Ch4:
 	drum_note 3, 1
 	drum_note 3, 1
 Music_BuenasPassword_branch_1783d9:
+music_label
 	sound_call Music_BuenasPassword_branch_17840c
 	sound_call Music_BuenasPassword_branch_17840c
 	sound_call Music_BuenasPassword_branch_17840c
@@ -594,6 +610,7 @@ Music_BuenasPassword_branch_1783d9:
 	sound_jump Music_BuenasPassword_branch_1783d9
 
 Music_BuenasPassword_branch_17840c:
+music_label
 	stereo_panning TRUE, TRUE
 	drum_note 4, 2
 	stereo_panning TRUE, FALSE
@@ -613,6 +630,7 @@ Music_BuenasPassword_branch_17840c:
 	sound_ret
 
 Music_BuenasPassword_branch_178424:
+music_label
 	stereo_panning TRUE, TRUE
 	drum_note 4, 2
 	stereo_panning TRUE, FALSE

@@ -3,12 +3,14 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RSE/frontierbrain.asm
 
 Music_FrontierBrainBattleRSE:
+music_header
 	channel_count 3
 	channel 1, Music_FrontierBrainBattleRSE_Ch1
 	channel 2, Music_FrontierBrainBattleRSE_Ch2
 	channel 3, Music_FrontierBrainBattleRSE_Ch3
 
 Music_FrontierBrainBattleRSE_Ch1:
+music_label
 	tempo 96
 	volume 7, 7
 	note_type 12, 12, 2
@@ -53,6 +55,7 @@ Music_FrontierBrainBattleRSE_Ch1:
 	octave 4
 	note F_, 2
 Music_FrontierBrainBattleRSE_Ch1_loop:
+music_label
 	note_type 12, 12, 2
 	note E_, 1
 	note F_, 1
@@ -821,6 +824,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	sound_jump Music_FrontierBrainBattleRSE_Ch1_loop
 
 Music_FrontierBrainBattleRSE_Ch2:
+music_label
 	note_type 8, 13, 4
 	duty_cycle 3
 	pitch_offset 1
@@ -840,6 +844,7 @@ Music_FrontierBrainBattleRSE_Ch2:
 	note A_, 6
 	note G#, 6
 Music_FrontierBrainBattleRSE_Ch2_loop:
+music_label
 	note_type 12, 13, 4
 	octave 2
 	rest 8
@@ -1258,6 +1263,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	sound_jump Music_FrontierBrainBattleRSE_Ch2_loop
 
 Music_FrontierBrainBattleRSE_Ch3:
+music_label
 	note_type 12, 1, 9
 	vibrato 0, 2, 0
 	rest 4
@@ -1298,6 +1304,7 @@ Music_FrontierBrainBattleRSE_Ch3:
 	octave 3
 	note C_, 2
 Music_FrontierBrainBattleRSE_Ch3_loop:
+music_label
 	note_type 12, 1, 9
 	octave 2
 	note B_, 1

@@ -3,6 +3,7 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/indigoplateau.asm
 
 Music_IndigoPlateauRBY:
+music_header
 	channel_count 4
 	channel 1, Music_IndigoPlateauRBY_Ch1
 	channel 2, Music_IndigoPlateauRBY_Ch2
@@ -10,6 +11,7 @@ Music_IndigoPlateauRBY:
 	channel 4, Music_IndigoPlateauRBY_Ch4
 
 Music_IndigoPlateauRBY_Ch1:
+music_label
 	tempo 132
 	volume 7, 7
 	duty_cycle 3
@@ -25,6 +27,7 @@ Music_IndigoPlateauRBY_Ch1:
 	note A#, 4
 
 Music_IndigoPlateauRBY_branch_a605:
+music_label
 	sound_call Music_IndigoPlateauRBY_branch_a659
 	note_type 12, 11, 4
 	octave 3
@@ -85,6 +88,7 @@ Music_IndigoPlateauRBY_branch_a605:
 	sound_jump Music_IndigoPlateauRBY_branch_a605
 
 Music_IndigoPlateauRBY_branch_a659:
+music_label
 	note_type 12, 11, 2
 	octave 2
 	note A_, 4
@@ -97,6 +101,7 @@ Music_IndigoPlateauRBY_branch_a659:
 	sound_ret
 
 Music_IndigoPlateauRBY_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 8, 2, 5
 	note_type 12, 12, 2
@@ -109,6 +114,7 @@ Music_IndigoPlateauRBY_Ch2:
 	note D#, 4
 
 Music_IndigoPlateauRBY_branch_a673:
+music_label
 	sound_call Music_IndigoPlateauRBY_branch_a6af
 	note_type 12, 12, 5
 	note A_, 4
@@ -145,6 +151,7 @@ Music_IndigoPlateauRBY_branch_a673:
 	sound_jump Music_IndigoPlateauRBY_branch_a673
 
 Music_IndigoPlateauRBY_branch_a6af:
+music_label
 	note_type 12, 12, 2
 	octave 3
 	note D_, 4
@@ -157,6 +164,7 @@ Music_IndigoPlateauRBY_branch_a6af:
 	sound_ret
 
 Music_IndigoPlateauRBY_Ch3:
+music_label
 	note_type 12, 1, 0
 	octave 4
 	note D_, 2
@@ -170,6 +178,7 @@ Music_IndigoPlateauRBY_Ch3:
 	note D#, 4
 
 Music_IndigoPlateauRBY_branch_a6c6:
+music_label
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
@@ -215,6 +224,7 @@ Music_IndigoPlateauRBY_branch_a6c6:
 	sound_jump Music_IndigoPlateauRBY_branch_a6c6
 
 Music_IndigoPlateauRBY_branch_a6fe:
+music_label
 	octave 4
 	note D_, 2
 	rest 2
@@ -234,6 +244,7 @@ Music_IndigoPlateauRBY_branch_a6fe:
 	sound_ret
 
 Music_IndigoPlateauRBY_Ch4:
+music_label
 	drum_speed 6
 	toggle_noise 1
 	drum_note 10, 16
@@ -250,6 +261,7 @@ Music_IndigoPlateauRBY_Ch4:
 	drum_note 11, 1
 
 Music_IndigoPlateauRBY_branch_a728:
+music_label
 	sound_call Music_IndigoPlateauRBY_branch_a791
 	sound_call Music_IndigoPlateauRBY_branch_a77e
 	sound_call Music_IndigoPlateauRBY_branch_a791
@@ -287,6 +299,7 @@ Music_IndigoPlateauRBY_branch_a728:
 	sound_jump Music_IndigoPlateauRBY_branch_a728
 
 Music_IndigoPlateauRBY_branch_a77e:
+music_label
 	drum_note 10, 4
 	drum_note 11, 4
 	drum_note 12, 4
@@ -299,6 +312,7 @@ Music_IndigoPlateauRBY_branch_a77e:
 	sound_ret
 
 Music_IndigoPlateauRBY_branch_a791:
+music_label
 	drum_note 10, 4
 	drum_note 11, 4
 	drum_note 12, 4
@@ -313,6 +327,7 @@ Music_IndigoPlateauRBY_branch_a791:
 	sound_ret
 
 Music_IndigoPlateauRBY_branch_a7a8:
+music_label
 	drum_note 10, 4
 	drum_note 11, 4
 	drum_note 10, 4

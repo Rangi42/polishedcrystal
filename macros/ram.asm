@@ -190,6 +190,8 @@ MACRO channel_struct
 \1Field0x25::         db
 \1PitchOffset::       dw
 \1NoteLength::        db ; frames per 16th note
+\1MusicBits::         db ; compressed music input buffer
+\1MusicBitsLeft::     db
 ENDM
 
 MACRO mailmsg

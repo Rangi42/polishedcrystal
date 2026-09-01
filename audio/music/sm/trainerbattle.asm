@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/7/
 
 Music_TrainerBattleSM:
+music_header
 	channel_count 4
 	channel 1, Music_TrainerBattleSM_Ch1
 	channel 2, Music_TrainerBattleSM_Ch2
@@ -11,6 +12,7 @@ Music_TrainerBattleSM:
 	channel 4, Music_TrainerBattleSM_Ch4
 
 Music_TrainerBattleSM_Ch1:
+music_label
 	tempo 204
 	volume 7, 7
 	duty_cycle 2
@@ -25,6 +27,7 @@ Music_TrainerBattleSM_Ch1:
 	volume_envelope 6, -7
 	note G_, 8
 Music_TrainerBattleSM_Ch1_loop_main:
+music_label
 	duty_cycle 0
 	volume_envelope 6, 0
 	octave 3
@@ -42,6 +45,7 @@ Music_TrainerBattleSM_Ch1_loop_main:
 	note D_, 4
 	note C_, 16
 Music_TrainerBattleSM_Ch1_loop_1:
+music_label
 	octave 2
 	volume_envelope 9, 7
 	note A#, 6
@@ -192,12 +196,14 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	duty_cycle 1
 	note_type 12, 10, 3
 Music_TrainerBattleSM_Ch1_loop_2:
+music_label
 	note C_, 11
 	note C_, 5
 	note C_, 16
 	sound_loop 5, Music_TrainerBattleSM_Ch1_loop_2
 	note_type 6, 10, 1
 Music_TrainerBattleSM_Ch1_loop_3:
+music_label
 	octave 4
 	note A#, 1
 	note F_, 1
@@ -291,6 +297,7 @@ Music_TrainerBattleSM_Ch1_loop_3:
 	sound_jump Music_TrainerBattleSM_Ch1_loop_main
 
 Music_TrainerBattleSM_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 8, 3, 6
 	pitch_offset 1
@@ -342,6 +349,7 @@ Music_TrainerBattleSM_Ch2:
 	volume_envelope 7, 2
 	note D_, 1
 Music_TrainerBattleSM_Ch2_loop_main:
+music_label
 	duty_cycle 3
 	octave 4
 	volume_envelope 10, 0
@@ -585,6 +593,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	sound_jump Music_TrainerBattleSM_Ch2_loop_main
 
 Music_TrainerBattleSM_Ch2_branch_1:
+music_label
 	octave 4
 	note E_, 1
 	octave 5
@@ -612,6 +621,7 @@ Music_TrainerBattleSM_Ch2_branch_1:
 	sound_ret
 
 Music_TrainerBattleSM_Ch2_branch_2:
+music_label
 	octave 3
 	note A#, 8
 	octave 4
@@ -634,6 +644,7 @@ Music_TrainerBattleSM_Ch2_branch_2:
 	sound_ret
 
 Music_TrainerBattleSM_Ch3:
+music_label
 	note_type 6, 1, 9
 	octave 2
 	note C_, 7
@@ -649,7 +660,9 @@ Music_TrainerBattleSM_Ch3:
 	note C_, 2
 	note G_, 2
 Music_TrainerBattleSM_Ch3_loop_main:
+music_label
 Music_TrainerBattleSM_Ch3_loop_1:
+music_label
 	note C_, 2
 	note G_, 2
 	note C_, 2
@@ -660,27 +673,32 @@ Music_TrainerBattleSM_Ch3_loop_1:
 	note G_, 2
 	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_1
 Music_TrainerBattleSM_Ch3_loop_2:
+music_label
 	octave 1
 	note A#, 2
 	octave 2
 	note F_, 2
 	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_2
 Music_TrainerBattleSM_Ch3_loop_3:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_3
 Music_TrainerBattleSM_Ch3_loop_4:
+music_label
 	octave 1
 	note A#, 2
 	octave 2
 	note F_, 2
 	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_4
 Music_TrainerBattleSM_Ch3_loop_5:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_5
 	volume_envelope 1, 9
 Music_TrainerBattleSM_Ch3_loop_6:
+music_label
 	note F_, 2
 	rest 2
 	note F_, 2
@@ -796,19 +814,23 @@ Music_TrainerBattleSM_Ch3_loop_6:
 	note G_, 16
 	note G_, 16
 Music_TrainerBattleSM_Ch3_loop_7:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_7
 	sound_jump Music_TrainerBattleSM_Ch3_loop_main
 
 Music_TrainerBattleSM_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 6
 	rest 16
 	rest 12
 	drum_note 1, 4
 Music_TrainerBattleSM_Ch4_loop_main:
+music_label
 Music_TrainerBattleSM_Ch4_loop_1:
+music_label
 	drum_note 4, 3
 	drum_note 7, 1
 	drum_note 1, 4
@@ -817,6 +839,7 @@ Music_TrainerBattleSM_Ch4_loop_1:
 	drum_note 1, 4
 	sound_loop 4, Music_TrainerBattleSM_Ch4_loop_1
 Music_TrainerBattleSM_Ch4_loop_2:
+music_label
 	drum_note 4, 2
 	drum_note 2, 2
 	drum_note 1, 2
@@ -827,6 +850,7 @@ Music_TrainerBattleSM_Ch4_loop_2:
 	drum_note 2, 2
 	sound_loop 4, Music_TrainerBattleSM_Ch4_loop_2
 Music_TrainerBattleSM_Ch4_loop_3:
+music_label
 	drum_note 4, 4
 	drum_note 1, 4
 	drum_note 4, 2
@@ -859,6 +883,7 @@ Music_TrainerBattleSM_Ch4_loop_3:
 	drum_note 1, 2
 	drum_note 1, 2
 Music_TrainerBattleSM_Ch4_loop_4:
+music_label
 	drum_note 4, 4
 	drum_note 1, 4
 	drum_note 4, 2
@@ -898,6 +923,7 @@ Music_TrainerBattleSM_Ch4_loop_4:
 	drum_note 3, 1
 	drum_note 3, 1
 Music_TrainerBattleSM_Ch4_loop_5:
+music_label
 	drum_note 4, 4
 	drum_note 1, 4
 	drum_note 4, 2
@@ -912,6 +938,7 @@ Music_TrainerBattleSM_Ch4_loop_5:
 	drum_note 1, 1
 	drum_note 1, 1
 Music_TrainerBattleSM_Ch4_loop_6:
+music_label
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 1, 1
@@ -923,6 +950,7 @@ Music_TrainerBattleSM_Ch4_loop_6:
 	drum_note 3, 1
 	drum_note 4, 2
 Music_TrainerBattleSM_Ch4_loop_7:
+music_label
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 1, 1
@@ -934,6 +962,7 @@ Music_TrainerBattleSM_Ch4_loop_7:
 	drum_note 3, 1
 	drum_note 4, 2
 Music_TrainerBattleSM_Ch4_loop_8:
+music_label
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 1, 1
@@ -963,6 +992,7 @@ Music_TrainerBattleSM_Ch4_loop_8:
 	drum_note 3, 1
 	drum_note 3, 1
 Music_TrainerBattleSM_Ch4_loop_9:
+music_label
 	drum_note 4, 2
 	drum_note 2, 2
 	drum_note 1, 2

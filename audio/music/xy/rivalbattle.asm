@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/3/
 
 Music_RivalBattleXY:
+music_header
 	channel_count 4
 	channel 1, Music_RivalBattleXY_Ch1
 	channel 2, Music_RivalBattleXY_Ch2
@@ -11,6 +12,7 @@ Music_RivalBattleXY:
 	channel 4, Music_RivalBattleXY_Ch4
 
 Music_RivalBattleXY_Ch1:
+music_label
 	tempo 116
 	volume 7, 7
 	duty_cycle 3
@@ -39,6 +41,7 @@ Music_RivalBattleXY_Ch1:
 	sound_call Music_RivalBattleXY_Ch1_branch_1
 	sound_call Music_RivalBattleXY_Ch1_branch_1
 Music_RivalBattleXY_Ch1_loop_main:
+music_label
 	octave 3
 	duty_cycle 3
 	volume_envelope 10, 3
@@ -55,6 +58,7 @@ Music_RivalBattleXY_Ch1_loop_main:
 	note D#, 16
 	duty_cycle 2
 Music_RivalBattleXY_Ch1_loop_1:
+music_label
 	octave 4
 	volume_envelope 8, 2
 	note F_, 2
@@ -162,6 +166,7 @@ Music_RivalBattleXY_Ch1_loop_1:
 	sound_jump Music_RivalBattleXY_Ch1_loop_main
 
 Music_RivalBattleXY_Ch1_branch_1:
+music_label
 	note G_, 6
 	note C_, 4
 	note G_, 6
@@ -172,18 +177,21 @@ Music_RivalBattleXY_Ch1_branch_1:
 	sound_ret
 
 Music_RivalBattleXY_Ch1_branch_2:
+music_label
 	note C#, 2
 	note D#, 2
 	note C#, 2
 	sound_ret
 
 Music_RivalBattleXY_Ch1_branch_3:
+music_label
 	note D#, 2
 	note F_, 2
 	note D#, 2
 	sound_ret
 
 Music_RivalBattleXY_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 8, 3, 6
 	pitch_offset 1
@@ -202,6 +210,7 @@ Music_RivalBattleXY_Ch2:
 	rest 16
 	rest 16
 Music_RivalBattleXY_Ch2_loop:
+music_label
 	duty_cycle 0
 	sound_call Music_RivalBattleXY_Ch2_branch_1
 	note F_, 4
@@ -314,6 +323,7 @@ Music_RivalBattleXY_Ch2_loop:
 	sound_jump Music_RivalBattleXY_Ch2_loop
 
 Music_RivalBattleXY_Ch2_branch_1:
+music_label
 	volume_envelope 11, 3
 	octave 3
 	note G_, 6
@@ -344,6 +354,7 @@ Music_RivalBattleXY_Ch2_branch_1:
 	sound_ret
 
 Music_RivalBattleXY_Ch2_branch_2:
+music_label
 	volume_envelope 11, 3
 	octave 4
 	note C_, 2
@@ -367,6 +378,7 @@ Music_RivalBattleXY_Ch2_branch_2:
 	sound_ret
 
 Music_RivalBattleXY_Ch3:
+music_label
 	note_type 12, 1, 9
 	octave 2
 	note A_, 1
@@ -379,7 +391,9 @@ Music_RivalBattleXY_Ch3:
 	note G#, 1
 	note A#, 1
 Music_RivalBattleXY_Ch3_loop_main:
+music_label
 Music_RivalBattleXY_Ch3_loop_1:
+music_label
 	note C_, 1
 	rest 1
 	note C_, 1
@@ -432,6 +446,7 @@ Music_RivalBattleXY_Ch3_loop_1:
 	sound_jump Music_RivalBattleXY_Ch3_loop_main
 
 Music_RivalBattleXY_Ch3_branch_1:
+music_label
 	octave 2
 	note C_, 1
 	rest 1
@@ -442,6 +457,7 @@ Music_RivalBattleXY_Ch3_branch_1:
 	sound_ret
 
 Music_RivalBattleXY_Ch3_branch_2:
+music_label
 	octave 2
 	note D#, 1
 	rest 1
@@ -452,6 +468,7 @@ Music_RivalBattleXY_Ch3_branch_2:
 	sound_ret
 
 Music_RivalBattleXY_Ch3_branch_3:
+music_label
 	octave 2
 	note C#, 1
 	rest 1
@@ -465,6 +482,7 @@ Music_RivalBattleXY_Ch3_branch_3:
 	sound_ret
 
 Music_RivalBattleXY_Ch3_branch_4:
+music_label
 	octave 2
 	note D#, 1
 	rest 1
@@ -485,6 +503,7 @@ Music_RivalBattleXY_Ch3_branch_4:
 	sound_ret
 
 Music_RivalBattleXY_Ch3_branch_5:
+music_label
 	octave 3
 	note C_, 1
 	rest 1
@@ -516,6 +535,7 @@ Music_RivalBattleXY_Ch3_branch_5:
 	sound_ret
 
 Music_RivalBattleXY_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	drum_note 12, 2
@@ -526,6 +546,7 @@ Music_RivalBattleXY_Ch4:
 	drum_note 1, 1
 	drum_note 1, 1
 Music_RivalBattleXY_Ch4_loop:
+music_label
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 1, 2

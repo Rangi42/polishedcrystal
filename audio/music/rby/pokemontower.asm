@@ -3,12 +3,14 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/pokemontower.asm
 
 Music_PokemonTowerRBY:
+music_header
 	channel_count 3
 	channel 1, Music_PokemonTowerRBY_Ch1
 	channel 2, Music_PokemonTowerRBY_Ch2
 	channel 3, Music_PokemonTowerRBY_Ch3
 
 Music_PokemonTowerRBY_Ch1:
+music_label
 	tempo 152
 	volume 7, 7
 	duty_cycle 3
@@ -19,6 +21,7 @@ Music_PokemonTowerRBY_Ch1:
 	note B_, 12
 
 Music_PokemonTowerRBY_branch_7f05a:
+music_label
 	note_type 12, 11, 4
 	octave 4
 	note G_, 1
@@ -149,6 +152,7 @@ Music_PokemonTowerRBY_branch_7f05a:
 	sound_jump Music_PokemonTowerRBY_branch_7f05a
 
 Music_PokemonTowerRBY_Ch2:
+music_label
 	vibrato 20, 3, 4
 	duty_cycle 3
 	note_type 12, 10, 0
@@ -158,6 +162,7 @@ Music_PokemonTowerRBY_Ch2:
 	note E_, 4
 
 Music_PokemonTowerRBY_branch_7f0ee:
+music_label
 	note_type 12, 12, 1
 	octave 5
 	note C_, 8
@@ -300,6 +305,7 @@ Music_PokemonTowerRBY_branch_7f0ee:
 	sound_jump Music_PokemonTowerRBY_branch_7f0ee
 
 Music_PokemonTowerRBY_Ch3:
+music_label
 	vibrato 4, 1, 1
 	note_type 12, 1, 3
 	rest 8
@@ -307,6 +313,7 @@ Music_PokemonTowerRBY_Ch3:
 	note G_, 8
 
 Music_PokemonTowerRBY_branch_7f1a2:
+music_label
 	note E_, 1
 	rest 7
 	note E_, 1

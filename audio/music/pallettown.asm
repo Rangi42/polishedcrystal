@@ -1,16 +1,19 @@
 Music_PalletTown:
+music_header
 	channel_count 3
 	channel 1, Music_PalletTown_Ch1
 	channel 2, Music_PalletTown_Ch2
 	channel 3, Music_PalletTown_Ch3
 
 Music_PalletTown_Ch1:
+music_label
 	tempo 188
 	volume 7, 7
 	vibrato 18, 2, 4
 	pitch_offset 1
 	stereo_panning FALSE, TRUE
 Music_PalletTown_branch_f4b22:
+music_label
 	duty_cycle 2
 	note_type 12, 7, 8
 	octave 3
@@ -61,6 +64,7 @@ Music_PalletTown_branch_f4b22:
 	volume_envelope 7, 7
 	note B_, 8
 Music_PalletTown_branch_f4b59:
+music_label
 	duty_cycle 3
 	volume_envelope 9, 2
 	note G_, 2
@@ -120,10 +124,12 @@ Music_PalletTown_branch_f4b59:
 	sound_jump Music_PalletTown_branch_f4b22
 
 Music_PalletTown_Ch2:
+music_label
 	vibrato 18, 4, 4
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
 Music_PalletTown_branch_f4ba8:
+music_label
 	note_type 12, 8, 8
 	octave 1
 	note G_, 2
@@ -184,6 +190,7 @@ Music_PalletTown_branch_f4ba8:
 	note C_, 2
 	note D_, 2
 Music_PalletTown_branch_f4be5:
+music_label
 	volume_envelope 10, 2
 	octave 3
 	note E_, 2
@@ -245,8 +252,10 @@ Music_PalletTown_branch_f4be5:
 	sound_jump Music_PalletTown_branch_f4ba8
 
 Music_PalletTown_Ch3:
+music_label
 	vibrato 20, 2, 4
 Music_PalletTown_branch_f4c2d:
+music_label
 	note_type 12, 1, 0
 	octave 6
 	note D_, 2

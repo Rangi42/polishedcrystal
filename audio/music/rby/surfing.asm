@@ -3,12 +3,14 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/surfing.asm
 
 Music_SurfingRBY:
+music_header
 	channel_count 3
 	channel 1, Music_SurfingRBY_Ch1
 	channel 2, Music_SurfingRBY_Ch2
 	channel 3, Music_SurfingRBY_Ch3
 
 Music_SurfingRBY_Ch1:
+music_label
 	tempo 160
 	volume 7, 7
 	duty_cycle 3
@@ -27,6 +29,7 @@ Music_SurfingRBY_Ch1:
 	note G#, 4
 
 Music_Surfing_branch_7fa30:
+music_label
 	note_type 12, 11, 2
 	note E_, 2
 	note E_, 4
@@ -126,6 +129,7 @@ Music_Surfing_branch_7fa30:
 	sound_jump Music_Surfing_branch_7fa30
 
 Music_SurfingRBY_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 16, 2, 5
 	note_type 12, 12, 6
@@ -142,6 +146,7 @@ Music_SurfingRBY_Ch2:
 	note B_, 2
 
 Music_Surfing_branch_7faae:
+music_label
 	note_type 12, 12, 6
 	octave 4
 	note E_, 6
@@ -212,6 +217,7 @@ Music_Surfing_branch_7faae:
 	sound_jump Music_Surfing_branch_7faae
 
 Music_SurfingRBY_Ch3:
+music_label
 	note_type 12, 1, 0
 	rest 12
 	octave 5
@@ -222,6 +228,7 @@ Music_SurfingRBY_Ch3:
 	note G#, 2
 
 Music_Surfing_branch_7fb03:
+music_label
 	octave 3
 	note A_, 2
 	octave 4

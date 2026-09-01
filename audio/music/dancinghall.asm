@@ -1,10 +1,12 @@
 Music_DancingHall:
+music_header
 	channel_count 3
 	channel 1, Music_DancingHall_Ch1
 	channel 2, Music_DancingHall_Ch2
 	channel 3, Music_DancingHall_Ch3
 
 Music_DancingHall_Ch1:
+music_label
 	tempo 208
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -12,6 +14,7 @@ Music_DancingHall_Ch1:
 	rest 3
 	duty_cycle 0
 Music_DancingHall_branch_ef9d3:
+music_label
 	note_type 12, 11, 7
 	sound_call Music_DancingHall_branch_efa17
 	rest 16
@@ -64,6 +67,7 @@ Music_DancingHall_branch_ef9d3:
 	sound_jump Music_DancingHall_branch_ef9d3
 
 Music_DancingHall_branch_efa17:
+music_label
 	octave 3
 	note B_, 1
 	rest 1
@@ -87,12 +91,14 @@ Music_DancingHall_branch_efa17:
 	sound_ret
 
 Music_DancingHall_Ch2:
+music_label
 	stereo_panning TRUE, FALSE
 	note_type 6, 10, 1
 	duty_cycle 0
 	vibrato 16, 2, 4
 	rest 3
 Music_DancingHall_branch_efa37:
+music_label
 	note_type 6, 10, 2
 	sound_call Music_DancingHall_branch_efa7a
 	sound_call Music_DancingHall_branch_efa7a
@@ -142,6 +148,7 @@ Music_DancingHall_branch_efa37:
 	sound_jump Music_DancingHall_branch_efa37
 
 Music_DancingHall_branch_efa7a:
+music_label
 	volume_envelope 10, 1
 	octave 4
 	note E_, 4
@@ -219,6 +226,7 @@ Music_DancingHall_branch_efa7a:
 	sound_ret
 
 Music_DancingHall_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 22, 2, 4
 	note_type 6, 1, 0
@@ -228,6 +236,7 @@ Music_DancingHall_Ch3:
 	octave 6
 	note D_, 1
 Music_DancingHall_branch_efae3:
+music_label
 	note E_, 13
 	note D_, 1
 	note E_, 1

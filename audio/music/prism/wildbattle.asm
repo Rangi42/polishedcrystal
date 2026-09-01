@@ -3,12 +3,14 @@
 ; Revised by FroggestSpirit
 
 Music_WildBattlePrism:
+music_header
 	channel_count 3
 	channel 1, Music_WildBattlePrism_Ch1
 	channel 2, Music_WildBattlePrism_Ch2
 	channel 3, Music_WildBattlePrism_Ch3
 
 Music_WildBattlePrism_Ch1:
+music_label
 	tempo 104
 	volume 7, 7
 	duty_cycle 3
@@ -115,6 +117,7 @@ Music_WildBattlePrism_Ch1:
 	note A_, 8
 
 Music_WildBattlePrism_branch_19f26b:
+music_label
 	note D_, 6
 	note G_, 6
 	note D_, 4
@@ -317,12 +320,14 @@ Music_WildBattlePrism_branch_19f26b:
 	sound_jump Music_WildBattlePrism_branch_19f26b
 
 Music_WildBattlePrism_Ch2:
+music_label
 	duty_cycle 3
 	pitch_offset 1
 	vibrato 8, 3, 6
 	note_type 12, 12, 2
 
 Music_WildBattlePrism_branch_19f11b:
+music_label
 	octave 3
 	note D_, 1
 	note C#, 1
@@ -400,6 +405,7 @@ Music_WildBattlePrism_branch_19f11b:
 	note D#, 8
 
 Music_WildBattlePrism_branch_19f167:
+music_label
 	note D_, 6
 	note A_, 4
 	note G_, 1
@@ -539,6 +545,7 @@ Music_WildBattlePrism_branch_19f167:
 	sound_jump Music_WildBattlePrism_branch_19f167
 
 Music_WildBattlePrism_Ch3:
+music_label
 	note_type 12, 1, 4
 	octave 4
 	note D_, 2
@@ -661,6 +668,7 @@ Music_WildBattlePrism_Ch3:
 	note D_, 16
 
 Music_WildBattlePrism_branch_19f3ba:
+music_label
 	octave 3
 	note A_, 2
 	octave 4
@@ -668,11 +676,13 @@ Music_WildBattlePrism_branch_19f3ba:
 	sound_loop 8, Music_WildBattlePrism_branch_19f3ba
 
 Music_WildBattlePrism_branch_19f3c2:
+music_label
 	note C_, 2
 	note F_, 2
 	sound_loop 8, Music_WildBattlePrism_branch_19f3c2
 
 Music_WildBattlePrism_branch_19f3c8:
+music_label
 	octave 3
 	note A_, 2
 	octave 4
@@ -681,11 +691,13 @@ Music_WildBattlePrism_branch_19f3c8:
 	octave 3
 
 Music_WildBattlePrism_branch_19f3d1:
+music_label
 	note E_, 2
 	note A_, 2
 	sound_loop 8, Music_WildBattlePrism_branch_19f3d1
 
 Music_WildBattlePrism_branch_19f3d7:
+music_label
 	octave 3
 	note A_, 2
 	octave 3
@@ -693,11 +705,13 @@ Music_WildBattlePrism_branch_19f3d7:
 	sound_loop 8, Music_WildBattlePrism_branch_19f3d7
 
 Music_WildBattlePrism_branch_19f3df:
+music_label
 	note C_, 2
 	note F_, 2
 	sound_loop 8, Music_WildBattlePrism_branch_19f3df
 
 Music_WildBattlePrism_branch_19f3e5:
+music_label
 	octave 3
 	note A_, 2
 	octave 4
@@ -705,6 +719,7 @@ Music_WildBattlePrism_branch_19f3e5:
 	sound_loop 8, Music_WildBattlePrism_branch_19f3e5
 
 Music_WildBattlePrism_branch_19f3ed:
+music_label
 	note D_, 2
 	note G_, 2
 	sound_loop 8, Music_WildBattlePrism_branch_19f3ed

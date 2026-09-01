@@ -38,6 +38,8 @@ rsreset
 DEF CHANNEL_MUSIC_ID                    rw
 DEF CHANNEL_MUSIC_BANK                  rb
 DEF CHANNEL_MUSIC_ADDRESS               rw
+DEF CHANNEL_MUSIC_BITS                  rb
+DEF CHANNEL_MUSIC_BITS_LEFT             rb
 DEF CHANNEL_LAST_MUSIC_ADDRESS          rw
 DEF CHANNEL_FLAGS1                      rb
 DEF CHANNEL_FLAGS2                      rb
@@ -76,6 +78,7 @@ DEF NOISE_CHAN_F EQU 2 ; bit set in CHAN5-CHAN7
 	const SOUND_SFX        ; 3
 	const SOUND_NOISE      ; 4
 	const SOUND_CRY        ; 5
+	const SOUND_COMPRESSED ; 6
 
 ; Flags2
 	const_def

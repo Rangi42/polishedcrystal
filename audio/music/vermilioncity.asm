@@ -1,10 +1,12 @@
 Music_VermilionCity:
+music_header
 	channel_count 3
 	channel 1, Music_VermilionCity_Ch1
 	channel 2, Music_VermilionCity_Ch2
 	channel 3, Music_VermilionCity_Ch3
 
 Music_VermilionCity_Ch1:
+music_label
 	stereo_panning FALSE, TRUE
 	tempo 176
 	volume 7, 7
@@ -29,6 +31,7 @@ Music_VermilionCity_Ch1:
 	note D_, 1
 	vibrato 16, 2, 3
 Music_VermilionCity_branch_eb6a0:
+music_label
 	duty_cycle 1
 	note_type 12, 8, 5
 	sound_call Music_VermilionCity_branch_eb6f9
@@ -91,6 +94,7 @@ Music_VermilionCity_branch_eb6a0:
 	sound_jump Music_VermilionCity_branch_eb6a0
 
 Music_VermilionCity_branch_eb6f9:
+music_label
 	octave 3
 	note C#, 4
 	note E_, 4
@@ -101,6 +105,7 @@ Music_VermilionCity_branch_eb6f9:
 	sound_ret
 
 Music_VermilionCity_branch_eb701:
+music_label
 	note D_, 2
 	note F_, 2
 	note A_, 2
@@ -114,6 +119,7 @@ Music_VermilionCity_branch_eb701:
 	sound_ret
 
 Music_VermilionCity_branch_eb70c:
+music_label
 	rest 2
 	note F#, 2
 	note A_, 2
@@ -137,6 +143,7 @@ Music_VermilionCity_branch_eb70c:
 	sound_ret
 
 Music_VermilionCity_Ch2:
+music_label
 	stereo_panning TRUE, TRUE
 	duty_cycle 3
 	note_type 12, 7, 7
@@ -152,6 +159,7 @@ Music_VermilionCity_Ch2:
 	note F#, 4
 	note G#, 4
 Music_VermilionCity_branch_eb735:
+music_label
 	note_type 12, 9, 7
 	sound_call Music_VermilionCity_branch_eb768
 	note G#, 2
@@ -187,6 +195,7 @@ Music_VermilionCity_branch_eb735:
 	sound_jump Music_VermilionCity_branch_eb735
 
 Music_VermilionCity_branch_eb768:
+music_label
 	octave 1
 	note A_, 8
 	octave 2
@@ -211,6 +220,7 @@ Music_VermilionCity_branch_eb768:
 	sound_ret
 
 Music_VermilionCity_branch_eb77e:
+music_label
 	note F#, 8
 	note B_, 8
 	note A_, 4
@@ -220,6 +230,7 @@ Music_VermilionCity_branch_eb77e:
 	sound_ret
 
 Music_VermilionCity_Ch3:
+music_label
 	stereo_panning TRUE, FALSE
 	vibrato 34, 2, 3
 	note_type 12, 2, 5
@@ -241,6 +252,7 @@ Music_VermilionCity_Ch3:
 	octave 2
 	note B_, 1
 Music_VermilionCity_branch_eb79e:
+music_label
 	note_type 12, 2, 2
 	sound_call Music_VermilionCity_branch_eb7de
 	octave 5
@@ -290,6 +302,7 @@ Music_VermilionCity_branch_eb79e:
 	sound_jump Music_VermilionCity_branch_eb79e
 
 Music_VermilionCity_branch_eb7de:
+music_label
 	octave 5
 	note A_, 8
 	octave 6
@@ -315,6 +328,7 @@ Music_VermilionCity_branch_eb7de:
 	sound_ret
 
 Music_VermilionCity_branch_eb7f5:
+music_label
 	note A_, 1
 	rest 1
 	note A_, 2

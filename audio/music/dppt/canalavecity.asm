@@ -3,6 +3,7 @@
 ; https://github.com/froggestspirit/pokecrystal/blob/master/Demixes.zip
 
 Music_CanalaveCityDPPt:
+music_header
 	channel_count 4
 	channel 1, Music_CanalaveCityDPPt_Ch1
 	channel 2, Music_CanalaveCityDPPt_Ch2
@@ -10,6 +11,7 @@ Music_CanalaveCityDPPt:
 	channel 4, Music_CanalaveCityDPPt_Ch4
 
 Music_CanalaveCityDPPt_Ch1:
+music_label
 	tempo 206
 	volume 7, 7
 	note_type 12, 10, 7
@@ -18,6 +20,7 @@ Music_CanalaveCityDPPt_Ch1:
 	octave 1
 	note E_, 2
 Music_CanalaveCityDPPt_Ch1_loop:
+music_label
 	octave 1
 	note A_, 2
 	octave 2
@@ -230,12 +233,14 @@ Music_CanalaveCityDPPt_Ch1_loop:
 	sound_jump Music_CanalaveCityDPPt_Ch1_loop
 
 Music_CanalaveCityDPPt_Ch2:
+music_label
 	note_type 12, 11, 7
 	duty_cycle 1
 	pitch_offset 1
 	octave 3
 	rest 2
 Music_CanalaveCityDPPt_Ch2_loop:
+music_label
 	rest 16
 	rest 10
 	note E_, 2
@@ -410,10 +415,12 @@ Music_CanalaveCityDPPt_Ch2_loop:
 	sound_jump Music_CanalaveCityDPPt_Ch2_loop
 
 Music_CanalaveCityDPPt_Ch3:
+music_label
 	note_type 12, 2, 5
 	octave 4
 	rest 2
 Music_CanalaveCityDPPt_Ch3_loop:
+music_label
 	note_type 8, 2, 5
 	octave 3
 	note A_, 1
@@ -736,10 +743,12 @@ Music_CanalaveCityDPPt_Ch3_loop:
 	sound_jump Music_CanalaveCityDPPt_Ch3_loop
 
 Music_CanalaveCityDPPt_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	rest 2
 Music_CanalaveCityDPPt_Ch4_loop:
+music_label
 	rest 16
 	rest 16
 	rest 16

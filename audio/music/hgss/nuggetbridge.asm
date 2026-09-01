@@ -3,6 +3,7 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/nuggetbridge.asm
 
 Music_NuggetBridgeHGSS:
+music_header
 	channel_count 4
 	channel 1, Music_NuggetBridgeHGSS_Ch1
 	channel 2, Music_NuggetBridgeHGSS_Ch2
@@ -10,6 +11,7 @@ Music_NuggetBridgeHGSS:
 	channel 4, Music_NuggetBridgeHGSS_Ch4
 
 Music_NuggetBridgeHGSS_Ch1:
+music_label
 	tempo 168
 	volume 7, 7
 	pitch_offset 1
@@ -24,6 +26,7 @@ Music_NuggetBridgeHGSS_Ch1:
 	octave 3
 	note C#, 2
 Music_NuggetBridgeHGSS_Loop1:
+music_label
 	octave 2
 	note B_, 3
 	note G#, 1
@@ -164,6 +167,7 @@ Music_NuggetBridgeHGSS_Loop1:
 	sound_jump Music_NuggetBridgeHGSS_Loop1
 
 Music_NuggetBridgeHGSS_Ch2:
+music_label
 	duty_cycle 1
 	note_type 12, 12, 5
 	pitch_offset 2
@@ -176,6 +180,7 @@ Music_NuggetBridgeHGSS_Ch2:
 	note F#, 6
 	note A_, 2
 Music_NuggetBridgeHGSS_Loop2:
+music_label
 	note G#, 3
 	note E_, 1
 	note F#, 12
@@ -286,12 +291,14 @@ Music_NuggetBridgeHGSS_Loop2:
 	sound_jump Music_NuggetBridgeHGSS_Loop2
 
 Music_NuggetBridgeHGSS_Ch3:
+music_label
 	note_type 12, 1, 5
 	octave 2
 	note E_, 4
 	rest 8
 	note D_, 4
 Music_NuggetBridgeHGSS_Loop3:
+music_label
 	note E_, 1
 	rest 11
 	octave 1
@@ -421,6 +428,7 @@ Music_NuggetBridgeHGSS_Loop3:
 	sound_jump Music_NuggetBridgeHGSS_Loop3
 
 Music_NuggetBridgeHGSS_Bar7:
+music_label
 	octave 2
 	note D_, 1
 	rest 1
@@ -432,6 +440,7 @@ Music_NuggetBridgeHGSS_Bar7:
 	volume_envelope 1, 5
 	sound_ret
 Music_NuggetBridgeHGSS_Bar8:
+music_label
 	octave 2
 	note E_, 1
 	rest 1
@@ -443,6 +452,7 @@ Music_NuggetBridgeHGSS_Bar8:
 	volume_envelope 1, 5
 	sound_ret
 Music_NuggetBridgeHGSS_Bar9:
+music_label
 	octave 1
 	note B_, 1
 	rest 1
@@ -454,6 +464,7 @@ Music_NuggetBridgeHGSS_Bar9:
 	volume_envelope 1, 5
 	sound_ret
 Music_NuggetBridgeHGSS_Bar10:
+music_label
 	octave 2
 	note E_, 1
 	rest 1
@@ -465,6 +476,7 @@ Music_NuggetBridgeHGSS_Bar10:
 	volume_envelope 1, 5
 	sound_ret
 Music_NuggetBridgeHGSS_Bar11:
+music_label
 	octave 1
 	note B_, 1
 	volume_envelope 2, 4
@@ -477,6 +489,7 @@ Music_NuggetBridgeHGSS_Bar11:
 	volume_envelope 1, 5
 	sound_ret
 Music_NuggetBridgeHGSS_Bar12:
+music_label
 	octave 2
 	note E_, 1
 	volume_envelope 2, 4
@@ -490,6 +503,7 @@ Music_NuggetBridgeHGSS_Bar12:
 	sound_ret
 
 Music_NuggetBridgeHGSS_Ch4:
+music_label
 	drum_speed 4
 	toggle_noise 0
 	drum_note 10, 16
@@ -504,6 +518,7 @@ Music_NuggetBridgeHGSS_Ch4:
 	drum_note 3, 2
 	drum_note 3, 2
 Music_NuggetBridgeHGSS_Loop4:
+music_label
 	drum_note 3, 16
 	rest 2
 	drum_note 3, 3

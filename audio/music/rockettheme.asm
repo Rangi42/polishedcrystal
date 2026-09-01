@@ -1,4 +1,5 @@
 Music_RocketTheme:
+music_header
 	channel_count 4
 	channel 1, Music_RocketTheme_Ch1
 	channel 2, Music_RocketTheme_Ch2
@@ -6,6 +7,7 @@ Music_RocketTheme:
 	channel 4, Music_RocketTheme_Ch4
 
 Music_RocketTheme_Ch1:
+music_label
 	tempo 128
 	volume 7, 7
 	duty_cycle 3
@@ -16,6 +18,7 @@ Music_RocketTheme_Ch1:
 	note C_, 1
 	note D_, 1
 Music_RocketTheme_branch_f768b:
+music_label
 	duty_cycle 3
 	note_type 12, 10, 8
 	sound_call Music_RocketTheme_branch_f74e6
@@ -88,6 +91,7 @@ Music_RocketTheme_branch_f768b:
 	note D#, 2
 	note D_, 2
 Music_RocketTheme_branch_f76ef:
+music_label
 	rest 4
 	note F_, 2
 	rest 14
@@ -104,18 +108,22 @@ Music_RocketTheme_branch_f76ef:
 	note D#, 2
 	note C_, 2
 Music_RocketTheme_branch_f7701:
+music_label
 	note F#, 2
 	note A_, 2
 	sound_loop 4, Music_RocketTheme_branch_f7701
 Music_RocketTheme_branch_f7707:
+music_label
 	note G_, 2
 	note A#, 2
 	sound_loop 4, Music_RocketTheme_branch_f7707
 Music_RocketTheme_branch_f770d:
+music_label
 	note G#, 2
 	note B_, 2
 	sound_loop 4, Music_RocketTheme_branch_f770d
 Music_RocketTheme_branch_f7713:
+music_label
 	octave 3
 	note A_, 2
 	octave 4
@@ -130,6 +138,7 @@ Music_RocketTheme_branch_f7713:
 	sound_jump Music_RocketTheme_branch_f768b
 
 Music_RocketTheme_branch_f7727:
+music_label
 	rest 7
 	note B_, 1
 	octave 4
@@ -155,6 +164,7 @@ Music_RocketTheme_branch_f7727:
 	sound_ret
 
 Music_RocketTheme_Ch2:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 4, 6, 4
 	duty_cycle 3
@@ -163,6 +173,7 @@ Music_RocketTheme_Ch2:
 	note C_, 1
 	note D_, 1
 Music_RocketTheme_branch_f774b:
+music_label
 	note_type 12, 11, 7
 	sound_call Music_RocketTheme_branch_f7547
 	volume_envelope 11, 7
@@ -291,6 +302,7 @@ Music_RocketTheme_branch_f774b:
 	sound_jump Music_RocketTheme_branch_f774b
 
 Music_RocketTheme_branch_f7800:
+music_label
 	note_type 6, 11, 7
 	rest 7
 	octave 4
@@ -319,6 +331,7 @@ Music_RocketTheme_branch_f7800:
 	sound_ret
 
 Music_RocketTheme_branch_f781c:
+music_label
 	octave 3
 	note B_, 1
 	octave 4
@@ -331,11 +344,13 @@ Music_RocketTheme_branch_f781c:
 	sound_ret
 
 Music_RocketTheme_Ch3:
+music_label
 	stereo_panning TRUE, FALSE
 	vibrato 4, 2, 2
 	note_type 12, 1, 4
 	rest 2
 Music_RocketTheme_branch_f782f:
+music_label
 	note_type 12, 1, 4
 	sound_call Music_RocketTheme_branch_f75bf
 	sound_call Music_RocketTheme_branch_f75fe
@@ -444,10 +459,12 @@ Music_RocketTheme_branch_f782f:
 	sound_jump Music_RocketTheme_branch_f782f
 
 Music_RocketTheme_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	rest 2
 Music_RocketTheme_branch_f78c3:
+music_label
 	sound_call Music_RocketTheme_branch_f765c
 	sound_call Music_RocketTheme_branch_f7664
 	sound_call Music_RocketTheme_branch_f7664
@@ -458,6 +475,7 @@ Music_RocketTheme_branch_f78c3:
 	sound_call Music_RocketTheme_branch_f7664
 	sound_call Music_RocketTheme_branch_f765c
 Music_RocketTheme_branch_f78de:
+music_label
 	drum_note 11, 2
 	drum_note 7, 2
 	drum_note 3, 2

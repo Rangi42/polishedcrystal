@@ -1,10 +1,12 @@
 Music_HealPokemon:
+music_header
 	channel_count 3
 	channel 1, Music_HealPokemon_Ch1
 	channel 2, Music_HealPokemon_Ch2
 	channel 3, Music_HealPokemon_Ch3
 
 Music_HealPokemon_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	duty_cycle 2
@@ -25,6 +27,7 @@ Music_HealPokemon_Ch1:
 	sound_ret
 
 Music_HealPokemon_Ch2:
+music_label
 	duty_cycle 2
 	note_type 12, 12, 3
 	octave 4
@@ -38,6 +41,7 @@ Music_HealPokemon_Ch2:
 	sound_ret
 
 Music_HealPokemon_Ch3:
+music_label
 	note_type 12, 1, 0
 	octave 4
 	note E_, 2

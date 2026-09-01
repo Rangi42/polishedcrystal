@@ -1,4 +1,5 @@
 Music_DarkCave:
+music_header
 	channel_count 4
 	channel 1, Music_DarkCave_Ch1
 	channel 2, Music_DarkCave_Ch2
@@ -6,6 +7,7 @@ Music_DarkCave:
 	channel 4, Music_DarkCave_Ch4
 
 Music_DarkCave_Ch1:
+music_label
 	tempo 128
 	volume 7, 7
 	duty_cycle 3
@@ -14,6 +16,7 @@ Music_DarkCave_Ch1:
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7
 Music_DarkCave_branch_ea2dc:
+music_label
 	rest 16
 	sound_loop 4, Music_DarkCave_branch_ea2dc
 	octave 3
@@ -23,6 +26,7 @@ Music_DarkCave_branch_ea2dc:
 	note C_, 16
 	volume_envelope 10, 3
 Music_DarkCave_branch_ea2e8:
+music_label
 	sound_call Music_DarkCave_branch_ea333
 	sound_loop 3, Music_DarkCave_branch_ea2e8
 	volume_envelope 11, 7
@@ -44,6 +48,7 @@ Music_DarkCave_branch_ea2e8:
 	note C_, 8
 	volume_envelope 10, 3
 Music_DarkCave_branch_ea303:
+music_label
 	sound_call Music_DarkCave_branch_ea333
 	sound_loop 2, Music_DarkCave_branch_ea303
 	rest 16
@@ -75,11 +80,13 @@ Music_DarkCave_branch_ea303:
 	note G#, 4
 	volume_envelope 10, 3
 Music_DarkCave_branch_ea328:
+music_label
 	sound_call Music_DarkCave_branch_ea333
 	sound_loop 2, Music_DarkCave_branch_ea328
 	sound_jump Music_DarkCave_branch_ea2e8
 
 Music_DarkCave_branch_ea333:
+music_label
 	octave 4
 	note D#, 2
 	octave 3
@@ -137,11 +144,13 @@ Music_DarkCave_branch_ea333:
 	sound_ret
 
 Music_DarkCave_Ch2:
+music_label
 	duty_cycle 1
 	vibrato 18, 3, 6
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 7
 Music_DarkCave_branch_ea374:
+music_label
 	rest 16
 	sound_loop 4, Music_DarkCave_branch_ea374
 	octave 3
@@ -150,6 +159,7 @@ Music_DarkCave_branch_ea374:
 	note F_, 16
 	note G_, 16
 Music_DarkCave_branch_ea37e:
+music_label
 	rest 16
 	sound_loop 4, Music_DarkCave_branch_ea37e
 	rest 8
@@ -347,11 +357,14 @@ Music_DarkCave_branch_ea37e:
 	sound_jump Music_DarkCave_branch_ea37e
 
 Music_DarkCave_Ch3:
+music_label
 	note_type 12, 2, 7
 Music_DarkCave_branch_ea471:
+music_label
 	sound_call Music_DarkCave_branch_ea4ce
 	sound_loop 2, Music_DarkCave_branch_ea471
 Music_DarkCave_branch_ea478:
+music_label
 	sound_call Music_DarkCave_branch_ea4ce
 	sound_loop 7, Music_DarkCave_branch_ea478
 	sound_call Music_DarkCave_branch_ea4c3
@@ -385,6 +398,7 @@ Music_DarkCave_branch_ea478:
 	sound_jump Music_DarkCave_branch_ea478
 
 Music_DarkCave_branch_ea4a7:
+music_label
 	octave 3
 	note C_, 4
 	note G_, 2
@@ -415,6 +429,7 @@ Music_DarkCave_branch_ea4a7:
 	sound_ret
 
 Music_DarkCave_branch_ea4c3:
+music_label
 	octave 3
 	note C_, 4
 	note G_, 2
@@ -428,6 +443,7 @@ Music_DarkCave_branch_ea4c3:
 	sound_ret
 
 Music_DarkCave_branch_ea4ce:
+music_label
 	octave 2
 	note C_, 4
 	note G_, 2
@@ -458,9 +474,11 @@ Music_DarkCave_branch_ea4ce:
 	sound_ret
 
 Music_DarkCave_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 Music_DarkCave_branch_ea4ee:
+music_label
 	stereo_panning TRUE, TRUE
 	drum_note 4, 8
 	drum_note 4, 8

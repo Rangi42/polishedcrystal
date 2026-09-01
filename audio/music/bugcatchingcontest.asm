@@ -1,4 +1,5 @@
 Music_BugCatchingContest:
+music_header
 	channel_count 4
 	channel 1, Music_BugCatchingContest_Ch1
 	channel 2, Music_BugCatchingContest_Ch2
@@ -6,6 +7,7 @@ Music_BugCatchingContest:
 	channel 4, Music_BugCatchingContest_Ch4
 
 Music_BugCatchingContest_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -39,13 +41,16 @@ Music_BugCatchingContest_Ch1:
 	note E_, 1
 	note E_, 1
 Music_BugCatchingContest_branch_f7c4b:
+music_label
 	note_type 12, 11, 1
 Music_BugCatchingContest_branch_f7c4e:
+music_label
 	rest 2
 	octave 2
 	note A_, 2
 	sound_loop 4, Music_BugCatchingContest_branch_f7c4e
 Music_BugCatchingContest_branch_f7c55:
+music_label
 	rest 2
 	note B_, 2
 	sound_loop 8, Music_BugCatchingContest_branch_f7c55
@@ -62,6 +67,7 @@ Music_BugCatchingContest_branch_f7c55:
 	volume_envelope 11, 1
 	duty_cycle 2
 Music_BugCatchingContest_branch_f7c6b:
+music_label
 	rest 2
 	octave 2
 	note A_, 2
@@ -92,6 +98,7 @@ Music_BugCatchingContest_branch_f7c6b:
 	rest 4
 	note E_, 4
 Music_BugCatchingContest_branch_f7c8e:
+music_label
 	rest 4
 	octave 2
 	note A_, 4
@@ -189,12 +196,14 @@ Music_BugCatchingContest_branch_f7c8e:
 	sound_jump Music_BugCatchingContest_branch_f7c4b
 
 Music_BugCatchingContest_Ch2:
+music_label
 	stereo_panning TRUE, FALSE
 	vibrato 8, 2, 3
 	duty_cycle 1
 	note_type 12, 12, 7
 	rest 8
 Music_BugCatchingContest_branch_f7cff:
+music_label
 	octave 4
 	note A_, 1
 	rest 1
@@ -204,6 +213,7 @@ Music_BugCatchingContest_branch_f7cff:
 	note A_, 1
 	sound_loop 4, Music_BugCatchingContest_branch_f7cff
 Music_BugCatchingContest_branch_f7d0a:
+music_label
 	duty_cycle 0
 	sound_call Music_BugCatchingContest_branch_f7d8e
 	octave 2
@@ -329,6 +339,7 @@ Music_BugCatchingContest_branch_f7d0a:
 	sound_jump Music_BugCatchingContest_branch_f7d0a
 
 Music_BugCatchingContest_branch_f7d8e:
+music_label
 	octave 2
 	note D_, 2
 	octave 3
@@ -372,6 +383,7 @@ Music_BugCatchingContest_branch_f7d8e:
 	sound_ret
 
 Music_BugCatchingContest_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 16, 2, 3
 	note_type 12, 1, 4
@@ -403,6 +415,7 @@ Music_BugCatchingContest_Ch3:
 	note C#, 1
 	note C#, 1
 Music_BugCatchingContest_branch_f7dda:
+music_label
 	note_type 12, 1, 4
 	note F#, 5
 	rest 1
@@ -586,6 +599,7 @@ Music_BugCatchingContest_branch_f7dda:
 	sound_jump Music_BugCatchingContest_branch_f7dda
 
 Music_BugCatchingContest_Ch4:
+music_label
 	toggle_noise 4
 	drum_speed 6
 	drum_note 2, 1
@@ -604,6 +618,7 @@ Music_BugCatchingContest_Ch4:
 	drum_note 5, 2
 	sound_call Music_BugCatchingContest_branch_f7ee2
 Music_BugCatchingContest_branch_f7eaf:
+music_label
 	drum_note 3, 4
 	drum_note 3, 4
 	drum_note 3, 2
@@ -649,6 +664,7 @@ Music_BugCatchingContest_branch_f7eaf:
 	sound_jump Music_BugCatchingContest_branch_f7eaf
 
 Music_BugCatchingContest_branch_f7ee2:
+music_label
 	drum_note 3, 4
 	drum_note 12, 8
 	drum_note 3, 2

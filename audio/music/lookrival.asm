@@ -1,4 +1,5 @@
 Music_LookRival:
+music_header
 	channel_count 4
 	channel 1, Music_LookRival_Ch1
 	channel 2, Music_LookRival_Ch2
@@ -6,6 +7,7 @@ Music_LookRival:
 	channel 4, Music_LookRival_Ch4
 
 Music_LookRival_Ch1:
+music_label
 	tempo 112
 	volume 7, 7
 	duty_cycle 1
@@ -35,7 +37,9 @@ Music_LookRival_Ch1:
 	volume_envelope 10, 6
 	note F#, 8
 Music_AfterTheRivalFight_branch_f4fb1:
+music_label
 Music_LookRival_branch_f4fb1:
+music_label
 	volume_envelope 11, 5
 	note F_, 4
 	note D#, 2
@@ -100,6 +104,7 @@ Music_LookRival_branch_f4fb1:
 	note F_, 6
 	note C_, 2
 Music_LookRival_branch_f4ff7:
+music_label
 	volume_envelope 11, 2
 	note F_, 6
 	volume_envelope 11, 7
@@ -117,6 +122,7 @@ Music_LookRival_branch_f4ff7:
 	sound_jump Music_LookRival_branch_f4fb1
 
 Music_LookRival_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 8, 3, 6
 	stereo_panning TRUE, FALSE
@@ -138,7 +144,9 @@ Music_LookRival_Ch2:
 	volume_envelope 11, 7
 	note D#, 16
 Music_AfterTheRivalFight_branch_f502e:
+music_label
 Music_LookRival_branch_f502e:
+music_label
 	volume_envelope 12, 7
 	note C_, 12
 	volume_envelope 12, 4
@@ -192,6 +200,7 @@ Music_LookRival_branch_f502e:
 	note D_, 1
 	note D#, 2
 Music_LookRival_branch_f5070:
+music_label
 	volume_envelope 12, 2
 	note C_, 6
 	volume_envelope 12, 7
@@ -206,6 +215,7 @@ Music_LookRival_branch_f5070:
 	sound_jump Music_LookRival_branch_f502e
 
 Music_LookRival_Ch3:
+music_label
 	note_type 12, 2, 8
 	rest 2
 	octave 4
@@ -228,7 +238,9 @@ Music_LookRival_Ch3:
 	note D#, 2
 	note F#, 2
 Music_AfterTheRivalFight_branch_f509d:
+music_label
 Music_LookRival_branch_f509d:
+music_label
 	sound_call Music_LookRival_branch_f50ef
 	sound_loop 3, Music_LookRival_branch_f509d
 	note F_, 4
@@ -293,6 +305,7 @@ Music_LookRival_branch_f509d:
 	sound_jump Music_LookRival_branch_f509d
 
 Music_LookRival_branch_f50ef:
+music_label
 	note F_, 2
 	note C_, 2
 	note D_, 2
@@ -303,6 +316,7 @@ Music_LookRival_branch_f50ef:
 	sound_ret
 
 Music_LookRival_branch_f50f7:
+music_label
 	note A#, 2
 	note F_, 2
 	note G_, 2
@@ -313,6 +327,7 @@ Music_LookRival_branch_f50f7:
 	sound_ret
 
 Music_LookRival_branch_f50ff:
+music_label
 	note A#, 4
 	note F_, 2
 	note G#, 4
@@ -322,6 +337,7 @@ Music_LookRival_branch_f50ff:
 	sound_ret
 
 Music_LookRival_Ch4:
+music_label
 	stereo_panning TRUE, FALSE
 	toggle_noise 3
 	drum_speed 12
@@ -338,7 +354,9 @@ Music_LookRival_Ch4:
 	drum_note 3, 2
 	drum_note 3, 2
 Music_AfterTheRivalFight_branch_f5118:
+music_label
 Music_LookRival_branch_f5118:
+music_label
 	drum_note 4, 4
 	drum_note 3, 2
 	drum_note 4, 4

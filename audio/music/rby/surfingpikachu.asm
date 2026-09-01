@@ -3,12 +3,14 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/RBY/surfingpikachu.asm
 
 Music_SurfingPikachu:
+music_header
 	channel_count 3
 	channel 1, Music_SurfingPikachu_Ch1
 	channel 2, Music_SurfingPikachu_Ch2
 	channel 3, Music_SurfingPikachu_Ch3
 
 Music_SurfingPikachu_Ch1:
+music_label
 	tempo 117
 	volume 7, 7
 	duty_cycle 3
@@ -45,6 +47,7 @@ Music_SurfingPikachu_Ch1:
 	note G#, 4
 	note G#, 2
 Music_SurfingPikachu_branch_82d1a:
+music_label
 	note_type 12, 11, 3
 	octave 3
 	note G#, 4
@@ -170,6 +173,7 @@ Music_SurfingPikachu_branch_82d1a:
 	duty_cycle 3
 	sound_jump Music_SurfingPikachu_branch_82d1a
 Music_SurfingPikachu_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 6, 1, 5
 	note_type 12, 12, 4
@@ -224,6 +228,7 @@ Music_SurfingPikachu_Ch2:
 	note B_, 4
 	note B_, 2
 Music_SurfingPikachu_branch_82de0:
+music_label
 	note_type 12, 12, 6
 	octave 4
 	note E_, 4
@@ -317,6 +322,7 @@ Music_SurfingPikachu_branch_82de0:
 	note C#, 1
 	sound_jump Music_SurfingPikachu_branch_82de0
 Music_SurfingPikachu_Ch3:
+music_label
 	note_type 12, 1, 0
 	octave 4
 	note B_, 6
@@ -408,6 +414,7 @@ Music_SurfingPikachu_Ch3:
 	note D#, 1
 	rest 1
 Music_SurfingPikachu_branch_82ea0:
+music_label
 	note E_, 1
 	rest 1
 	note B_, 1

@@ -1,4 +1,5 @@
 Music_RocketHideout:
+music_header
 	channel_count 4
 	channel 1, Music_RocketHideout_Ch1
 	channel 2, Music_RocketHideout_Ch2
@@ -6,6 +7,7 @@ Music_RocketHideout:
 	channel 4, Music_RocketHideout_Ch4
 
 Music_RocketHideout_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
@@ -14,9 +16,11 @@ Music_RocketHideout_Ch1:
 	note_type 12, 11, 3
 	stereo_panning TRUE, FALSE
 Music_RocketHideout_branch_eeb93:
+music_label
 	rest 16
 	sound_loop 4, Music_RocketHideout_branch_eeb93
 Music_RocketHideout_branch_eeb98:
+music_label
 	octave 2
 	note D#, 2
 	rest 2
@@ -115,17 +119,20 @@ Music_RocketHideout_branch_eeb98:
 	note A_, 16
 	volume_envelope 11, 3
 Music_RocketHideout_branch_eebfe:
+music_label
 	rest 16
 	sound_loop 4, Music_RocketHideout_branch_eebfe
 	sound_jump Music_RocketHideout_branch_eeb93
 
 Music_RocketHideout_Ch2:
+music_label
 	duty_cycle 3
 	pitch_offset 2
 	vibrato 0, 15, 0
 	note_type 12, 12, 4
 	stereo_panning FALSE, TRUE
 Music_RocketHideout_branch_eec14:
+music_label
 	octave 2
 	note D#, 2
 	rest 2
@@ -222,8 +229,10 @@ Music_RocketHideout_branch_eec14:
 	sound_jump Music_RocketHideout_branch_eec14
 
 Music_RocketHideout_Ch3:
+music_label
 	note_type 12, 1, 9
 Music_RocketHideout_branch_eec7c:
+music_label
 	octave 2
 	note D#, 2
 	rest 2
@@ -236,6 +245,7 @@ Music_RocketHideout_branch_eec7c:
 	rest 8
 	sound_loop 6, Music_RocketHideout_branch_eec7c
 Music_RocketHideout_branch_eec8a:
+music_label
 	note F_, 2
 	rest 2
 	octave 3
@@ -251,6 +261,7 @@ Music_RocketHideout_branch_eec8a:
 	rest 8
 	sound_loop 2, Music_RocketHideout_branch_eec8a
 Music_RocketHideout_branch_eec9b:
+music_label
 	note C#, 2
 	rest 2
 	note G#, 4
@@ -260,6 +271,7 @@ Music_RocketHideout_branch_eec9b:
 	note C#, 16
 	sound_loop 2, Music_RocketHideout_branch_eec9b
 Music_RocketHideout_branch_eeca6:
+music_label
 	octave 2
 	note C#, 2
 	rest 2
@@ -274,6 +286,7 @@ Music_RocketHideout_branch_eeca6:
 	sound_jump Music_RocketHideout_branch_eec7c
 
 Music_RocketHideout_Ch4:
+music_label
 	toggle_noise 0
 	drum_speed 12
 	stereo_panning FALSE, TRUE
@@ -285,6 +298,7 @@ Music_RocketHideout_Ch4:
 	drum_note 4, 1
 	sound_call Music_RocketHideout_branch_eecdb
 Music_RocketHideout_branch_eecc7:
+music_label
 	sound_call Music_RocketHideout_branch_eecdb
 	drum_note 5, 4
 	sound_call Music_RocketHideout_branch_eecdb
@@ -296,6 +310,7 @@ Music_RocketHideout_branch_eecc7:
 	sound_jump Music_RocketHideout_branch_eecc7
 
 Music_RocketHideout_branch_eecdb:
+music_label
 	stereo_panning TRUE, FALSE
 	drum_note 4, 1
 	drum_note 4, 1

@@ -1,4 +1,5 @@
 Music_BattleTowerLobby:
+music_header
 	channel_count 4
 	channel 1, Music_BattleTowerLobby_Ch1
 	channel 2, Music_BattleTowerLobby_Ch2
@@ -6,6 +7,7 @@ Music_BattleTowerLobby:
 	channel 4, Music_BattleTowerLobby_Ch4
 
 Music_BattleTowerLobby_Ch1:
+music_label
 	tempo 152
 	volume 7, 7
 	duty_cycle 3
@@ -14,6 +16,7 @@ Music_BattleTowerLobby_Ch1:
 	stereo_panning TRUE, FALSE
 	note_type 12, 7, 2
 Music_BattleTowerLobby_branch_1794a9:
+music_label
 	note_type 12, 7, 2
 	octave 3
 	note G#, 2
@@ -118,11 +121,13 @@ Music_BattleTowerLobby_branch_1794a9:
 	sound_jump Music_BattleTowerLobby_branch_1794a9
 
 Music_BattleTowerLobby_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 16, 3, 4
 	stereo_panning FALSE, TRUE
 	note_type 12, 8, 2
 Music_BattleTowerLobby_branch_179544:
+music_label
 	note_type 12, 8, 2
 	octave 4
 	note E_, 2
@@ -202,8 +207,10 @@ Music_BattleTowerLobby_branch_179544:
 	sound_jump Music_BattleTowerLobby_branch_179544
 
 Music_BattleTowerLobby_Ch3:
+music_label
 	note_type 12, 1, 1
 Music_BattleTowerLobby_branch_1795b1:
+music_label
 	octave 2
 	note B_, 2
 	octave 3
@@ -298,8 +305,10 @@ Music_BattleTowerLobby_branch_1795b1:
 	sound_jump Music_BattleTowerLobby_branch_1795b1
 
 Music_BattleTowerLobby_Ch4:
+music_label
 	toggle_noise 0
 Music_BattleTowerLobby_branch_179612:
+music_label
 	drum_speed 12
 	rest 2
 	drum_note 6, 4

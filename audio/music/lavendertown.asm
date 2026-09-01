@@ -1,10 +1,12 @@
 Music_LavenderTown:
+music_header
 	channel_count 3
 	channel 1, Music_LavenderTown_Ch1
 	channel 2, Music_LavenderTown_Ch2
 	channel 3, Music_LavenderTown_Ch3
 
 Music_LavenderTown_Ch1:
+music_label
 	tempo 160
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -16,6 +18,7 @@ Music_LavenderTown_Ch1:
 	rest 16
 	rest 16
 Music_LavenderTown_branch_ef74c:
+music_label
 	sound_call Music_LavenderTown_branch_ef7fd
 	volume_envelope 9, 3
 	octave 5
@@ -102,6 +105,7 @@ Music_LavenderTown_branch_ef74c:
 	note A_, 2
 	note F_, 2
 Music_LavenderTown_branch_ef7ca:
+music_label
 	octave 3
 	note C_, 2
 	note E_, 2
@@ -149,6 +153,7 @@ Music_LavenderTown_branch_ef7ca:
 	sound_jump Music_LavenderTown_branch_ef74c
 
 Music_LavenderTown_branch_ef7fd:
+music_label
 	volume_envelope 8, 3
 	octave 5
 	note C_, 2
@@ -241,6 +246,7 @@ Music_LavenderTown_branch_ef7fd:
 	sound_ret
 
 Music_LavenderTown_branch_ef87f:
+music_label
 	volume_envelope 9, 3
 	octave 5
 	note G_, 2
@@ -261,10 +267,12 @@ Music_LavenderTown_branch_ef87f:
 	sound_ret
 
 Music_LavenderTown_Ch2:
+music_label
 	duty_cycle 1
 	vibrato 8, 2, 4
 	stereo_panning TRUE, TRUE
 Music_LavenderTown_branch_ef8a0:
+music_label
 	note_type 12, 10, 3
 	octave 5
 	note C_, 2
@@ -301,6 +309,7 @@ Music_LavenderTown_branch_ef8a0:
 	volume_envelope 6, 3
 	note D_, 2
 Music_LavenderTown_branch_ef8d7:
+music_label
 	volume_envelope 11, 5
 	sound_call Music_LavenderTown_branch_ef915
 	octave 2
@@ -355,6 +364,7 @@ Music_LavenderTown_branch_ef8d7:
 	sound_jump Music_LavenderTown_branch_ef8d7
 
 Music_LavenderTown_branch_ef915:
+music_label
 	octave 2
 	note C_, 4
 	note G_, 4
@@ -386,6 +396,7 @@ Music_LavenderTown_branch_ef915:
 	sound_ret
 
 Music_LavenderTown_Ch3:
+music_label
 	vibrato 18, 2, 4
 	note_type 12, 1, 3
 	stereo_panning TRUE, FALSE
@@ -397,6 +408,7 @@ Music_LavenderTown_Ch3:
 	note E_, 4
 	note F_, 4
 Music_LavenderTown_branch_ef941:
+music_label
 	volume_envelope 1, 2
 	octave 5
 	note G_, 4

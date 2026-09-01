@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/2/
 
 Music_ReversalMountainWhite2:
+music_header
 	channel_count 4
 	channel 1, Music_ReversalMountainWhite2_Ch1
 	channel 2, Music_ReversalMountainWhite2_Ch2
@@ -11,6 +12,7 @@ Music_ReversalMountainWhite2:
 	channel 4, Music_ReversalMountainWhite2_Ch4
 
 Music_ReversalMountainWhite2_Ch1:
+music_label
 	tempo 176
 	volume 7, 7
 	duty_cycle 2
@@ -20,6 +22,7 @@ Music_ReversalMountainWhite2_Ch1:
 	rest 1
 	sound_call Music_ReversalMountainWhite2_Ch1_branch_1
 Music_ReversalMountainWhite2_Ch1_loop:
+music_label
 	octave 4
 	note C_, 2
 	sound_call Music_ReversalMountainWhite2_Ch1_branch_1
@@ -260,6 +263,7 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	sound_jump Music_ReversalMountainWhite2_Ch1_loop
 
 Music_ReversalMountainWhite2_Ch1_branch_1:
+music_label
 	octave 4
 	note D_, 2
 	note G_, 2
@@ -282,11 +286,13 @@ Music_ReversalMountainWhite2_Ch1_branch_1:
 	sound_ret
 
 Music_ReversalMountainWhite2_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 28, 1, 2
 	note_type 12, 6, 2
 	sound_call Music_ReversalMountainWhite2_Ch1_branch_1
 Music_ReversalMountainWhite2_Ch2_loop:
+music_label
 	octave 4
 	note C_, 2
 	sound_call Music_ReversalMountainWhite2_Ch1_branch_1
@@ -526,6 +532,7 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	sound_jump Music_ReversalMountainWhite2_Ch2_loop
 
 Music_ReversalMountainWhite2_Ch3:
+music_label
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
 	rest 16
@@ -534,6 +541,7 @@ Music_ReversalMountainWhite2_Ch3:
 	rest 16
 	rest 4
 Music_ReversalMountainWhite2_Ch3_loop:
+music_label
 	rest 8
 	octave 4
 	note_type 3, 1, 4
@@ -958,6 +966,7 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	sound_jump Music_ReversalMountainWhite2_Ch3_loop
 
 Music_ReversalMountainWhite2_Ch4:
+music_label
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	drum_speed 12
@@ -966,6 +975,7 @@ Music_ReversalMountainWhite2_Ch4:
 	rest 16
 	rest 15
 Music_ReversalMountainWhite2_Ch4_loop:
+music_label
 	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
 	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
 	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
@@ -1011,6 +1021,7 @@ Music_ReversalMountainWhite2_Ch4_loop:
 	sound_jump Music_ReversalMountainWhite2_Ch4_loop
 
 Music_ReversalMountainWhite2_Ch4_branch_1:
+music_label
 	drum_note 4, 2
 	drum_note 4, 1
 	drum_note 4, 2
@@ -1018,6 +1029,7 @@ Music_ReversalMountainWhite2_Ch4_branch_1:
 	sound_ret
 
 Music_ReversalMountainWhite2_Ch4_branch_2:
+music_label
 	drum_note 4, 3
 	drum_note 4, 2
 	drum_note 1, 3

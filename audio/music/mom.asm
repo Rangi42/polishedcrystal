@@ -1,10 +1,12 @@
 Music_Mom:
+music_header
 	channel_count 3
 	channel 2, Music_Mom_Ch2
 	channel 3, Music_Mom_Ch3
 	channel 4, Music_Mom_Ch4
 
 Music_Mom_Ch2:
+music_label
 	tempo 144
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -18,6 +20,7 @@ Music_Mom_Ch2:
 	note A_, 1
 	note B_, 8
 Music_Mom_branch_f6c0e:
+music_label
 	note_type 12, 11, 1
 	rest 4
 	octave 3
@@ -33,6 +36,7 @@ Music_Mom_branch_f6c0e:
 	sound_jump Music_Mom_branch_f6c0e
 
 Music_Mom_Ch3:
+music_label
 	stereo_panning TRUE, FALSE
 	note_type 6, 2, 5
 	octave 3
@@ -44,6 +48,7 @@ Music_Mom_Ch3:
 	note E_, 8
 	volume_envelope 2, 3
 Music_Mom_branch_f6c2e:
+music_label
 	octave 2
 	note A_, 2
 	rest 6
@@ -78,10 +83,12 @@ Music_Mom_branch_f6c2e:
 	sound_jump Music_Mom_branch_f6c2e
 
 Music_Mom_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	rest 6
 Music_Mom_branch_f6c56:
+music_label
 	drum_note 4, 1
 	rest 1
 	drum_note 7, 2

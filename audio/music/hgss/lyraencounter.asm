@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/3/
 
 Music_LyraEncounterHGSS:
+music_header
 	channel_count 4
 	channel 1, Music_LyraEncounterHGSS_Ch1
 	channel 2, Music_LyraEncounterHGSS_Ch2
@@ -11,6 +12,7 @@ Music_LyraEncounterHGSS:
 	channel 4, Music_LyraEncounterHGSS_Ch4
 
 Music_LyraEncounterHGSS_Ch1:
+music_label
 	tempo 184
 	duty_cycle 1
 	note_type 12, 8, 5
@@ -23,6 +25,7 @@ Music_LyraEncounterHGSS_Ch1:
 	note C_, 2
 	note D#, 9
 Music_LyraEncounterHGSS_Ch1_loop:
+music_label
 	octave 3
 	note D#, 6
 	note G_, 1
@@ -187,6 +190,7 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	sound_jump Music_LyraEncounterHGSS_Ch1_loop
 
 Music_LyraEncounterHGSS_Ch2:
+music_label
 	duty_cycle 2
 	note_type 12, 11, 4
 	octave 4
@@ -201,6 +205,7 @@ Music_LyraEncounterHGSS_Ch2:
 	volume_envelope 11, 7
 	note D#, 9
 Music_LyraEncounterHGSS_Ch2_loop:
+music_label
 	rest 4
 	octave 4
 	volume_envelope 11, 4
@@ -297,6 +302,7 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	sound_jump Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraEncounterHGSS_Ch3:
+music_label
 	note_type 12, 1, 5
 	volume_envelope 1, 0
 	octave 2
@@ -313,6 +319,7 @@ Music_LyraEncounterHGSS_Ch3:
 	rest 1
 	note A#, 1
 Music_LyraEncounterHGSS_Ch3_loop:
+music_label
 	octave 3
 	note D#, 2
 	rest 1
@@ -486,6 +493,7 @@ Music_LyraEncounterHGSS_Ch3_loop:
 	sound_jump Music_LyraEncounterHGSS_Ch3_loop
 
 Music_LyraEncounterHGSS_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 6
 	drum_note 3, 2
@@ -501,6 +509,7 @@ Music_LyraEncounterHGSS_Ch4:
 	drum_note 1, 2
 	drum_note 4, 4
 Music_LyraEncounterHGSS_Ch4_loop:
+music_label
 	drum_note 4, 4
 	drum_note 4, 2
 	drum_note 4, 2

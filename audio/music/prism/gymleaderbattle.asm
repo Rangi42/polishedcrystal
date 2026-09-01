@@ -3,12 +3,14 @@
 ; Revised by FroggestSpirit
 
 Music_GymLeaderBattlePrism:
+music_header
 	channel_count 3
 	channel 1, Music_GymLeaderBattlePrism_Ch1
 	channel 2, Music_GymLeaderBattlePrism_Ch2
 	channel 3, Music_GymLeaderBattlePrism_Ch3
 
 Music_GymLeaderBattlePrism_Ch1:
+music_label
 	tempo 101
 	volume 7, 7
 	note_type 12, 11, 2
@@ -99,6 +101,7 @@ Music_GymLeaderBattlePrism_Ch1:
 	note D#, 4
 	note F_, 4
 Music_GymLeaderBattlePrism_Loop1:
+music_label
 	volume_envelope 11, 2
 	octave 3
 	note F_, 2
@@ -290,6 +293,7 @@ Music_GymLeaderBattlePrism_Loop1:
 	sound_jump Music_GymLeaderBattlePrism_Loop1
 
 Music_GymLeaderBattlePrism_Ch2:
+music_label
 	note_type 12, 12, 2
 	duty_cycle 3
 	vibrato 8, 3, 6
@@ -371,6 +375,7 @@ Music_GymLeaderBattlePrism_Ch2:
 	octave 4
 	note C_, 1
 Music_GymLeaderBattlePrism_Loop2:
+music_label
 	volume_envelope 12, 7
 	note D_, 6
 	note D#, 6
@@ -504,6 +509,7 @@ Music_GymLeaderBattlePrism_Loop2:
 	sound_jump Music_GymLeaderBattlePrism_Loop2
 
 Music_GymLeaderBattlePrism_Ch3:
+music_label
 	note_type 4, 1, 9
 	octave 3
 	note D_, 11
@@ -594,6 +600,7 @@ Music_GymLeaderBattlePrism_Ch3:
 	note A_, 2
 	note F_, 2
 Music_GymLeaderBattlePrism_Loop3:
+music_label
 	note D_, 2
 	note A_, 2
 	note D_, 2

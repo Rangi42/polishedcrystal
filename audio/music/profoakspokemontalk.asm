@@ -1,10 +1,12 @@
 Music_ProfOaksPokemonTalk:
+music_header
 	channel_count 3
 	channel 1, Music_ProfOaksPokemonTalk_Ch1
 	channel 2, Music_ProfOaksPokemonTalk_Ch2
 	channel 3, Music_ProfOaksPokemonTalk_Ch3
 
 Music_ProfOaksPokemonTalk_Ch1:
+music_label
 	tempo 164
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -23,6 +25,7 @@ Music_ProfOaksPokemonTalk_Ch1:
 	note E_, 1
 	note F#, 1
 Music_ProfOaksPokemonTalk_branch_f4cc3:
+music_label
 	note D#, 6
 	note C#, 1
 	octave 3
@@ -132,6 +135,7 @@ Music_ProfOaksPokemonTalk_branch_f4cc3:
 	sound_jump Music_ProfOaksPokemonTalk_branch_f4cc3
 
 Music_ProfOaksPokemonTalk_Ch2:
+music_label
 	vibrato 8, 2, 4
 	duty_cycle 3
 	note_type 12, 10, 7
@@ -155,6 +159,7 @@ Music_ProfOaksPokemonTalk_Ch2:
 	note G#, 1
 	note A#, 1
 Music_ProfOaksPokemonTalk_branch_f4d4d:
+music_label
 	note B_, 6
 	note A#, 1
 	note G#, 1
@@ -207,6 +212,7 @@ Music_ProfOaksPokemonTalk_branch_f4d4d:
 	sound_jump Music_ProfOaksPokemonTalk_branch_f4d4d
 
 Music_ProfOaksPokemonTalk_Ch3:
+music_label
 	vibrato 6, 3, 8
 	note_type 12, 2, 5
 	stereo_panning TRUE, FALSE
@@ -222,6 +228,7 @@ Music_ProfOaksPokemonTalk_Ch3:
 	octave 2
 	note A#, 1
 Music_ProfOaksPokemonTalk_branch_f4d95:
+music_label
 	note B_, 6
 	octave 3
 	note D#, 1

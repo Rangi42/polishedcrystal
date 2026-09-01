@@ -4,18 +4,21 @@
 ; https://soundcloud.com/monstarules/pokemon-rse-surf-theme-gbc-conversion
 
 Music_SurfRSE:
+music_header
 	channel_count 3
 	channel 1, Music_SurfRSE_Ch1
 	channel 2, Music_SurfRSE_Ch2
 	channel 3, Music_SurfRSE_Ch3
 
 Music_SurfRSE_Ch1:
+music_label
 	tempo 117
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	note_type 12, 0, 0
 	rest 12
 Music_SurfRSE_Ch1_loop:
+music_label
 	volume_envelope 9, 1
 	octave 4
 	note C#, 2
@@ -432,7 +435,9 @@ Music_SurfRSE_Ch1_loop:
 	sound_jump Music_SurfRSE_Ch1_loop
 
 Music_SurfRSE_Ch2:
+music_label
 Music_SurfRSE_Ch2_loop:
+music_label
 	vibrato 0, 1, 6
 	octave 4
 	note_type 12, 12, 2
@@ -793,9 +798,11 @@ Music_SurfRSE_Ch2_loop:
 	sound_jump Music_SurfRSE_Ch2_loop
 
 Music_SurfRSE_Ch3:
+music_label
 	note_type 12, 0, 0
 	rest 12
 Music_SurfRSE_Ch3_loop:
+music_label
 	volume_envelope 1, 4
 	octave 3
 	note C#, 7

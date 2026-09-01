@@ -3,6 +3,7 @@
 ; https://soundcloud.com/user-927422935-571023782/pokemon-go-wild-battle-8-bit-1/s-4NapJ
 
 Music_WildBattleGo:
+music_header
 	channel_count 4
 	channel 1, Music_WildBattleGo_Ch1
 	channel 2, Music_WildBattleGo_Ch2
@@ -10,6 +11,7 @@ Music_WildBattleGo:
 	channel 4, Music_WildBattleGo_Ch4
 
 Music_WildBattleGo_Ch1:
+music_label
 	tempo 112
 	volume 7, 7
 	stereo_panning TRUE, TRUE
@@ -33,6 +35,7 @@ Music_WildBattleGo_Ch1:
 	note D_, 1
 	rest 5
 Music_WildBattleGo_Ch1_loop:
+music_label
 	note_type 12, 10, 3
 	note D#, 3
 	rest 1
@@ -94,6 +97,7 @@ Music_WildBattleGo_Ch1_loop:
 	octave 4
 	note C_, 16
 Music_WildBattleGo_Ch1_loop_2:
+music_label
 	volume_envelope 15, 3
 	octave 3
 	note F#, 2
@@ -114,6 +118,7 @@ Music_WildBattleGo_Ch1_loop_2:
 	sound_jump Music_WildBattleGo_Ch1_loop
 
 Music_WildBattleGo_Ch1_ditty1:
+music_label
 	note D_, 4
 	note D_, 1
 	rest 1
@@ -129,6 +134,7 @@ Music_WildBattleGo_Ch1_ditty1:
 	sound_ret
 
 Music_WildBattleGo_Ch1_ditty2:
+music_label
 	note C_, 4
 	note C_, 1
 	rest 1
@@ -144,6 +150,7 @@ Music_WildBattleGo_Ch1_ditty2:
 	sound_ret
 
 Music_WildBattleGo_Ch2:
+music_label
 	note_type 12, 0, 0
 	rest 4
 	duty_cycle_pattern 1, 1, 2, 2
@@ -151,6 +158,7 @@ Music_WildBattleGo_Ch2:
 	octave 5
 	sound_call Music_WildBattleGo_Ch2_ditty2
 Music_WildBattleGo_Ch2_loop:
+music_label
 	note D#, 3
 	rest 1
 	note A_, 1
@@ -256,6 +264,7 @@ Music_WildBattleGo_Ch2_loop:
 	note G_, 8
 	note F#, 8
 Music_WildBattleGo_Ch2_loop_1:
+music_label
 	rest 16
 	sound_loop 8, Music_WildBattleGo_Ch2_loop_1
 	duty_cycle_pattern 1, 1, 2, 2
@@ -285,6 +294,7 @@ Music_WildBattleGo_Ch2_loop_1:
 	sound_jump Music_WildBattleGo_Ch2_loop
 
 Music_WildBattleGo_Ch2_ditty1:
+music_label
 	note D_, 6
 	octave 3
 	note A_, 2
@@ -297,6 +307,7 @@ Music_WildBattleGo_Ch2_ditty1:
 	sound_ret
 
 Music_WildBattleGo_Ch2_ditty2:
+music_label
 	note D_, 1
 	rest 5
 	note D_, 1
@@ -310,19 +321,23 @@ Music_WildBattleGo_Ch2_ditty2:
 	sound_ret
 
 Music_WildBattleGo_Ch3:
+music_label
 	octave 3
 	note_type 12, 1, 6
 	note D_, 2
 	rest 2
 	octave 2
 Music_WildBattleGo_Ch3_loop_1:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 7, Music_WildBattleGo_Ch3_loop_1
 Music_WildBattleGo_Ch3_loop:
+music_label
 	note A#, 2
 	note A_, 2
 Music_WildBattleGo_Ch3_loop_2:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 6, Music_WildBattleGo_Ch3_loop_2
@@ -333,20 +348,24 @@ Music_WildBattleGo_Ch3_loop_2:
 	note E_, 2
 	octave 2
 Music_WildBattleGo_Ch3_loop_3:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 8, Music_WildBattleGo_Ch3_loop_3
 Music_WildBattleGo_Ch3_loop_10:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 7, Music_WildBattleGo_Ch3_loop_10
 	note A_, 2
 	note G_, 2
 Music_WildBattleGo_Ch3_loop_4:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 8, Music_WildBattleGo_Ch3_loop_4
 Music_WildBattleGo_Ch3_loop_11:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 5, Music_WildBattleGo_Ch3_loop_11
@@ -357,16 +376,19 @@ Music_WildBattleGo_Ch3_loop_11:
 	note D_, 2
 	note E_, 2
 Music_WildBattleGo_Ch3_loop_14:
+music_label
 	octave 1
 	note A#, 2
 	octave 2
 	note F_, 2
 	sound_loop 8, Music_WildBattleGo_Ch3_loop_14
 Music_WildBattleGo_Ch3_loop_12:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 8, Music_WildBattleGo_Ch3_loop_12
 Music_WildBattleGo_Ch3_loop_9:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 10, Music_WildBattleGo_Ch3_loop_9
@@ -389,16 +411,19 @@ Music_WildBattleGo_Ch3_loop_9:
 	note D_, 2
 	note A_, 2
 Music_WildBattleGo_Ch3_loop_15:
+music_label
 	octave 1
 	note A#, 2
 	octave 2
 	note F_, 2
 	sound_loop 8, Music_WildBattleGo_Ch3_loop_15
 Music_WildBattleGo_Ch3_loop_13:
+music_label
 	note C_, 2
 	note G_, 2
 	sound_loop 8, Music_WildBattleGo_Ch3_loop_13
 Music_WildBattleGo_Ch3_loop_5:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 3, Music_WildBattleGo_Ch3_loop_5
@@ -407,12 +432,14 @@ Music_WildBattleGo_Ch3_loop_5:
 	octave 2
 	note A_, 2
 Music_WildBattleGo_Ch3_loop_6:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 3, Music_WildBattleGo_Ch3_loop_6
 	note A#, 2
 	note A_, 2
 Music_WildBattleGo_Ch3_loop_7:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 6, Music_WildBattleGo_Ch3_loop_7
@@ -425,12 +452,14 @@ Music_WildBattleGo_Ch3_loop_7:
 	octave 2
 	note A_, 2
 Music_WildBattleGo_Ch3_loop_8:
+music_label
 	note D_, 2
 	note A_, 2
 	sound_loop 7, Music_WildBattleGo_Ch3_loop_8
 	sound_jump Music_WildBattleGo_Ch3_loop
 
 Music_WildBattleGo_Ch4:
+music_label
 	drum_speed 12
 	rest 4
 	toggle_noise 3
@@ -442,11 +471,13 @@ Music_WildBattleGo_Ch4:
 	drum_note 2, 1
 	rest 1
 Music_WildBattleGo_Ch4_loop:
+music_label
 	drum_note 7, 1
 	rest 1
 	drum_note 2, 1
 	drum_note 8, 1
 Music_WildBattleGo_Ch4_loop_1:
+music_label
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	sound_call Music_WildBattleGo_Ch4_ditty2
 	sound_call Music_WildBattleGo_Ch4_ditty1
@@ -476,6 +507,7 @@ Music_WildBattleGo_Ch4_loop_1:
 	drum_note 2, 1
 	drum_note 7, 1
 Music_WildBattleGo_Ch4_loop_2:
+music_label
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	sound_call Music_WildBattleGo_Ch4_ditty2
 	sound_loop 9, Music_WildBattleGo_Ch4_loop_2
@@ -487,6 +519,7 @@ Music_WildBattleGo_Ch4_loop_2:
 	sound_jump Music_WildBattleGo_Ch4_loop
 
 Music_WildBattleGo_Ch4_ditty1:
+music_label
 	drum_note 3, 1
 	rest 1
 	drum_note 2, 1
@@ -498,6 +531,7 @@ Music_WildBattleGo_Ch4_ditty1:
 	sound_ret
 
 Music_WildBattleGo_Ch4_ditty2:
+music_label
 	drum_note 3, 1
 	rest 1
 	drum_note 2, 1
@@ -509,6 +543,7 @@ Music_WildBattleGo_Ch4_ditty2:
 	sound_ret
 
 Music_WildBattleGo_Ch4_ditty3:
+music_label
 	drum_note 3, 1
 	rest 1
 	drum_note 2, 1

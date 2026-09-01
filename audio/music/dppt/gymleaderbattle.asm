@@ -3,6 +3,7 @@
 ; https://soundcloud.com/froggestspirit/battle-gym-leader
 
 Music_GymLeaderBattleDPPt:
+music_header
 	channel_count 4
 	channel 1, Music_GymLeaderBattleDPPt_Ch1
 	channel 2, Music_GymLeaderBattleDPPt_Ch2
@@ -10,6 +11,7 @@ Music_GymLeaderBattleDPPt:
 	channel 4, Music_GymLeaderBattleDPPt_Ch4
 
 Music_GymLeaderBattleDPPt_Ch1:
+music_label
 	tempo 106
 	volume 7, 7
 	stereo_panning TRUE, TRUE
@@ -77,6 +79,7 @@ Music_GymLeaderBattleDPPt_Ch1:
 	octave 4
 	note C#, 4
 Music_GymLeaderBattleDPPt_Ch1_loop:
+music_label
 	octave 2
 	note G_, 6
 	octave 3
@@ -415,6 +418,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	sound_jump Music_GymLeaderBattleDPPt_Ch1_loop
 
 Music_GymLeaderBattleDPPt_Ch2:
+music_label
 	duty_cycle 1
 	pitch_offset 1
 	vibrato 8, 3, 6
@@ -502,6 +506,7 @@ Music_GymLeaderBattleDPPt_Ch2:
 	note C#, 4
 	note F_, 4
 Music_GymLeaderBattleDPPt_Ch2_loop:
+music_label
 	octave 3
 	note G_, 6
 	octave 4
@@ -910,6 +915,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	sound_jump Music_GymLeaderBattleDPPt_Ch2_loop
 
 Music_GymLeaderBattleDPPt_Ch3:
+music_label
 	note_type 12, 1, 9
 	octave 1
 	note A#, 8
@@ -981,6 +987,7 @@ Music_GymLeaderBattleDPPt_Ch3:
 	note F_, 2
 	note G#, 2
 Music_GymLeaderBattleDPPt_Ch3_loop:
+music_label
 	note C_, 2
 	note G_, 2
 	note C_, 2
@@ -1502,6 +1509,7 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	sound_jump Music_GymLeaderBattleDPPt_Ch3_loop
 
 Music_GymLeaderBattleDPPt_Ch4:
+music_label
 	toggle_noise 0
 	drum_speed 12
 	rest 2
@@ -1569,6 +1577,7 @@ Music_GymLeaderBattleDPPt_Ch4:
 	drum_note 4, 1
 	drum_note 4, 1
 Music_GymLeaderBattleDPPt_Ch4_loop:
+music_label
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 2

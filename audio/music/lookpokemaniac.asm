@@ -1,10 +1,12 @@
 Music_LookPokemaniac:
+music_header
 	channel_count 3
 	channel 1, Music_LookPokemaniac_Ch1
 	channel 2, Music_LookPokemaniac_Ch2
 	channel 3, Music_LookPokemaniac_Ch3
 
 Music_LookPokemaniac_Ch1:
+music_label
 	stereo_panning FALSE, TRUE
 	tempo 144
 	volume 7, 7
@@ -13,6 +15,7 @@ Music_LookPokemaniac_Ch1:
 	note_type 12, 11, 3
 	rest 8
 Music_LookPokemaniac_branch_ebdfb:
+music_label
 	rest 4
 	octave 3
 	note A#, 1
@@ -29,6 +32,7 @@ Music_LookPokemaniac_branch_ebdfb:
 	sound_jump Music_LookPokemaniac_branch_ebdfb
 
 Music_LookPokemaniac_Ch2:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 2, 3, 3
 	pitch_offset 1
@@ -41,6 +45,7 @@ Music_LookPokemaniac_Ch2:
 	octave 1
 	note A_, 4
 Music_LookPokemaniac_branch_ebe24:
+music_label
 	octave 2
 	note C_, 2
 	rest 2
@@ -59,6 +64,7 @@ Music_LookPokemaniac_branch_ebe24:
 	rest 3
 	sound_loop 2, Music_LookPokemaniac_branch_ebe24
 Music_LookPokemaniac_branch_ebe38:
+music_label
 	octave 1
 	note A_, 2
 	rest 2
@@ -80,6 +86,7 @@ Music_LookPokemaniac_branch_ebe38:
 	sound_jump Music_LookPokemaniac_branch_ebe24
 
 Music_LookPokemaniac_Ch3:
+music_label
 	stereo_panning TRUE, FALSE
 	vibrato 6, 3, 3
 	note_type 12, 1, 5
@@ -92,6 +99,7 @@ Music_LookPokemaniac_Ch3:
 	note C_, 4
 	volume_envelope 1, 0
 Music_LookPokemaniac_branch_ebe62:
+music_label
 	sound_call Music_LookPokemaniac_branch_ebe70
 	volume_envelope 1, 4
 	sound_call Music_LookPokemaniac_branch_ebe70
@@ -99,6 +107,7 @@ Music_LookPokemaniac_branch_ebe62:
 	sound_jump Music_LookPokemaniac_branch_ebe62
 
 Music_LookPokemaniac_branch_ebe70:
+music_label
 	note A#, 6
 	note A_, 2
 	note G#, 2

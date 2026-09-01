@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/
 
 Music_GymLeaderBattleRSE:
+music_header
 	channel_count 4
 	channel 1, Music_GymLeaderBattleRSE_Ch1
 	channel 2, Music_GymLeaderBattleRSE_Ch2
@@ -11,6 +12,7 @@ Music_GymLeaderBattleRSE:
 	channel 4, Music_GymLeaderBattleRSE_Ch4
 
 Music_GymLeaderBattleRSE_Ch1:
+music_label
 	tempo 100
 	duty_cycle 1
 	pitch_offset 1
@@ -108,6 +110,7 @@ Music_GymLeaderBattleRSE_Ch1:
 	rest 4
 	note D#, 4
 Music_GymLeaderBattleRSE_Ch1_loop:
+music_label
 	duty_cycle 1
 	volume_envelope 12, 7
 	octave 4
@@ -318,6 +321,7 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	sound_jump Music_GymLeaderBattleRSE_Ch1_loop
 
 Music_GymLeaderBattleRSE_Ch2:
+music_label
 	pitch_offset 1
 	duty_cycle 2
 	note_type 12, 9, 4
@@ -357,6 +361,7 @@ Music_GymLeaderBattleRSE_Ch2:
 	octave 2
 	note D#, 8
 Music_GymLeaderBattleRSE_Ch2_loop_main:
+music_label
 	duty_cycle 3
 	volume_envelope 12, 7
 	octave 3
@@ -652,6 +657,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	sound_jump Music_GymLeaderBattleRSE_Ch2_loop_main
 
 Music_GymLeaderBattleRSE_Ch2_branch_1:
+music_label
 	duty_cycle 0
 	octave 3
 	note G_, 2
@@ -668,6 +674,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_1:
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch2_branch_2:
+music_label
 	duty_cycle 1
 	octave 3
 	note G_, 2
@@ -684,6 +691,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_2:
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch2_branch_3:
+music_label
 	duty_cycle 0
 	octave 3
 	note G#, 2
@@ -700,6 +708,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_3:
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	note_type 12, 1, 9
 	octave 3
@@ -716,12 +725,14 @@ Music_GymLeaderBattleRSE_Ch3:
 	note D#, 2
 	note C#, 2
 Music_GymLeaderBattleRSE_Ch3_loop_1:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_1
 	note F_, 2
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_1
 	note C#, 2
 	sound_loop 4, Music_GymLeaderBattleRSE_Ch3_loop_1
 Music_GymLeaderBattleRSE_Ch3_loop_main:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_2
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_2
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_2
@@ -817,6 +828,7 @@ Music_GymLeaderBattleRSE_Ch3_loop_main:
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_2
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_2
 Music_GymLeaderBattleRSE_Ch3_loop_2:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_2
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_2
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_2
@@ -827,9 +839,11 @@ Music_GymLeaderBattleRSE_Ch3_loop_2:
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_5
 	sound_loop 3, Music_GymLeaderBattleRSE_Ch3_loop_2
 Music_GymLeaderBattleRSE_Ch3_loop_3:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_3
 	sound_loop 12, Music_GymLeaderBattleRSE_Ch3_loop_3
 Music_GymLeaderBattleRSE_Ch3_loop_4:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_2
 	sound_loop 8, Music_GymLeaderBattleRSE_Ch3_loop_4
 	sound_call Music_GymLeaderBattleRSE_Ch3_branch_3
@@ -843,6 +857,7 @@ Music_GymLeaderBattleRSE_Ch3_loop_4:
 	sound_jump Music_GymLeaderBattleRSE_Ch3_loop_main
 
 Music_GymLeaderBattleRSE_Ch3_branch_1:
+music_label
 	note C_, 2
 	note F#, 2
 	note F_, 2
@@ -854,6 +869,7 @@ Music_GymLeaderBattleRSE_Ch3_branch_1:
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3_branch_2:
+music_label
 	note C_, 2
 	note G_, 2
 	note C_, 2
@@ -861,6 +877,7 @@ Music_GymLeaderBattleRSE_Ch3_branch_2:
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3_branch_3:
+music_label
 	octave 1
 	note A#, 2
 	octave 2
@@ -872,6 +889,7 @@ Music_GymLeaderBattleRSE_Ch3_branch_3:
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3_branch_4:
+music_label
 	note C#, 2
 	note G#, 2
 	note C#, 2
@@ -879,6 +897,7 @@ Music_GymLeaderBattleRSE_Ch3_branch_4:
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3_branch_5:
+music_label
 	note D#, 2
 	note A#, 2
 	note D#, 2
@@ -886,6 +905,7 @@ Music_GymLeaderBattleRSE_Ch3_branch_5:
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	drum_note 1, 6
@@ -895,13 +915,16 @@ Music_GymLeaderBattleRSE_Ch4:
 	drum_note 1, 4
 	drum_note 4, 4
 Music_GymLeaderBattleRSE_Ch4_loop_1:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_1
 	sound_loop 8, Music_GymLeaderBattleRSE_Ch4_loop_1
 Music_GymLeaderBattleRSE_Ch4_loop_main:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_2
 	sound_loop 11, Music_GymLeaderBattleRSE_Ch4_loop_main
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_1
 Music_GymLeaderBattleRSE_Ch4_loop_2:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_2
 	sound_loop 11, Music_GymLeaderBattleRSE_Ch4_loop_2
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_1
@@ -911,9 +934,11 @@ Music_GymLeaderBattleRSE_Ch4_loop_2:
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_2
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_2
 Music_GymLeaderBattleRSE_Ch4_loop_3:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_2
 	sound_loop 15, Music_GymLeaderBattleRSE_Ch4_loop_3
 Music_GymLeaderBattleRSE_Ch4_loop_4:
+music_label
 	sound_call Music_GymLeaderBattleRSE_Ch4_branch_3
 	sound_loop 6, Music_GymLeaderBattleRSE_Ch4_loop_4
 	rest 4
@@ -927,17 +952,20 @@ Music_GymLeaderBattleRSE_Ch4_loop_4:
 	sound_jump Music_GymLeaderBattleRSE_Ch4_loop_main
 
 Music_GymLeaderBattleRSE_Ch4_branch_1:
+music_label
 	drum_note 1, 6
 	drum_note 1, 10
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch4_branch_2:
+music_label
 	drum_note 1, 6
 	drum_note 1, 8
 	drum_note 4, 2
 	sound_ret
 
 Music_GymLeaderBattleRSE_Ch4_branch_3:
+music_label
 	drum_note 1, 8
 	drum_note 1, 2
 	drum_note 1, 4

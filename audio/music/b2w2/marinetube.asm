@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/
 
 Music_MarineTubeB2W2:
+music_header
 	channel_count 4
 	channel 1, Music_MarineTubeB2W2_Ch1
 	channel 2, Music_MarineTubeB2W2_Ch2
@@ -11,6 +12,7 @@ Music_MarineTubeB2W2:
 	channel 4, Music_MarineTubeB2W2_Ch4
 
 Music_MarineTubeB2W2_Ch1:
+music_label
 	tempo 132
 	duty_cycle 3
 	vibrato 18, 1, 5
@@ -467,6 +469,7 @@ Music_MarineTubeB2W2_Ch1:
 	sound_jump Music_MarineTubeB2W2_Ch1
 
 Music_MarineTubeB2W2_Ch2:
+music_label
 	vibrato 8, 2, 6
 	pitch_offset 1
 	note_type 12, 10, 0
@@ -670,6 +673,7 @@ Music_MarineTubeB2W2_Ch2:
 	sound_jump Music_MarineTubeB2W2_Ch2
 
 Music_MarineTubeB2W2_Ch3:
+music_label
 	note_type 12, 1, 2
 	vibrato 18, 1, 5
 	octave 3
@@ -921,10 +925,13 @@ Music_MarineTubeB2W2_Ch3:
 	sound_jump Music_MarineTubeB2W2_Ch3
 
 Music_MarineTubeB2W2_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 Music_MarineTubeB2W2_Ch4_loop_main:
+music_label
 Music_MarineTubeB2W2_Ch4_loop_1:
+music_label
 	drum_note 3, 2
 	drum_note 8, 2
 	drum_note 4, 2
@@ -1012,6 +1019,7 @@ Music_MarineTubeB2W2_Ch4_loop_1:
 	drum_note 3, 2
 	drum_note 3, 2
 Music_MarineTubeB2W2_Ch4_loop_2:
+music_label
 	drum_note 4, 2
 	drum_note 3, 2
 	drum_note 12, 2
@@ -1022,6 +1030,7 @@ Music_MarineTubeB2W2_Ch4_loop_2:
 	drum_note 3, 2
 	sound_loop 6, Music_MarineTubeB2W2_Ch4_loop_2
 Music_MarineTubeB2W2_Ch4_loop_3:
+music_label
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 3, 2
@@ -1040,6 +1049,7 @@ Music_MarineTubeB2W2_Ch4_loop_3:
 	sound_jump Music_MarineTubeB2W2_Ch4_loop_main
 
 Music_MarineTubeB2W2_Ch4_branch_1:
+music_label
 	drum_note 3, 2
 	drum_note 8, 2
 	drum_note 4, 2

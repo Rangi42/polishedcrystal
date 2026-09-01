@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/
 
 Music_AbandonedShipRSE:
+music_header
 	channel_count 4
 	channel 1, Music_AbandonedShipRSE_Ch1
 	channel 2, Music_AbandonedShipRSE_Ch2
@@ -11,6 +12,7 @@ Music_AbandonedShipRSE:
 	channel 4, Music_AbandonedShipRSE_Ch4
 
 Music_AbandonedShipRSE_Ch1:
+music_label
 	tempo 188
 	volume 7, 7
 	duty_cycle 0
@@ -19,6 +21,7 @@ Music_AbandonedShipRSE_Ch1:
 	note_type 12, 8, 2
 	rest 6
 Music_AbandonedShipRSE_Ch1_loop:
+music_label
 	octave 3
 	note A#, 2
 	octave 4
@@ -257,11 +260,13 @@ Music_AbandonedShipRSE_Ch1_loop:
 	sound_jump Music_AbandonedShipRSE_Ch1_loop
 
 Music_AbandonedShipRSE_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 28, 1, 2
 	note_type 12, 10, 0
 	rest 6
 Music_AbandonedShipRSE_Ch2_loop:
+music_label
 	sound_call Music_AbandonedShipRSE_Ch2_branch_1
 	vibrato 28, 15, 2
 	sound_call Music_AbandonedShipRSE_Ch2_branch_1
@@ -435,6 +440,7 @@ Music_AbandonedShipRSE_Ch2_loop:
 	sound_jump Music_AbandonedShipRSE_Ch2_loop
 
 Music_AbandonedShipRSE_Ch2_branch_1:
+music_label
 	note_type 12, 10, 0
 	octave 3
 	note A#, 4
@@ -448,10 +454,12 @@ Music_AbandonedShipRSE_Ch2_branch_1:
 	sound_ret
 
 Music_AbandonedShipRSE_Ch3:
+music_label
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
 	rest 6
 Music_AbandonedShipRSE_Ch3_loop:
+music_label
 	octave 2
 	note F#, 1
 	rest 1
@@ -598,6 +606,7 @@ Music_AbandonedShipRSE_Ch3_loop:
 	sound_jump Music_AbandonedShipRSE_Ch3_loop
 
 Music_AbandonedShipRSE_Ch4:
+music_label
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	drum_speed 6
@@ -614,6 +623,7 @@ Music_AbandonedShipRSE_Ch4:
 	drum_note 3, 1
 	drum_note 3, 1
 Music_AbandonedShipRSE_branch_1:
+music_label
 	drum_speed 12
 	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	drum_note 3, 1
@@ -632,6 +642,7 @@ Music_AbandonedShipRSE_branch_1:
 	drum_note 3, 1
 	sound_loop 4, Music_AbandonedShipRSE_branch_1
 Music_AbandonedShipRSE_branch_2:
+music_label
 	drum_speed 12
 	rest 16
 	sound_loop 4, Music_AbandonedShipRSE_branch_2
@@ -679,6 +690,7 @@ Music_AbandonedShipRSE_branch_2:
 	sound_jump Music_AbandonedShipRSE_branch_1
 
 Music_AbandonedShipRSE_branch_eeb6b:
+music_label
 	drum_note 3, 2
 	drum_note 2, 1
 	drum_note 2, 1

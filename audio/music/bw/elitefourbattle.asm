@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/9/
 
 Music_EliteFourBattleBW:
+music_header
 	channel_count 4
 	channel 1, Music_EliteFourBattleBW_Ch1
 	channel 2, Music_EliteFourBattleBW_Ch2
@@ -11,6 +12,7 @@ Music_EliteFourBattleBW:
 	channel 4, Music_EliteFourBattleBW_Ch4
 
 Music_EliteFourBattleBW_Ch1:
+music_label
 	duty_cycle 2
 	vibrato 18, 1, 5
 	pitch_offset 1
@@ -26,9 +28,11 @@ Music_EliteFourBattleBW_Ch1:
 	volume_envelope 6, 3
 	pitch_sweep 6, -4
 Music_EliteFourBattleBW_Ch1_loop_1:
+music_label
 	note C#, 2
 	sound_loop 31, Music_EliteFourBattleBW_Ch1_loop_1
 Music_EliteFourBattleBW_Ch1_loop_main:
+music_label
 	note_type 6, 10, 0
 	pitch_sweep 6, 7
 	octave 3
@@ -453,6 +457,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	sound_jump Music_EliteFourBattleBW_Ch1_loop_main
 
 Music_EliteFourBattleBW_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 18, 1, 5
 	pitch_offset 1
@@ -467,6 +472,7 @@ Music_EliteFourBattleBW_Ch2:
 	rest 16
 	rest 16
 Music_EliteFourBattleBW_Ch2_loop_main:
+music_label
 	volume_envelope 8, 0
 	octave 3
 	note C#, 3
@@ -640,6 +646,7 @@ Music_EliteFourBattleBW_Ch2_loop_main:
 	volume_envelope 7, 1
 	duty_cycle 2
 Music_EliteFourBattleBW_Ch2_loop_1:
+music_label
 	octave 4
 	note C#, 1
 	octave 3
@@ -796,6 +803,7 @@ Music_EliteFourBattleBW_Ch2_loop_1:
 	sound_jump Music_EliteFourBattleBW_Ch2_loop_main
 
 Music_EliteFourBattleBW_Ch2_branch_1:
+music_label
 	volume_envelope 9, 1
 	octave 3
 	note G_, 1
@@ -823,12 +831,16 @@ Music_EliteFourBattleBW_Ch2_branch_1:
 	sound_ret
 
 Music_EliteFourBattleBW_Ch3:
+music_label
 	note_type 6, 1, 9
 Music_EliteFourBattleBW_Ch3_loop_1:
+music_label
 	sound_call Music_EliteFourBattleBW_Ch3_branch_1
 	sound_loop 12, Music_EliteFourBattleBW_Ch3_loop_1
 Music_EliteFourBattleBW_Ch3_loop_main:
+music_label
 Music_EliteFourBattleBW_Ch3_loop_2:
+music_label
 	sound_call Music_EliteFourBattleBW_Ch3_branch_1
 	sound_loop 8, Music_EliteFourBattleBW_Ch3_loop_2
 	octave 2
@@ -863,6 +875,7 @@ Music_EliteFourBattleBW_Ch3_loop_2:
 	note A_, 2
 	note G_, 2
 Music_EliteFourBattleBW_Ch3_loop_3:
+music_label
 	sound_call Music_EliteFourBattleBW_Ch3_branch_1
 	sound_loop 8, Music_EliteFourBattleBW_Ch3_loop_3
 	octave 2
@@ -899,9 +912,11 @@ Music_EliteFourBattleBW_Ch3_loop_3:
 	note A_, 2
 	note G_, 2
 Music_EliteFourBattleBW_Ch3_loop_4:
+music_label
 	sound_call Music_EliteFourBattleBW_Ch3_branch_1
 	sound_loop 2, Music_EliteFourBattleBW_Ch3_loop_4
 Music_EliteFourBattleBW_Ch3_loop_5:
+music_label
 	octave 1
 	note B_, 2
 	octave 2
@@ -935,6 +950,7 @@ Music_EliteFourBattleBW_Ch3_loop_5:
 	octave 2
 	note G_, 2
 Music_EliteFourBattleBW_Ch3_loop_6:
+music_label
 	sound_call Music_EliteFourBattleBW_Ch3_branch_1
 	sound_loop 4, Music_EliteFourBattleBW_Ch3_loop_6
 	sound_call Music_EliteFourBattleBW_Ch3_branch_2
@@ -995,6 +1011,7 @@ Music_EliteFourBattleBW_Ch3_loop_6:
 	sound_jump Music_EliteFourBattleBW_Ch3_loop_main
 
 Music_EliteFourBattleBW_Ch3_branch_1:
+music_label
 	octave 1
 	note F#, 2
 	octave 2
@@ -1014,6 +1031,7 @@ Music_EliteFourBattleBW_Ch3_branch_1:
 	sound_ret
 
 Music_EliteFourBattleBW_Ch3_branch_2:
+music_label
 	octave 1
 	note F#, 2
 	octave 2
@@ -1114,6 +1132,7 @@ Music_EliteFourBattleBW_Ch3_branch_2:
 	sound_ret
 
 Music_EliteFourBattleBW_Ch3_branch_3:
+music_label
 	octave 1
 	note E_, 2
 	note B_, 2
@@ -1156,6 +1175,7 @@ Music_EliteFourBattleBW_Ch3_branch_3:
 	sound_ret
 
 Music_EliteFourBattleBW_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 6
 	rest 16
@@ -1163,19 +1183,24 @@ Music_EliteFourBattleBW_Ch4:
 	rest 16
 	rest 16
 Music_EliteFourBattleBW_Ch4_loop_1:
+music_label
 	drum_note 4, 2
 	drum_note 3, 2
 	sound_loop 8, Music_EliteFourBattleBW_Ch4_loop_1
 Music_EliteFourBattleBW_Ch4_loop_2:
+music_label
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 2
 	sound_loop 8, Music_EliteFourBattleBW_Ch4_loop_2
 Music_EliteFourBattleBW_Ch4_loop_3:
+music_label
 	sound_call Music_EliteFourBattleBW_Ch4_branch_1
 	sound_loop 2, Music_EliteFourBattleBW_Ch4_loop_3
 Music_EliteFourBattleBW_Ch4_loop_main:
+music_label
 Music_EliteFourBattleBW_Ch4_loop_4:
+music_label
 	sound_call Music_EliteFourBattleBW_Ch4_branch_1
 	sound_loop 4, Music_EliteFourBattleBW_Ch4_loop_4
 	drum_note 1, 2
@@ -1217,6 +1242,7 @@ Music_EliteFourBattleBW_Ch4_loop_4:
 	drum_note 1, 1
 	drum_note 1, 1
 Music_EliteFourBattleBW_Ch4_loop_5:
+music_label
 	sound_call Music_EliteFourBattleBW_Ch4_branch_1
 	sound_loop 12, Music_EliteFourBattleBW_Ch4_loop_5
 	drum_note 11, 2
@@ -1240,12 +1266,15 @@ Music_EliteFourBattleBW_Ch4_loop_5:
 	drum_note 1, 2
 	drum_note 1, 2
 Music_EliteFourBattleBW_Ch4_loop_6:
+music_label
 	sound_call Music_EliteFourBattleBW_Ch4_branch_1
 	sound_loop 6, Music_EliteFourBattleBW_Ch4_loop_6
 Music_EliteFourBattleBW_Ch4_loop_7:
+music_label
 	drum_note 4, 4
 	sound_loop 16, Music_EliteFourBattleBW_Ch4_loop_7
 Music_EliteFourBattleBW_Ch4_loop_8:
+music_label
 	drum_note 4, 2
 	drum_note 3, 2
 	sound_loop 15, Music_EliteFourBattleBW_Ch4_loop_8
@@ -1256,6 +1285,7 @@ Music_EliteFourBattleBW_Ch4_loop_8:
 	sound_jump Music_EliteFourBattleBW_Ch4_loop_main
 
 Music_EliteFourBattleBW_Ch4_branch_1:
+music_label
 	drum_note 1, 2
 	drum_note 3, 1
 	drum_note 3, 1

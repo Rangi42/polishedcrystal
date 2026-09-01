@@ -3,6 +3,7 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/route209.asm
 
 Music_Route209DPPt:
+music_header
 	channel_count 4
 	channel 1, Music_Route209DPPt_Ch1
 	channel 2, Music_Route209DPPt_Ch2
@@ -10,6 +11,7 @@ Music_Route209DPPt:
 	channel 4, Music_Route209DPPt_Ch4
 
 Music_Route209DPPt_Ch1:
+music_label
 	tempo 224
 	volume 7, 7
 	note_type 12, 9, 2
@@ -28,6 +30,7 @@ Music_Route209DPPt_Ch1:
 	octave 4
 	note C#, 2
 Music_Route209DPPt_Ch1_loop:
+music_label
 	volume_envelope 9, 1
 	duty_cycle 0
 	note A_, 2
@@ -335,6 +338,7 @@ Music_Route209DPPt_Ch1_loop:
 	sound_jump Music_Route209DPPt_Ch1_loop
 
 Music_Route209DPPt_Ch2:
+music_label
 	note_type 12, 10, 1
 	duty_cycle 2
 	octave 5
@@ -356,6 +360,7 @@ Music_Route209DPPt_Ch2:
 	note A_, 1
 	note E_, 1
 Music_Route209DPPt_Ch2_loop:
+music_label
 	note_type 3, 10, 7
 	duty_cycle 3
 	pitch_offset 2
@@ -626,10 +631,12 @@ Music_Route209DPPt_Ch2_loop:
 	sound_jump Music_Route209DPPt_Ch2_loop
 
 Music_Route209DPPt_Ch3:
+music_label
 	note_type 12, 1, 2
 	octave 2
 	rest 16
 Music_Route209DPPt_Ch3_loop:
+music_label
 	note_type 14, 1, 2
 	note A_, 3
 	note_type 6, 1, 2
@@ -884,6 +891,7 @@ Music_Route209DPPt_Ch3_loop:
 	sound_jump Music_Route209DPPt_Ch3_loop
 
 Music_Route209DPPt_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	drum_note 2, 2
@@ -900,6 +908,7 @@ Music_Route209DPPt_Ch4:
 	drum_note 2, 1
 	drum_note 2, 1
 Music_Route209DPPt_Ch4_loop:
+music_label
 	drum_note 2, 3
 	drum_note 2, 3
 	drum_note 12, 3

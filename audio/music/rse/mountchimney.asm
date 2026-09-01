@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/4/
 
 Music_MountChimneyRSE:
+music_header
 	channel_count 4
 	channel 1, Music_MountChimneyRSE_Ch1
 	channel 2, Music_MountChimneyRSE_Ch2
@@ -11,6 +12,7 @@ Music_MountChimneyRSE:
 	channel 4, Music_MountChimneyRSE_Ch4
 
 Music_MountChimneyRSE_Ch1:
+music_label
 	tempo 160
 	volume 7, 7
 	duty_cycle 0
@@ -29,6 +31,7 @@ Music_MountChimneyRSE_Ch1:
 	volume_envelope 8, 7
 	note A#, 9
 Music_MountChimneyRSE_Ch1_loop_main:
+music_label
 	sound_call Music_MountChimneyRSE_Ch1_branch_1
 	octave 4
 	volume_envelope 10, 2
@@ -43,6 +46,7 @@ Music_MountChimneyRSE_Ch1_loop_main:
 	note_type 8, 5, 2
 	duty_cycle 1
 Music_MountChimneyRSE_Ch1_loop_1:
+music_label
 	octave 2
 	note B_, 1
 	octave 3
@@ -53,6 +57,7 @@ Music_MountChimneyRSE_Ch1_loop_1:
 	note D#, 1
 	sound_loop 3, Music_MountChimneyRSE_Ch1_loop_1
 Music_MountChimneyRSE_Ch1_loop_2:
+music_label
 	octave 2
 	note A#, 1
 	octave 3
@@ -86,6 +91,7 @@ Music_MountChimneyRSE_Ch1_loop_2:
 	note_type 8, 5, 2
 	duty_cycle 1
 Music_MountChimneyRSE_Ch1_loop_3:
+music_label
 	octave 2
 	note A_, 1
 	octave 3
@@ -96,6 +102,7 @@ Music_MountChimneyRSE_Ch1_loop_3:
 	note C#, 1
 	sound_loop 2, Music_MountChimneyRSE_Ch1_loop_3
 Music_MountChimneyRSE_Ch1_loop_4:
+music_label
 	octave 2
 	note G#, 1
 	octave 3
@@ -218,6 +225,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	sound_jump Music_MountChimneyRSE_Ch1_loop_main
 
 Music_MountChimneyRSE_Ch1_branch_1:
+music_label
 	note_type 6, 10, 2
 	octave 3
 	note F_, 1
@@ -392,11 +400,13 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	sound_ret
 
 Music_MountChimneyRSE_blank:
+music_label
 	rest 16
 	sound_loop 8, Music_MountChimneyRSE_blank
 	sound_ret
 
 Music_MountChimneyRSE_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 18, 2, 5
 	pitch_offset 1
@@ -411,6 +421,7 @@ Music_MountChimneyRSE_Ch2:
 	volume_envelope 8, 7
 	note D#, 9
 Music_MountChimneyRSE_Ch2_loop:
+music_label
 	sound_call Music_MountChimneyRSE_Ch2_branch_1
 	octave 4
 	volume_envelope 12, 0
@@ -577,6 +588,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	sound_jump Music_MountChimneyRSE_Ch2_loop
 
 Music_MountChimneyRSE_Ch2_branch_1:
+music_label
 	note_type 6, 10, 2
 	octave 3
 	note A#, 1
@@ -784,6 +796,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	sound_ret
 
 Music_MountChimneyRSE_Ch3:
+music_label
 	note_type 6, 2, 5
 	vibrato 18, 1, 5
 	octave 2
@@ -816,6 +829,7 @@ Music_MountChimneyRSE_Ch3:
 	note G_, 1
 	note D#, 1
 Music_MountChimneyRSE_Ch3_loop:
+music_label
 	sound_call Music_MountChimneyRSE_Ch3_branch_1
 	sound_call Music_MountChimneyRSE_Ch3_branch_1
 	octave 1
@@ -980,6 +994,7 @@ Music_MountChimneyRSE_Ch3_loop:
 	sound_jump Music_MountChimneyRSE_Ch3_loop
 
 Music_MountChimneyRSE_Ch3_branch_1:
+music_label
 	octave 1
 	note G#, 6
 	octave 2
@@ -1124,6 +1139,7 @@ Music_MountChimneyRSE_Ch3_branch_1:
 	sound_ret
 
 Music_MountChimneyRSE_Ch3_branch_2:
+music_label
 	octave 2
 	note G#, 4
 	octave 1
@@ -1153,6 +1169,7 @@ Music_MountChimneyRSE_Ch3_branch_2:
 	sound_ret
 
 Music_MountChimneyRSE_Ch4:
+music_label
 	toggle_noise 4
 	drum_speed 6
 	drum_note 12, 4
@@ -1195,6 +1212,7 @@ Music_MountChimneyRSE_Ch4:
 	drum_note 2, 1
 	drum_note 2, 1
 Music_MountChimneyRSE_Ch4_loop:
+music_label
 	sound_call Music_MountChimneyRSE_Ch4_branch_1
 	sound_call Music_MountChimneyRSE_Ch4_branch_1
 	drum_note 10, 16
@@ -1403,6 +1421,7 @@ Music_MountChimneyRSE_Ch4_loop:
 	sound_jump Music_MountChimneyRSE_Ch4_loop
 
 Music_MountChimneyRSE_Ch4_branch_1:
+music_label
 	drum_note 12, 6
 	drum_note 2, 4
 	drum_note 8, 2

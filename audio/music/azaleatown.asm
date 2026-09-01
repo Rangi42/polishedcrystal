@@ -1,4 +1,5 @@
 Music_AzaleaTown:
+music_header
 	channel_count 4
 	channel 1, Music_AzaleaTown_Ch1
 	channel 2, Music_AzaleaTown_Ch2
@@ -6,6 +7,7 @@ Music_AzaleaTown:
 	channel 4, Music_AzaleaTown_Ch4
 
 Music_AzaleaTown_Ch1:
+music_label
 	tempo 160
 	volume 7, 7
 	duty_cycle 2
@@ -13,6 +15,7 @@ Music_AzaleaTown_Ch1:
 	note_type 12, 10, 1
 	rest 2
 Music_AzaleaTown_branch_f5801:
+music_label
 	volume_envelope 10, 1
 	octave 3
 	note F_, 2
@@ -28,6 +31,7 @@ Music_AzaleaTown_branch_f5801:
 	note F_, 2
 	sound_loop 2, Music_AzaleaTown_branch_f5801
 Music_AzaleaTown_branch_f5816:
+music_label
 	sound_call Music_AzaleaTown_branch_f588c
 	stereo_panning TRUE, FALSE
 	volume_envelope 10, 4
@@ -121,6 +125,7 @@ Music_AzaleaTown_branch_f5816:
 	sound_jump Music_AzaleaTown_branch_f5816
 
 Music_AzaleaTown_branch_f588c:
+music_label
 	note_type 12, 10, 1
 	octave 4
 	note F_, 2
@@ -220,6 +225,7 @@ Music_AzaleaTown_branch_f588c:
 	sound_ret
 
 Music_AzaleaTown_branch_f5912:
+music_label
 	volume_envelope 6, 1
 	note G#, 8
 	note G#, 8
@@ -230,6 +236,7 @@ Music_AzaleaTown_branch_f5912:
 	sound_ret
 
 Music_AzaleaTown_Ch2:
+music_label
 	vibrato 18, 2, 3
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
@@ -266,6 +273,7 @@ Music_AzaleaTown_Ch2:
 	octave 5
 	note C_, 1
 Music_AzaleaTown_branch_f5952:
+music_label
 	sound_call Music_AzaleaTown_branch_f59c7
 	note C#, 4
 	note C_, 2
@@ -365,6 +373,7 @@ Music_AzaleaTown_branch_f5952:
 	sound_jump Music_AzaleaTown_branch_f5952
 
 Music_AzaleaTown_branch_f59c7:
+music_label
 	note C#, 4
 	octave 4
 	note G#, 2
@@ -418,6 +427,7 @@ Music_AzaleaTown_branch_f59c7:
 	sound_ret
 
 Music_AzaleaTown_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 	vibrato 6, 2, 6
 	note_type 12, 2, 5
@@ -442,6 +452,7 @@ Music_AzaleaTown_Ch3:
 	rest 1
 	note G#, 4
 Music_AzaleaTown_branch_f5a24:
+music_label
 	sound_call Music_AzaleaTown_branch_f5a86
 	note G#, 4
 	note D#, 2
@@ -531,6 +542,7 @@ Music_AzaleaTown_branch_f5a24:
 	sound_jump Music_AzaleaTown_branch_f5a24
 
 Music_AzaleaTown_branch_f5a86:
+music_label
 	note C#, 1
 	rest 5
 	note C#, 1
@@ -604,6 +616,7 @@ Music_AzaleaTown_branch_f5a86:
 	sound_ret
 
 Music_AzaleaTown_branch_f5acf:
+music_label
 	volume_envelope 3, 5
 	octave 3
 	note F_, 1
@@ -626,10 +639,12 @@ Music_AzaleaTown_branch_f5acf:
 	sound_ret
 
 Music_AzaleaTown_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	drum_note 6, 2
 Music_AzaleaTown_branch_f5aea:
+music_label
 	drum_note 4, 2
 	drum_note 7, 2
 	drum_note 3, 2

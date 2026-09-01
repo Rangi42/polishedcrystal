@@ -3,6 +3,7 @@
 ; https://github.com/froggestspirit/pokecrystal/blob/master/Demixes.zip
 
 Music_SunyshoreCityDPPt:
+music_header
 	channel_count 4
 	channel 1, Music_SunyshoreCityDPPt_Ch1
 	channel 2, Music_SunyshoreCityDPPt_Ch2
@@ -10,6 +11,7 @@ Music_SunyshoreCityDPPt:
 	channel 4, Music_SunyshoreCityDPPt_Ch4
 
 Music_SunyshoreCityDPPt_Ch1:
+music_label
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	tempo 144
@@ -73,6 +75,7 @@ Music_SunyshoreCityDPPt_Ch1:
 	note A_, 1
 	note G#, 1
 Music_SunyshoreCityDPPt_Ch1_loop:
+music_label
 	note_type 6, 8, 7
 	note G#, 1
 	note A_, 3
@@ -582,6 +585,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	sound_jump Music_SunyshoreCityDPPt_Ch1_loop
 
 Music_SunyshoreCityDPPt_Ch2:
+music_label
 	pitch_offset 1
 	volume_envelope 12, 1
 	note_type 12, 12, 1
@@ -647,6 +651,7 @@ Music_SunyshoreCityDPPt_Ch2:
 	note A_, 1
 	note B_, 1
 Music_SunyshoreCityDPPt_Ch2_loop:
+music_label
 	octave 4
 	note C#, 6
 	note D_, 4
@@ -921,6 +926,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	sound_jump Music_SunyshoreCityDPPt_Ch2_loop
 
 Music_SunyshoreCityDPPt_Ch3:
+music_label
 	volume_envelope 2, 5
 	octave 2
 	note_type 6, 2, 5
@@ -995,6 +1001,7 @@ Music_SunyshoreCityDPPt_Ch3:
 	note D#, 1
 	rest 1
 Music_SunyshoreCityDPPt_Ch3_loop:
+music_label
 	note D_, 1
 	rest 1
 	note D_, 3
@@ -1502,6 +1509,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	sound_jump Music_SunyshoreCityDPPt_Ch3_loop
 
 Music_SunyshoreCityDPPt_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	drum_note 4, 1
@@ -1545,6 +1553,7 @@ Music_SunyshoreCityDPPt_Ch4:
 	drum_note 1, 2
 	drum_note 8, 2
 Music_SunyshoreCityDPPt_Ch4_loop:
+music_label
 	drum_note 8, 2
 	drum_note 8, 2
 	drum_note 1, 1

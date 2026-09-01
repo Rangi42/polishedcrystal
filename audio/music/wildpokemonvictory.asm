@@ -1,10 +1,12 @@
 Music_WildPokemonVictory:
+music_header
 	channel_count 3
 	channel 1, Music_WildPokemonVictory_Ch1
 	channel 2, Music_WildPokemonVictory_Ch2
 	channel 3, Music_WildPokemonVictory_Ch3
 
 Music_WildPokemonVictory_Ch1:
+music_label
 	tempo 126
 	volume 7, 7
 	duty_cycle 3
@@ -18,8 +20,10 @@ Music_WildPokemonVictory_Ch1:
 	volume_envelope 11, 6
 	note E_, 12
 Music_SuccessfulCapture_branch_f4536:
+music_label
 	stereo_panning FALSE, TRUE
 Music_WildPokemonVictory_branch_f4538:
+music_label
 	sound_call Music_WildPokemonVictory_branch_f455c
 	note F#, 2
 	note F#, 2
@@ -43,6 +47,7 @@ Music_WildPokemonVictory_branch_f4538:
 	sound_jump Music_WildPokemonVictory_branch_f4538
 
 Music_WildPokemonVictory_branch_f455c:
+music_label
 	volume_envelope 7, 1
 	octave 3
 	note G#, 1
@@ -69,6 +74,7 @@ Music_WildPokemonVictory_branch_f455c:
 	sound_ret
 
 Music_WildPokemonVictory_Ch2:
+music_label
 	vibrato 18, 2, 4
 	duty_cycle 2
 	note_type 12, 13, 1
@@ -80,8 +86,10 @@ Music_WildPokemonVictory_Ch2:
 	volume_envelope 13, 6
 	note B_, 12
 Music_SuccessfulCapture_branch_f4585:
+music_label
 	stereo_panning TRUE, FALSE
 Music_WildPokemonVictory_branch_f4587:
+music_label
 	sound_call Music_WildPokemonVictory_branch_f45b5
 	octave 4
 	note B_, 2
@@ -115,6 +123,7 @@ Music_WildPokemonVictory_branch_f4587:
 	sound_jump Music_WildPokemonVictory_branch_f4587
 
 Music_WildPokemonVictory_branch_f45b5:
+music_label
 	volume_envelope 8, 1
 	octave 4
 	note B_, 2
@@ -131,6 +140,7 @@ Music_WildPokemonVictory_branch_f45b5:
 	sound_ret
 
 Music_WildPokemonVictory_Ch3:
+music_label
 	note_type 12, 2, 0
 	rest 6
 	octave 6
@@ -141,7 +151,9 @@ Music_WildPokemonVictory_Ch3:
 	note E_, 1
 	rest 3
 Music_SuccessfulCapture_branch_f45cf:
+music_label
 Music_WildPokemonVictory_branch_f45cf:
+music_label
 	sound_call Music_WildPokemonVictory_branch_f45f4
 	note D#, 2
 	note C#, 2
@@ -168,6 +180,7 @@ Music_WildPokemonVictory_branch_f45cf:
 	sound_jump Music_WildPokemonVictory_branch_f45cf
 
 Music_WildPokemonVictory_branch_f45f4:
+music_label
 	volume_envelope 2, 5
 	octave 3
 	note E_, 2

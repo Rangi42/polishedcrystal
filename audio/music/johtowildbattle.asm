@@ -1,16 +1,19 @@
 Music_JohtoWildBattle:
+music_header
 	channel_count 3
 	channel 1, Music_JohtoWildBattle_Ch1
 	channel 2, Music_JohtoWildBattle_Ch2
 	channel 3, Music_JohtoWildBattle_Ch3
 
 Music_JohtoWildBattle_Ch1:
+music_label
 	tempo 104
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
 	vibrato 18, 1, 5
 Music_JohtoWildBattleNight_branch_f5ddb:
+music_label
 	note_type 12, 11, 2
 	octave 4
 	note C_, 1
@@ -88,6 +91,7 @@ Music_JohtoWildBattleNight_branch_f5ddb:
 	volume_envelope 6, -7
 	note D#, 8
 Music_JohtoWildBattle_branch_f5e2d:
+music_label
 	volume_envelope 11, 6
 	octave 3
 	note D_, 6
@@ -202,6 +206,7 @@ Music_JohtoWildBattle_branch_f5e2d:
 	sound_jump Music_JohtoWildBattle_branch_f5e2d
 
 Music_JohtoWildBattle_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 8, 3, 6
 	pitch_offset 1
@@ -210,6 +215,7 @@ Music_JohtoWildBattle_Ch2:
 	octave 4
 	note G_, 6
 Music_JohtoWildBattleNight_branch_f5eb2:
+music_label
 	octave 3
 	note D_, 6
 	note G_, 4
@@ -239,6 +245,7 @@ Music_JohtoWildBattleNight_branch_f5eb2:
 	volume_envelope 6, -7
 	note G#, 8
 Music_JohtoWildBattle_branch_f5ed1:
+music_label
 	volume_envelope 12, 4
 	octave 3
 	note G_, 6
@@ -364,7 +371,9 @@ Music_JohtoWildBattle_branch_f5ed1:
 	sound_jump Music_JohtoWildBattle_branch_f5ed1
 
 Music_JohtoWildBattleNight_branch_f5f5d:
+music_label
 Music_JohtoWildBattle_branch_f5f5d:
+music_label
 	note_type 12, 12, 2
 	octave 4
 	note F_, 1
@@ -417,8 +426,10 @@ Music_JohtoWildBattle_branch_f5f5d:
 	sound_ret
 
 Music_JohtoWildBattle_Ch3:
+music_label
 	note_type 12, 1, 4
 Music_JohtoWildBattleNight_branch_f5f94:
+music_label
 	octave 4
 	note G_, 2
 	octave 5
@@ -468,6 +479,7 @@ Music_JohtoWildBattleNight_branch_f5f94:
 	note G_, 2
 	note F_, 2
 Music_JohtoWildBattle_branch_f5fc6:
+music_label
 	note D_, 2
 	note G_, 2
 	sound_loop 6, Music_JohtoWildBattle_branch_f5fc6
@@ -485,6 +497,7 @@ Music_JohtoWildBattle_branch_f5fc6:
 	note F_, 2
 	note D#, 2
 Music_JohtoWildBattle_branch_f5fdb:
+music_label
 	note D_, 2
 	note G_, 2
 	sound_loop 7, Music_JohtoWildBattle_branch_f5fdb
@@ -492,12 +505,14 @@ Music_JohtoWildBattle_branch_f5fdb:
 	sound_call Music_JohtoWildBattle_branch_f6055
 	sound_call Music_JohtoWildBattle_branch_f6055
 Music_JohtoWildBattle_branch_f5fe8:
+music_label
 	note D_, 2
 	note G_, 2
 	sound_loop 7, Music_JohtoWildBattle_branch_f5fe8
 	note D_, 2
 	note A_, 2
 Music_JohtoWildBattle_branch_f5ff0:
+music_label
 	note C_, 2
 	note F_, 2
 	sound_loop 5, Music_JohtoWildBattle_branch_f5ff0
@@ -516,6 +531,7 @@ Music_JohtoWildBattle_branch_f5ff0:
 	note G#, 2
 	note G_, 4
 Music_JohtoWildBattle_branch_f6006:
+music_label
 	note E_, 2
 	note A_, 2
 	sound_loop 8, Music_JohtoWildBattle_branch_f6006
@@ -545,10 +561,12 @@ Music_JohtoWildBattle_branch_f6006:
 	note F_, 2
 	note D#, 2
 Music_JohtoWildBattle_branch_f6027:
+music_label
 	note D_, 2
 	note G_, 2
 	sound_loop 8, Music_JohtoWildBattle_branch_f6027
 Music_JohtoWildBattle_branch_f602d:
+music_label
 	note C_, 2
 	note F_, 2
 	sound_loop 7, Music_JohtoWildBattle_branch_f602d
@@ -559,16 +577,19 @@ Music_JohtoWildBattle_branch_f602d:
 	note D_, 4
 	note G_, 4
 Music_JohtoWildBattle_branch_f6039:
+music_label
 	note D_, 2
 	note G_, 2
 	sound_loop 12, Music_JohtoWildBattle_branch_f6039
 Music_JohtoWildBattle_branch_f603f:
+music_label
 	note C_, 2
 	note E_, 2
 	sound_loop 7, Music_JohtoWildBattle_branch_f603f
 	note F_, 2
 	note F#, 2
 Music_JohtoWildBattle_branch_f6047:
+music_label
 	note D_, 2
 	note G_, 2
 	sound_loop 6, Music_JohtoWildBattle_branch_f6047
@@ -579,6 +600,7 @@ Music_JohtoWildBattle_branch_f6047:
 	sound_jump Music_JohtoWildBattle_branch_f5fdb
 
 Music_JohtoWildBattle_branch_f6055:
+music_label
 	note D#, 2
 	note G#, 2
 	sound_loop 4, Music_JohtoWildBattle_branch_f6055

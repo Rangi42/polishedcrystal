@@ -1,4 +1,5 @@
 Music_Gym:
+music_header
 	channel_count 4
 	channel 1, Music_Gym_Ch1
 	channel 2, Music_Gym_Ch2
@@ -6,6 +7,7 @@ Music_Gym:
 	channel 4, Music_Gym_Ch4
 
 Music_Gym_Ch1:
+music_label
 	tempo 156
 	volume 7, 7
 	stereo_panning FALSE, TRUE
@@ -13,6 +15,7 @@ Music_Gym_Ch1:
 	duty_cycle 1
 	note_type 12, 11, 7
 Music_Gym_branch_f48c9:
+music_label
 	octave 4
 	note F#, 2
 	octave 2
@@ -191,9 +194,11 @@ Music_Gym_branch_f48c9:
 	sound_jump Music_Gym_branch_f48c9
 
 Music_Gym_Ch2:
+music_label
 	duty_cycle 1
 	stereo_panning TRUE, FALSE
 Music_Gym_branch_f4980:
+music_label
 	note_type 12, 12, 3
 	octave 2
 	note D_, 2
@@ -287,6 +292,7 @@ Music_Gym_branch_f4980:
 	sound_jump Music_Gym_branch_f4980
 
 Music_Gym_branch_f49e9:
+music_label
 	octave 3
 	note D_, 3
 	octave 2
@@ -333,6 +339,7 @@ Music_Gym_branch_f49e9:
 	sound_ret
 
 Music_Gym_branch_f4a15:
+music_label
 	octave 2
 	note D_, 4
 	note D_, 2
@@ -369,9 +376,11 @@ Music_Gym_branch_f4a15:
 	sound_ret
 
 Music_Gym_Ch3:
+music_label
 	vibrato 20, 2, 3
 	stereo_panning TRUE, TRUE
 Music_Gym_branch_f4a3c:
+music_label
 	note_type 12, 1, 4
 	octave 6
 	note D_, 2
@@ -483,6 +492,7 @@ Music_Gym_branch_f4a3c:
 	sound_jump Music_Gym_branch_f4a3c
 
 Music_Gym_branch_f4ab3:
+music_label
 	octave 5
 	note A_, 6
 	octave 6
@@ -503,8 +513,10 @@ Music_Gym_branch_f4ab3:
 	sound_ret
 
 Music_Gym_Ch4:
+music_label
 	toggle_noise 4
 Music_Gym_branch_f4ac7:
+music_label
 	drum_speed 12
 	drum_note 3, 2
 	drum_note 2, 1
@@ -530,6 +542,7 @@ Music_Gym_branch_f4ac7:
 	drum_note 3, 1
 	drum_speed 6
 Music_Gym_branch_f4ae1:
+music_label
 	drum_note 3, 6
 	drum_note 3, 6
 	drum_note 3, 4
@@ -553,6 +566,7 @@ Music_Gym_branch_f4ae1:
 	drum_note 12, 8
 	sound_loop 4, Music_Gym_branch_f4ae1
 Music_Gym_branch_f4afa:
+music_label
 	drum_note 4, 4
 	drum_note 7, 4
 	drum_note 3, 4

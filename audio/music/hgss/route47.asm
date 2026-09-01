@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/4/
 
 Music_Route47HGSS:
+music_header
 	channel_count 4
 	channel 1, Music_Route47HGSS_Ch1
 	channel 2, Music_Route47HGSS_Ch2
@@ -11,6 +12,7 @@ Music_Route47HGSS:
 	channel 4, Music_Route47HGSS_Ch4
 
 Music_Route47HGSS_Ch1:
+music_label
 	tempo 192
 	volume 7, 7
 	duty_cycle 0
@@ -19,8 +21,10 @@ Music_Route47HGSS_Ch1:
 	note_type 6, 8, 2
 	rest 16
 Music_Route47HGSS_Ch1_loop_main:
+music_label
 	note_type 6, 8, 2
 Music_Route47HGSS_Ch1_loop_1:
+music_label
 	sound_call Music_Route47HGSS_Ch1_branch_1
 	sound_call Music_Route47HGSS_Ch1_branch_1
 	sound_call Music_Route47HGSS_Ch1_branch_1
@@ -553,6 +557,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	sound_jump Music_Route47HGSS_Ch1_loop_main
 
 Music_Route47HGSS_Ch1_branch_1:
+music_label
 	volume_envelope 8, 2
 	octave 4
 	note C_, 2
@@ -568,6 +573,7 @@ Music_Route47HGSS_Ch1_branch_1:
 	sound_ret
 
 Music_Route47HGSS_Ch1_branch_2:
+music_label
 	duty_cycle 0
 	volume_envelope 6, 2
 	octave 3
@@ -578,6 +584,7 @@ Music_Route47HGSS_Ch1_branch_2:
 	sound_ret
 
 Music_Route47HGSS_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 18, 2, 5
 	pitch_offset 1
@@ -605,6 +612,7 @@ Music_Route47HGSS_Ch2:
 	note G_, 1
 	note C_, 1
 Music_Route47HGSS_Ch2_loop:
+music_label
 	note_type 12, 10, 4
 	octave 3
 	note C_, 1
@@ -962,10 +970,12 @@ Music_Route47HGSS_Ch2_loop:
 	sound_jump Music_Route47HGSS_Ch2_loop
 
 Music_Route47HGSS_Ch3:
+music_label
 	note_type 12, 2, 5
 	vibrato 18, 1, 5
 	rest 8
 Music_Route47HGSS_Ch3_loop:
+music_label
 	octave 1
 	note F_, 12
 	note A_, 4
@@ -1091,9 +1101,11 @@ Music_Route47HGSS_Ch3_loop:
 	sound_jump Music_Route47HGSS_Ch3_loop
 
 Music_Route47HGSS_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 Music_Route47HGSS_Ch4_loop_main:
+music_label
 	rest 5
 	sound_call Music_Route47HGSS_Ch4_branch_1
 	drum_note 12, 16
@@ -1104,6 +1116,7 @@ Music_Route47HGSS_Ch4_loop_main:
 	drum_note 12, 3
 	sound_call Music_Route47HGSS_Ch4_branch_2
 Music_Route47HGSS_Ch4_loop_1:
+music_label
 	drum_note 1, 1
 	drum_note 2, 1
 	drum_note 2, 1
@@ -1124,6 +1137,7 @@ Music_Route47HGSS_Ch4_loop_1:
 	drum_note 12, 3
 	sound_call Music_Route47HGSS_Ch4_branch_2
 Music_Route47HGSS_Ch4_loop_2:
+music_label
 	drum_note 1, 1
 	drum_note 2, 1
 	drum_note 2, 1
@@ -1147,6 +1161,7 @@ Music_Route47HGSS_Ch4_loop_2:
 	sound_jump Music_Route47HGSS_Ch4_loop_main
 
 Music_Route47HGSS_Ch4_branch_1:
+music_label
 	drum_speed 4
 	drum_note 2, 1
 	drum_note 2, 1
@@ -1161,6 +1176,7 @@ Music_Route47HGSS_Ch4_branch_1:
 	sound_ret
 
 Music_Route47HGSS_Ch4_branch_2:
+music_label
 	drum_note 1, 1
 	drum_note 2, 1
 	drum_note 2, 1
@@ -1174,6 +1190,7 @@ Music_Route47HGSS_Ch4_branch_2:
 	sound_ret
 
 Music_Route47HGSS_Ch4_branch_3:
+music_label
 	drum_note 2, 1
 	drum_note 2, 2
 	drum_note 2, 1
@@ -1183,6 +1200,7 @@ Music_Route47HGSS_Ch4_branch_3:
 	sound_ret
 
 Music_Route47HGSS_Ch4_branch_4:
+music_label
 	drum_note 2, 2
 	drum_note 2, 1
 	drum_note 2, 2

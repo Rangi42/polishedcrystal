@@ -3,18 +3,21 @@
 ; https://pastebin.com/GguFiV8e
 
 Music_CianwoodCityHGSS:
+music_header
 	channel_count 3
 	channel 1, Music_CianwoodCityHGSS_Ch1
 	channel 2, Music_CianwoodCityHGSS_Ch2
 	channel 3, Music_CianwoodCityHGSS_Ch3
 
 Music_CianwoodCityHGSS_Ch1:
+music_label
 	tempo 197
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	vibrato 18, 2, 5
 	duty_cycle 2
 Music_CianwoodCityHGSS_branch_ef2e5:
+music_label
 	note_type 12, 5, 7
 	rest 10
 	octave 3
@@ -137,6 +140,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	sound_jump Music_CianwoodCityHGSS_branch_ef2e5
 
 Music_CianwoodCityHGSS_branch_ef37f:
+music_label
 	note A#, 2
 	note F#, 2
 	note D#, 2
@@ -149,6 +153,7 @@ Music_CianwoodCityHGSS_branch_ef37f:
 	sound_ret
 
 Music_CianwoodCityHGSS_branch_ef391:
+music_label
 	note G#, 2
 	note F_, 2
 	note C#, 2
@@ -185,6 +190,7 @@ Music_CianwoodCityHGSS_branch_ef391:
 	note F#, 2
 	note D#, 2
 Music_CianwoodCityHGSS_branch_ef3be:
+music_label
 	octave 3
 	note B_, 2
 	octave 4
@@ -197,6 +203,7 @@ Music_CianwoodCityHGSS_branch_ef3be:
 	note B_, 2
 	sound_loop 2, Music_CianwoodCityHGSS_branch_ef3be
 Music_CianwoodCityHGSS_branch_ef3d0:
+music_label
 	octave 4
 	note C#, 2
 	note F_, 2
@@ -218,10 +225,12 @@ Music_CianwoodCityHGSS_branch_ef3d0:
 	sound_ret
 
 Music_CianwoodCityHGSS_Ch2:
+music_label
 	vibrato 18, 2, 5
 	duty_cycle 3
 	stereo_panning TRUE, FALSE
 Music_CianwoodCityHGSS_branch_ef3f2:
+music_label
 	note_type 6, 6, 7
 	rest 16
 	rest 5
@@ -433,8 +442,10 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	sound_jump Music_CianwoodCityHGSS_branch_ef3f2
 
 Music_CianwoodCityHGSS_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 Music_CianwoodCityHGSS_branch_ef4e3:
+music_label
 	vibrato 18, 2, 5
 	note_type 12, 2, 5
 	octave 2
@@ -560,6 +571,7 @@ Music_CianwoodCityHGSS_branch_ef4e3:
 	sound_jump Music_CianwoodCityHGSS_branch_ef4e3
 
 Music_CianwoodCityHGSS_branch_ef569:
+music_label
 	octave 2
 	note B_, 4
 	rest 2

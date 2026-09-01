@@ -1,4 +1,5 @@
 Music_ContestResults:
+music_header
 	channel_count 4
 	channel 1, Music_ContestResults_Ch1
 	channel 2, Music_ContestResults_Ch2
@@ -6,10 +7,12 @@ Music_ContestResults:
 	channel 4, Music_ContestResults_Ch4
 
 Music_ContestResults_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	note_type 12, 5, 1
 Music_ContestResults_branch_efb52:
+music_label
 	rest 2
 	octave 2
 	note G_, 1
@@ -50,8 +53,10 @@ Music_ContestResults_branch_efb52:
 	sound_jump Music_ContestResults_branch_efb52
 
 Music_ContestResults_Ch2:
+music_label
 	note_type 12, 6, 1
 Music_ContestResults_branch_efb7e:
+music_label
 	octave 2
 	note C_, 2
 	octave 3
@@ -93,6 +98,7 @@ Music_ContestResults_branch_efb7e:
 	note F_, 1
 	rest 1
 Music_ContestResults_branch_efba6:
+music_label
 	octave 2
 	note D_, 2
 	octave 3
@@ -127,9 +133,11 @@ Music_ContestResults_branch_efba6:
 	sound_jump Music_ContestResults_branch_efb7e
 
 Music_ContestResults_Ch3:
+music_label
 	vibrato 8, 2, 4
 	note_type 12, 2, 3
 Music_ContestResults_branch_efbd2:
+music_label
 	octave 4
 	note E_, 5
 	rest 1
@@ -152,9 +160,11 @@ Music_ContestResults_branch_efbd2:
 	sound_jump Music_ContestResults_branch_efbd2
 
 Music_ContestResults_Ch4:
+music_label
 	toggle_noise 4
 	drum_speed 6
 Music_ContestResults_branch_efbed:
+music_label
 	drum_note 2, 4
 	drum_note 2, 4
 	drum_note 2, 2

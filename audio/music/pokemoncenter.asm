@@ -1,4 +1,5 @@
 Music_PokemonCenter:
+music_header
 	channel_count 4
 	channel 1, Music_PokemonCenter_Ch1
 	channel 2, Music_PokemonCenter_Ch2
@@ -6,12 +7,14 @@ Music_PokemonCenter:
 	channel 4, Music_PokemonCenter_Ch4
 
 Music_PokemonCenter_Ch1:
+music_label
 	tempo 152
 	volume 7, 7
 	duty_cycle 2
 	vibrato 10, 1, 4
 	pitch_offset 1
 Music_PokemonCenter_branch_ed5df:
+music_label
 	stereo_panning FALSE, TRUE
 	note_type 12, 8, 3
 	octave 3
@@ -151,8 +154,10 @@ Music_PokemonCenter_branch_ed5df:
 	sound_jump Music_PokemonCenter_branch_ed5df
 
 Music_PokemonCenter_Ch2:
+music_label
 	vibrato 16, 2, 5
 Music_PokemonCenter_branch_ed674:
+music_label
 	stereo_panning TRUE, TRUE
 	sound_call Music_PokemonCenter_branch_ed6d1
 	stereo_panning FALSE, TRUE
@@ -219,6 +224,7 @@ Music_PokemonCenter_branch_ed674:
 	sound_jump Music_PokemonCenter_branch_ed674
 
 Music_PokemonCenter_branch_ed6d1:
+music_label
 	duty_cycle 2
 	note_type 12, 12, 2
 	octave 4
@@ -236,6 +242,7 @@ Music_PokemonCenter_branch_ed6d1:
 	sound_ret
 
 Music_PokemonCenter_branch_ed6e4:
+music_label
 	note_type 12, 12, 2
 	octave 4
 	note C#, 2
@@ -250,8 +257,10 @@ Music_PokemonCenter_branch_ed6e4:
 	sound_ret
 
 Music_PokemonCenter_Ch3:
+music_label
 	note_type 12, 2, 8
 Music_PokemonCenter_branch_ed6f6:
+music_label
 	stereo_panning TRUE, FALSE
 	octave 3
 	note D_, 1
@@ -358,6 +367,7 @@ Music_PokemonCenter_branch_ed6f6:
 	sound_jump Music_PokemonCenter_branch_ed6f6
 
 Music_PokemonCenter_branch_ed76f:
+music_label
 	note E_, 1
 	rest 5
 	note A_, 1
@@ -369,6 +379,7 @@ Music_PokemonCenter_branch_ed76f:
 	sound_ret
 
 Music_PokemonCenter_branch_ed778:
+music_label
 	note E_, 1
 	rest 5
 	note A_, 1
@@ -382,6 +393,7 @@ Music_PokemonCenter_branch_ed778:
 	sound_ret
 
 Music_PokemonCenter_branch_ed783:
+music_label
 	note F#, 1
 	rest 5
 	note A_, 1
@@ -393,10 +405,12 @@ Music_PokemonCenter_branch_ed783:
 	sound_ret
 
 Music_PokemonCenter_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	stereo_panning TRUE, TRUE
 Music_PokemonCenter_branch_ed792:
+music_label
 	drum_note 8, 6
 	drum_note 8, 4
 	drum_note 8, 2

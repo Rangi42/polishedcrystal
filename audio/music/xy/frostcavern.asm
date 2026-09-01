@@ -4,12 +4,14 @@
 ; https://hax.iimarckus.org/topic/6777/8/
 
 Music_FrostCavernXY:
+music_header
 	channel_count 3
 	channel 1, Music_FrostCavernXY_Ch1
 	channel 2, Music_FrostCavernXY_Ch2
 	channel 3, Music_FrostCavernXY_Ch3
 
 Music_FrostCavernXY_Ch1:
+music_label
 	tempo 152
 	volume 7, 7
 	vibrato 6, 2, 3
@@ -52,6 +54,7 @@ Music_FrostCavernXY_Ch1:
 	note A#, 6
 	note F_, 14
 Music_FrostCavernXY_Ch1_loop_1:
+music_label
 	duty_cycle 0
 	volume_envelope 11, 2
 	octave 5
@@ -81,6 +84,7 @@ Music_FrostCavernXY_Ch1_loop_1:
 	sound_jump Music_FrostCavernXY_Ch1
 
 Music_FrostCavernXY_Ch2:
+music_label
 	vibrato 8, 2, 4
 	note_type 12, 11, 2
 	duty_cycle 2
@@ -138,15 +142,18 @@ Music_FrostCavernXY_Ch2:
 	sound_jump Music_FrostCavernXY_Ch2
 
 Music_FrostCavernXY_Ch3:
+music_label
 	vibrato 22, 1, 5
 	note_type 12, 2, 0
 	rest 16
 Music_FrostCavernXY_Ch3_loop_main:
+music_label
 	rest 16
 	rest 16
 	rest 16
 	rest 2
 Music_FrostCavernXY_Ch3_loop_1:
+music_label
 	octave 4
 	note C_, 2
 	note D#, 2

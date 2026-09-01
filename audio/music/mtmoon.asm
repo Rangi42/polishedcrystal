@@ -1,4 +1,5 @@
 Music_MtMoon:
+music_header
 	channel_count 4
 	channel 1, Music_MtMoon_Ch1
 	channel 2, Music_MtMoon_Ch2
@@ -6,6 +7,7 @@ Music_MtMoon:
 	channel 4, Music_MtMoon_Ch4
 
 Music_MtMoon_Ch1:
+music_label
 	tempo 208
 	volume 7, 7
 	duty_cycle 2
@@ -17,11 +19,13 @@ Music_MtMoon_Ch1:
 	sound_jump Music_MtMoon_branch_edb56
 
 Music_MtMoon_Ch2:
+music_label
 	vibrato 11, 1, 5
 	duty_cycle 2
 	note_type 12, 8, 4
 	stereo_panning FALSE, TRUE
 Music_MtMoon_branch_edb56:
+music_label
 	octave 4
 	note D#, 6
 	note C#, 6
@@ -73,9 +77,12 @@ Music_MtMoon_branch_edb56:
 	sound_jump Music_MtMoon_branch_edb56
 
 Music_MtMoon_Ch3:
+music_label
 Music_MtMoon_branch_edb8a:
+music_label
 	note_type 12, 2, 8
 Music_MtMoon_branch_edb8d:
+music_label
 	octave 2
 	note B_, 2
 	octave 3
@@ -104,6 +111,7 @@ Music_MtMoon_branch_edb8d:
 	note D#, 2
 	note E_, 2
 Music_MtMoon_branch_edbab:
+music_label
 	note E_, 2
 	note G#, 2
 	octave 4
@@ -120,9 +128,11 @@ Music_MtMoon_branch_edbab:
 	sound_jump Music_MtMoon_branch_edb8a
 
 Music_MtMoon_Ch4:
+music_label
 	toggle_noise 5
 	drum_speed 12
 Music_MtMoon_branch_edbc3:
+music_label
 	stereo_panning FALSE, TRUE
 	drum_note 11, 4
 	drum_note 11, 8

@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/3/
 
 Music_LyraDepartureHGSS:
+music_header
 	channel_count 4
 	channel 1, Music_LyraDepartureHGSS_Ch1
 	channel 2, Music_LyraDepartureHGSS_Ch2
@@ -11,6 +12,7 @@ Music_LyraDepartureHGSS:
 	channel 4, Music_LyraDepartureHGSS_Ch4
 
 Music_LyraDepartureHGSS_Ch1:
+music_label
 	tempo 184
 	duty_cycle 1
 	note_type 12, 8, 5
@@ -18,18 +20,21 @@ Music_LyraDepartureHGSS_Ch1:
 	sound_jump Music_LyraEncounterHGSS_Ch1_loop
 
 Music_LyraDepartureHGSS_Ch2:
+music_label
 	duty_cycle 2
 	note_type 12, 11, 4
 	rest 4
 	sound_jump Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraDepartureHGSS_Ch3:
+music_label
 	note_type 12, 1, 5
 	volume_envelope 1, 0
 	rest 4
 	sound_jump Music_LyraEncounterHGSS_Ch3_loop
 
 Music_LyraDepartureHGSS_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 6
 	drum_note 1, 2

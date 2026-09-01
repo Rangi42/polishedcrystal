@@ -3,6 +3,7 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/route205.asm
 
 Music_Route205DPPt:
+music_header
 	channel_count 4
 	channel 1, Music_Route205DPPt_Ch1
 	channel 2, Music_Route205DPPt_Ch2
@@ -10,7 +11,9 @@ Music_Route205DPPt:
 	channel 4, Music_Route205DPPt_Ch4
 
 Music_Route205DPPt_Ch1:
+music_label
 Music_Route205DPPt_Ch1_loop:
+music_label
 	tempo 192
 	volume 7, 7
 	note_type 12, 11, 2
@@ -287,7 +290,9 @@ Music_Route205DPPt_Ch1_loop:
 	sound_jump Music_Route205DPPt_Ch1_loop
 
 Music_Route205DPPt_Ch2:
+music_label
 Music_Route205DPPt_Ch2_loop:
+music_label
 	note_type 12, 12, 2
 	duty_cycle 1
 	pitch_offset 2
@@ -560,7 +565,9 @@ Music_Route205DPPt_Ch2_loop:
 	sound_jump Music_Route205DPPt_Ch2_loop
 
 Music_Route205DPPt_Ch3:
+music_label
 Music_Route205DPPt_Ch3_loop:
+music_label
 	note_type 12, 1, 3
 	octave 2
 	note G_, 1
@@ -870,8 +877,10 @@ Music_Route205DPPt_Ch3_loop:
 	sound_jump Music_Route205DPPt_Ch3_loop
 
 Music_Route205DPPt_Ch4:
+music_label
 	toggle_noise 3
 Music_Route205DPPt_Ch4_loop:
+music_label
 	drum_speed 12
 	drum_note 2, 2
 	drum_note 2, 2

@@ -1,4 +1,5 @@
 Music_ElmsLab:
+music_header
 	channel_count 4
 	channel 1, Music_ElmsLab_Ch1
 	channel 2, Music_ElmsLab_Ch2
@@ -6,6 +7,7 @@ Music_ElmsLab:
 	channel 4, Music_ElmsLab_Ch4
 
 Music_ElmsLab_Ch1:
+music_label
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
@@ -35,6 +37,7 @@ Music_ElmsLab_Ch1:
 	note A_, 4
 	note A_, 2
 Music_ElmsLab_branch_ea075:
+music_label
 	rest 2
 	note A_, 2
 	note G#, 2
@@ -184,6 +187,7 @@ Music_ElmsLab_branch_ea075:
 	sound_jump Music_ElmsLab_branch_ea075
 
 Music_ElmsLab_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 16, 2, 6
 	stereo_panning FALSE, TRUE
@@ -214,6 +218,7 @@ Music_ElmsLab_Ch2:
 	note C_, 2
 	stereo_panning TRUE, TRUE
 Music_ElmsLab_branch_ea14f:
+music_label
 	volume_envelope 12, 6
 	octave 4
 	note F_, 6
@@ -351,6 +356,7 @@ Music_ElmsLab_branch_ea14f:
 	sound_jump Music_ElmsLab_branch_ea14f
 
 Music_ElmsLab_Ch3:
+music_label
 	stereo_panning FALSE, TRUE
 	note_type 12, 2, 5
 	rest 8
@@ -374,6 +380,7 @@ Music_ElmsLab_Ch3:
 	note D_, 2
 	note E_, 2
 Music_ElmsLab_branch_ea216:
+music_label
 	note F_, 2
 	note A_, 2
 	note C_, 2
@@ -528,11 +535,13 @@ Music_ElmsLab_branch_ea216:
 	sound_jump Music_ElmsLab_branch_ea216
 
 Music_ElmsLab_Ch4:
+music_label
 	stereo_panning TRUE, FALSE
 	toggle_noise 0
 	drum_speed 12
 	rest 16
 	rest 2
 Music_ElmsLab_branch_ea2b9:
+music_label
 	drum_note 8, 4
 	sound_jump Music_ElmsLab_branch_ea2b9

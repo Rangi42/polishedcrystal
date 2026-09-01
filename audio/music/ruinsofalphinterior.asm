@@ -1,10 +1,12 @@
 Music_RuinsOfAlphInterior:
+music_header
 	channel_count 3
 	channel 1, Music_RuinsOfAlphInterior_Ch1
 	channel 2, Music_RuinsOfAlphInterior_Ch2
 	channel 3, Music_RuinsOfAlphInterior_Ch3
 
 Music_RuinsOfAlphInterior_Ch1:
+music_label
 	tempo 224
 	volume 7, 7
 	duty_cycle 0
@@ -14,11 +16,13 @@ Music_RuinsOfAlphInterior_Ch1:
 	sound_jump Music_RuinsOfAlphInterior_branch_ebdc2
 
 Music_RuinsOfAlphInterior_Ch2:
+music_label
 	pitch_offset 2
 	duty_cycle 0
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 4
 Music_RuinsOfAlphInterior_branch_ebdc2:
+music_label
 	octave 4
 	note C_, 4
 	octave 3
@@ -36,8 +40,10 @@ Music_RuinsOfAlphInterior_branch_ebdc2:
 	sound_jump Music_RuinsOfAlphInterior_branch_ebdc2
 
 Music_RuinsOfAlphInterior_Ch3:
+music_label
 	note_type 12, 1, 0
 Music_RuinsOfAlphInterior_branch_ebdd7:
+music_label
 	octave 2
 	note G#, 2
 	octave 3

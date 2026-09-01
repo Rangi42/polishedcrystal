@@ -4,11 +4,13 @@
 ; https://hax.iimarckus.org/topic/6777/5/
 
 Music_WallyEncounterORAS:
+music_header
 	channel_count 2
 	channel 1, Music_WallyEncounterORAS_Ch1
 	channel 2, Music_WallyEncounterORAS_Ch2
 
 Music_WallyEncounterORAS_Ch1:
+music_label
 	tempo 208
 	volume 7, 7
 	duty_cycle 0
@@ -16,6 +18,7 @@ Music_WallyEncounterORAS_Ch1:
 	note_type 12, 6, 7
 	rest 4
 Music_WallyEncounterORAS_Ch1_loop:
+music_label
 	octave 2
 	note D#, 2
 	note A#, 2
@@ -128,6 +131,7 @@ Music_WallyEncounterORAS_Ch1_loop:
 	sound_jump Music_WallyEncounterORAS_Ch1_loop
 
 Music_WallyEncounterORAS_Ch2:
+music_label
 	duty_cycle 2
 	vibrato 18, 4, 4
 	note_type 6, 9, 7

@@ -3,6 +3,7 @@
 ; https://github.com/huderlem/pokestyle-music-devamps/blob/master/music/hoenn_dewford_town.asm
 
 Music_DewfordTownRSE:
+music_header
 	channel_count 4
 	channel 1, Music_DewfordTownRSE_Ch1
 	channel 2, Music_DewfordTownRSE_Ch2
@@ -10,10 +11,12 @@ Music_DewfordTownRSE:
 	channel 4, Music_DewfordTownRSE_Ch4
 
 Music_DewfordTownRSE_Ch1:
+music_label
 	tempo 138
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 Music_DewfordTownRSE_Ch1_b0:
+music_label
 	vibrato 16, 3, 3
 	duty_cycle 2
 	note_type 12, 3, -7
@@ -90,6 +93,7 @@ Music_DewfordTownRSE_Ch1_b0:
 	octave 5
 	duty_cycle 0
 Music_DewfordTownRSE_Ch1_b1:
+music_label
 	note D#, 2
 	note D#, 1
 	note D_, 1
@@ -176,8 +180,10 @@ Music_DewfordTownRSE_Ch1_b1:
 	sound_jump Music_DewfordTownRSE_Ch1_b0
 
 Music_DewfordTownRSE_Ch2:
+music_label
 	stereo_panning TRUE, FALSE
 Music_DewfordTownRSE_Ch2_b0:
+music_label
 	note_type 12, 5, -7
 	vibrato 16, 0, 0
 	duty_cycle 2
@@ -463,8 +469,10 @@ Music_DewfordTownRSE_Ch2_b0:
 	sound_jump Music_DewfordTownRSE_Ch2_b0
 
 Music_DewfordTownRSE_Ch3:
+music_label
 	stereo_panning TRUE, TRUE
 Music_DewfordTownRSE_Ch3_b0:
+music_label
 	note_type 12, 1, 1
 	octave 5
 	note A#, 1
@@ -846,9 +854,12 @@ Music_DewfordTownRSE_Ch3_b0:
 	sound_jump Music_DewfordTownRSE_Ch3_b0
 
 Music_DewfordTownRSE_Ch4:
+music_label
 	toggle_noise 2
 Music_DewfordTownRSE_Ch4_b0:
+music_label
 Music_DewfordTownRSE_Ch4_b1:
+music_label
 	drum_speed 12
 	drum_note 3, 4
 	drum_note 8, 2
@@ -864,6 +875,7 @@ Music_DewfordTownRSE_Ch4_b1:
 	drum_note 1, 1
 	rest 3
 Music_DewfordTownRSE_Ch4_b2:
+music_label
 	rest 6
 	drum_note 1, 6
 	sound_loop 7, Music_DewfordTownRSE_Ch4_b2
@@ -874,6 +886,7 @@ Music_DewfordTownRSE_Ch4_b2:
 	rest 2
 	drum_note 1, 2
 Music_DewfordTownRSE_Ch4_b3:
+music_label
 	rest 6
 	drum_note 1, 6
 	sound_loop 6, Music_DewfordTownRSE_Ch4_b3
@@ -891,6 +904,7 @@ Music_DewfordTownRSE_Ch4_b3:
 	drum_note 1, 1
 	drum_note 9, 2
 Music_DewfordTownRSE_Ch4_b4:
+music_label
 	rest 6
 	drum_note 1, 6
 	sound_loop 7, Music_DewfordTownRSE_Ch4_b4
@@ -901,6 +915,7 @@ Music_DewfordTownRSE_Ch4_b4:
 	drum_note 1, 4
 	drum_note 1, 2
 Music_DewfordTownRSE_Ch4_b5:
+music_label
 	rest 6
 	drum_note 1, 6
 	sound_loop 7, Music_DewfordTownRSE_Ch4_b5

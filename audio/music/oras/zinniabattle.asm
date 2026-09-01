@@ -4,6 +4,7 @@
 ; https://hax.iimarckus.org/topic/6777/4/
 
 Music_ZinniaBattleORAS:
+music_header
 	channel_count 4
 	channel 1, Music_ZinniaBattleORAS_Ch1
 	channel 2, Music_ZinniaBattleORAS_Ch2
@@ -11,6 +12,7 @@ Music_ZinniaBattleORAS:
 	channel 4, Music_ZinniaBattleORAS_Ch4
 
 Music_ZinniaBattleORAS_Ch1:
+music_label
 	tempo 212
 	volume 7, 7
 	duty_cycle 1
@@ -33,10 +35,13 @@ Music_ZinniaBattleORAS_Ch1:
 	note C#, 4
 	duty_cycle 2
 Music_ZinniaBattleORAS_Ch1_loop_1:
+music_label
 	sound_call Music_ZinniaBattleORAS_Ch1_branch_1
 	sound_loop 4, Music_ZinniaBattleORAS_Ch1_loop_1
 Music_ZinniaBattleORAS_Ch1_loop_main:
+music_label
 Music_ZinniaBattleORAS_Ch1_loop_2:
+music_label
 	sound_call Music_ZinniaBattleORAS_Ch1_branch_1
 	sound_loop 4, Music_ZinniaBattleORAS_Ch1_loop_2
 	duty_cycle 0
@@ -253,11 +258,13 @@ Music_ZinniaBattleORAS_Ch1_loop_2:
 	sound_call Music_ZinniaBattleORAS_Ch1_branch_3
 	duty_cycle 2
 Music_ZinniaBattleORAS_Ch1_loop_3:
+music_label
 	sound_call Music_ZinniaBattleORAS_Ch1_branch_1
 	sound_loop 3, Music_ZinniaBattleORAS_Ch1_loop_3
 	sound_jump Music_ZinniaBattleORAS_Ch1_loop_main
 
 Music_ZinniaBattleORAS_Ch1_branch_1:
+music_label
 	volume_envelope 10, 1
 	note C#, 2
 	note E_, 2
@@ -279,6 +286,7 @@ Music_ZinniaBattleORAS_Ch1_branch_1:
 	sound_ret
 
 Music_ZinniaBattleORAS_Ch1_branch_2:
+music_label
 	note F#, 2
 	rest 4
 	note F#, 2
@@ -306,6 +314,7 @@ Music_ZinniaBattleORAS_Ch1_branch_2:
 	sound_ret
 
 Music_ZinniaBattleORAS_Ch1_branch_3:
+music_label
 	note B_, 2
 	rest 4
 	note B_, 2
@@ -321,6 +330,7 @@ Music_ZinniaBattleORAS_Ch1_branch_3:
 	sound_ret
 
 Music_ZinniaBattleORAS_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 18, 3, 3
 	note_type 3, 14, 3
@@ -390,6 +400,7 @@ Music_ZinniaBattleORAS_Ch2:
 	octave 5
 	note C#, 4
 Music_ZinniaBattleORAS_Ch2_loop:
+music_label
 	note_type 6, 10, 0
 	duty_cycle 3
 	octave 3
@@ -804,6 +815,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	sound_jump Music_ZinniaBattleORAS_Ch2_loop
 
 Music_ZinniaBattleORAS_Ch3:
+music_label
 	note_type 3, 1, 9
 	vibrato 18, 1, 5
 	octave 2
@@ -843,7 +855,9 @@ Music_ZinniaBattleORAS_Ch3:
 	note E_, 8
 	note F#, 8
 Music_ZinniaBattleORAS_Ch3_loop_main:
+music_label
 Music_ZinniaBattleORAS_Ch3_loop_1:
+music_label
 	volume_envelope 1, 9
 	octave 2
 	note F#, 2
@@ -896,6 +910,7 @@ Music_ZinniaBattleORAS_Ch3_loop_1:
 	rest 1
 	sound_loop 4, Music_ZinniaBattleORAS_Ch3_loop_1
 Music_ZinniaBattleORAS_Ch3_loop_2:
+music_label
 	volume_envelope 1, 9
 	octave 2
 	note G_, 2
@@ -1049,6 +1064,7 @@ Music_ZinniaBattleORAS_Ch3_loop_2:
 	sound_jump Music_ZinniaBattleORAS_Ch3_loop_main
 
 Music_ZinniaBattleORAS_Ch3_branch_1:
+music_label
 	note D_, 2
 	rest 4
 	note D_, 2
@@ -1064,6 +1080,7 @@ Music_ZinniaBattleORAS_Ch3_branch_1:
 	sound_ret
 
 Music_ZinniaBattleORAS_Ch3_branch_2:
+music_label
 	note F#, 2
 	rest 4
 	note F#, 2
@@ -1079,6 +1096,7 @@ Music_ZinniaBattleORAS_Ch3_branch_2:
 	sound_ret
 
 Music_ZinniaBattleORAS_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 3
 	drum_note 1, 16
@@ -1089,6 +1107,7 @@ Music_ZinniaBattleORAS_Ch4:
 	drum_note 12, 2
 	drum_note 2, 2
 Music_ZinniaBattleORAS_Ch4_loop_1:
+music_label
 	drum_note 2, 2
 	drum_note 2, 2
 	sound_loop 6, Music_ZinniaBattleORAS_Ch4_loop_1
@@ -1109,7 +1128,9 @@ Music_ZinniaBattleORAS_Ch4_loop_1:
 	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 Music_ZinniaBattleORAS_Ch4_loop_main:
+music_label
 Music_ZinniaBattleORAS_Ch4_loop_2:
+music_label
 	drum_note 4, 1
 	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
@@ -1117,6 +1138,7 @@ Music_ZinniaBattleORAS_Ch4_loop_2:
 	drum_note 12, 2
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 Music_ZinniaBattleORAS_Ch4_loop_3:
+music_label
 	drum_note 4, 1
 	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
@@ -1125,6 +1147,7 @@ Music_ZinniaBattleORAS_Ch4_loop_3:
 	drum_note 4, 14
 	drum_note 4, 2
 Music_ZinniaBattleORAS_Ch4_loop_4:
+music_label
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 1, 1
@@ -1137,6 +1160,7 @@ Music_ZinniaBattleORAS_Ch4_loop_4:
 	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 Music_ZinniaBattleORAS_Ch4_loop_5:
+music_label
 	drum_note 12, 2
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 	sound_loop 4, Music_ZinniaBattleORAS_Ch4_loop_5
@@ -1163,6 +1187,7 @@ Music_ZinniaBattleORAS_Ch4_loop_5:
 	sound_jump Music_ZinniaBattleORAS_Ch4_loop_main
 
 Music_ZinniaBattleORAS_Ch4_branch_1:
+music_label
 	drum_note 1, 1
 	drum_note 4, 1
 	drum_note 3, 1
@@ -1180,6 +1205,7 @@ Music_ZinniaBattleORAS_Ch4_branch_1:
 	sound_ret
 
 Music_ZinniaBattleORAS_Ch4_branch_2:
+music_label
 	drum_speed 3
 	drum_note 4, 2
 	drum_note 4, 2

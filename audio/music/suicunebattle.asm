@@ -1,10 +1,12 @@
 Music_SuicuneBattle:
+music_header
 	channel_count 3
 	channel 1, Music_SuicuneBattle_Ch1
 	channel 2, Music_SuicuneBattle_Ch2
 	channel 3, Music_SuicuneBattle_Ch3
 
 Music_SuicuneBattle_Ch1:
+music_label
 	tempo 101
 	volume 7, 7
 	duty_cycle 3
@@ -96,6 +98,7 @@ Music_SuicuneBattle_Ch1:
 	note E_, 1
 	note G#, 1
 Music_SuicuneBattle_branch_178bfc:
+music_label
 	note_type 12, 11, 4
 	octave 2
 	note A_, 2
@@ -513,6 +516,7 @@ Music_SuicuneBattle_branch_178bfc:
 	sound_jump Music_SuicuneBattle_branch_178bfc
 
 Music_SuicuneBattle_Ch2:
+music_label
 	duty_cycle 3
 	vibrato 20, 3, 4
 	pitch_offset 1
@@ -591,6 +595,7 @@ Music_SuicuneBattle_Ch2:
 	note E_, 8
 	note E_, 4
 Music_SuicuneBattle_branch_178e4e:
+music_label
 	note_type 12, 12, 7
 	octave 3
 	note A_, 8
@@ -1188,6 +1193,7 @@ Music_SuicuneBattle_branch_178e4e:
 	sound_jump Music_SuicuneBattle_branch_178e4e
 
 Music_SuicuneBattle_Ch3:
+music_label
 	note_type 12, 1, 8
 	rest 16
 	rest 4
@@ -1281,6 +1287,7 @@ Music_SuicuneBattle_Ch3:
 	note E_, 2
 	note_type 12, 1, 6
 Music_SuicuneBattle_branch_179182:
+music_label
 	octave 1
 	note A_, 2
 	octave 2

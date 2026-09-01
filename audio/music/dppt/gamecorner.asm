@@ -3,6 +3,7 @@
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/gamecorner.asm
 
 Music_GameCornerDPPt:
+music_header
 	channel_count 4
 	channel 1, Music_GameCornerDPPt_Ch1
 	channel 2, Music_GameCornerDPPt_Ch2
@@ -10,6 +11,7 @@ Music_GameCornerDPPt:
 	channel 4, Music_GameCornerDPPt_Ch4
 
 Music_GameCornerDPPt_Ch1:
+music_label
 	tempo 124
 	volume 7, 7
 	note_type 12, 10, 2
@@ -86,6 +88,7 @@ Music_GameCornerDPPt_Ch1:
 	note A_, 1
 	note A_, 2
 Music_GameCornerDPPt_Ch1_loop:
+music_label
 	note B_, 1
 	note B_, 1
 	note B_, 2
@@ -616,6 +619,7 @@ Music_GameCornerDPPt_Ch1_loop:
 	sound_jump Music_GameCornerDPPt_Ch1_loop
 
 Music_GameCornerDPPt_Ch2:
+music_label
 	note_type 12, 12, 7
 	duty_cycle 0
 	pitch_offset 2
@@ -723,6 +727,7 @@ Music_GameCornerDPPt_Ch2:
 	octave 4
 	note A_, 8
 Music_GameCornerDPPt_Ch2_loop:
+music_label
 	note_type 8, 12, 8
 	duty_cycle 2
 	octave 1
@@ -1286,6 +1291,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	sound_jump Music_GameCornerDPPt_Ch2_loop
 
 Music_GameCornerDPPt_Ch3:
+music_label
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 5
 	octave 4
@@ -1398,6 +1404,7 @@ Music_GameCornerDPPt_Ch3:
 	rest 1
 	note C_, 4
 Music_GameCornerDPPt_Ch3_loop:
+music_label
 	note D_, 1
 	rest 1
 	note D_, 1
@@ -2194,6 +2201,7 @@ Music_GameCornerDPPt_Ch3_loop:
 	sound_jump Music_GameCornerDPPt_Ch3_loop
 
 Music_GameCornerDPPt_Ch4:
+music_label
 	toggle_noise 3
 	drum_speed 12
 	stereo_panning TRUE, FALSE
@@ -2235,6 +2243,7 @@ Music_GameCornerDPPt_Ch4:
 	drum_note 12, 16
 	rest 2
 Music_GameCornerDPPt_Ch4_loop:
+music_label
 	drum_speed 12
 	stereo_panning FALSE, TRUE
 	drum_note 12, 14
