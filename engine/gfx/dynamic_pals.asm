@@ -537,8 +537,7 @@ RefreshObjectGlowTypes:
 	jr z, .got_obj_glow
 	cp d
 	ld a, [hli]
-	jr z, .got_obj_glow
-	jr .lookup
+	jr nz, .lookup
 .got_obj_glow
 	pop de
 	pop hl
