@@ -314,6 +314,13 @@ TradeAnim_InitTubeAnim:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
+	ldh [rSCX], a
+	ldh [rSCY], a
+	ld a, 7
+	ldh [hWX], a
+	ld a, 144
+	ldh [hWY], a
+	call DelayFrame
 
 	call DisableLCD
 
@@ -324,12 +331,27 @@ TradeAnim_InitTubeAnim:
 	call ClearSpriteAnims
 
 	call EnableLCD
+
 	call LoadTradeBubbleGFX ; needs DelayFrame... and overwrites some of the BG palette
 	pop hl ; wLinkTradeSendmonPersonality or wLinkTradeGetmonPersonality
 	inc hl
 	ld a, [hld]
 	ld [wCurIconForm], a
 	farcall LoadTradeAnimationMonMini
+
+	ld hl, .BGPalettes
+	ld de, wBGPals2 palette 0
+	ld bc, 8 palettes
+	call FarCopyColorWRAM
+	ld hl, .BubblePalette
+	ld de, wOBPals2 palette 7
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+
+	call DelayFrame
+
 	call DisableLCD
 
 	; ensure the buffer does not overwrite our custom BG
@@ -349,22 +371,6 @@ TradeAnim_InitTubeAnim:
 	ldh [rVBK], a
 
 	call TradeAnim_PlaceTrademonStatsOnTubeAnim
-
-	ld hl, .BGPalettes
-	ld de, wBGPals2 palette 0
-	ld bc, 8 palettes
-	call FarCopyColorWRAM
-	ld hl, .BubblePalette
-	ld de, wOBPals2 palette 7
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
-
-	ld a, $7
-	ldh [hWX], a
-	ld a, 144
-	ldh [hWY], a
 
 	pop de
 	ld a, SPRITE_ANIM_INDEX_TRADEMON_ICON
@@ -389,6 +395,7 @@ TradeAnim_InitTubeAnim:
 	jr z, .from_player
 	ld a, $70
 	ldh [hSCY], a
+	ldh [rSCY], a
 	; flip all the arrow tiles to point up
 	ld a, 1
 	ldh [rVBK], a
