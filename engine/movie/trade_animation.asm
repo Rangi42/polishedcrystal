@@ -308,11 +308,35 @@ TradeAnim_InitTubeAnim:
 
 	push hl ; wLinkTradeSendmonPersonality or wLinkTradeGetmonPersonality
 
+	call ClearTileMap
+
+	xor a
+	ldh [hSCX], a
+	ldh [hSCY], a
+
 	call DisableLCD
 
 	ld hl, .NewTradeBGGFX
 	ld de, vTiles2 tile $30
 	call Decompress
+
+	call ClearSpriteAnims
+
+	call EnableLCD
+	call LoadTradeBubbleGFX ; needs DelayFrame... and overwrites some of the BG palette
+	pop hl ; wLinkTradeSendmonPersonality or wLinkTradeGetmonPersonality
+	inc hl
+	ld a, [hld]
+	ld [wCurIconForm], a
+	farcall LoadTradeAnimationMonMini
+	call DisableLCD
+
+	; ensure the buffer does not overwrite our custom BG
+	xor a
+	ldh [hBGMapMode], a
+	ld hl, vTiles2 tile ' '
+	ld bc, 1 tiles
+	call ByteFill
 
 	ld de, .TradeBGTilemap
 	call .CopyMapStuffs
@@ -324,39 +348,19 @@ TradeAnim_InitTubeAnim:
 	xor a
 	ldh [rVBK], a
 
+	call TradeAnim_PlaceTrademonStatsOnTubeAnim
+
 	ld hl, .BGPalettes
 	ld de, wBGPals2 palette 0
 	ld bc, 8 palettes
 	call FarCopyColorWRAM
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
-	call TradeAnim_PlaceTrademonStatsOnTubeAnim
-
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	; ensure the buffer does not overwrite our custom BG
-	ldh [hBGMapMode], a
-	ld hl, vTiles2 tile ' '
-	ld bc, 1 tiles
-	rst ByteFill
-
-	call ClearSpriteAnims
 
 	ld a, $7
 	ldh [hWX], a
 	ld a, 144
 	ldh [hWY], a
-
-	call EnableLCD
-	call LoadTradeBubbleGFX
-	call DelayFrame
-
-	pop hl ; wLinkTradeSendmonPersonality or wLinkTradeGetmonPersonality
-	inc hl
-	ld a, [hld]
-	ld [wCurIconForm], a
-	farcall LoadTradeAnimationMonMini
 
 	pop de
 	ld a, SPRITE_ANIM_INDEX_TRADEMON_ICON
@@ -376,9 +380,11 @@ TradeAnim_InitTubeAnim:
 	pop bc
 	ld [hl], b
 
+	call EnableLCD
+
 	call TradeAnim_IncrementJumptableIndex
 
-	ld a, 40
+	ld a, 34
 	ld [wFrameCounter], a
 	ret
 
@@ -470,7 +476,7 @@ TradeAnim_TubeToOT3:
 	ldh [hSCY], a
 	cp $70
 	ret nz
-	ld a, 110
+	ld a, 90
 	ld [wFrameCounter], a
 	jmp TradeAnim_IncrementJumptableIndex
 
@@ -1040,7 +1046,7 @@ TradeAnim_AnimateTrademonInTube:
 	call .JumptableNext
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
-	ld [hl], $80
+	ld [hl], $73
 	ret
 
 .WaitTimer1:
@@ -1056,7 +1062,7 @@ TradeAnim_AnimateTrademonInTube:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld a, [hl]
-	cp $4c
+	cp $64
 	jr nc, .done_move_down
 	inc [hl]
 	ret
@@ -1067,7 +1073,7 @@ TradeAnim_AnimateTrademonInTube:
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
-	cp $94
+	cp $56
 	jr nc, .done_move_right
 	inc [hl]
 	ret
@@ -1260,8 +1266,9 @@ TradeAnim_FlashBGPals:
 	ld a, BANK(wBGPals2)
 	ldh [rWBK], a
 	ld a, [wFrameCounter2]
-	and $7
+	and %100
 	jr nz, .original_pal
+	; tubes (1)
 	ld hl, wBGPals2 palette 2 color 1
 	ld bc, palred 31 + palgreen 15 + palblue 0
 	ld [hl], c
@@ -1272,6 +1279,7 @@ TradeAnim_FlashBGPals:
 	ld [hl], c
 	inc hl
 	ld [hl], b
+	; tubes (2)
 	ld hl, wBGPals2 palette 6 color 1
 	ld bc, palred 31 + palgreen 15 + palblue 0
 	ld [hl], c
@@ -1279,11 +1287,24 @@ TradeAnim_FlashBGPals:
 	ld [hl], b
 	ld hl, wBGPals2 palette 6 color 2
 	ld bc, palred 31 + palgreen 31 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	; game boy
+	ld hl, wBGPals2 palette 3 color 0
+	ld bc, palred 31 + palgreen 31 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	; arrow
+	ld hl, wBGPals2 palette 7 color 2
+	ld bc, palred 31 + palgreen 20 + palblue 8
 	ld [hl], c
 	inc hl
 	ld [hl], b
 	jr .done
 .original_pal
+	; tubes (1)
 	ld hl, wBGPals2 palette 2 color 1
 	ld bc, palred 31 + palgreen 31 + palblue 0
 	ld [hl], c
@@ -1294,12 +1315,25 @@ TradeAnim_FlashBGPals:
 	ld [hl], c
 	inc hl
 	ld [hl], b
+	; tubes (2)
 	ld hl, wBGPals2 palette 6 color 1
 	ld bc, palred 31 + palgreen 31 + palblue 0
 	ld [hl], c
 	inc hl
 	ld [hl], b
 	ld hl, wBGPals2 palette 6 color 2
+	ld bc, palred 31 + palgreen 15 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	; game boy
+	ld hl, wBGPals2 palette 3 color 0
+	ld bc, palred 31 + palgreen 15 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	; arrow
+	ld hl, wBGPals2 palette 7 color 2
 	ld bc, palred 31 + palgreen 15 + palblue 0
 	ld [hl], c
 	inc hl
