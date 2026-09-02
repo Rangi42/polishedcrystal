@@ -50,8 +50,8 @@ rept 6
 	ld a, d
 	ld [hli], a
 endr
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbTilesToCopy]
 	dec a
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	jr nz, .outerLoop
 	jmp DoneHBlankCopy

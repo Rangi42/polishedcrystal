@@ -48,10 +48,10 @@ _SafeCopyTilemapAtOnce::
 .noForceOAMUpdate
 	bit 3, b
 	ld a, 3
-	jr z, .gotTileCount
+	jr z, .gotRowCount
 	ld a, 9
-.gotTileCount
-	ldh [hTilesPerCycle], a
+.gotRowCount
+	ldh [hBGMapCopyNRows], a
 	ld a, b
 	and %1000
 	swap a
@@ -180,7 +180,7 @@ CopyTilemapInHBlank:
 
 	ld a, b
 .loop
-	ldh [hTilesPerCycle], a
+	ldh [hNbRowsToCopy], a
 ; if in v/hblank, wait until not in v/hblank
 	pop bc
 	pop de
@@ -262,7 +262,7 @@ CopyTilemapInHBlank:
 	ld de, TILEMAP_WIDTH - (SCREEN_WIDTH - 1)
 	add hl, de
 
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbRowsToCopy]
 	dec a
 	jr nz, .loop
 

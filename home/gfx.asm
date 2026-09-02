@@ -86,31 +86,31 @@ Request2bpp::
 	jr c, .handleLoop
 ; fallthrough to vblank copy handler if LY is too high
 .loop
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbTilesToCopy]
 	sub $10
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	jr c, .copyRemainingTilesAndExit
 	jr nz, .copySixteenTilesAndContinue
 .copyRemainingTilesAndExit
 	add $10
 	ldh [hRequested2bpp], a
 	xor a
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	call DelayFrame
 	ldh a, [hRequested2bpp]
 	and a
 	jr z, .clearTileCountAndFinish
 .addUncopiedTilesToCount
 	ld b, a
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbTilesToCopy]
 	add b
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	xor a
 	ldh [hRequested2bpp], a
 	jr .handleLoop
 .clearTileCountAndFinish
 	xor a
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	jr .done
 .copySixteenTilesAndContinue
 	ld a, $10
@@ -189,31 +189,31 @@ _Request1bpp:
 	cp $88
 	jr c, .handleLoop
 .loop
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbTilesToCopy]
 	sub 16
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	jr c, .copyRemainingTilesAndExit
 	jr nz, .copySixteenTilesAndContinue
 .copyRemainingTilesAndExit
 	add 16
 	ldh [hRequested1bpp], a
 	xor a
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	call DelayFrame
 	ldh a, [hRequested1bpp]
 	and a
 	jr z, .clearTileCountAndFinish
 .addUncopiedTilesToCount
 	ld b, a
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbTilesToCopy]
 	add b
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	xor a
 	ldh [hRequested1bpp], a
 	jr .handleLoop
 .clearTileCountAndFinish
 	xor a
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	jr .done
 .copySixteenTilesAndContinue
 	ld a, 16
@@ -285,9 +285,9 @@ rept 2
 	ld [hli], a
 	ld [hli], a
 endr
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbTilesToCopy]
 	dec a
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	jr nz, .outerLoop
 	jr DoneHBlankCopy
 
@@ -327,9 +327,9 @@ rept 2
 	ld a, d
 	ld [hli], a
 endr
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbTilesToCopy]
 	dec a
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	jr nz, .outerLoop
 	jr DoneHBlankCopy
 
@@ -354,7 +354,7 @@ WriteVCopyRegistersToHRAM:
 	ld a, h
 	ldh [hRequestedVTileDest + 1], a
 	ld a, c
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	ret
 
 VRAMToVRAMCopy::
@@ -382,8 +382,8 @@ endr
 	ld a, l
 	and $f
 	jr nz, .waitNoHBlank2
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbTilesToCopy]
 	dec a
-	ldh [hTilesPerCycle], a
+	ldh [hNbTilesToCopy], a
 	jr nz, .outerLoop2
 	jr DoneHBlankCopy

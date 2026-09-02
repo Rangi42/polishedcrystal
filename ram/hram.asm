@@ -114,19 +114,17 @@ hSCY:: db
 hWX::  db
 hWY::  db
 
-hTilesPerCycle::
-; 0 - no update
-; 1 - vBGMap0 tiles
-; 2 - vBGMap0 attributes
-; 3 - vBGMap0 tiles
-; 4 - vBGMap0 attributes
+hBGMapCopyNRows:: ; How many rows the `_OFS` modes (in hBGMapMode) ought to copy.
+hNbRowsToCopy::   ; Temporary counter for `CopyTilemapInHBlank`.
+hNbTilesToCopy::  ; Temporary counter for the `gfx.asm` functions.
 	db
+
 hBGMapMode::
 ; 0 - top third
 ; 1 - middle third
 ; 2 - bottom third
 	db
-hBGMapHalf::     db
+hBGMapHalf:: db ; Either 0 (top half), or 1 (bottom half).
 hBGMapAddress::  dw
 
 hBGMapUpdate::    db
