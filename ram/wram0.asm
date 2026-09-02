@@ -1394,11 +1394,6 @@ wSpecialPalCount:: db
 wSPBuffer:: dw
 
 
-SECTION "Unused", WRAM0
-
-	ds 315 ; it's free real estate
-
-
 SECTION "Options", WRAM0
 
 wOptions3::

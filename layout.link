@@ -228,7 +228,6 @@ WRAM0
 	"Misc 404"
 	"Misc 1300"
 	"WRAM 0"
-	"Unused"
 	org $cff0
 	"Options"
 	org $cffd
