@@ -296,8 +296,8 @@ AnimSeq_TradeTubeBulge:
 	ld a, [hl]
 	dec [hl]
 	dec [hl]
-	cp $00
-	jr c, .delete
+	cp $e0
+	jr nc, .delete
 	and 3
 	ret nz
 	ld de, SFX_POKEBALLS_PLACED_ON_TABLE
