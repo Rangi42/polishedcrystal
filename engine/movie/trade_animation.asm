@@ -285,8 +285,6 @@ TradeAnim_End:
 	ret
 
 TradeAnim_TubeToOT1:
-	ld a, $59 ; right arrow
-	call TradeAnim_PlaceTrademonStatsOnTubeAnim
 	ld a, [wLinkTradeSendmonSpecies]
 	ld [wTempSpecies], a
 	ld hl, wLinkTradeSendmonPersonality
@@ -296,8 +294,6 @@ TradeAnim_TubeToOT1:
 	jr TradeAnim_InitTubeAnim
 
 TradeAnim_TubeToPlayer1:
-	ld a, $5a ; left arrow
-	call TradeAnim_PlaceTrademonStatsOnTubeAnim
 	ld a, [wLinkTradeGetmonSpecies]
 	ld [wTempSpecies], a
 	ld hl, wLinkTradeGetmonPersonality
@@ -312,33 +308,11 @@ TradeAnim_InitTubeAnim:
 
 	push hl ; wLinkTradeSendmonPersonality or wLinkTradeGetmonPersonality
 
-	push af
-
 	call DisableLCD
-	call ClearSpriteAnims
 
 	ld hl, .NewTradeBGGFX
 	ld de, vTiles2 tile $30
 	call Decompress
-
-	xor a
-	ld hl, vTiles2 tile ' '
-	ld bc, 1 tiles
-	rst ByteFill
-
-	pop af
-
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	; ensure the buffer does not overwrite our custom BG
-	ldh [hBGMapMode], a
-	; TODO: PlaceTrademonStatsOnTubeAnim copies to window layer, not needed here
-
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
 
 	ld de, .TradeBGTilemap
 	call .CopyMapStuffs
@@ -350,22 +324,32 @@ TradeAnim_InitTubeAnim:
 	xor a
 	ldh [rVBK], a
 
-	; TODO: move PlaceTrademonStatsOnTubeAnim here
-	hlbgcoord 10, 11
-	ld de, wLinkPlayer1Name
-	rst PlaceString
-	hlbgcoord 10, 20
-	ld de, wLinkPlayer2Name
-	rst PlaceString
-
 	ld hl, .BGPalettes
 	ld de, wBGPals2 palette 0
 	ld bc, 8 palettes
 	call FarCopyColorWRAM
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
+	call TradeAnim_PlaceTrademonStatsOnTubeAnim
+
+	xor a
+	ldh [hSCX], a
+	ldh [hSCY], a
+	; ensure the buffer does not overwrite our custom BG
+	ldh [hBGMapMode], a
+	ld hl, vTiles2 tile ' '
+	ld bc, 1 tiles
+	rst ByteFill
+
+	call ClearSpriteAnims
+
+	ld a, $7
+	ldh [hWX], a
+	ld a, 144
+	ldh [hWY], a
 
 	call EnableLCD
+	call LoadTradeBubbleGFX
 	call DelayFrame
 
 	pop hl ; wLinkTradeSendmonPersonality or wLinkTradeGetmonPersonality
@@ -391,8 +375,6 @@ TradeAnim_InitTubeAnim:
 	add hl, bc
 	pop bc
 	ld [hl], b
-
-	call ApplyTilemapInVBlank
 
 	call TradeAnim_IncrementJumptableIndex
 	ld a, 92
@@ -473,9 +455,9 @@ INCBIN "gfx/trade/background.attrmap"
 
 TradeAnim_TubeToOT2:
 	call TradeAnim_FlashBGPals
-	ldh a, [hSCX]
+	ldh a, [hSCY]
 	add $2
-	ldh [hSCX], a
+	ldh [hSCY], a
 	cp $50
 	ret nz
 	ld a, $1
@@ -643,42 +625,13 @@ TradeAnim_CopyTradeGameBoyTilemap:
 	jmp TradeAnim_CopyBoxFromDEtoHL
 
 TradeAnim_PlaceTrademonStatsOnTubeAnim:
-	push af
-	call ClearBGPalettes
-	call WaitTop
-	ld a, HIGH(vBGMap1)
-	ldh [hBGMapAddress + 1], a
-	call ClearTileMap
-	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH
-	ld a, '─'
-	rst ByteFill
-	hlcoord 0, 1
+	hlbgcoord 10, 11
 	ld de, wLinkPlayer1Name
 	rst PlaceString
-	ld hl, wLinkPlayer2Name
-	ld de, 0
-.find_name_end_loop
-	ld a, [hli]
-	cp '@'
-	jr z, .done
-	dec de
-	jr .find_name_end_loop
-
-.done
-	hlcoord 0, 4
-	add hl, de
+	hlbgcoord 10, 20
 	ld de, wLinkPlayer2Name
 	rst PlaceString
-	hlcoord 7, 2
-	ld bc, 6
-	pop af
-	rst ByteFill
-	call ApplyTilemapInVBlank
-	call WaitTop
-	ld a, HIGH(vBGMap0)
-	ldh [hBGMapAddress + 1], a
-	jmp ClearTileMap
+	ret
 
 TradeAnim_EnterLinkTube1:
 	call ClearTileMap
