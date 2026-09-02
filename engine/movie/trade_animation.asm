@@ -1104,22 +1104,18 @@ TradeAnim_AnimateTrademonInTube:
 	add hl, bc
 	ld a, [hl]
 	cp $64
-	jr nc, .done_move_down
+	jr nc, .JumptableNext
 	inc [hl]
 	ret
-.done_move_down
-	jr .JumptableNext
 
 .MoveRight:
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
 	cp $56
-	jr nc, .done_move_right
+	jr nc, .JumptableNext
 	inc [hl]
 	ret
-.done_move_right
-	jr .JumptableNext
 
 .InitTimer:
 	call .JumptableNext
@@ -1311,74 +1307,74 @@ TradeAnim_FlashBGPals:
 	jr nz, .original_pal
 	; tubes (1)
 	ld hl, wBGPals2 palette 2 color 1
-	ld bc, palred 31 + palgreen 15 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	ld hl, wBGPals2 palette 2 color 2
-	ld bc, palred 31 + palgreen 31 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
+def x = palred 31 + palgreen 15 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld a, HIGH(x)
+	ld [hli], a
+def x = palred 31 + palgreen 31 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld [hl], HIGH(x)
 	; tubes (2)
 	ld hl, wBGPals2 palette 6 color 1
-	ld bc, palred 31 + palgreen 15 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	ld hl, wBGPals2 palette 6 color 2
-	ld bc, palred 31 + palgreen 31 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
+def x = palred 31 + palgreen 15 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld a, HIGH(x)
+	ld [hli], a
+def x = palred 31 + palgreen 31 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld [hl], HIGH(x)
 	; game boy
 	ld hl, wBGPals2 palette 3 color 0
-	ld bc, palred 31 + palgreen 31 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
+def x = palred 31 + palgreen 31 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld [hl], HIGH(x)
 	; arrow
 	ld hl, wBGPals2 palette 7 color 2
-	ld bc, palred 31 + palgreen 20 + palblue 8
-	ld [hl], c
-	inc hl
-	ld [hl], b
+def x = palred 31 + palgreen 20 + palblue 8
+	ld a, LOW(x)
+	ld [hli], a
+	ld [hl], HIGH(x)
 	jr .done
 .original_pal
 	; tubes (1)
 	ld hl, wBGPals2 palette 2 color 1
-	ld bc, palred 31 + palgreen 31 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	ld hl, wBGPals2 palette 2 color 2
-	ld bc, palred 31 + palgreen 15 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
+def x = palred 31 + palgreen 31 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld a, HIGH(x)
+	ld [hli], a
+def x = palred 31 + palgreen 15 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld [hl], HIGH(x)
 	; tubes (2)
 	ld hl, wBGPals2 palette 6 color 1
-	ld bc, palred 31 + palgreen 31 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	ld hl, wBGPals2 palette 6 color 2
-	ld bc, palred 31 + palgreen 15 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
+def x = palred 31 + palgreen 31 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld a, HIGH(x)
+	ld [hli], a
+def x = palred 31 + palgreen 15 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld [hl], HIGH(x)
 	; game boy
 	ld hl, wBGPals2 palette 3 color 0
-	ld bc, palred 31 + palgreen 15 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
+def x = palred 31 + palgreen 15 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld [hl], HIGH(x)
 	; arrow
 	ld hl, wBGPals2 palette 7 color 2
-	ld bc, palred 31 + palgreen 15 + palblue 0
-	ld [hl], c
-	inc hl
-	ld [hl], b
+def x = palred 31 + palgreen 15 + palblue 0
+	ld a, LOW(x)
+	ld [hli], a
+	ld [hl], HIGH(x)
 .done
 	pop af
 	ldh [rWBK], a
