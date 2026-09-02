@@ -145,7 +145,8 @@ RunTradeAnimSequence:
 	rst ByteFill
 	ld hl, TradeBackgroundGFX
 	ld de, vTiles2 tile $31
-	call Decompress
+	lb bc, BANK(TradeBackgroundGFX), 58
+	call DecompressRequest2bpp
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -1424,12 +1425,7 @@ TradeAnim_WaitAnim2:
 	dec [hl]
 	ret
 
-TradeBackgroundGFX: INCBIN "gfx/trade/trade_bg.2bpp.lzp"
-
 TradeLinkTubeTilemap: INCBIN "gfx/trade/link_cable.tilemap"
 
 TradeBGTilemap: INCBIN "gfx/trade/background.tilemap"
 TradeBGAttrmap: INCBIN "gfx/trade/background.attrmap"
-
-TradeBallPoofCableGFX:  INCBIN "gfx/trade/ball_poof_cable.2bpp.lzp"
-TradeBubbleGFX: INCBIN "gfx/trade/bubble.2bpp"
