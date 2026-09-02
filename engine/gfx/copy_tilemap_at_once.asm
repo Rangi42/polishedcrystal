@@ -48,9 +48,14 @@ _SafeCopyTilemapAtOnce::
 	ldh [hOAMUpdate], a
 .noForceOAMUpdate
 	bit 3, b
-	ld a, 3
+def NB_ROWS_TILEMAP_ONLY equ 9
+; If we're copying both maps, we won't have enough time to copy as many rows.
+; Thus, the remainder gets copied outside of VBlank, in chunks of 5 rows; this leaves a remainder of 3,
+; which is suitable to be transferred during VBlank (twice: once for each of the two maps).
+def NB_ROWS_BOTH_MAPS equ 3
+	ld a, NB_ROWS_BOTH_MAPS
 	jr z, .gotRowCount
-	ld a, 9
+	ld a, NB_ROWS_TILEMAP_ONLY
 .gotRowCount
 	ldh [hBGMapCopyNRows], a
 	ld a, b
@@ -128,25 +133,18 @@ VBlankSafeCopyTilemapAtOnce::
 	ld de, TILEMAP_WIDTH * 9
 	ld b, 9
 	jr CopyTilemapInHBlank
+
 .attrAndBGCopy
-; now copy both tile and attr map, of alternating groups of 5/5/4
-	hlcoord 0, 3, wAttrmap
-	ld de, TILEMAP_WIDTH * 3
+FOR row_idx, NB_ROWS_BOTH_MAPS, SCREEN_HEIGHT, 5
+	hlcoord 0, row_idx, wAttrmap
+	ld de, TILEMAP_WIDTH * row_idx
 	call Copy5RowsOfTilemapInHBlank_VBK1
-	hlcoord 0, 3
-	ld de, TILEMAP_WIDTH * 3
+	hlcoord 0, row_idx
+	ld de, TILEMAP_WIDTH * row_idx
+	IF row_idx != SCREEN_HEIGHT - 5 ; Replace the last call with a fallthrough.
 	call Copy5RowsOfTilemapInHBlank_VBK0
-	hlcoord 0, 8, wAttrmap
-	ld de, TILEMAP_WIDTH * 8
-	call Copy5RowsOfTilemapInHBlank_VBK1
-	hlcoord 0, 8
-	ld de, TILEMAP_WIDTH * 8
-	call Copy5RowsOfTilemapInHBlank_VBK0
-	hlcoord 0, 13, wAttrmap
-	ld de, TILEMAP_WIDTH * 13
-	call Copy5RowsOfTilemapInHBlank_VBK1
-	hlcoord 0, 13
-	ld de, TILEMAP_WIDTH * 13
+	ENDC
+ENDR
 
 ; fallthrough
 Copy5RowsOfTilemapInHBlank_VBK0:
