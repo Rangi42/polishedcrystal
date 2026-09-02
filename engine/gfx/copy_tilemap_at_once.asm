@@ -74,7 +74,8 @@ VBlankSafeCopyTilemapAtOnce::
 	jr z, .copyAttrmapAndTilemap
 	; Copy only the tilemap.
 	; First, reuse the same code as `UpdateBGMap` to copy the top half during VBlank...
-	call UpdateBGMap.DoTiles
+	xor a
+	call _UpdateBGMap
 
 	call PushOAM ; This is still the VBlank handler!
 
@@ -99,8 +100,7 @@ export def BG_MAP_NUM_VBLANK_ROWS equ SCREEN_HEIGHT % NB_ROWS_PER_CHUNK ; 3
 	ldh [rVBK], a
 	ld hl, wAttrmap
 	call CopyTopMapRows
-	; xor a (a == 0 at this point)
-	ldh [rVBK], a
+	; The previous function returns with VRA0 loaded.
 	ld hl, wTilemap
 	call CopyTopMapRows
 
