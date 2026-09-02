@@ -317,16 +317,9 @@ TradeAnim_InitTubeAnim:
 	call DisableLCD
 	call ClearSpriteAnims
 
-	ld hl, MobileTradeGFX
-	ld a, BANK(MobileTradeGFX)
-	ld de, vTiles2 tile $3d
-	call FarDecompress
-
-	ld a, BANK(MobileMenuGFX)
-	ld hl, MobileMenuGFX
+	ld hl, .NewTradeBGGFX
 	ld de, vTiles2 tile $30
-	ld bc, 3 tiles
-	call FarCopyBytes
+	call Decompress
 
 	xor a
 	ld hl, vTiles2 tile ' '
@@ -347,19 +340,13 @@ TradeAnim_InitTubeAnim:
 	ld a, $90
 	ldh [hWY], a
 
-	ld a, CGB_TRADE_TUBE
-	call GetCGBLayout
-	ld a, %11100100 ; 3,2,1,0
-	call DmgToCgbBGPals
-	ld a, %11010000
-	call DmgToCgbObjPal0
-
 	ld de, .TradeBGTilemap
 	call .CopyMapStuffs
 	ld a, 1
 	ldh [rVBK], a
 	ld de, .TradeBGAttrmap
 	call .CopyMapStuffs
+	; TODO: use attrs to flip the arrows vertically on 2nd tube anim (use hlbgcoord here and spam set bits)
 	xor a
 	ldh [rVBK], a
 
@@ -373,7 +360,7 @@ TradeAnim_InitTubeAnim:
 
 	ld hl, .BGPalettes
 	ld de, wBGPals2 palette 0
-	ld bc, 4 palettes
+	ld bc, 8 palettes
 	call FarCopyColorWRAM
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
@@ -413,26 +400,49 @@ TradeAnim_InitTubeAnim:
 	ret
 
 .BGPalettes:
-	RGB $0D, $18, $1D ; bg shade 0
+; BGP0 bg shade 0
+	RGB $0D, $18, $1D
 	RGB $0B, $10, $1E
 	RGB $07, $0B, $16
 	RGB $05, $06, $12
-	RGB $1F, $1F, $1F ; bg shade 1
+; BGP1 bg shade 1
+	RGB $1F, $1F, $1F
 	RGB $14, $1A, $1F
 	RGB $0D, $18, $1D
 	RGB $0B, $10, $1E
-	;RGB $1F, $1F, $1F ; bg shade 2
-	;RGB $14, $1A, $1F
-	;RGB $07, $0B, $16
-	;RGB $05, $06, $12
-	RGB 31, 14, 00 ; game boy
+; BGP2 cable (white bg)
+	RGB 31, 31, 31
+	RGB 31, 31, 00 ; v [THESE COLORS SHOULD ALTERNATE]
+	RGB 31, 15, 00 ; ^ [THESE COLORS SHOULD ALTERNATE]
+	RGB 00, 00, 00
+; BGP3 game boy
+	RGB 31, 15, 00 ; [THIS COLOR SHOULD FLASH]
 	RGB 17, 00, 31
 	RGB 04, 00, 10
 	RGB 00, 00, 00
-	RGB 31, 31, 31 ; game boy (white bg)
+; BGP4 game boy (white bg)
+	RGB 31, 31, 31
 	RGB 17, 00, 31
 	RGB 04, 00, 10
 	RGB 00, 00, 00
+; BGP5 game boy (dark bg)
+	RGB $05, $06, $12
+	RGB 17, 00, 31
+	RGB 04, 00, 10
+	RGB 00, 00, 00
+; BGP6 cable (dark bg)
+	RGB $14, $1A, $1F
+	RGB 31, 31, 00 ; v [THESE COLORS SHOULD ALTERNATE]
+	RGB 31, 15, 00 ; ^ [THESE COLORS SHOULD ALTERNATE]
+	RGB 00, 00, 00
+; BGP7 arrow
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 15, 00 ; [THIS COLOR SHOULD FLASH]
+	RGB 00, 00, 00
+
+.NewTradeBGGFX:
+INCBIN "gfx/trade/trade_bg.2bpp.lzp"
 
 .CopyMapStuffs:
 	lb bc, 32, 20

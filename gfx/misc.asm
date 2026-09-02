@@ -73,8 +73,6 @@ CreditsSequence2GFX:: INCBIN "gfx/credits/sequence2.2bpp.lzp"
 SECTION "Trade Graphics", ROMX
 
 TradeScreenGFX:: INCBIN "gfx/trade/trade_screen.2bpp.lzp"
-MobileMenuGFX:: INCBIN "gfx/trade/mobile_menu.2bpp"
-MobileTradeGFX:: INCBIN "gfx/trade/mobile_trade.2bpp"
 
 
 SECTION "Evolution Graphics", ROMX
