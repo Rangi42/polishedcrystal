@@ -313,22 +313,71 @@ TradeAnim_InitTubeAnim:
 	push hl ; wLinkTradeSendmonPersonality or wLinkTradeGetmonPersonality
 
 	push af
+
 	call DisableLCD
 	call ClearSpriteAnims
-	hlbgcoord 20, 3
-	ld bc, 12
-	ld a, $5d
-	rst ByteFill
-	pop af
 
-	call TradeAnim_TubeAnimJumptable
+	ld hl, MobileTradeGFX
+	ld a, BANK(MobileTradeGFX)
+	ld de, vTiles2 tile $3d
+	call FarDecompress
+
+	ld a, BANK(MobileMenuGFX)
+	ld hl, MobileMenuGFX
+	ld de, vTiles2 tile $30
+	ld bc, 3 tiles
+	call FarCopyBytes
+
+	xor a
+	ld hl, vTiles2 tile ' '
+	ld bc, 1 tiles
+	rst ByteFill
+
+	pop af
 
 	xor a
 	ldh [hSCX], a
+	ldh [hSCY], a
+	; ensure the buffer does not overwrite our custom BG
+	ldh [hBGMapMode], a
+	; TODO: PlaceTrademonStatsOnTubeAnim copies to window layer, not needed here
+
 	ld a, $7
 	ldh [hWX], a
-	ld a, $70
+	ld a, $90
 	ldh [hWY], a
+
+	ld a, CGB_TRADE_TUBE
+	call GetCGBLayout
+	ld a, %11100100 ; 3,2,1,0
+	call DmgToCgbBGPals
+	ld a, %11010000
+	call DmgToCgbObjPal0
+
+	ld de, .TradeBGTilemap
+	call .CopyMapStuffs
+	ld a, 1
+	ldh [rVBK], a
+	ld de, .TradeBGAttrmap
+	call .CopyMapStuffs
+	xor a
+	ldh [rVBK], a
+
+	; TODO: move PlaceTrademonStatsOnTubeAnim here
+	hlbgcoord 10, 11
+	ld de, wLinkPlayer1Name
+	rst PlaceString
+	hlbgcoord 10, 20
+	ld de, wLinkPlayer2Name
+	rst PlaceString
+
+	ld hl, .BGPalettes
+	ld de, wBGPals2 palette 0
+	ld bc, 4 palettes
+	call FarCopyColorWRAM
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+
 	call EnableLCD
 	call DelayFrame
 
@@ -337,8 +386,6 @@ TradeAnim_InitTubeAnim:
 	ld a, [hld]
 	ld [wCurIconForm], a
 	farcall LoadTradeAnimationMonMini
-
-	call LoadTradeBubbleGFX
 
 	pop de
 	ld a, SPRITE_ANIM_INDEX_TRADEMON_ICON
@@ -359,17 +406,60 @@ TradeAnim_InitTubeAnim:
 	ld [hl], b
 
 	call ApplyTilemapInVBlank
-	ld a, CGB_TRADE_TUBE
-	call GetCGBLayout
-	ld a, %11100100 ; 3,2,1,0
-	call DmgToCgbBGPals
-	ld a, %11010000 ; 3,1,0,0
-	call DmgToCgbObjPal0
 
 	call TradeAnim_IncrementJumptableIndex
 	ld a, 92
 	ld [wFrameCounter], a
 	ret
+
+.BGPalettes:
+	RGB $0D, $18, $1D ; bg shade 0
+	RGB $0B, $10, $1E
+	RGB $07, $0B, $16
+	RGB $05, $06, $12
+	RGB $1F, $1F, $1F ; bg shade 1
+	RGB $14, $1A, $1F
+	RGB $0D, $18, $1D
+	RGB $0B, $10, $1E
+	;RGB $1F, $1F, $1F ; bg shade 2
+	;RGB $14, $1A, $1F
+	;RGB $07, $0B, $16
+	;RGB $05, $06, $12
+	RGB 31, 14, 00 ; game boy
+	RGB 17, 00, 31
+	RGB 04, 00, 10
+	RGB 00, 00, 00
+	RGB 31, 31, 31 ; game boy (white bg)
+	RGB 17, 00, 31
+	RGB 04, 00, 10
+	RGB 00, 00, 00
+
+.CopyMapStuffs:
+	lb bc, 32, 20
+	hlbgcoord 0, 0
+	push bc
+.loopbg
+	push hl
+.loopbg2
+	ld a, [de]
+	ld [hli], a
+	inc de
+	dec c
+	jr nz, .loopbg2
+	pop hl
+	ld bc, $20
+	add hl, bc
+	pop bc
+	dec b
+	push bc
+	jr nz, .loopbg
+	pop bc
+	ret
+
+.TradeBGTilemap:
+INCBIN "gfx/trade/background.tilemap"
+.TradeBGAttrmap:
+INCBIN "gfx/trade/background.attrmap"
 
 TradeAnim_TubeToOT2:
 	call TradeAnim_FlashBGPals
