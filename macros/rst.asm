@@ -19,7 +19,7 @@ MACRO? farjp ; bank, address
 ENDM
 
 MACRO? homecall ; bank, address
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	if _NARG == 2
 		if STRFIND("\2", "[h") == 0 || STRFIND("\2", "[r") == 0

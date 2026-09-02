@@ -539,7 +539,7 @@ UnloadBlinkingCursor::
 
 FarString::
 	ld b, a
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, b
 	rst Bankswitch
@@ -629,7 +629,7 @@ TextCommand_FAR::
 	pop de
 
 .not_farjp
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	ld a, [hli]

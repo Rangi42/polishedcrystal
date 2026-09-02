@@ -183,7 +183,7 @@ CopyPlayerObjectTemplate::
 LoadMovementDataPointer::
 ; Load the movement data pointer for person a.
 	ld [wMovementObject], a
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld [wMovementDataPointer], a
 	ld a, l
 	ld [wMovementDataPointer + 1], a
@@ -256,7 +256,7 @@ endr
 
 _GetMovementByte::
 ; Switch to the movement data bank
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, [hli]
 	rst Bankswitch
