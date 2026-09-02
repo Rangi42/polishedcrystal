@@ -471,9 +471,9 @@ TradeAnim_InitTubeAnim:
 
 .BubblePalette:
 	RGB 31, 31, 31
-	RGB 31, 31, 00
-	RGB 31, 15, 00
-	RGB 00, 00, 00
+	RGB 19, 27, 29
+	RGB 00, 22, 29
+	RGB 09, 13, 30
 
 .NewTradeBGGFX:
 INCBIN "gfx/trade/trade_bg.2bpp.lzp"
