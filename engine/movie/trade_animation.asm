@@ -143,7 +143,7 @@ RunTradeAnimSequence:
 	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vBGMap0
 	ld a, ' '
 	rst ByteFill
-	ld hl, TradeGameBoyLZ
+	ld hl, TradeBackgroundGFX
 	ld de, vTiles2 tile $31
 	call Decompress
 	xor a
@@ -324,10 +324,6 @@ TradeAnim_InitTubeAnim:
 
 	call DisableLCD
 
-	ld hl, .NewTradeBGGFX
-	ld de, vTiles2 tile $30
-	call Decompress
-
 	call ClearSpriteAnims
 
 	call EnableLCD
@@ -361,11 +357,11 @@ TradeAnim_InitTubeAnim:
 	ld bc, 1 tiles
 	call ByteFill
 
-	ld de, .TradeBGTilemap
+	ld de, TradeBGTilemap
 	call .CopyMapStuffs
 	ld a, 1
 	ldh [rVBK], a
-	ld de, .TradeBGAttrmap
+	ld de, TradeBGAttrmap
 	call .CopyMapStuffs
 	xor a
 	ldh [rVBK], a
@@ -481,9 +477,6 @@ TradeAnim_InitTubeAnim:
 	RGB 00, 22, 29
 	RGB 09, 13, 30
 
-.NewTradeBGGFX:
-INCBIN "gfx/trade/trade_bg.2bpp.lzp"
-
 .CopyMapStuffs:
 	lb bc, 32, 20
 	hlbgcoord 0, 0
@@ -505,11 +498,6 @@ INCBIN "gfx/trade/trade_bg.2bpp.lzp"
 	jr nz, .loopbg
 	pop bc
 	ret
-
-.TradeBGTilemap:
-INCBIN "gfx/trade/background.tilemap"
-.TradeBGAttrmap:
-INCBIN "gfx/trade/background.attrmap"
 
 TradeAnim_TubeToOT2:
 	call TradeAnim_FlashBGPals
@@ -578,10 +566,6 @@ TradeAnim_TubeToPlayer8:
 	ldh [hSCY], a
 	ld a, $90
 	ldh [hWY], a
-	; restore pipe GFX
-	ld hl, TradeGameBoyLZ
-	ld de, vTiles2 tile $31
-	call Decompress
 	ld a, $1
 	ldh [rVBK], a
 	hlbgcoord 0, 0
@@ -636,7 +620,7 @@ TradeAnim_EnterLinkTube1:
 	call DelayFrame
 	hlcoord 0, 2
 	ld de, TradeLinkTubeTilemap
-	lb bc, 3, 12
+	lb bc, 3, 11
 	call TradeAnim_CopyBoxFromDEtoHL
 	call ApplyTilemapInVBlank
 
@@ -1440,12 +1424,12 @@ TradeAnim_WaitAnim2:
 	dec [hl]
 	ret
 
-TradeGameBoyTilemap: ; 6x8
-INCBIN "gfx/trade/game_boy.tilemap"
+TradeBackgroundGFX: INCBIN "gfx/trade/trade_bg.2bpp.lzp"
 
-TradeLinkTubeTilemap: ; 12x3
-INCBIN "gfx/trade/link_cable.tilemap"
+TradeLinkTubeTilemap: INCBIN "gfx/trade/link_cable.tilemap"
+
+TradeBGTilemap: INCBIN "gfx/trade/background.tilemap"
+TradeBGAttrmap: INCBIN "gfx/trade/background.attrmap"
 
 TradeBallPoofCableGFX:  INCBIN "gfx/trade/ball_poof_cable.2bpp.lzp"
 TradeBubbleGFX: INCBIN "gfx/trade/bubble.2bpp"
-TradeGameBoyLZ: INCBIN "gfx/trade/game_boy_cable.2bpp.lzp"
