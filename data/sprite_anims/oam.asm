@@ -185,11 +185,15 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY_XFLIP
 
 .OAMData_TradeMonIcon:
-	db 4
+	db 8
 	dsprite -1,  0, -1,  0, $00, $1
 	dsprite -1,  0,  0,  0, $01, $1
 	dsprite  0,  0, -1,  0, $02, $1
 	dsprite  0,  0,  0,  0, $03, $1
+	dsprite -1,  0, -1,  0, $08, $6
+	dsprite -1,  0,  0,  0, $09, $6
+	dsprite  0,  0, -1,  0, $0a, $6
+	dsprite  0,  0,  0,  0, $0b, $6
 
 .OAMData_PartyMon:
 	db MINI_OAM_COUNT

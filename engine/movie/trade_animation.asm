@@ -337,15 +337,15 @@ TradeAnim_InitTubeAnim:
 	inc hl
 	ld a, [hld]
 	ld [wCurIconForm], a
-	farcall LoadTradeAnimationMonMini
+	farcall LoadTradeAnimationMonMiniAndMask
 
 	ld hl, .BGPalettes
 	ld de, wBGPals2 palette 0
 	ld bc, 8 palettes
 	call FarCopyColorWRAM
 	ld hl, .BubblePalette
-	ld de, wOBPals2 palette 7
-	ld bc, 1 palettes
+	ld de, wOBPals2 palette 6
+	ld bc, 2 palettes
 	call FarCopyColorWRAM
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
@@ -470,6 +470,12 @@ TradeAnim_InitTubeAnim:
 	RGB 00, 00, 00
 
 .BubblePalette:
+; mini mask
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+; bubble
 	RGB 31, 31, 31
 	RGB 19, 27, 29
 	RGB 00, 22, 29
