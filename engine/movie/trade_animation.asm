@@ -1255,12 +1255,61 @@ LinkTradeAnim_LoadTradeMonData:
 	ret
 
 TradeAnim_FlashBGPals:
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wBGPals2)
+	ldh [rWBK], a
 	ld a, [wFrameCounter2]
 	and $7
-	ret nz
-	ldh a, [rBGP]
-	xor %00111100
-	jmp DmgToCgbBGPals
+	jr nz, .original_pal
+	ld hl, wBGPals2 palette 2 color 1
+	ld bc, palred 31 + palgreen 15 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	ld hl, wBGPals2 palette 2 color 2
+	ld bc, palred 31 + palgreen 31 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	ld hl, wBGPals2 palette 6 color 1
+	ld bc, palred 31 + palgreen 15 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	ld hl, wBGPals2 palette 6 color 2
+	ld bc, palred 31 + palgreen 31 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	jr .done
+.original_pal
+	ld hl, wBGPals2 palette 2 color 1
+	ld bc, palred 31 + palgreen 31 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	ld hl, wBGPals2 palette 2 color 2
+	ld bc, palred 31 + palgreen 15 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	ld hl, wBGPals2 palette 6 color 1
+	ld bc, palred 31 + palgreen 31 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	ld hl, wBGPals2 palette 6 color 2
+	ld bc, palred 31 + palgreen 15 + palblue 0
+	ld [hl], c
+	inc hl
+	ld [hl], b
+.done
+	pop af
+	ldh [rWBK], a
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ret
 
 LoadTradeBallAndCableGFX:
 	call DelayFrame
