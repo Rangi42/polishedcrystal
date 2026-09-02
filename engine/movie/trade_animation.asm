@@ -354,6 +354,10 @@ TradeAnim_InitTubeAnim:
 	ld de, wBGPals2 palette 0
 	ld bc, 8 palettes
 	call FarCopyColorWRAM
+	ld hl, .BubblePalette
+	ld de, wOBPals2 palette 7
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 
@@ -456,6 +460,12 @@ TradeAnim_InitTubeAnim:
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 	RGB 31, 15, 00 ; [THIS COLOR SHOULD FLASH]
+	RGB 00, 00, 00
+
+.BubblePalette:
+	RGB 31, 31, 31
+	RGB 31, 31, 00
+	RGB 31, 15, 00
 	RGB 00, 00, 00
 
 .NewTradeBGGFX:
@@ -630,7 +640,7 @@ TradeAnim_EnterLinkTube1:
 	jmp TradeAnim_IncrementJumptableIndex
 
 .TubePal:
-	RGB 31,31,31, 18,20,27, 11,15,23, 00,00,00
+	RGB 31,31,31, 31,31,00, 31,15,00, 00,00,00
 
 TradeAnim_EnterLinkTube2:
 	ldh a, [hSCX]
