@@ -58,33 +58,6 @@ _SafeCopyTilemapAtOnce::
 	ldh [hMapAnims], a
 	ret
 
-_CopyTilemapAtOnce::
-	ldh a, [hBGMapMode]
-	push af
-	ldh a, [hMapAnims]
-	push af
-
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ldh [hMapAnims], a
-
-	di
-	hlcoord 0, 0, wAttrmap
-	ld a, 1 ; BANK(vStandingFrameTiles)
-	call CopyFullTilemapInHBlank
-	hlcoord 0, 0
-	xor a ; BANK(vObjTiles)
-	call CopyFullTilemapInHBlank
-
-	ei ; in case we've passed vblank
-
-	pop af
-	ldh [hMapAnims], a
-	pop af
-	ldh [hBGMapMode], a
-	ret
-
 VBlankSafeCopyTilemapAtOnce::
 	ldh a, [hSCX]
 	ldh [rSCX], a
@@ -266,4 +239,31 @@ CopyTilemapInHBlank:
 	ld sp, wSPBuffer
 	pop hl
 	ld sp, hl
+	ret
+
+_CopyTilemapAtOnce::
+	ldh a, [hBGMapMode]
+	push af
+	ldh a, [hMapAnims]
+	push af
+
+	xor a
+	assert NO_BG_MAP_TRANSFER == 0
+	ldh [hBGMapMode], a
+	ldh [hMapAnims], a
+
+	di
+	hlcoord 0, 0, wAttrmap
+	ld a, 1 ; BANK(vStandingFrameTiles)
+	call CopyFullTilemapInHBlank
+	hlcoord 0, 0
+	xor a ; BANK(vObjTiles)
+	call CopyFullTilemapInHBlank
+
+	ei ; in case we've passed vblank
+
+	pop af
+	ldh [hMapAnims], a
+	pop af
+	ldh [hBGMapMode], a
 	ret
