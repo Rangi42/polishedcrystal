@@ -95,6 +95,7 @@ JudgeSystem::
 	call ClearTileMap
 	call DisableLCD
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 ; Load the party struct into wTempMon

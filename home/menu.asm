@@ -244,6 +244,7 @@ MenuTextboxDataHeader:
 
 VerticalMenu::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call MenuBox
 	call UpdateSprites
@@ -440,6 +441,7 @@ SetUpVariableDataMenu:
 
 MenuWriteText::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call GetMenuIndexSet ; sort out the text
 	call RunMenuItemPrintingFunction ; actually write it

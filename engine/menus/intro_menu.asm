@@ -49,6 +49,7 @@ NewGamePlus:
 	call YesNoBox
 	jr c, _MainMenu
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	farcall TryLoadSaveFile
 	ret c
@@ -71,6 +72,7 @@ NewGamePlus:
 
 NewGame:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call ResetWRAM_NotPlus
 _NewGame_FinishSetup:
@@ -342,7 +344,7 @@ Continue:
 
 	call LoadStandardMenuHeader
 	call DisplaySaveInfoOnContinue
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld c, 20
 	call DelayFrames
@@ -489,6 +491,7 @@ DisplayContinueDataWithRTCError:
 
 Continue_LoadMenuHeader:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, .MenuDataHeader_Dex
 	ld a, [wStatusFlags]

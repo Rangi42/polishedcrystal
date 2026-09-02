@@ -2,6 +2,7 @@ INCLUDE "data/mon_menu.asm"
 
 MonSubmenu:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call GetMonSubmenuItems
 	farcall FreezeMonIcons
@@ -10,7 +11,7 @@ MonSubmenu:
 	call .GetTopCoord
 	call PopulateMonMenu
 
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call MonMenuLoop
 	ld [wMenuSelection], a

@@ -1115,6 +1115,7 @@ BuenasPassword1:
 	ldh a, [hBGMapMode]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld de, BuenasPasswordChannelName
 	hlcoord 2, 9

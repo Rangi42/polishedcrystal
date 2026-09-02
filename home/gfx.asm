@@ -15,7 +15,7 @@ LoadFrame::
 
 ApplyTilemap::
 ; Tell VBlank to update BG Map
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld a, [wSpriteUpdatesEnabled]
 	and a
@@ -78,6 +78,7 @@ Request2bpp::
 	ldh a, [hBGMapMode]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	call WriteVCopyRegistersToHRAM
@@ -182,6 +183,7 @@ _Request1bpp:
 	ldh a, [hBGMapMode]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	call WriteVCopyRegistersToHRAM

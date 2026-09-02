@@ -4,15 +4,14 @@ ClearBGPalettes::
 
 ApplyAttrmapInVBlank::
 ; Tell VBlank to update Attr Map
-	ld a, 2
+	ld a, TRANSFER_ATTRMAP
 	jr _ApplyAttrOrTilemapInVBlank
 
 ApplyAttrAndTilemapInVBlank::
 	call ApplyAttrmapInVBlank
 
 ApplyTilemapInVBlank::
-; Tell VBlank to update BG Map
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 _ApplyAttrOrTilemapInVBlank:
 	ldh [hBGMapMode], a
 

@@ -496,6 +496,7 @@ BTBuyMenu:
 
 BuyMenu_InitGFX:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	farcall FadeOutPalettes
 	call ClearBGPalettes

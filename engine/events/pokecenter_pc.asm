@@ -10,6 +10,7 @@ PokemonCenterPC:
 	call LoadMenuHeader
 .loop
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call .ChooseWhichPCListToUse
 	ld [wWhichIndexSet], a
@@ -282,6 +283,7 @@ PlayersPCAskWhatDoText:
 ClearPCItemScreen:
 	call DisableSpriteUpdates
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call ClearBGPalettes
 	call ClearSprites
@@ -337,6 +339,7 @@ PlayerWithdrawItemMenu:
 	ld hl, .WithdrewText
 	call MenuTextbox
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	jmp ExitMenu
 

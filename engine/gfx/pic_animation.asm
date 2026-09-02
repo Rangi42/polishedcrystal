@@ -282,6 +282,7 @@ PokeAnim_InitAnim:
 
 PokeAnim_DoAnimScript:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 .loop:
@@ -707,6 +708,7 @@ PokeAnim_SetVBank1:
 	ld a, $2
 	ldh [rWBK], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call .SetFlag
 	farcall HDMATransferAttrMapToWRAMBank3

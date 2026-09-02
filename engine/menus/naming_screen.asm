@@ -253,6 +253,7 @@ NamingScreenJoypadLoop:
 
 .UpdateStringEntry:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 1, 3
 	lb bc, 1, 18
@@ -266,7 +267,7 @@ NamingScreenJoypadLoop:
 	ld h, [hl]
 	ld l, a
 	rst PlaceString
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -773,6 +774,7 @@ LoadNamingScreenGFX:
 	ld [wGlobalAnimXOffset], a
 	ld [wJumptableIndex], a
 	ld [wNamingScreenLetterCase], a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld [wNamingScreenCurNameLength], a
 	ld a, $7
@@ -916,6 +918,7 @@ INCBIN "gfx/naming_screen/mail.2bpp.lzp"
 
 .Update:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 1, 1
 	lb bc, 4, 18
@@ -926,7 +929,7 @@ INCBIN "gfx/naming_screen/mail.2bpp.lzp"
 	ld e, a
 	hlcoord 2, 2
 	rst PlaceString
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 

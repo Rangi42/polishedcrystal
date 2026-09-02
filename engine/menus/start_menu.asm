@@ -91,6 +91,7 @@ StartMenu::
 .GetInput:
 ; Return carry on exit, and no-carry on selection.
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call SetUpMenu
 	ld a, $ff

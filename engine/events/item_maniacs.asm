@@ -52,7 +52,7 @@ ItemManiac_SelectQuantity:
 	call MenuBox
 	call ApplyTilemap
 .loop
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call MenuBox
 	call .PlaceItemName

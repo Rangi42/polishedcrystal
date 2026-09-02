@@ -1668,6 +1668,7 @@ BillsPC_MoveIconData:
 	ld a, BANK(wOBPals1)
 	ldh [rWBK], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	; Copy palette data
@@ -1757,6 +1758,7 @@ BillsPC_MoveIconData:
 	xor a
 	ldh [rVBK], a
 	inc a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 	ret
 
@@ -2082,6 +2084,7 @@ BillsPC_FinishQuickAnim:
 	ld c, a
 	push bc
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	inc a
 	ldh [rVBK], a
@@ -2346,6 +2349,7 @@ BillsPC_MoveItem:
 	ld a, 1
 	ldh [rVBK], a
 	dec a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	; Load held item icon
@@ -2370,6 +2374,7 @@ BillsPC_MoveItem:
 	xor a
 	ldh [rVBK], a
 	inc a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 
 	call GetCursorMon
@@ -2498,6 +2503,7 @@ BillsPC_UpdateStorage_CheckMewtwo:
 .update
 	; Reload icon
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	inc a
 	ldh [rVBK], a
@@ -2523,6 +2529,7 @@ BillsPC_UpdateStorage_CheckMewtwo:
 	xor a
 	ldh [rVBK], a
 	inc a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 .done
 	jmp PopBCDEHL
@@ -3120,6 +3127,7 @@ BillsPC_ChangeBox:
 	ld b, 0
 	call SafeCopyTilemapAtOnce
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	inc a
 	ldh [rVBK], a
@@ -3127,6 +3135,7 @@ BillsPC_ChangeBox:
 	xor a
 	ldh [rVBK], a
 	inc a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 	ret
 
@@ -3617,7 +3626,7 @@ BillsPC_RestoreUI:
 	ld hl, rIE
 	set B_IE_STAT, [hl]
 
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 

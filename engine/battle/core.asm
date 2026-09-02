@@ -514,7 +514,7 @@ ParsePlayerAction:
 	ld a, [wCurPlayerMove]
 	inc a ; cp STRUGGLE
 	call nz, PlayClickSFX
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	pop af
 	ret nz
@@ -3014,7 +3014,7 @@ Function_SetEnemyPkmnAndSendOutAnimation:
 	farcall CheckFaintedFrzSlp
 	call nc, BattleAnimateFrontpic
 	call UpdateEnemyHUD
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -3183,6 +3183,7 @@ SendOutPlayerMon:
 	call ClearBox
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call GetMonBackpic
 	xor a
@@ -3232,7 +3233,7 @@ SendOutPlayerMon:
 
 .statused
 	call UpdatePlayerHUD
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -3936,6 +3937,7 @@ DrawPlayerHUD:
 	ret nz
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	farcall ClearPlayerHUD
@@ -4090,6 +4092,7 @@ DrawEnemyHUD:
 	ret nz
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	farcall ClearEnemyHUD
@@ -4256,6 +4259,7 @@ UpdateHPPal:
 
 BattleMenu:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadTempTileMapToTileMap
 
@@ -4297,7 +4301,7 @@ BattleMenu:
 	farcall LoadBattleMenu
 
 .next
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld a, [wBattleMenuCursorBuffer]
 	dec a
@@ -4497,6 +4501,7 @@ BattleMenu_SafariBall:
 	call ClearTileMap
 .ball
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call _LoadBattleFontsHPBar
 	call ClearSprites
@@ -4588,6 +4593,7 @@ BattleMenuPKMN_Loop:
 	ld hl, .MenuHeader
 	call CopyMenuHeader
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call MenuBox
 	call UpdateSprites
@@ -5035,6 +5041,7 @@ MoveSelectionScreen:
 	ld bc, NUM_MOVES
 	rst CopyBytes
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	hlcoord 4, 17 - NUM_MOVES - 1
@@ -5118,7 +5125,7 @@ MoveSelectionScreen:
 	ld [hl], '▷'
 
 .interpret_joypad
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call DoMenuJoypadLoop
 	bit B_PAD_UP, a
@@ -5473,6 +5480,7 @@ SwapBattleMoves:
 
 MoveInfoBox:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	hlcoord 0, 8
@@ -6272,6 +6280,7 @@ FinalPkmnSlideInEnemyMonFrontpic:
 	cp 9
 	ret z
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hBGMapHalf], a
 	ld d, $0
@@ -6287,7 +6296,7 @@ FinalPkmnSlideInEnemyMonFrontpic:
 	dec c
 	jr nz, .inner_loop
 
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld c, 4
 	call DelayFrames
@@ -6334,6 +6343,7 @@ BattleWinSlideInEnemyTrainerFrontpic:
 	cp 7
 	ret z
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hBGMapHalf], a
 	ld d, $0
@@ -6349,7 +6359,7 @@ BattleWinSlideInEnemyTrainerFrontpic:
 	dec c
 	jr nz, .inner_loop
 
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld c, 4
 	call DelayFrames
@@ -6734,7 +6744,7 @@ GiveExperiencePoints:
 	call UpdatePlayerHUD
 	call EmptyBattleTextbox
 	call LoadTileMapToTempTileMap
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 
 .skip_animation
@@ -7344,7 +7354,7 @@ AnimateExpBar:
 	cp b
 	jr nz, .anim_loop
 .end_animation
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -7352,11 +7362,13 @@ AnimateExpBar:
 	xor a
 	ldh [hCGBPalUpdate], a
 	inc a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 	ldh [hBGMapHalf], a
 	ld c, d
 	call DelayFrames
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	inc a
 	ldh [hCGBPalUpdate], a
@@ -8001,6 +8013,7 @@ BattleIntro:
 	ld hl, rLCDC
 	set B_LCDC_WIN_MAP, [hl]
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call EmptyBattleTextbox
 	hlcoord 9, 7
@@ -8013,7 +8026,7 @@ BattleIntro:
 	ld a, [wBattleMode]
 	dec a
 	call z, UpdateEnemyHUD
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -8694,9 +8707,10 @@ InitBattleDisplay:
 	ldh [rWY], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	farcall BattleIntroSlidingPics
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld a, $31
 	ldh [hGraphicStartTile], a

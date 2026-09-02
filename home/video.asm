@@ -129,7 +129,7 @@ WaitTop::
 ; Wait until the top half of the BG Map is being updated.
 
 	ldh a, [hBGMapMode]
-	and a
+	and a ; Warning: bit 7 is otherwise ignored...
 	jr nz, .handleLoop
 	ret
 .loop
@@ -140,6 +140,7 @@ WaitTop::
 	jr nz, .loop
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ret
 

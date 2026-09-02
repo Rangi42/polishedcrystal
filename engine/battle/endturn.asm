@@ -535,7 +535,7 @@ HandleLeechSeed:
 	pop bc
 	call SwitchTurn
 	farcall GetHPAbsorption
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call GetOpponentIgnorableAbility
 	cp LIQUID_OOZE

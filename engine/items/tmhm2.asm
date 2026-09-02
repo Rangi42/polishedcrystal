@@ -12,6 +12,7 @@ TMHMPocket:
 
 TMHM_PocketLoop:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call TMHM_DisplayPocketItems
 	ld a, 2
@@ -58,6 +59,7 @@ TMHM_JoypadLoop:
 	ld [hl], a
 	pop hl
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [w2DMenuFlags2]
 	bit 7, a

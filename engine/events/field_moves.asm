@@ -79,6 +79,7 @@ ShakeHeadbuttTree:
 	call LoadMapPart
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	; shift all sprites right in OAM by 4 slots
@@ -121,6 +122,7 @@ ShakeHeadbuttTree:
 
 HideHeadbuttTree:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wPlayerDirection]
 	and %00001100
@@ -142,6 +144,7 @@ HideHeadbuttTree:
 	ld [hld], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ret
 
@@ -271,7 +274,7 @@ Cut_SpawnAnimateLeaves:
 	ret
 
 Cut_StartWaiting:
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 ; Cut_WaitAnimSFX
 	ld hl, wJumptableIndex

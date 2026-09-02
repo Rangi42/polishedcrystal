@@ -198,6 +198,7 @@ TownMap_InitCursorAndPlayerIconPositions:
 
 InitPokegearTilemap:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
@@ -256,7 +257,7 @@ InitPokegearTilemap:
 	ret
 
 .UpdateBGMap:
-	ld a, $2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
 	ld c, 3
 	call DelayFrames
@@ -443,9 +444,10 @@ PokegearClock_Joypad:
 
 .UpdateClock:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pokegear_UpdateClock
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -944,10 +946,11 @@ UpdateRadioStation:
 	and a
 	ret z
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 2, 9
 	rst PlaceString
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -1051,7 +1054,7 @@ NoRadioStation:
 	ld [wPokegearRadioChannelBank], a
 	ld [wPokegearRadioChannelAddr], a
 	ld [wPokegearRadioChannelAddr + 1], a
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -1153,6 +1156,7 @@ NoRadioMusic:
 
 NoRadioName:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 1, 8
 	lb bc, 3, 18
@@ -1200,6 +1204,7 @@ _TownMap:
 	ld [wTownMapPlayerIconLandmark], a
 	ld [wTownMapCursorLandmark], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call .InitTilemap
 	call ApplyAttrAndTilemapInVBlank
@@ -1468,6 +1473,7 @@ _FlyMap:
 	push af
 	ld [hl], $1
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call ClearSpriteAnims
 	call LoadTownMapGFX
@@ -1561,6 +1567,7 @@ FlyMapScroll:
 	call TownMapBubble
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ret
 
@@ -1808,17 +1815,14 @@ TownMapBGUpdate:
 	ldh [hBGMapAddress], a
 	ld a, h
 	ldh [hBGMapAddress + 1], a
-; BG Map mode 2 (palettes)
-	ld a, 2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
-; The BG Map is updated in thirds, so we wait
-; 3 frames to update the whole screen's palettes.
+	; wait to update the whole screen's palettes.
 	ld c, 3
 	call DelayFrames
-; Update BG Map tiles
 	call ApplyTilemapInVBlank
-; Turn off BG Map update
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ret
 

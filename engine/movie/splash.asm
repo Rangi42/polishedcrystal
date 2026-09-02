@@ -106,7 +106,7 @@ GameFreakPresentsInit:
 	ld [wIntroSceneTimer], a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld a, 144
 	ldh [hWY], a

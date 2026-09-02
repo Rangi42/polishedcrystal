@@ -79,6 +79,7 @@ Special_MagnetTrain:
 	pop af
 	ldh [hSCX], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	pop af
@@ -126,6 +127,7 @@ MagnetTrain_LoadGFX_PlayMusic:
 	ldh [hWY], a
 	call EnableLCD
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hSCX], a
 	ldh [hSCY], a

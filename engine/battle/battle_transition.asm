@@ -16,6 +16,7 @@ DoBattleTransition:
 	call DelayFrame
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, wJumptableIndex
 	ld [hli], a
@@ -214,7 +215,7 @@ StartTrainerBattle_SetUpBGMap:
 	call StartTrainerBattle_NextScene
 	xor a
 	ld [wBattleTransitionCounter], a
-	ldh [hBGMapMode], a
+	ldh [hBGMapMode], a ; NO_BG_MAP_TRANSFER
 	ret
 
 StartTrainerBattle_SetUpForWavyOutro:
@@ -300,6 +301,7 @@ ENDM
 
 StartTrainerBattle_SpinToBlack:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wBattleTransitionCounter]
 	ld e, a
@@ -313,7 +315,7 @@ endr
 	jr z, .end
 	ld [wBattleTransitionSpinQuadrant], a
 	call .load
-	ld a, $2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
 	ld hl, wBattleTransitionCounter
 	ld a, [hl]
@@ -328,6 +330,7 @@ endr
 
 .end
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $20
 	ld [wJumptableIndex], a
@@ -451,7 +454,7 @@ StartTrainerBattle_SetUpForRandomScatterOutro:
 	call StartTrainerBattle_NextScene
 	ld a, $10
 	ld [wBattleTransitionCounter], a
-	ld a, $2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -475,12 +478,13 @@ StartTrainerBattle_SpeckleToBlack:
 	ret
 
 .done
-	ld a, $2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
 	call DelayFrame
 	call DelayFrame
 	call DelayFrame
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $20
 	ld [wJumptableIndex], a
@@ -523,6 +527,7 @@ StartTrainerBattle_SpeckleToBlack:
 
 StartTrainerBattle_LoadPokeBallGraphics:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	; store this in HRAM to avoid bank-switching later
@@ -829,6 +834,7 @@ StartTrainerBattle_ZoomToBlack:
 	inc de
 	ld h, a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call .Copy
 	call ApplyAttrmapInVBlank

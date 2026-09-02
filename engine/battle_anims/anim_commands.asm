@@ -39,7 +39,7 @@ _PlayBattleAnim:
 	pop af
 	ldh [hVBlank], a
 
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 
 	ld c, 3
@@ -149,7 +149,7 @@ BattleAnimClearHUD:
 	call DelayFrame
 	call WaitTop
 	call ClearActorHUD
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call Delay2
 	jmp WaitTop
@@ -168,7 +168,7 @@ BattleAnimRestoreHUDs:
 	pop af
 	ldh [rWBK], a
 
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call Delay2
 	jmp WaitTop
@@ -1271,7 +1271,7 @@ BattleAnim_RevertPals:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call DelayFrame
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 

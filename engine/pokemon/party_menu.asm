@@ -355,6 +355,7 @@ BT_ConfirmPartySelection:
 BT_DisplayMenu:
 	call CopyMenuHeader
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call MenuBox
 	call UpdateSprites
@@ -523,6 +524,7 @@ WritePartyMenuTilemap:
 	set NO_TEXT_SCROLL, [hl]
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	hlcoord 0, 0

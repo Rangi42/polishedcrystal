@@ -1233,6 +1233,7 @@ ItemActionText:
 
 ItemActionTextWaitButton:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
@@ -1240,7 +1241,7 @@ ItemActionTextWaitButton:
 	rst ByteFill
 	ld a, [wPartyMenuActionText]
 	call ItemActionText
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld c, 50
 	call DelayFrames
@@ -2363,6 +2364,7 @@ TypeChart:
 _FinishFullscreenItem:
 	call ExitMenu
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	farcall Pack_InitGFX
 	farcall WaitBGMap_DrawPackGFX

@@ -77,6 +77,7 @@ StackCallInSafeGFXMode:
 	ldh a, [hMapAnims]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hMapAnims], a
 	ldh a, [rWBK]

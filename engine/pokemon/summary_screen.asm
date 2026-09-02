@@ -534,6 +534,7 @@ SummaryScreen_LoadPage:
 	ld [wTempSpecies], a
 	ld [wCurSpecies], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hOAMUpdate], a
 	ldh [hCGBPalUpdate], a

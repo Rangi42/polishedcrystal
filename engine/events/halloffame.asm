@@ -239,6 +239,7 @@ AnimateHOFMonEntrance:
 	ldh [hSCX], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
@@ -252,6 +253,7 @@ AnimateHOFMonEntrance:
 	call PrepMonFrontpicFlipped
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hSCY], a
 	; fallthrough
@@ -412,6 +414,7 @@ LoadHOFTeam:
 
 DisplayHOFMon:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [hli]
 	ld [wTempMonSpecies], a
@@ -519,6 +522,7 @@ HOF_AnimatePlayerPic:
 	ldh [hSCX], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld [wCurPartySpecies], a
 	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
@@ -541,10 +545,12 @@ HOF_AnimatePlayerPic:
 	ldh [hSCX], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hSCY], a
 	call HOF_SlideFrontpic
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 2
 	lb bc, 8, 9

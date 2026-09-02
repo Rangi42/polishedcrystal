@@ -67,6 +67,7 @@ GetMenuNumberOfRows:
 
 Draw2DMenu:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call MenuBox
 
@@ -234,8 +235,9 @@ MenuJoypadLoop:
 .BGMap_OAM:
 	ldh a, [hOAMUpdate]
 	push af
-	ld a, $1
+	ld a, 1
 	ldh [hOAMUpdate], a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 	ld a, [w2DMenuFlags1]
 	bit 6, a
@@ -244,6 +246,7 @@ MenuJoypadLoop:
 	pop af
 	ldh [hOAMUpdate], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ret
 
@@ -263,10 +266,11 @@ Menu_WasButtonPressed:
 	ld a, [w2DMenuFlags1]
 	bit 6, a
 	jr z, .skip_to_joypad
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	farcall PlaySpriteAnimationsAndDelayFrame
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 .skip_to_joypad
@@ -644,6 +648,7 @@ RestoreTileBackup::
 
 _ExitMenu::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	ldh a, [rWBK]

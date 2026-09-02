@@ -3,6 +3,7 @@ _InitScrollingMenu::
 	call ApplyTilemap
 	call ConsumeGenericDelay
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld [wGenericDelay], a
 	ret
@@ -10,6 +11,7 @@ _InitScrollingMenu::
 _InitScrollingMenuNoBGMapUpdate::
 	xor a
 	ld [wMenuJoypad], a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	inc a
 	ldh [hInMenu], a
@@ -34,6 +36,7 @@ _ScrollingMenu::
 
 ScrollingMenu_InitDisplay:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, wOptions1
 	ld a, [hl]

@@ -40,12 +40,13 @@ FillTileMap::
 
 BlackOutScreen::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
 	ld a, '<BLACK>'
 	rst ByteFill
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 

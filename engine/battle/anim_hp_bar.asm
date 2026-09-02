@@ -218,6 +218,7 @@ HPBarAnim_BGMapUpdate:
 	ldh [hCGBPalUpdate], a
 	inc a
 	ld b, a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 
 	ld a, [wCurPartyMon]

@@ -6,6 +6,7 @@ _SafeCopyTilemapAtOnce::
 	ldh a, [hVBlank]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hMapAnims], a
 
@@ -55,7 +56,7 @@ _SafeCopyTilemapAtOnce::
 	ld a, b
 	and %1000
 	swap a
-	or 5
+	or TRANSFER_TILEMAP_OFS
 	ldh [hBGMapMode], a ; bit 7 = skip attr map
 	ld a, 1 << 7 | 7 ; execute actual VBlank7
 	ldh [hVBlank], a
@@ -78,6 +79,7 @@ _CopyTilemapAtOnce::
 	push af
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hMapAnims], a
 
@@ -113,7 +115,7 @@ VBlankSafeCopyTilemapAtOnce::
 	ldh a, [hBGMapMode]
 	bit 7, a
 	jr nz, .skipAttr
-	ld a, 6
+	ld a, TRANSFER_ATTRMAP_OFS
 	ldh [hBGMapMode], a
 	call UpdateBGMap
 .skipAttr

@@ -362,6 +362,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	ldh a, [hBGMapMode]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	farcall Pokedex_CountSeenOwn
 	ld de, wTempDexOwn

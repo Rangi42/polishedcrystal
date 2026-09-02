@@ -370,6 +370,7 @@ PopulateDecoCategoryMenu:
 	ld hl, .ScrollingMenuHeader
 	call CopyMenuHeader
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call InitScrollingMenu
 	xor a

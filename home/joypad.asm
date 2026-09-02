@@ -404,7 +404,7 @@ ButtonSound::
 	call CheckIfAOrBPressed
 	jr nz, .received_input
 	call RTC
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call DelayFrame
 	jr .input_wait_loop

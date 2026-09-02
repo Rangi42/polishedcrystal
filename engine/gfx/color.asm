@@ -446,7 +446,7 @@ ApplyAttrMap:
 ApplyAttrMapVBank0::
 	ldh a, [hBGMapMode]
 	push af
-	ld a, 2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
 	call Delay2
 	pop af

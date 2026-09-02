@@ -34,11 +34,12 @@ FindFirstAliveMonAndStartBattle:
 	ld [wBattleMonLevel], a
 	farcall DoBattleTransition
 	farcall _LoadBattleFontsHPBar
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call ClearSprites
 	call ClearTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hWY], a
 	ldh [rWY], a

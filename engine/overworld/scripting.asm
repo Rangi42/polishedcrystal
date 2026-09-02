@@ -2298,6 +2298,7 @@ Script_changeblock:
 
 Script_refreshmap::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call GetMovementPermissions

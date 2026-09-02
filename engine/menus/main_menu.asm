@@ -129,6 +129,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	and a
 	ret z
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call .PlaceBox
 	ld hl, wOptions1
@@ -138,7 +139,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	call .PlaceTime
 	pop af
 	ld [wOptions1], a
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 

@@ -30,6 +30,7 @@ PrepareAnimatedFrontpic:
 	ldh a, [rWBK]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call _GetFrontpic
 	ld a, BANK(vTiles3)
@@ -244,6 +245,7 @@ GetTrainerPic:
 	ret nc
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, TrainerPicPointers
 	ld a, [wTrainerClass]
@@ -273,7 +275,7 @@ _Decompress7x7Pic:
 	pop af
 	ldh [rWBK], a
 	call ApplyTilemapInVBlank
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -281,6 +283,7 @@ GetPaintingPic:
 	ld a, [wTrainerClass]
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, PaintingPicPointers
 	ld a, [wTrainerClass]

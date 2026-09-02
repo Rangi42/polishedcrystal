@@ -299,6 +299,7 @@ CutDownGrass:
 	ld a, [wCutWhirlpoolReplacementBlock] ; ReplacementTile
 	ld [hl], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call UpdateSprites
@@ -370,6 +371,7 @@ CutDownTree:
 	farcall CancelOWFadePalettes
 	farcall CopyBGGreenToOBPal7
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call UpdateSprites
@@ -1759,7 +1761,7 @@ Fishing_CheckFacingUp:
 
 Script_FishCastRod:
 	refreshmap
-	loadmem hBGMapMode, $0
+	loadmem hBGMapMode, NO_BG_MAP_TRANSFER
 	special UpdateTimePals
 	callasm LoadFishingGFX
 	loademote EMOTE_SHOCK
@@ -1773,6 +1775,7 @@ MovementData_CastRod:
 
 PutTheRodAway:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $1
 	ld [wPlayerAction], a
