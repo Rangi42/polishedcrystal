@@ -129,7 +129,7 @@ WaitTop::
 ; Wait until the top half of the BG Map is being updated.
 
 	ldh a, [hBGMapMode]
-	and a ; Warning: bit 7 is otherwise ignored...
+	and a
 	jr nz, .handleLoop
 	ret
 .loop
@@ -181,33 +181,8 @@ UpdateBGMap::
 	ret
 
 .DoCustomSourceTiles
-	ld [wSPBuffer], sp
-	xor a
-	ld h, a
-	ld d, a
-	ldh a, [hBGMapHalf] ; multiply by 20 to get the tilemap offset
-	ld l, a
-	ld e, a
-	add hl, hl ; hl = hl * 2
-	add hl, hl ; hl = hl * 4
-	add hl, de ; hl = (hl*4) + de
-	add hl, hl ; hl = (5*hl)*2
-	add hl, hl ; hl = (5*hl)*4
-	add hl, bc
-	ld sp, hl
-	ldh a, [hBGMapHalf] ; multiply by 32 to get the bg map offset
-	; assumes [hBGMapHalf] < 8
-	swap a
-	add a
-	ld l, a
-	ldh a, [hBGMapAddress]
-	add l
-	ld l, a
-	ldh a, [hBGMapAddress + 1]
-	adc 0
-	ld h, a
-	ldh a, [hBGMapCopyNRows]
-	jr .startCustomCopy
+	rst 0
+	jr _CopyTilemapRows
 
 .DoAttributes
 	ldh a, [hBGMapAddress + 1]
@@ -241,7 +216,7 @@ UpdateBGMap::
 ; Next time: bottom half
 	jr .AttributeMapTopContinue
 
-.DoTiles
+.DoTiles::
 	ldh a, [hBGMapAddress + 1]
 	ld h, a
 	ldh a, [hBGMapAddress]
@@ -270,7 +245,8 @@ UpdateBGMap::
 	ldh [hBGMapHalf], a
 ; Rows of tiles in a half
 	ld a, SCREEN_HEIGHT / 2
-.startCustomCopy
+
+_CopyTilemapRows:
 ; Discrepancy between wTilemap and BGMap
 	ld bc, TILEMAP_WIDTH - (SCREEN_WIDTH - 1)
 .row
@@ -295,6 +271,20 @@ endr
 	pop hl
 	ld sp, hl
 	ret
+
+CopyTop3MapRows:: ; Called from `CopyTilemapAtOnce`.
+	ld [wSPBuffer], sp
+	; Load the destination address, which is always at the top of the map.
+	ld sp, hBGMapAddress
+	pop de
+	; Load the source address...
+	ld sp, hl
+	; Transfer the destination to `hl`.
+	ld l, e
+	ld h, d
+	; The number of rows to be copied. For why 3, see this function's caller.
+	ld a, 3
+	jr _CopyTilemapRows
 
 LYOverrideStackCopy::
 	ldh a, [hLYOverrideStackCopyAmount]

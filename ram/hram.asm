@@ -114,9 +114,9 @@ hSCY:: db
 hWX::  db
 hWY::  db
 
-hBGMapCopyNRows:: ; How many rows the `_OFS` modes (in hBGMapMode) ought to copy
-hNbRowsToCopy::   ; Temporary counter for `CopyTilemapInHBlank`
-hNbTilesToCopy::  ; Temporary counter for the `gfx.asm` functions
+hTilemapAtomicCopyFlags:: ; Copy of the flags passed to `*CopyTilemapAtOnce`
+hNbRowsToCopy::           ; Temporary counter for `CopyTilemapInHBlank`
+hNbTilesToCopy::          ; Temporary counter for the `Request*bpp` functions
 	db
 hBGMapMode::    db ; See `ram_constants.asm`
 hBGMapHalf::    db ; Either 0 (top half), or 1 (bottom half)

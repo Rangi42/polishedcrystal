@@ -1,16 +1,13 @@
 _SafeCopyTilemapAtOnce::
-	ldh a, [hBGMapMode]
-	push af
 	ldh a, [hMapAnims]
 	push af
 	ldh a, [hVBlank]
 	push af
 	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ldh [hMapAnims], a
 
 	ld a, b
+	ldh [hTilemapAtomicCopyFlags], a ; Some of these flags must be passed to the VBlank handler.
 	and %11
 	jr nz, .notZero
 	ldh a, [hCGBPalUpdate]
@@ -36,45 +33,29 @@ _SafeCopyTilemapAtOnce::
 	call nc, DelayFrame ; not enough time to update music, so wait a frame
 	ld a, e
 	ldh [hCGBPalUpdate], a
+
 .waitLYAndUpdateMusic
 	ldh a, [rLY]
 	cp $70
 	jr nz, .waitLYAndUpdateMusic
-	xor a
-	ldh [hBGMapHalf], a
 	bit 2, b
 	jr z, .noForceOAMUpdate
 	xor a
 	ldh [hOAMUpdate], a
 .noForceOAMUpdate
-	bit 3, b
-def NB_ROWS_TILEMAP_ONLY equ 9
-; If we're copying both maps, we won't have enough time to copy as many rows.
-; Thus, the remainder gets copied outside of VBlank, in chunks of 5 rows; this leaves a remainder of 3,
-; which is suitable to be transferred during VBlank (twice: once for each of the two maps).
-def NB_ROWS_BOTH_MAPS equ 3
-	ld a, NB_ROWS_BOTH_MAPS
-	jr z, .gotRowCount
-	ld a, NB_ROWS_TILEMAP_ONLY
-.gotRowCount
-	ldh [hBGMapCopyNRows], a
-	ld a, b
-	and %1000
-	swap a
-	or TRANSFER_TILEMAP_OFS
-	ldh [hBGMapMode], a ; bit 7 = skip attr map
-	ld a, 1 << 7 | 7 ; execute actual VBlank7
+
+	ld a, 1 << 7 | 7 ; execute actual VBlank7, which leads to `VBlankSafeCopyTilemapAtOnce` below.
 	ldh [hVBlank], a
 	call UpdateSound
 	call DelayFrame
+
+	; Restore all regs.
 	ld a, d
 	ldh [hCGBPalUpdate], a
 	pop af
 	ldh [hVBlank], a
 	pop af
 	ldh [hMapAnims], a
-	pop af
-	ldh [hBGMapMode], a
 	ret
 
 _CopyTilemapAtOnce::
@@ -114,28 +95,44 @@ VBlankSafeCopyTilemapAtOnce::
 	ldh a, [hWX]
 	ldh [rWX], a
 	call UpdateCGBPals
-; values for the bg map update part should already be loaded
-	call UpdateBGMap
-; specify the values for attr map update
-	ldh a, [hBGMapMode]
-	bit 7, a
-	jr nz, .skipAttr
-	ld a, TRANSFER_ATTRMAP_OFS
-	ldh [hBGMapMode], a
-	call UpdateBGMap
-.skipAttr
-	call PushOAM
-	ldh a, [hBGMapMode]
-	bit 7, a
-	jr z, .attrAndBGCopy
-; if we only need to update tiles, copy the remaining half in hblank
-	hlcoord 0, 9
-	ld de, TILEMAP_WIDTH * 9
-	ld b, 9
+
+	ldh a, [hTilemapAtomicCopyFlags]
+	and 1 << 3
+	jr z, .copyAttrmapAndTilemap
+	; Copy only the tilemap.
+	; First, reuse the same code as `UpdateBGMap` to copy the top half during VBlank...
+	call UpdateBGMap.DoTiles
+
+	call PushOAM ; This is still the VBlank handler!
+
+	; ...and then, copy the bottom half during HBlank.
+	hlcoord 0, SCREEN_HEIGHT / 2 ; HALF_HEIGHT from `video.asm`.
+	ld de, TILEMAP_WIDTH * (SCREEN_HEIGHT / 2)
+	ld b, SCREEN_HEIGHT / 2
 	jr CopyTilemapInHBlank
 
-.attrAndBGCopy
-FOR row_idx, NB_ROWS_BOTH_MAPS, SCREEN_HEIGHT, 5
+.copyAttrmapAndTilemap
+	; We do not have enough time to copy one half of each map; instead, the strategy is to copy some
+	; during VBlank, and then copy the rest during rendering.
+	; To avoid tearing, we must stay ahead of the rendering, which requires alternating between updating
+	; the tilemap and attrmap. However, it is more efficient to copy in bulk from the same one, since
+	; switching between the two carries some overhead.
+	; 5 rows turns out to be an appreciable compromise; this means we can split the 18 {tile,attr}map rows
+	; into three chunks of 5, leaving a remainder of 3.
+	; Those 3 rows are thus what we will copy here during VBlank.  (Whew!)
+	inc a ; ld a, 1
+	ldh [rVBK], a
+	ld hl, wAttrmap
+	call CopyTop3MapRows
+	; xor a (a == 0 at this point)
+	ldh [rVBK], a
+	ld hl, wTilemap
+	call CopyTop3MapRows
+
+	call PushOAM ; This is still a VBlank handler, after all :)
+
+	; Perform the rest of the copies in HBlank.
+FOR row_idx, 3 /* rows already copied during VBlank */, SCREEN_HEIGHT, 5
 	hlcoord 0, row_idx, wAttrmap
 	ld de, TILEMAP_WIDTH * row_idx
 	call Copy5RowsOfTilemapInHBlank_VBK1
