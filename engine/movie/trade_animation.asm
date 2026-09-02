@@ -599,12 +599,12 @@ TradeAnim_TubeToPlayer7:
 TradeAnim_GiveTrademonSFX:
 	call TradeAnim_AdvanceScriptPointer
 	ld de, SFX_GIVE_TRADEMON
-	jmp PlaySFX
+	jmp WaitPlaySFX
 
 TradeAnim_GetTrademonSFX:
 	call TradeAnim_AdvanceScriptPointer
 	ld de, SFX_GET_TRADEMON
-	jmp PlaySFX
+	jmp WaitPlaySFX
 
 TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	hlbgcoord 10, 11
