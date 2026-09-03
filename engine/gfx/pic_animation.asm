@@ -267,7 +267,6 @@ PokeAnim_DoAnimScript:
 
 .RunAnim:
 	call PokeAnim_ReadAnimCmd
-	ld a, [wPokeAnimCommand]
 	inc a ; $ff endanim
 	jr z, PokeAnim_End
 	inc a ; $fe setrepeat
@@ -346,16 +345,15 @@ PokeAnim_ReadAnimCmd:
 	add hl, de
 	ld a, [wPokeAnimPointerBank]
 	call GetFarWord
-	ld a, l
-	ld [wPokeAnimCommand], a
 	ld a, h
 	ld [wPokeAnimParameter], a
+	ld a, l
+	ld [wPokeAnimCommand], a
 	ld hl, wPokeAnimFrame
 	inc [hl]
 	ret
 
 PokeAnim_GetBitmaskIndex:
-	ld a, [wPokeAnimCommand]
 	dec a
 	ld c, a
 	ld b, $0
