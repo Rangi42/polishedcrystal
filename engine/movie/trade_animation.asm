@@ -325,7 +325,14 @@ TradeAnim_InitTubeAnim:
 
 	call ClearSpriteAnims
 
-	call LoadTradeBubbleGFX
+	ld de, TradeBubbleGFX
+	ld hl, vTiles0 tile $72
+	lb bc, BANK(TradeBubbleGFX), $4
+	call Request2bpp
+	xor a
+	ld hl, wSpriteAnimDict
+	ld [hli], a
+	ld [hl], $62
 
 	pop hl ; wLinkTradeSendmonPersonality or wLinkTradeGetmonPersonality
 	inc hl
@@ -506,10 +513,26 @@ TradeAnim_EnterLinkTube1:
 	ld a, $60
 	ldh [hSCX], a
 	call DelayFrame
+
 	hlcoord 0, 2
-	ld de, TradeLinkTubeTilemap
+	ld de, .TradeLinkTubeTilemap
 	lb bc, 3, 11
-	call TradeAnim_CopyBoxFromDEtoHL
+.row
+	push bc
+	push hl
+.col
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec c
+	jr nz, .col
+	pop hl
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .row
+
 	call ApplyTilemapInVBlank
 
 	ld a, CGB_TRADE_TUBE
@@ -518,6 +541,8 @@ TradeAnim_EnterLinkTube1:
 	ld de, SFX_POTION
 	call PlaySFX
 	jmp TradeAnim_IncrementJumptableIndex
+
+.TradeLinkTubeTilemap: INCBIN "gfx/trade/link_cable.tilemap"
 
 TradeAnim_EnterLinkTube2:
 	ldh a, [hSCX]
@@ -753,7 +778,8 @@ ShowPlayerTrademonStats:
 	ld b, a
 	call TrademonStats_PrintSpeciesNumber
 	ld de, wPlayerTrademonSpeciesName
-	call TrademonStats_PrintSpeciesName
+	hlcoord 4, 2
+	rst PlaceString
 	ld a, [wPlayerTrademonCaughtData]
 	ld de, wPlayerTrademonOTName
 	call TrademonStats_PrintOTName
@@ -774,7 +800,8 @@ ShowOTTrademonStats:
 	ld b, a
 	call TrademonStats_PrintSpeciesNumber
 	ld de, wOTTrademonSpeciesName
-	call TrademonStats_PrintSpeciesName
+	hlcoord 4, 2
+	rst PlaceString
 	ld a, [wOTTrademonCaughtData]
 	ld de, wOTTrademonOTName
 	call TrademonStats_PrintOTName
@@ -840,11 +867,6 @@ TrademonStats_PrintSpeciesNumber:
 	ld [hl], ' '
 	ret
 
-TrademonStats_PrintSpeciesName:
-	hlcoord 4, 2
-	rst PlaceString
-	ret
-
 TrademonStats_PrintOTName:
 	cp 3
 	jr c, .caught_gender_okay
@@ -907,10 +929,8 @@ TradeAnim_Poof:
 	jmp DelayFrame
 
 TradeAnim_BulgeThroughTube:
-	; "poof" and tube bulge shouldn't appear at the same exact time
 	ld a, CGB_TRADE_TUBE
 	call GetCGBLayout
-
 	depixel 5, 11
 	ld a, SPRITE_ANIM_INDEX_TRADE_TUBE_BULGE
 	call InitSpriteAnimStruct
@@ -1114,24 +1134,6 @@ TradeAnim_BlankTileMap:
 	rst ByteFill
 	ret
 
-TradeAnim_CopyBoxFromDEtoHL:
-.row
-	push bc
-	push hl
-.col
-	ld a, [de]
-	inc de
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
-	ret
-
 TradeAnim_NormalPals:
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbObjPal0
@@ -1159,6 +1161,27 @@ LinkTradeAnim_LoadTradeMonData:
 	ld a, [de]
 	and SPECIESFORM_MASK
 	ld [hl], a
+	ret
+
+TradeAnim_WaitAnim:
+TradeAnim_WaitAnim2:
+	ld hl, wFrameCounter
+	ld a, [hl]
+	and a
+	jmp z, TradeAnim_AdvanceScriptPointer
+	dec [hl]
+	ret
+
+LoadTradeBallAndCableGFX:
+	call DelayFrame
+	ld hl, TradeBallPoofCableGFX
+	ld de, vTiles0 tile $62
+	lb bc, BANK(TradeBallPoofCableGFX), 20
+	call DecompressRequest2bpp
+	xor a
+	ld hl, wSpriteAnimDict
+	ld [hli], a
+	ld [hl], $62
 	ret
 
 TradeAnim_FlashBGPals:
@@ -1245,37 +1268,3 @@ def x = palred 31 + palgreen 15 + palblue 0
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 	ret
-
-LoadTradeBallAndCableGFX:
-	call DelayFrame
-	ld hl, TradeBallPoofCableGFX
-	ld de, vTiles0 tile $62
-	lb bc, BANK(TradeBallPoofCableGFX), 20
-	call DecompressRequest2bpp
-	xor a
-	ld hl, wSpriteAnimDict
-	ld [hli], a
-	ld [hl], $62
-	ret
-
-LoadTradeBubbleGFX:
-	ld de, TradeBubbleGFX
-	ld hl, vTiles0 tile $72
-	lb bc, BANK(TradeBubbleGFX), $4
-	call Request2bpp
-	xor a
-	ld hl, wSpriteAnimDict
-	ld [hli], a
-	ld [hl], $62
-	ret
-
-TradeAnim_WaitAnim:
-TradeAnim_WaitAnim2:
-	ld hl, wFrameCounter
-	ld a, [hl]
-	and a
-	jmp z, TradeAnim_AdvanceScriptPointer
-	dec [hl]
-	ret
-
-TradeLinkTubeTilemap: INCBIN "gfx/trade/link_cable.tilemap"
