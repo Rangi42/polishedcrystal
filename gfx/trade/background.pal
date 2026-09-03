@@ -17,7 +17,7 @@ if !DEF(MONOCHROME)
 ; game boy screens
 	RGB 31, 15, 00 ; flashes
 	RGB 17, 00, 31
-	RGB 04, 00, 10
+	RGB 31, 00, 31 ; unused
 	RGB 00, 00, 00
 ; game boy body
 	RGB 31, 31, 31
