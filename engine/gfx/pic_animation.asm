@@ -677,10 +677,7 @@ PokeAnim_SetVBank1:
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
-	call .SetFlag
-	farjp HDMATransferAttrMapToWRAMBank3
 
-.SetFlag:
 	call PokeAnim_GetAttrMapCoord
 	lb bc, 7, 7
 	ld de, SCREEN_WIDTH
@@ -699,7 +696,8 @@ PokeAnim_SetVBank1:
 	pop bc
 	dec b
 	jr nz, .row
-	ret
+
+	farjp HDMATransferAttrMapToWRAMBank3
 
 PokeAnim_SetVBank0:
 	call PokeAnim_GetAttrMapCoord
