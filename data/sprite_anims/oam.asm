@@ -133,16 +133,10 @@ SpriteAnimOAMData:
 
 .OAMData_TradeTubeBulge:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $7
-	dsprite -1,  0,  0,  0, $00, $7 | OAM_XFLIP
-	dsprite  0,  0, -1,  0, $00, $7 | OAM_YFLIP
-	dsprite  0,  0,  0,  0, $00, $7 | OAM_XFLIP | OAM_YFLIP
-
-	db 4
-	dsprite -1,  0, -1,  0, $00, $0 | OAM_PRIO
-	dsprite -1,  0,  0,  0, $00, $0 | OAM_XFLIP | OAM_PRIO
-	dsprite  0,  0, -1,  0, $00, $0 | OAM_YFLIP | OAM_PRIO
-	dsprite  0,  0,  0,  0, $00, $0 | OAM_XFLIP | OAM_YFLIP | OAM_PRIO
+	dsprite -1,  0, -1,  0, $00, $6
+	dsprite -1,  0,  0,  0, $00, $6 | OAM_XFLIP
+	dsprite  0,  0, -1,  0, $00, $6 | OAM_YFLIP
+	dsprite  0,  0,  0,  0, $00, $6 | OAM_XFLIP | OAM_YFLIP
 
 .OAMData_TradePoofBubble:
 	db 16

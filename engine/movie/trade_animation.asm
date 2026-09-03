@@ -289,8 +289,8 @@ TradeAnim_TubeToOT1:
 	ld a, [wLinkTradeSendmonSpecies]
 	ld [wTempSpecies], a
 	ld hl, wLinkTradeSendmonPersonality
+	xor a
 	depixel 5, 9, 4, 6
-	xor a ; let InitTubeAnim know we're starting from the top
 	ld b, $0
 	jr TradeAnim_InitTubeAnim
 
@@ -298,8 +298,8 @@ TradeAnim_TubeToPlayer1:
 	ld a, [wLinkTradeGetmonSpecies]
 	ld [wTempSpecies], a
 	ld hl, wLinkTradeGetmonPersonality
+	ld a, $1
 	depixel 12, 9, 4, 6
-	ld a, 1 ; let InitTubeAnim know we're starting from the bottom
 	ld b, $5
 TradeAnim_InitTubeAnim:
 	push af
@@ -323,47 +323,29 @@ TradeAnim_InitTubeAnim:
 	ldh [hWY], a
 	call DelayFrame
 
-	call DisableLCD
-
 	call ClearSpriteAnims
 
-	call EnableLCD
+	call LoadTradeBubbleGFX
 
-	call LoadTradeBubbleGFX ; needs DelayFrame... and overwrites some of the BG palette
 	pop hl ; wLinkTradeSendmonPersonality or wLinkTradeGetmonPersonality
 	inc hl
 	ld a, [hld]
 	ld [wCurIconForm], a
 	farcall LoadTradeAnimationMonMiniAndMask
 
-	ld hl, .BGPalettes
-	ld de, wBGPals2 palette 0
-	ld bc, 8 palettes
-	call FarCopyColorWRAM
-	ld hl, .BubblePalette
-	ld de, wOBPals2 palette 6
-	ld bc, 2 palettes
-	call FarCopyColorWRAM
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
-
-	call DelayFrame
+	ld a, CGB_TRADE_BG
+	call GetCGBLayout
 
 	call DisableLCD
 
-	; ensure the buffer does not overwrite our custom BG
 	xor a
 	ldh [hBGMapMode], a
-	ld hl, vTiles2 tile ' '
-	ld bc, 1 tiles
-	call ByteFill
-
 	ld de, TradeBGTilemap
-	call .CopyMapStuffs
+	call .CopyBGMap
 	ld a, 1
 	ldh [rVBK], a
 	ld de, TradeBGAttrmap
-	call .CopyMapStuffs
+	call .CopyBGMap
 	xor a
 	ldh [rVBK], a
 
@@ -424,61 +406,7 @@ TradeAnim_InitTubeAnim:
 	ld [wFrameCounter], a
 	ret
 
-.BGPalettes:
-; BGP0 bg shade 0
-	RGB $0D, $18, $1D
-	RGB $0B, $10, $1E
-	RGB $07, $0B, $16
-	RGB $05, $06, $12
-; BGP1 bg shade 1
-	RGB $1F, $1F, $1F
-	RGB $14, $1A, $1F
-	RGB $0D, $18, $1D
-	RGB $0B, $10, $1E
-; BGP2 cable (white bg)
-	RGB 31, 31, 31
-	RGB 31, 31, 00 ; v [THESE COLORS SHOULD ALTERNATE]
-	RGB 31, 15, 00 ; ^ [THESE COLORS SHOULD ALTERNATE]
-	RGB 00, 00, 00
-; BGP3 game boy
-	RGB 31, 15, 00 ; [THIS COLOR SHOULD FLASH]
-	RGB 17, 00, 31
-	RGB 04, 00, 10
-	RGB 00, 00, 00
-; BGP4 game boy (white bg)
-	RGB 31, 31, 31
-	RGB 17, 00, 31
-	RGB 04, 00, 10
-	RGB 00, 00, 00
-; BGP5 game boy (dark bg)
-	RGB $05, $06, $12
-	RGB 17, 00, 31
-	RGB 04, 00, 10
-	RGB 00, 00, 00
-; BGP6 cable (dark bg)
-	RGB $14, $1A, $1F
-	RGB 31, 31, 00 ; v [THESE COLORS SHOULD ALTERNATE]
-	RGB 31, 15, 00 ; ^ [THESE COLORS SHOULD ALTERNATE]
-	RGB 00, 00, 00
-; BGP7 arrow
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 15, 00 ; [THIS COLOR SHOULD FLASH]
-	RGB 00, 00, 00
-
-.BubblePalette:
-; mini mask
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-; bubble
-	RGB 31, 31, 31
-	RGB 19, 27, 29
-	RGB 00, 22, 29
-	RGB 09, 13, 30
-
-.CopyMapStuffs:
+.CopyBGMap:
 	lb bc, 32, 20
 	hlbgcoord 0, 0
 	push bc
@@ -491,7 +419,7 @@ TradeAnim_InitTubeAnim:
 	dec c
 	jr nz, .loopbg2
 	pop hl
-	ld bc, $20
+	ld bc, 32
 	add hl, bc
 	pop bc
 	dec b
@@ -501,6 +429,10 @@ TradeAnim_InitTubeAnim:
 	ret
 
 TradeAnim_TubeToOT2:
+TradeAnim_TubeToOT4:
+TradeAnim_TubeToOT6:
+TradeAnim_TubeToPlayer2:
+TradeAnim_TubeToPlayer5:
 	call TradeAnim_FlashBGPals
 	ld hl, wFrameCounter
 	ld a, [hl]
@@ -516,25 +448,12 @@ TradeAnim_TubeToOT3:
 	ldh [hSCY], a
 	cp $70
 	ret nz
-	ld a, 90
-	ld [wFrameCounter], a
-	jmp TradeAnim_IncrementJumptableIndex
-
-TradeAnim_TubeToOT4:
-TradeAnim_TubeToOT6:
-	call TradeAnim_FlashBGPals
-	ld hl, wFrameCounter
-	ld a, [hl]
-	and a
-	jmp z, TradeAnim_IncrementJumptableIndex
-	dec [hl]
-	ret
-
-; TODO: clean this up
 TradeAnim_TubeToOT5:
 	ld a, 90
 	ld [wFrameCounter], a
 TradeAnim_TubeToOT7:
+TradeAnim_TubeToPlayer6:
+TradeAnim_TubeToPlayer7:
 	jmp TradeAnim_IncrementJumptableIndex
 
 TradeAnim_TubeToPlayer3:
@@ -580,20 +499,6 @@ TradeAnim_TubeToPlayer8:
 	call TradeAnim_NormalPals
 	jmp TradeAnim_AdvanceScriptPointer
 
-TradeAnim_TubeToPlayer2:
-TradeAnim_TubeToPlayer5:
-	call TradeAnim_FlashBGPals
-	ld hl, wFrameCounter
-	ld a, [hl]
-	and a
-	jmp z, TradeAnim_IncrementJumptableIndex
-	dec [hl]
-	ret
-
-TradeAnim_TubeToPlayer6:
-TradeAnim_TubeToPlayer7:
-	jmp TradeAnim_IncrementJumptableIndex
-
 TradeAnim_GiveTrademonSFX:
 	call TradeAnim_AdvanceScriptPointer
 	ld de, SFX_GIVE_TRADEMON
@@ -625,20 +530,12 @@ TradeAnim_EnterLinkTube1:
 	call TradeAnim_CopyBoxFromDEtoHL
 	call ApplyTilemapInVBlank
 
-	ld hl, .TubePal
-	ld de, wBGPals2 palette 0
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
-	call DelayFrame
+	ld a, CGB_TRADE_TUBE
+	call GetCGBLayout
 
 	ld de, SFX_POTION
 	call PlaySFX
 	jmp TradeAnim_IncrementJumptableIndex
-
-.TubePal:
-	RGB 31,31,31, 31,31,00, 31,15,00, 00,00,00
 
 TradeAnim_EnterLinkTube2:
 	ldh a, [hSCX]
@@ -752,7 +649,7 @@ TradeAnim_ShowGivemonData:
 	ld [wTempMonPersonality], a
 	ld a, [wPlayerTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
-	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	ld a, CGB_TRADE_PIC
 	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
@@ -775,7 +672,7 @@ TradeAnim_ShowGetmonData:
 	ld [wTempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
-	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	ld a, CGB_TRADE_PIC
 	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
@@ -1025,27 +922,12 @@ TradeAnim_Poof:
 	ld [wFrameCounter], a
 	ld de, SFX_BALL_POOF
 	call PlaySFX
-
-	ld hl, .PoofPal
-	ld de, wOBPals2 palette 7
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
 	jmp DelayFrame
-
-.PoofPal:
-	RGB 31,31,31, 27,27,27, 16,16,16, 00,00,00
 
 TradeAnim_BulgeThroughTube:
 	; "poof" and tube bulge shouldn't appear at the same exact time
-	ld hl, TradeAnim_EnterLinkTube1.TubePal
-	ld de, wOBPals2 palette 7
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
-	call DelayFrame
+	ld a, CGB_TRADE_TUBE
+	call GetCGBLayout
 
 	depixel 5, 11
 	ld a, SPRITE_ANIM_INDEX_TRADE_TUBE_BULGE
@@ -1406,13 +1288,6 @@ LoadTradeBubbleGFX:
 	ret
 
 TradeAnim_WaitAnim:
-	ld hl, wFrameCounter
-	ld a, [hl]
-	and a
-	jmp z, TradeAnim_AdvanceScriptPointer
-	dec [hl]
-	ret
-
 TradeAnim_WaitAnim2:
 	ld hl, wFrameCounter
 	ld a, [hl]

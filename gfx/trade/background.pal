@@ -1,0 +1,51 @@
+if !DEF(MONOCHROME)
+; dark background squares
+	RGB 13, 24, 29
+	RGB 11, 16, 30
+	RGB 07, 11, 22
+	RGB 05, 06, 18
+; light background squares
+	RGB 31, 31, 31
+	RGB 20, 26, 31
+	RGB 13, 24, 29
+	RGB 11, 16, 30
+; cable on white background
+	RGB 31, 31, 31
+	RGB 31, 31, 00 ; v flashes
+	RGB 31, 15, 00 ; ^ flashes
+	RGB 00, 00, 00
+; game boy screens
+	RGB 31, 15, 00 ; flashes
+	RGB 17, 00, 31
+	RGB 04, 00, 10
+	RGB 00, 00, 00
+; game boy body
+	RGB 31, 31, 31
+	RGB 17, 00, 31
+	RGB 04, 00, 10
+	RGB 00, 00, 00
+; game boy corners
+	RGB 05, 06, 18
+	RGB 17, 00, 31
+	RGB 04, 00, 10
+	RGB 00, 00, 00
+; cable on dark background
+	RGB 20, 26, 31
+	RGB 31, 31, 00 ; v flashes
+	RGB 31, 15, 00 ; ^ flashes
+	RGB 00, 00, 00
+; arrow
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 15, 00 ; flashes
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+endc
