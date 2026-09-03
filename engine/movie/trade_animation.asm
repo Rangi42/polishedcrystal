@@ -143,9 +143,9 @@ RunTradeAnimSequence:
 	ld bc, STARTOF(VRAM) + SIZEOF(VRAM) - vBGMap0
 	ld a, ' '
 	rst ByteFill
-	ld hl, TradeBackgroundGFX
+	ld hl, TradeGameBoyLZ
 	ld de, vTiles2 tile $31
-	lb bc, BANK(TradeBackgroundGFX), 58
+	lb bc, BANK(TradeGameBoyLZ), 47
 	call DecompressRequest2bpp
 	xor a
 	ldh [hSCX], a

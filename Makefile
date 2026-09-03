@@ -267,10 +267,10 @@ gfx/title/suicune_unowns.tilemap: gfx/title/suicune_unowns.png
 gfx/town_map/town_map.2bpp: tools/gfx += --trim-whitespace
 
 gfx/trade/ball.2bpp: tools/gfx += --remove-whitespace
-gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
-gfx/trade/link_cable.2bpp: tools/gfx += --remove-duplicates
+gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip --remove-whitespace
+gfx/trade/link_cable.2bpp: tools/gfx += --remove-duplicates --remove-whitespace
 gfx/trade/ball_poof_cable.2bpp: gfx/trade/ball.2bpp gfx/trade/poof.2bpp gfx/trade/cable.2bpp ; $Qcat $^ > $@
-gfx/trade/trade_bg.2bpp: tools/gfx += --trim-whitespace
+gfx/trade/game_boy_cable.2bpp: gfx/trade/game_boy.2bpp gfx/trade/link_cable.2bpp ; $Qcat $^ > $@
 gfx/trade/trade_screen.2bpp: gfx/trade/border.2bpp gfx/trade/textbox.2bpp ; $Qcat $^ > $@
 
 gfx/trainer_card/chris_card.2bpp: RGBGFXFLAGS += -Z
