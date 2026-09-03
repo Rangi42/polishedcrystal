@@ -1179,47 +1179,37 @@ LoadTradeBallAndCableGFX:
 	ld [hl], $62
 	ret
 
-if !DEF(MONOCHROME)
-DEF TRADE_FLASH_LIGHT       EQU palred 31 + palgreen 31 + palblue 0 ; yellow
-DEF TRADE_FLASH_ARROW_LIGHT EQU palred 31 + palgreen 20 + palblue 8 ; light orange
-DEF TRADE_FLASH_DARK        EQU palred 31 + palgreen 15 + palblue 0 ; orange
-else
-DEF TRADE_FLASH_LIGHT       EQU PAL_MONOCHROME_LIGHT
-DEF TRADE_FLASH_ARROW_LIGHT EQU PAL_MONOCHROME_LIGHT
-DEF TRADE_FLASH_DARK        EQU PAL_MONOCHROME_DARK
-endc
-
 TradeAnim_FlashBGPals:
+	ld hl, wFrameCounter2
+	ld a, [hl]
+	and %111
+	ret nz
+
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals2)
 	ldh [rWBK], a
 
-	ld hl, wBGPals2 palette 1 color 3 ; arrow
-	ld bc, TRADE_FLASH_LIGHT
-	ld de, TRADE_FLASH_DARK
-
-	ld a, [wFrameCounter2]
-	and %100
+	bit 3, [hl]
+	ld hl, wBGPals2 palette 3 color 2 ; light arrow
 	jr z, .inverted
-
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-
-	push bc
-	ld b, d
-	ld c, e
-	pop de
-
-	jr .continue
-
+	ld hl, wBGPals2 palette 2 color 1 ; dark arrow
 .inverted
-	ld a, LOW(TRADE_FLASH_ARROW_LIGHT)
+	ld a, [hli]
+	ld b, [hl]
+	ld hl, wBGPals2 palette 1 color 3 ; arrow
 	ld [hli], a
-	ld [hl], HIGH(TRADE_FLASH_ARROW_LIGHT)
+	ld [hl], b
 
-.continue
+	ld hl, wBGPals2 palette 2 color 1 ; light and dark flash colors
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+
 	ld hl, wBGPals2 palette 2 color 1 ; cable on white background
 	ld a, c
 	ld [hli], a
