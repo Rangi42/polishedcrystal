@@ -119,10 +119,7 @@ SetUpPokeAnim:
 	ld c, a
 	pop af
 	ldh [rWBK], a
-	ld a, c
-	and $80
-	ret z
-	scf
+	sla c ; Return in carry whether bit 7 got set.
 	ret
 
 MACRO add_setup_command
