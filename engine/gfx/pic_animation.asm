@@ -38,7 +38,7 @@ AnimateFrontpic::
 
 	call LoadMonAnimation
 .loop
-	call SetUpPokeAnim
+	call TickPokeAnim
 	jr nc, .loop
 
 	pop af
@@ -88,7 +88,7 @@ LoadMonAnimation:
 TickFrontpicAnim::
 	ld a, BANK(wPokeAnimStruct)
 	call StackCallInWRAMBankA
-SetUpPokeAnim:
+TickPokeAnim:
 	ld a, [wPokeAnimSceneIndex]
 	ld c, a
 	ld b, 0
