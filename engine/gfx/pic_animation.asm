@@ -679,41 +679,35 @@ PokeAnim_SetVBank1:
 	ldh [hBGMapMode], a
 
 	call PokeAnim_GetAttrMapCoord
-	lb bc, 7, 7
-	ld de, SCREEN_WIDTH
-.row
-	push bc
-	push hl
+	ld de, SCREEN_WIDTH - 7
+	ld a, 7
 .col
+	ld c, 7
+.row
 	set 3, [hl]
-	add hl, de
-	dec c
-	jr nz, .col
-	pop hl
 	inc hl
-	pop bc
-	dec b
+	dec c
 	jr nz, .row
+	add hl, de ; Advance to the next row.
+	dec a
+	jr nz, .col
 
 	farjp HDMATransferAttrMapToWRAMBank3
 
 PokeAnim_SetVBank0:
 	call PokeAnim_GetAttrMapCoord
-	lb bc, 7, 7
-	ld de, SCREEN_WIDTH
-.row
-	push bc
-	push hl
+	ld de, SCREEN_WIDTH - 7
+	ld a, 7
 .col
+	ld c, 7
+.row
 	res 3, [hl]
-	add hl, de
-	dec c
-	jr nz, .col
-	pop hl
 	inc hl
-	pop bc
-	dec b
+	dec c
 	jr nz, .row
+	add hl, de ; Advance to the next row.
+	dec a
+	jr nz, .col
 	ret
 
 PokeAnim_GetAttrMapCoord:
