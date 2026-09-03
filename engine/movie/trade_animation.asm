@@ -340,12 +340,16 @@ TradeAnim_InitTubeAnim:
 
 	xor a
 	ldh [hBGMapMode], a
-	ld de, TradeBGTilemap
-	call .CopyBGMap
+	ld hl, TradeBGTilemapLZ
+	ld a, BANK(TradeBGTilemapLZ)
+	debgcoord 0, 0
+	call FarDecompressToDE
 	ld a, 1
 	ldh [rVBK], a
-	ld de, TradeBGAttrmap
-	call .CopyBGMap
+	ld hl, TradeBGAttrmapLZ
+	ld a, BANK(TradeBGAttrmapLZ)
+	debgcoord 0, 0
+	call FarDecompressToDE
 	xor a
 	ldh [rVBK], a
 
@@ -404,28 +408,6 @@ TradeAnim_InitTubeAnim:
 
 	ld a, 34
 	ld [wFrameCounter], a
-	ret
-
-.CopyBGMap:
-	lb bc, 32, 20
-	hlbgcoord 0, 0
-	push bc
-.loopbg
-	push hl
-.loopbg2
-	ld a, [de]
-	ld [hli], a
-	inc de
-	dec c
-	jr nz, .loopbg2
-	pop hl
-	ld bc, 32
-	add hl, bc
-	pop bc
-	dec b
-	push bc
-	jr nz, .loopbg
-	pop bc
 	ret
 
 TradeAnim_TubeToOT2:
@@ -1297,6 +1279,3 @@ TradeAnim_WaitAnim2:
 	ret
 
 TradeLinkTubeTilemap: INCBIN "gfx/trade/link_cable.tilemap"
-
-TradeBGTilemap: INCBIN "gfx/trade/background.tilemap"
-TradeBGAttrmap: INCBIN "gfx/trade/background.attrmap"

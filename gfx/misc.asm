@@ -74,10 +74,12 @@ SECTION "Trade Graphics", ROMX
 
 TradeScreenGFX:: INCBIN "gfx/trade/trade_screen.2bpp.lzp"
 
-TradeGameBoyLZ:: INCBIN "gfx/trade/game_boy_cable.2bpp.lzp"
-
 TradeBallPoofCableGFX:: INCBIN "gfx/trade/ball_poof_cable.2bpp.lzp"
 TradeBubbleGFX:: INCBIN "gfx/trade/bubble.2bpp"
+
+TradeGameBoyLZ::   INCBIN "gfx/trade/game_boy_cable.2bpp.lzp"
+TradeBGTilemapLZ:: INCBIN "gfx/trade/background.tilemap.lzp"
+TradeBGAttrmapLZ:: INCBIN "gfx/trade/background.attrmap.lzp"
 
 
 SECTION "Evolution Graphics", ROMX
