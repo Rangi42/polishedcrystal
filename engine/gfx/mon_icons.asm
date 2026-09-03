@@ -549,13 +549,51 @@ endr
 	pop hl
 	ret
 
-LoadTradeAnimationMonMini:
+LoadTradeAnimationMonMiniAndMask:
 	call SetTradeMiniIconColor
 	ld a, [wTempIconSpecies]
 	ld [wCurIcon], a
-	ld a, $62
-	ld [wCurIconTile], a
-	; fallthrough
+	ld a, [wCurIconSpecies]
+	ld c, a
+	ld a, [wCurIconForm]
+	ld b, a
+	call GetCosmeticSpeciesAndFormIndex
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wDecompressScratch)
+	ldh [rWBK], a
+
+	ld hl, MiniIconPointers
+rept 7
+	add hl, bc
+endr
+	ld a, [hli]
+	ld b, a
+	ld de, vTiles0 tile $62
+	ld a, [hli]
+	push hl
+	push bc
+	ld h, [hl]
+	ld l, a
+	ld c, 8
+	call DecompressRequest2bpp
+	pop bc
+	pop hl
+	inc hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call FarDecompressInB
+	ld hl, vTiles0 tile $6a
+	ld de, wDecompressScratch
+	lb bc, BANK(wDecompressScratch), 8
+	call Request1bpp
+
+	pop af
+	ldh [rWBK], a
+	ret
+
 GetMemMiniGFX:
 	ld a, [wCurIconTile]
 	; fallthrough

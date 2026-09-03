@@ -294,9 +294,9 @@ AnimSeq_TradeTubeBulge:
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
-	inc [hl]
-	inc [hl]
-	cp $b0
+	dec [hl]
+	dec [hl]
+	cp $e0
 	jr nc, .delete
 	and 3
 	ret nz
