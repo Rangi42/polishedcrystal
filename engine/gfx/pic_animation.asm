@@ -39,9 +39,6 @@ AnimateFrontpic::
 	call LoadMonAnimation
 .loop
 	call SetUpPokeAnim
-	push af
-	farcall HDMATransferTileMapToWRAMBank3
-	pop af
 	jr nc, .loop
 
 	pop af
@@ -103,6 +100,7 @@ SetUpPokeAnim:
 	ld a, [hl]
 	ld hl, PokeAnim_SetupCommands
 	call JumpTable
+	farcall HDMATransferTileMapToWRAMBank3
 	ld a, [wPokeAnimSceneIndex]
 	add a, a ; Return in carry whether bit 7 got set.
 	ret

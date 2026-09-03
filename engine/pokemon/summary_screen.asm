@@ -268,7 +268,7 @@ SummaryScreen_DoAnim:
 	res SUMMARY_FLAGS_DO_ANIM_F, [hl]
 .finish
 	res SUMMARY_FLAGS_FINISH_ANIM_F, [hl]
-	farjp HDMATransferTileMapToWRAMBank3
+	ret
 
 SummaryScreen_InitMon:
 	ld hl, wSummaryScreenFlags
