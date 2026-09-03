@@ -255,9 +255,9 @@ SummaryScreenLoop:
 
 SummaryScreen_DoAnim:
 	ld hl, wSummaryScreenFlags
-	bit 6, [hl]
+	bit SUMMARY_FLAGS_DO_ANIM_F, [hl]
 	jr nz, .try_anim
-	bit 5, [hl]
+	bit SUMMARY_FLAGS_FINISH_ANIM_F, [hl]
 	jr nz, .finish
 	jmp DelayFrame
 
