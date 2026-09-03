@@ -685,9 +685,7 @@ PokeAnim_SetVBank1:
 	push bc
 	push hl
 .col
-	ld a, [hl]
-	or 8
-	ld [hl], a
+	set 3, [hl]
 	add hl, de
 	dec c
 	jr nz, .col
@@ -707,9 +705,7 @@ PokeAnim_SetVBank0:
 	push bc
 	push hl
 .col
-	ld a, [hl]
-	and $f7
-	ld [hl], a
+	res 3, [hl]
 	add hl, de
 	dec c
 	jr nz, .col
