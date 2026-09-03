@@ -252,12 +252,6 @@ PokeAnim_InitAnim:
 	push af
 	ld a, BANK(wPokeAnimStruct)
 	ldh [rWBK], a
-	push bc
-	ld hl, wPokeAnimIdleFlag
-	ld bc, wPokeAnimStructEnd - wPokeAnimIdleFlag
-	xor a
-	rst ByteFill
-	pop bc
 	ld a, b
 	ld [wPokeAnimSpeed], a
 	ld a, c
@@ -265,6 +259,10 @@ PokeAnim_InitAnim:
 	call GetMonAnimPointer
 	call GetMonFramesPointer
 	call GetMonBitmaskPointer
+	ld hl, wPokeAnimFrame
+	ld bc, wPokeAnimStructEnd - wPokeAnimFrame
+	xor a
+	rst ByteFill
 	pop af
 	ldh [rWBK], a
 	ret
