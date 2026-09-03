@@ -262,7 +262,7 @@ SummaryScreen_DoAnim:
 	jmp DelayFrame
 
 .try_anim
-	farcall SetUpPokeAnim
+	farcall TickFrontpicAnim
 	ld hl, wSummaryScreenFlags
 	jr nc, .finish
 	res SUMMARY_FLAGS_DO_ANIM_F, [hl]
@@ -930,7 +930,7 @@ SummaryScreen_PlaceFrontpic:
 	farcall PrepareAnimatedFrontpic
 	hlcoord 0, 1
 	lb de, $0, $2
-	farcall LoadMonAnimation
+	farcall LoadFrontpicAnim
 	ld hl, wSummaryScreenFlags
 	set SUMMARY_FLAGS_DO_ANIM_F, [hl]
 	ret

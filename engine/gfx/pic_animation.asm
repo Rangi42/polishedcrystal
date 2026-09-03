@@ -27,9 +27,15 @@ PokeAnims:
 .Egg1:   pokeanim Setup, Play
 .Egg2:   pokeanim Extra, Play
 
-AnimateFrontpic:
+AnimateFrontpic::
 	call IsCurPartySpeciesAPokemon
 	ret c
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wPokeAnimStruct)
+	ldh [rWBK], a
+
 	call LoadMonAnimation
 .loop
 	call SetUpPokeAnim
@@ -37,14 +43,15 @@ AnimateFrontpic:
 	farcall HDMATransferTileMapToWRAMBank3
 	pop af
 	jr nc, .loop
+
+	pop af
+	ldh [rWBK], a
 	ret
 
-LoadMonAnimation:
-	ldh a, [rWBK]
-	push af
+LoadFrontpicAnim::
 	ld a, BANK(wPokeAnimStruct)
-	ldh [rWBK], a
-
+	call StackCallInWRAMBankA
+LoadMonAnimation:
 ; hl contains TileMap coords
 	ld a, l
 	ld [wPokeAnimCoord], a
@@ -79,16 +86,12 @@ LoadMonAnimation:
 	call PokeAnim_GetFrontpicDims
 	ld a, c
 	ld [wPokeAnimFrontpicHeight], a
-
-	pop af
-	ldh [rWBK], a
 	ret
 
-SetUpPokeAnim:
-	ldh a, [rWBK]
-	push af
+TickFrontpicAnim::
 	ld a, BANK(wPokeAnimStruct)
-	ldh [rWBK], a
+	call StackCallInWRAMBankA
+SetUpPokeAnim:
 	ld a, [wPokeAnimSceneIndex]
 	ld c, a
 	ld b, 0
@@ -101,10 +104,7 @@ SetUpPokeAnim:
 	ld hl, PokeAnim_SetupCommands
 	call JumpTable
 	ld a, [wPokeAnimSceneIndex]
-	ld c, a
-	pop af
-	ldh [rWBK], a
-	sla c ; Return in carry whether bit 7 got set.
+	add a, a ; Return in carry whether bit 7 got set.
 	ret
 
 MACRO add_setup_command
