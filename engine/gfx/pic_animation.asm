@@ -266,7 +266,7 @@ PokeAnim_DoAnimScript:
 	dw .WaitAnim
 
 .RunAnim:
-	call PokeAnim_GetPointer
+	call PokeAnim_ReadAnimCmd
 	ld a, [wPokeAnimCommand]
 	inc a ; $ff endanim
 	jr z, PokeAnim_End
@@ -334,7 +334,7 @@ PokeAnim_StopWaitAnim:
 	dec [hl]
 	ret
 
-PokeAnim_GetPointer:
+PokeAnim_ReadAnimCmd:
 	ld a, [wPokeAnimFrame]
 	ld e, a
 	ld d, $0
