@@ -402,8 +402,14 @@ endr
 	set B_OAM_YFLIP, [hl]
 	xor a
 	ldh [rVBK], a
-.from_player
 
+	call TradeAnim_PrepareOTGB
+	jr .finish
+
+.from_player
+	call TradeAnim_PreparePlayerGB
+
+.finish
 	call EnableLCD
 
 	call TradeAnim_IncrementJumptableIndex
@@ -430,6 +436,8 @@ TradeAnim_TubeToOT3:
 	ldh a, [hSCY]
 	inc a
 	ldh [hSCY], a
+	cp $30
+	call z, TradeAnim_PrepareOTGB
 	cp $70
 	ret nz
 TradeAnim_TubeToOT5:
@@ -445,6 +453,8 @@ TradeAnim_TubeToPlayer3:
 	ldh a, [hSCY]
 	dec a
 	ldh [hSCY], a
+	cp $30
+	call z, TradeAnim_PreparePlayerGB
 	and a
 	ret nz
 	jmp TradeAnim_IncrementJumptableIndex
@@ -1191,9 +1201,11 @@ TradeAnim_FlashBGPals:
 	ldh [rWBK], a
 
 	bit 3, [hl]
-	ld hl, wBGPals2 palette 3 color 2 ; light arrow
+	ld hl, .LightArrowColor
 	jr z, .inverted
-	ld hl, wBGPals2 palette 2 color 1 ; dark arrow
+	assert .LightArrowColor + 2 == .DarkArrowColor
+	inc hl
+	inc hl
 .inverted
 	ld a, [hli]
 	ld b, [hl]
@@ -1230,6 +1242,60 @@ TradeAnim_FlashBGPals:
 	ld a, e
 	ld [hli], a
 	ld [hl], d
+
+	pop af
+	ldh [rWBK], a
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ret
+
+.LightArrowColor:
+if !DEF(MONOCHROME)
+	RGB 31, 20, 08
+else
+	RGB_MONOCHROME_LIGHT
+endc
+
+.DarkArrowColor:
+if !DEF(MONOCHROME)
+	RGB 31, 15, 00
+else
+	RGB_MONOCHROME_DARK
+endc
+
+TradeAnim_PrepareOTGB:
+	ld hl, wBGPals2 palette 7 color 1 ; ot game boy
+	jr TradeAnim_PrepareGBCorners
+
+TradeAnim_PreparePlayerGB:
+	ld hl, wBGPals2 palette 4 color 1 ; player game boy
+TradeAnim_PrepareGBCorners:
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wBGPals2)
+	ldh [rWBK], a
+
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+
+	ld hl, wBGPals2 palette 5 color 1 ; game boy corners
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+
+	ld hl, wBGPals2 palette 3 color 1 ; game boy screens
+	ld a, c
+	ld [hli], a
+	ld [hl], b
 
 	pop af
 	ldh [rWBK], a
