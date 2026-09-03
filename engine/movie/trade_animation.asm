@@ -1195,7 +1195,7 @@ TradeAnim_FlashBGPals:
 	ld a, BANK(wBGPals2)
 	ldh [rWBK], a
 
-	ld hl, wBGPals2 palette 7 color 2 ; arrow
+	ld hl, wBGPals2 palette 1 color 3 ; arrow
 	ld bc, TRADE_FLASH_LIGHT
 	ld de, TRADE_FLASH_DARK
 
@@ -1220,7 +1220,7 @@ TradeAnim_FlashBGPals:
 	ld [hl], HIGH(TRADE_FLASH_ARROW_LIGHT)
 
 .continue
-	ld hl, wBGPals2 palette 2 color 1 ; tubes (1)
+	ld hl, wBGPals2 palette 2 color 1 ; cable on white background
 	ld a, c
 	ld [hli], a
 	ld a, b
@@ -1228,7 +1228,7 @@ TradeAnim_FlashBGPals:
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-	ld hl, wBGPals2 palette 6 color 1 ; tubes (2)
+	ld hl, wBGPals2 palette 6 color 1 ; cable on dark background
 	ld a, c
 	ld [hli], a
 	ld a, b
@@ -1236,7 +1236,7 @@ TradeAnim_FlashBGPals:
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-	ld hl, wBGPals2 palette 3 color 0 ; game boy
+	ld hl, wBGPals2 palette 3 color 0 ; game boy screens
 	ld a, e
 	ld [hli], a
 	ld [hl], d
