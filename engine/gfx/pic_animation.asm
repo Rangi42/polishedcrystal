@@ -53,7 +53,7 @@ LoadMonAnimation:
 
 	ldh a, [rWBK]
 	push af
-	ld a, $2
+	ld a, BANK(wPokeAnimStruct)
 	ldh [rWBK], a
 
 	push bc
@@ -102,7 +102,7 @@ LoadMonAnimation:
 SetUpPokeAnim:
 	ldh a, [rWBK]
 	push af
-	ld a, $2
+	ld a, BANK(wPokeAnimStruct)
 	ldh [rWBK], a
 	ld a, [wPokeAnimSceneIndex]
 	ld c, a
@@ -237,7 +237,7 @@ PokeAnim_StereoCry:
 PokeAnim_DeinitFrames:
 	ldh a, [rWBK]
 	push af
-	ld a, $2
+	ld a, BANK(wPokeAnimStruct)
 	ldh [rWBK], a
 	call PokeAnim_PlaceGraphic
 	farcall HDMATransferTileMapToWRAMBank3
@@ -250,7 +250,7 @@ PokeAnim_DeinitFrames:
 PokeAnim_InitAnim:
 	ldh a, [rWBK]
 	push af
-	ld a, $2
+	ld a, BANK(wPokeAnimStruct)
 	ldh [rWBK], a
 	push bc
 	ld hl, wPokeAnimIdleFlag
@@ -694,7 +694,7 @@ PokeAnim_PlaceGraphic:
 PokeAnim_SetVBank1:
 	ldh a, [rWBK]
 	push af
-	ld a, $2
+	ld a, BANK(wPokeAnimStruct)
 	ldh [rWBK], a
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
