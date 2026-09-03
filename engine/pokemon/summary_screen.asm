@@ -263,11 +263,10 @@ SummaryScreen_DoAnim:
 
 .try_anim
 	farcall SetUpPokeAnim
-	jr nc, .finish
 	ld hl, wSummaryScreenFlags
+	jr nc, .finish
 	res SUMMARY_FLAGS_DO_ANIM_F, [hl]
 .finish
-	ld hl, wSummaryScreenFlags
 	res SUMMARY_FLAGS_FINISH_ANIM_F, [hl]
 	farjp HDMATransferTileMapToWRAMBank3
 
