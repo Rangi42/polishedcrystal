@@ -80,9 +80,27 @@ LoadMonAnimation:
 	call GetFarWRAMByte
 	ld [wPokeAnimVariant], a
 
-	call PokeAnim_GetFrontpicDims
+	call GetFrontpicDims
 	ld a, c
 	ld [wPokeAnimFrontpicHeight], a
+	ret
+
+GetFrontpicDims:
+	ldh a, [rWBK]
+	push af
+	ld a, $1
+	ldh [rWBK], a
+
+	; This is no longer needed for the pic size, but do it just
+	; in case subsequent code expects base data available
+	ld a, [wCurPartySpecies]
+	ld [wCurSpecies], a
+	call GetBaseData ; [wCurForm] is already set
+
+	call GetPicSize
+	ld c, a
+	pop af
+	ldh [rWBK], a
 	ret
 
 TickFrontpicAnim::
@@ -711,24 +729,6 @@ PokeAnim_GetAttrMapCoord:
 	ld l, a
 	ld de, wAttrmap - wTilemap
 	add hl, de
-	ret
-
-PokeAnim_GetFrontpicDims:
-	ldh a, [rWBK]
-	push af
-	ld a, $1
-	ldh [rWBK], a
-
-	; This is no longer needed for the pic size, but do it just
-	; in case subsequent code expects base data available
-	ld a, [wCurPartySpecies]
-	ld [wCurSpecies], a
-	call GetBaseData ; [wCurForm] is already set
-
-	call GetPicSize
-	ld c, a
-	pop af
-	ldh [rWBK], a
 	ret
 
 GetMonAnimDataIndex:
