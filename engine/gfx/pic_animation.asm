@@ -40,38 +40,11 @@ AnimateFrontpic:
 	ret
 
 LoadMonAnimation:
-	push hl
-	ld c, e
-	ld b, 0
-	ld hl, PokeAnims
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld b, [hl]
-	ld c, a
-	pop hl
-
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wPokeAnimStruct)
 	ldh [rWBK], a
 
-	push bc
-	push de
-	push hl
-	ld hl, wPokeAnimSceneIndex
-	ld bc, wPokeAnimStructEnd - wPokeAnimSceneIndex
-	xor a
-	rst ByteFill
-	pop hl
-	pop de
-	pop bc
-
-; bc contains anim pointer
-	ld a, c
-	ld [wPokeAnimPointer], a
-	ld a, b
-	ld [wPokeAnimPointer + 1], a
 ; hl contains TileMap coords
 	ld a, l
 	ld [wPokeAnimCoord], a
@@ -80,6 +53,18 @@ LoadMonAnimation:
 ; d = start tile
 	ld a, d
 	ld [wPokeAnimGraphicStartTile], a
+
+	ld d, 0
+	ld hl, PokeAnims
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld [wPokeAnimPointer], a
+	ld a, [hl]
+	ld [wPokeAnimPointer + 1], a
+
+	xor a
+	ld [wPokeAnimSceneIndex], a
 
 	ld a, BANK(wCurPartySpecies)
 	ld hl, wCurPartySpecies
