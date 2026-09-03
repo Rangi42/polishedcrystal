@@ -215,37 +215,23 @@ PokeAnim_StereoCry:
 	ret
 
 PokeAnim_DeinitFrames:
-	ldh a, [rWBK]
-	push af
-	ld a, BANK(wPokeAnimStruct)
-	ldh [rWBK], a
 	call PokeAnim_PlaceGraphic
 	farcall HDMATransferTileMapToWRAMBank3
 	call PokeAnim_SetVBank0
-	farcall HDMATransferAttrMapToWRAMBank3
-	pop af
-	ldh [rWBK], a
-	ret
+	farjp HDMATransferAttrMapToWRAMBank3
 
 PokeAnim_InitAnim:
-	ldh a, [rWBK]
-	push af
-	ld a, BANK(wPokeAnimStruct)
-	ldh [rWBK], a
 	ld a, b
 	ld [wPokeAnimSpeed], a
 	ld a, c
 	ld [wPokeAnimIdleFlag], a
-	call GetMonAnimPointer
-	call GetMonFramesPointer
-	call GetMonBitmaskPointer
 	ld hl, wPokeAnimFrame
 	ld bc, wPokeAnimStructEnd - wPokeAnimFrame
 	xor a
 	rst ByteFill
-	pop af
-	ldh [rWBK], a
-	ret
+	call GetMonAnimPointer
+	call GetMonFramesPointer
+	jp GetMonBitmaskPointer
 
 PokeAnim_DoAnimScript:
 	xor a
@@ -670,18 +656,11 @@ PokeAnim_PlaceGraphic:
 	jmp ClearBox
 
 PokeAnim_SetVBank1:
-	ldh a, [rWBK]
-	push af
-	ld a, BANK(wPokeAnimStruct)
-	ldh [rWBK], a
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call .SetFlag
-	farcall HDMATransferAttrMapToWRAMBank3
-	pop af
-	ldh [rWBK], a
-	ret
+	farjp HDMATransferAttrMapToWRAMBank3
 
 .SetFlag:
 	call PokeAnim_GetAttrMapCoord
