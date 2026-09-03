@@ -1179,85 +1179,68 @@ LoadTradeBallAndCableGFX:
 	ld [hl], $62
 	ret
 
+if !DEF(MONOCHROME)
+DEF TRADE_FLASH_LIGHT       EQU palred 31 + palgreen 31 + palblue 0 ; yellow
+DEF TRADE_FLASH_ARROW_LIGHT EQU palred 31 + palgreen 20 + palblue 8 ; light orange
+DEF TRADE_FLASH_DARK        EQU palred 31 + palgreen 15 + palblue 0 ; orange
+else
+DEF TRADE_FLASH_LIGHT       EQU PAL_MONOCHROME_LIGHT
+DEF TRADE_FLASH_ARROW_LIGHT EQU PAL_MONOCHROME_LIGHT
+DEF TRADE_FLASH_DARK        EQU PAL_MONOCHROME_DARK
+endc
+
 TradeAnim_FlashBGPals:
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals2)
 	ldh [rWBK], a
+
+	ld hl, wBGPals2 palette 7 color 2 ; arrow
+	ld bc, TRADE_FLASH_LIGHT
+	ld de, TRADE_FLASH_DARK
+
 	ld a, [wFrameCounter2]
 	and %100
-	jr nz, .original_pal
-	; tubes (1)
-	ld hl, wBGPals2 palette 2 color 1
-def x = palred 31 + palgreen 15 + palblue 0
-	ld a, LOW(x)
+	jr z, .inverted
+
+	ld a, e
 	ld [hli], a
-	ld a, HIGH(x)
+	ld [hl], d
+
+	push bc
+	ld b, d
+	ld c, e
+	pop de
+
+	jr .continue
+
+.inverted
+	ld a, LOW(TRADE_FLASH_ARROW_LIGHT)
 	ld [hli], a
-def x = palred 31 + palgreen 31 + palblue 0
-	ld a, LOW(x)
+	ld [hl], HIGH(TRADE_FLASH_ARROW_LIGHT)
+
+.continue
+	ld hl, wBGPals2 palette 2 color 1 ; tubes (1)
+	ld a, c
 	ld [hli], a
-	ld [hl], HIGH(x)
-	; tubes (2)
-	ld hl, wBGPals2 palette 6 color 1
-def x = palred 31 + palgreen 15 + palblue 0
-	ld a, LOW(x)
+	ld a, b
 	ld [hli], a
-	ld a, HIGH(x)
+	ld a, e
 	ld [hli], a
-def x = palred 31 + palgreen 31 + palblue 0
-	ld a, LOW(x)
+	ld [hl], d
+	ld hl, wBGPals2 palette 6 color 1 ; tubes (2)
+	ld a, c
 	ld [hli], a
-	ld [hl], HIGH(x)
-	; game boy
-	ld hl, wBGPals2 palette 3 color 0
-def x = palred 31 + palgreen 31 + palblue 0
-	ld a, LOW(x)
+	ld a, b
 	ld [hli], a
-	ld [hl], HIGH(x)
-	; arrow
-	ld hl, wBGPals2 palette 7 color 2
-def x = palred 31 + palgreen 20 + palblue 8
-	ld a, LOW(x)
+	ld a, e
 	ld [hli], a
-	ld [hl], HIGH(x)
-	jr .done
-.original_pal
-	; tubes (1)
-	ld hl, wBGPals2 palette 2 color 1
-def x = palred 31 + palgreen 31 + palblue 0
-	ld a, LOW(x)
+	ld [hl], d
+	ld hl, wBGPals2 palette 3 color 0 ; game boy
+	ld a, e
 	ld [hli], a
-	ld a, HIGH(x)
-	ld [hli], a
-def x = palred 31 + palgreen 15 + palblue 0
-	ld a, LOW(x)
-	ld [hli], a
-	ld [hl], HIGH(x)
-	; tubes (2)
-	ld hl, wBGPals2 palette 6 color 1
-def x = palred 31 + palgreen 31 + palblue 0
-	ld a, LOW(x)
-	ld [hli], a
-	ld a, HIGH(x)
-	ld [hli], a
-def x = palred 31 + palgreen 15 + palblue 0
-	ld a, LOW(x)
-	ld [hli], a
-	ld [hl], HIGH(x)
-	; game boy
-	ld hl, wBGPals2 palette 3 color 0
-def x = palred 31 + palgreen 15 + palblue 0
-	ld a, LOW(x)
-	ld [hli], a
-	ld [hl], HIGH(x)
-	; arrow
-	ld hl, wBGPals2 palette 7 color 2
-def x = palred 31 + palgreen 15 + palblue 0
-	ld a, LOW(x)
-	ld [hli], a
-	ld [hl], HIGH(x)
-.done
+	ld [hl], d
+
 	pop af
 	ldh [rWBK], a
 	ld a, TRUE
