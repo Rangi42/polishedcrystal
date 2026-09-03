@@ -923,8 +923,7 @@ SummaryScreen_PlaceFrontpic:
 	ld a, TRUE
 .got_align
 	ld [wBoxAlignment], a
-	ld a, [wCurPartySpecies]
-	call IsAPokemon
+	call IsCurPartySpeciesAPokemon
 	ret c
 	call SummaryScreen_LoadTextboxSpaceGFX
 	ld de, vTiles2 tile $00

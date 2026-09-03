@@ -28,7 +28,7 @@ PokeAnims:
 .Egg2:   pokeanim Extra, Play
 
 AnimateFrontpic:
-	call AnimateMon_CheckIfPokemon
+	call IsCurPartySpeciesAPokemon
 	ret c
 	call LoadMonAnimation
 .loop
@@ -245,17 +245,6 @@ PokeAnim_DeinitFrames:
 	farcall HDMATransferAttrMapToWRAMBank3
 	pop af
 	ldh [rWBK], a
-	ret
-
-AnimateMon_CheckIfPokemon:
-	ld a, [wCurPartySpecies]
-	call IsAPokemon
-	jr c, .fail
-	and a
-	ret
-
-.fail
-	scf
 	ret
 
 PokeAnim_InitAnim:
@@ -853,7 +842,7 @@ GetMonBitmaskPointer:
 	ret
 
 HOF_AnimateFrontpic:
-	call AnimateMon_CheckIfPokemon
+	call IsCurPartySpeciesAPokemon
 	jr c, .fail
 	ld h, d
 	ld l, e
