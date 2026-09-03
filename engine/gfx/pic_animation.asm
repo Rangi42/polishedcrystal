@@ -290,11 +290,8 @@ PokeAnim_DoAnimScript:
 	jr .loop
 
 .DoRepeat:
-	ld a, [wPokeAnimRepeatTimer]
-	and a
-	ret z
-	dec a
-	ld [wPokeAnimRepeatTimer], a
+	ld hl, wPokeAnimRepeatTimer
+	dec [hl]
 	ret z
 	ld a, [wPokeAnimParameter]
 	ld [wPokeAnimFrame], a
