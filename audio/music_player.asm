@@ -192,7 +192,7 @@ MusicPlayerLoop:
 	jpbutton PAD_SELECT, .select
 
 	; prioritize refreshing the note display
-	ld a, 2
+	ld a, 1
 	ldh [hBGMapHalf], a
 	jr MusicPlayerLoop
 
@@ -298,7 +298,7 @@ SongEditor:
 	jpbutton PAD_SELECT, .select
 
 	; prioritize refreshing the note display
-	ld a, 2
+	ld a, 1
 	ldh [hBGMapHalf], a
 	jr SongEditor
 
@@ -552,7 +552,7 @@ AdjustTempo:
 	jrbutton PAD_START, .start
 
 	; prioritize refreshing the note display
-	ld a, 2
+	ld a, 1
 	ldh [hBGMapHalf], a
 	jr .loop
 

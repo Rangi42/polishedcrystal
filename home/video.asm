@@ -205,7 +205,7 @@ UpdateBGMap::
 	ldh a, [hBGMapAddress + 1]
 	adc 0
 	ld h, a
-	ldh a, [hTilesPerCycle]
+	ldh a, [hBGMapCopyNRows]
 	jr .startCustomCopy
 
 .DoAttributes
