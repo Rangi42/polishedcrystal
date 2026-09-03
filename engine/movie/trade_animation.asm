@@ -389,19 +389,14 @@ TradeAnim_InitTubeAnim:
 	; flip all the arrow tiles to point up
 	ld a, 1
 	ldh [rVBK], a
+	ld bc, TILEMAP_WIDTH - 1
 	hlbgcoord 12, 14
+rept 3
 	set B_OAM_YFLIP, [hl]
 	inc hl
 	set B_OAM_YFLIP, [hl]
-	hlbgcoord 12, 15
-	set B_OAM_YFLIP, [hl]
-	inc hl
-	set B_OAM_YFLIP, [hl]
-	hlbgcoord 12, 16
-	set B_OAM_YFLIP, [hl]
-	inc hl
-	set B_OAM_YFLIP, [hl]
-	hlbgcoord 12, 17
+	add hl, bc
+endr
 	set B_OAM_YFLIP, [hl]
 	inc hl
 	set B_OAM_YFLIP, [hl]
