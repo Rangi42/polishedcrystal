@@ -24,7 +24,7 @@ ENDM
 MACRO huffman_tree
 	DEF num_parent_nodes_\1 = ROOT_NODE_ID
 	DEF node_prefix_\1_{02X:num_parent_nodes_\1} EQUS ""
-\2:
+
 	for parent_node_id, ROOT_NODE_ID, FIRST_LEAF_NODE_ID
 		if !DEF(node_prefix_\1_{02X:parent_node_id})
 			break
@@ -42,6 +42,6 @@ MACRO huffman_tree
 	endr
 ENDM
 
-huffman_tree b, TextCompressionHuffmanTreeBoundary
-huffman_tree v, TextCompressionHuffmanTreeVowel
-huffman_tree o, TextCompressionHuffmanTreeOther
+TextCompressionHuffmanTreeBoundary: huffman_tree b
+TextCompressionHuffmanTreeVowel:    huffman_tree v
+TextCompressionHuffmanTreeOther:    huffman_tree o
