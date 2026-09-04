@@ -508,7 +508,10 @@ wOptionsMenuDescriptionState:: db
 wOptionsMenuLastSelection:: db
 wOptionsMenuIsInitial:: db
 
-	ds 25 ; unused
+	ds 22 ; unused
+
+wResurrectFossilScriptBank:: db
+wResurrectFossilScript:: dw
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db

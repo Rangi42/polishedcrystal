@@ -624,7 +624,7 @@ ENDM
 	map_const RUINS_OF_ALPH_AERODACTYL_CHAMBER,            4,  5 ;  5
 	map_const RUINS_OF_ALPH_ENTRANCE_CHAMBER,              4,  4 ;  6
 	map_const RUINS_OF_ALPH_INNER_CHAMBER,                10, 14 ;  7
-	map_const RUINS_OF_ALPH_RESEARCH_CENTER,               4,  4 ;  8
+	map_const RUINS_OF_ALPH_RESEARCH_CENTER,               5,  4 ;  8
 	map_const RUINS_OF_ALPH_HO_OH_ITEM_ROOM,               4,  5 ;  9
 	map_const RUINS_OF_ALPH_KABUTO_ITEM_ROOM,              4,  5 ; 10
 	map_const RUINS_OF_ALPH_OMANYTE_ITEM_ROOM,             4,  5 ; 11
