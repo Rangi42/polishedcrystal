@@ -473,7 +473,7 @@ wPlayerStepFlags::
 ; bit 4: In midair
 ; bits 0-3: unused
 	db
-wPlayerStepDirection:: db
+	ds 1 ; unused
 
 wSpinning:: db
 
@@ -513,11 +513,7 @@ wOptionsMenuIsInitial:: db
 wResurrectFossilScriptBank:: db
 wResurrectFossilScript:: dw
 
-wOverworldMapAnchor:: dw
-wMetatileStandingY:: db
-wMetatileStandingX:: db
-
-	ds 1 ; unused
+	ds 5 ; unused
 
 wMapTileset:: db
 wEnvironment:: db

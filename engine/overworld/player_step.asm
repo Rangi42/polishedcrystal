@@ -62,7 +62,7 @@ HandlePlayerStep:
 
 UpdatePlayerCoords:
 	ld hl, wYCoord
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	and a
 	jr z, .incrementCoord
 	dec a
@@ -80,7 +80,7 @@ UpdatePlayerCoords:
 	ret
 
 UpdateOverworldMap:
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	and a
 	jr z, .stepDown
 	dec a
@@ -117,13 +117,13 @@ UpdateOverworldMap:
 	or HIGH(vBGMap0)
 	ld [wBGMapAnchor + 1], a
 .not_overflowed
-	ld hl, wMetatileStandingY
+	ld hl, hMetatileStandingY
 	inc [hl]
 	ld a, [hl]
 	cp 2 ; was 1
 	ret nz
 	ld [hl], 0
-	ld hl, wOverworldMapAnchor
+	ld hl, hOverworldMapAnchor
 	ld a, [wMapWidth]
 	add 6
 	add [hl]
@@ -143,13 +143,13 @@ UpdateOverworldMap:
 	or HIGH(vBGMap0)
 	ld [wBGMapAnchor + 1], a
 .not_underflowed
-	ld hl, wMetatileStandingY
+	ld hl, hMetatileStandingY
 	dec [hl]
 	ld a, [hl]
 	inc a
 	ret nz
 	ld [hl], $1
-	ld hl, wOverworldMapAnchor
+	ld hl, hOverworldMapAnchor
 	ld a, [wMapWidth]
 	add 6
 	ld b, a
@@ -170,13 +170,13 @@ UpdateOverworldMap:
 	and $1f
 	or d
 	ld [wBGMapAnchor], a
-	ld hl, wMetatileStandingX
+	ld hl, hMetatileStandingX
 	dec [hl]
 	ld a, [hl]
 	inc a
 	ret nz
 	ld [hl], 1
-	ld hl, wOverworldMapAnchor
+	ld hl, hOverworldMapAnchor
 	ld a, [hl]
 	sub 1 ; no-optimize a++|a-- (dec a can't set carry)
 	ld [hli], a
@@ -194,13 +194,13 @@ UpdateOverworldMap:
 	and $1f
 	or d
 	ld [wBGMapAnchor], a
-	ld hl, wMetatileStandingX
+	ld hl, hMetatileStandingX
 	inc [hl]
 	ld a, [hl]
 	cp 2
 	ret nz
 	ld [hl], 0
-	ld hl, wOverworldMapAnchor
+	ld hl, hOverworldMapAnchor
 	inc [hl]
 	ret nz
 	inc hl
@@ -216,8 +216,7 @@ CheckPlayerCoastSandColl:
 	ret
 
 ScrollMapDown::
-	call CheckPlayerCoastSandColl
-	call nz, UpdateWalkedTilePointers
+	call UpdateWalkedTilePointers
 	ld hl, wBGMapAnchor
 	ld a, [hli]
 	ld d, [hl]
@@ -235,8 +234,7 @@ ScrollMapDown::
 	ret
 
 ScrollMapUp::
-	call CheckPlayerCoastSandColl
-	call nz, UpdateWalkedTilePointers
+	call UpdateWalkedTilePointers
 	ld hl, wBGMapAnchor
 	ld a, [hli]
 	ld e, a
@@ -260,8 +258,7 @@ ScrollMapUp::
 	ret
 
 ScrollMapRight::
-	call CheckPlayerCoastSandColl
-	call nz, UpdateWalkedTilePointers
+	call UpdateWalkedTilePointers
 	ld hl, wBGMapAnchor
 	ld a, [hli]
 	ld d, [hl]
@@ -279,8 +276,7 @@ ScrollMapRight::
 	ret
 
 ScrollMapLeft::
-	call CheckPlayerCoastSandColl
-	call nz, UpdateWalkedTilePointers
+	call UpdateWalkedTilePointers
 	ld hl, wBGMapAnchor
 	ld a, [hli]
 	; add SCREEN_HEIGHT, but wrap-around the last 5 bits
@@ -365,6 +361,9 @@ UpdateBGMapColumn::
 	ret
 
 UpdateWalkedTilePointers:
+	call CheckPlayerCoastSandColl
+	ret z
+
 ; The streamer has already written the walked patch to the upload buffers.
 	ld a, [wBGMapAnchor]
 	swap a

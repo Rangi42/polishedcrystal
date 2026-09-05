@@ -5,18 +5,8 @@
 ; Do not use this path for those full-screen consumers.
 
 _LoadMapPartForStep::
-	ld a, [wOverworldMapAnchor]
-	ldh [hStreamMapAnchor], a
-	ld a, [wOverworldMapAnchor + 1]
-	ldh [hStreamMapAnchor + 1], a
-	ld a, [wMetatileStandingX]
-	ldh [hStreamMapStandingX], a
-	ld a, [wMetatileStandingY]
-	ldh [hStreamMapStandingY], a
-	ld a, [wPlayerStepDirection]
-	ldh [hStreamMapDirection], a
 	call CheckPlayerCoastSandColl
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0 (preserve the coast-sand Z flag)
 	jr z, .got_patch
 	inc a
 .got_patch
@@ -50,7 +40,7 @@ StreamMapPlane:
 	ld de, 8
 	add hl, de
 .edge
-	ldh a, [hStreamMapDirection]
+	ldh a, [hPlayerStepDirection]
 	and a
 	jr z, .down
 	dec a
@@ -91,10 +81,10 @@ StreamMapSetup:
 	assert LOW(wDecompressedMetatiles) == 0
 	push af
 	push hl
-	ldh a, [hStreamMapStandingX]
+	ldh a, [hMetatileStandingX]
 	add c
 	ld c, a
-	ldh a, [hStreamMapStandingY]
+	ldh a, [hMetatileStandingY]
 	add b
 	ld b, a
 	; Quarter offset within a 4x4 block: (y & 1) * 8 + (x & 1) * 2.
@@ -108,9 +98,9 @@ StreamMapSetup:
 	add a
 	or h
 	push af
-	ldh a, [hStreamMapAnchor]
+	ldh a, [hOverworldMapAnchor]
 	ld l, a
-	ldh a, [hStreamMapAnchor + 1]
+	ldh a, [hOverworldMapAnchor + 1]
 	ld h, a
 	srl c
 	ld e, c
@@ -135,6 +125,7 @@ StreamMapSetup:
 	ret
 
 MACRO stream_map_quarters
+	assert "\1" === "row" || "\1" === "column"
 .quarter
 	ld a, [de]
 	and a
@@ -159,7 +150,7 @@ MACRO stream_map_quarters
 	inc e
 	inc e
 	ld [hl], a
-if \1
+if "\1" === "column"
 	inc hl ; packed column: second scanline immediately follows the first
 else
 	ld a, SCREEN_WIDTH - 1
@@ -175,7 +166,7 @@ endc
 	ld a, [de]
 	ld [hl], a
 	pop de
-if \1 ; column: advance two packed rows and select the next vertical quarter
+if "\1" === "column" ; column: advance two packed rows and select the next vertical quarter
 	inc hl
 	ld a, c
 	xor 8
@@ -210,8 +201,8 @@ ENDM
 
 StreamMapRow:
 	call StreamMapSetup
-	stream_map_quarters 0
+	stream_map_quarters row
 
 StreamMapColumn:
 	call StreamMapSetup
-	stream_map_quarters 1
+	stream_map_quarters column

@@ -208,11 +208,12 @@ ENDU
 hUsedWeatherSpriteIndex:: db
 hUsedOAMIndex:: db
 
-; Step renderer inputs must remain accessible while WRAM banks 3/4 are mapped.
-hStreamMapAnchor:: dw
-hStreamMapStandingX:: db
-hStreamMapStandingY:: db
-hStreamMapDirection:: db
+; Live overworld state must remain accessible while WRAM banks 3/4 are mapped.
+hOverworldMapAnchor:: dw
+hMetatileStandingY:: db
+hMetatileStandingX:: db
+hPlayerStepDirection:: db
+; Step renderer scratch.
 hStreamMapWalkedPatch:: db
 
 
