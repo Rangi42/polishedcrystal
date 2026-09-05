@@ -473,6 +473,7 @@ wPlayerStepFlags::
 ; bit 4: In midair
 ; bits 0-3: unused
 	db
+
 	ds 1 ; unused
 
 wSpinning:: db

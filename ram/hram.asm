@@ -208,13 +208,11 @@ ENDU
 hUsedWeatherSpriteIndex:: db
 hUsedOAMIndex:: db
 
-; Live overworld state must remain accessible while WRAM banks 3/4 are mapped.
 hOverworldMapAnchor:: dw
 hMetatileStandingY:: db
 hMetatileStandingX:: db
 hPlayerStepDirection:: db
-; Step renderer scratch.
-hStreamMapWalkedPatch:: db
+hStreamMapWalkedPatch:: db ; Step renderer scratch.
 
 
 SECTION "HRAM tail", HRAM

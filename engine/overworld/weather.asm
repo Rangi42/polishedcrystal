@@ -1164,10 +1164,9 @@ IsEvenSpriteIndex:
 	ret
 
 WeatherSpriteLimitCheck:
-; Admit sprites in the same reverse-OAM priority order as the old overflow
-; handler. Each candidate touches at most eight counters, once; if it
-; exceeds the ten-sprite limit, undo its tentative counts and hide it.
-; The old code rescanned all 40 sprites for every overflowing scanline.
+; Admit sprites in reverse-OAM priority order.
+; Each candidate touches at most eight counters, once.
+; If it exceeds the ten-sprite limit, undo its tentative counts and hide it.
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wWeatherScratch)
