@@ -740,3 +740,6 @@ INCLUDE "audio/music/printer.asm"
 SECTION "LureMenu", ROMX
 
 INCLUDE "engine/menus/lure_menu.asm"
+
+SECTION "Cable Car", ROMX
+INCLUDE "engine/events/cable_car.asm"

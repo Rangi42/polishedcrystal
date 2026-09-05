@@ -22,3 +22,6 @@
 	tilecoll WALL, WALL, WALL, WALL ; 15
 	tilecoll WALL, WALL, WALL, WALL ; 16
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 17
+	tilecoll WALL, WALL, WALL, DOOR ; 18: cable car
+	tilecoll WALL, WALL, WALL, WALL ; 19: overhead cables
+	tilecoll WALL, WALL, WALL, WALL ; 1a: station backdrop

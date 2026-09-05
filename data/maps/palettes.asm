@@ -23,6 +23,8 @@ MACRO special_bg_pal
 ENDM
 
 SpecialBGPalettes:
+	special_bg_pal map,      ROUTE_4_CABLE_CAR_STATION,   SINGLE,      YELLOW, 1, CableCarStationPalette
+	special_bg_pal map,      MOUNT_MOON_CABLE_CAR_STATION, SINGLE,      YELLOW, 1, CableCarStationPalette
 	special_bg_pal darkness,                              SINGLE,      GRAY,   7, DarknessBGPalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_1,          SINGLE,      YELLOW, 2, SilverCavePalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_2,          SINGLE,      YELLOW, 2, SilverCavePalette
@@ -1083,3 +1085,6 @@ endc
 
 OvercastBGPalette:
 INCLUDE "gfx/tilesets/bg_tiles_overcast.pal"
+
+CableCarStationPalette:
+INCLUDE "gfx/overworld/cable_car.pal"

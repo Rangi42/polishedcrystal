@@ -350,6 +350,9 @@ ENDM
 	map_const MOUNT_MOON_GIFT_SHOP,                        4,  4 ;  9
 	map_const TIN_TOWER_ROOF,                              7,  9 ; 10
 
+	map_const ROUTE_4_CABLE_CAR_STATION,                   6,  6
+	map_const MOUNT_MOON_CABLE_CAR_STATION,                6,  6
+
 	newgroup                                                     ; 16
 	map_const ROUTE_22,                                   19,  9 ;  1
 	map_const ROUTE_23_NORTH,                             12, 38 ;  2

@@ -1179,6 +1179,11 @@ wCardFlipCursorX:: db
 wCardFlipWhichCard:: db
 
 NEXTU
+; cable car (only used while the overworld is suspended)
+wCableCarDirection:: db
+wCableCarFrame:: db
+
+NEXTU
 ; magnet train
 wMagnetTrainOffset:: db
 wMagnetTrainPosition:: db
