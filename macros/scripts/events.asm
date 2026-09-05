@@ -218,15 +218,33 @@ MACRO loadvar
 	db \2 ; value
 ENDM
 
+; Item-giving macros require an explicit failure command, e.g.:
+;   giveitem POTION, iffalsefwd .BagFull
+;   verbosegiveitem POKE_BALL, iffalse_endtext, 5
+;   verbosegiveitemvar LEVEL_BALL, VAR_KURT_APRICORNS, iffalse_endtext
+; The command is emitted immediately after the item-giving command. Use the
+; existing iffalse/iftrue variants to preserve compact branches and text exits.
+; Pass 0 only to handle the result later or deliberately allow failure; explain
+; why at the call site. Quantities default to 1 (except verbosegiveitemvar).
+MACRO _item_give_failure
+	assert STRLEN("\1"), "Item-giving macros require a nonempty failure command (or explicit 0)"
+	if STRCMP("\1", "0")
+		assert !STRCMP(STRSLICE("\1", 0, 7), "iffalse") || !STRCMP(STRSLICE("\1", 0, 6), "iftrue"), "Expected an iffalse/iftrue command (or explicit 0)"
+		\1
+	endc
+ENDM
+
 	const giveitem_command
 MACRO giveitem
+	assert _NARG == 2 || _NARG == 3, "giveitem requires item, failure command[, quantity]"
 	db giveitem_command
 	db \1 ; item
-	if _NARG == 2
-		db \2 ; quantity
+	if _NARG == 3
+		db \3 ; quantity
 	else
 		db 1
 	endc
+	_item_give_failure \2
 ENDM
 
 	const takeitem_command
@@ -1004,20 +1022,24 @@ ENDM
 
 	const verbosegiveitem_command
 MACRO verbosegiveitem
+	assert _NARG == 2 || _NARG == 3, "verbosegiveitem requires item, failure command[, quantity]"
 	db verbosegiveitem_command
 	db \1 ; item
-	if _NARG == 2
-		db \2 ; quantity
+	if _NARG == 3
+		db \3 ; quantity
 	else
 		db 1
 	endc
+	_item_give_failure \2
 ENDM
 
 	const verbosegiveitemvar_command
 MACRO verbosegiveitemvar
+	assert _NARG == 3, "verbosegiveitemvar requires item, variable, failure command"
 	db verbosegiveitemvar_command
 	db \1 ; item
 	db \2 ; var
+	_item_give_failure \3
 ENDM
 
 	const swarm_command

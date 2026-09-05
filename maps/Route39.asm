@@ -74,8 +74,7 @@ TrainerPokefanmDerek1:
 
 .HasNugget:
 	scall .Gift
-	verbosegiveitem NUGGET
-	iffalsefwd .NoRoom
+	verbosegiveitem NUGGET, iffalsefwd .NoRoom
 	clearflag ENGINE_DEREK_HAS_NUGGET
 	sjumpfwd .NumberAccepted
 
@@ -168,8 +167,7 @@ Route39CowgirlAnnieScript:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem PP_MAX
-	iffalse_endtext
+	verbosegiveitem PP_MAX, iffalse_endtext
 	setevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
 	jumpthisopenedtext
 

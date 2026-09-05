@@ -176,8 +176,7 @@ BillsGrandpa:
 	checkevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
 	iftrue .GotEverstone
 	scall .ReceiveItem
-	verbosegiveitem EVERSTONE
-	iffalse_endtext
+	verbosegiveitem EVERSTONE, iffalse_endtext
 	setevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
@@ -186,8 +185,7 @@ BillsGrandpa:
 	checkevent EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotLeafStone
 	scall .ReceiveItem
-	verbosegiveitem LEAF_STONE
-	iffalse_endtext
+	verbosegiveitem LEAF_STONE, iffalse_endtext
 	setevent EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
@@ -196,8 +194,7 @@ BillsGrandpa:
 	checkevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotWaterStone
 	scall .ReceiveItem
-	verbosegiveitem WATER_STONE
-	iffalse_endtext
+	verbosegiveitem WATER_STONE, iffalse_endtext
 	setevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
@@ -206,8 +203,7 @@ BillsGrandpa:
 	checkevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotFireStone
 	scall .ReceiveItem
-	verbosegiveitem FIRE_STONE
-	iffalse_endtext
+	verbosegiveitem FIRE_STONE, iffalse_endtext
 	setevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
@@ -216,8 +212,7 @@ BillsGrandpa:
 	checkevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
 	iftrue .GotThunderstone
 	scall .ReceiveItem
-	verbosegiveitem THUNDERSTONE
-	iffalse_endtext
+	verbosegiveitem THUNDERSTONE, iffalse_endtext
 	setevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
@@ -226,8 +221,7 @@ BillsGrandpa:
 	checkevent EVENT_GOT_MOON_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotMoonStone
 	scall .ReceiveItem
-	verbosegiveitem MOON_STONE
-	iffalse_endtext
+	verbosegiveitem MOON_STONE, iffalse_endtext
 	setevent EVENT_GOT_MOON_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
@@ -236,8 +230,7 @@ BillsGrandpa:
 	checkevent EVENT_GOT_SUN_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotSunStone
 	scall .ReceiveItem
-	verbosegiveitem SUN_STONE
-	iffalse_endtext
+	verbosegiveitem SUN_STONE, iffalse_endtext
 	setevent EVENT_GOT_SUN_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
@@ -246,16 +239,14 @@ BillsGrandpa:
 	checkevent EVENT_GOT_DUSK_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotDuskStone
 	scall .ReceiveItem
-	verbosegiveitem DUSK_STONE
-	iffalse_endtext
+	verbosegiveitem DUSK_STONE, iffalse_endtext
 	setevent EVENT_GOT_DUSK_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
 
 .ShowedTogepi:
 	scall .ReceiveItem
-	verbosegiveitem SHINY_STONE
-	iffalse_endtext
+	verbosegiveitem SHINY_STONE, iffalse_endtext
 	setevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
 	endtext
 

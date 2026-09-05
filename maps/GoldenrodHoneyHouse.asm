@@ -22,8 +22,7 @@ GoldenrodHoneyHousePokefanFScript:
 	opentext
 	writetext .IntroText
 	promptbutton
-	verbosegiveitem SWEET_HONEY
-	iffalse_endtext
+	verbosegiveitem SWEET_HONEY, iffalse_endtext
 	setevent EVENT_GOT_HONEY_FROM_GOLDENROD
 	jumpthisopenedtext
 
@@ -85,16 +84,14 @@ endc
 .Buy1:
 	checkmoney YOUR_MONEY, 1000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem SWEET_HONEY
-	iffalse_jumpopenedtext .BagFullText
+	giveitem SWEET_HONEY, iffalse_jumpopenedtext .BagFullText
 	takemoney YOUR_MONEY, 1000
 	sjumpfwd .Done
 
 .Buy10:
 	checkmoney YOUR_MONEY, 10000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem SWEET_HONEY, 10
-	iffalse_jumpopenedtext .BagFullText
+	giveitem SWEET_HONEY, iffalse_jumpopenedtext .BagFullText, 10
 	takemoney YOUR_MONEY, 10000
 
 .Done:

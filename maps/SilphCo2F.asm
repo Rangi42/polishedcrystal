@@ -30,8 +30,7 @@ SilphCo2FEmployee1Script:
 	iftruefwd .GaveUpgrade
 	writetext .Text1
 	promptbutton
-	verbosegiveitem UPGRADE
-	iffalsefwd .NoRoomForUpgrade
+	verbosegiveitem UPGRADE, iffalsefwd .NoRoomForUpgrade
 	setevent EVENT_GOT_UPGRADE
 .GaveUpgrade:
 	writetext .Text2

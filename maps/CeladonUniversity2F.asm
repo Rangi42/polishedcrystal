@@ -49,8 +49,7 @@ CeladonUniversity2FCooltrainerfScript:
 	waitbutton
 	writetext .Text4
 	waitbutton
-	verbosegiveitem ANTIDOTE
-	iffalsefwd .NoRoomForAntidote
+	verbosegiveitem ANTIDOTE, iffalsefwd .NoRoomForAntidote
 	setevent EVENT_GOT_ANTIDOTE_IN_UNIVERSITY
 	jumpthisopenedtext
 
@@ -64,7 +63,8 @@ CeladonUniversity2FCooltrainerfScript:
 	done
 
 .NoRoomForAntidote:
-	giveitem FRESH_WATER
+	; Refund the Fresh Water just removed from the Bag.
+	giveitem FRESH_WATER, 0
 	jumpthisopenedtext
 
 	text "Oh… Keep your"

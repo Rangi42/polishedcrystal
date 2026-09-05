@@ -51,6 +51,9 @@ jobs:
         name: "Checkout Rangi42/polishedcrystal"
         uses: actions/checkout@v7
 
+      - name: "Test item-giving macros"
+        run: python3 utils/test_item_give_macros.py
+
       # BUILD ROMS
       - id: build-polishedcrystal
         name: "Build polishedcrystal"

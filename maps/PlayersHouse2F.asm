@@ -75,53 +75,53 @@ endr
 for x, NUM_TMS + NUM_HMS
 	givetmhm x
 endr
-	; useful items
+	; useful items (debug: skip any items that do not fit in the Bag)
 for x, POKE_BALL, CHERISH_BALL + 1
 if x != PARK_BALL && x != SAFARI_BALL
-	giveitem x, 99
+	giveitem x, 0, 99
 endc
 endr
-	giveitem MAX_POTION, 99
-	giveitem FULL_RESTORE, 99
-	giveitem MAX_REVIVE, 99
-	giveitem MAX_ELIXIR, 99
-	giveitem HP_UP, 99
-	giveitem PROTEIN, 99
-	giveitem IRON, 99
-	giveitem CARBOS, 99
-	giveitem CALCIUM, 99
-	giveitem ZINC, 99
-	giveitem RARE_CANDY, 99
-	giveitem PP_UP, 99
-	giveitem PP_MAX, 99
-	giveitem SACRED_ASH, 99
-	giveitem MAX_REPEL, 99
-	giveitem MAX_REPEL, 99
-	giveitem ESCAPE_ROPE, 99
-	giveitem ABILITY_CAP, 99
-	giveitem LEAF_STONE, 99
-	giveitem FIRE_STONE, 99
-	giveitem WATER_STONE, 99
-	giveitem THUNDERSTONE, 99
-	giveitem ICE_STONE, 99
-	giveitem MOON_STONE, 99
-	giveitem SUN_STONE, 99
-	giveitem DUSK_STONE, 99
-	giveitem SHINY_STONE, 99
-	giveitem ODD_SOUVENIR, 99
-	giveitem EXP_SHARE, 99
-	giveitem LEFTOVERS, 99
-	giveitem MULCH, 99
-	giveitem SWEET_HONEY, 99
-	giveitem SILVER_LEAF, 99
-	giveitem GOLD_LEAF, 99
-	giveitem MINT_LEAF, 99
-	giveitem BOTTLE_CAP, 99
-	giveitem BIG_NUGGET, 99
-	giveitem PORTRAITMAIL, 99
-	giveitem ARMOR_SUIT, 1
+	giveitem MAX_POTION, 0, 99
+	giveitem FULL_RESTORE, 0, 99
+	giveitem MAX_REVIVE, 0, 99
+	giveitem MAX_ELIXIR, 0, 99
+	giveitem HP_UP, 0, 99
+	giveitem PROTEIN, 0, 99
+	giveitem IRON, 0, 99
+	giveitem CARBOS, 0, 99
+	giveitem CALCIUM, 0, 99
+	giveitem ZINC, 0, 99
+	giveitem RARE_CANDY, 0, 99
+	giveitem PP_UP, 0, 99
+	giveitem PP_MAX, 0, 99
+	giveitem SACRED_ASH, 0, 99
+	giveitem MAX_REPEL, 0, 99
+	giveitem MAX_REPEL, 0, 99
+	giveitem ESCAPE_ROPE, 0, 99
+	giveitem ABILITY_CAP, 0, 99
+	giveitem LEAF_STONE, 0, 99
+	giveitem FIRE_STONE, 0, 99
+	giveitem WATER_STONE, 0, 99
+	giveitem THUNDERSTONE, 0, 99
+	giveitem ICE_STONE, 0, 99
+	giveitem MOON_STONE, 0, 99
+	giveitem SUN_STONE, 0, 99
+	giveitem DUSK_STONE, 0, 99
+	giveitem SHINY_STONE, 0, 99
+	giveitem ODD_SOUVENIR, 0, 99
+	giveitem EXP_SHARE, 0, 99
+	giveitem LEFTOVERS, 0, 99
+	giveitem MULCH, 0, 99
+	giveitem SWEET_HONEY, 0, 99
+	giveitem SILVER_LEAF, 0, 99
+	giveitem GOLD_LEAF, 0, 99
+	giveitem MINT_LEAF, 0, 99
+	giveitem BOTTLE_CAP, 0, 99
+	giveitem BIG_NUGGET, 0, 99
+	giveitem PORTRAITMAIL, 0, 99
+	giveitem ARMOR_SUIT, 0, 1
 for x, FIRST_BERRY, FIRST_BERRY + NUM_BERRIES
-	giveitem x, 99
+	giveitem x, 0, 99
 endr
 	; all decorations except Diploma
 for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1

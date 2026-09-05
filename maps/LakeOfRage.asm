@@ -279,8 +279,7 @@ WesleyScript:
 .MetWesley:
 	writetext .GivesGiftText
 	promptbutton
-	verbosegiveitem BLACK_BELT
-	iffalse_endtext
+	verbosegiveitem BLACK_BELT, iffalse_endtext
 	setevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
 	jumpthisopenedtext
 

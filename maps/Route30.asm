@@ -159,8 +159,7 @@ TrainerYoungsterJoey:
 	checkevent EVENT_GOT_HP_UP_FROM_JOEY
 	iftruefwd .done
 	callstd rematchgiftm
-	verbosegiveitem HP_UP
-	iffalsefwd .PackFull
+	verbosegiveitem HP_UP, iffalsefwd .PackFull
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
 	jumpstd numberacceptedm
 
@@ -171,8 +170,7 @@ TrainerYoungsterJoey:
 	opentext
 	writetext YoungsterJoeyText_GiveHPUpAfterBattle
 	waitbutton
-	verbosegiveitem HP_UP
-	iffalsefwd .PackFull
+	verbosegiveitem HP_UP, iffalsefwd .PackFull
 	clearevent EVENT_JOEY_HP_UP
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
 	jumpstd numberacceptedm

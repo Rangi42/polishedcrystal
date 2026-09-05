@@ -34,8 +34,7 @@ GoldenrodUndergroundEntrancesVeteranMScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem LOADED_DICE
-	iffalse_endtext
+	verbosegiveitem LOADED_DICE, iffalse_endtext
 	setevent EVENT_GOT_LOADED_DICE_FROM_GOLDENROD
 	jumpthisopenedtext
 

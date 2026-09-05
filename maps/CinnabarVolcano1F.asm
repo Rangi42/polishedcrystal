@@ -102,8 +102,7 @@ CinnabarVolcano1FBuckScript:
 	opentext
 	writetext .ItemText
 	promptbutton
-	verbosegiveitem POWER_BELT
-	iffalse_endtext
+	verbosegiveitem POWER_BELT, iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext

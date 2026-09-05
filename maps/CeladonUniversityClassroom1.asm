@@ -68,8 +68,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	opentext
 	writetext .Text5
 	promptbutton
-	verbosegiveitem PERSIM_BERRY
-	iffalse_endtext
+	verbosegiveitem PERSIM_BERRY, iffalse_endtext
 	setevent EVENT_GOT_PERSIM_BERRY_FROM_IMAKUNI
 	jumpthisopenedtext
 

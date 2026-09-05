@@ -221,8 +221,7 @@ VermilionGymBadgeGuy:
 	opentext
 	writetext VermilionCityBadgeGuyAllBadgesText
 	promptbutton
-	verbosegiveitem BOTTLE_CAP
-	iffalse_endtext
+	verbosegiveitem BOTTLE_CAP, iffalse_endtext
 	setevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
 	writetext VermilionCityBadgeGuyBattleEdgeText
 	waitendtext

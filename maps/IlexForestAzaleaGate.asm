@@ -34,8 +34,7 @@ ProfOaksAide1Script:
 .HereYouGo
 	writetext ProfOaksAide1HereYouGoText
 	waitbutton
-	verbosegiveitem EXP_SHARE
-	iffalsefwd .NoRoom
+	verbosegiveitem EXP_SHARE, iffalsefwd .NoRoom
 	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 .Explain
 	jumpthisopenedtext

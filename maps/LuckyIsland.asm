@@ -184,8 +184,7 @@ GenericTrainerSightseersLiandsu2:
 	done
 
 LuckyIslandLuckyEgg:
-	giveitem LUCKY_EGG
-	iffalsefwd .NoRoom
+	giveitem LUCKY_EGG, iffalsefwd .NoRoom
 	disappear LUCKYISLAND_POKE_BALL
 	setevent EVENT_GOT_LUCKY_EGG_FROM_LUCKY_ISLAND
 	opentext

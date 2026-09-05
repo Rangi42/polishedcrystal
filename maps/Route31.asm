@@ -74,8 +74,7 @@ TrainerCooltrainermFinch:
 .Beaten:
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem AIR_BALLOON
-	iffalse_endtext
+	verbosegiveitem AIR_BALLOON, iffalse_endtext
 	setevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
 	jumpthisopenedtext
 
@@ -260,20 +259,16 @@ TrainerBug_catcherWade1:
 	checkevent EVENT_WADE_HAS_PERSIM_BERRY
 	iftruefwd .PersimBerry
 .OranBerry:
-	verbosegiveitem ORAN_BERRY
-	iffalsefwd .PackFull
+	verbosegiveitem ORAN_BERRY, iffalsefwd .PackFull
 	sjumpfwd .Done
 .PechaBerry:
-	verbosegiveitem PECHA_BERRY
-	iffalsefwd .PackFull
+	verbosegiveitem PECHA_BERRY, iffalsefwd .PackFull
 	sjumpfwd .Done
 .CheriBerry:
-	verbosegiveitem CHERI_BERRY
-	iffalsefwd .PackFull
+	verbosegiveitem CHERI_BERRY, iffalsefwd .PackFull
 	sjumpfwd .Done
 .PersimBerry:
-	verbosegiveitem PERSIM_BERRY
-	iffalsefwd .PackFull
+	verbosegiveitem PERSIM_BERRY, iffalsefwd .PackFull
 .Done:
 	clearflag ENGINE_WADE_HAS_ITEM
 	jumpstd numberacceptedm

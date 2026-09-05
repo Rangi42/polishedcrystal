@@ -205,8 +205,7 @@ YellowBattleAfterBallScript:
 	writetext YellowForestYellowAfterText
 YellowTryGiveLightBallScript:
 	promptbutton
-	verbosegiveitem LIGHT_BALL
-	iffalsefwd NoRoomForLightBallScript
+	verbosegiveitem LIGHT_BALL, iffalsefwd NoRoomForLightBallScript
 	setevent EVENT_GOT_LIGHT_BALL_FROM_YELLOW
 	writetext YellowForestYellowGoodbyeText
 	waitbutton

@@ -183,8 +183,7 @@ NoisyForestPikabluScript:
 	opentext
 	writetext .OwnerText2
 	promptbutton
-	verbosegiveitem ODD_SOUVENIR
-	iffalsefwd .NoItem
+	verbosegiveitem ODD_SOUVENIR, iffalsefwd .NoItem
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_WILHOMENA
 	writetext .OwnerText3
 .Leave:

@@ -52,7 +52,8 @@ PsychicInverScript:
 	writetext PsychicInverRewardText
 .GiveReward
 	promptbutton
-	verbosegiveitem ITEM_FROM_MEM
+	; The daily reward is forfeited if the Bag is full.
+	verbosegiveitem ITEM_FROM_MEM, 0
 	endtext
 
 .Score0

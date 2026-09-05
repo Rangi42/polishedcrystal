@@ -145,8 +145,7 @@ PicnickerErin1Script:
 	checkevent EVENT_GOT_CALCIUM_FROM_ERIN
 	iftruefwd .GotCalciumAlready
 	scall Route46RematchGiftF
-	verbosegiveitem CALCIUM
-	iffalsefwd ErinNoRoomForCalcium
+	verbosegiveitem CALCIUM, iffalsefwd ErinNoRoomForCalcium
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
 	sjumpfwd Route46NumberAcceptedF
 
@@ -157,8 +156,7 @@ PicnickerErin1Script:
 	opentext
 	writetext PicnickerErin2BeatenText
 	waitbutton
-	verbosegiveitem CALCIUM
-	iffalsefwd ErinNoRoomForCalcium
+	verbosegiveitem CALCIUM, iffalsefwd ErinNoRoomForCalcium
 	clearevent EVENT_ERIN_CALCIUM
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
 	sjumpfwd Route46NumberAcceptedF

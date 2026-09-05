@@ -109,8 +109,7 @@ Route32PokeCenter1FPokefanMScript:
 	writetext .Text3
 .Continue
 	promptbutton
-	verbosegiveitem LURE_BALL
-	iffalsefwd .NoRoom
+	verbosegiveitem LURE_BALL, iffalsefwd .NoRoom
 	setevent EVENT_GOT_LURE_BALL_FROM_FRENCHMAN
 	jumpthisopenedtext
 

@@ -221,8 +221,7 @@ FuchsiaAquarium2FPokefanMScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem EJECT_BUTTON
-	iffalse_endtext
+	verbosegiveitem EJECT_BUTTON, iffalse_endtext
 	setevent EVENT_GOT_EJECT_BUTTON_FROM_FUCHSIA_AQUARIUM
 	jumpthisopenedtext
 

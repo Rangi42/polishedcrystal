@@ -188,8 +188,7 @@ RuggedRoadSouthBlackBeltScript:
 	takeitem BRICK_PIECE
 	writetext .GaveBrickPieceText
 	waitbutton
-	verbosegiveitem PUNCHINGLOVE
-	iffalsefwd .NoRoomForPunchinGlove
+	verbosegiveitem PUNCHINGLOVE, iffalsefwd .NoRoomForPunchinGlove
 	setevent EVENT_GOT_PUNCHINGLOVE_FROM_RUGGED_ROAD
 	jumpthisopenedtext
 
@@ -237,7 +236,8 @@ RuggedRoadSouthBlackBeltScript:
 	done
 
 .NoRoomForPunchinGlove:
-	giveitem BRICK_PIECE
+	; Refund the Brick Piece just removed from the Bag.
+	giveitem BRICK_PIECE, 0
 	jumpthisopenedtext
 
 	text "Humph! You don't"

@@ -69,16 +69,14 @@ FlowerShopTeacherScript:
 .Buy1:
 	checkmoney YOUR_MONEY, 200
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem MULCH
-	iffalse_jumpopenedtext NoRoomForMulchText
+	giveitem MULCH, iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney YOUR_MONEY, 200
 	sjumpfwd .Done
 
 .Buy10:
 	checkmoney YOUR_MONEY, 2000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem MULCH, 10
-	iffalse_jumpopenedtext NoRoomForMulchText
+	giveitem MULCH, iffalse_jumpopenedtext NoRoomForMulchText, 10
 	takemoney YOUR_MONEY, 2000
 
 .Done:

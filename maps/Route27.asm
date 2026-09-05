@@ -107,8 +107,7 @@ Route27VeteranfScript:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem CHOICE_SPECS
-	iffalse_endtext
+	verbosegiveitem CHOICE_SPECS, iffalse_endtext
 	setevent EVENT_GOT_CHOICE_SPECS_FROM_ROUTE_27_LEADER
 	jumpthisopenedtext
 
@@ -256,8 +255,7 @@ Bird_keeperJose1Script:
 
 .HasStarPiece:
 	scall .Gift
-	verbosegiveitem STAR_PIECE
-	iffalsefwd .NoRoom
+	verbosegiveitem STAR_PIECE, iffalsefwd .NoRoom
 	clearflag ENGINE_JOSE_HAS_STAR_PIECE
 	sjumpfwd .NumberAccepted
 

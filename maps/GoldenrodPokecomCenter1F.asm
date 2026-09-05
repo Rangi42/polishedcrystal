@@ -111,8 +111,7 @@ GoldenrodPokecenter1FPokefanF:
 	waitbutton
 	writetext GoldenrodPokecenter1FPokefanFThisIsForYouText
 	waitbutton
-	verbosegiveitem EVIOLITE
-	iffalsefwd .NoRoomForEviolite
+	verbosegiveitem EVIOLITE, iffalsefwd .NoRoomForEviolite
 	setevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
 	jumpthisopenedtext
 
@@ -121,7 +120,8 @@ GoldenrodPokecenter1FPokefanF:
 	done
 
 .NoRoomForEviolite:
-	giveitem EON_MAIL
+	; Refund the Mail just removed from the Bag.
+	giveitem EON_MAIL, 0
 	jumpthisopenedtext
 
 	text "Oh… Well, another"
