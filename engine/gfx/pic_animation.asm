@@ -249,7 +249,7 @@ PokeAnim_InitAnim:
 	rst ByteFill
 	call GetMonAnimPointer
 	call GetMonFramesPointer
-	jp GetMonBitmaskPointer
+	jmp GetMonBitmaskPointer
 
 PokeAnim_DoAnimScript:
 	xor a
