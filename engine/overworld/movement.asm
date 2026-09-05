@@ -282,6 +282,12 @@ ObjectFlags1Step:
 	add hl, bc
 	ldh [hBitwiseFunctionOpcode], a
 	call hBitwiseFunction
+	; Refresh palette ownership when show_object/hide_object changes visibility.
+	and ~%01000000 ; treat set and res identically
+	cp $86 + 8 * INVISIBLE_F
+	jr nz, .done
+	farcall CheckForUsedObjPals
+.done
 	jmp ContinueReadingMovement
 
 HideEmote:
