@@ -6,6 +6,12 @@ PokegearPhone_Init:
 	ld [wPokegearPhoneCursorPosition], a
 	ld [wPokegearPhoneSelectedPerson], a
 
+	ld hl, wPhoneList
+	ld b, wPhoneListEnd - wPhoneList
+	call CountSetBits
+	dec a
+	ld [wPokegearPhoneMaxContact], a
+
 	ld a, CGB_POKEGEAR_PALS
 	call GetCGBLayout
 	call SetDefaultBGPAndOBP
@@ -163,6 +169,12 @@ PokegearPhone_GetDPad:
 
 .down
 	ld hl, wPokegearPhoneCursorPosition
+	ld a, [wPokegearPhoneMaxContact]
+	ld b, a
+	ld a, [wPokegearPhoneScrollPosition]
+	add [hl]
+	cp b
+	ret nc
 	ld a, [hl]
 	cp $3
 	jr nc, .scroll_page_down
@@ -251,6 +263,8 @@ PokegearPhone_UpdateCursor:
 PokegearPhone_DeletePhoneNumber:
 	call PokegearPhone_GetCellNumber
 	call DelCellNum
+	ld hl, wPokegearPhoneMaxContact
+	dec [hl]
 ; Check if scroll position should be decremented as a result
 	ld hl, wNumSetBits
 	dec [hl]
