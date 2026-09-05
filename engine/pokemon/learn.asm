@@ -92,6 +92,7 @@ LearnMove:
 	jr nz, .pp_ok
 ; Is the old move's current PP less than the new move's PP?
 	ld a, [hl]
+	and PP_MASK
 	cp b
 	jr nc, .pp_ok
 ; TMs won't give free PP
