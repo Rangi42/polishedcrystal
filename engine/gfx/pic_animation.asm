@@ -57,7 +57,7 @@ LoadMonAnimation:
 ; d = start tile
 	ld a, d
 	ld [wPokeAnimGraphicStartTile], a
-
+; e = PokeAnims index
 	ld d, 0
 	ld hl, PokeAnims
 	add hl, de
