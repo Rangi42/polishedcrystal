@@ -2348,7 +2348,7 @@ BillsPC_MoveItem:
 
 	ld a, 1
 	ldh [rVBK], a
-	dec a
+	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
