@@ -379,7 +379,7 @@ AskTeachTMHM:
 	call CopyName1
 	ld hl, Text_BootedTM ; Booted up a TM
 	ld a, [wCurTMHM]
-	cp HM01
+	cp HM01 + 1
 	jr c, .TM
 
 	ld hl, Text_BootedHM ; Booted up an HM
