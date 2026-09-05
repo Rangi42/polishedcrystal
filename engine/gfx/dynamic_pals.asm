@@ -89,6 +89,13 @@ CheckForUsedObjPals::
 	ld [wNeededMonPalLight], a
 
 	call CheckDualObjectPals
+	; Weather OAM uses a fixed slot, including particles still clearing after
+	; the weather stops. Do not let an object overwrite that palette.
+	call CheckWeatherPalInUse
+	jr z, .weather_pal_reserved
+	ld hl, wUsedObjectPals
+	set PAL_OW_WEATHER, [hl]
+.weather_pal_reserved
 
 	; Scan for active objects first and mark those pals still in use.
 	ld hl, wPalFlags
@@ -120,6 +127,14 @@ ScanObjectStructPals:
 	ld a, [hl]
 	and a
 	jmp z, .skip
+	; Retained off-screen objects and script-hidden sprites need no palette.
+	ld hl, OBJECT_FLAGS1
+	add hl, de
+	bit INVISIBLE_F, [hl]
+	jmp nz, .skip
+	inc hl ; OBJECT_FLAGS2
+	bit OFF_SCREEN_F, [hl]
+	jmp nz, .skip
 
 	ld a, [wPalFlags]
 	bit SCAN_OBJECTS_FIRST_F, a
@@ -283,6 +298,14 @@ MarkUsedPal:
 	ld a, d
 	cp [hl]
 	jr nz, .not_loaded_here
+	; A previously loaded object palette may still occupy the weather slot
+	; before LoadWeatherPal runs. It must be reassigned, not matched here.
+	ld a, c
+	cp PAL_OW_WEATHER
+	jr nz, .check_loaded_type
+	call CheckWeatherPalInUse
+	jr nz, .not_loaded_here
+.check_loaded_type
 	; Palette index matches - also check type
 	ld a, [wLoadedObjPalType]
 	ld e, c
@@ -426,6 +449,15 @@ MarkUsedPal:
 .done
 	pop bc
 	pop de
+	ret
+
+CheckWeatherPalInUse:
+; Return nz while weather can still render using PAL_OW_WEATHER.
+	ld a, [wCurWeather]
+	and a
+	ret nz
+	ld a, [wOverworldWeatherCooldown]
+	and a
 	ret
 
 CheckDualObjectPals:

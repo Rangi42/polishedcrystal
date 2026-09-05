@@ -6,6 +6,9 @@ LoadWeatherPal::
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
+	; Weather replaces any previous two-color Pokémon palette in this slot.
+	ld hl, wLoadedObjPalType
+	res PAL_OW_WEATHER, [hl]
 	dec a
 	call StackJumpTable
 
@@ -38,15 +41,15 @@ LoadWeatherPal::
 	jr CopySpritePalHandler
 
 .snow
+	; Snow uses an all-white palette, not an indexed object palette. Update
+	; its identity before switching from object WRAM to palette WRAM.
+	ld a, NO_PAL_LOADED
+	ld [wLoadedObjPal{d:PAL_OW_WEATHER}], a
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals1)
 	ldh [rWBK], a
-	; we are not loading an official palette,
-	; so this tells dynamic pals to not associate this
-	; palette with a sprite.
 	ld a, NO_PAL_LOADED
-	ld [wLoadedObjPal7], a
 	ld hl, wOBPals1 palette PAL_OW_WEATHER
 if !DEF(MONOCHROME)
 	assert LOW(NO_PAL_LOADED) == $ff
