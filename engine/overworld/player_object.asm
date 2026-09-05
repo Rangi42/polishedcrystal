@@ -282,7 +282,7 @@ InitializeVisibleSprites:
 	ret
 
 CheckObjectEnteringVisibleRange::
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	cp STANDING
 	ret z
 	call StackJumpTable

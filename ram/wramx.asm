@@ -473,7 +473,8 @@ wPlayerStepFlags::
 ; bit 4: In midair
 ; bits 0-3: unused
 	db
-wPlayerStepDirection:: db
+
+	ds 1 ; unused
 
 wSpinning:: db
 
@@ -513,11 +514,7 @@ wOptionsMenuIsInitial:: db
 wResurrectFossilScriptBank:: db
 wResurrectFossilScript:: dw
 
-wOverworldMapAnchor:: dw
-wMetatileStandingY:: db
-wMetatileStandingX:: db
-
-	ds 1 ; unused
+	ds 5 ; unused
 
 wMapTileset:: db
 wEnvironment:: db
@@ -1949,7 +1946,7 @@ wAbilityName:: ds 20
 wAbilityFlags:: db
 wAbilityDisplaySpeed:: db ; (Characters - 1) per DelayFrame
 NEXTU
-wWeatherScratch:: ds SCREEN_HEIGHT_PX
+wWeatherScratch:: ds SCREEN_HEIGHT_PX + 2 * TILE_WIDTH
 ENDU
 
 

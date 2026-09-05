@@ -1074,7 +1074,7 @@ LoadTilesetGFX::
 	ret
 
 BufferScreen::
-	ld hl, wOverworldMapAnchor
+	ld hl, hOverworldMapAnchor
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1101,7 +1101,7 @@ BufferScreen::
 	ret
 
 SaveScreen::
-	ld hl, wOverworldMapAnchor
+	ld hl, hOverworldMapAnchor
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1109,7 +1109,7 @@ SaveScreen::
 	ld a, [wMapWidth]
 	add 6
 	ldh [hMapObjectIndexBuffer], a
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	and a
 	jr z, .down
 	cp UP
@@ -1146,7 +1146,7 @@ SaveScreen::
 	jr SaveScreen_LoadConnection
 
 LoadConnectionBlockData::
-	ld hl, wOverworldMapAnchor
+	ld hl, hOverworldMapAnchor
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

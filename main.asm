@@ -64,6 +64,7 @@ SECTION "Load Map Part", ROMX
 ; do not separate
 INCLUDE "engine/overworld/player_step.asm"
 INCLUDE "engine/overworld/load_map_part.asm"
+INCLUDE "engine/overworld/stream_map_part.asm"
 
 
 SECTION "bank4", ROMX

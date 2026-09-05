@@ -313,12 +313,12 @@ Cut_SpawnLeaf:
 
 Cut_GetLeafSpawnCoords:
 	ld de, 0
-	ld a, [wMetatileStandingX]
+	ldh a, [hMetatileStandingX]
 	bit 0, a
 	jr z, .left_side
 	set 0, e
 .left_side
-	ld a, [wMetatileStandingY]
+	ldh a, [hMetatileStandingY]
 	bit 0, a
 	jr z, .top_side
 	set 1, e

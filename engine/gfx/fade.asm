@@ -60,7 +60,7 @@ HandlePaletteSwap::
 	call CheckPaletteFading
 	ret nz
 .update
-	call InitializeSwappedPalette
+	call UpdateSwappedPalette
 	ret nc
 	; A fading swap has already caught up its own slot, so do not overwrite all
 	; active palettes with their destinations.

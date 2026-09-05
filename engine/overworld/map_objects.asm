@@ -445,7 +445,7 @@ UpdatePlayerStep:
 	add hl, bc
 	ld a, [hl]
 	and %00000011
-	ld [wPlayerStepDirection], a
+	ldh [hPlayerStepDirection], a
 	call AddStepVector
 ApplyPlayerStep:
 	ld a, [wPlayerStepVectorX]
@@ -2495,7 +2495,7 @@ HandleNPCStep::
 	ld [wPlayerStepFlags], a
 	ret nz
 	dec a ; STANDING
-	ld [wPlayerStepDirection], a
+	ldh [hPlayerStepDirection], a
 	ret
 
 RefreshPlayerSprite:

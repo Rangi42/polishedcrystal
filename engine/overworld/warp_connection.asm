@@ -64,7 +64,7 @@ EnterMapConnection:
 ; check step direction
 	ld a, [hli]
 	ld b, a
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	cp b
 	jr nz, .skip29
 ; check coordinate
@@ -95,7 +95,7 @@ EnterMapConnection:
 	ld bc, wFollowedWarpDataEnd - wFollowedWarpData
 	rst ByteFill
 
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	and a
 	jmp z, EnterSouthConnection
 	dec a
@@ -155,9 +155,9 @@ _FinishEastWestConnection:
 
 .skip_to_load
 	ld a, l
-	ld [wOverworldMapAnchor], a
+	ldh [hOverworldMapAnchor], a
 	ld a, h
-	ld [wOverworldMapAnchor + 1], a
+	ldh [hOverworldMapAnchor + 1], a
 	scf
 	ret
 
@@ -243,9 +243,9 @@ _FinishNorthSouthConnection:
 	srl c
 	add hl, bc
 	ld a, l
-	ld [wOverworldMapAnchor], a
+	ldh [hOverworldMapAnchor], a
 	ld a, h
-	ld [wOverworldMapAnchor + 1], a
+	ldh [hOverworldMapAnchor + 1], a
 	scf
 	ret
 
@@ -453,7 +453,7 @@ RefreshMapSprites:
 	ret
 
 CheckMovingOffEdgeOfMap::
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	cp STANDING
 	ret z
 	and a ; DOWN
@@ -544,15 +544,15 @@ GetMapScreenCoords::
 .resume2
 	rst AddNTimes
 	ld a, l
-	ld [wOverworldMapAnchor], a
+	ldh [hOverworldMapAnchor], a
 	ld a, h
-	ld [wOverworldMapAnchor + 1], a
+	ldh [hOverworldMapAnchor + 1], a
 	ld a, [wYCoord]
 	and $1
-	ld [wMetatileStandingY], a
+	ldh [hMetatileStandingY], a
 	ld a, [wXCoord]
 	and $1
-	ld [wMetatileStandingX], a
+	ldh [hMetatileStandingX], a
 	ret
 
 INCLUDE "data/maps/dual_connections.asm"
