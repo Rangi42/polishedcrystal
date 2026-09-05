@@ -95,7 +95,7 @@ LearnMove:
 	and PP_MASK
 	cp b
 	jr nc, .pp_ok
-; TMs won't give free PP
+; TMs and HMs won't give free PP
 	ld b, a
 .pp_ok
 	ld [hl], b

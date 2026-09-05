@@ -477,14 +477,9 @@ TeachTMHM:
 	call KnowsMove
 	jr c, .nope
 
-; Keep the TM flag set while learning, but allow full PP for HMs.
+; Keep the TM flag set while learning either a TM or HM.
 	ld hl, wForgettingMove
 	set LEARNING_TM_F, [hl]
-	ld a, [wCurTMHM]
-	cp HM01
-	jr c, .learn
-	res LEARNING_TM_F, [hl]
-.learn
 	farcall LearnMove
 	ld hl, wForgettingMove
 	res LEARNING_TM_F, [hl]
