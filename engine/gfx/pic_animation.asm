@@ -120,7 +120,7 @@ TickPokeAnim:
 	call JumpTable
 	farcall HDMATransferTileMapToWRAMBank3
 	ld a, [wPokeAnimSceneIndex]
-	add a, a ; Return in carry whether bit 7 got set.
+	add a ; return in carry whether bit 7 got set to end the anim
 	ret
 
 MACRO add_setup_command
