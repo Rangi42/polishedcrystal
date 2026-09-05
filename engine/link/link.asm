@@ -1511,6 +1511,13 @@ LinkTrade:
 	ld [wPlayerTrademonDVs + 1], a
 	ld a, [hl]
 	ld [wPlayerTrademonDVs + 2], a
+; Caught ball
+	ld hl, wPartyMon1CaughtBall
+	ld a, [wCurTradePartyMon]
+	call GetPartyLocation
+	ld a, [hl]
+	and CAUGHT_BALL_MASK
+	ld [wPlayerTrademonCaughtBall], a
 
 ; Buffer other player data
 ; nickname
@@ -1558,6 +1565,13 @@ LinkTrade:
 	ld [wOTTrademonDVs + 1], a
 	ld a, [hl]
 	ld [wOTTrademonDVs + 2], a
+; Caught ball
+	ld hl, wOTPartyMon1CaughtBall
+	ld a, [wCurOTTradePartyMon]
+	call GetPartyLocation
+	ld a, [hl]
+	and CAUGHT_BALL_MASK
+	ld [wOTTrademonCaughtBall], a
 
 	ld a, [wCurTradePartyMon]
 	ld [wCurPartyMon], a

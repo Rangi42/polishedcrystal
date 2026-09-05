@@ -146,6 +146,13 @@ DoNPCTrade:
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
+	ld hl, wPartyMon1CaughtBall
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld a, [hl]
+	and CAUGHT_BALL_MASK
+	ld [wPlayerTrademonCaughtBall], a
+
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
@@ -223,10 +230,15 @@ DoNPCTrade:
 	ld hl, wOTTrademonPersonality
 	call Trade_CopyTwoBytes
 
-	ld e, NPCTRADE_OT_ID + 1
+	ld e, NPCTRADE_BALL
 	call GetTradeAttribute
-	ld de, wOTTrademonID + 1
-	call Trade_CopyTwoBytesReverseEndian
+	ld a, [hl]
+	ld [wOTTrademonCaughtBall], a
+
+	ld e, NPCTRADE_OT_ID
+	call GetTradeAttribute
+	ld de, wOTTrademonID
+	call Trade_CopyTwoBytes
 
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -311,26 +323,11 @@ rept 3
 endr
 	ret
 
-Trade_CopyTwoBytes:
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	ret
-
-Trade_CopyTwoBytesReverseEndian:
-	ld a, [hli]
-	ld [de], a
-	dec de
-	ld a, [hl]
-	ld [de], a
-	ret
-
 Trade_CopyThreeBytes:
 	ld a, [hli]
 	ld [de], a
 	inc de
+Trade_CopyTwoBytes:
 	ld a, [hli]
 	ld [de], a
 	inc de

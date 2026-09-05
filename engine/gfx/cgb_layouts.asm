@@ -1256,9 +1256,10 @@ _CGB_TradePic:
 	call LoadPalette_White_Col1_Col2_Black
 	call VaryBGPal0ByTempMonDVs
 
-	ld hl, TradeTubeOBPalette
 	ld de, wOBPals1
-	call LoadOnePalette
+	call GetTradeBallPal
+
+	ld hl, TradeTubeOBPalette
 	ld de, wOBPals1 palette 7
 	call LoadOnePalette
 
@@ -1275,9 +1276,23 @@ _CGB_TradeTube:
 	ld hl, TradeTubeBGPalette
 	call LoadOnePalette
 
+	ld de, wOBPals2
+	call GetTradeBallPal
+
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 	jmp DelayFrame
+
+GetTradeBallPal:
+	ld a, [wTempMonCaughtBall]
+	add a
+	add a
+	add LOW(CaughtBallPals)
+	ld l, a
+	adc HIGH(CaughtBallPals)
+	sub l
+	ld h, a
+	jmp LoadPalette_White_Col1_Col2_Black
 
 TradeTubeBGPalette:
 INCLUDE "gfx/trade/trade_tube_bg.pal"

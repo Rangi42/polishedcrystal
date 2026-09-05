@@ -164,3 +164,13 @@ ENDM
 MACRO tradeanim_wait_180_if_ot_egg
 	db tradeanim_wait_180_if_ot_egg_command ; 2f
 ENDM
+
+	const tradeanim_prepare_player_ball_command
+MACRO tradeanim_prepare_player_ball
+	db tradeanim_prepare_player_ball_command ; 30
+ENDM
+
+	const tradeanim_prepare_ot_ball_command
+MACRO tradeanim_prepare_ot_ball
+	db tradeanim_prepare_ot_ball_command ; 31
+ENDM

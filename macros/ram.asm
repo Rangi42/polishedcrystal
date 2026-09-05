@@ -268,7 +268,7 @@ MACRO trademon
 \1ExtSpecies::
 \1Form::        db
 \1ID::          dw
-	ds 1
+\1CaughtBall::  db
 \1End::
 ENDM
 

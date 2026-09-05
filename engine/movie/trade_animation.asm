@@ -17,6 +17,7 @@ TradeAnimation:
 	tradeanim_setup_givemon_scroll
 	tradeanim_show_givemon_data
 	tradeanim_do_givemon_scroll
+	tradeanim_prepare_player_ball
 	tradeanim_wait_80
 	tradeanim_wait_96
 	tradeanim_poof
@@ -37,6 +38,7 @@ TradeAnimation:
 	tradeanim_scroll_out_right
 	tradeanim_get_trademon_sfx
 	tradeanim_tube_to_player
+	tradeanim_prepare_ot_ball
 	tradeanim_enter_link_tube
 	tradeanim_drop_ball
 	tradeanim_exit_link_tube
@@ -74,6 +76,7 @@ TradeAnimationPlayer2:
 	tradeanim_scroll_out_right
 	tradeanim_get_trademon_sfx
 	tradeanim_tube_to_ot
+	tradeanim_prepare_ot_ball
 	tradeanim_enter_link_tube
 	tradeanim_drop_ball
 	tradeanim_exit_link_tube
@@ -91,6 +94,7 @@ TradeAnimationPlayer2:
 	tradeanim_setup_givemon_scroll
 	tradeanim_show_givemon_data
 	tradeanim_do_givemon_scroll
+	tradeanim_prepare_player_ball
 	tradeanim_wait_40
 	tradeanim_poof
 	tradeanim_rocking_ball
@@ -246,8 +250,8 @@ DoTradeAnimation:
 	dw TradeAnim_TextboxScrollStart   ; 1e
 	dw TradeAnim_ScrollOutRight       ; 1f
 	dw TradeAnim_ScrollOutRight2      ; 20
-	dw TraideAnim_Wait80              ; 21
-	dw TraideAnim_Wait40              ; 22
+	dw TradeAnim_Wait80               ; 21
+	dw TradeAnim_Wait40               ; 22
 	dw TradeAnim_RockingBall          ; 23
 	dw TradeAnim_DropBall             ; 24
 	dw TradeAnim_WaitAnim             ; 25
@@ -258,9 +262,11 @@ DoTradeAnimation:
 	dw TradeAnim_GetTrademonSFX       ; 2a
 	dw TradeAnim_End                  ; 2b
 	dw TradeAnim_AnimateFrontpic      ; 2c
-	dw TraideAnim_Wait96              ; 2d
-	dw TraideAnim_Wait80IfOTEgg       ; 2e
-	dw TraideAnim_Wait180IfOTEgg      ; 2f
+	dw TradeAnim_Wait96               ; 2d
+	dw TradeAnim_Wait80IfOTEgg        ; 2e
+	dw TradeAnim_Wait180IfOTEgg       ; 2f
+	dw TradeAnim_PreparePlayerBall    ; 30
+	dw TradeAnim_PrepareOTBall        ; 31
 
 TradeAnim_IncrementJumptableIndex:
 	ld hl, wJumptableIndex
@@ -661,6 +667,8 @@ TradeAnim_ShowGivemonData:
 	ld [wTempMonPersonality], a
 	ld a, [wPlayerTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
+	ld a, [wPlayerTrademonCaughtBall]
+	ld [wTempMonCaughtBall], a
 	ld a, CGB_TRADE_PIC
 	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
@@ -684,6 +692,8 @@ TradeAnim_ShowGetmonData:
 	ld [wTempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
+	ld a, [wOTTrademonCaughtBall]
+	ld [wTempMonCaughtBall], a
 	ld a, CGB_TRADE_PIC
 	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
@@ -737,28 +747,28 @@ TradeAnim_ShowFrontpic:
 	farcall PlaceGraphic
 	jmp ApplyTilemapInVBlank
 
-TraideAnim_Wait80:
+TradeAnim_Wait80:
 	ld c, 80
 	call DelayFrames
 	jmp TradeAnim_AdvanceScriptPointer
 
-TraideAnim_Wait40:
+TradeAnim_Wait40:
 	ld c, 40
 	call DelayFrames
 	jmp TradeAnim_AdvanceScriptPointer
 
-TraideAnim_Wait96:
+TradeAnim_Wait96:
 	ld c, 96
 	call DelayFrames
 	jmp TradeAnim_AdvanceScriptPointer
 
-TraideAnim_Wait80IfOTEgg:
+TradeAnim_Wait80IfOTEgg:
 	call IsOTTrademonEgg
 	ret z
 	ld c, 80
 	jmp DelayFrames
 
-TraideAnim_Wait180IfOTEgg:
+TradeAnim_Wait180IfOTEgg:
 	call IsOTTrademonEgg
 	ret z
 	ld c, 180
@@ -1049,6 +1059,8 @@ TradeAnim_OTBidsFarewell:
 	ld hl, .Text_MonName
 	call PrintText
 	call TradeAnim_Wait80Frames
+	ld a, [wOTTrademonCaughtBall]
+	ld [wTempMonCaughtBall], a
 	jmp TradeAnim_AdvanceScriptPointer
 
 .Text_BidsFarewellToMon:
@@ -1157,9 +1169,9 @@ TradeAnim_WaitAnim2:
 
 LoadTradeBallAndCableGFX:
 	call DelayFrame
-	ld hl, TradeBallPoofCableGFX
-	ld de, vTiles0 tile $62
-	lb bc, BANK(TradeBallPoofCableGFX), 20
+	ld hl, TradePoofCableGFX
+	ld de, vTiles0 tile $68
+	lb bc, BANK(TradePoofCableGFX), 14
 	call DecompressRequest2bpp
 	xor a
 	ld hl, wSpriteAnimDict
@@ -1280,3 +1292,23 @@ TradeAnim_PrepareGBCorners:
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 	ret
+
+TradeAnim_PreparePlayerBall:
+	ld a, [wPlayerTrademonCaughtBall]
+	jr TradeAnim_PrepareBall
+
+TradeAnim_PrepareOTBall:
+	ld a, [wOTTrademonCaughtBall]
+TradeAnim_PrepareBall:
+	add a
+	add LOW(AnimBallObjGFX)
+	ld l, a
+	adc HIGH(AnimBallObjGFX)
+	sub l
+	ld h, a
+	ld a, BANK(AnimBallObjGFX)
+	call GetFarWord
+	ld de, vTiles0 tile $62
+	lb bc, BANK("Battle Ball Icons"), 6
+	call DecompressRequest2bpp
+	jmp TradeAnim_AdvanceScriptPointer
