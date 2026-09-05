@@ -208,6 +208,12 @@ ENDU
 hUsedWeatherSpriteIndex:: db
 hUsedOAMIndex:: db
 
+hOverworldMapAnchor:: dw
+hMetatileStandingY:: db
+hMetatileStandingX:: db
+hPlayerStepDirection:: db
+hStreamMapWalkedPatch:: db ; Step renderer scratch.
+
 
 SECTION "HRAM tail", HRAM
 

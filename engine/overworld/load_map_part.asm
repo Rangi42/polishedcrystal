@@ -30,9 +30,9 @@ ENDM
 _LoadMapPart::
 	ldh a, [rWBK]
 	push af
-	ld a, [wOverworldMapAnchor]
+	ldh a, [hOverworldMapAnchor]
 	ld e, a
-	ld a, [wOverworldMapAnchor + 1]
+	ldh a, [hOverworldMapAnchor + 1]
 	ld d, a
 	ld a, [wMapBorderBlock]
 	ldh [hMapBorderBlock], a
@@ -40,10 +40,10 @@ _LoadMapPart::
 	inc a
 	ldh [hMapWidthPlus6], a
 	ld c, a
-	ld a, [wMetatileStandingY]
+	ldh a, [hMetatileStandingY]
 	add a
 	ld b, a
-	ld a, [wMetatileStandingX]
+	ldh a, [hMetatileStandingX]
 	or b
 	ld b, a
 	ld a, BANK(wDecompressedMetatiles)

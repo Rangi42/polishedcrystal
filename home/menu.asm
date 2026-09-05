@@ -636,6 +636,9 @@ GetMenuDataPointerTableEntry::
 	ret
 
 ClearWindowData::
+	; Text and menus may overwrite a rectangle's selected map palette.
+	ld a, TRUE
+	ld [wPaletteSwapNeedsReload], a
 	ld hl, wMenuMetadata
 	call .bytefill
 	ld hl, wMenuHeader

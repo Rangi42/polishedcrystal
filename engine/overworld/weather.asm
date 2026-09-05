@@ -1164,103 +1164,57 @@ IsEvenSpriteIndex:
 	ret
 
 WeatherSpriteLimitCheck:
+; Admit sprites in reverse-OAM priority order.
+; Each candidate touches at most eight counters, once.
+; If it exceeds the ten-sprite limit, undo its tentative counts and hide it.
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wWeatherScratch)
 	ldh [rWBK], a
 
-	; Write (sprite limit + 1) to wWeatherScratch.
-	; Call SpriteLimitExceeded if the sprite overlap count reaches zero.
+	assert LOW(wWeatherScratch) == 0
+	assert LOW(wShadowOAM) == 0
+	assert TILE_WIDTH == 8
 	ld a, 11
 	ld hl, wWeatherScratch
-	ld bc, SCREEN_HEIGHT_PX
-	push hl
+	ld bc, SCREEN_HEIGHT_PX + 2 * TILE_WIDTH
 	rst ByteFill
-	pop hl
-
-	ld de, wShadowOAM
-.loop ; for (wShadowOAM -> wShadowOAMEnd)
+	ld h, HIGH(wWeatherScratch)
+	ld de, wShadowOAM + (OAM_COUNT - 1) * OBJ_SIZE
+.loop
 	ld a, [de]
-
-	; convert OAM y coord to screen y coord
-	sub TILE_WIDTH * 2 ; underflows if OAM is above the screen
-	cp SCREEN_HEIGHT_PX + 1
-	jr nc, .next ; OAM is below the screen, or above after underflow
-
-	; increment bytes in wWeatherScratch associated with this sprite
+	; Y=9..159 intersects the display for an 8-pixel sprite. Shift that
+	; interval to 0..150; padding accommodates its final seven scanlines.
+	; Counting the clipped portions too is harmless: overlapping sprites
+	; there also overlap the first/last visible scanline.
+	sub TILE_WIDTH + 1
+	cp SCREEN_HEIGHT_PX + TILE_WIDTH - 1
+	jr nc, .next
 	ld l, a
-rept TILE_WIDTH - 1
+for n, 1, TILE_WIDTH + 1
 	dec [hl]
-	call z, SpriteLimitExceeded
+	jr z, .reject{d:n}
+if n < TILE_WIDTH
 	inc l
+endc
 endr
-	dec [hl]
-	call z, SpriteLimitExceeded
+	jr .next
+for n, TILE_WIDTH, 1, -1
+.reject{d:n}
+	inc [hl]
+	dec l
+endr
+.reject1
+	inc [hl]
+	ld a, OAM_YCOORD_HIDDEN
+	ld [de], a
 .next
-	ld a, OBJ_SIZE
-	add e
+	ld a, e
+	sub OBJ_SIZE
 	ld e, a
-	cp LOW(wShadowOAMEnd)
-	jr nz, .loop
+	jr nc, .loop
 	pop af
 	ldh [rWBK], a
-	ret
-
-SpriteLimitExceeded:
-	push hl
-	push de
-
-	; initialize wSpriteOverlapCount to 0.
-	xor a
-	ld [wSpriteOverlapCount], a
-	ld a, l
-	; convert screen y coord to OAM y coord
-	add TILE_WIDTH * 2
-	ld c, a
-	ld hl, wShadowOAM + (OAM_COUNT - 1) * OBJ_SIZE
-	ld e, l ; d is still set to HIGH(wShadowOAM)
-
-	ld b, OAM_COUNT
-.loop
-	; check if OAM y coord is <= (scanline + 16)
-	ld a, [hl]
-	sub c ; get distance between OAM y coord and (scanline + 16)
-	jr z, .continue ; Sprite starts on the scanline; continue
-	jr nc, .next ; OAM's y coord is below the scanline; skip sprite
-.continue
-	; use two's complement to make a positive number
-	cpl
-	inc a
-	; check if distance <= TILE_WIDTH
-	cp TILE_WIDTH
-	jr nc, .next ; distance is greater than TILE_WIDTH; skip sprite
-	ld a, [wSpriteOverlapCount]
-	inc a ; no-optimize inefficient WRAM increment/decrement
-	ld [wSpriteOverlapCount], a
-	cp 11 ; horizontal sprite limit + 1
-	jr c, .next
-	; for all sprites after the 10th, delete them
-	ld a, [hl]
-	ld [hl], OAM_YCOORD_HIDDEN
-	; convert OAM y coord to screen y coord
-	sub TILE_WIDTH * 2
-	; decrement bytes in wWeatherScratch associated with this sprite
-	ld h, HIGH(wWeatherScratch)
-	ld l, a
-rept TILE_WIDTH - 1
-	dec [hl]
-	inc l
-endr
-	dec [hl]
-.next
-	ld hl, -OBJ_SIZE
-	add hl, de
-	ld e, l
-	dec b
-	jr nz, .loop
-
-	pop de
-	pop hl
 	ret
 
 Lightning:
