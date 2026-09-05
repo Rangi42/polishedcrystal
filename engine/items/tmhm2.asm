@@ -370,8 +370,6 @@ AskTeachTMHM:
 	ld a, [hl]
 	push af
 	res NO_TEXT_SCROLL, [hl]
-	ld hl, wForgettingMove
-	set LEARNING_TM_F, [hl]
 	ld a, [wCurTMHM]
 	ld [wTempTMHM], a
 	farcall GetTMHMMove
@@ -381,12 +379,9 @@ AskTeachTMHM:
 	call CopyName1
 	ld hl, Text_BootedTM ; Booted up a TM
 	ld a, [wCurTMHM]
-	cp HM01 + 1 ; off by one error?
+	cp HM01 + 1
 	jr c, .TM
 
-	; allow full PP restore for HMs
-	ld hl, wForgettingMove
-	res LEARNING_TM_F, [hl]
 	ld hl, Text_BootedHM ; Booted up an HM
 .TM:
 	call PrintText
@@ -399,8 +394,6 @@ AskTeachTMHM:
 	pop bc
 	ld a, b
 	ld [wOptions1], a
-	ld hl, wForgettingMove
-	res LEARNING_TM_F, [hl]
 	ret
 
 ChooseMonToLearnTMHM:
@@ -484,7 +477,12 @@ TeachTMHM:
 	call KnowsMove
 	jr c, .nope
 
+; Keep the TM flag set while learning either a TM or HM.
+	ld hl, wForgettingMove
+	set LEARNING_TM_F, [hl]
 	farcall LearnMove
+	ld hl, wForgettingMove
+	res LEARNING_TM_F, [hl]
 	ld a, b
 	and a
 	jr z, .nope
