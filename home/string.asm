@@ -30,7 +30,7 @@ InitName::
 FarCopyRadioText::
 	inc hl ; skip '<FAR>'
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	ld a, [hli]

@@ -265,7 +265,7 @@ SECTION UNION "Misc 404", WRAM0
 
 ; wLCDPokedex is defined in a LOAD UNION block in engine/pokedex/lcd.asm
 ; Reserve space for it at the beginning of this LOAD UNION
-	ds 15
+	ds 16
 	assert wLCDPokedexEnd - wLCDPokedex == @ - STARTOF("Misc 404")
 
 ; Battle data
@@ -885,7 +885,7 @@ wSummaryMoveSwap:: db
 
 ; Used to align window buffer for DMA copying
 ; Feel free to use or move data, an assert will fail if the memory becomes misaligned
-ds 9
+ds 8
 assert @ % 16 == 0
 
 wSummaryScreenWindowBuffer:: ds 32 * 10

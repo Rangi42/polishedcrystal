@@ -2,7 +2,6 @@ SECTION "HRAM", HRAM
 
 hScriptVar:: dw
 
-hROMBank:: db
 hROMBankBackup:: db
 
 hScriptBank:: db

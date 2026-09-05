@@ -81,7 +81,7 @@ GetFarWord::
 	; bankswitch to new bank
 	push bc
 	ld b, a
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld c, a
 	ld a, b
 	rst Bankswitch

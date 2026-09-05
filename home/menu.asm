@@ -214,7 +214,7 @@ CopyMenuHeader::
 	ld de, wMenuHeader
 	ld bc, wMenuHeaderEnd - wMenuHeader
 	rst CopyBytes
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld [wMenuDataBank], a
 	ret
 
@@ -697,7 +697,7 @@ PlayClickSFX::
 	ret
 
 _2DMenu::
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld [wMenuData_2DMenuItemStringsBank], a
 	farcall _2DMenu_
 	ld a, [wMenuCursorBuffer]

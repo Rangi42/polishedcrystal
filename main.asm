@@ -1,3 +1,5 @@
+INCLUDE "engine/rom_bank_self_report.asm"
+
 SECTION "bank1", ROMX
 
 INCLUDE "engine/init.asm"

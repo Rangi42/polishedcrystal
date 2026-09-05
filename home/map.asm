@@ -96,7 +96,7 @@ GetDestinationWarpNumber::
 	farcall CheckWarpCollision
 	ret nc
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	call SwitchToMapScriptsBank
@@ -162,7 +162,7 @@ WarpCheck::
 	call GetDestinationWarpNumber
 	ret nc
 CopyWarpData::
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	call SwitchToMapScriptsBank
@@ -790,7 +790,7 @@ CallScript::
 RunMapCallback::
 ; Will run the first callback found in the map header with execution index equal to a.
 	ld b, a
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	call SwitchToMapScriptsBank
 	call .FindCallback
@@ -855,7 +855,7 @@ ExecuteCallbackScript::
 	ret
 
 MapTextbox::
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	ld a, b
@@ -879,7 +879,7 @@ MapTextbox::
 
 GetMovementData::
 ; Initialize the movement data for person c at b:hl
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, b
 	rst Bankswitch
@@ -897,7 +897,7 @@ GetScriptByte::
 
 	push hl
 	push bc
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld c, a
 	ldh a, [hScriptBank]
 	rst Bankswitch
@@ -926,7 +926,7 @@ GetScriptWord::
 ; Return word at hScriptBank:hScriptPos in hl.
 
 	push bc
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ldh a, [hScriptBank]
 	rst Bankswitch
@@ -1454,7 +1454,7 @@ CheckFacingBGEvent::
 	ret z
 
 	ld c, a
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	call SwitchToMapScriptsBank
 	call CheckIfFacingTileCoordIsBGEvent
@@ -1520,7 +1520,7 @@ CheckCurrentMapCoordEvents::
 	ret z
 ; Copy the coord event count into c.
 	ld c, a
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	call SwitchToMapScriptsBank
 	call .CoordEventCheck
@@ -1618,7 +1618,7 @@ ReloadTilesetAndPalettes::
 	farcall RefreshSprites
 	call LoadStandardFont
 	call LoadFrame
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	call SwitchToMapAttributesBank
 	farcall UpdateTimeOfDayPal
