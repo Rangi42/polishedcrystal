@@ -93,8 +93,7 @@ ShamoutiIslandWilhomenaScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem ODD_SOUVENIR
-	iffalse_endtext
+	verbosegiveitem ODD_SOUVENIR, iffalse_endtext
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_WILHOMENA
 	jumpthisopenedtext
 

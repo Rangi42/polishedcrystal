@@ -75,8 +75,7 @@ Route45Dragon_tamerScript:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem FOCUS_SASH
-	iffalse_endtext
+	verbosegiveitem FOCUS_SASH, iffalse_endtext
 	setevent EVENT_GOT_FOCUS_SASH_FROM_ROUTE_45_LEADER
 	jumpthisopenedtext
 
@@ -191,8 +190,7 @@ BlackbeltKenji1Script:
 	checkevent EVENT_KENJI_ON_BREAK
 	iffalsefwd Route45NumberAcceptedM
 	scall Route45GiftM
-	verbosegiveitem PP_UP
-	iffalsefwd .NoRoom
+	verbosegiveitem PP_UP, iffalsefwd .NoRoom
 	clearevent EVENT_KENJI_ON_BREAK
 	special Special_SampleKenjiBreakCountdown
 	sjumpfwd Route45NumberAcceptedM
@@ -345,8 +343,7 @@ HikerParry1Script:
 	checkevent EVENT_GOT_IRON_FROM_PARRY
 	iftruefwd .GotIron
 	scall Route45RematchGiftM
-	verbosegiveitem IRON
-	iffalse HikerParryHasIron
+	verbosegiveitem IRON, iffalse HikerParryHasIron
 	setevent EVENT_GOT_IRON_FROM_PARRY
 	sjump Route45NumberAcceptedM
 
@@ -357,8 +354,7 @@ HikerParry1Script:
 	opentext
 	writetext HikerParryGivesIronText
 	waitbutton
-	verbosegiveitem IRON
-	iffalse HikerParryHasIron
+	verbosegiveitem IRON, iffalse HikerParryHasIron
 	clearevent EVENT_PARRY_IRON
 	setevent EVENT_GOT_IRON_FROM_PARRY
 	sjump Route45NumberAcceptedM

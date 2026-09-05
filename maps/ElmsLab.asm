@@ -409,8 +409,7 @@ ShowElmTogepiScript:
 ElmGiveOddSouvenirScript:
 	writetext ElmGiveOddSouvenirText1
 	promptbutton
-	verbosegiveitem ODD_SOUVENIR
-	iffalse_endtext
+	verbosegiveitem ODD_SOUVENIR, iffalse_endtext
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_ELM
 	writetext ElmGiveOddSouvenirText2
 	waitbutton
@@ -421,8 +420,7 @@ ElmGiveOddSouvenirScript:
 ElmGiveMasterBallScript:
 	writetext ElmGiveMasterBallText1
 	promptbutton
-	verbosegiveitem MASTER_BALL
-	iffalse_endtext
+	verbosegiveitem MASTER_BALL, iffalse_endtext
 	setevent EVENT_GOT_MASTER_BALL_FROM_ELM
 	writetext ElmGiveMasterBallText2
 	waitbutton
@@ -671,7 +669,8 @@ AideScript_GivePotions:
 	opentext
 	writetext AideText_GiveYouPotions
 	promptbutton
-	verbosegiveitem POTION
+	; Finish the introductory scene even if the Bag cannot fit the Potion.
+	verbosegiveitem_unsafe POTION
 	setscene SCENE_ELMSLAB_NOOP
 	jumpopenedtext AideText_AlwaysBusy
 

@@ -169,8 +169,7 @@ MysticWaterGuy:
 	opentext
 	writetext MysticWaterGuyTextBefore
 	promptbutton
-	verbosegiveitem MYSTIC_WATER
-	iffalse_endtext
+	verbosegiveitem MYSTIC_WATER, iffalse_endtext
 	setevent EVENT_GOT_MYSTIC_WATER_IN_CHERRYGROVE
 	jumpthisopenedtext
 

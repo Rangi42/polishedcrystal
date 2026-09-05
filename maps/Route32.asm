@@ -122,8 +122,7 @@ Route32CooltrainerMTrigger:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem MIRACLE_SEED
-	iffalse_endtext
+	verbosegiveitem MIRACLE_SEED, iffalse_endtext
 	setevent EVENT_GOT_MIRACLE_SEED_FROM_ROUTE_32_LEADER
 .GotMiracleSeed:
 	jumpthisopenedtext
@@ -750,8 +749,7 @@ FriedaScript:
 .MetFrieda:
 	writetext FriedaGivesGiftText
 	promptbutton
-	verbosegiveitem POISON_BARB
-	iffalse_endtext
+	verbosegiveitem POISON_BARB, iffalse_endtext
 	setevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
 	jumpthisopenedtext
 

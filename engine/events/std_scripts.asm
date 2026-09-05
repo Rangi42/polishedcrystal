@@ -381,8 +381,7 @@ BugContestResultsScript:
 	promptbutton
 	waitsfx
 	readmem wBugContestOfficerPrize
-	verbosegiveitem ITEM_FROM_MEM
-	iftruefwd .GotConsolationPrize
+	verbosegiveitem ITEM_FROM_MEM, iftruefwd .GotConsolationPrize
 	farwritetext BugContestPrizeNoRoomText
 	promptbutton
 	setevent EVENT_CONTEST_OFFICER_HAS_PRIZE
@@ -400,8 +399,7 @@ BugContestResultsScript:
 	farwritetext ContestResults_PlayerWonAPrizeText
 	waitbutton
 	readmem wBugContestOfficerPrize
-	verbosegiveitem ITEM_FROM_MEM
-	iftruefwd .GotWinnersPrize
+	verbosegiveitem ITEM_FROM_MEM, iftruefwd .GotWinnersPrize
 	farwritetext BugContestPrizeNoRoomText
 	promptbutton
 	setevent EVENT_CONTEST_OFFICER_HAS_PRIZE
@@ -1640,45 +1638,39 @@ VendingMachineScript:
 .FreshWater:
 	checkmoney YOUR_MONEY, 200
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem FRESH_WATER
-	iffalsefwd .NotEnoughSpace
+	giveitem FRESH_WATER, iffalsefwd .NotEnoughSpace
 	takemoney YOUR_MONEY, 200
 	getitemname FRESH_WATER, STRING_BUFFER_3
 	scall .VendItem
 	random $20
 	ifnotequal $0, .Start
-	giveitem FRESH_WATER
-	iffalse .Start
+	giveitem FRESH_WATER, iffalse .Start
 	getitemname FRESH_WATER, STRING_BUFFER_3
 	sjumpfwd .ExtraItem
 
 .SodaPop:
 	checkmoney YOUR_MONEY, 300
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem SODA_POP
-	iffalsefwd .NotEnoughSpace
+	giveitem SODA_POP, iffalsefwd .NotEnoughSpace
 	takemoney YOUR_MONEY, 300
 	getitemname SODA_POP, STRING_BUFFER_3
 	scall .VendItem
 	random $20
 	ifnotequal $0, .Start
-	giveitem SODA_POP
-	iffalse .Start
+	giveitem SODA_POP, iffalse .Start
 	getitemname SODA_POP, STRING_BUFFER_3
 	sjumpfwd .ExtraItem
 
 .Lemonade:
 	checkmoney YOUR_MONEY, 350
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem LEMONADE
-	iffalsefwd .NotEnoughSpace
+	giveitem LEMONADE, iffalsefwd .NotEnoughSpace
 	takemoney YOUR_MONEY, 350
 	getitemname LEMONADE, STRING_BUFFER_3
 	scall .VendItem
 	random $20
 	ifnotequal $0, .Start
-	giveitem LEMONADE
-	iffalse .Start
+	giveitem LEMONADE, iffalse .Start
 	getitemname LEMONADE, STRING_BUFFER_3
 	sjumpfwd .ExtraItem
 

@@ -59,8 +59,7 @@ MurkySwampCherylScript:
 	opentext
 	writetext .ItemText
 	promptbutton
-	verbosegiveitem POWER_WEIGHT
-	iffalse_endtext
+	verbosegiveitem POWER_WEIGHT, iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext

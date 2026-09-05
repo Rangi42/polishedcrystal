@@ -139,8 +139,7 @@ TrainerLassDana1:
 
 .TryGiveThunderstone:
 	callstd giftf
-	verbosegiveitem THUNDERSTONE
-	iffalsefwd .NoRoomForThunderstone
+	verbosegiveitem THUNDERSTONE, iffalsefwd .NoRoomForThunderstone
 	clearflag ENGINE_DANA_HAS_THUNDERSTONE
 	setevent EVENT_DANA_GAVE_THUNDERSTONE
 	jumpstd numberacceptedf

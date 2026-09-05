@@ -107,8 +107,7 @@ SantosScript:
 .MetSantos:
 	writetext .GivesGiftText
 	promptbutton
-	verbosegiveitem SPELL_TAG
-	iffalse_endtext
+	verbosegiveitem SPELL_TAG, iffalse_endtext
 	setevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
 	jumpthisopenedtext
 

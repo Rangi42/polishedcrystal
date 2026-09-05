@@ -26,8 +26,7 @@ CianwoodHouseBlackBeltScript:
 	opentext
 	writetext CianwoodHouseBlackBeltText1
 	promptbutton
-	verbosegiveitem ASSAULT_VEST
-	iffalse_endtext
+	verbosegiveitem ASSAULT_VEST, iffalse_endtext
 	setevent EVENT_GOT_ASSAULT_VEST_FROM_CIANWOOD
 	jumpopenedtext CianwoodHouseBlackBeltText2
 

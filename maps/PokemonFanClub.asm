@@ -40,8 +40,7 @@ PokemonFanClubChairmanScript:
 .HeardSpeech:
 	writetext PokemonFanClubChairmanIWantYouToHaveThisText
 	promptbutton
-	verbosegiveitem RARE_CANDY
-	iffalse_endtext
+	verbosegiveitem RARE_CANDY, iffalse_endtext
 	setevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
 	jumpthisopenedtext
 

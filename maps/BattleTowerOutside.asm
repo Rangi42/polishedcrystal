@@ -105,8 +105,7 @@ BattleTowerOutsideAnabelScript:
 	opentext
 	writetext .ItemText
 	promptbutton
-	verbosegiveitem POWER_BAND
-	iffalse_endtext
+	verbosegiveitem POWER_BAND, iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext

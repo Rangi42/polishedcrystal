@@ -90,7 +90,8 @@ Route29TutorialScript:
 	writetext CatchingTutorialDebriefText
 Route29FinishTutorial:
 	promptbutton
-	verbosegiveitem POKE_BALL, 5
+	; Finish the tutorial even if the Bag cannot fit the bonus balls.
+	verbosegiveitems_unsafe POKE_BALL, 5
 	writetext CatchingTutorialGoodbyeText
 	waitbutton
 	closetext
@@ -134,8 +135,7 @@ TuscanyScript:
 .MetTuscany:
 	writetext TuscanyGivesGiftText
 	promptbutton
-	verbosegiveitem SILK_SCARF
-	iffalse_endtext
+	verbosegiveitem SILK_SCARF, iffalse_endtext
 	setevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
 	jumpthisopenedtext
 

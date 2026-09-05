@@ -23,8 +23,7 @@ Route5CleanseTagHouseGrannyScript:
 	iftruefwd .GotCleanseTag
 	writetext Route5CleanseTagHouseGrannyText1
 	promptbutton
-	verbosegiveitem CLEANSE_TAG
-	iffalsefwd .NoRoom
+	verbosegiveitem CLEANSE_TAG, iffalsefwd .NoRoom
 	setevent EVENT_GOT_CLEANSE_TAG
 .GotCleanseTag:
 	writetext Route5CleanseTagHouseGrannyText2

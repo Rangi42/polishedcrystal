@@ -48,8 +48,7 @@ LoreleiAfterIntroScript:
 	opentext
 	writetext LoreleiRewardText
 	promptbutton
-	verbosegiveitem ICY_ROCK
-	iffalsefwd LoreleiAfterScript
+	verbosegiveitem ICY_ROCK, iffalsefwd LoreleiAfterScript
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 LoreleiAfterScript:
 	readvar VAR_BADGES
@@ -97,8 +96,7 @@ LoreleiAfterRematchIntroScript:
 LoreleiGiveIcyRock:
 	writetext LoreleiRewardText
 	promptbutton
-	verbosegiveitem ICY_ROCK
-	iffalse_jumpopenedtext LoreleiRematchAfterText
+	verbosegiveitem ICY_ROCK, iffalse_jumpopenedtext LoreleiRematchAfterText
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 	jumpthisopenedtext
 

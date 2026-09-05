@@ -42,8 +42,7 @@ NationalParkTeacher1Script:
 	iftruefwd .GotQuickClaw
 	writetext NationalParkTeacher1Text
 	promptbutton
-	verbosegiveitem QUICK_CLAW
-	iffalsefwd .NoRoom
+	verbosegiveitem QUICK_CLAW, iffalsefwd .NoRoom
 	setevent EVENT_GOT_QUICK_CLAW
 .GotQuickClaw:
 	writetext NationalParkTeacher1Text_GotQuickClaw
@@ -252,8 +251,7 @@ PokefanfBeverly1Script:
 
 .GiveNugget:
 	scall .Gift
-	verbosegiveitem NUGGET
-	iffalsefwd .NoRoom
+	verbosegiveitem NUGGET, iffalsefwd .NoRoom
 	clearflag ENGINE_BEVERLY_HAS_NUGGET
 	sjumpfwd .NumberAccepted
 

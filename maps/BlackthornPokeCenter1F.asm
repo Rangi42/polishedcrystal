@@ -65,8 +65,7 @@ ProfOaksAide4Script:
 .HereYouGo
 	writetext .HereYouGoText
 	waitbutton
-	verbosegiveitem LUCKY_EGG
-	iffalse_jumpopenedtext .NoRoomText
+	verbosegiveitem LUCKY_EGG, iffalse_jumpopenedtext .NoRoomText
 	setevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
 	jumpthisopenedtext
 

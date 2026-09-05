@@ -56,8 +56,7 @@ ScaryCave1FMiraScript:
 	opentext
 	writetext .ItemText
 	promptbutton
-	verbosegiveitem POWER_LENS
-	iffalse_endtext
+	verbosegiveitem POWER_LENS, iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext

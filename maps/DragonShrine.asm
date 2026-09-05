@@ -614,8 +614,7 @@ KimonoGirlMinaScript:
 	opentext
 	writetext .AfterText
 	promptbutton
-	verbosegiveitem ABILITYPATCH
-	iffalse_jumpopenedtext .BagFullText
+	verbosegiveitem ABILITYPATCH, iffalse_jumpopenedtext .BagFullText
 	setevent EVENT_GOT_ABILITYPATCH_FROM_KIMONO_GIRL_MINA
 	jumpthisopenedtext
 

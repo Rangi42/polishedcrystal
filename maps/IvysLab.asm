@@ -71,8 +71,7 @@ ProfIvyScript:
 	iftruefwd .GotItem
 	writetext .ThanksText
 	promptbutton
-	verbosegiveitem MOON_STONE
-	iffalse_endtext
+	verbosegiveitem MOON_STONE, iffalse_endtext
 	setevent EVENT_GOT_MOON_STONE_FROM_IVY
 .GotItem:
 	checkevent EVENT_BEAT_PROF_IVY
@@ -92,9 +91,11 @@ ProfIvyScript:
 	jumptext .AfterText
 
 .Return2:
-	giveitem LIECHI_BERRY
+	; Refund a berry just removed from the Bag.
+	giveitem_unsafe LIECHI_BERRY
 .Return1:
-	giveitem LIECHI_BERRY
+	; Refund a berry just removed from the Bag.
+	giveitem_unsafe LIECHI_BERRY
 	jumpthisopenedtext
 
 .NoBerryText:
