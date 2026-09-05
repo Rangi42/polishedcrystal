@@ -166,6 +166,9 @@ wShadowOAMEnd::
 SECTION "Tilemap and Attrmap", WRAM0
 
 ; Some code depend on these being next to each other in memory.
+; Walking streams directly to wBGMapBuffer/wBGMapPalBuffer and does not
+; maintain these screen buffers. Call LoadMapPart before consuming a full
+; overworld screen (as map loading and ReanchorBGMap already do).
 wTilemap::
 ; 20x18 grid of 8x8 tiles
 	ds SCREEN_AREA
@@ -1487,3 +1490,13 @@ SECTION "ROM Checksum", WRAM0
 ; protection against people trying to load a save state for a save in
 ; a different rom version.
 wRomChecksum:: dw
+
+
+SECTION "Object Palette Scan Scratch", WRAM0
+
+; Per-call results of the first dynamic object palette allocation pass.
+wResolvedObjectPals:: ds NUM_OBJECT_STRUCTS
+
+; Invalidate the selected map rectangle palettes across text/menu rendering.
+wPaletteSwapNeedsReload:: db
+wPaletteSwapReloadMask:: db

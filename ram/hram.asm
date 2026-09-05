@@ -208,7 +208,14 @@ ENDU
 hUsedWeatherSpriteIndex:: db
 hUsedOAMIndex:: db
 
-	ds 11 ; unused
+; Step renderer inputs must remain accessible while WRAM banks 3/4 are mapped.
+hStreamMapAnchor:: dw
+hStreamMapStandingX:: db
+hStreamMapStandingY:: db
+hStreamMapDirection:: db
+hStreamMapWalkedPatch:: db
+
+	ds 5 ; unused
 
 hLCDInterruptFunction::
 hLCDInterruptFunctionJump::     db ; $c3 jp

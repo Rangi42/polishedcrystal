@@ -168,6 +168,19 @@ DoEggStep::
 	and a
 	ret z
 
+	; Most parties have no eggs. Avoid loading every member's ability and
+	; looking up the Oval Charm when there is no hatch counter to update.
+	ld e, a
+	ld hl, wPartyMon1IsEgg
+.find_egg
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .has_egg
+	call .NextPartyMon
+	jr nz, .find_egg
+	ret ; z: nothing is ready to hatch
+.has_egg
+	ld a, [wPartyCount]
+
 	; Check if Flame Body/Magma Armor applies
 	ld e, a
 	ld hl, wPartyMon1IsEgg

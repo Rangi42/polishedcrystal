@@ -1949,7 +1949,7 @@ wAbilityName:: ds 20
 wAbilityFlags:: db
 wAbilityDisplaySpeed:: db ; (Characters - 1) per DelayFrame
 NEXTU
-wWeatherScratch:: ds SCREEN_HEIGHT_PX
+wWeatherScratch:: ds SCREEN_HEIGHT_PX + 2 * TILE_WIDTH
 ENDU
 
 

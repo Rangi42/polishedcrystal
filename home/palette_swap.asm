@@ -1,4 +1,8 @@
 InitializeSwappedPalette::
+	; Full palette loads always restore the selected rectangle palettes.
+	ld a, TRUE
+	ld [wPaletteSwapNeedsReload], a
+UpdateSwappedPalette::
 	; wPaletteSwapAddress points to a `paletteswap` data struct inside
 	; the current map script, so we must be in the [wMapScriptsBank].
 	ldh a, [hROMBank]
@@ -57,6 +61,28 @@ InitializeSwappedPalette::
 	jr .state_loop
 
 .states_done
+	; Stable rectangle states already have the correct palette. Menus mark
+	; it dirty, and full map/time/weather palette loads use Initialize above.
+	ld a, [wPaletteSwapNeedsReload]
+	or d
+	jr nz, .changed
+	pop hl
+	pop af
+	rst Bankswitch
+	and a
+	ret
+.changed
+	; Replay every entry for affected slots (including chained NULL entries).
+	; A full palette load or menu restoration makes every slot dirty.
+	ld a, [wPaletteSwapNeedsReload]
+	and a
+	ld a, d
+	jr z, .got_reload_mask
+	ld a, $ff
+.got_reload_mask
+	ld [wPaletteSwapReloadMask], a
+	xor a
+	ld [wPaletteSwapNeedsReload], a
 	; A changed palette only needs catch-up during an active fade.
 	ld a, d
 	and a
@@ -79,6 +105,16 @@ InitializeSwappedPalette::
 	; changed. This makes chained swaps resolve to their final effective palette.
 	ld a, [hli]
 	ld b, a
+	call GetPaletteMask
+	push hl
+	ld hl, wPaletteSwapReloadMask
+	and [hl]
+	pop hl
+	jr nz, .reload_slot
+	ld bc, 4
+	add hl, bc
+	jr .palette_loop
+.reload_slot
 	ld a, d
 	and a
 	jr z, .got_changed_state
@@ -120,9 +156,8 @@ InitializeSwappedPalette::
 	jr .swapped
 
 .swap_current
-	; Always reload the selected palette: CloseSubmenu does not restore
-	; non-default palettes, even when this entry's state has not changed.
-	; TODO: look into a more targeted fix for this.
+	; Reapply every selected entry when dirty/changed, in declaration order,
+	; so chained swaps and NULL entries keep their original meaning.
 	ld a, BANK(SwapColorPalette)
 	rst Bankswitch
 	call SwapColorPalette

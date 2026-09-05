@@ -91,19 +91,19 @@ UpdateOverworldMap:
 	ret nz
 ; step right
 	call .ScrollOverworldMapRight
-	call _LoadMapPart
+	call _LoadMapPartForStep
 	jmp ScrollMapLeft
 .stepDown
 	call .ScrollOverworldMapDown
-	call _LoadMapPart
+	call _LoadMapPartForStep
 	jmp ScrollMapUp
 .stepUp
 	call .ScrollOverworldMapUp
-	call _LoadMapPart
+	call _LoadMapPartForStep
 	jmp ScrollMapDown
 .stepLeft
 	call .ScrollOverworldMapLeft
-	call _LoadMapPart
+	call _LoadMapPartForStep
 	jmp ScrollMapRight
 
 .ScrollOverworldMapDown:
@@ -217,22 +217,7 @@ CheckPlayerCoastSandColl:
 
 ScrollMapDown::
 	call CheckPlayerCoastSandColl
-	jr nz, .reload_walked_tiles
-	hlcoord 0, 0
-	ld de, wBGMapBuffer
-	call BackupBGMapRow
-	hlcoord 0, 0, wAttrmap
-	ld de, wBGMapPalBuffer
-	jr .done
-.reload_walked_tiles
-	call ReloadWalkedTile
-	hlcoord 0, 0
-	ld de, wBGMapBuffer + 8
-	call BackupBGMapRow
-	hlcoord 0, 0, wAttrmap
-	ld de, wBGMapPalBuffer + 8
-.done
-	call BackupBGMapRow
+	call nz, UpdateWalkedTilePointers
 	ld hl, wBGMapAnchor
 	ld a, [hli]
 	ld d, [hl]
@@ -251,22 +236,7 @@ ScrollMapDown::
 
 ScrollMapUp::
 	call CheckPlayerCoastSandColl
-	jr nz, .reload_walked_tiles
-	hlcoord 0, SCREEN_HEIGHT - 2
-	ld de, wBGMapBuffer
-	call BackupBGMapRow
-	hlcoord 0, SCREEN_HEIGHT - 2, wAttrmap
-	ld de, wBGMapPalBuffer
-	jr .done
-.reload_walked_tiles
-	call ReloadWalkedTile
-	hlcoord 0, SCREEN_HEIGHT - 2
-	ld de, wBGMapBuffer + 8
-	call BackupBGMapRow
-	hlcoord 0, SCREEN_HEIGHT - 2, wAttrmap
-	ld de, wBGMapPalBuffer + 8
-.done
-	call BackupBGMapRow
+	call nz, UpdateWalkedTilePointers
 	ld hl, wBGMapAnchor
 	ld a, [hli]
 	ld e, a
@@ -291,22 +261,7 @@ ScrollMapUp::
 
 ScrollMapRight::
 	call CheckPlayerCoastSandColl
-	jr nz, .reload_walked_tiles
-	hlcoord 0, 0
-	ld de, wBGMapBuffer
-	call BackupBGMapColumn
-	hlcoord 0, 0, wAttrmap
-	ld de, wBGMapPalBuffer
-	jr .done
-.reload_walked_tiles
-	call ReloadWalkedTile
-	hlcoord 0, 0
-	ld de, wBGMapBuffer + 8
-	call BackupBGMapColumn
-	hlcoord 0, 0, wAttrmap
-	ld de, wBGMapPalBuffer + 8
-.done
-	call BackupBGMapColumn
+	call nz, UpdateWalkedTilePointers
 	ld hl, wBGMapAnchor
 	ld a, [hli]
 	ld d, [hl]
@@ -325,22 +280,7 @@ ScrollMapRight::
 
 ScrollMapLeft::
 	call CheckPlayerCoastSandColl
-	jr nz, .reload_walked_tiles
-	hlcoord SCREEN_WIDTH - 2, 0
-	ld de, wBGMapBuffer
-	call BackupBGMapColumn
-	hlcoord SCREEN_WIDTH - 2, 0, wAttrmap
-	ld de, wBGMapPalBuffer
-	jr .done
-.reload_walked_tiles
-	call ReloadWalkedTile
-	hlcoord SCREEN_WIDTH - 2, 0
-	ld de, wBGMapBuffer + 8
-	call BackupBGMapColumn
-	hlcoord SCREEN_WIDTH - 2, 0, wAttrmap
-	ld de, wBGMapPalBuffer + 8
-.done
-	call BackupBGMapColumn
+	call nz, UpdateWalkedTilePointers
 	ld hl, wBGMapAnchor
 	ld a, [hli]
 	; add SCREEN_HEIGHT, but wrap-around the last 5 bits
@@ -361,36 +301,6 @@ ScrollMapLeft::
 	call UpdateBGMapColumn
 	ld a, $1
 	ldh [hBGMapUpdate], a
-	ret
-
-BackupBGMapRow::
-	ld c, 2 * SCREEN_WIDTH
-.loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop
-	ret
-
-BackupBGMapColumn::
-	ld c, SCREEN_HEIGHT
-.loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	inc de
-	ld a, SCREEN_WIDTH - 1
-	; hl += a
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a
-	dec c
-	jr nz, .loop
 	ret
 
 UpdateBGMapRow::
@@ -454,14 +364,8 @@ UpdateBGMapColumn::
 	ldh [hBGMapTileCount], a
 	ret
 
-ReloadWalkedTile:
-; Update tile player is to walk on
-	hlcoord 8, 6
-	ld de, wBGMapBuffer
-	call .CommitTiles
-	hlcoord 8, 6, wAttrmap
-	ld de, wBGMapPalBuffer
-	call .CommitTiles
+UpdateWalkedTilePointers:
+; The streamer has already written the walked patch to the upload buffers.
 	ld a, [wBGMapAnchor]
 	swap a
 	rrca
@@ -489,20 +393,6 @@ ReloadWalkedTile:
 	ld a, TILEMAP_WIDTH
 	call .AddHLDecC
 	jr nz, .ptr_loop
-	ret
-
-.CommitTiles:
-	ld c, 4
-.tile_loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	inc de
-	ld a, SCREEN_WIDTH - 1
-	call .AddHLDecC
-	jr nz, .tile_loop
 	ret
 
 .AddHLDecC:
