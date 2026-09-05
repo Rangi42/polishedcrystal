@@ -225,29 +225,29 @@ ENDM
 ; Singular macros give one item; plural macros require a quantity.
 ; Use an _unsafe macro only when failure is handled later or deliberately
 ; allowed, and explain why at the call site.
+
 	const giveitem_command
 MACRO giveitem
-	assert _NARG == 2, "giveitem requires item, failure command"
-	assert STRLEN("\2"), "Failure command must not be empty"
+	assert _NARG >= 2, "`giveitem` requires a fail-safe handler for when the Bag is full"
 	giveitem_unsafe \1
-	\2
+	shift
+	assert STRLEN("\#"), "`giveitem` fail-safe handler is empty"
+	\#
 ENDM
 
 MACRO giveitems
-	assert _NARG == 3, "giveitems requires item, quantity, failure command"
-	assert STRLEN("\3"), "Failure command must not be empty"
+	assert _NARG >= 3, "`giveitems` requires a fail-safe handler for when the Bag is full"
 	giveitems_unsafe \1, \2
-	\3
+	shift 2
+	assert STRLEN("\#"), "`giveitems` fail-safe handler is empty"
+	\#
 ENDM
 
 MACRO giveitem_unsafe
-	assert _NARG == 1, "giveitem_unsafe requires item"
 	giveitems_unsafe \1, 1
 ENDM
 
 MACRO giveitems_unsafe
-	assert _NARG == 2, "giveitems_unsafe requires item, quantity"
-	assert STRLEN("\1") && STRLEN("\2"), "Item and quantity must not be empty"
 	db giveitem_command
 	db \1 ; item
 	db \2 ; quantity
@@ -1028,27 +1028,26 @@ ENDM
 
 	const verbosegiveitem_command
 MACRO verbosegiveitem
-	assert _NARG == 2, "verbosegiveitem requires item, failure command"
-	assert STRLEN("\2"), "Failure command must not be empty"
+	assert _NARG >= 2, "`verbosegiveitem` requires a fail-safe handler for when the Bag is full"
 	verbosegiveitem_unsafe \1
-	\2
+	shift
+	assert STRLEN("\#"), "`verbosegiveitem` fail-safe handler is empty"
+	\#
 ENDM
 
 MACRO verbosegiveitems
-	assert _NARG == 3, "verbosegiveitems requires item, quantity, failure command"
-	assert STRLEN("\3"), "Failure command must not be empty"
+	assert _NARG >= 3, "`verbosegiveitems` requires a fail-safe handler for when the Bag is full"
 	verbosegiveitems_unsafe \1, \2
-	\3
+	shift 2
+	assert STRLEN("\#"), "`verbosegiveitems` fail-safe handler is empty"
+	\#
 ENDM
 
 MACRO verbosegiveitem_unsafe
-	assert _NARG == 1, "verbosegiveitem_unsafe requires item"
 	verbosegiveitems_unsafe \1, 1
 ENDM
 
 MACRO verbosegiveitems_unsafe
-	assert _NARG == 2, "verbosegiveitems_unsafe requires item, quantity"
-	assert STRLEN("\1") && STRLEN("\2"), "Item and quantity must not be empty"
 	db verbosegiveitem_command
 	db \1 ; item
 	db \2 ; quantity
@@ -1056,12 +1055,13 @@ ENDM
 
 	const verbosegiveitemvar_command
 MACRO verbosegiveitemvar
-	assert _NARG == 3, "verbosegiveitemvar requires item, variable, failure command"
+	assert _NARG >= 3, "`verbosegiveitemvar` requires a fail-safe handler for when the Bag is full"
 	db verbosegiveitemvar_command
 	db \1 ; item
 	db \2 ; var
-	assert STRLEN("\3"), "Failure command must not be empty"
-	\3
+	shift 2
+	assert STRLEN("\#"), "`verbosegiveitemvar` fail-safe handler is empty"
+	\#
 ENDM
 
 	const swarm_command
