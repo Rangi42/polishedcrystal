@@ -679,7 +679,7 @@ PokeAnim_SetVBank1:
 .col
 	ld c, 7
 .row
-	set 3, [hl]
+	set B_BG_BANK1, [hl]
 	inc hl
 	dec c
 	jr nz, .row
@@ -696,7 +696,7 @@ PokeAnim_SetVBank0:
 .col
 	ld c, 7
 .row
-	res 3, [hl]
+	res B_BG_BANK1, [hl]
 	inc hl
 	dec c
 	jr nz, .row
