@@ -237,7 +237,7 @@ RuggedRoadSouthBlackBeltScript:
 
 .NoRoomForPunchinGlove:
 	; Refund the Brick Piece just removed from the Bag.
-	giveitem BRICK_PIECE, 0
+	giveitem_unsafe BRICK_PIECE
 	jumpthisopenedtext
 
 	text "Humph! You don't"

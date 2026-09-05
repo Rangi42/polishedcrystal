@@ -91,7 +91,7 @@ Route29TutorialScript:
 Route29FinishTutorial:
 	promptbutton
 	; Finish the tutorial even if the Bag cannot fit the bonus balls.
-	verbosegiveitem POKE_BALL, 0, 5
+	verbosegiveitems_unsafe POKE_BALL, 5
 	writetext CatchingTutorialGoodbyeText
 	waitbutton
 	closetext

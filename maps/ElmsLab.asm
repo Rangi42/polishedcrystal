@@ -670,7 +670,7 @@ AideScript_GivePotions:
 	writetext AideText_GiveYouPotions
 	promptbutton
 	; Finish the introductory scene even if the Bag cannot fit the Potion.
-	verbosegiveitem POTION, 0
+	verbosegiveitem_unsafe POTION
 	setscene SCENE_ELMSLAB_NOOP
 	jumpopenedtext AideText_AlwaysBusy
 

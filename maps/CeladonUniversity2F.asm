@@ -64,7 +64,7 @@ CeladonUniversity2FCooltrainerfScript:
 
 .NoRoomForAntidote:
 	; Refund the Fresh Water just removed from the Bag.
-	giveitem FRESH_WATER, 0
+	giveitem_unsafe FRESH_WATER
 	jumpthisopenedtext
 
 	text "Oh… Keep your"

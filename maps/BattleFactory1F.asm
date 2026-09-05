@@ -94,7 +94,7 @@ BattleFactory1FContinueChallenge:
 		line "this great prize!"
 		prompt
 	; Commit the challenge result even if the Bag cannot fit the prize.
-	verbosegiveitem MINT_LEAF, 0
+	verbosegiveitem_unsafe MINT_LEAF
 	; fallthrough
 Script_CommitBattleFactoryResult:
 	special Special_BattleTower_CommitChallengeResult

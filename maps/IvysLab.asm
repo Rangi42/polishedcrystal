@@ -92,10 +92,10 @@ ProfIvyScript:
 
 .Return2:
 	; Refund a berry just removed from the Bag.
-	giveitem LIECHI_BERRY, 0
+	giveitem_unsafe LIECHI_BERRY
 .Return1:
 	; Refund a berry just removed from the Bag.
-	giveitem LIECHI_BERRY, 0
+	giveitem_unsafe LIECHI_BERRY
 	jumpthisopenedtext
 
 .NoBerryText:

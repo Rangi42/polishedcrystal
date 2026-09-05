@@ -1539,7 +1539,7 @@ AutoRockSmashScript:
 	iffalsefwd .no_item
 	opentext
 	; This random item is forfeited if the Bag is full.
-	verbosegiveitem ITEM_FROM_MEM, 0
+	verbosegiveitem_unsafe ITEM_FROM_MEM
 	closetext
 .no_item
 	end
@@ -1703,7 +1703,7 @@ Script_GotAnItem:
 	callasm CurItemToScriptVar
 	opentext
 	; This random item is forfeited if the Bag is full.
-	verbosegiveitem ITEM_FROM_MEM, 0
+	verbosegiveitem_unsafe ITEM_FROM_MEM
 	endtext
 
 Script_GotABite:

@@ -91,7 +91,7 @@ endc
 .Buy10:
 	checkmoney YOUR_MONEY, 10000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem SWEET_HONEY, iffalse_jumpopenedtext .BagFullText, 10
+	giveitems SWEET_HONEY, 10, iffalse_jumpopenedtext .BagFullText
 	takemoney YOUR_MONEY, 10000
 
 .Done:

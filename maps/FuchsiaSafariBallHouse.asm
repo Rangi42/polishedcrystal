@@ -40,7 +40,7 @@ FuchsiaSafariBallHouseOfficerScript:
 .Buy10:
 	checkmoney YOUR_MONEY, 20000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem SAFARI_BALL, iffalse_jumpopenedtext .BagFullText, 10
+	giveitems SAFARI_BALL, 10, iffalse_jumpopenedtext .BagFullText
 	takemoney YOUR_MONEY, 20000
 
 .Done:

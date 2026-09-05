@@ -101,7 +101,7 @@ BattleTower1FContinueChallenge:
 		line "this great prize!"
 		prompt
 	; Commit the challenge result even if the Bag cannot fit the prize.
-	verbosegiveitem ABILITYPATCH, 0
+	verbosegiveitem_unsafe ABILITYPATCH
 	; fallthrough
 Script_CommitBattleTowerResult:
 	special Special_BattleTower_CommitChallengeResult

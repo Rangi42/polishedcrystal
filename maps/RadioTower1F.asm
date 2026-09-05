@@ -82,7 +82,7 @@ RadioTower1FLuckyNumberManScript:
 
 .FirstPlace:
 	; The shared .Finish script checks for room after the prize fanfare.
-	giveitem MASTER_BALL, 0
+	giveitem_unsafe MASTER_BALL
 	writetext WonFirstPlaceText
 	special ShowItemIcon
 	playsound SFX_1ST_PLACE
@@ -90,7 +90,7 @@ RadioTower1FLuckyNumberManScript:
 
 .SecondPlace:
 	; The shared .Finish script checks for room after the prize fanfare.
-	giveitem BOTTLE_CAP, 0
+	giveitem_unsafe BOTTLE_CAP
 	writetext WonSecondPlaceText
 	special ShowItemIcon
 	playsound SFX_2ND_PLACE
@@ -98,7 +98,7 @@ RadioTower1FLuckyNumberManScript:
 
 .ThirdPlace:
 	; The shared .Finish script checks for room after the prize fanfare.
-	giveitem PP_MAX, 0
+	giveitem_unsafe PP_MAX
 	writetext WonThirdPlaceText
 	special ShowItemIcon
 	playsound SFX_2ND_PLACE
@@ -106,7 +106,7 @@ RadioTower1FLuckyNumberManScript:
 
 .FourthPlace:
 	; The shared .Finish script checks for room after the prize fanfare.
-	giveitem PP_UP, 0
+	giveitem_unsafe PP_UP
 	writetext WonFourthPlaceText
 	special ShowItemIcon
 	playsound SFX_3RD_PLACE
@@ -114,7 +114,7 @@ RadioTower1FLuckyNumberManScript:
 
 .FifthPlace:
 	; The shared .Finish script checks for room after the prize fanfare.
-	giveitem RARE_CANDY, 0
+	giveitem_unsafe RARE_CANDY
 	writetext WonFifthPlaceText
 	special ShowItemIcon
 	playsound SFX_3RD_PLACE

@@ -121,7 +121,7 @@ GoldenrodPokecenter1FPokefanF:
 
 .NoRoomForEviolite:
 	; Refund the Mail just removed from the Bag.
-	giveitem EON_MAIL, 0
+	giveitem_unsafe EON_MAIL
 	jumpthisopenedtext
 
 	text "Oh… Well, another"
