@@ -1976,3 +1976,11 @@ BattleFactoryBattleRoom_BlockData:
 	INCBIN "maps/BattleFactoryBattleRoom.ablk.lzp"
 
 ENDSECTION
+
+SECTION "Route4CableCarStation_BlockData", ROMX
+Route4CableCarStation_BlockData:
+	INCBIN "maps/Route4CableCarStation.ablk.lzp"
+
+SECTION "MountMoonCableCarStation_BlockData", ROMX
+MountMoonCableCarStation_BlockData:
+	INCBIN "maps/MountMoonCableCarStation.ablk.lzp"

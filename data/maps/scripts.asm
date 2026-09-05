@@ -1085,3 +1085,9 @@ INCLUDE "maps/Route48.asm"
 INCLUDE "maps/Route49.asm"
 
 ENDSECTION
+
+SECTION "Route4CableCarStation", ROMX
+INCLUDE "maps/Route4CableCarStation.asm"
+
+SECTION "MountMoonCableCarStation", ROMX
+INCLUDE "maps/MountMoonCableCarStation.asm"
