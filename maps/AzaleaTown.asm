@@ -334,8 +334,7 @@ AzaleaTownTeacherScript:
 	opentext
 	writetext .Text3
 	promptbutton
-	verbosegiveitem CLEAR_AMULET
-	iffalse_endtext
+	verbosegiveitem CLEAR_AMULET, iffalse_endtext
 	setevent EVENT_GOT_CLEAR_AMULET_IN_AZALEA
 	jumpthisopenedtext
 

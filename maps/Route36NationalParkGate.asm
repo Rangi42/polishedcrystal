@@ -236,8 +236,7 @@ Route36Officer_ContestHasConcluded:
 	writetext Route36NationalParkGateOfficer1HeresThePrizeText
 	promptbutton
 	readmem wBugContestOfficerPrize
-	verbosegiveitem ITEM_FROM_MEM
-	iffalse_jumpopenedtext Route36NationalParkGateOfficer1WellHoldPrizeText
+	verbosegiveitem ITEM_FROM_MEM, iffalse_jumpopenedtext Route36NationalParkGateOfficer1WellHoldPrizeText
 	clearevent EVENT_CONTEST_OFFICER_HAS_PRIZE
 	endtext
 

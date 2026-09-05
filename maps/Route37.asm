@@ -78,8 +78,7 @@ SunnyScript:
 .MetSunny:
 	writetext SunnyGivesGiftText
 	promptbutton
-	verbosegiveitem MAGNET
-	iffalsefwd SunnyDoneScript
+	verbosegiveitem MAGNET, iffalsefwd SunnyDoneScript
 	setevent EVENT_GOT_MAGNET_FROM_SUNNY
 	jumpthisopenedtext
 

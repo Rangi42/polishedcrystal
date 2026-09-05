@@ -70,8 +70,7 @@ DimCave5FRileyScript:
 	opentext
 	writetext .ItemText
 	promptbutton
-	verbosegiveitem POWER_BRACER
-	iffalse_endtext
+	verbosegiveitem POWER_BRACER, iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext

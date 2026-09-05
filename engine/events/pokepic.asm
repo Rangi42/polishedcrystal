@@ -87,6 +87,8 @@ Trainerpic::
 	call MenuBox
 	call UpdateSprites
 	call SafeCopyTilemapAtOnce
+	xor a
+	ld [wTrainerPal], a
 	farcall LoadTrainerPalette
 	call UpdateTimePals
 	xor a

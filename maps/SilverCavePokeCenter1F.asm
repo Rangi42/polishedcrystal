@@ -72,8 +72,7 @@ SilverCavePokeCenterGrampsScript:
 .ReadThemAll:
 	writetext .ReadAllText
 	promptbutton
-	verbosegiveitem EXPERT_BELT
-	iffalse_endtext
+	verbosegiveitem EXPERT_BELT, iffalse_endtext
 	setevent EVENT_GOT_EXPERT_BELT
 	jumpthisopenedtext
 

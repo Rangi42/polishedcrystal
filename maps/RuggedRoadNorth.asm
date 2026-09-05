@@ -95,8 +95,7 @@ RuggedRoadNorthHikerScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem OVAL_STONE
-	iffalse_endtext
+	verbosegiveitem OVAL_STONE, iffalse_endtext
 	setevent EVENT_GOT_OVAL_STONE_FROM_RUGGED_ROAD
 	jumpthisopenedtext
 

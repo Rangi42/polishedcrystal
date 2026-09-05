@@ -22,8 +22,7 @@ CeruleanBerryPowderHouseGrampsScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem HP_UP
-	iffalse_endtext
+	verbosegiveitem HP_UP, iffalse_endtext
 	setevent EVENT_GOT_HP_UP_FROM_CERULEAN
 	jumpthisopenedtext
 

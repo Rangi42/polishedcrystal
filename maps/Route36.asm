@@ -318,8 +318,7 @@ TrainerSchoolboyAlan1:
 
 .GiveFireStone:
 	callstd giftm
-	verbosegiveitem FIRE_STONE
-	iffalsefwd .BagFull
+	verbosegiveitem FIRE_STONE, iffalsefwd .BagFull
 	clearflag ENGINE_ALAN_HAS_FIRE_STONE
 	setevent EVENT_ALAN_GAVE_FIRE_STONE
 	jumpstd numberacceptedm
@@ -373,8 +372,7 @@ Route36CooltrainerfChiaraScript:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem BINDING_BAND
-	iffalse_endtext
+	verbosegiveitem BINDING_BAND, iffalse_endtext
 	setevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_36_LEADER
 	jumpthisopenedtext
 
@@ -483,8 +481,7 @@ ArthurScript:
 .MetArthur:
 	writetext ArthurGivesGiftText
 	promptbutton
-	verbosegiveitem HARD_STONE
-	iffalsefwd .BagFull
+	verbosegiveitem HARD_STONE, iffalsefwd .BagFull
 	setevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
 	jumpthisopenedtext
 

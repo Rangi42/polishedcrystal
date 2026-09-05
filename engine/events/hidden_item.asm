@@ -3,8 +3,7 @@ HiddenItemScript:
 	readmem wHiddenItemID
 	getitemname USE_SCRIPT_VAR, STRING_BUFFER_3
 	farwritetext _FoundItemText
-	giveitem ITEM_FROM_MEM
-	iffalsefwd .bag_full
+	giveitem ITEM_FROM_MEM, iffalsefwd .bag_full
 	callasm SetMemEvent
 	special ShowItemIcon
 	specialsound

@@ -53,8 +53,7 @@ PewterCityGrampsScript:
 	opentext
 	writetext PewterCityGrampsText
 	promptbutton
-	verbosegiveitem OLD_AMBER
-	iffalse_endtext
+	verbosegiveitem OLD_AMBER, iffalse_endtext
 	setevent EVENT_GOT_OLD_AMBER
 	endtext
 
@@ -81,8 +80,7 @@ PewterCityPokefanMScript:
 	iffalse_jumpopenedtext .Text3
 	checkmoney YOUR_MONEY, 300
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem PEWTERCRUNCH
-	iffalse_jumpopenedtext .Text4
+	giveitem PEWTERCRUNCH, iffalse_jumpopenedtext .Text4
 	waitsfx
 	takemoney YOUR_MONEY, 300
 	special PlaceMoneyTopRight

@@ -21,8 +21,7 @@ Route2NuggetSpeechHouseFisherScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem NUGGET
-	iffalse_endtext
+	verbosegiveitem NUGGET, iffalse_endtext
 	setevent EVENT_GOT_NUGGET_FROM_GUY
 	jumpthisopenedtext
 

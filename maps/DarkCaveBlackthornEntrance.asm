@@ -23,8 +23,7 @@ DarkCaveBlackthornEntrancePharmacistScript:
 	iftrue_jumpopenedtext .PharmacistText2
 	writetext .PharmacistText1
 	promptbutton
-	verbosegiveitem BLACKGLASSES
-	iffalse_endtext
+	verbosegiveitem BLACKGLASSES, iffalse_endtext
 	setevent EVENT_GOT_BLACKGLASSES_IN_DARK_CAVE
 	jumpthisopenedtext
 

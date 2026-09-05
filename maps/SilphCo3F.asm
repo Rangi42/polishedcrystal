@@ -31,8 +31,7 @@ SilphCo3FSilphEmployeeScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem CHERISH_BALL
-	iffalse_endtext
+	verbosegiveitem CHERISH_BALL, iffalse_endtext
 	setevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
 	jumpthisopenedtext
 

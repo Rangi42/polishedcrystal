@@ -53,8 +53,7 @@ LarryScript:
 	iftruefwd .Done
 	writetext .RewardText
 	promptbutton
-	verbosegiveitem SWEET_HONEY
-	iffalse_endtext
+	verbosegiveitem SWEET_HONEY, iffalse_endtext
 	setevent EVENT_GOT_SWEET_HONEY_FROM_LARRY
 .Done
 	jumpthisopenedtext

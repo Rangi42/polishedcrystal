@@ -348,8 +348,7 @@ IlexForestLyraScript:
 	writetext Text_IlexForestLyraArmorSuit
 	promptbutton
 IlexForestLyraContinueScript:
-	verbosegiveitem ARMOR_SUIT
-	iffalse_endtext
+	verbosegiveitem ARMOR_SUIT, iffalse_endtext
 	setevent EVENT_GOT_ARMOR_SUIT
 	writetext Text_IlexForestLyraGoodbye
 	waitbutton

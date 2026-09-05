@@ -173,10 +173,6 @@ DoWonderTrade:
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
-	xor a
-	ld [wPlayerTrademonCaughtData], a
-	ld [wOTTrademonCaughtData], a
-
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
@@ -416,10 +412,6 @@ GetGSBallPichu:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
-
-	xor a
-	ld [wPlayerTrademonCaughtData], a
-	ld [wOTTrademonCaughtData], a
 
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH

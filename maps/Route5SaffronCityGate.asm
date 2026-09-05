@@ -33,8 +33,7 @@ Route5SaffronCityGateBlackBeltScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem PROTEIN
-	iffalse_endtext
+	verbosegiveitem PROTEIN, iffalse_endtext
 	setevent EVENT_GOT_PROTEIN_FROM_SAFFRON_GATE
 	jumpthisopenedtext
 

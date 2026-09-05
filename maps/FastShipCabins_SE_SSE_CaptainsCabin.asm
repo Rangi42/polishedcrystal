@@ -93,8 +93,7 @@ SSAquaGrandpa:
 SSAquaMachoBraceAndDocking:
 	writetext SSAquaGrandpaHaveThisText
 	promptbutton
-	verbosegiveitem MACHO_BRACE
-	iffalsefwd .FailedMachoBrace
+	verbosegiveitem MACHO_BRACE, iffalsefwd .FailedMachoBrace
 	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
 	sjumpfwd .ContinueDocking
 .FailedMachoBrace:
@@ -121,8 +120,7 @@ SSAquaMachoBraceAndDocking:
 SSAquaFoundGranddaughter:
 	writetext SSAquaGrandpaHaveThisText
 	promptbutton
-	verbosegiveitem MACHO_BRACE
-	iffalse_endtext
+	verbosegiveitem MACHO_BRACE, iffalse_endtext
 	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
 	endtext
 

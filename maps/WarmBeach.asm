@@ -110,8 +110,7 @@ WarmBeachLassScript:
 	iffalse_jumpopenedtext .Text4
 	checkmoney YOUR_MONEY, 4000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem SHELL_BELL
-	iffalse_jumpopenedtext .Text6
+	giveitem SHELL_BELL, iffalse_jumpopenedtext .Text6
 	setflag ENGINE_SEASHORE_SHELL_BELL
 	waitsfx
 	playsound SFX_TRANSACTION

@@ -384,8 +384,7 @@ TrainerPicnickerGina1:
 
 .LeafStone:
 	callstd giftf
-	verbosegiveitem LEAF_STONE
-	iffalsefwd .BagFull
+	verbosegiveitem LEAF_STONE, iffalsefwd .BagFull
 	clearflag ENGINE_GINA_HAS_LEAF_STONE
 	setevent EVENT_GINA_GAVE_LEAF_STONE
 	jumpstd numberacceptedf
@@ -468,8 +467,7 @@ Route34RichBoyIrvingScript:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem BIG_NUGGET
-	iffalse_endtext
+	verbosegiveitem BIG_NUGGET, iffalse_endtext
 	setevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
 	jumpthisopenedtext
 
@@ -592,8 +590,7 @@ TrainerCooltrainerfKate:
 	opentext
 	writetext CooltrainerfKateOfferPowerHerbText
 	promptbutton
-	verbosegiveitem POWER_HERB
-	iffalse_endtext
+	verbosegiveitem POWER_HERB, iffalse_endtext
 	setevent EVENT_GOT_POWER_HERB_FROM_KATE
 	jumpthisopenedtext
 

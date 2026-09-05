@@ -70,8 +70,7 @@ Route44VeteranmScript:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem ROCKY_HELMET
-	iffalse_endtext
+	verbosegiveitem ROCKY_HELMET, iffalse_endtext
 	setevent EVENT_GOT_ROCKY_HELMET_FROM_ROUTE_44_LEADER
 	jumpthisopenedtext
 
@@ -208,8 +207,7 @@ Bird_keeperVance1Script:
 	checkevent EVENT_GOT_CARBOS_FROM_VANCE
 	iftruefwd .ReceivedCarbosBefore
 	scall Route44RematchGiftM
-	verbosegiveitem CARBOS
-	iffalsefwd VancePackFull
+	verbosegiveitem CARBOS, iffalsefwd VancePackFull
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
 	sjumpfwd Route44NumberAcceptedM
 
@@ -220,8 +218,7 @@ Bird_keeperVance1Script:
 	opentext
 	writetext BirdKeeperVance2BeatenText
 	waitbutton
-	verbosegiveitem CARBOS
-	iffalsefwd VancePackFull
+	verbosegiveitem CARBOS, iffalsefwd VancePackFull
 	clearevent EVENT_VANCE_CARBOS
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
 	sjumpfwd Route44NumberAcceptedM
@@ -350,18 +347,15 @@ FisherWilton1Script:
 	checkevent EVENT_WILTON_HAS_POKE_BALL
 	iftruefwd .PokeBall
 .UltraBall:
-	verbosegiveitem ULTRA_BALL
-	iffalsefwd .Route44PackFullM
+	verbosegiveitem ULTRA_BALL, iffalsefwd .Route44PackFullM
 	sjumpfwd .ItemReceived
 
 .GreatBall:
-	verbosegiveitem GREAT_BALL
-	iffalsefwd .Route44PackFullM
+	verbosegiveitem GREAT_BALL, iffalsefwd .Route44PackFullM
 	sjumpfwd .ItemReceived
 
 .PokeBall:
-	verbosegiveitem POKE_BALL
-	iffalsefwd .Route44PackFullM
+	verbosegiveitem POKE_BALL, iffalsefwd .Route44PackFullM
 .ItemReceived:
 	clearflag ENGINE_WILTON_HAS_ITEM
 	sjump Route44NumberAcceptedM

@@ -58,8 +58,7 @@ RageCandyBarMerchantScript:
 	iffalse_jumpopenedtext RageCandyBarMerchantRefusedText
 	checkmoney YOUR_MONEY, 300
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem RAGECANDYBAR
-	iffalse_jumpopenedtext RageCandyBarMerchantNoRoomText
+	giveitem RAGECANDYBAR, iffalse_jumpopenedtext RageCandyBarMerchantNoRoomText
 	waitsfx
 	playsound SFX_TRANSACTION
 	takemoney YOUR_MONEY, 300

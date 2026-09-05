@@ -26,8 +26,7 @@ CeladonUniversityWestwoodsOfficeChildScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem RAGECANDYBAR
-	iffalse_endtext
+	verbosegiveitem RAGECANDYBAR, iffalse_endtext
 	setevent EVENT_GOT_RAGECANDYBAR_IN_UNIVERSITY
 	jumpthisopenedtext
 

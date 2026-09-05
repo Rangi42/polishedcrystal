@@ -52,8 +52,7 @@ ViridianSchoolHouseYoungsterScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem WEAK_POLICY
-	iffalse_endtext
+	verbosegiveitem WEAK_POLICY, iffalse_endtext
 	setevent EVENT_GOT_WEAK_POLICY_FROM_VIRIDIAN
 	jumpthisopenedtext
 

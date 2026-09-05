@@ -60,8 +60,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
 	promptbutton
-	verbosegiveitem CHOICE_BAND
-	iffalse_jumpopenedtext CeladonUni_NoRoomText
+	verbosegiveitem CHOICE_BAND, iffalse_jumpopenedtext CeladonUni_NoRoomText
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
 	jumpthisopenedtext
 
@@ -193,8 +192,7 @@ CeladonUniversityCafeteriaYoungster2Script:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem LEMONADE
-	iffalse_jumpopenedtext CeladonUni_NoRoomText
+	verbosegiveitem LEMONADE, iffalse_jumpopenedtext CeladonUni_NoRoomText
 	setevent EVENT_GOT_LEMONADE_IN_UNIVERSITY
 	jumpopenedtext .Text2
 
@@ -224,8 +222,7 @@ CeladonUniversityCafeteriaBakerScript:
 	iffalse_jumpopenedtext .Text4
 	checkmoney YOUR_MONEY, 4000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem LEFTOVERS
-	iffalse_jumpopenedtext .Text6
+	giveitem LEFTOVERS, iffalse_jumpopenedtext .Text6
 	setflag ENGINE_BOUGHT_LEFTOVERS
 	waitsfx
 	playsound SFX_TRANSACTION

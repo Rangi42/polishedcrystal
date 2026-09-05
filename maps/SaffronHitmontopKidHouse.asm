@@ -76,8 +76,7 @@ SaffronHitmontopKidHouseTeacherScript:
 	iffalse_jumpopenedtext .Text1
 	writetext .Text2
 	promptbutton
-	verbosegiveitem AIR_BALLOON
-	iffalse_endtext
+	verbosegiveitem AIR_BALLOON, iffalse_endtext
 	setevent EVENT_GOT_AIR_BALLOON_FROM_SAFFRON
 	jumpthisopenedtext
 

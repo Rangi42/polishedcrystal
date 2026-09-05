@@ -22,8 +22,7 @@ GoldenrodNetBallHouseYoungsterScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem NET_BALL
-	iffalse_endtext
+	verbosegiveitem NET_BALL, iffalse_endtext
 	setevent EVENT_GOT_NET_BALL_FROM_GOLDENROD
 	jumpthisopenedtext
 

@@ -237,8 +237,7 @@ FisherTully1Script:
 
 .HasWaterStone:
 	scall .Gift
-	verbosegiveitem WATER_STONE
-	iffalsefwd .NoRoom
+	verbosegiveitem WATER_STONE, iffalsefwd .NoRoom
 	clearflag ENGINE_TULLY_HAS_WATER_STONE
 	setevent EVENT_TULLY_GAVE_WATER_STONE
 	sjumpfwd .NumberAccepted

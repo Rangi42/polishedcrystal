@@ -30,8 +30,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	special SpecialDuoCheck
 	iffalse_jumpopenedtext .Text2
 	writetext .Text3
-	verbosegiveitem DESTINY_KNOT
-	iffalse_endtext
+	verbosegiveitem DESTINY_KNOT, iffalse_endtext
 	setevent EVENT_GOT_DESTINY_KNOT_FROM_ECRUTEAK
 	jumpthisopenedtext
 

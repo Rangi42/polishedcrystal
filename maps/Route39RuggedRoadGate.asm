@@ -36,8 +36,7 @@ Route39RuggedRoadGateSwimmerScript:
 	checkkeyitem GO_GOGGLES
 	iffalse_endtext
 	writetext .FoundGoggles
-	verbosegiveitem RARE_CANDY
-	iffalse_jumpopenedtext .NoRoom
+	verbosegiveitem RARE_CANDY, iffalse_jumpopenedtext .NoRoom
 	setevent EVENT_GOT_RARE_CANDY_FROM_RUGGED_ROAD_GATE
 	jumpthisopenedtext
 

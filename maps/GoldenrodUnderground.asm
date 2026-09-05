@@ -481,8 +481,7 @@ PiersScript:
 	opentext
 	writetext PiersRewardText
 	promptbutton
-	verbosegiveitem THROAT_SPRAY
-	iffalse_jumpopenedtext PiersAfterText
+	verbosegiveitem THROAT_SPRAY, iffalse_jumpopenedtext PiersAfterText
 	setevent EVENT_GOT_THROAT_SPRAY_FROM_PIERS
 	jumpthisopenedtext
 
@@ -530,8 +529,7 @@ PiersRematchScript:
 .GiveThroatSpray:
 	writetext PiersRewardText
 	promptbutton
-	verbosegiveitem THROAT_SPRAY
-	iffalse_jumpopenedtext PiersRematchAfterText
+	verbosegiveitem THROAT_SPRAY, iffalse_jumpopenedtext PiersRematchAfterText
 	setevent EVENT_GOT_THROAT_SPRAY_FROM_PIERS
 	jumpthisopenedtext
 

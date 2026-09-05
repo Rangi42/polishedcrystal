@@ -52,8 +52,7 @@ EmbeddedTowerSteven1Script:
 	iftrue_jumpopenedtext EmbeddedTowerSteven1AfterText
 	writetext EmbeddedTowerSteven1ItemText
 	waitbutton
-	verbosegiveitem MUSCLE_BAND
-	iffalse_endtext
+	verbosegiveitem MUSCLE_BAND, iffalse_endtext
 	setevent EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
 .GotMuscleBand
 	jumpopenedtext EmbeddedTowerSteven1AfterText

@@ -75,53 +75,53 @@ endr
 for x, NUM_TMS + NUM_HMS
 	givetmhm x
 endr
-	; useful items
+	; useful items (debug: skip any items that do not fit in the Bag)
 for x, POKE_BALL, CHERISH_BALL + 1
 if x != PARK_BALL && x != SAFARI_BALL
-	giveitem x, 99
+	giveitems_unsafe x, 99
 endc
 endr
-	giveitem MAX_POTION, 99
-	giveitem FULL_RESTORE, 99
-	giveitem MAX_REVIVE, 99
-	giveitem MAX_ELIXIR, 99
-	giveitem HP_UP, 99
-	giveitem PROTEIN, 99
-	giveitem IRON, 99
-	giveitem CARBOS, 99
-	giveitem CALCIUM, 99
-	giveitem ZINC, 99
-	giveitem RARE_CANDY, 99
-	giveitem PP_UP, 99
-	giveitem PP_MAX, 99
-	giveitem SACRED_ASH, 99
-	giveitem MAX_REPEL, 99
-	giveitem MAX_REPEL, 99
-	giveitem ESCAPE_ROPE, 99
-	giveitem ABILITY_CAP, 99
-	giveitem LEAF_STONE, 99
-	giveitem FIRE_STONE, 99
-	giveitem WATER_STONE, 99
-	giveitem THUNDERSTONE, 99
-	giveitem ICE_STONE, 99
-	giveitem MOON_STONE, 99
-	giveitem SUN_STONE, 99
-	giveitem DUSK_STONE, 99
-	giveitem SHINY_STONE, 99
-	giveitem ODD_SOUVENIR, 99
-	giveitem EXP_SHARE, 99
-	giveitem LEFTOVERS, 99
-	giveitem MULCH, 99
-	giveitem SWEET_HONEY, 99
-	giveitem SILVER_LEAF, 99
-	giveitem GOLD_LEAF, 99
-	giveitem MINT_LEAF, 99
-	giveitem BOTTLE_CAP, 99
-	giveitem BIG_NUGGET, 99
-	giveitem PORTRAITMAIL, 99
-	giveitem ARMOR_SUIT, 1
+	giveitems_unsafe MAX_POTION, 99
+	giveitems_unsafe FULL_RESTORE, 99
+	giveitems_unsafe MAX_REVIVE, 99
+	giveitems_unsafe MAX_ELIXIR, 99
+	giveitems_unsafe HP_UP, 99
+	giveitems_unsafe PROTEIN, 99
+	giveitems_unsafe IRON, 99
+	giveitems_unsafe CARBOS, 99
+	giveitems_unsafe CALCIUM, 99
+	giveitems_unsafe ZINC, 99
+	giveitems_unsafe RARE_CANDY, 99
+	giveitems_unsafe PP_UP, 99
+	giveitems_unsafe PP_MAX, 99
+	giveitems_unsafe SACRED_ASH, 99
+	giveitems_unsafe MAX_REPEL, 99
+	giveitems_unsafe MAX_REPEL, 99
+	giveitems_unsafe ESCAPE_ROPE, 99
+	giveitems_unsafe ABILITY_CAP, 99
+	giveitems_unsafe LEAF_STONE, 99
+	giveitems_unsafe FIRE_STONE, 99
+	giveitems_unsafe WATER_STONE, 99
+	giveitems_unsafe THUNDERSTONE, 99
+	giveitems_unsafe ICE_STONE, 99
+	giveitems_unsafe MOON_STONE, 99
+	giveitems_unsafe SUN_STONE, 99
+	giveitems_unsafe DUSK_STONE, 99
+	giveitems_unsafe SHINY_STONE, 99
+	giveitems_unsafe ODD_SOUVENIR, 99
+	giveitems_unsafe EXP_SHARE, 99
+	giveitems_unsafe LEFTOVERS, 99
+	giveitems_unsafe MULCH, 99
+	giveitems_unsafe SWEET_HONEY, 99
+	giveitems_unsafe SILVER_LEAF, 99
+	giveitems_unsafe GOLD_LEAF, 99
+	giveitems_unsafe MINT_LEAF, 99
+	giveitems_unsafe BOTTLE_CAP, 99
+	giveitems_unsafe BIG_NUGGET, 99
+	giveitems_unsafe PORTRAITMAIL, 99
+	giveitems_unsafe ARMOR_SUIT, 1
 for x, FIRST_BERRY, FIRST_BERRY + NUM_BERRIES
-	giveitem x, 99
+	giveitems_unsafe x, 99
 endr
 	; all decorations except Diploma
 for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1

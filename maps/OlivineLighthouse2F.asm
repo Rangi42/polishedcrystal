@@ -116,8 +116,7 @@ SailorHuey1Script:
 	checkevent EVENT_GOT_PROTEIN_FROM_HUEY
 	iftruefwd .SkipGift
 	scall .RematchGift
-	verbosegiveitem PROTEIN
-	iffalsefwd .PackFull
+	verbosegiveitem PROTEIN, iffalsefwd .PackFull
 	setevent EVENT_GOT_PROTEIN_FROM_HUEY
 	sjumpfwd .NumberAccepted
 
@@ -128,8 +127,7 @@ SailorHuey1Script:
 	opentext
 	writetext SailorHueyGiveProteinText
 	waitbutton
-	verbosegiveitem PROTEIN
-	iffalsefwd .PackFull
+	verbosegiveitem PROTEIN, iffalsefwd .PackFull
 	clearevent EVENT_HUEY_PROTEIN
 	setevent EVENT_GOT_PROTEIN_FROM_HUEY
 	sjumpfwd .NumberAccepted

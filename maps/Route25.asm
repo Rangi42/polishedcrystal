@@ -94,8 +94,7 @@ TrainerCooltrainermKevin:
 	iftruefwd .AfterNuggetBridge
 	writetext CooltrainermKevinNuggetText
 	promptbutton
-	verbosegiveitem NUGGET
-	iffalse_endtext
+	verbosegiveitem NUGGET, iffalse_endtext
 	setevent EVENT_CLEARED_NUGGET_BRIDGE
 .AfterNuggetBridge:
 	writetext CooltrainermKevinSeenText
