@@ -778,7 +778,7 @@ endc
 	and CAUGHT_MASK ; z = is not caught
 	push af
 	push hl
-	xor a
+	ld a, [wPokedex_Shiny]
 	farcall GetMonPalInBCDE
 	pop hl
 	pop af
