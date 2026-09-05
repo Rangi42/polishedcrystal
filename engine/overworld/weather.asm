@@ -1172,9 +1172,6 @@ WeatherSpriteLimitCheck:
 	ld a, BANK(wWeatherScratch)
 	ldh [rWBK], a
 
-	assert LOW(wWeatherScratch) == 0
-	assert LOW(wShadowOAM) == 0
-	assert TILE_WIDTH == 8
 	ld a, 11
 	ld hl, wWeatherScratch
 	ld bc, SCREEN_HEIGHT_PX + 2 * TILE_WIDTH
@@ -1187,9 +1184,12 @@ WeatherSpriteLimitCheck:
 	; interval to 0..150; padding accommodates its final seven scanlines.
 	; Counting the clipped portions too is harmless: overlapping sprites
 	; there also overlap the first/last visible scanline.
+	assert TILE_WIDTH == 8
 	sub TILE_WIDTH + 1
 	cp SCREEN_HEIGHT_PX + TILE_WIDTH - 1
 	jr nc, .next
+	; A zero base low byte makes hl = wWeatherScratch + a when l is replaced.
+	assert LOW(wWeatherScratch) == 0
 	ld l, a
 for n, 1, TILE_WIDTH + 1
 	dec [hl]
@@ -1209,6 +1209,8 @@ endr
 	ld a, OAM_YCOORD_HIDDEN
 	ld [de], a
 .next
+	; Page alignment lets e alone walk OAM backwards; carry marks passing entry 0.
+	assert LOW(wShadowOAM) == 0
 	ld a, e
 	sub OBJ_SIZE
 	ld e, a
