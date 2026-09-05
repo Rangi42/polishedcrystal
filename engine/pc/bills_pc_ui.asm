@@ -836,31 +836,6 @@ BillsPC_Withdraw:
 	ld b, 0
 	jr MoveCurMonToBox
 
-BillsPC_Deposit:
-	ld a, [wCurBox]
-	inc a
-	ld b, a
-	; fallthrough
-MoveCurMonToBox:
-	push bc
-	call BillsPC_GetCursorSlot
-	ld d, b
-	ld e, c
-	pop bc
-	ld c, 0
-	call BillsPC_SwapStorage
-	ret nz ; failed
-
-	; Perform movement animation.
-	ld c, a
-	push de
-	ld d, b
-	ld e, c
-	pop bc
-	push bc
-	call BillsPC_PerformQuickAnim
-	pop bc
-	; fallthrough
 CheckPartyShift:
 ; Shifts entries around to ensure there are no blank party entries.
 ; This is a purely graphical effect, internal PC functions has already
@@ -904,6 +879,34 @@ CheckPartyShift:
 	ld a, [hl]
 	and a
 	ret
+
+BillsPC_Deposit:
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	; fallthrough
+MoveCurMonToBox:
+	push bc
+	call BillsPC_GetCursorSlot
+	ld d, b
+	ld e, c
+	pop bc
+	ld c, 0
+	call BillsPC_SwapStorage
+	ret nz ; failed
+
+	; Perform movement animation.
+	ld c, a
+	push de
+	ld d, b
+	ld e, c
+	pop bc
+	push bc
+	call BillsPC_PerformQuickAnim
+	pop bc
+	call CheckPartyShift
+	; Refresh the portrait and details for the slot left under the cursor.
+	; fallthrough
 
 GetCursorMon:
 ; Prints data about Pokémon at cursor if nothing is held (underline to force).

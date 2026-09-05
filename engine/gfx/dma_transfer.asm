@@ -80,19 +80,19 @@ StackCallInSafeGFXMode:
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hMapAnims], a
+	ldh a, [rVBK]
+	rra ; stores VRAM bank in carry flag to be pushed
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wScratchTileMap)
 	ldh [rWBK], a
-	ldh a, [rVBK]
-	push af
 
 	call _hl_
 
 	pop af
-	ldh [rVBK], a
-	pop af
 	ldh [rWBK], a
+	rla ; retrieves VRAM bank from popped carry flag
+	ldh [rVBK], a
 	pop af
 	ldh [hMapAnims], a
 	pop af

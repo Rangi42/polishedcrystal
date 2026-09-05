@@ -27,51 +27,28 @@ PokeAnims:
 .Egg1:   pokeanim Setup, Play
 .Egg2:   pokeanim Extra, Play
 
-AnimateFrontpic:
-	call AnimateMon_CheckIfPokemon
+AnimateFrontpic::
+	call IsCurPartySpeciesAPokemon
 	ret c
-	call LoadMonAnimation
-.loop
-	call SetUpPokeAnim
-	push af
-	farcall HDMATransferTileMapToWRAMBank3
-	pop af
-	jr nc, .loop
-	ret
-
-LoadMonAnimation:
-	push hl
-	ld c, e
-	ld b, 0
-	ld hl, PokeAnims
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld b, [hl]
-	ld c, a
-	pop hl
 
 	ldh a, [rWBK]
 	push af
-	ld a, $2
+	ld a, BANK(wPokeAnimStruct)
 	ldh [rWBK], a
 
-	push bc
-	push de
-	push hl
-	ld hl, wPokeAnimSceneIndex
-	ld bc, wPokeAnimStructEnd - wPokeAnimSceneIndex
-	xor a
-	rst ByteFill
-	pop hl
-	pop de
-	pop bc
+	call LoadMonAnimation
+.loop
+	call TickPokeAnim
+	jr nc, .loop
 
-; bc contains anim pointer
-	ld a, c
-	ld [wPokeAnimPointer], a
-	ld a, b
-	ld [wPokeAnimPointer + 1], a
+	pop af
+	ldh [rWBK], a
+	ret
+
+LoadFrontpicAnim::
+	ld a, BANK(wPokeAnimStruct)
+	call StackCallInWRAMBankA
+LoadMonAnimation:
 ; hl contains TileMap coords
 	ld a, l
 	ld [wPokeAnimCoord], a
@@ -80,6 +57,18 @@ LoadMonAnimation:
 ; d = start tile
 	ld a, d
 	ld [wPokeAnimGraphicStartTile], a
+; e = PokeAnims index
+	ld d, 0
+	ld hl, PokeAnims
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld [wPokeAnimPointer], a
+	ld a, [hl]
+	ld [wPokeAnimPointer + 1], a
+
+	xor a
+	ld [wPokeAnimSceneIndex], a
 
 	ld a, BANK(wCurPartySpecies)
 	ld hl, wCurPartySpecies
@@ -91,19 +80,33 @@ LoadMonAnimation:
 	call GetFarWRAMByte
 	ld [wPokeAnimVariant], a
 
-	call PokeAnim_GetFrontpicDims
+	call GetFrontpicDims
 	ld a, c
 	ld [wPokeAnimFrontpicHeight], a
+	ret
 
+GetFrontpicDims:
+	ldh a, [rWBK]
+	push af
+	ld a, $1
+	ldh [rWBK], a
+
+	; This is no longer needed for the pic size, but do it just
+	; in case subsequent code expects base data available
+	ld a, [wCurPartySpecies]
+	ld [wCurSpecies], a
+	call GetBaseData ; [wCurForm] is already set
+
+	call GetPicSize
+	ld c, a
 	pop af
 	ldh [rWBK], a
 	ret
 
-SetUpPokeAnim:
-	ldh a, [rWBK]
-	push af
-	ld a, $2
-	ldh [rWBK], a
+TickFrontpicAnim::
+	ld a, BANK(wPokeAnimStruct)
+	call StackCallInWRAMBankA
+TickPokeAnim:
 	ld a, [wPokeAnimSceneIndex]
 	ld c, a
 	ld b, 0
@@ -115,14 +118,9 @@ SetUpPokeAnim:
 	ld a, [hl]
 	ld hl, PokeAnim_SetupCommands
 	call JumpTable
+	farcall HDMATransferTileMapToWRAMBank3
 	ld a, [wPokeAnimSceneIndex]
-	ld c, a
-	pop af
-	ldh [rWBK], a
-	ld a, c
-	and $80
-	ret z
-	scf
+	add a ; return in carry whether bit 7 got set to end the anim
 	ret
 
 MACRO add_setup_command
@@ -235,50 +233,23 @@ PokeAnim_StereoCry:
 	ret
 
 PokeAnim_DeinitFrames:
-	ldh a, [rWBK]
-	push af
-	ld a, $2
-	ldh [rWBK], a
 	call PokeAnim_PlaceGraphic
 	farcall HDMATransferTileMapToWRAMBank3
 	call PokeAnim_SetVBank0
-	farcall HDMATransferAttrMapToWRAMBank3
-	pop af
-	ldh [rWBK], a
-	ret
-
-AnimateMon_CheckIfPokemon:
-	ld a, [wCurPartySpecies]
-	call IsAPokemon
-	jr c, .fail
-	and a
-	ret
-
-.fail
-	scf
-	ret
+	farjp HDMATransferAttrMapToWRAMBank3
 
 PokeAnim_InitAnim:
-	ldh a, [rWBK]
-	push af
-	ld a, $2
-	ldh [rWBK], a
-	push bc
-	ld hl, wPokeAnimIdleFlag
-	ld bc, wPokeAnimStructEnd - wPokeAnimIdleFlag
-	xor a
-	rst ByteFill
-	pop bc
 	ld a, b
 	ld [wPokeAnimSpeed], a
 	ld a, c
 	ld [wPokeAnimIdleFlag], a
+	ld hl, wPokeAnimFrame
+	ld bc, wPokeAnimStructEnd - wPokeAnimFrame
+	xor a
+	rst ByteFill
 	call GetMonAnimPointer
 	call GetMonFramesPointer
-	call GetMonBitmaskPointer
-	pop af
-	ldh [rWBK], a
-	ret
+	jmp GetMonBitmaskPointer
 
 PokeAnim_DoAnimScript:
 	xor a
@@ -295,8 +266,7 @@ PokeAnim_DoAnimScript:
 	dw .WaitAnim
 
 .RunAnim:
-	call PokeAnim_GetPointer
-	ld a, [wPokeAnimCommand]
+	call PokeAnim_ReadAnimCmd
 	inc a ; $ff endanim
 	jr z, PokeAnim_End
 	inc a ; $fe setrepeat
@@ -320,11 +290,8 @@ PokeAnim_DoAnimScript:
 	jr .loop
 
 .DoRepeat:
-	ld a, [wPokeAnimRepeatTimer]
-	and a
-	ret z
-	dec a
-	ld [wPokeAnimRepeatTimer], a
+	ld hl, wPokeAnimRepeatTimer
+	dec [hl]
 	ret z
 	ld a, [wPokeAnimParameter]
 	ld [wPokeAnimFrame], a
@@ -363,7 +330,7 @@ PokeAnim_StopWaitAnim:
 	dec [hl]
 	ret
 
-PokeAnim_GetPointer:
+PokeAnim_ReadAnimCmd:
 	ld a, [wPokeAnimFrame]
 	ld e, a
 	ld d, $0
@@ -375,16 +342,15 @@ PokeAnim_GetPointer:
 	add hl, de
 	ld a, [wPokeAnimPointerBank]
 	call GetFarWord
-	ld a, l
-	ld [wPokeAnimCommand], a
 	ld a, h
 	ld [wPokeAnimParameter], a
+	ld a, l
+	ld [wPokeAnimCommand], a
 	ld hl, wPokeAnimFrame
 	inc [hl]
 	ret
 
 PokeAnim_GetBitmaskIndex:
-	ld a, [wPokeAnimCommand]
 	dec a
 	ld c, a
 	ld b, $0
@@ -703,59 +669,40 @@ PokeAnim_PlaceGraphic:
 	jmp ClearBox
 
 PokeAnim_SetVBank1:
-	ldh a, [rWBK]
-	push af
-	ld a, $2
-	ldh [rWBK], a
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
-	call .SetFlag
-	farcall HDMATransferAttrMapToWRAMBank3
-	pop af
-	ldh [rWBK], a
-	ret
 
-.SetFlag:
 	call PokeAnim_GetAttrMapCoord
-	lb bc, 7, 7
-	ld de, SCREEN_WIDTH
-.row
-	push bc
-	push hl
+	ld de, SCREEN_WIDTH - 7
+	ld a, 7
 .col
-	ld a, [hl]
-	or 8
-	ld [hl], a
-	add hl, de
-	dec c
-	jr nz, .col
-	pop hl
+	ld c, 7
+.row
+	set B_BG_BANK1, [hl]
 	inc hl
-	pop bc
-	dec b
+	dec c
 	jr nz, .row
-	ret
+	add hl, de ; Advance to the next row.
+	dec a
+	jr nz, .col
+
+	farjp HDMATransferAttrMapToWRAMBank3
 
 PokeAnim_SetVBank0:
 	call PokeAnim_GetAttrMapCoord
-	lb bc, 7, 7
-	ld de, SCREEN_WIDTH
-.row
-	push bc
-	push hl
+	ld de, SCREEN_WIDTH - 7
+	ld a, 7
 .col
-	ld a, [hl]
-	and $f7
-	ld [hl], a
-	add hl, de
-	dec c
-	jr nz, .col
-	pop hl
+	ld c, 7
+.row
+	res B_BG_BANK1, [hl]
 	inc hl
-	pop bc
-	dec b
+	dec c
 	jr nz, .row
+	add hl, de ; Advance to the next row.
+	dec a
+	jr nz, .col
 	ret
 
 PokeAnim_GetAttrMapCoord:
@@ -765,24 +712,6 @@ PokeAnim_GetAttrMapCoord:
 	ld l, a
 	ld de, wAttrmap - wTilemap
 	add hl, de
-	ret
-
-PokeAnim_GetFrontpicDims:
-	ldh a, [rWBK]
-	push af
-	ld a, $1
-	ldh [rWBK], a
-
-	; This is no longer needed for the pic size, but do it just
-	; in case subsequent code expects base data available
-	ld a, [wCurPartySpecies]
-	ld [wCurSpecies], a
-	call GetBaseData ; [wCurForm] is already set
-
-	call GetPicSize
-	ld c, a
-	pop af
-	ldh [rWBK], a
 	ret
 
 GetMonAnimDataIndex:
@@ -853,7 +782,7 @@ GetMonBitmaskPointer:
 	ret
 
 HOF_AnimateFrontpic:
-	call AnimateMon_CheckIfPokemon
+	call IsCurPartySpeciesAPokemon
 	jr c, .fail
 	ld h, d
 	ld l, e

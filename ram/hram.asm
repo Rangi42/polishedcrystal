@@ -215,7 +215,8 @@ hStreamMapStandingY:: db
 hStreamMapDirection:: db
 hStreamMapWalkedPatch:: db
 
-	ds 5 ; unused
+
+SECTION "HRAM tail", HRAM
 
 hLCDInterruptFunction::
 hLCDInterruptFunctionJump::     db ; $c3 jp
@@ -239,3 +240,7 @@ hJumpFunctionJump::     db ; $c3 jp
 hJumpFunctionTarget::
 hJumpFunctionTargetLo:: db ; LOW(target)
 hJumpFunctionTargetHi:: db ; HIGH(target)
+
+; The variables above need to be within `jr` range of some code in early ROM0, so we place them
+; at the very end of HRAM to help with that.
+	align 16, $ffff
