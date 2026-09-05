@@ -860,7 +860,10 @@ MoveCurMonToBox:
 	push bc
 	call BillsPC_PerformQuickAnim
 	pop bc
-	; fallthrough
+	call CheckPartyShift
+	; Refresh the portrait and details for the slot left under the cursor.
+	jmp GetCursorMon
+
 CheckPartyShift:
 ; Shifts entries around to ensure there are no blank party entries.
 ; This is a purely graphical effect, internal PC functions has already
