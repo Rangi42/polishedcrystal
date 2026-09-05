@@ -81,7 +81,7 @@ StackCallInSafeGFXMode:
 	ldh [hBGMapMode], a
 	ldh [hMapAnims], a
 	ldh a, [rVBK]
-	rra
+	rra ; stores VRAM bank in carry flag to be pushed
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wScratchTileMap)
@@ -91,7 +91,7 @@ StackCallInSafeGFXMode:
 
 	pop af
 	ldh [rWBK], a
-	rla
+	rla ; retrieves VRAM bank from popped carry flag
 	ldh [rVBK], a
 	pop af
 	ldh [hMapAnims], a
