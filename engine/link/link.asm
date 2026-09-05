@@ -1486,9 +1486,6 @@ LinkTrade:
 .got_tradeparty_species
 	ld [wPlayerTrademonSpecies], a
 	push af
-; caught data
-	xor a
-	ld [wPlayerTrademonCaughtData], a
 ; OT name
 	ld a, [wCurTradePartyMon]
 	ld hl, wPartyMonOTs
@@ -1561,9 +1558,6 @@ LinkTrade:
 	ld [wOTTrademonDVs + 1], a
 	ld a, [hl]
 	ld [wOTTrademonDVs + 2], a
-; caught data
-	xor a
-	ld [wOTTrademonCaughtData], a
 
 	ld a, [wCurTradePartyMon]
 	ld [wCurPartyMon], a

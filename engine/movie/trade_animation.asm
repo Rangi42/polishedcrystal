@@ -327,7 +327,7 @@ TradeAnim_InitTubeAnim:
 
 	ld de, TradeBubbleGFX
 	ld hl, vTiles0 tile $72
-	lb bc, BANK(TradeBubbleGFX), $4
+	lb bc, BANK(TradeBubbleGFX), 4
 	call Request2bpp
 	xor a
 	ld hl, wSpriteAnimDict
@@ -785,11 +785,13 @@ ShowPlayerTrademonStats:
 	ld de, wPlayerTrademonSpeciesName
 	hlcoord 4, 2
 	rst PlaceString
-	ld a, [wPlayerTrademonCaughtData]
 	ld de, wPlayerTrademonOTName
-	call TrademonStats_PrintOTName
+	hlcoord 7, 4
+	rst PlaceString
 	ld de, wPlayerTrademonID
-	call TrademonStats_PrintTrademonID
+	hlcoord 7, 6
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	call PrintNum
 	jr TrademonStats_WaitBGMap
 
 ShowOTTrademonStats:
@@ -807,11 +809,13 @@ ShowOTTrademonStats:
 	ld de, wOTTrademonSpeciesName
 	hlcoord 4, 2
 	rst PlaceString
-	ld a, [wOTTrademonCaughtData]
 	ld de, wOTTrademonOTName
-	call TrademonStats_PrintOTName
+	hlcoord 7, 4
+	rst PlaceString
 	ld de, wOTTrademonID
-	call TrademonStats_PrintTrademonID
+	hlcoord 7, 6
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	call PrintNum
 	jr TrademonStats_WaitBGMap
 
 TrademonStats_MonTemplate:
@@ -820,7 +824,7 @@ TrademonStats_MonTemplate:
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	hlcoord 3, 0
-	lb bc, $6, $d
+	lb bc, 6, 13
 	call Textbox
 	hlcoord 4, 0
 	ld de, TrademonStats_OTMonData
@@ -833,7 +837,7 @@ TrademonStats_Egg:
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	hlcoord 3, 0
-	lb bc, $6, $d
+	lb bc, 6, 13
 	call Textbox
 	hlcoord 4, 2
 	ld de, TrademonStats_EggData
@@ -871,32 +875,6 @@ TrademonStats_PrintSpeciesNumber:
 	call PrintNum
 	ld [hl], ' '
 	ret
-
-TrademonStats_PrintOTName:
-	cp 3
-	jr c, .caught_gender_okay
-	xor a
-.caught_gender_okay
-	push af
-	hlcoord 7, 4
-	rst PlaceString
-	inc bc
-	pop af
-	ld hl, .Gender
-	ld d, 0
-	ld e, a
-	add hl, de
-	ld a, [hl]
-	ld [bc], a
-	ret
-
-.Gender:
-	db " ", "♂", "♀"
-
-TrademonStats_PrintTrademonID:
-	hlcoord 7, 6
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
-	jmp PrintNum
 
 TradeAnim_RockingBall:
 	depixel 10, 11, 4, 0
