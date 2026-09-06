@@ -287,24 +287,60 @@ InitialOptions_AffectionBonus:
 	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_RTC:
-	ld hl, wInitialOptions2
+	ld a, [wInitialOptions2]
+	and CLOCK_OPTMASK
+	ld hl, .Values
+	ld c, 0
+.find_value
+	cp [hl]
+	jr z, .got_value
+	inc hl
+	inc c
+	bit 2, c
+	jr z, .find_value
+	ld c, 0 ; fall back to RTC for an invalid option value
+.got_value
 	ldh a, [hJoyPressed]
 	and PAD_LEFT | PAD_RIGHT
-	jr nz, .Toggle
-	bit RTC_OPT, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle:
-	bit RTC_OPT, [hl]
-	jr z, .SetYes
-.SetNo:
-	res RTC_OPT, [hl]
-	ld de, NoString
+	jr z, .input_done
+	bit B_PAD_LEFT, a
+	jr nz, .left
+	inc c
+	jr .wrap
+.left
+	dec c
+.wrap
+	ld a, c
+	and NUM_CLOCK_OPTIONS - 1
+	ld c, a
+.input_done
+	ld b, 0
+	ld hl, .Values
+	add hl, bc
+	ld a, [wInitialOptions2]
+	and ~CLOCK_OPTMASK
+	or [hl]
+	ld [wInitialOptions2], a
+	ld hl, .Strings
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
 	jmp OptionsShared_PlaceStringAtValueCoord
-.SetYes:
-	set RTC_OPT, [hl]
-	ld de, YesString
-	jmp OptionsShared_PlaceStringAtValueCoord
+
+.Values:
+	db CLOCK_RTC, CLOCK_6X, CLOCK_12X, CLOCK_24X
+.Strings:
+	dw .RTC, .Six, .Twelve, .TwentyFour
+.RTC:
+	db "RTC@"
+.Six:
+	db "×6 @"
+.Twelve:
+	db "×12@"
+.TwentyFour:
+	db "×24@"
 
 InitialOptions_PerfectIVs:
 	ld hl, wInitialOptions

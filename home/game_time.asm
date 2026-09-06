@@ -1,7 +1,7 @@
 ; reset the number of hours the game has been played
 ; (not to be confused with the real-time clock, which either continues to
 ; increment when the GameBoy is switched off, or in the no-RTC patch, runs
-; at 6x speed while the game time remains real-time)
+; at the selected speed while the game time remains real-time)
 ResetGameTime::
 	xor a
 	ld [wGameTimeCap], a
@@ -59,15 +59,22 @@ UpdateGameTimer::
 	ld [hl], a
 
 ; kroc - no-RTC patch
-; the game timer has increased by 1 second; increase the "fake" RTC by 6 seconds
-; (24 in-game hours will pass in 4 real-world hours)
+; Increase the "fake" RTC by 6, 12, or 24 seconds per second played.
 ; this does not affect the rate of the "hours played", which remains real-time
 	ld a, [wInitialOptions2]
-	and 1 << RTC_OPT
+	bit RTC_OPT, a
 	jr nz, .using_rtc
-rept NO_RTC_SPEEDUP
-	call UpdateNoRTC
-endr
+	ld c, NO_RTC_SPEEDUP
+	and CLOCK_SPEED_MASK
+	jr z, .no_rtc_loop
+	ld c, NO_RTC_SPEEDUP * 2
+	bit CLOCK_SPEED_OPT + 1, a
+	jr z, .no_rtc_loop
+	ld c, NO_RTC_SPEEDUP * 4
+.no_rtc_loop
+	call UpdateNoRTC ; preserves c
+	dec c
+	jr nz, .no_rtc_loop
 .using_rtc
 
 ; +1 second

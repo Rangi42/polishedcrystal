@@ -18,30 +18,23 @@ NextCallReceiveDelay:
 .okay
 	ld e, a
 	ld d, 0
-	ld a, [wInitialOptions2]
-	and 1 << RTC_OPT
 	ld hl, .ReceiveCallDelays
-	jr nz, .using_rtc
-	ld hl, .ReceiveCallDelaysNoRTC
-.using_rtc
 	add hl, de
 	ld a, [hl]
 	ld hl, wReceiveCallDelay_MinsRemaining
 	ld [hl], a
 	call UpdateTime
+	call GetTimerTime
 	ld hl, wReceiveCallDelay_StartTime
-	ld a, [wCurDay]
+	ld a, b
 	ld [hli], a
-	ldh a, [hHours]
+	ld a, c
 	ld [hli], a
-	ldh a, [hMinutes]
-	ld [hli], a
+	ld [hl], d
 	ret
 
 .ReceiveCallDelays:
 	db 20, 10, 5, 3
-.ReceiveCallDelaysNoRTC:
-	db 20 * NO_RTC_SPEEDUP, 10 * NO_RTC_SPEEDUP, 5 * NO_RTC_SPEEDUP, 3 * NO_RTC_SPEEDUP
 
 CheckReceiveCallTimer:
 	call CheckReceiveCallDelay ; check timer
@@ -180,25 +173,20 @@ Special_SampleKenjiBreakCountdown:
 	ret
 
 StartBugContestTimer:
-	ld a, [wInitialOptions2]
-	and 1 << RTC_OPT
 	ld a, BUG_CONTEST_MINUTES
-	jr nz, .using_rtc
-	ld a, BUG_CONTEST_MINUTES * NO_RTC_SPEEDUP
-.using_rtc
 	ld [wBugContestMinsRemaining], a
 	xor a ; BUG_CONTEST_SECONDS
 	ld [wBugContestSecsRemaining], a
 	call UpdateTime
+	call GetTimerTime
 	ld hl, wBugContestStartTime
-	ld a, [wCurDay]
+	ld a, b
 	ld [hli], a
-	ldh a, [hHours]
+	ld a, c
 	ld [hli], a
-	ldh a, [hMinutes]
+	ld a, d
 	ld [hli], a
-	ldh a, [hSeconds]
-	ld [hli], a
+	ld [hl], e
 	ret
 
 CheckBugContestTimer::
@@ -295,49 +283,87 @@ CalcDaysSince:
 	xor a
 	jr _CalcDaysSince
 
+GetTimerTime:
+; Phone and contest timers use real time, regardless of the clock speed.
+; Return b:c:d:e = day:hour:minute:second, preserving hl.
+	ld a, [wInitialOptions2]
+	and 1 << RTC_OPT
+	jr z, .play_time
+	ld a, [wCurDay]
+	ld b, a
+	ldh a, [hHours]
+	ld c, a
+	ldh a, [hMinutes]
+	ld d, a
+	ldh a, [hSeconds]
+	ld e, a
+	ret
+.play_time
+; Treat the high hour byte as a "day" of 256 hours, avoiding division.
+	ld a, [wGameTimeHours]
+	ld b, a
+	ld a, [wGameTimeHours + 1]
+	ld c, a
+	ld a, [wGameTimeMinutes]
+	ld d, a
+	ld a, [wGameTimeSeconds]
+	ld e, a
+	ret
+
 CalcMinsHoursDaysSince:
+	call GetTimerTime
 	inc hl
 	inc hl
 	xor a
 	jr _CalcMinsHoursDaysSince
 
 CalcSecsMinsHoursDaysSince:
+	call GetTimerTime
 	inc hl
 	inc hl
 	inc hl
-	ldh a, [hSeconds]
-	ld c, a
+	ld a, e
 	sub [hl]
 	jr nc, .skip_seconds
 	add 60
 .skip_seconds
-	ld [hl], c ; current seconds
-	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
-	ld [wSecondsSince], a ; seconds since
+	ld [wSecondsSince], a
+	ld a, e
+	ld [hld], a
 	; fallthrough
 
 _CalcMinsHoursDaysSince:
-	ldh a, [hMinutes]
-	ld c, a
+	ld a, d
 	sbc [hl]
 	jr nc, .skip_minutes
 	add 60
 .skip_minutes
-	ld [hl], c ; current minutes
-	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
-	ld [wMinutesSince], a ; minutes since
+	ld [wMinutesSince], a
+	ld a, d
+	ld [hld], a
 
-; calc hours+days since
-	ldh a, [hHours]
-	ld c, a
+	ld a, c
 	sbc [hl]
 	jr nc, .skip_hours
+	ld e, a
+	ld a, [wInitialOptions2]
+	bit RTC_OPT, a
+	ld a, e
+	jr z, .skip_hours ; hour byte wrapped at 256; carry still records the borrow
 	add 24
 .skip_hours
-	ld [hl], c ; current hours
-	dec hl ; no-optimize *hl++|*hl-- = b|c|d|e
-	ld [wHoursSince], a ; hours since
-	; fallthrough
+	ld [wHoursSince], a
+	ld a, c
+	ld [hld], a
+
+	ld a, b
+	sbc [hl]
+	jr nc, .skip_days
+	add 20 * 7
+.skip_days
+	ld [hl], b
+	ld [wDaysSince], a
+	ret
 
 _CalcDaysSince:
 	ld a, [wCurDay]

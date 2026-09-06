@@ -103,18 +103,21 @@ InitialOptionDescriptions:
 	prompt
 
 .RTC:
-	text "Use the Real-Time"
-	line "Clock function to"
-	cont "track the time."
+	text "RTC tracks real"
+	line "time, even while"
+	cont "the game is off."
 
-	para "If your cartridge"
-	line "or emulator does"
-	cont "not support RTC,"
+	para "×6, ×12, and ×24"
+	line "advance time only"
+	cont "while playing."
 
-	assert 24 % NO_RTC_SPEEDUP == 0
-	para "disable this to"
-	line "make each in-game"
-	cont STRFMT("day last %d hours.", 24 / NO_RTC_SPEEDUP) ; 24 / 6 == 4
+	para "Each in-game day"
+	line "lasts 4, 2, or 1"
+	cont "real-world hours."
+
+	para "Use these if your"
+	line "system does not"
+	cont "support RTC."
 	prompt
 
 .PerfectIVs:

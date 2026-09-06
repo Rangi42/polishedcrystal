@@ -1462,7 +1462,7 @@ wInitialOptions2::
 ; bit 2: no exp on/off (cannot be set together with scaled exp)
 ; bit 3: use RTC
 ; bit 4: evolve in battle
-; bits 5-6: unused
+; bits 5-6: non-RTC speed (%00: ×6, %01: ×12, %10: ×24)
 ; bit 7: ask to reset at start
 	db
 wOptionsEnd::

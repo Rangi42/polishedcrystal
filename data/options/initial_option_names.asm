@@ -26,7 +26,7 @@ InitialOptionNames:
 .Affection:
 	db "Affection bonus@"
 .RTC:
-	db "Real-time clock@"
+	db "In-game clock@"
 .PerfectStats:
 	db "Perfect stats@"
 .TradedMon:

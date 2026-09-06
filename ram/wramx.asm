@@ -984,7 +984,7 @@ wMapReentryScriptAddress:: dw ; MemScriptAddr
 
 wTimeCyclesSinceLastCall:: db
 wReceiveCallDelay_MinsRemaining:: db
-wReceiveCallDelay_StartTime:: ds 3
+wReceiveCallDelay_StartTime:: ds 3 ; RTC day/hour/minute, or play time hours (big-endian)/minute
 
 wBugContestMinsRemaining:: db
 wBugContestSecsRemaining:: db
@@ -1427,7 +1427,7 @@ wCurHiddenGrotto:: db
 
 wLuckyNumberDayBuffer:: dw
 wSpecialPhoneCallID:: db
-wBugContestStartTime:: ds 4 ; day, hour, min, sec
+wBugContestStartTime:: ds 4 ; RTC day/hour/minute/second, or play time hours (big-endian)/minute/second
 
 wLastPocket:: db
 

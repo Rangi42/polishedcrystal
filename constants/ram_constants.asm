@@ -118,7 +118,8 @@ DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_I
 	const NO_EXP_OPT           ; 2
 	const RTC_OPT              ; 3
 	const EVOLVE_IN_BATTLE_OPT ; 4
-	const_skip 2
+	const CLOCK_SPEED_OPT     ; 5; two bits
+	const_skip
 	const RESET_INIT_OPTS      ; 7
 
 	const_def
@@ -126,6 +127,15 @@ DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_I
 	const EVS_OPT_CLASSIC  ; %01
 	const EVS_OPT_MODERN   ; %10
 DEF EV_OPTMASK EQU %11
+
+; Keep the existing RTC flag and zero-valued ×6 speed compatible with old saves.
+DEF CLOCK_SPEED_MASK EQU %11 << CLOCK_SPEED_OPT
+DEF CLOCK_OPTMASK EQU (1 << RTC_OPT) | CLOCK_SPEED_MASK
+DEF CLOCK_RTC EQU 1 << RTC_OPT
+DEF CLOCK_6X EQU 0 << CLOCK_SPEED_OPT
+DEF CLOCK_12X EQU 1 << CLOCK_SPEED_OPT
+DEF CLOCK_24X EQU 2 << CLOCK_SPEED_OPT
+DEF NUM_CLOCK_OPTIONS EQU 4
 
 ; wOptionsMenuDescriptionState::
 	const_def
