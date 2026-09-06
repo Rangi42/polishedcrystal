@@ -287,8 +287,8 @@ GetTimerTime:
 ; Phone and contest timers use real time, regardless of the clock speed.
 ; Return b:c:d:e = day:hour:minute:second, preserving hl.
 	ld a, [wInitialOptions2]
-	and 1 << RTC_OPT
-	jr z, .play_time
+	and CLOCK_OPTMASK
+	jr nz, .play_time
 	ld a, [wCurDay]
 	ld b, a
 	ldh a, [hHours]
@@ -347,9 +347,10 @@ _CalcMinsHoursDaysSince:
 	jr nc, .skip_hours
 	ld e, a
 	ld a, [wInitialOptions2]
-	bit RTC_OPT, a
+	and CLOCK_OPTMASK
+	scf ; restore the hour borrow cleared by and
 	ld a, e
-	jr z, .skip_hours ; hour byte wrapped at 256; carry still records the borrow
+	jr nz, .skip_hours ; hour byte already wrapped at 256
 	add 24
 .skip_hours
 	ld [wHoursSince], a

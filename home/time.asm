@@ -20,8 +20,8 @@ GetClock::
 ; store clock data in wRTCDayHi-wRTCSeconds
 
 	ld a, [wInitialOptions2]
-	and 1 << RTC_OPT
-	ret z
+	and CLOCK_OPTMASK
+	ret nz
 
 ; enable clock r/w
 	ld a, RAMG_SRAM_ENABLE
@@ -201,8 +201,8 @@ SetClock::
 
 ; do not talk to the RTC hardware in the no-RTC patch
 	ld a, [wInitialOptions2]
-	and 1 << RTC_OPT
-	ret z
+	and CLOCK_OPTMASK
+	ret nz
 
 ; enable clock r/w
 	ld a, RAMG_SRAM_ENABLE

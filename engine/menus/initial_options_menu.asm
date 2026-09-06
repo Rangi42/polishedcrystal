@@ -287,50 +287,36 @@ InitialOptions_AffectionBonus:
 	jmp OptionsShared_PlaceStringAtValueCoord
 
 InitialOptions_RTC:
-	ld a, [wInitialOptions2]
-	and CLOCK_OPTMASK
-	ld hl, .Values
-	ld c, 0
-.find_value
-	cp [hl]
-	jr z, .got_value
-	inc hl
-	inc c
-	bit 2, c
-	jr z, .find_value
-	ld c, 0 ; fall back to RTC for an invalid option value
-.got_value
+	ld hl, wInitialOptions2
 	ldh a, [hJoyPressed]
 	and PAD_LEFT | PAD_RIGHT
 	jr z, .input_done
+	ld c, 1 << CLOCK_OPT
 	bit B_PAD_LEFT, a
-	jr nz, .left
-	inc c
-	jr .wrap
-.left
-	dec c
-.wrap
-	ld a, c
-	and NUM_CLOCK_OPTIONS - 1
-	ld c, a
+	jr z, .change
+	ld c, -(1 << CLOCK_OPT)
+.change
+	ld a, [hl]
+	add c
+	xor [hl]
+	and CLOCK_OPTMASK
+	xor [hl]
+	ld [hl], a
 .input_done
+	ld a, [hl]
+	and CLOCK_OPTMASK
+	assert CLOCK_OPT == 3
+	rrca
+	rrca ; shift the clock field down to a two-byte pointer offset
+	ld c, a
 	ld b, 0
-	ld hl, .Values
-	add hl, bc
-	ld a, [wInitialOptions2]
-	and ~CLOCK_OPTMASK
-	or [hl]
-	ld [wInitialOptions2], a
 	ld hl, .Strings
-	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
 	jmp OptionsShared_PlaceStringAtValueCoord
 
-.Values:
-	db CLOCK_RTC, CLOCK_6X, CLOCK_12X, CLOCK_24X
 .Strings:
 	dw .RTC, .Six, .Twelve, .TwentyFour
 .RTC:

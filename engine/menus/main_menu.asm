@@ -163,8 +163,8 @@ MainMenu_PrintCurrentTimeAndDay:
 ;; to get the main menu to show the correct time of the save,
 ;; we need to pull the backed-up RTC time from the save file
 	ld a, [wInitialOptions2]
-	and 1 << RTC_OPT
-	jr nz, .using_rtc
+	and CLOCK_OPTMASK
+	jr z, .using_rtc
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
 	ld hl, sPlayerData + wRTCDayHi - wPlayerData

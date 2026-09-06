@@ -1460,9 +1460,9 @@ wInitialOptions2::
 ; - %01: classic EVs (no 510 cap)
 ; - %10: modern EVs (510 cap)
 ; bit 2: no exp on/off (cannot be set together with scaled exp)
-; bit 3: use RTC
-; bit 4: evolve in battle
-; bits 5-6: non-RTC speed (%00: ×6, %01: ×12, %10: ×24)
+; bits 3-4: in-game clock (%00: RTC, %01: ×6, %10: ×12, %11: ×24)
+; bit 5: evolve in battle
+; bit 6: unused
 ; bit 7: ask to reset at start
 	db
 wOptionsEnd::

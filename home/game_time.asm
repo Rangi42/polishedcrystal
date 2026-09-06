@@ -62,13 +62,13 @@ UpdateGameTimer::
 ; Increase the "fake" RTC by 6, 12, or 24 seconds per second played.
 ; this does not affect the rate of the "hours played", which remains real-time
 	ld a, [wInitialOptions2]
-	bit RTC_OPT, a
-	jr nz, .using_rtc
+	and CLOCK_OPTMASK
+	jr z, .using_rtc
 	ld c, NO_RTC_SPEEDUP
-	and CLOCK_SPEED_MASK
+	cp CLOCK_6X
 	jr z, .no_rtc_loop
 	ld c, NO_RTC_SPEEDUP * 2
-	bit CLOCK_SPEED_OPT + 1, a
+	cp CLOCK_12X
 	jr z, .no_rtc_loop
 	ld c, NO_RTC_SPEEDUP * 4
 .no_rtc_loop
