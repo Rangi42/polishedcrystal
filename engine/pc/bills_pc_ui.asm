@@ -2720,6 +2720,12 @@ BillsPC_CanReleaseMon:
 	ret
 
 .is_egg
+	; Allow release of Bad Eggs.
+	ld a, [wTempMonNickname]
+	cp 'B' ; Assume "Bad Egg" (since the only alternative is "Egg").
+	ld a, RELEASE_EGG
+	ret z
+
 	; Releasing Eggs is allowed after Togepi hatches, with different flavor text.
 	eventflagcheck EVENT_TOGEPI_HATCHED
 	ld a, RELEASE_EGG_BEFORE_TOGEPI
