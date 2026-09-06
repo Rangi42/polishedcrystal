@@ -42,18 +42,15 @@ TinTower1FSuicuneBattleScene:
 	end
 
 TinTower1FNPCsCallback:
+	; Ho-Oh's battle script places Eusine here until his farewell.
 	checkevent EVENT_GOT_RAINBOW_WING
-	iftruefwd .GotRainbowWing
+	iftruefwd .Done
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iffalsefwd .FaceBeasts
 	special SpecialBeastsCheck
 	iffalsefwd .FaceBeasts
 	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
-.GotRainbowWing:
-	checkevent EVENT_FOUGHT_HO_OH
-	iffalsefwd .Done
-	appear TINTOWER1F_EUSINE
 .Done:
 	endcallback
 
@@ -297,6 +294,7 @@ TinTower1FSage6Script:
 TinTower1FEusineAfterHoOhScript:
 	faceplayer
 	showtext TinTowerEusineHoOhText
+	setevent EVENT_EUSINE_SAW_HO_OH
 	readvar VAR_FACING
 	ifnotequal RIGHT, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement

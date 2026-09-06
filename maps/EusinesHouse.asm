@@ -98,14 +98,12 @@ CeladonEusine:
 	step_end
 
 EusinesHouseGrampsScript:
+	checkevent EVENT_EUSINE_SAW_HO_OH
+	iftruefwd .EusineLeft
 	checkevent EVENT_EUSINES_HOUSE_EUSINE
 	iffalse_jumptextfaceplayer EusinesHouseGrampsGrandsonHomeText
 	checkevent EVENT_FOUGHT_SUICUNE
 	iffalse_jumptextfaceplayer EusinesHouseGrampsEusineSearchingForSuicuneText
-	checkevent EVENT_DECO_ABRA_DOLL
-	iftrue_jumptextfaceplayer EusinesHouseGrampsEusineTravelingWorldText
-	checkevent EVENT_FOUGHT_HO_OH
-	iftruefwd .AfterHoOhFight
 	jumpthistextfaceplayer
 
 	text "My grandson Eusine"
@@ -117,7 +115,9 @@ EusinesHouseGrampsScript:
 	cont "Ecruteak City."
 	done
 
-.AfterHoOhFight:
+.EusineLeft:
+	checkevent EVENT_DECO_ABRA_DOLL
+	iftrue_jumptextfaceplayer EusinesHouseGrampsEusineTravelingWorldText
 	faceplayer
 	opentext
 	writetext EusinesHouseGrampsThankYouGiftText

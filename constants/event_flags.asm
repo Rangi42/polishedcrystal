@@ -2460,5 +2460,8 @@
 	const EVENT_GOT_OVAL_STONE_FROM_RUGGED_ROAD
 	const EVENT_CAN_RESURRECT_FOSSILS_IN_RUINS_OF_ALPH
 
+; Eusine quest state (use a spare flag without renumbering existing saves)
+	const EVENT_EUSINE_SAW_HO_OH
+
 	const_next $8ff
 DEF NUM_EVENTS EQU const_value ; 2303

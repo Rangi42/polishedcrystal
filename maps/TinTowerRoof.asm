@@ -40,6 +40,12 @@ TinTowerHoOh:
 	pause 15
 	closetext
 	setevent EVENT_FOUGHT_HO_OH
+	; Arrange the farewell even if the player loses or later respawns Ho-Oh.
+	checkevent EVENT_EUSINE_SAW_HO_OH
+	iftruefwd .Battle
+	setevent EVENT_EUSINES_HOUSE_EUSINE
+	clearevent EVENT_TIN_TOWER_1F_EUSINE
+.Battle:
 	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	loadwildmon HO_OH, 75
 	startbattle
