@@ -2688,11 +2688,11 @@ BillsPC_EggsCantHoldItemsText:
 
 BillsPC_CanReleaseMon:
 ; Verifies if the given mon in box b, slot c, can be released. Sets wTempMon.
-; Returns a `RELEASE_*` enum in a, and `z` iff release is OK.
+; Returns a `RELEASE_*` enum in a.
 	; Is there even anything there?
 	call GetStorageBoxMon
 	ld a, RELEASE_EMPTY
-	jr z, .done
+	ret z
 
 	; If we're dealing with our party, ensure that this isn't our last mon.
 	ld a, b
@@ -2709,24 +2709,23 @@ BillsPC_CanReleaseMon:
 	pop de
 	pop hl
 	ld a, RELEASE_LAST_HEALTHY
-	jr c, .done
+	ret c
 	; fallthrough
 .not_last_healthy
-	; Can't release Eggs.
 	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	jr z, .not_egg
+	and 1 << MON_IS_EGG_F
+	jr nz, .is_egg
+	assert RELEASE_OK == 0
+	xor a
+	ret
 
-	; Allow release of Bad Eggs.
-	ld a, [wTempMonNickname]
-	cp 'B' ; Assume "Bad Egg" (since the only alternative is "Egg").
-	ld a, RELEASE_EGG
-	ret nz
-
-.not_egg
-	xor a ; RELEASE_OK
-.done
-	and a
+.is_egg
+	; Releasing Eggs is allowed after Togepi hatches, with different flavor text.
+	eventflagcheck EVENT_TOGEPI_HATCHED
+	ld a, RELEASE_EGG_BEFORE_TOGEPI
+	ret z
+	assert RELEASE_EGG_BEFORE_TOGEPI - 1 == RELEASE_EGG
+	dec a
 	ret
 
 RemoveStorageBoxMon_MaybeRespawn:
@@ -2811,7 +2810,8 @@ BillsPC_ReleaseAll:
 	jr z, .releases_done
 
 	call BillsPC_CanReleaseMon
-	jr nz, .failed_release
+	cp CANNOT_RELEASE
+	jr nc, .failed_release
 	inc d
 	push de
 	call RemoveStorageBoxMon_MaybeRespawn
@@ -2866,6 +2866,11 @@ BillsPC_ReleaseAll:
 	text "The Box is empty."
 	prompt
 
+; The only possible reason a Pokémon cannot be released is if it is an Egg *and*
+; you have not hatched the Mystery Egg (Togepi) yet. As such, if the .NothingReleased
+; or .TheRestWasnt messages are printed, it's because Eggs can't be released *yet*,
+; so they're accurate.
+
 .NothingReleased:
 	text "You can't release"
 	line "Eggs."
@@ -2884,17 +2889,20 @@ BillsPC_ReleaseAll:
 BillsPC_Release:
 	call BillsPC_GetCursorSlot
 	call BillsPC_CanReleaseMon
-	assert RELEASE_LAST_HEALTHY == 1
+
+	cp RELEASE_LAST_HEALTHY
 	ld hl, BillsPC_LastPartyMon
-	dec a
-	jr z, .print
-	assert RELEASE_EGG == 2
-	ld hl, .CantReleaseEgg
-	dec a
-	jr z, .print
+	jmp z, BillsPC_PrintText
+
+	cp RELEASE_EGG_BEFORE_TOGEPI
+	ld hl, BillsPC_MysteriousEgg
+	jmp z, BillsPC_PrintText
 
 	; We don't need to check for RELEASE_EMPTY since we can't get to this menu
 	; in that case.
+
+	push af
+
 	call BillsPC_HideCursorAndMode
 	ld hl, .ReallyReleaseMon
 	call MenuTextbox
@@ -2910,14 +2918,22 @@ BillsPC_Release:
 
 	; Then release the mon.
 	call BillsPC_GetCursorSlot
+	pop af
 	push bc
+	push af
 	call RemoveStorageBoxMon_MaybeRespawn
 
 	; Print message and reload current cursor mon.
+	pop af
+	assert RELEASE_EGG == 1
+	dec a
+	ld hl, .ReleasedEgg
+	jr z, .got_text
 	ld hl, .WasReleasedOutside
+.got_text
 	call PrintText
 
-	call .done
+	call .finish
 	pop bc
 	lb de, -1, -1
 	call BillsPC_MoveIconData
@@ -2925,15 +2941,14 @@ BillsPC_Release:
 	jmp GetCursorMon
 
 .done
+	pop af
+.finish
 	call BillsPC_UpdateCursorLocation
 	jmp CloseWindow
 
-.print
-	jmp BillsPC_PrintText
-
-.CantReleaseEgg:
-	text "You can't release"
-	line "an Egg!"
+.ReleasedEgg:
+	text "The Egg was sent"
+	line "to Prof.Elm."
 	prompt
 
 .ReallyReleaseMon:
@@ -3433,6 +3448,11 @@ BillsPC_SwapStorage:
 BillsPC_LastPartyMon:
 	text "That's your last"
 	line "healthy #mon!"
+	prompt
+
+BillsPC_MysteriousEgg:
+	text "That's a mysterious"
+	line "#mon Egg!"
 	prompt
 
 BillsPC_MustSaveToContinue:
