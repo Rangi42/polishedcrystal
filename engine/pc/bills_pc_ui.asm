@@ -2757,6 +2757,13 @@ RemoveStorageBoxMon_MaybeRespawn:
 	jr nz, .loop
 
 	; This is ours. Check which, if any, beast we should respawn.
+	; All the beasts have 8-bit species, so a single extspecies check covers all.
+	assert HIGH(RAIKOU) == 0
+	assert HIGH(ENTEI) == 0
+	assert HIGH(SUICUNE) == 0
+	ld a, [wTempMonForm]
+	and EXTSPECIES_MASK
+	jr z, .done
 	ld a, [wTempMonSpecies]
 	cp RAIKOU
 	jr nz, .not_raikou
