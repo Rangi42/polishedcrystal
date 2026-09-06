@@ -38,8 +38,10 @@ DEF NUM_BILLS_PC_THEMES EQU const_value
 ; BillsPC_CanReleaseMon constants
 	const_def
 	const RELEASE_OK
-	const RELEASE_LAST_HEALTHY
 	const RELEASE_EGG
+DEF CANNOT_RELEASE EQU const_value
+	const RELEASE_EGG_BEFORE_TOGEPI
+	const RELEASE_LAST_HEALTHY
 	const RELEASE_EMPTY
 
 	const_def
