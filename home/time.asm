@@ -79,12 +79,12 @@ FixDays::
 	inc hl
 	ld a, [hl] ; wRTCDayLo
 .modh
-	sub 140
+	sub RTC_DAY_CYCLE
 	jr nc, .modh
 .modl
-	sub 140
+	sub RTC_DAY_CYCLE
 	jr nc, .modl
-	add 140
+	add RTC_DAY_CYCLE
 
 ; update dl
 	ld [hl], a ; wRTCDayLo
@@ -97,14 +97,14 @@ FixDays::
 	inc hl
 ; quit if fewer than 140 days have passed
 	ld a, [hl] ; wRTCDayLo
-	cp 140
+	cp RTC_DAY_CYCLE
 	jr c, .quit
 
 ; mod 140
 .mod
-	sub 140
+	sub RTC_DAY_CYCLE
 	jr nc, .mod
-	add 140
+	add RTC_DAY_CYCLE
 
 ; update dl
 	ld [hl], a ; wRTCDayLo

@@ -305,20 +305,24 @@ InitialOptions_RTC:
 .input_done
 	ld a, [hl]
 	and CLOCK_OPTMASK
-	assert CLOCK_OPT == 3
+rept CLOCK_OPT - 1 ; shift the clock field down to a two-byte pointer offset
 	rrca
-	rrca ; shift the clock field down to a two-byte pointer offset
-	ld c, a
-	ld b, 0
-	ld hl, .Strings
-	add hl, bc
+endr
+	add LOW(.Strings)
+	ld l, a
+	adc HIGH(.Strings)
+	sub l
+	ld h, a
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
 	jmp OptionsShared_PlaceStringAtValueCoord
 
 .Strings:
-	dw .RTC, .Six, .Twelve, .TwentyFour
+	dw .RTC        ; CLOCK_RTC
+	dw .Six        ; CLOCK_6X
+	dw .Twelve     ; CLOCK_12X
+	dw .TwentyFour ; CLOCK_24X
 .RTC:
 	db "RTC@"
 .Six:

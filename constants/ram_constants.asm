@@ -116,8 +116,8 @@ DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_I
 ; wInitialOptions2::
 	const_def 2
 	const NO_EXP_OPT           ; 2
-	const CLOCK_OPT           ; 3; two bits
-	const_skip
+	const CLOCK_OPT            ; 3 ; two bits
+	const_skip                 ; also used by CLOCK_OPT
 	const EVOLVE_IN_BATTLE_OPT ; 5
 	const_skip
 	const RESET_INIT_OPTS      ; 7
@@ -129,10 +129,10 @@ DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_I
 DEF EV_OPTMASK EQU %11
 
 	const_def 0, 1 << CLOCK_OPT
-	const CLOCK_RTC  ; %00
-	const CLOCK_6X   ; %01
-	const CLOCK_12X  ; %10
-	const CLOCK_24X  ; %11
+	const CLOCK_RTC ; %000_00_000
+	const CLOCK_6X  ; %000_01_000
+	const CLOCK_12X ; %000_10_000
+	const CLOCK_24X ; %000_11_000
 DEF CLOCK_OPTMASK EQU %11 << CLOCK_OPT
 
 ; wOptionsMenuDescriptionState::

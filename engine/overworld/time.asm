@@ -16,10 +16,11 @@ NextCallReceiveDelay:
 	ld a, 3
 
 .okay
-	ld e, a
-	ld d, 0
-	ld hl, .ReceiveCallDelays
-	add hl, de
+	add LOW(.ReceiveCallDelays)
+	ld l, a
+	adc HIGH(.ReceiveCallDelays)
+	sub l
+	ld h, a
 	ld a, [hl]
 	ld hl, wReceiveCallDelay_MinsRemaining
 	ld [hl], a
@@ -213,8 +214,10 @@ CheckBugContestTimer::
 	sbc b
 	ld [wBugContestMinsRemaining], a
 	jr c, .timed_out
-	and a
-	ret
+	ld b, a
+	ld a, [wBugContestSecsRemaining]
+	or b
+	ret nz
 
 .timed_out
 	xor a
@@ -360,7 +363,7 @@ _CalcMinsHoursDaysSince:
 	ld a, b
 	sbc [hl]
 	jr nc, .skip_days
-	add 20 * 7
+	add RTC_DAY_CYCLE
 .skip_days
 	ld [hl], b
 	ld [wDaysSince], a
@@ -371,7 +374,7 @@ _CalcDaysSince:
 	ld c, a
 	sbc [hl]
 	jr nc, .skip_days
-	add 20 * 7
+	add RTC_DAY_CYCLE
 .skip_days
 	ld [hl], c ; current days
 	ld [wDaysSince], a ; days since

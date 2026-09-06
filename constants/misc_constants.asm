@@ -26,6 +26,9 @@ DEF EVE_HOUR  EQU 17 ; 5 PM - 9 PM (4 hours)
 DEF NITE_HOUR EQU 21 ; 9 PM - 5 AM (8 hours)
 DEF MAX_HOUR  EQU 24 ; 12 AM - 12 AM (24 hours)
 
+; FixDays wraps the RTC after 20 weeks, preserving the day of the week.
+DEF RTC_DAY_CYCLE EQU 20 * 7
+
 DEF NO_RTC_SPEEDUP EQU 6
 
 ; significant money values
