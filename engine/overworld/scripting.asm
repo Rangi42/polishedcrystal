@@ -2047,13 +2047,10 @@ Script_checkcellnum:
 Script_specialphonecall:
 	call GetScriptByte
 	ld [wSpecialPhoneCallID], a
-	xor a
-	ld [wSpecialPhoneCallID + 1], a
 	ret
 
 Script_checkphonecall:
 ; returns false if no special phone call is stored
-
 	ld a, [wSpecialPhoneCallID]
 	and a
 	jr z, .ok
