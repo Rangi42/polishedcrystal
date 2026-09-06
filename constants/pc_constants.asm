@@ -40,7 +40,6 @@ DEF NUM_BILLS_PC_THEMES EQU const_value
 	const RELEASE_OK
 	const RELEASE_LAST_HEALTHY
 	const RELEASE_EGG
-	const RELEASE_HM
 	const RELEASE_EMPTY
 
 	const_def

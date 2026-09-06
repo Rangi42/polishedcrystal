@@ -2688,12 +2688,7 @@ BillsPC_EggsCantHoldItemsText:
 
 BillsPC_CanReleaseMon:
 ; Verifies if the given mon in box b, slot c, can be released. Sets wTempMon.
-; Returns the following in a:
-; 0: Can release
-; 1: Can't release last healthy mon
-; 2: Can't release Egg
-; 3: Can't release mon knowing HMs
-; 4: Empty slot
+; Returns a `RELEASE_*` enum in a, and `z` iff release is OK.
 	; Is there even anything there?
 	call GetStorageBoxMon
 	ld a, RELEASE_EMPTY
@@ -2884,18 +2879,17 @@ BillsPC_ReleaseAll:
 BillsPC_Release:
 	call BillsPC_GetCursorSlot
 	call BillsPC_CanReleaseMon
+	assert RELEASE_LAST_HEALTHY == 1
 	ld hl, BillsPC_LastPartyMon
-	dec a ; RELEASE_LAST_HEALTHY
+	dec a
 	jr z, .print
+	assert RELEASE_EGG == 2
 	ld hl, .CantReleaseEgg
-	dec a ; RELEASE_EGG
-	jr z, .print
-	ld hl, .CantReleaseHMMons
-	dec a ; RELEASE_HM
+	dec a
 	jr z, .print
 
-	; We don't need to check for empty slot since we can't get to this menu in
-	; that case.
+	; We don't need to check for RELEASE_EMPTY since we can't get to this menu
+	; in that case.
 	call BillsPC_HideCursorAndMode
 	ld hl, .ReallyReleaseMon
 	call MenuTextbox
@@ -2935,11 +2929,6 @@ BillsPC_Release:
 .CantReleaseEgg:
 	text "You can't release"
 	line "an Egg!"
-	prompt
-
-.CantReleaseHMMons:
-	text "You can't release"
-	line "<PK><MN> with HM moves!"
 	prompt
 
 .ReallyReleaseMon:
