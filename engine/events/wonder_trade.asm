@@ -432,7 +432,9 @@ GetGSBallPichu:
 	farcall RemoveMonFromParty
 	farcall TryAddMonToParty
 
-	ld c, ULTRA_BALL
+	ld a, ULTRA_BALL
+	ld [wOTTrademonCaughtBall], a
+	ld c, a
 	farcall SetGiftPartyMonCaughtData
 
 	ld a, [wOTTrademonSpecies]
