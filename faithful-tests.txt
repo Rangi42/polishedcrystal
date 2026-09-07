@@ -1,14 +1,14 @@
 description │An attack that    ┃ │confuses the foe. ┃
-physical │Fighting Physical ┃ │100<BOLDP>/ 50% PP  5   ┃
+physical │                  ┃ │100<BOLDP>/ 50% PP  5   ┃
 description-restored │An attack that    ┃ │confuses the foe. ┃
-status │Ghost    Status   ┃ │---<BOLDP>/---% PP 10   ┃
-surf │Water    Special  ┃ │ 90<BOLDP>/100% PP 15   ┃
+status │                  ┃ │---<BOLDP>/---% PP 10   ┃
+surf │                  ┃ │ 90<BOLDP>/100% PP 15   ┃
 PASS all 81 TMs/HMs, modern categories; scrolling preserves info mode
 PASS Cancel row clears properties and Select is safe
 PASS all 81 TMs/HMs, type-based categories
 sort-menu │How do you want   ┃ │to sort items?    ┃
 PASS alphabetical sort and all 81 mapped properties
-use-menu │Bug      Physical ┃ │ 80<BOLDP>/100% PP 15   ┃
+use-menu │                  ┃ │ 80<BOLDP>/100% PP 15   ┃
 PASS Use/Quit submenu and pocket switching
 empty │                  ┃ │                  ┃
 PASS empty pocket Select and B exit; no crashes
