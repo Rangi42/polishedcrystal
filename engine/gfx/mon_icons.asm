@@ -487,8 +487,8 @@ SetPartyMonMiniAnimSpeed:
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
 	ldh a, [hObjectStructIndexBuffer]
-	ld b, a
-	farcall PlacePartymonHPBar
+	ld hl, wPartyMon1HP
+	call GetPartyLocation
 	call GetHPPal
 .gotindex
 	ld e, d
