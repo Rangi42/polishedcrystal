@@ -904,15 +904,14 @@ wLinkDataEnd::
 
 
 SECTION UNION "Misc 1300", WRAM0
-; link data members
+; decoded link data members (without the serial preamble)
 
 wLinkPlayerName:: ds NAME_LENGTH
 wLinkPartyCount:: db
-wLinkPartySpecies:: ds PARTY_LENGTH
-wLinkPartyEnd:: db ; older code doesn't check PartyCount
 
 UNION
 ; link player data
+wLinkPlayerID:: dw
 wLinkPlayerData::
 for n, 1, PARTY_LENGTH + 1
 wLinkPlayerPartyMon{d:n}:: party_struct wLinkPlayerPartyMon{d:n}
