@@ -110,7 +110,7 @@ TMHM_ShowTMMoveDescription:
 	call TMHM_PrintMoveInfo
 .Icon:
 	farcall LoadTMHMIcon
-	jmp TMHM_JoypadLoop
+	jr TMHM_JoypadLoop
 
 .Cancel:
 	farcall ClearTMHMIcon
