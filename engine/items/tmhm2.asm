@@ -5,6 +5,9 @@ TMHMPocket:
 	ld a, TRUE
 	ldh [hInMenu], a
 	call TMHM_PocketLoop
+	push af
+	call TMHM_ClearMoveIcons
+	pop af
 	ld a, FALSE ; no-optimize a = 0
 	ldh [hInMenu], a
 	ret nc
@@ -83,6 +86,7 @@ TMHM_JoypadLoop:
 	xor 1
 	ld [wTMHMShowMoveInfo], a
 TMHM_ShowTMMoveDescription:
+	call TMHM_ClearMoveIcons
 	call TMHM_GetCurrentTMHM
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
@@ -353,22 +357,71 @@ InnerCheckTMHM:
 	and a
 	ret
 
+TMHM_ClearMoveIcons:
+	call ClearSprites
+	; fallthrough
+TMHM_UpdateMoveIcons:
+	; Transfer sprites during VBlank even while the menu suppresses OAM.
+	ldh a, [hOAMUpdate]
+	push af
+	xor a
+	ldh [hOAMUpdate], a
+	call DelayFrame
+	pop af
+	ldh [hOAMUpdate], a
+	ret
+
 TMHM_PrintMoveInfo:
-	ld hl, Moves + MOVE_TYPE
-	call GetCurMoveProperty
-	ld [wNamedObjectIndex], a
-	farcall GetTypeName
-	hlcoord 1, 14
-	ld de, wStringBuffer1
-	rst PlaceString
+	; The Bag uses all eight BG palettes. Use OBJ palette 0 for the
+	; battle icons so the pocket tabs, text, and TM disc keep their colors.
 	call GetCurMoveFixedCategory
-	ld hl, .Categories
-	ld bc, 9
+	push af
+	ld hl, CategoryIconGFX
+	ld bc, 2 tiles
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	hlcoord 10, 14
-	rst PlaceString
+	ld hl, vTiles0
+	lb bc, BANK(CategoryIconGFX), 2
+	call Request2bpp
+	ld hl, Moves + MOVE_TYPE
+	call GetCurMoveProperty
+	pop bc
+	ld c, a
+	push af
+	ld de, wOBPals1 palette 0 + 2
+	farcall LoadCategoryAndTypePals
+	call SetDefaultBGPAndOBP
+	pop af
+	ld hl, TypeIconGFX
+	ld bc, 4 * TILE_1BPP_SIZE
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	ld hl, vTiles0 tile 2
+	lb bc, BANK(TypeIconGFX), 4
+	call Request1bpp
+
+	; Six 8x8 sprites at textbox coordinates (1, 14) through (6, 14).
+	ld hl, wShadowOAM
+	lb bc, 6, 0
+	ld d, 1 * TILE_WIDTH + 8
+.Icons:
+	ld a, 14 * TILE_WIDTH + 16
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	xor a ; OBJ palette 0
+	ld [hli], a
+	inc c
+	ld a, TILE_WIDTH
+	add d
+	ld d, a
+	dec b
+	jr nz, .Icons
+	call TMHM_UpdateMoveIcons
 	hlcoord 1, 16
 	ld de, .PowAccPP
 	rst PlaceString
@@ -403,13 +456,6 @@ TMHM_PrintMoveInfo:
 	lb bc, 1, 3
 	jmp PrintNum
 
-.Categories:
-	assert PHYSICAL == 0 && SPECIAL == 1 && STATUS == 2
-	table_width 9
-	db "Physical@"
-	db "Special@@"
-	db "Status@@@"
-	assert_table_length NUM_CATEGORIES
 .PowAccPP:
 	db "   <BOLDP>/   % PP   @"
 .NA:
