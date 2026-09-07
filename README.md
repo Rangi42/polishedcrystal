@@ -100,3 +100,66 @@ python3 run_checks.py /tmp/link-party-probe BEFORE.gbc AFTER.gbc \
 `screen` emits a raw PPM framebuffer plus expected/received party bytes.
 `check` asserts an exact round trip; numbers 0..289 select an injected `$FE`.
 The same probe runs against the official 3.1.1 faithful ROM and release symbols.
+
+## Follow-up: upstream comparison and introducing commit
+
+Unmodified pokecrystal does **not** reproduce this specific player-ID escaping
+bug. Tested current upstream `7a7881d0d62e0ddbd82dcf10e7116807487ac651`, built
+without source edits. The resulting `pokecrystal.gbc` SHA-1 is
+`f4cd194bdee0d04ca4eac29e09b8e4e9d818c133`, matching upstream `roms.sha1`.
+
+`upstream_probe.rs` runs the real Gen 2 encoder, receiver copy and patch decoder
+in vibeEmu with a synthetic six-member vanilla party and an ideal byte transfer.
+It compares the entire decoded payload, not just the trainer ID. Trainer IDs
+`$75FE`, `$FE75` and `$FEFE` pass, as do all 290 independent `$FE` injections
+across the player ID and party structs. See `upstream-results.txt`.
+
+The Polished Crystal regression was introduced by
+[a5550be6995d3539d67790672d3ba6423e475c2f](https://github.com/Rangi42/polishedcrystal/commit/a5550be6995d3539d67790672d3ba6423e475c2f)
+(June 7, 2021), "dereference w(OT)PartySpecies, optimize WRAM increment/decrements".
+Its `Link_PrepPartyData_Gen2` change replaces the eight-byte copy of party count,
+six species and terminator with a one-byte party-count write. It likewise
+removes the seven-byte species list from final received-party extraction.
+However, it leaves the encoder's scan start, decoder's patch origins, decoded
+WRAM overlay and copy length unchanged.
+
+Offsets below are decimal and are measured from the start of the respective
+outgoing or decoded buffer; the outgoing buffer includes a six-byte preamble.
+These historical offsets follow directly from that commit and its parent
+`cd8a9af81923d0d2270103fa8a8a7a187a1447c3` (not historical-ROM test runs):
+
+| Field | Before a5550be699 | After a5550be699 |
+| --- | ---: | ---: |
+| Actual outgoing player-ID start | 25 | 18 |
+| Encoder patch scan start | 25 | 25 |
+| Actual decoded player-ID start | 19 | 12 |
+| Decoder patch origin | 19 | 19 |
+
+Thus the first seven unpatched bytes after the count are the player ID and
+first five bytes of Pokémon 1. The old label `wLinkPlayerPartyMon1ID` obscures
+what the outgoing scan actually addresses: before the change it resolves to
+the **player's** ID, because of the overlaid raw/decoded layouts.
+As an additional experiment, removing those seven species-list bytes in RAM
+between unmodified pokecrystal's preparation and escaping routines leaves
+`$75FE` unescaped. This models the payload shortening; it is not a claim to
+have run the 2021 Polished Crystal ROM.
+
+Current pokecrystal makes this much clearer with separate outgoing labels
+(`wLinkSendPartyPartyEnd`, `wLinkSendPartyPlayerID`), decoded labels
+(`wLinkPlayerPatchedData`, `wLinkPlayerID`), and distinct constants for patch-list
+capacity (`SERIAL_PATCH_LIST_LENGTH = 200`) and patchable span
+(`SERIAL_PATCH_DATA_SIZE = $FC`). Its comments explicitly describe what is
+patched, and its decoded copy size is derived from buffer end labels. These
+are useful candidates for a focused follow-up; no upstream refactor was
+ported as part of this investigation.
+
+To rerun the upstream comparison, build the dependency as above, then:
+
+```sh
+rustc --edition=2024 -O upstream_probe.rs \
+  --extern vibe_emu_core=/tmp/libvibe_emu_core.rlib -o /tmp/upstream-link-probe
+/tmp/upstream-link-probe /path/to/pokecrystal/pokecrystal.gbc
+```
+
+The companion `.sym` file is required. These remain routine-level tests;
+physical cable timing and `SC_FAST` are outside their scope.

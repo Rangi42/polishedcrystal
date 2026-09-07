@@ -1,0 +1,5 @@
+PASS unmodified pokecrystal: trainer ID [75, fe], entire decoded payload matches
+PASS unmodified pokecrystal: trainer ID [fe, 75], entire decoded payload matches
+PASS unmodified pokecrystal: trainer ID [fe, fe], entire decoded payload matches
+PASS unmodified pokecrystal: all 290 independent $FE injections, entire decoded payload matches
+Removing the 7 species-list bytes leaves player ID unescaped: true, bytes [75, fe]
