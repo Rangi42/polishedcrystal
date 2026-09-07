@@ -624,12 +624,16 @@ PlacePartyHPBar:
 	pop hl
 	ld d, 6
 	call DrawBattleHPBar
+	ld a, [wHPPalIndex]
+	ld hl, wPartyMon1HP
+	call GetPartyLocation
+	call GetHPPal
 	ld hl, wHPPals
 	ld a, [wHPPalIndex]
 	ld c, a
 	ld b, 0
 	add hl, bc
-	call SetHPPal
+	ld [hl], d
 	farcall ApplyPartyMenuHPPals ; updates wHPPalIndex
 .skip
 	ld hl, wHPPalIndex

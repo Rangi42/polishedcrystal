@@ -176,8 +176,19 @@ HPBarAnim_UpdateTiles:
 	pop de
 .skip
 	call DrawBattleHPBar
-	ld hl, wCurHPAnimPal
-	call SetHPPal
+	; Animation HP values are little-endian. Use the displayed HP, including
+	; the exact final HP when a threshold changes without changing a pixel.
+	ld hl, wCurHPAnimMaxHP
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	call GetHPPalFromHP
+	ld a, d
+	ld [wCurHPAnimPal], a
 	ld c, d
 	farjp ApplyHPBarPals
 

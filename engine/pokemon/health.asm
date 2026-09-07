@@ -98,3 +98,31 @@ ComputeHPBarPixels:
 .zero
 	ld e, 0
 	ret
+
+GetHPPalFromHP:
+; Get palette in d for HP bc and max HP de, independently of bar pixels.
+; Preserve bc and hl. HP is at most 999, so multiplying by 5 fits in 16 bits.
+	push hl
+	ld h, b
+	ld l, c
+	add hl, hl
+	; Green when HP * 2 > max HP.
+	ld a, e
+	sub l
+	ld a, d
+	sbc h
+	ld a, HP_GREEN
+	jr c, .done
+	; Red when HP * 5 < max HP; yellow includes exactly 20% and 50%.
+	add hl, hl
+	add hl, bc
+	ld a, l
+	sub e
+	ld a, h
+	sbc d
+	ld a, HP_YELLOW
+	adc 0 ; HP_RED if carry
+.done
+	ld d, a
+	pop hl
+	ret
