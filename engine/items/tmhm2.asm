@@ -1,4 +1,7 @@
 TMHMPocket:
+	; Start with descriptions whenever entering the pocket.
+	xor a
+	ld [wTMHMShowMoveInfo], a
 	ld a, TRUE
 	ldh [hInMenu], a
 	call TMHM_PocketLoop
@@ -35,7 +38,7 @@ TMHM_PocketLoop:
 	ld [w2DMenuFlags2], a
 	ld a, $20
 	ld [w2DMenuCursorOffsets], a
-	ld a, PAD_A | PAD_B | PAD_START | PAD_CTRL_PAD
+	ld a, PAD_A | PAD_B | PAD_SELECT | PAD_START | PAD_CTRL_PAD
 	ld [wMenuJoypadFilter], a
 	ld a, [wTMHMPocketCursor]
 	and $7f
@@ -71,9 +74,14 @@ TMHM_JoypadLoop:
 	bit B_PAD_A, a
 	jr nz, TMHM_ChooseTMorHM
 	bit B_PAD_B, a
-	jr nz, TMHM_ExitPack
+	jmp nz, TMHM_ExitPack
 	and PAD_RIGHT | PAD_LEFT
 	ret nz
+	bit B_PAD_SELECT, b
+	jr z, TMHM_ShowTMMoveDescription
+	ld a, [wTMHMShowMoveInfo]
+	xor 1
+	ld [wTMHMShowMoveInfo], a
 TMHM_ShowTMMoveDescription:
 	call TMHM_GetCurrentTMHM
 	hlcoord 0, 12
@@ -88,14 +96,21 @@ TMHM_ShowTMMoveDescription:
 	call SetDefaultBGPAndOBP
 	ld a, [wTempTMHM]
 	ld [wCurMove], a
+	ld a, [wTMHMShowMoveInfo]
+	and a
+	jr nz, .MoveInfo
 	hlcoord 1, 14
 	call PrintMoveDesc
+	jr .Icon
+.MoveInfo:
+	call TMHM_PrintMoveInfo
+.Icon:
 	farcall LoadTMHMIcon
-	jr TMHM_JoypadLoop
+	jmp TMHM_JoypadLoop
 
 .Cancel:
 	farcall ClearTMHMIcon
-	jr TMHM_JoypadLoop
+	jmp TMHM_JoypadLoop
 
 TMHM_SortMenu:
 	or 1
@@ -337,6 +352,68 @@ InnerCheckTMHM:
 	pop bc
 	and a
 	ret
+
+TMHM_PrintMoveInfo:
+	ld hl, Moves + MOVE_TYPE
+	call GetCurMoveProperty
+	ld [wNamedObjectIndex], a
+	farcall GetTypeName
+	hlcoord 1, 14
+	ld de, wStringBuffer1
+	rst PlaceString
+	call GetCurMoveFixedCategory
+	ld hl, .Categories
+	ld bc, 9
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	hlcoord 10, 14
+	rst PlaceString
+	hlcoord 1, 16
+	ld de, .PowAccPP
+	rst PlaceString
+	ld hl, Moves + MOVE_POWER
+	call GetCurMoveProperty
+	hlcoord 1, 16
+	cp 2
+	jr nc, .Power
+	ld de, .NA
+	rst PlaceString
+	jr .Accuracy
+.Power:
+	call .PrintStat
+.Accuracy:
+	ld hl, Moves + MOVE_ACC
+	call GetCurMoveProperty
+	hlcoord 6, 16
+	cp -1
+	jr nz, .PrintAccuracy
+	ld de, .NA
+	rst PlaceString
+	jr .PP
+.PrintAccuracy:
+	call .PrintStat
+.PP:
+	ld hl, Moves + MOVE_PP
+	call GetCurMoveProperty
+	hlcoord 13, 16
+.PrintStat:
+	ld [wTextDecimalByte], a
+	ld de, wTextDecimalByte
+	lb bc, 1, 3
+	jmp PrintNum
+
+.Categories:
+	assert PHYSICAL == 0 && SPECIAL == 1 && STATUS == 2
+	table_width 9
+	db "Physical@"
+	db "Special@@"
+	db "Status@@@"
+	assert_table_length NUM_CATEGORIES
+.PowAccPP:
+	db "   <BOLDP>/   % PP   @"
+.NA:
+	db "---@"
 
 PrintMoveDesc:
 	push hl

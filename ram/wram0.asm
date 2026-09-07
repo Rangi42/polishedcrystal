@@ -1166,6 +1166,7 @@ NEXTU
 ; pack
 wCurPocket:: db
 wPackUsedItem:: db
+wTMHMShowMoveInfo:: db
 
 NEXTU
 ; trainer card badges
