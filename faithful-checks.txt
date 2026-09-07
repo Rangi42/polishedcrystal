@@ -1,0 +1,6 @@
+PASS: original Rtas payload reproduces corruption before the fix
+PASS: changing only trainer ID $75FE -> $75FD eliminates corruption before the fix
+PASS: Kido control before the fix
+PASS: Rtas and Kido trainer IDs, parties, OT names and nicknames match exactly after the fix
+PASS: $FE independently injected into each of 290 player-ID/party bytes, including both patch-list boundaries
+PASS: trades and battles reject versions 3/4 and accept version 5

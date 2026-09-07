@@ -1,0 +1,7 @@
+ID [75, fe], first wire bytes [91, b3, a0, b2, 53, 53, 53, 53, 00, 00, 00, 06, 75, fe, 69, b3, 1d, e6, a9, 0e, 75, ff, 00, 50, cc], patches [03, 33, 63, 93, c3, f3, ff, ff, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00]
+expected species [105, 197, 214, 130, 234, 22]; received [179, 143, 0, 0, 120, 0]; differing bytes 265
+Trainer ID + active party + OT names/nicknames exact: false
+render LoadStandardFont
+render LoadFontsBattleExtra
+render LoadTradeScreenGFX
+render InitTradeSpeciesList
