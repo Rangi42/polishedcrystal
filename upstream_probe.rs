@@ -1,7 +1,7 @@
 //! Unmodified pokecrystal Gen 2 link regression comparison for #1179.
 //! Transport is an ideal byte copy; serial timing, mail and a completed trade
-//! are deliberately outside this test. Screenshots are the emulator PPU output
-//! after the ROM draws its trade screen from the decoded party.
+//! are deliberately outside this test. Compare the complete decoded payload
+//! against the original synthetic Gen 2 party data.
 //! Usage: upstream_probe ROM.gbc
 
 use std::{collections::HashMap, env, fs};
