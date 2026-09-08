@@ -1815,12 +1815,7 @@ TownMapBGUpdate:
 	ldh [hBGMapAddress], a
 	ld a, h
 	ldh [hBGMapAddress + 1], a
-	ld a, TRANSFER_ATTRMAP
-	ldh [hBGMapMode], a
-	; wait to update the whole screen's palettes.
-	ld c, 3
-	call DelayFrames
-	call ApplyTilemapInVBlank
+	call ApplyAttrAndTilemapInVBlank
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
