@@ -66,8 +66,6 @@ _Init::
 	ldh [hCGB], a
 	pop af
 	ldh [hCrashCode], a
-	ld a, BANK(@)
-	ldh [hROMBank], a
 
 	call ClearWRAM
 	ld a, 1
