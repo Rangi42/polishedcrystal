@@ -176,8 +176,18 @@ HPBarAnim_UpdateTiles:
 	pop de
 .skip
 	call DrawBattleHPBar
-	ld hl, wCurHPAnimPal
-	call SetHPPal
+	ld hl, wCurHPAnimMaxHP
+	; Get palette in d for the little-endian HP and max HP at hl.
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	call GetHPPalFromHP
+	ld a, d
+	ld [wCurHPAnimPal], a
 	ld c, d
 	farjp ApplyHPBarPals
 
@@ -248,9 +258,9 @@ HPBarAnim_BGMapUpdate:
 	and STAT_MODE ; wait until mode 0
 	jr nz, .waithbl1
 	ld a, b
-	rept 7
+rept 7
 	ld [hli], a
-	endr
+endr
 	xor a
 	ldh [rVBK], a
 	ei
