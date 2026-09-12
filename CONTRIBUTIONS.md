@@ -1,4 +1,4 @@
-These points are guidance/instructions for contributors, including AI agents, to follow when working in the polishedcrystal repository.
+These points are guidance/instructions for contributors, to follow when working in the polishedcrystal repository.
 
 * Consult https://github.com/pret/pokecrystal/wiki/Optimizing-assembly-code for optimization patterns that are applicable any code changes and apply them as necessary.
 * Run `utils/optimize.py` to find common peephole optimizations to resolve or add a `; no-optimize` comment. (This script checks for many of the patterns defined in the Optimizing-assembly-code wiki, but not all.)
