@@ -50,5 +50,4 @@ GetHPPal::
 	ld a, [hli]
 	ld d, a
 	ld e, [hl]
-	farcall GetHPPalFromHP
-	ret
+	farjp GetHPPalFromHP

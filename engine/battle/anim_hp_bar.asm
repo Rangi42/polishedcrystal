@@ -176,9 +176,8 @@ HPBarAnim_UpdateTiles:
 	pop de
 .skip
 	call DrawBattleHPBar
-	; Animation HP values are little-endian. Use the displayed HP, including
-	; the exact final HP when a threshold changes without changing a pixel.
 	ld hl, wCurHPAnimMaxHP
+	; Get palette in d for the little-endian HP and max HP at hl.
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -259,9 +258,9 @@ HPBarAnim_BGMapUpdate:
 	and STAT_MODE ; wait until mode 0
 	jr nz, .waithbl1
 	ld a, b
-	rept 7
+rept 7
 	ld [hli], a
-	endr
+endr
 	xor a
 	ldh [rVBK], a
 	ei
