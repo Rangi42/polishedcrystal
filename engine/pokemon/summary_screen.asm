@@ -463,15 +463,7 @@ SummaryScreen_InitLayout:
 	ret
 
 .PlaceHPBar:
-	ld hl, wTempMonHP
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, wTempMonMaxHP
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	farcall ComputeHPBarPixels
+	ld bc, wTempMonHP
 	ld hl, wCurHPPal
 	call SetHPPal
 	jmp DelayFrame

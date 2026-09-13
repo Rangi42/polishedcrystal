@@ -3915,10 +3915,12 @@ UpdateBattleHUDs:
 	push bc
 	call DrawPlayerHUD
 	ld hl, wPlayerHPPal
+	ld bc, wBattleMonHP
 	call SetHPPal
 	call CheckDanger
 	call DrawEnemyHUD
 	ld hl, wEnemyHPPal
+	ld bc, wEnemyMonHP
 	call SetHPPal
 	jmp PopBCDEHL
 
@@ -4243,17 +4245,20 @@ BattleAnimateHPBar:
 	ret
 
 UpdatePlayerHPPal:
+	ld bc, wBattleMonHP
 	ld hl, wPlayerHPPal
 	jr UpdateHPPal
 
 UpdateEnemyHPPal:
+	ld bc, wEnemyMonHP
 	ld hl, wEnemyHPPal
 	; fallthrough
 UpdateHPPal:
-	ld b, [hl]
-	call SetHPPal
 	ld a, [hl]
-	cp b
+	push af
+	call SetHPPal
+	pop af
+	cp [hl]
 	ret z
 	jmp FinishBattleAnim
 
