@@ -5,7 +5,7 @@ InitializeSwappedPalette::
 UpdateSwappedPalette::
 	; wPaletteSwapAddress points to a `paletteswap` data struct inside
 	; the current map script, so we must be in the [wMapScriptsBank].
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	call SwitchToMapScriptsBank
 

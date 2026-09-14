@@ -80,7 +80,7 @@ PrintNumFromReg::
 FarPrintText::
 	push de
 	ld d, a
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld e, a
 	ld a, d
 	rst Bankswitch

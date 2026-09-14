@@ -50,7 +50,7 @@ DecompressRequest2bpp::
 	; fallthrough
 
 Request2bppInWRA6::
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 	call RunFunctionInWRA6
 

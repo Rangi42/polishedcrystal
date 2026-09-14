@@ -643,7 +643,7 @@ Pokedex_UnsafeSetHBlankFunction:
 PHB_LCDCode:
 LOAD UNION "Misc 404", WRAM0
 wLCDPokedex::
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ldh [hPokedexROMBankBackup], a
 	ld a, BANK(PHB_LCDCode)
 	rst Bankswitch

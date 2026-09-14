@@ -1,7 +1,7 @@
 Script_reanchormap::
 ReanchorMap::
 	call ClearWindowData
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, BANK(ReanchorBGMap_NoOAMUpdate) ; aka BANK(LoadFonts_NoOAMUpdate)
 	rst Bankswitch
@@ -61,7 +61,7 @@ OpenText::
 	ld hl, wWeatherFlags
 	set OW_WEATHER_DISABLED_F, [hl]
 	call ClearWindowData
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, BANK(ReanchorBGMap_NoOAMUpdate) ; aka BANK(LoadFonts_NoOAMUpdate)
 	rst Bankswitch

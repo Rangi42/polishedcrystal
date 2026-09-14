@@ -34,7 +34,7 @@ _RstFarCall::
 
 ; Write return bank to sp+10
 	ld hl, sp + 10
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld [hli], a
 
 ; Get function bank and address in a:de
@@ -108,7 +108,7 @@ _DoFarCall:
 ; +2 saved hl
 ; +0 saved af
 ; Write return bank to sp+0
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld hl, sp + 4
 	ld [hl], a
 	pop af
@@ -161,7 +161,7 @@ AnonBankPush::
 
 ; Write return bank to sp+10
 	ld hl, sp + 10
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld d, [hl] ; HIGH(return address)
 	ld [hld], a
 
@@ -211,7 +211,7 @@ StackCallInBankA:
 	ld hl, sp + 8
 	ld d, [hl]
 	ld e, a
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld [hld], a
 	ld a, e
 
