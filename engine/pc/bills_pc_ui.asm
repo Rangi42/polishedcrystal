@@ -473,7 +473,7 @@ _BillsPC_SetCursorMode:
 INCLUDE "gfx/pc/cursor.pal"
 
 BillsPC_SafeRequest1bppInWRA6::
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 	call RunFunctionInWRA6
 .Function:
@@ -484,7 +484,7 @@ BillsPC_SafeRequest1bppInWRA6::
 	jr .Function
 
 BillsPC_SafeRequest2bppInWRA6::
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 	call RunFunctionInWRA6
 

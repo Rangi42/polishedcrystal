@@ -152,7 +152,7 @@ GetName:
 	adc HIGH(.NamesPointers)
 	sub l
 	ld h, a
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, [hli]
 	ld b, a

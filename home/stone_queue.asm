@@ -1,5 +1,5 @@
 HandleStoneTableAction::
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	call SwitchToMapScriptsBank
