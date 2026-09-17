@@ -78,7 +78,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * mauvesea for sprites and animations including Hisuian Arcanine, Hisuian Growlithe (animation and back sprite), Alolan Raticate (back), Alolan Rattata (back), Alolan Sandshrew (front, back, animation), Paldean Wooper (back), the Pokédex icon and overworld sprite, Crys's fishing sprites and DJ Mary's overworld sprite.
 * ShadowOne333 for Hitmonchan's and Gengar's front sprite and animations, and back sprites of Hitmonchan, Gengar, Suicune, and Alolan Grimer.
 * ShadowOne333 and mauvesea for Annihilape's and Alolan Sandslash's front and back sprites.
-* FrenchOrange for Ruins of Alph tiles and Boarder's overworld sprite.
+* FrenchOrange for Ruins of Alph tiles, Boarder's overworld sprite, and surfing Pikachu's overworld sprite.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
