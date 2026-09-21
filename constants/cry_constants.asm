@@ -73,4 +73,5 @@
 	const CRY_DUNSPARCE
 	const CRY_DONPHAN
 
+
 DEF NUM_CRIES EQU const_value

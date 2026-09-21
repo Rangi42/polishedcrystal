@@ -70,4 +70,5 @@ Cries:
 	fardw Cry_Tyrogue
 	fardw Cry_Dunsparce
 	fardw Cry_Donphan
+
 	assert_table_length NUM_CRIES
