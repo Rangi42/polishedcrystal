@@ -11,69 +11,69 @@ Cry_Custom_446:
 
 Cry_Custom_446_Ch5:
 	duty_cycle 2
-	square_note 1, 11, 8, 592
+	square_note 1, 13, 8, 592
 	duty_cycle 1
-	square_note 1, 12, 8, 592
+	square_note 1, 14, 8, 592
 	duty_cycle 2
-	square_note 1, 13, 8, 592
-	square_note 1, 13, 8, 592
-	square_note 1, 13, 8, 654
+	square_note 1, 15, 8, 592
+	square_note 1, 15, 8, 592
+	square_note 1, 15, 8, 654
 	duty_cycle 0
-	square_note 1, 8, 8, 1580
-	square_note 1, 10, 8, 1580
-	square_note 1, 11, 8, 711
+	square_note 1, 9, 8, 1580
+	square_note 1, 11, 8, 1580
+	square_note 1, 13, 8, 711
 	duty_cycle 2
-	square_note 1, 13, 8, 1746
-	square_note 1, 13, 8, 592
-	square_note 1, 12, 8, 592
-	square_note 1, 13, 8, 592
-	square_note 1, 10, 8, 592
-	square_note 1, 10, 8, 592
-	square_note 1, 5, 8, 592
+	square_note 1, 15, 8, 1746
+	square_note 1, 15, 8, 592
+	square_note 1, 14, 8, 592
+	square_note 1, 15, 8, 592
+	square_note 1, 11, 8, 592
+	square_note 1, 11, 8, 592
+	square_note 1, 6, 8, 592
 	square_note 1, 3, 8, 592
 	square_note 0, 0, 8, 0
 	sound_ret
 
 Cry_Custom_446_Ch6:
 	duty_cycle 2
-	square_note 1, 5, 8, 1831
-	square_note 1, 5, 8, 1838
-	square_note 1, 7, 8, 1653
+	square_note 1, 11, 8, 1831
+	square_note 1, 11, 8, 1838
+	square_note 1, 15, 8, 1653
 	duty_cycle 0
-	square_note 1, 4, 8, 1593
+	square_note 1, 9, 8, 1593
 	square_note 1, 0, 8, 0
-	square_note 1, 2, 8, 1436
+	square_note 1, 4, 8, 1436
 	duty_cycle 2
-	square_note 1, 3, 8, 1393
-	square_note 1, 5, 8, 1602
-	square_note 1, 6, 8, 1580
-	square_note 1, 5, 8, 1722
+	square_note 1, 6, 8, 1393
+	square_note 1, 11, 8, 1602
+	square_note 1, 13, 8, 1580
+	square_note 1, 11, 8, 1722
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	duty_cycle 0
-	square_note 1, 5, 8, 1662
+	square_note 1, 11, 8, 1662
 	square_note 1, 0, 8, 0
-	square_note 1, 2, 8, 1667
+	square_note 1, 4, 8, 1667
 	square_note 1, 0, 8, 0
 	square_note 0, 0, 8, 0
 	sound_ret
 
 Cry_Custom_446_Ch8:
+	noise_note 1, 13, 8, 44
+	noise_note 1, 10, 8, 44
+	noise_note 1, 8, 8, 44
 	noise_note 1, 5, 8, 44
-	noise_note 1, 4, 8, 44
+	noise_note 1, 5, 8, 44
+	noise_note 1, 5, 8, 44
+	noise_note 1, 8, 8, 44
+	noise_note 1, 13, 8, 44
+	noise_note 1, 15, 8, 44
+	noise_note 1, 10, 8, 44
+	noise_note 1, 15, 8, 44
+	noise_note 1, 10, 8, 44
+	noise_note 1, 13, 8, 44
+	noise_note 1, 10, 8, 44
+	noise_note 1, 5, 8, 44
 	noise_note 1, 3, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 5, 8, 44
-	noise_note 1, 6, 8, 44
-	noise_note 1, 4, 8, 44
-	noise_note 1, 6, 8, 44
-	noise_note 1, 4, 8, 44
-	noise_note 1, 5, 8, 44
-	noise_note 1, 4, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 1, 8, 44
 	noise_note 0, 0, 8, 44
 	sound_ret

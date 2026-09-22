@@ -11,24 +11,24 @@ Cry_Custom_904:
 
 Cry_Custom_904_Ch5:
 	duty_cycle 1
-	square_note 1, 5, 8, 1767
+	square_note 1, 7, 8, 1767
 	duty_cycle 0
-	square_note 1, 11, 8, 918
+	square_note 1, 15, 8, 918
 	duty_cycle 1
-	square_note 1, 6, 8, 1813
+	square_note 1, 8, 8, 1813
 	duty_cycle 3
-	square_note 1, 8, 8, 1112
+	square_note 1, 11, 8, 1112
 	duty_cycle 0
-	square_note 1, 3, 8, 834
+	square_note 1, 4, 8, 834
 	duty_cycle 3
-	square_note 1, 2, 8, 974
+	square_note 1, 3, 8, 974
 	duty_cycle 0
 	square_note 1, 1, 8, 1424
 	duty_cycle 3
 	square_note 1, 1, 8, 878
-	square_note 1, 9, 8, 1277
+	square_note 1, 12, 8, 1277
 	duty_cycle 0
-	square_note 1, 4, 8, 1208
+	square_note 1, 5, 8, 1208
 	duty_cycle 2
 	square_note 1, 1, 8, 1643
 	square_note 1, 0, 8, 0
@@ -49,20 +49,20 @@ Cry_Custom_904_Ch5:
 
 Cry_Custom_904_Ch6:
 	duty_cycle 0
-	square_note 1, 2, 8, 1617
-	square_note 1, 5, 8, 1757
+	square_note 1, 6, 8, 1617
+	square_note 1, 15, 8, 1757
 	duty_cycle 2
-	square_note 1, 3, 8, 1747
-	square_note 1, 4, 8, 1755
-	square_note 1, 1, 8, 1830
-	square_note 1, 1, 8, 1892
-	square_note 1, 1, 8, 1295
+	square_note 1, 9, 8, 1747
+	square_note 1, 12, 8, 1755
+	square_note 1, 3, 8, 1830
+	square_note 1, 3, 8, 1892
+	square_note 1, 3, 8, 1295
 	square_note 1, 0, 8, 0
 	duty_cycle 0
-	square_note 1, 3, 8, 1731
-	square_note 1, 2, 8, 1722
+	square_note 1, 9, 8, 1731
+	square_note 1, 6, 8, 1722
 	duty_cycle 2
-	square_note 1, 1, 8, 1781
+	square_note 1, 3, 8, 1781
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
@@ -80,17 +80,17 @@ Cry_Custom_904_Ch6:
 	sound_ret
 
 Cry_Custom_904_Ch8:
+	noise_note 1, 8, 8, 44
+	noise_note 1, 15, 8, 44
+	noise_note 1, 10, 8, 44
+	noise_note 1, 10, 8, 44
 	noise_note 1, 3, 8, 44
-	noise_note 1, 6, 8, 44
-	noise_note 1, 4, 8, 44
-	noise_note 1, 4, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 5, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
+	noise_note 1, 3, 8, 44
+	noise_note 1, 3, 8, 44
+	noise_note 1, 3, 8, 44
+	noise_note 1, 13, 8, 44
+	noise_note 1, 3, 8, 44
+	noise_note 1, 3, 8, 44
 	noise_note 1, 0, 8, 44
 	noise_note 1, 0, 8, 44
 	noise_note 1, 0, 8, 44

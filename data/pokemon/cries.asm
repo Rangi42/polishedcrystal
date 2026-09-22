@@ -258,44 +258,44 @@ PokemonCries::
 	mon_cry CRY_TYPHLOSION,  $000,  $100 ; Lugia
 	mon_cry CRY_TYROGUE,     $000,  $180 ; HoOh
 	mon_cry CRY_ENTEI,       $14a,  $111 ; Celebi
-	mon_cry CRY_MARILL,      $11b,  $120 ; Azurill
-	mon_cry CRY_AMPHAROS,    $27b,  $144 ; Wynaut
-	mon_cry CRY_TYROGUE,    -$051,  $0e8 ; Ambipom
+	mon_cry CRY_AZURILL,        0,   256 ; Azurill
+	mon_cry CRY_WYNAUT,         4,   256 ; Wynaut
+	mon_cry CRY_AMBIPOM,        8,   256 ; Ambipom
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg
 	mon_cry CRY_NIDORAN_M,      0,     0 ; $100
-	mon_cry CRY_HOOTHOOT,    $130,  $0e8 ; Mismagius
-	mon_cry CRY_MARILL,     -$01f,  $180 ; Honchkrow
-	mon_cry CRY_BELLOSSOM,   $f40,  $180 ; Bonsly
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mime Jr.
-	mon_cry CRY_PIDGEOTTO,   $00a,  $140 ; Happiny
-	mon_cry CRY_GRIMER,      $055,  $081 ; Munchlax
-	mon_cry CRY_MANTINE,    -$0be,  $0f0 ; Mantyke
-	mon_cry CRY_WOOPER,      $053,  $0af ; Weavile
-	mon_cry CRY_METAPOD,     $020,  $140 ; Magnezone
-	mon_cry CRY_SEEL,        $000,  $100 ; Lickilicky
-	mon_cry CRY_RHYDON,      $000,  $100 ; Rhyperior
-	mon_cry CRY_GOLEM,       $000,  $100 ; Tangrowth
-	mon_cry CRY_VOLTORB,     $08f,  $17f ; Electivire
-	mon_cry CRY_CHARMANDER,  $0ff,  $0b0 ; Magmortar
-	mon_cry CRY_TOGETIC,     $03b,  $038 ; Togekiss
-	mon_cry CRY_TOTODILE,    $031,  $0c8 ; Yanmega
-	mon_cry CRY_VENONAT,     $03d,  $160 ; Leafeon
-	mon_cry CRY_VENONAT,     $0b0,  $16f ; Glaceon
-	mon_cry CRY_GLIGAR,     -$102,  $100 ; Gliscor
-	mon_cry CRY_MAGCARGO,   -$109,  $100 ; Mamoswine
-	mon_cry CRY_GIRAFARIG,   $073,  $240 ; PorygonZ
-	mon_cry CRY_VENONAT,     $0b0,  $16f ; Sylveon
-	mon_cry CRY_CLEFAIRY,    $077,  $090 ; Perrserker
-	mon_cry CRY_MAGCARGO,    $0a1,  $0e8 ; Cursola
-	mon_cry CRY_FARFETCH_D,  $0dd,  $081 ; SirfetchD
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mr.Rime
-	mon_cry CRY_TYROGUE,    -$160,  $180 ; Wyrdeer
-	mon_cry CRY_CATERPIE,    $000,  $100 ; Kleavor
-	mon_cry CRY_TEDDIURSA,   $640,  $0d8 ; Ursaluna
-	mon_cry CRY_WOOPER,      $053,  $0af ; Sneasler
-	mon_cry CRY_SLOWKING,    $160,  $0e0 ; Overqwil
-	mon_cry CRY_DUNSPARCE,   $1c4,  $100 ; Dudunsparce
-	mon_cry CRY_GIRAFARIG,   $041,  $200 ; Farigiraf
-	mon_cry CRY_WOOPER,     -$0c6,  $140 ; Clodsire
-	mon_cry CRY_NIDOQUEEN,   $0af,  $0c0 ; Annihilape
+	mon_cry CRY_MISMAGIUS,      8,   256 ; Mismagius
+	mon_cry CRY_HONCHKROW,    -20,   256 ; Honchkrow
+	mon_cry CRY_BONSLY,        -8,   256 ; Bonsly
+	mon_cry CRY_MIME_JR_,       4,   256 ; MimeJr
+	mon_cry CRY_HAPPINY,      -16,   256 ; Happiny
+	mon_cry CRY_MUNCHLAX,       0,   256 ; Munchlax
+	mon_cry CRY_MANTYKE,        0,   294 ; Mantyke (sounds bad)
+	mon_cry CRY_WEAVILE,        2,   256 ; Weavile
+	mon_cry CRY_MAGNEZONE,    -16,   256 ; Magnezone
+	mon_cry CRY_LICKILICKY,    -2,   256 ; Lickilicky
+	mon_cry CRY_RHYPERIOR,     -4,   256 ; Rhyperior
+	mon_cry CRY_TANGROWTH,      4,   256 ; Tangrowth
+	mon_cry CRY_ELECTIVIRE,    16,   256 ; Electivire
+	mon_cry CRY_MAGMORTAR,      0,   256 ; Magmortar
+	mon_cry CRY_TOGEKISS,       0,   256 ; Togekiss
+	mon_cry CRY_YANMEGA,       -4,   256 ; Yanmega
+	mon_cry CRY_LEAFEON,       -4,   256 ; Leafeon
+	mon_cry CRY_GLACEON,        0,   256 ; Glaceon
+	mon_cry CRY_GLISCOR,        8,   256 ; Gliscor
+	mon_cry CRY_MAMOSWINE,     -2,   256 ; Mamoswine
+	mon_cry CRY_PORYGON_Z,      0,   256 ; PorygonZ
+	mon_cry CRY_SYLVEON,        0,   256 ; Sylveon
+	mon_cry CRY_PERRSERKER,    -4,   256 ; Perrserker (sounds bad)
+	mon_cry CRY_CURSOLA,        0,   256 ; Cursola (sounds bad)
+	mon_cry CRY_SIRFETCH_D,    -4,   256 ; Sirfetchd
+	mon_cry CRY_MR__RIME,     -96,   256 ; MrRime
+	mon_cry CRY_WYRDEER,     -242,   284 ; Wyrdeer (sounds bad)
+	mon_cry CRY_KLEAVOR,     -256,   256 ; Kleavor (sounds bad)
+	mon_cry CRY_URSALUNA,    -256,   256 ; Ursaluna (sounds bad)
+	mon_cry CRY_SNEASLER,       0,   256 ; Sneasler (sounds bad)
+	mon_cry CRY_OVERQWIL,       0,   256 ; Overqwil (sounds bad)
+	mon_cry CRY_DUDUNSPARCE,   -6,   256 ; Dudunsparce
+	mon_cry CRY_FARIGIRAF,      0,   256 ; Farigiraf (sounds bad)
+	mon_cry CRY_CLODSIRE,      -8,   256 ; Clodsire (sounds bad)
+	mon_cry CRY_ANNIHILAPE,  -256,   256 ; Annihilape (sounds bad)
 	assert_table_length NUM_SPECIES

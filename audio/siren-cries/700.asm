@@ -12,100 +12,100 @@ Cry_Custom_700:
 
 Cry_Custom_700_Ch5:
 	duty_cycle 2
-	square_note 0, 4, 8, 2007
-	square_note 0, 10, 8, 1969
-	square_note 0, 8, 8, 1980
-	square_note 0, 13, 8, 1984
-	square_note 0, 13, 8, 1991
-	square_note 0, 13, 8, 1998
-	square_note 0, 13, 8, 2000
-	square_note 0, 13, 8, 2001
-	square_note 0, 12, 8, 2001
+	square_note 0, 5, 8, 2007
+	square_note 0, 11, 8, 1969
+	square_note 0, 9, 8, 1980
+	square_note 0, 15, 8, 1984
+	square_note 0, 15, 8, 1991
+	square_note 0, 15, 8, 1998
+	square_note 0, 15, 8, 2000
+	square_note 0, 15, 8, 2001
+	square_note 0, 14, 8, 2001
+	square_note 0, 6, 8, 2001
 	square_note 0, 5, 8, 2001
-	square_note 0, 4, 8, 2001
 	square_note 0, 3, 8, 2001
 	square_note 0, 3, 8, 1999
-	square_note 0, 4, 8, 1995
-	square_note 0, 6, 8, 1993
-	square_note 0, 8, 8, 1988
-	square_note 0, 8, 8, 2016
-	square_note 0, 9, 8, 2015
-	square_note 0, 10, 8, 2013
+	square_note 0, 5, 8, 1995
+	square_note 0, 7, 8, 1993
+	square_note 0, 9, 8, 1988
+	square_note 0, 9, 8, 2016
+	square_note 0, 10, 8, 2015
+	square_note 0, 11, 8, 2013
 	duty_cycle 0
-	square_note 0, 6, 8, 1977
+	square_note 0, 7, 8, 1977
 	duty_cycle 2
-	square_note 0, 7, 8, 1976
-	square_note 0, 7, 8, 1973
-	duty_cycle 1
-	square_note 0, 6, 8, 1970
-	square_note 0, 5, 8, 1968
-	square_note 0, 6, 8, 1967
-	square_note 0, 5, 8, 1965
-	square_note 0, 8, 8, 1967
-	duty_cycle 2
-	square_note 0, 6, 8, 1964
-	square_note 0, 8, 8, 1958
-	square_note 0, 5, 8, 1956
-	square_note 0, 5, 8, 1998
-	square_note 0, 10, 8, 1995
-	duty_cycle 3
-	square_note 0, 12, 8, 1947
-	duty_cycle 2
-	square_note 0, 10, 8, 1996
-	duty_cycle 1
-	square_note 0, 10, 8, 1948
-	duty_cycle 3
-	square_note 0, 11, 8, 1949
-	duty_cycle 2
-	square_note 0, 9, 8, 2000
-	duty_cycle 1
-	square_note 0, 9, 8, 1955
-	duty_cycle 3
-	square_note 0, 13, 8, 1958
-	duty_cycle 1
-	square_note 0, 13, 8, 1964
-	duty_cycle 3
-	square_note 0, 13, 8, 1964
-	duty_cycle 2
-	square_note 0, 9, 8, 2006
-	duty_cycle 1
-	square_note 0, 10, 8, 1965
-	duty_cycle 2
-	square_note 0, 9, 8, 2007
-	square_note 0, 6, 8, 2007
-	square_note 0, 6, 8, 2008
-	duty_cycle 0
-	square_note 0, 8, 8, 1969
-	duty_cycle 2
-	square_note 0, 9, 8, 2009
-	duty_cycle 0
-	square_note 0, 7, 8, 1973
-	duty_cycle 1
-	square_note 0, 10, 8, 1973
+	square_note 0, 8, 8, 1976
 	square_note 0, 8, 8, 1973
-	duty_cycle 0
-	square_note 0, 9, 8, 1974
-	duty_cycle 2
-	square_note 0, 6, 8, 2011
-	duty_cycle 0
-	square_note 0, 8, 8, 1975
-	duty_cycle 2
-	square_note 0, 6, 8, 2012
-	duty_cycle 3
-	square_note 0, 6, 8, 1978
-	duty_cycle 2
-	square_note 0, 5, 8, 2014
 	duty_cycle 1
-	square_note 0, 5, 8, 1982
-	duty_cycle 3
-	square_note 0, 6, 8, 1984
-	duty_cycle 1
-	square_note 0, 6, 8, 1985
+	square_note 0, 7, 8, 1970
+	square_note 0, 6, 8, 1968
+	square_note 0, 7, 8, 1967
+	square_note 0, 6, 8, 1965
+	square_note 0, 9, 8, 1967
 	duty_cycle 2
-	square_note 0, 5, 8, 1986
-	square_note 0, 4, 8, 1988
-	square_note 0, 5, 8, 1989
-	square_note 1, 5, 8, 1990
+	square_note 0, 7, 8, 1964
+	square_note 0, 9, 8, 1958
+	square_note 0, 6, 8, 1956
+	square_note 0, 6, 8, 1998
+	square_note 0, 11, 8, 1995
+	duty_cycle 3
+	square_note 0, 14, 8, 1947
+	duty_cycle 2
+	square_note 0, 11, 8, 1996
+	duty_cycle 1
+	square_note 0, 11, 8, 1948
+	duty_cycle 3
+	square_note 0, 13, 8, 1949
+	duty_cycle 2
+	square_note 0, 10, 8, 2000
+	duty_cycle 1
+	square_note 0, 10, 8, 1955
+	duty_cycle 3
+	square_note 0, 15, 8, 1958
+	duty_cycle 1
+	square_note 0, 15, 8, 1964
+	duty_cycle 3
+	square_note 0, 15, 8, 1964
+	duty_cycle 2
+	square_note 0, 10, 8, 2006
+	duty_cycle 1
+	square_note 0, 11, 8, 1965
+	duty_cycle 2
+	square_note 0, 10, 8, 2007
+	square_note 0, 7, 8, 2007
+	square_note 0, 7, 8, 2008
+	duty_cycle 0
+	square_note 0, 9, 8, 1969
+	duty_cycle 2
+	square_note 0, 10, 8, 2009
+	duty_cycle 0
+	square_note 0, 8, 8, 1973
+	duty_cycle 1
+	square_note 0, 11, 8, 1973
+	square_note 0, 9, 8, 1973
+	duty_cycle 0
+	square_note 0, 10, 8, 1974
+	duty_cycle 2
+	square_note 0, 7, 8, 2011
+	duty_cycle 0
+	square_note 0, 9, 8, 1975
+	duty_cycle 2
+	square_note 0, 7, 8, 2012
+	duty_cycle 3
+	square_note 0, 7, 8, 1978
+	duty_cycle 2
+	square_note 0, 6, 8, 2014
+	duty_cycle 1
+	square_note 0, 6, 8, 1982
+	duty_cycle 3
+	square_note 0, 7, 8, 1984
+	duty_cycle 1
+	square_note 0, 7, 8, 1985
+	duty_cycle 2
+	square_note 0, 6, 8, 1986
+	square_note 0, 5, 8, 1988
+	square_note 0, 6, 8, 1989
+	square_note 1, 6, 8, 1990
 	square_note 0, 3, 8, 1992
 	square_note 0, 1, 8, 1994
 	square_note 0, 1, 8, 1996
@@ -114,11 +114,11 @@ Cry_Custom_700_Ch5:
 
 Cry_Custom_700_Ch6:
 	duty_cycle 2
-	square_note 0, 2, 8, 1972
-	square_note 0, 5, 8, 1977
+	square_note 0, 6, 8, 1972
+	square_note 0, 15, 8, 1977
 	square_note 10, 0, 8, 0
-	square_note 0, 2, 8, 1999
-	square_note 0, 4, 8, 2001
+	square_note 0, 6, 8, 1999
+	square_note 0, 12, 8, 2001
 	square_note 79, 0, 8, 0
 	sound_ret
 
@@ -184,43 +184,43 @@ Cry_Custom_700_Ch7:
 	sound_ret
 
 Cry_Custom_700_Ch8:
-	noise_note 0, 1, 8, 100
 	noise_note 0, 3, 8, 100
-	noise_note 0, 1, 8, 100
-	noise_note 0, 2, 8, 100
-	noise_note 1, 1, 8, 100
+	noise_note 0, 9, 8, 100
+	noise_note 0, 3, 8, 100
+	noise_note 0, 6, 8, 100
+	noise_note 1, 3, 8, 100
 	noise_note 0, 0, 8, 0
-	noise_note 0, 3, 8, 100
-	noise_note 0, 5, 8, 100
-	noise_note 1, 2, 8, 100
-	noise_note 1, 1, 8, 100
-	noise_note 0, 2, 8, 100
-	noise_note 1, 4, 8, 100
-	noise_note 5, 1, 8, 100
-	noise_note 1, 2, 8, 100
-	noise_note 1, 1, 8, 100
-	noise_note 0, 2, 8, 100
-	noise_note 0, 1, 8, 100
-	noise_note 0, 4, 8, 100
-	noise_note 2, 2, 8, 100
+	noise_note 0, 9, 8, 100
+	noise_note 0, 15, 8, 100
+	noise_note 1, 6, 8, 100
 	noise_note 1, 3, 8, 100
-	noise_note 5, 2, 8, 100
-	noise_note 0, 3, 8, 100
-	noise_note 1, 2, 8, 100
-	noise_note 0, 3, 8, 100
-	noise_note 0, 2, 8, 100
-	noise_note 0, 1, 8, 100
-	noise_note 1, 2, 8, 100
-	noise_note 0, 1, 8, 100
-	noise_note 5, 2, 8, 100
-	noise_note 2, 1, 8, 100
+	noise_note 0, 6, 8, 100
+	noise_note 1, 12, 8, 100
+	noise_note 5, 3, 8, 100
+	noise_note 1, 6, 8, 100
 	noise_note 1, 3, 8, 100
-	noise_note 0, 4, 8, 100
-	noise_note 0, 2, 8, 100
+	noise_note 0, 6, 8, 100
 	noise_note 0, 3, 8, 100
-	noise_note 0, 2, 8, 100
+	noise_note 0, 12, 8, 100
+	noise_note 2, 6, 8, 100
+	noise_note 1, 9, 8, 100
+	noise_note 5, 6, 8, 100
+	noise_note 0, 9, 8, 100
+	noise_note 1, 6, 8, 100
+	noise_note 0, 9, 8, 100
+	noise_note 0, 6, 8, 100
 	noise_note 0, 3, 8, 100
-	noise_note 0, 2, 8, 100
-	noise_note 0, 1, 8, 100
+	noise_note 1, 6, 8, 100
+	noise_note 0, 3, 8, 100
+	noise_note 5, 6, 8, 100
+	noise_note 2, 3, 8, 100
+	noise_note 1, 9, 8, 100
+	noise_note 0, 12, 8, 100
+	noise_note 0, 6, 8, 100
+	noise_note 0, 9, 8, 100
+	noise_note 0, 6, 8, 100
+	noise_note 0, 9, 8, 100
+	noise_note 0, 6, 8, 100
+	noise_note 0, 3, 8, 100
 	noise_note 27, 0, 8, 0
 	sound_ret

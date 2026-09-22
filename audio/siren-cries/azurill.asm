@@ -11,31 +11,31 @@ Cry_azurill:
 
 Cry_azurill_Ch5:
 	duty_cycle 2
-	square_note 0, 3, 8, 1987
-	square_note 1, 4, 8, 1987
-	square_note 0, 5, 8, 1986
-	square_note 1, 5, 8, 1985
-	square_note 1, 5, 8, 1984
-	square_note 0, 4, 8, 1983
-	square_note 0, 5, 8, 1982
-	square_note 0, 2, 8, 1982
-	square_note 0, 1, 8, 1980
-	square_note 0, 1, 8, 1979
-	square_note 0, 2, 8, 1980
-	square_note 0, 3, 8, 1978
-	square_note 0, 4, 8, 1995
-	square_note 0, 3, 8, 1996
-	square_note 0, 2, 8, 1996
-	square_note 0, 3, 8, 1996
-	square_note 0, 4, 8, 1995
-	square_note 0, 4, 8, 1994
-	square_note 0, 5, 8, 1993
-	square_note 0, 3, 8, 1993
-	square_note 0, 4, 8, 1991
-	square_note 0, 2, 8, 1990
-	square_note 0, 1, 8, 1990
-	square_note 1, 2, 8, 1989
-	square_note 0, 1, 8, 1988
+	square_note 0, 9, 8, 1987
+	square_note 1, 12, 8, 1987
+	square_note 0, 15, 8, 1986
+	square_note 1, 15, 8, 1985
+	square_note 1, 15, 8, 1984
+	square_note 0, 12, 8, 1983
+	square_note 0, 15, 8, 1982
+	square_note 0, 6, 8, 1982
+	square_note 0, 3, 8, 1980
+	square_note 0, 3, 8, 1979
+	square_note 0, 6, 8, 1980
+	square_note 0, 9, 8, 1978
+	square_note 0, 12, 8, 1995
+	square_note 0, 9, 8, 1996
+	square_note 0, 6, 8, 1996
+	square_note 0, 9, 8, 1996
+	square_note 0, 12, 8, 1995
+	square_note 0, 12, 8, 1994
+	square_note 0, 15, 8, 1993
+	square_note 0, 9, 8, 1993
+	square_note 0, 12, 8, 1991
+	square_note 0, 6, 8, 1990
+	square_note 0, 3, 8, 1990
+	square_note 1, 6, 8, 1989
+	square_note 0, 3, 8, 1988
 	sound_ret
 
 Cry_azurill_Ch7:
@@ -56,12 +56,12 @@ Cry_azurill_Ch7:
 	sound_ret
 
 Cry_azurill_Ch8:
-	noise_note 8, 1, 8, 92
-	noise_note 0, 2, 8, 92
-	noise_note 0, 1, 8, 92
+	noise_note 8, 8, 8, 92
+	noise_note 0, 15, 8, 92
+	noise_note 0, 8, 8, 92
 	noise_note 1, 0, 8, 0
-	noise_note 11, 1, 8, 92
+	noise_note 11, 8, 8, 92
 	noise_note 0, 0, 8, 0
-	noise_note 1, 1, 8, 92
+	noise_note 1, 8, 8, 92
 	noise_note 0, 0, 8, 0
 	sound_ret

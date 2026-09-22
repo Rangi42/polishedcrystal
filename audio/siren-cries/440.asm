@@ -11,50 +11,50 @@ Cry_Custom_440:
 
 Cry_Custom_440_Ch5:
 	duty_cycle 1
-	square_note 0, 5, 8, 1928
+	square_note 0, 15, 8, 1928
 	duty_cycle 3
-	square_note 0, 5, 8, 1923
+	square_note 0, 15, 8, 1923
 	duty_cycle 2
-	square_note 0, 5, 8, 1972
+	square_note 0, 15, 8, 1972
 	duty_cycle 3
-	square_note 0, 5, 8, 1895
+	square_note 0, 15, 8, 1895
 	duty_cycle 2
-	square_note 0, 3, 8, 1977
-	square_note 0, 5, 8, 1975
-	square_note 0, 5, 8, 1974
+	square_note 0, 9, 8, 1977
+	square_note 0, 15, 8, 1975
+	square_note 0, 15, 8, 1974
 	duty_cycle 3
-	square_note 0, 5, 8, 1900
+	square_note 0, 15, 8, 1900
 	duty_cycle 1
-	square_note 0, 4, 8, 1898
+	square_note 0, 12, 8, 1898
 	duty_cycle 2
-	square_note 0, 1, 8, 1950
-	square_note 0, 2, 8, 1974
-	square_note 0, 2, 8, 1975
+	square_note 0, 3, 8, 1950
+	square_note 0, 6, 8, 1974
+	square_note 0, 6, 8, 1975
 	duty_cycle 3
-	square_note 0, 3, 8, 1904
+	square_note 0, 9, 8, 1904
 	square_note 2, 0, 8, 0
 	duty_cycle 2
-	square_note 0, 5, 8, 1983
+	square_note 0, 15, 8, 1983
 	duty_cycle 3
-	square_note 0, 5, 8, 1919
+	square_note 0, 15, 8, 1919
 	duty_cycle 1
-	square_note 0, 5, 8, 1923
+	square_note 0, 15, 8, 1923
 	duty_cycle 2
-	square_note 0, 4, 8, 1947
-	square_note 0, 1, 8, 1968
-	square_note 0, 4, 8, 1968
+	square_note 0, 12, 8, 1947
+	square_note 0, 3, 8, 1968
+	square_note 0, 12, 8, 1968
 	duty_cycle 3
-	square_note 0, 4, 8, 1937
+	square_note 0, 12, 8, 1937
 	duty_cycle 2
-	square_note 0, 4, 8, 1962
+	square_note 0, 12, 8, 1962
 	duty_cycle 1
-	square_note 0, 4, 8, 1882
+	square_note 0, 12, 8, 1882
 	duty_cycle 2
-	square_note 0, 2, 8, 1960
-	square_note 0, 1, 8, 1966
-	square_note 0, 1, 8, 1987
-	square_note 0, 1, 8, 1992
-	square_note 0, 1, 8, 1993
+	square_note 0, 6, 8, 1960
+	square_note 0, 3, 8, 1966
+	square_note 0, 3, 8, 1987
+	square_note 0, 3, 8, 1992
+	square_note 0, 3, 8, 1993
 	square_note 0, 0, 8, 0
 	sound_ret
 
@@ -91,15 +91,15 @@ Cry_Custom_440_Ch7:
 
 Cry_Custom_440_Ch8:
 	noise_note 7, 0, 8, 0
-	noise_note 0, 1, 8, 92
+	noise_note 0, 8, 8, 92
 	noise_note 2, 0, 8, 0
-	noise_note 0, 1, 8, 92
+	noise_note 0, 8, 8, 92
 	noise_note 3, 0, 8, 0
-	noise_note 0, 1, 8, 92
-	noise_note 0, 2, 8, 92
-	noise_note 0, 1, 8, 92
+	noise_note 0, 8, 8, 92
+	noise_note 0, 15, 8, 92
+	noise_note 0, 8, 8, 92
 	noise_note 0, 0, 8, 0
-	noise_note 1, 2, 8, 92
-	noise_note 0, 1, 8, 92
+	noise_note 1, 15, 8, 92
+	noise_note 0, 8, 8, 92
 	noise_note 6, 0, 8, 0
 	sound_ret

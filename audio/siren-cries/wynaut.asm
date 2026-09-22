@@ -11,35 +11,35 @@ Cry_wynaut:
 
 Cry_wynaut_Ch5:
 	duty_cycle 2
-	square_note 1, 13, 8, 1286
+	square_note 1, 15, 8, 1286
 	duty_cycle 3
-	square_note 1, 13, 8, 1312
+	square_note 1, 15, 8, 1312
 	duty_cycle 1
-	square_note 1, 13, 8, 1948
+	square_note 1, 15, 8, 1948
 	duty_cycle 2
-	square_note 1, 12, 8, 1940
-	square_note 1, 12, 8, 1690
+	square_note 1, 14, 8, 1940
+	square_note 1, 14, 8, 1690
 	duty_cycle 0
-	square_note 1, 6, 8, 1734
+	square_note 1, 7, 8, 1734
 	duty_cycle 2
-	square_note 1, 8, 8, 1945
+	square_note 1, 9, 8, 1945
 	duty_cycle 3
-	square_note 1, 13, 8, 1658
+	square_note 1, 15, 8, 1658
 	duty_cycle 2
-	square_note 1, 6, 8, 1750
-	square_note 1, 13, 8, 1934
+	square_note 1, 7, 8, 1750
+	square_note 1, 15, 8, 1934
 	duty_cycle 1
-	square_note 1, 13, 8, 1024
+	square_note 1, 15, 8, 1024
 	duty_cycle 2
-	square_note 1, 13, 8, 1686
-	square_note 1, 13, 8, 1258
-	square_note 1, 12, 8, 1351
-	square_note 1, 10, 8, 1343
-	square_note 1, 10, 8, 1605
+	square_note 1, 15, 8, 1686
+	square_note 1, 15, 8, 1258
+	square_note 1, 14, 8, 1351
+	square_note 1, 11, 8, 1343
+	square_note 1, 11, 8, 1605
 	duty_cycle 1
-	square_note 1, 13, 8, 1608
+	square_note 1, 15, 8, 1608
 	duty_cycle 2
-	square_note 1, 6, 8, 1351
+	square_note 1, 7, 8, 1351
 	duty_cycle 1
 	square_note 1, 3, 8, 1671
 	duty_cycle 2
@@ -49,54 +49,54 @@ Cry_wynaut_Ch5:
 Cry_wynaut_Ch6:
 	square_note 1, 0, 8, 0
 	duty_cycle 3
-	square_note 1, 7, 8, 1943
+	square_note 1, 12, 8, 1943
 	duty_cycle 2
-	square_note 1, 5, 8, 1866
-	square_note 1, 6, 8, 1856
-	square_note 1, 4, 8, 1849
-	square_note 1, 3, 8, 1847
+	square_note 1, 8, 8, 1866
+	square_note 1, 10, 8, 1856
+	square_note 1, 7, 8, 1849
+	square_note 1, 5, 8, 1847
 	duty_cycle 3
-	square_note 1, 3, 8, 1862
+	square_note 1, 5, 8, 1862
 	duty_cycle 2
-	square_note 1, 6, 8, 1867
+	square_note 1, 10, 8, 1867
 	duty_cycle 3
-	square_note 1, 3, 8, 1865
-	square_note 1, 5, 8, 1866
+	square_note 1, 5, 8, 1865
+	square_note 1, 8, 8, 1866
 	duty_cycle 2
-	square_note 1, 7, 8, 1935
+	square_note 1, 12, 8, 1935
 	square_note 1, 0, 8, 0
 	duty_cycle 3
-	square_note 1, 6, 8, 1936
-	square_note 1, 5, 8, 1849
-	square_note 1, 6, 8, 1608
-	square_note 1, 4, 8, 1336
-	square_note 1, 9, 8, 1351
-	square_note 1, 3, 8, 1566
+	square_note 1, 10, 8, 1936
+	square_note 1, 8, 8, 1849
+	square_note 1, 10, 8, 1608
+	square_note 1, 7, 8, 1336
+	square_note 1, 15, 8, 1351
+	square_note 1, 5, 8, 1566
 	duty_cycle 0
-	square_note 1, 2, 8, 1563
+	square_note 1, 3, 8, 1563
 	duty_cycle 2
-	square_note 0, 1, 8, 1552
+	square_note 0, 2, 8, 1552
 	sound_ret
 
 Cry_wynaut_Ch8:
-	noise_note 1, 2, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 1, 8, 44
+	noise_note 1, 7, 8, 44
+	noise_note 1, 7, 8, 44
+	noise_note 1, 11, 8, 44
+	noise_note 1, 11, 8, 44
+	noise_note 1, 11, 8, 44
 	noise_note 1, 4, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 1, 8, 44
+	noise_note 1, 4, 8, 44
+	noise_note 1, 11, 8, 44
+	noise_note 1, 4, 8, 44
+	noise_note 1, 15, 8, 44
+	noise_note 1, 11, 8, 44
+	noise_note 1, 11, 8, 44
+	noise_note 1, 11, 8, 44
+	noise_note 1, 11, 8, 44
+	noise_note 1, 7, 8, 44
+	noise_note 1, 7, 8, 44
+	noise_note 1, 7, 8, 44
+	noise_note 1, 7, 8, 44
+	noise_note 1, 4, 8, 44
 	noise_note 0, 0, 8, 44
 	sound_ret

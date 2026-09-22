@@ -11,68 +11,68 @@ Cry_Custom_469:
 
 Cry_Custom_469_Ch5:
 	duty_cycle 2
-	square_note 1, 10, 8, 898
+	square_note 1, 11, 8, 898
 	duty_cycle 1
-	square_note 1, 13, 8, 937
+	square_note 1, 15, 8, 937
 	duty_cycle 2
-	square_note 1, 13, 8, 918
-	square_note 1, 12, 8, 1268
+	square_note 1, 15, 8, 918
+	square_note 1, 14, 8, 1268
 	duty_cycle 1
-	square_note 1, 12, 8, 991
+	square_note 1, 14, 8, 991
 	duty_cycle 2
-	square_note 1, 13, 8, 1258
-	square_note 1, 13, 8, 956
-	square_note 1, 13, 8, 974
-	square_note 1, 13, 8, 856
+	square_note 1, 15, 8, 1258
+	square_note 1, 15, 8, 956
+	square_note 1, 15, 8, 974
+	square_note 1, 15, 8, 856
 	duty_cycle 1
-	square_note 1, 10, 8, 654
+	square_note 1, 11, 8, 654
 	duty_cycle 2
-	square_note 1, 13, 8, 974
-	square_note 1, 13, 8, 937
+	square_note 1, 15, 8, 974
+	square_note 1, 15, 8, 937
+	square_note 1, 11, 8, 1055
+	duty_cycle 1
+	square_note 1, 13, 8, 410
+	duty_cycle 3
+	square_note 1, 10, 8, 856
+	duty_cycle 1
+	square_note 1, 15, 8, 937
+	duty_cycle 2
+	square_note 1, 15, 8, 898
+	square_note 1, 14, 8, 1040
+	square_note 1, 11, 8, 1851
+	duty_cycle 0
+	square_note 1, 9, 8, 1840
+	duty_cycle 2
+	square_note 1, 10, 8, 1841
+	duty_cycle 0
+	square_note 1, 11, 8, 1832
+	square_note 1, 11, 8, 1835
+	duty_cycle 2
+	square_note 1, 10, 8, 1839
+	square_note 1, 11, 8, 1854
+	square_note 1, 9, 8, 1859
+	square_note 1, 10, 8, 1863
+	square_note 1, 11, 8, 1040
+	square_note 1, 11, 8, 974
 	square_note 1, 10, 8, 1055
-	duty_cycle 1
-	square_note 1, 11, 8, 410
+	square_note 1, 11, 8, 1876
+	square_note 1, 11, 8, 623
 	duty_cycle 3
-	square_note 1, 9, 8, 856
+	square_note 1, 14, 8, 1893
 	duty_cycle 1
-	square_note 1, 13, 8, 937
-	duty_cycle 2
-	square_note 1, 13, 8, 898
-	square_note 1, 12, 8, 1040
-	square_note 1, 10, 8, 1851
-	duty_cycle 0
-	square_note 1, 8, 8, 1840
-	duty_cycle 2
-	square_note 1, 9, 8, 1841
-	duty_cycle 0
-	square_note 1, 10, 8, 1832
-	square_note 1, 10, 8, 1835
-	duty_cycle 2
-	square_note 1, 9, 8, 1839
-	square_note 1, 10, 8, 1854
-	square_note 1, 8, 8, 1859
-	square_note 1, 9, 8, 1863
-	square_note 1, 10, 8, 1040
-	square_note 1, 10, 8, 974
-	square_note 1, 9, 8, 1055
-	square_note 1, 10, 8, 1876
-	square_note 1, 10, 8, 623
+	square_note 1, 14, 8, 1897
+	square_note 1, 14, 8, 1891
 	duty_cycle 3
-	square_note 1, 12, 8, 1893
+	square_note 1, 15, 8, 1893
+	square_note 1, 13, 8, 1895
 	duty_cycle 1
-	square_note 1, 12, 8, 1897
-	square_note 1, 12, 8, 1891
-	duty_cycle 3
-	square_note 1, 13, 8, 1893
-	square_note 1, 11, 8, 1895
-	duty_cycle 1
-	square_note 1, 10, 8, 1897
+	square_note 1, 11, 8, 1897
 	duty_cycle 2
-	square_note 1, 9, 8, 1900
-	square_note 1, 7, 8, 856
-	square_note 1, 6, 8, 878
-	square_note 1, 4, 8, 1910
-	square_note 1, 4, 8, 1912
+	square_note 1, 10, 8, 1900
+	square_note 1, 8, 8, 856
+	square_note 1, 7, 8, 878
+	square_note 1, 5, 8, 1910
+	square_note 1, 5, 8, 1912
 	duty_cycle 1
 	square_note 1, 3, 8, 1916
 	square_note 1, 2, 8, 1918
@@ -86,31 +86,31 @@ Cry_Custom_469_Ch5:
 
 Cry_Custom_469_Ch6:
 	duty_cycle 2
-	square_note 1, 3, 8, 1125
+	square_note 1, 6, 8, 1125
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
-	square_note 1, 5, 8, 1112
-	square_note 1, 6, 8, 654
+	square_note 1, 11, 8, 1112
+	square_note 1, 13, 8, 654
 	duty_cycle 3
-	square_note 1, 7, 8, 956
+	square_note 1, 15, 8, 956
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	duty_cycle 2
-	square_note 1, 5, 8, 974
+	square_note 1, 11, 8, 974
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	duty_cycle 0
-	square_note 1, 3, 8, 1850
+	square_note 1, 6, 8, 1850
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
-	square_note 1, 4, 8, 1875
+	square_note 1, 9, 8, 1875
 	duty_cycle 2
-	square_note 1, 3, 8, 1901
+	square_note 1, 6, 8, 1901
 	duty_cycle 3
-	square_note 1, 2, 8, 1938
+	square_note 1, 4, 8, 1938
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
@@ -119,12 +119,12 @@ Cry_Custom_469_Ch6:
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	duty_cycle 2
-	square_note 1, 5, 8, 1869
-	square_note 1, 5, 8, 1871
-	square_note 1, 5, 8, 1872
+	square_note 1, 11, 8, 1869
+	square_note 1, 11, 8, 1871
+	square_note 1, 11, 8, 1872
 	square_note 1, 0, 8, 0
 	duty_cycle 1
-	square_note 1, 5, 8, 1890
+	square_note 1, 11, 8, 1890
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
@@ -133,14 +133,14 @@ Cry_Custom_469_Ch6:
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	duty_cycle 3
-	square_note 1, 3, 8, 1903
-	square_note 1, 3, 8, 1905
+	square_note 1, 6, 8, 1903
+	square_note 1, 6, 8, 1905
 	duty_cycle 2
-	square_note 1, 1, 8, 1896
+	square_note 1, 2, 8, 1896
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	duty_cycle 3
-	square_note 1, 1, 8, 1895
+	square_note 1, 2, 8, 1895
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
 	square_note 1, 0, 8, 0
@@ -150,51 +150,51 @@ Cry_Custom_469_Ch6:
 	sound_ret
 
 Cry_Custom_469_Ch8:
-	noise_note 1, 4, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 0, 8, 44
-	noise_note 1, 5, 8, 44
-	noise_note 1, 5, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 0, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 2, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 0, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 5, 8, 44
-	noise_note 1, 5, 8, 44
-	noise_note 1, 5, 8, 44
 	noise_note 1, 8, 8, 44
-	noise_note 1, 7, 8, 44
-	noise_note 1, 7, 8, 44
-	noise_note 1, 5, 8, 44
-	noise_note 1, 5, 8, 44
+	noise_note 1, 2, 8, 44
+	noise_note 1, 0, 8, 44
+	noise_note 1, 9, 8, 44
+	noise_note 1, 9, 8, 44
+	noise_note 1, 6, 8, 44
+	noise_note 1, 0, 8, 44
 	noise_note 1, 4, 8, 44
-	noise_note 1, 4, 8, 44
-	noise_note 1, 4, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 3, 8, 44
-	noise_note 1, 4, 8, 44
-	noise_note 1, 4, 8, 44
-	noise_note 1, 5, 8, 44
-	noise_note 1, 5, 8, 44
+	noise_note 1, 6, 8, 44
 	noise_note 1, 4, 8, 44
 	noise_note 1, 2, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
+	noise_note 1, 0, 8, 44
+	noise_note 1, 2, 8, 44
+	noise_note 1, 9, 8, 44
+	noise_note 1, 9, 8, 44
+	noise_note 1, 9, 8, 44
+	noise_note 1, 15, 8, 44
+	noise_note 1, 13, 8, 44
+	noise_note 1, 13, 8, 44
+	noise_note 1, 9, 8, 44
+	noise_note 1, 9, 8, 44
+	noise_note 1, 8, 8, 44
+	noise_note 1, 8, 8, 44
+	noise_note 1, 8, 8, 44
+	noise_note 1, 6, 8, 44
+	noise_note 1, 6, 8, 44
+	noise_note 1, 8, 8, 44
+	noise_note 1, 8, 8, 44
+	noise_note 1, 9, 8, 44
+	noise_note 1, 9, 8, 44
+	noise_note 1, 8, 8, 44
+	noise_note 1, 4, 8, 44
+	noise_note 1, 2, 8, 44
+	noise_note 1, 2, 8, 44
+	noise_note 1, 2, 8, 44
 	noise_note 1, 0, 8, 44
 	noise_note 1, 0, 8, 44
 	noise_note 1, 0, 8, 44
 	noise_note 1, 0, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
-	noise_note 1, 1, 8, 44
+	noise_note 1, 2, 8, 44
+	noise_note 1, 2, 8, 44
+	noise_note 1, 2, 8, 44
+	noise_note 1, 2, 8, 44
+	noise_note 1, 2, 8, 44
+	noise_note 1, 2, 8, 44
 	noise_note 1, 0, 8, 44
 	noise_note 1, 0, 8, 44
 	noise_note 1, 0, 8, 44
