@@ -263,26 +263,26 @@ PokemonCries::
 	mon_cry CRY_AMBIPOM,        8,   256 ; Ambipom
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg
 	mon_cry CRY_NIDORAN_M,      0,     0 ; $100
-	mon_cry CRY_MISMAGIUS,      8,   256 ; Mismagius
-	mon_cry CRY_HONCHKROW,    -20,   256 ; Honchkrow
+	mon_cry CRY_MISMAGIUS,      0,   256 ; Mismagius
+	mon_cry CRY_HONCHKROW,      0,   256 ; Honchkrow
 	mon_cry CRY_BONSLY,        -8,   256 ; Bonsly
 	mon_cry CRY_MIME_JR_,       4,   256 ; MimeJr
 	mon_cry CRY_HAPPINY,      -16,   256 ; Happiny
 	mon_cry CRY_MUNCHLAX,       0,   256 ; Munchlax
-	mon_cry CRY_MANTYKE,        0,   294 ; Mantyke (sounds bad)
+	mon_cry CRY_MANTYKE,        0,   256 ; Mantyke (sounds bad)
 	mon_cry CRY_WEAVILE,        2,   256 ; Weavile
 	mon_cry CRY_MAGNEZONE,    -16,   256 ; Magnezone
-	mon_cry CRY_LICKILICKY,    -2,   256 ; Lickilicky
-	mon_cry CRY_RHYPERIOR,     -4,   256 ; Rhyperior
-	mon_cry CRY_TANGROWTH,      4,   256 ; Tangrowth
-	mon_cry CRY_ELECTIVIRE,    16,   256 ; Electivire
+	mon_cry CRY_LICKILICKY,     0,   256 ; Lickilicky
+	mon_cry CRY_RHYPERIOR,      0,   256 ; Rhyperior
+	mon_cry CRY_TANGROWTH,      0,   256 ; Tangrowth
+	mon_cry CRY_ELECTIVIRE,     0,   256 ; Electivire
 	mon_cry CRY_MAGMORTAR,      0,   256 ; Magmortar
 	mon_cry CRY_TOGEKISS,       0,   256 ; Togekiss
-	mon_cry CRY_YANMEGA,       -4,   256 ; Yanmega
+	mon_cry CRY_YANMEGA,        0,   256 ; Yanmega
 	mon_cry CRY_LEAFEON,       -4,   256 ; Leafeon
 	mon_cry CRY_GLACEON,        0,   256 ; Glaceon
-	mon_cry CRY_GLISCOR,        8,   256 ; Gliscor
-	mon_cry CRY_MAMOSWINE,     -2,   256 ; Mamoswine
+	mon_cry CRY_GLISCOR,        0,   256 ; Gliscor
+	mon_cry CRY_MAMOSWINE,      0,   256 ; Mamoswine
 	mon_cry CRY_PORYGON_Z,      0,   256 ; PorygonZ
 	mon_cry CRY_SYLVEON,        0,   256 ; Sylveon
 	mon_cry CRY_PERRSERKER,    -4,   256 ; Perrserker (sounds bad)
