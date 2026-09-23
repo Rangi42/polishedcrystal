@@ -15,7 +15,7 @@ Route39_MapScriptHeader:
 	bg_event  5, 47, BGEVENT_JUMPTEXT, Route39TrainerTipsText
 	bg_event  8, 21, BGEVENT_JUMPTEXT, MoomooFarmSignText
 	bg_event 11,  7, BGEVENT_JUMPTEXT, RuggedRoadAheadSignText
-	bg_event 15, 23, BGEVENT_JUMPTEXT, Route39SignText
+	bg_event 15, 25, BGEVENT_JUMPTEXT, Route39SignText
 	bg_event  8,  9, BGEVENT_JUMPTEXT, Route39AdvancedTips1Text
 	bg_event 14, 31, BGEVENT_JUMPTEXT, Route39AdvancedTips2Text
 	bg_event  5, 29, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
@@ -34,7 +34,7 @@ Route39_MapScriptHeader:
 	object_event  4, 38, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_DARK_PURPLE, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
 	object_event  4, 46, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
 	object_event 15, 12, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39HikerText, -1
-	object_event 25, 24, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBeautyOlivia, -1
+	object_event 25, 25, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBeautyOlivia, -1
 	tmhmball_event  1, 23, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 	smashrock_event 12, 10
 	smashrock_event 15,  8

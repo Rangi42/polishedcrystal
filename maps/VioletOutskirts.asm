@@ -30,7 +30,7 @@ VioletOutskirts_MapScriptHeader:
 	fruittree_event 18, -2, FRUITTREE_ROUTE_42_2, GRN_APRICORN, PAL_NPC_GREEN
 	fruittree_event 19, -2, FRUITTREE_ROUTE_42_3, YLW_APRICORN, PAL_NPC_ENV_YELLOW
 	cuttree_event 14, -5, EVENT_ROUTE_42_CUT_TREE
-	itemball_event 14, 24, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
+	itemball_event 14, 28, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
 
 VioletOutskirtsAvalanche:
 	checkevent EVENT_GOT_HM05_WHIRLPOOL

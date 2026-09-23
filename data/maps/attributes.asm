@@ -45,8 +45,8 @@ ENDM
 
 	map_attributes EcruteakCity, ECRUTEAK_CITY, $5
 	connection south, Route37, ROUTE_37, 5
-	connection west, Route38, ROUTE_38, 5
-	connection east, Route42, ROUTE_42, 9
+	connection west, Route38, ROUTE_38, 6
+	connection east, Route42, ROUTE_42, 7
 
 	map_attributes MahoganyTown, MAHOGANY_TOWN, $71
 	connection north, Route43, ROUTE_43, 0
@@ -133,12 +133,12 @@ ENDM
 	connection south, Route36, ROUTE_36, -3
 
 	map_attributes Route38, ROUTE_38, $5
-	connection west, Route39, ROUTE_39, -8
-	connection east, EcruteakCity, ECRUTEAK_CITY, -5
+	connection west, Route39, ROUTE_39, -9
+	connection east, EcruteakCity, ECRUTEAK_CITY, -6
 
 	map_attributes Route39, ROUTE_39, $5
 	connection south, OlivineCity, OLIVINE_CITY, -5
-	connection east, Route38, ROUTE_38, 8
+	connection east, Route38, ROUTE_38, 9
 
 	map_attributes Route40, ROUTE_40, $35
 	connection south, Route41, ROUTE_41, -15
@@ -151,7 +151,7 @@ ENDM
 
 	map_attributes Route42, ROUTE_42, $5
 	connection south, VioletOutskirts, VIOLET_OUTSKIRTS, 5
-	connection west, EcruteakCity, ECRUTEAK_CITY, -9
+	connection west, EcruteakCity, ECRUTEAK_CITY, -7
 	connection east, MahoganyTown, MAHOGANY_TOWN, 0
 
 	map_attributes Route43, ROUTE_43, $5
@@ -163,7 +163,7 @@ ENDM
 
 	map_attributes Route45, ROUTE_45, $71
 	connection north, BlackthornCity, BLACKTHORN_CITY, 2
-	connection west, Route46, ROUTE_46, 37
+	connection west, Route46, ROUTE_46, 39
 
 	map_attributes Route46, ROUTE_46, $5
 	connection south, Route29, ROUTE_29, -10

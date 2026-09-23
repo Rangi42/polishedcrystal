@@ -5,8 +5,8 @@ EcruteakCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, EcruteakCityFlyPoint
 
 	def_warp_events
-	warp_event 35, 26, ROUTE_42_ECRUTEAK_GATE, 1
-	warp_event 35, 27, ROUTE_42_ECRUTEAK_GATE, 2
+	warp_event 35, 22, ROUTE_42_ECRUTEAK_GATE, 1
+	warp_event 35, 23, ROUTE_42_ECRUTEAK_GATE, 2
 	warp_event 23, 11, ECRUTEAK_HOUSE, 1
 	warp_event 17,  9, ECRUTEAK_SHRINE_OUTSIDE, 3
 	warp_event 18,  9, ECRUTEAK_SHRINE_OUTSIDE, 4
@@ -18,8 +18,8 @@ EcruteakCity_MapScriptHeader:
 	warp_event 13, 27, ECRUTEAK_ITEMFINDER_HOUSE, 1
 	warp_event  5, 16, VALERIES_HOUSE, 1
 	warp_event  5,  5, BURNED_TOWER_1F, 1
-	warp_event  0, 20, ROUTE_38_ECRUTEAK_GATE, 3
-	warp_event  0, 21, ROUTE_38_ECRUTEAK_GATE, 4
+	warp_event  0, 22, ROUTE_38_ECRUTEAK_GATE, 3
+	warp_event  0, 23, ROUTE_38_ECRUTEAK_GATE, 4
 	warp_event 29, 27, ECRUTEAK_CHERISH_BALL_HOUSE, 1
 	warp_event 13, 16, ECRUTEAK_DESTINY_KNOT_HOUSE, 1
 
@@ -35,7 +35,7 @@ EcruteakCity_MapScriptHeader:
 	bg_event  9, 15, BGEVENT_JUMPTEXT, EcruteakCityAdvancedTips
 	bg_event 25, 14, BGEVENT_ITEM + HYPER_POTION, EVENT_ECRUTEAK_CITY_HIDDEN_HYPER_POTION
 	bg_event 33, 16, BGEVENT_ITEM + RARE_CANDY, EVENT_ECRUTEAK_CITY_HIDDEN_RARE_CANDY
-	bg_event  1, 19, BGEVENT_ITEM + ULTRA_BALL, EVENT_ECRUTEAK_CITY_HIDDEN_ULTRA_BALL
+	bg_event  1, 21, BGEVENT_ITEM + ULTRA_BALL, EVENT_ECRUTEAK_CITY_HIDDEN_ULTRA_BALL
 	bg_event  6,  6, BGEVENT_ITEM + ETHER, EVENT_ECRUTEAK_CITY_HIDDEN_ETHER
 
 	def_object_events
