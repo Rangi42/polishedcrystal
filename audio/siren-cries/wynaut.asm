@@ -3,13 +3,13 @@
 ; Play with pitch 0, length 256.
 ; Approximation with two PSG square channels and PSG noise.
 
-Cry_wynaut:
+Cry_Wynaut:
 	channel_count 3
-	channel 5, Cry_wynaut_Ch5
-	channel 6, Cry_wynaut_Ch6
-	channel 8, Cry_wynaut_Ch8
+	channel 5, Cry_Wynaut_Ch5
+	channel 6, Cry_Wynaut_Ch6
+	channel 8, Cry_Wynaut_Ch8
 
-Cry_wynaut_Ch5:
+Cry_Wynaut_Ch5:
 	duty_cycle 2
 	square_note 1, 15, 8, 1286
 	duty_cycle 3
@@ -46,7 +46,7 @@ Cry_wynaut_Ch5:
 	square_note 0, 2, 8, 1599
 	sound_ret
 
-Cry_wynaut_Ch6:
+Cry_Wynaut_Ch6:
 	square_note 1, 0, 8, 0
 	duty_cycle 3
 	square_note 1, 12, 8, 1943
@@ -78,7 +78,7 @@ Cry_wynaut_Ch6:
 	square_note 0, 2, 8, 1552
 	sound_ret
 
-Cry_wynaut_Ch8:
+Cry_Wynaut_Ch8:
 	noise_note 1, 7, 8, 44
 	noise_note 1, 7, 8, 44
 	noise_note 1, 11, 8, 44

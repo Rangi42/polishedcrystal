@@ -72,7 +72,8 @@
 	const CRY_TYROGUE
 	const CRY_DUNSPARCE
 	const CRY_DONPHAN
-; New Cries
+
+; new cries
 	const CRY_AZURILL
 	const CRY_WYNAUT
 	const CRY_AMBIPOM

@@ -3,13 +3,13 @@
 ; Play with pitch 0, length 256.
 ; Stock PSG approximation using square, built-in wave and noise channels.
 
-Cry_azurill:
+Cry_Azurill:
 	channel_count 3
-	channel 5, Cry_azurill_Ch5
-	channel 7, Cry_azurill_Ch7
-	channel 8, Cry_azurill_Ch8
+	channel 5, Cry_Azurill_Ch5
+	channel 7, Cry_Azurill_Ch7
+	channel 8, Cry_Azurill_Ch8
 
-Cry_azurill_Ch5:
+Cry_Azurill_Ch5:
 	duty_cycle 2
 	square_note 0, 9, 8, 1987
 	square_note 1, 12, 8, 1987
@@ -38,7 +38,7 @@ Cry_azurill_Ch5:
 	square_note 0, 3, 8, 1988
 	sound_ret
 
-Cry_azurill_Ch7:
+Cry_Azurill_Ch7:
 	square_note 5, 1, 1, 2017
 	square_note 1, 1, 1, 2016
 	square_note 1, 1, 1, 2015
@@ -55,7 +55,7 @@ Cry_azurill_Ch7:
 	square_note 0, 3, 1, 2018
 	sound_ret
 
-Cry_azurill_Ch8:
+Cry_Azurill_Ch8:
 	noise_note 8, 8, 8, 92
 	noise_note 0, 15, 8, 92
 	noise_note 0, 8, 8, 92

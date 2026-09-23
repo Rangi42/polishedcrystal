@@ -266,10 +266,10 @@ PokemonCries::
 	mon_cry CRY_MISMAGIUS,      0,   256 ; Mismagius
 	mon_cry CRY_HONCHKROW,      0,   256 ; Honchkrow
 	mon_cry CRY_BONSLY,        -8,   256 ; Bonsly
-	mon_cry CRY_MIME_JR_,       4,   256 ; MimeJr
+	mon_cry CRY_MIME_JR_,       4,   256 ; Mime Jr.
 	mon_cry CRY_HAPPINY,      -16,   256 ; Happiny
 	mon_cry CRY_MUNCHLAX,       0,   256 ; Munchlax
-	mon_cry CRY_MANTYKE,        0,   256 ; Mantyke (sounds bad)
+	mon_cry CRY_MANTYKE,        0,   256 ; Mantyke (needs improvement)
 	mon_cry CRY_WEAVILE,        2,   256 ; Weavile
 	mon_cry CRY_MAGNEZONE,    -16,   256 ; Magnezone
 	mon_cry CRY_LICKILICKY,     0,   256 ; Lickilicky
@@ -285,17 +285,17 @@ PokemonCries::
 	mon_cry CRY_MAMOSWINE,      0,   256 ; Mamoswine
 	mon_cry CRY_PORYGON_Z,      0,   256 ; PorygonZ
 	mon_cry CRY_SYLVEON,        0,   256 ; Sylveon
-	mon_cry CRY_PERRSERKER,     0,   256 ; Perrserker (sounds bad)
-	mon_cry CRY_CURSOLA,        0,   256 ; Cursola (sounds bad)
-	mon_cry CRY_SIRFETCH_D,     0,   256 ; Sirfetchd
-	mon_cry CRY_MR__RIME,       0,   256 ; MrRime
-	mon_cry CRY_WYRDEER,        0,   284 ; Wyrdeer (sounds bad)
-	mon_cry CRY_KLEAVOR,        0,   256 ; Kleavor (sounds bad)
-	mon_cry CRY_URSALUNA,       0,   256 ; Ursaluna (sounds bad)
-	mon_cry CRY_SNEASLER,       0,   256 ; Sneasler (sounds bad)
-	mon_cry CRY_OVERQWIL,       0,   256 ; Overqwil (sounds bad)
+	mon_cry CRY_PERRSERKER,     0,   256 ; Perrserker (really needs improvement)
+	mon_cry CRY_CURSOLA,        0,   256 ; Cursola (needs improvement)
+	mon_cry CRY_SIRFETCH_D,     0,   256 ; Sirfetch'd
+	mon_cry CRY_MR__RIME,       0,   256 ; Mr.Rime
+	mon_cry CRY_WYRDEER,        0,   284 ; Wyrdeer (needs improvement)
+	mon_cry CRY_KLEAVOR,        0,   256 ; Kleavor (needs improvement)
+	mon_cry CRY_URSALUNA,       0,   256 ; Ursaluna (needs improvement)
+	mon_cry CRY_SNEASLER,       0,   256 ; Sneasler (needs improvement)
+	mon_cry CRY_OVERQWIL,       0,   256 ; Overqwil (needs improvement)
 	mon_cry CRY_DUDUNSPARCE,  -16,   256 ; Dudunsparce
-	mon_cry CRY_FARIGIRAF,      0,   256 ; Farigiraf (sounds bad)
-	mon_cry CRY_CLODSIRE,      16,   256 ; Clodsire (sounds bad)
-	mon_cry CRY_ANNIHILAPE,     0,   256 ; Annihilape (sounds bad)
+	mon_cry CRY_FARIGIRAF,      0,   256 ; Farigiraf (needs improvement)
+	mon_cry CRY_CLODSIRE,      16,   256 ; Clodsire (needs improvement)
+	mon_cry CRY_ANNIHILAPE,     0,   256 ; Annihilape (needs improvement)
 	assert_table_length NUM_SPECIES

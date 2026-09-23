@@ -3132,12 +3132,11 @@ Pokedex_GetInput:
 	; Only allow keyrepeat of the D-pad.
 	ldh a, [hJoyPressed]
 	and a
-	jp nz, PlayClickSFX
+	ret nz
 
 	ldh a, [hJoyLast]
 	and PAD_CTRL_PAD
-	ret z
-	jmp PlayClickSFX
+	ret
 
 Pokedex_LoadUndiscoveredPokepic:
 ; Always returns z.
