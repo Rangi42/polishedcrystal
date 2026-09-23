@@ -2103,8 +2103,9 @@ _PlayCry::
 	ld hl, Cries
 	add hl, de
 	add hl, de
+	add hl, de
 
-	ld a, BANK("Cries")
+	ld a, [hli]
 	ld [wMusicBank], a
 
 	ld a, [hli]
