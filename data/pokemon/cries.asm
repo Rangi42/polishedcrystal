@@ -259,7 +259,7 @@ PokemonCries::
 	mon_cry CRY_TYROGUE,     $000,  $180 ; HoOh
 	mon_cry CRY_ENTEI,       $14a,  $111 ; Celebi
 	mon_cry CRY_AZURILL,        0,   256 ; Azurill
-	mon_cry CRY_WYNAUT,         4,   256 ; Wynaut
+	mon_cry CRY_WYNAUT,         0,   228 ; Wynaut
 	mon_cry CRY_AMBIPOM,        8,   256 ; Ambipom
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg
 	mon_cry CRY_NIDORAN_M,      0,     0 ; $100
@@ -279,12 +279,12 @@ PokemonCries::
 	mon_cry CRY_MAGMORTAR,      0,   256 ; Magmortar
 	mon_cry CRY_TOGEKISS,       0,   256 ; Togekiss
 	mon_cry CRY_YANMEGA,        0,   256 ; Yanmega
-	mon_cry CRY_LEAFEON,       -4,   256 ; Leafeon
-	mon_cry CRY_GLACEON,        0,   256 ; Glaceon
+	mon_cry CRY_LEAFEON,       56,   524 ; Leafeon
+	mon_cry CRY_GLACEON,       56,   588 ; Glaceon
 	mon_cry CRY_GLISCOR,        0,   256 ; Gliscor
 	mon_cry CRY_MAMOSWINE,      0,   256 ; Mamoswine
-	mon_cry CRY_PORYGON_Z,      0,   256 ; PorygonZ
-	mon_cry CRY_SYLVEON,        0,   256 ; Sylveon
+	mon_cry CRY_PORYGON_Z,      0,   384 ; PorygonZ
+	mon_cry CRY_SYLVEON,        0,   664 ; Sylveon
 	mon_cry CRY_PERRSERKER,     0,   256 ; Perrserker (really needs improvement)
 	mon_cry CRY_CURSOLA,        0,   256 ; Cursola (needs improvement)
 	mon_cry CRY_SIRFETCH_D,     0,   256 ; Sirfetch'd
