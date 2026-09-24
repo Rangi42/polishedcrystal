@@ -156,7 +156,7 @@ GetJoypad::
 ; A value of $ff will immediately end the stream.
 
 ; Read from the input stream.
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, [wAutoInputBank]
 	rst Bankswitch

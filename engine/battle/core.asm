@@ -8775,7 +8775,7 @@ CopyBackpic:
 	ldh [rWBK], a
 	ld hl, vTiles0
 	ld de, vTiles2 tile $31
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 	ld c, 7 * 7
 	call Get2bpp
