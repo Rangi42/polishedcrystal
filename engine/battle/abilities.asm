@@ -1108,6 +1108,8 @@ StatUpAbility:
 	cp MOTOR_DRIVE
 	jr z, .print_immunity
 	cp SAP_SIPPER
+	jr z, .print_immunity
+	cp WIND_RIDER
 	jr nz, .done
 .print_immunity
 	call BeginAndShowUserAbility
