@@ -264,7 +264,7 @@ IntimidateAbility:
 	call SwitchTurn
 	call EndAbility
 	farcall CheckMirrorHerb
-	farjp CheckStatHerbsAfterIntimidate
+	farjp CheckStatHerbsAfterAbility
 
 DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
@@ -1629,7 +1629,8 @@ MoodyAbility:
 	farcall ForceLowerStat
 .lower_done
 	call EndAbility
-	farjp CheckMirrorHerb
+	farcall CheckMirrorHerb
+	farjp CheckStatHerbsAfterAbility
 
 BadDreamsAbility:
 ; Inflict 1/8th of Max HP damage to sleeping foes.
