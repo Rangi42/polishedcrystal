@@ -4655,11 +4655,9 @@ UserCanSwitch:
 	ld a, b
 	cp HELD_SHED_SHELL
 	ret z
-if !DEF(FAITHFUL)
 	call GetTrueUserIgnorableAbility
 	cp RUN_AWAY
 	ret z
-endc
 	call CheckIfUserIsGhostType
 	ret z
 	farcall CheckIfTrappedByAbility
