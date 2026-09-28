@@ -366,6 +366,11 @@ INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "data/pokemon/mini_icon_pointers.asm"
 
 
+SECTION "Cable Car", ROMX
+
+INCLUDE "engine/events/cable_car.asm"
+
+
 SECTION "bank24", ROMX
 
 INCLUDE "engine/phone/phone.asm"
