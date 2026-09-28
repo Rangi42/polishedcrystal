@@ -4,8 +4,8 @@ MountMoonGiftShop_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  3,  7, MOUNT_MOON_SQUARE, 2
-	warp_event  4,  7, MOUNT_MOON_SQUARE, 2
+	warp_event  3,  7, MOUNT_MOON_SQUARE, 1
+	warp_event  4,  7, MOUNT_MOON_SQUARE, 1
 
 	def_coord_events
 

@@ -177,3 +177,4 @@ SpecialsPointers::
 	add_special ItemManiac_SelectQuantity
 	add_special MultiplyMoneyByQuantity
 	add_special TakeItemFromMemWithQuantity
+	add_special Special_CableCar

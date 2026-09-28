@@ -1,13 +1,14 @@
 Route4_MapScriptHeader:
 	def_scene_scripts
+	scene_const SCENE_ROUTE4_CABLE_CAR
 
 	def_callbacks
 
 	def_warp_events
 	warp_event  4,  7, MOUNT_MOON_B1F, 8
-	warp_event 19,  5, MOUNT_MOON_SQUARE, 1
 
 	def_coord_events
+	coord_event 19,  5, SCENE_ROUTE4_CABLE_CAR, Route4CableCarScript
 
 	def_bg_events
 	bg_event  7,  9, BGEVENT_JUMPTEXT, MtMoonSignText
@@ -26,6 +27,20 @@ Route4_MapScriptHeader:
 	object_event 17,  5, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
 	itemball_event 42,  5, HP_UP, 1, EVENT_ROUTE_4_HP_UP
 	object_event 68,  6, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE
+
+Route4CableCarScript:
+	playsound SFX_EXIT_BUILDING
+	applyonemovement PLAYER, hide_object
+	waitsfx
+	disappear PLAYER
+	pause 10
+	special Special_FadeOutMusic
+	special FadeOutPalettes
+	pause 15
+	setval TRUE
+	special Special_CableCar
+	warpfacing DOWN, MOUNT_MOON_SQUARE, 21, 12
+	end
 
 GenericTrainerYoungsterOliver:
 	generictrainer YOUNGSTER, OLIVER, EVENT_BEAT_YOUNGSTER_OLIVER, YoungsterOliverSeenText, YoungsterOliverBeatenText
