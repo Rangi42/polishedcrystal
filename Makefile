@@ -86,6 +86,7 @@ rom_obj := \
 	data/text/common.o \
 	data/tilesets.o \
 	engine/movie/credits.o \
+	engine/events/cable_car.o \
 	engine/overworld/events.o \
 	gfx/minis_icons.o \
 	gfx/pokemon.o \
@@ -219,6 +220,19 @@ gfx/music_player/music_player.2bpp: gfx/music_player/bg.2bpp gfx/music_player/ob
 
 gfx/new_game/shrink1.2bpp: RGBGFXFLAGS += -Z
 gfx/new_game/shrink2.2bpp: RGBGFXFLAGS += -Z
+
+gfx/overworld/cable_car/car.2bpp: RGBGFXFLAGS += -Z -L 0,0:3,4 # Meant for 8x16 OBJ: columnar!
+gfx/overworld/cable_car/handle_side.2bpp: gfx/overworld/cable_car/handle.png # Ditto.
+	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,1:1,2 -o $@ $<
+gfx/overworld/cable_car/handle.2bpp: RGBGFXFLAGS += -Z -L 8,0:1,2 # Ditto.
+gfx/overworld/cable_car/cable.2bpp: RGBGFXFLAGS += -Z # Ditto.
+gfx/overworld/cable_car/rocks.2bpp: RGBGFXFLAGS += -Z # Meant for 8x16 OBJ *and* BG.
+gfx/overworld/cable_car/trees.2bpp: RGBGFXFLAGS += -m
+gfx/overworld/cable_car.bin: gfx/overworld/cable_car/car.2bpp gfx/overworld/cable_car/handle_side.2bpp \
+                             gfx/overworld/cable_car/handle.2bpp gfx/overworld/cable_car/cable.2bpp \
+                             gfx/overworld/cable_car/rocks.2bpp gfx/overworld/cable_car/trees.2bpp \
+                             gfx/overworld/cable_car/bg.tilemap gfx/overworld/cable_car/bg.attrmap
+	$Qcat $^ > $@
 
 gfx/overworld/overworld.2bpp: gfx/overworld/puddle_splash.2bpp gfx/overworld/cut_grass.2bpp gfx/overworld/cut_tree.2bpp gfx/overworld/heal_machine.2bpp gfx/overworld/fishing_rod.2bpp gfx/overworld/shadow.2bpp gfx/overworld/shaking_grass.2bpp gfx/overworld/boulder_dust.2bpp ; $Qcat $^ > $@
 

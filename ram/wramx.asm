@@ -1928,7 +1928,7 @@ wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::
 
 
-SECTION "Scratch RAM", WRAMX
+SECTION "Scratch RAM", WRAMX,ALIGN[12]
 
 UNION
 wDecompressScratch:: ds $100 tiles
