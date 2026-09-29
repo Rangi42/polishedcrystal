@@ -30,6 +30,10 @@ else
 	MONOCHROME_RGB_FOUR_EMOTE ; emote red
 	MONOCHROME_RGB_FOUR_EMOTE ; emote orange
 	MONOCHROME_RGB_FOUR_EMOTE ; emote blue
+	MONOCHROME_RGB_FOUR_OW ; aqua red
+	MONOCHROME_RGB_FOUR_OW ; aqua blue
+	MONOCHROME_RGB_FOUR_OW ; aqua brown
+	MONOCHROME_RGB_FOUR_OW ; aqua purple
 	MONOCHROME_RGB_FOUR_OW ; electric fence
 	MONOCHROME_RGB_FOUR_OW ; lightning crystal
 	MONOCHROME_RGB_FOUR_OW ; rock crystal
