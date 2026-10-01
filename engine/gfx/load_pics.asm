@@ -46,7 +46,7 @@ _GetFrontpic:
 	call _PrepareFrontpic
 	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 	push hl
 	call Get2bpp
@@ -107,7 +107,7 @@ GetAnimatedFrontpic:
 	push hl
 	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 	call Get2bpp
 	pop hl
@@ -136,7 +136,7 @@ GetAnimatedFrontpic:
 	pop bc
 	pop hl
 	ld de, wDecompressScratch
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 ; Improved routine by pfero
 ; https://gitgud.io/pfero/axyllagame/commit/486f4ed432ca49e5d1305b6402cc5540fe9d3aaa
@@ -152,7 +152,7 @@ GetAnimatedFrontpic:
 	; Then move up a bit and load the rest
 	ld de, wDecompressScratch + (127 - 7 * 7) tiles
 	ld hl, vTiles4
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 	ld a, [wMonAnimationSize]
 	ld c, a
@@ -229,7 +229,7 @@ GetBackpic:
 	call FixBackpicAlignment
 	pop hl
 	ld de, wDecompressScratch
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 	ld c, 6 * 6
 	call Get2bpp
@@ -269,7 +269,7 @@ _Decompress7x7Pic:
 	pop hl
 	ld de, wDecompressScratch
 	ld c, 7 * 7
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ld b, a
 	call Get2bpp
 	pop af

@@ -1,6 +1,6 @@
 ScrollingMenu::
 	call CopyMenuData2
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	ld a, BANK(_ScrollingMenu) ; aka BANK(_InitScrollingMenu)
