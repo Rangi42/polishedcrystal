@@ -79,7 +79,7 @@ Gen2ToGen2LinkComms:
 	ld hl, wOTPartyData
 	call Link_FindFirstNonControlCharacter_SkipZero
 	ld de, wLinkData
-	ld bc, NAME_LENGTH + 1 + PARTY_LENGTH + 1 + 2 + (PARTYMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH
+	ld bc, wLinkPlayerDataEnd - wLinkPlayerName
 	call Link_CopyOTData
 
 	ld de, wPlayerTrademon
@@ -391,7 +391,10 @@ FixDataForLinkTransfer:
 	dec b
 	jr nz, .loop1
 
-	ld hl, wLinkPlayerPartyMon1ID - 1
+	; The outgoing buffer still has its preamble. Patch the player ID as well
+	; as all party structs, using the same origin as the decoded patch lists.
+	assert wLinkPatchList1 == wLinkPlayerID
+	ld hl, wLinkPlayerID + SERIAL_PREAMBLE_LENGTH - 1
 	ld de, wLinkPlayerFixedPartyMon1ID
 	lb bc, 0, 0
 .loop2
