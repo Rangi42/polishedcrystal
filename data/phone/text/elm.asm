@@ -117,10 +117,10 @@ ElmPhonePokerusText:
 
 	para "#mon too. When"
 	line "infected, they"
-  
+
 	para "seem to put more"
 	line "effort into their"
-   
+
 	para "training. Luckily,"
 	line "it isn't harmful."
 
