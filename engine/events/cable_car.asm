@@ -204,15 +204,41 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ldh [rVBK], a
 
 
+; Most of the engine assumes that bank 1 is loaded.
+	ld a, 1
+	ldh [rWBK], a
+
+; Init the cutscene's variables.
+	ld hl, .ramBlock
+	ld de, wCableCar
+	ld bc, wCableCar.end - wCableCar
+	rst CopyBytes
+
+; Perform direction-dependent setup.
+	assert GROUP_MOUNT_MOON_SQUARE != GROUP_ROUTE_4
+	ld a, [wMapGroup] ; *Current* map, not target map.
+	cp GROUP_MOUNT_MOON_SQUARE
+	jr z, .downRightToRoute4
+; upLeftToMountMoonSquare:
+	; Invert all vars considered direction-dependent (basically, the speed vectors).
+	; This does give a one-unit difference between each direction,
+	; but each of these variables uses sub-pixels, so it'll be negligible.
+	ld hl, wCableCar.dirDependentVars
+	ld c, wCableCar.dirDependentVars_End - wCableCar.dirDependentVars_End
+.negate
+	ld a, [hl]
+	cpl
+	ld [hli], a
+	dec c
+	jr nz, .negate
+.downRightToRoute4
+
+
 .InstallStatIntHandler
 ; `ApplyAttrAndTilemapInVBlank` will have waited a few frames,
 ; so we can now be confident that OAM has been applied.
 ; Install the STAT handler so that the OAM starts getting multiplexed before we start fading in.
 ; Note however that `Request2bpp` does `di` and that screws up the handler.
-	ld hl, .ramBlock
-	ld de, wCableCar
-	ld bc, wCableCar.end - wCableCar
-	rst CopyBytes
 	; Defang the STAT interrupt so it won't be requested during this setup.
 	xor a
 	ldh [rSTAT], a
@@ -295,28 +321,13 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ldh [hBGMapMode], a
 
 
-; Perform direction-dependent setup.
-	ldh a, [hScriptVar] ; TODO: remove `setval` from map scripts and check current map instead
-	and a
-	jr nz, .UpLeftToMountMoonSquare
-; DownRightToRoute4
-	; TODO
-.UpLeftToMountMoonSquare:
-	; TODO
-
-
-	; TODO: set up STAT handler
-
 	farcall FadeInPalettes
-
-	; TODO (see engine/events/magnet_train.asm or
-	; https://github.com/Rangi42/polishedcrystal/pull/1628/files for basis)
 
 	; TODO: add random chance for Pokémon to fly in the sky?
 	; TODO: allow player to move around in the car with d-pad?
 
 	; TODO: allow this wait to be skipped by pressing a button (A? B?)
-	ld c, 60
+	ld c, 0
 	call DelayFrames
 
 	farcall FadeOutPalettes
@@ -334,8 +345,6 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 .RestoreGlobalState ; :(
 	ld a, STAT_MODE_0
 	ldh [rSTAT], a
-	ld a, BANK(wScriptFlags)
-	ldh [rWBK], a
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	ret
@@ -683,7 +692,7 @@ ENDM
 	.bgScrollSpeed: db $0A ; Less visual than a fixed-point literal, but bit 0 must remain clear...
 ; These are Q.8 OAM-space, and the coords are roughly the attachment point's.
 	.carSpeed: db $00, $AA
-	.carXPos: dw (OAM_X_OFS + SCREEN_WIDTH / 2 + 10) << 8
+	.carXPos: db $00, OAM_X_OFS
 .dirDependentVars_End
 
 .end

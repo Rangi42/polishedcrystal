@@ -37,7 +37,6 @@ Route4CableCarScript:
 	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
-	setval TRUE
 	special Special_CableCar
 	warpfacing DOWN, MOUNT_MOON_SQUARE, 21, 12
 	end
