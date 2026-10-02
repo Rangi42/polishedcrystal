@@ -27,6 +27,7 @@ INCBIN "gfx/overworld/cable_car.bin.lzp"
 
 ; Tunables.
 def INITIAL_CABLE_Y_POS equ 10
+def BLANKED_PLAYER_ROWS equ 6
 
 def NEAR_TREE_PATTERN_WIDTH  equ 16
 def NEAR_TREE_PATTERN_HEIGHT equ 16 ; Must evenly divide the above.
@@ -69,31 +70,43 @@ Special_CableCar::
 
 .LoadPlayerTiles
 	farcall GetPlayerIcon ; This reads `wPlayerGender`, and expects its bank to be loaded.
-	; Shuffle each cel from row-first to column-first, for 8x16 OAM friendliness. (Grr.)
-	; This "only" requires swapping tiles 1 and 2 of each cel, though!
 	ld a, BANK(wDecompressScratch)
 	ldh [rWBK], a
-	ld de, wDecompressScratch tile 1
-	ld c, PLAYER_NB_TILES / TILES_PER_CEL ; How many cels to process?
+	; Shuffle each cel from row-first to column-first, for 8x16 OAM friendliness. (Grr.)
+	; This "only" requires swapping tiles 1 and 2 of each cel, though!
+	ld hl, wDecompressScratch tile -2
+	ld b, PLAYER_NB_TILES / TILES_PER_CEL ; How many cels to process?
 .shufflePlayerCel
-	ld hl, 1 tiles
+	ld de, 3 tiles
 	add hl, de
-.swapByte
-	ld b, [hl] ; Read from tile 2...
-	ld a, [de] ; Read from tile 1...
-	ld [hli], a ; ...overwrite tile 2.
-	ld a, b
-	ld [de], a ; ...overwrite tile 1.
-	inc e ; This won't overflow, since `wDecompressScratch` is ALIGN[8].
-	bit 5, e ; Check if `de` is now pointing into tile 2. (Again, alignment.)
-	jr z, .swapByte
-	; Advance to next cel, tile 1.
-	ld de, 2 tiles
-	add hl, de
-	ld e, l
+	; Make `de` point at the next tile. (This cannot overflow.)
+	ld a, l
+	add a, 1 tiles
+	ld e, a
 	ld d, h
-	dec c
+.swapByte
+	ld c, [hl] ; Read from tile 1...
+	ld a, [de] ; Read from tile 2...
+	ld [hli], a ; ...overwrite tile 1.
+	ld a, c
+	ld [de], a ; ...overwrite tile 2.
+	inc e ; This won't overflow, since `wDecompressScratch` is ALIGN[8].
+	bit 5, l ; Check if `hl` is now pointing into tile 2. (Again, alignment.)
+	jr z, .swapByte
+	dec b
 	jr nz, .shufflePlayerCel
+	; Blank out the bottom rows of the player's tiles, so they seem to be behind the car.
+	ld hl, wDecompressScratch
+	ld e, PLAYER_NB_TILES / 2
+.blankOutTiles
+	ld a, l
+	add a, (16 - BLANKED_PLAYER_ROWS) * 2
+	ld l, a
+	xor a
+	ld c, BLANKED_PLAYER_ROWS * 2 ; b == 0 right now.
+	rst ByteFill
+	dec e
+	jr nz, .blankOutTiles
 	; Done! Just need to commit this to VRAM :)
 	ld de, wDecompressScratch
 	ld hl, vTiles0 tile PLAYER_BASE_TILE
@@ -524,8 +537,8 @@ ENDM
 	obj_col_relative_pos-1, 16, -16 ; Left window.
 
 .playerPosOfs ; Player's position relative to the car's attachment point. Modified at runtime.
-	obj_col_relative_pos 1, 22, -8  ; Player left half.
-	obj_col_relative_pos 1, 22,  0  ; Player left half.
+	obj_col_relative_pos 1, 15 + BLANKED_PLAYER_ROWS, -8  ; Player left half.
+	obj_col_relative_pos 1, 15 + BLANKED_PLAYER_ROWS,  0  ; Player left half.
 
 	obj_col_relative_pos 1,  0, -12 ; Left handle.
 	obj_col_relative_pos 1, -1, -4  ; Middle handle.
@@ -568,14 +581,6 @@ ENDM
 .noCableMultiplex
 
 	; TODO: cliff multiplex.
-
-	ldh a, [rLY]
-.hidePlayerScanline: sub 42
-	jr nz, .noHidingPlayer
-	; a == 0 here, which hides the OBJ.
-	ld [oamSprite{02d:OBJ_PLAYER}YCoord], a
-	ld [oamSprite{02d:OBJ_PLAYER}YCoord + OBJ_SIZE], a
-.noHidingPlayer
 
 ; Move the window right every few scanlines.
 ; This lets the background shine through for the "meat" of the cliff,
@@ -661,11 +666,6 @@ ENDM
 	ld a, e
 	cp LOW(.carObjPosOfs)
 	jr nz, .updateCarObjPos
-
-; Update some scanline coords that get cached for faster checks.
-	ld a, [oamSprite{02d:OBJ_CAR}YCoord]
-	add 7 - 1 ; 7 blank rows in the tile, minus 1 because we are at the end of the scanline.
-	ld [.hidePlayerScanline + 1], a
 
 	pop de
 	pop bc
