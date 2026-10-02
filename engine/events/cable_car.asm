@@ -28,8 +28,8 @@ INCBIN "gfx/overworld/cable_car.bin.lzp"
 ; Tunables.
 def INITIAL_CABLE_Y_POS equ 10
 
-def NEAR_TREE_PATTERN_HEIGHT equ 16
 def NEAR_TREE_PATTERN_WIDTH  equ 16
+def NEAR_TREE_PATTERN_HEIGHT equ 16 ; Must evenly divide the above.
 
 
 SECTION "Cable Car", ROMX
@@ -581,12 +581,12 @@ ENDM
 ; This lets the background shine through for the "meat" of the cliff,
 ; so that it only needs OBJs to obscure the window.
 	ldh a, [rLY]
-	sub NEAR_TREE_PATTERN_HEIGHT - 1
+	sub NEAR_TREE_PATTERN_WIDTH / 2 - 1
 	ld l, a
 	ldh a, [rWY]
 	cp l
 	jr nz, .noWindowShift
-	add a, NEAR_TREE_PATTERN_HEIGHT ; Re-schedule a new shift; modifying the register is a no-op,
+	add a, NEAR_TREE_PATTERN_WIDTH / 2 ; Re-schedule a new shift; modifying the register is a no-op,
 	ldh [rWY], a ; and the VBlank handler will reset it from `hWY` anyway.
 	ldh a, [rWX]
 	add NEAR_TREE_PATTERN_WIDTH
