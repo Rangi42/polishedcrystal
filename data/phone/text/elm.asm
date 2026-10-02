@@ -116,17 +116,17 @@ ElmPhonePokerusText:
 	line "and infects other"
 
 	para "#mon too. When"
-  line "infected, they"
+	line "infected, they"
   
-  para "seem to put more"
-  line "effort into their"
+	para "seem to put more"
+	line "effort into their"
    
-  para "training. Luckily,"
-  line "it isn't harmful."
+	para "training. Luckily,"
+	line "it isn't harmful."
 
-  para "It goes away"
-  line "with time, so"
-  cont "don't worry!"
+	para "It goes away"
+	line "with time, so"
+	cont "don't worry!"
 	done
 
 ElmPhoneDisasterText:
