@@ -136,10 +136,13 @@ hRandom::
 hRandomAdd:: db
 hRandomSub:: db
 
+; Set by the serial interrupt and consumed by Serial_ExchangeByte.
 hSerialReceivedNewData::     db
+; USING_EXTERNAL_CLOCK, USING_INTERNAL_CLOCK, or CONNECTION_NOT_ESTABLISHED.
 hSerialConnectionStatus::    db
 	vc_assert hSerialConnectionStatus == $ffcb, \
 		"hSerialConnectionStatus is no longer located at 00:ffcb."
+; TRUE while an exchange is discarding its initial received byte/preamble.
 hSerialIgnoringInitialData:: db
 hSerialSend::                db
 hSerialReceive::             db

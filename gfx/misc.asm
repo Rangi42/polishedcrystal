@@ -72,7 +72,7 @@ CreditsSequence2GFX:: INCBIN "gfx/credits/sequence2.2bpp.lzp"
 
 SECTION "Trade Graphics", ROMX
 
-TradeScreenGFX:: INCBIN "gfx/trade/trade_screen.2bpp.lzp"
+LinkCommsBorderGFX:: INCBIN "gfx/trade/trade_screen.2bpp.lzp"
 
 TradePoofCableGFX:: INCBIN "gfx/trade/poof_cable.2bpp.lzp"
 TradeBubbleGFX:: INCBIN "gfx/trade/bubble.2bpp"

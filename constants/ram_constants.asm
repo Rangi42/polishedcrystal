@@ -1,6 +1,10 @@
 ; wInputType::
 DEF AUTO_INPUT EQU $ff
 
+; hVBlank: VBlank2 updates sound only (see home/vblank.asm).
+; Other Polished VBlank handlers differ from pokecrystal's table.
+DEF VBLANK_SOUND_ONLY EQU 2
+
 ; wMonType::
 	const_def
 	const PARTYMON   ; 0
