@@ -53,10 +53,12 @@ Gen2ToGen2LinkComms:
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
 
-; Preserve Polished Crystal's existing patch-list transfer span.
+; Version 5 exchanges 172 patch-list bytes. The receive buffer overlays
+; trade scratch RAM just after this span; a longer transfer would overwrite
+; unsent bytes in wPlayerPatchLists. See the buffer-separation assertions.
 	ld hl, wPlayerPatchLists
 	ld de, wLinkReceivedPatchLists
-	ld bc, wLinkReceivedPatchLists - wPlayerPatchLists
+	ld bc, SERIAL_PATCH_TRANSFER_LENGTH
 	vc_hook ExchangeBytes3
 	call Serial_ExchangeBytes
 
@@ -1966,7 +1968,7 @@ Special_CheckLinkTimeout:
 	xor a
 	ld [hl], a
 	call ApplyTilemapInVBlank
-	ld a, VBLANK_SOUND_ONLY
+	ld a, 2
 	ldh [hVBlank], a
 	call DelayFrame
 	call DelayFrame
@@ -1988,7 +1990,7 @@ CheckLinkTimeout_Gen2:
 	xor a
 	ld [hl], a
 	call ApplyTilemapInVBlank
-	ld a, VBLANK_SOUND_ONLY
+	ld a, 2
 	ldh [hVBlank], a
 	call DelayFrame
 	call DelayFrame
@@ -2477,7 +2479,7 @@ Link_EnsureSync:
 	add SERIAL_SYNC_PREAMBLE_BYTE
 	ld [wLinkPlayerSyncBuffer], a
 	ld [wLinkPlayerSyncBuffer + 1], a
-	ld a, VBLANK_SOUND_ONLY
+	ld a, 2
 	ldh [hVBlank], a
 	call DelayFrame
 	call DelayFrame

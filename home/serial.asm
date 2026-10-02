@@ -11,7 +11,8 @@ Serial::
 	jr nz, .printer
 
 	ldh a, [hSerialConnectionStatus]
-	inc a ; is it equal to CONNECTION_NOT_ESTABLISHED?
+	assert CONNECTION_NOT_ESTABLISHED == $ff
+	inc a
 	jr z, .establish_connection
 
 	ldh a, [rSB]

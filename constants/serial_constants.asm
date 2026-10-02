@@ -1,6 +1,7 @@
 ; wLinkMode
-DEF LINK_NULL EQU 0
-	const_def 2
+	const_def
+	const LINK_NULL        ; 0
+	const_skip            ; 1
 	const LINK_TRADECENTER ; 2
 	const LINK_COLOSSEUM   ; 3
 	const LINK_ROOM_DUMMY  ; 4 (prevents linking with Polished Crystal before commit 35d5fafd, PR #708)
@@ -11,11 +12,16 @@ DEF LINK_NULL EQU 0
 	const CABLECLUBROOM_TRADECENTER ; 1
 	const CABLECLUBROOM_COLOSSEUM   ; 2
 
-; Low-nybble handshake actions; other values represent room requests/party slots.
-DEF LINK_ACTION_READY         EQU $5
-DEF LINK_ACTION_READY_CONFIRM EQU $6
-DEF LINK_ACTION_FAILED        EQU $e
-DEF LINK_ACTION_CANCEL        EQU $f
+; The low nybble is stage-dependent: room requests, party slots (0-5),
+; trade decisions (1-2), or the handshake actions below. READY also shares
+; its value with party slot 5; it is only a ready signal during setup.
+	const_def
+	const_skip $5                 ; $0-$4: room requests/party slots/trade decisions
+	const LINK_ACTION_READY         ; $5
+	const LINK_ACTION_READY_CONFIRM ; $6
+	const_skip $7                 ; $7-$d: unused handshake actions
+	const LINK_ACTION_FAILED        ; $e
+	const LINK_ACTION_CANCEL        ; $f
 
 ; LinkTransfer packets contain a room high nybble and an action low nybble.
 DEF SERIAL_MODE_MASK   EQU $f0
@@ -39,6 +45,8 @@ DEF CONNECTION_NOT_ESTABLISHED EQU $ff
 DEF SERIAL_POLISHED_PREAMBLE_BYTE     EQU $fb
 ; capacity of a patch-list buffer
 DEF SERIAL_PATCH_LIST_LENGTH          EQU 200
+; Version-5 Polished peers exchange this many bytes of the party patch lists.
+DEF SERIAL_PATCH_TRANSFER_LENGTH      EQU 172
 ; size of each patch area (offsets must not have special values)
 DEF SERIAL_PATCH_DATA_SIZE            EQU $fc
 ; signals the start of an array of bytes transferred over the link cable
