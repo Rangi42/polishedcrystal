@@ -35,7 +35,13 @@ BattleCommand_healweather:
 	call AnimateCurrentMove
 
 	call GetSolarizedWeather
-	call nz, GetWeatherAfterUserUmbrella
+	jr nz, .not_solarized
+	farcall BeginAndShowUserAbility
+	call .goodheal
+	farjp EndAbility
+
+.not_solarized
+	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	jr z, .goodheal
 	and a
