@@ -34,6 +34,7 @@ def NEAR_TREE_PATTERN_WIDTH  equ 16
 def NEAR_TREE_PATTERN_HEIGHT equ 16 ; Must evenly divide the above.
 
 
+
 SECTION "Cable Car", ROMX
 
 Special_CableCar::
@@ -45,11 +46,12 @@ Special_CableCar::
 	; which sets up a new map, and *that* runs `ActivateMapAnims`.
 	xor a
 	ldh [hMapAnims], a
+; Init some cutscene vars. (TODO: many may be unnecessary!)
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, 7
+	ld a, SCREEN_WIDTH_PX + WX_OFS
 	ldh [hWX], a
-	ld a, 12 * 8
+	ld a, 12 * 8 ; TODO: delete; will be updated on each frame anyway.
 	ldh [hWY], a
 	ld a, LCDC_ON | LCDC_WIN_9800 | LCDC_WIN_ON | LCDC_BG_9C00 | LCDC_OBJ_16 | LCDC_OBJ_ON | LCDC_PRIO_ON
 	ldh [rLCDC], a
@@ -174,41 +176,17 @@ Special_CableCar::
 
 	; Patch the three middle OBJs' palettes.
 	assert OBPAL_WHITE == OBPAL_CAR + 1
-	ld l, LOW(wShadowOAM + (OBJ_CAR_RIGHT + 1) * OBJ_SIZE + OAMA_FLAGS)
+	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT + 1))
+	inc [hl] ; Don't write static values! This preserves the X flip bit.
+	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT - 2))
 	inc [hl]
-	ld l, LOW(wShadowOAM + (OBJ_CAR_RIGHT - 2) * OBJ_SIZE + OAMA_FLAGS)
+	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT - 5))
 	inc [hl]
-	ld l, LOW(wShadowOAM + (OBJ_CAR_RIGHT - 5) * OBJ_SIZE + OAMA_FLAGS)
-	inc [hl]
-.SetUpStaticPositions
-	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_CABLE * OBJ_SIZE)
+.SetUpStaticOamPositions
+	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_SIZE * OBJ_CABLE)
 	ld a, OAM_Y_OFS + INITIAL_CABLE_Y_POS
 	ld [hli], a
-	ld [hl], OAM_X_OFS - 4
-	; Position the cliff OBJs. (TODO: may want to derive their positions from scrolling, instead.)
-	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_CLIFF_0 * OBJ_SIZE)
-	lb bc, $60 + OAM_Y_OFS, NB_CLIFF_STEPS ; TODO: un-hardcode that $60?
-	ld a, OAM_X_OFS ; TODO
-.positionCliffObjs
-	ld [hl], b
-	inc l ; X pos.
-	ld [hli], a
-	inc l ; Attrs.
-	inc l ; Y pos.
-	add a, 8 ; Move right 8 pixels.
-	ld [hl], b
-	inc l ; X pos.
-	ld [hli], a
-	inc l ; Attrs.
-	inc l ; Y pos.
-	add a, 8 ; Move right 8 pixels.
-	push af
-	ld a, b
-	add a, 8
-	ld b, a
-	pop af
-	dec c
-	jr nz, .positionCliffObjs
+	ld [hl], SCREEN_WIDTH_PX - 4 + OAM_X_OFS
 
 
 .WriteMainMaps
@@ -243,8 +221,8 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	assert GROUP_MOUNT_MOON_SQUARE != GROUP_ROUTE_4
 	ld a, [wMapGroup] ; *Current* map, not target map.
 	cp GROUP_MOUNT_MOON_SQUARE
-	jr z, .downRightToRoute4
-; upLeftToMountMoonSquare:
+	jr nz, .upLeftToMountMoonSquare
+; downRightToRoute4:
 	; Invert all vars considered direction-dependent (basically, the speed vectors).
 	; This does give a one-unit difference between each direction,
 	; but each of these variables uses sub-pixels, so it'll be negligible.
@@ -256,7 +234,7 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ld [hli], a
 	dec c
 	jr nz, .negate
-.downRightToRoute4
+.upLeftToMountMoonSquare
 
 
 .InstallStatIntHandler
@@ -304,41 +282,21 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 
 .WriteWindowMaps
 	ld hl, wTilemap
-	; First row...
-	ld c, SCREEN_WIDTH / 2
-	ld a, TILE_BG_MED_TO_NEAR + 1
-.writeMedToClose
-	dec a
+.writeTilemap
+	ld a, TILE_BG_ROCK_SLOPE_PARTIAL
 	ld [hli], a
-	inc a
+	inc a ; TILE_BG_ROCK_SLOPE_FULL
 	ld [hli], a
-	dec c
-	jr nz, .writeMedToClose
-	; Then the whole trees.
-	ld b, 3 ; Do so thrice.
-	inc a ; (equiv. to `ld a, NEAR_TREES`)
-.writeTreeBodies
-	ld c, SCREEN_WIDTH / 2
-.writeTreeRow
-	ld [hli], a
-	xor 1 ; Toggle between left and right half.
-	ld [hli], a
-	xor 1
-	dec c
-	jr nz, .writeTreeRow
-	xor TILE_BG_NEAR_TREES_MID ^ TILE_BG_NEAR_TREES_BOTTOM ; This should be 2 or 6.
-	; Loop if we aren't about to write a "middle" row.
-	bit 1, a ; Probe a bit we just toggled...
-	assert TILE_BG_NEAR_TREES_BOTTOM & (1 << 1) != 0, "Invert this condition and next line's `jr`."
-	jr nz, .writeTreeBodies
-	; Otherwise, write a new pair if more trees are expected.
-	xor 1 ; ...but flip the two halves!
-	dec b
-	jr nz, .writeTreeBodies
+	inc a ; TILE_BG_ROCK
+	ld bc, SCREEN_WIDTH - 2
+	rst ByteFill
+	ld a, l
+	cp LOW(wAttrmap)
+	jr nz, .writeTilemap
 ; The attrmap now...
-	ld hl, wAttrmap
-	ld a, BGPAL_TREES
-	ld bc, SCREEN_WIDTH * 6
+	; hl == wAttrmap
+	ld a, BGPAL_ROCK
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
 ; Commit both.
 	call ApplyAttrAndTilemapInVBlank
@@ -372,6 +330,8 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ldh [rSTAT], a
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
+	ld a, WX_OFS
+	ldh [hWX], a
 	ret
 
 
@@ -409,12 +369,6 @@ const BGPAL_ROCK
 assert const_value == 8, "Not at OBJ pal boundary! (pal #{d:const_value})"
 const_def 0
 
-const OBPAL_ROCK
-	RGB 27, 31, 27 ; Ignored.
-	RGB 24, 18,  7
-	RGB 20, 15,  3
-	RGB  7,  7,  7
-
 const OBPAL_HANDLE ; Also used for the cable.
 	RGB 27, 31, 27 ; Ignored.
 	RGB 21, 21, 21
@@ -436,7 +390,7 @@ const OBPAL_WHITE ; A copy of the car, but with one colour replaced with the whi
 def NB_PALETTES equ const_value + (8 - PAL_BASE_IDX)
 
 const OBPAL_PLAYER
-	; Filled in dynamically depending on selected gender.
+	; Filled in dynamically depending on player gender.
 	; (Thus, must be last.)
 
 
@@ -495,16 +449,6 @@ def CABLE_TILE_DATA equs READFILE("gfx/overworld/cable_car/cable.2bpp")
 assert BYTELEN(#CABLE_TILE_DATA) / TILE_SIZE == _RS - CABLE_BASE_TILE, \
 	STRFMT("%u != %u", BYTELEN(#CABLE_TILE_DATA) / TILE_SIZE, _RS - CABLE_BASE_TILE)
 
-; Tiles from `cable_car/rocks.png`:
-def ROCKS_BASE_TILE        equ _RS
-	def TILE_BG_ROCK_SLOPE_FULL    rb 1
-	def TILE_BG_ROCK               rb 1
-	def TILE_BG_ROCK_SLOPE_PARTIAL rb 1
-	def TILE_BG_ROCK_DUPLICATE     rb 1 ; Needed so that these tiles are 8x16-compatible.
-def ROCKS_TILE_DATA equs READFILE("gfx/overworld/cable_car/rocks.2bpp")
-assert BYTELEN(#ROCKS_TILE_DATA) / TILE_SIZE == _RS - ROCKS_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#ROCKS_TILE_DATA) / TILE_SIZE, _RS - ROCKS_BASE_TILE)
-
 ; Tiles from `cable_car/trees.png`:
 def TREES_BASE_TILE        equ _RS
 	def TILE_BG_SKY                rb 1
@@ -518,6 +462,15 @@ def TREES_BASE_TILE        equ _RS
 def TREES_TILE_DATA equs READFILE("gfx/overworld/cable_car/trees.2bpp")
 assert BYTELEN(#TREES_TILE_DATA) / TILE_SIZE == _RS - TREES_BASE_TILE, \
 	STRFMT("%u != %u", BYTELEN(#TREES_TILE_DATA) / TILE_SIZE, _RS - TREES_BASE_TILE)
+
+; Tiles from `cable_car/rocks.png`: (Note that they are all distorted by the WXzardry!)
+def ROCKS_BASE_TILE        equ _RS
+	def TILE_BG_ROCK_SLOPE_PARTIAL rb 1
+	def TILE_BG_ROCK_SLOPE_FULL    rb 1
+	def TILE_BG_ROCK               rb 1
+def ROCKS_TILE_DATA equs READFILE("gfx/overworld/cable_car/rocks.2bpp")
+assert BYTELEN(#ROCKS_TILE_DATA) / TILE_SIZE == _RS - ROCKS_BASE_TILE, \
+	STRFMT("%u != %u", BYTELEN(#ROCKS_TILE_DATA) / TILE_SIZE, _RS - ROCKS_BASE_TILE)
 
 def NB_TILES         equ _RS - BASE_TILE
 
@@ -536,9 +489,6 @@ ENDM
 	; Order matters here! Earlier OBJs have priority over later ones,
 	; both in drawing order *and* in "10+ on the scanline" drop order.
 	; Also, keep in sync with `obj_col_relative_pos`.
-FOR i, NB_CLIFF_STEPS
-	obj_block OBJ_CLIFF_{d:i},   2,       ROCKS_BASE_TILE, OBPAL_ROCK,   0
-ENDR
 	obj_block OBJ_CAR_WIN_RIGHT, 1,     CAR_WIN_BASE_TILE, OBPAL_WHITE,  0
 	obj_block OBJ_CAR_WIN_LEFT,  1,     CAR_WIN_BASE_TILE, OBPAL_WHITE,  1
 	obj_block OBJ_PLAYER,        2,      PLAYER_BASE_TILE, OBPAL_PLAYER, 0 ; Partially hidden via raster effects.
@@ -548,7 +498,7 @@ ENDR
 	obj_block OBJ_CAR_RIGHT, 3 + 2,    CAR_LEFT_BASE_TILE, OBPAL_CAR,    1
 def OBJ_CAR_END equ _RS
 	obj_block OBJ_CABLE,         1,       CABLE_BASE_TILE, OBPAL_HANDLE, 0
-	obj_block OBJ_UNUSED,        7, 42, 0, 0
+	obj_block OBJ_UNUSED,       19, 42, 0, 0 ; TODO: try 8x8 mode
 .objTileBlocksEnd: static_assert _RS == OAM_COUNT, "{d:_RS} != {d:OAM_COUNT}"
 
 
@@ -611,41 +561,45 @@ ENDM
 	add a, TILE_HEIGHT * 2 - 14 ; Move it down by however many rows aren't blank.
 	ld [hli], a ; Y pos
 	ld a, [hl]
-	add 4 ; Move it right by 4 pixels.
+	sub 4 ; Move it left by 4 pixels.
 	jr c, .noCableMultiplex ; ...unless that would cause it to wrap around the screen.
 	ld [hl], a
 .noCableMultiplex
 
-	; TODO: cliff multiplex.
-
-; Move the window right every few scanlines.
-; This lets the background shine through for the "meat" of the cliff,
-; so that it only needs OBJs to obscure the window.
-	ldh a, [rLY]
-	sub NEAR_TREE_PATTERN_WIDTH / 2 - 1
-	ld l, a
+; Move the window left every scanline it's active.
+; This distorts it so that it looks more like a separate layer, without any OBJs!
 	ldh a, [rWY]
-	cp l
-	jr nz, .noWindowShift
-	add a, NEAR_TREE_PATTERN_WIDTH / 2 ; Re-schedule a new shift; modifying the register is a no-op,
-	ldh [rWY], a ; and the VBlank handler will reset it from `hWY` anyway.
+	ld l, a
+	ldh a, [rLY]
+	sub l
+	jr c, .noWindowShift
+	and 7 ; This repeats for every tile.
+	; Index into the offset table.
+	add LOW(.wxOffsets)
+	ld l, a
+	adc HIGH(.wxOffsets)
+	sub l
+	ld h, a
 	ldh a, [rWX]
-	add NEAR_TREE_PATTERN_WIDTH
+	sub a, [hl]
 	ldh [rWX], a
 .noWindowShift
+
+	; TODO: raster splits
 
 	; Regrettably, we want the scrolling to change even during `Fade*Palettes`,
 	; but those functions are blocking.
 	; So the scrolling update logic is here, instead of in the main loop where it belongs.  :(
 	ldh a, [rLY]
-	cp SCREEN_HEIGHT - 4 ; Do this near the bottom of the screen...
-	call z, .UpdateScrolling ; ... where all the variables this updates won't be read until VBlank.
-
-	; TODO
+	and a ; Do this near the top of the screen...
+	call z, .UpdateScrolling ; ... where all the variables this updates haven't been read yet.
 
 	pop hl
 	pop af
 	reti
+
+.wxOffsets
+	db 9, 1, 2, 1, 1, 0, 1, 1
 
 
 .UpdateScrolling
@@ -681,8 +635,10 @@ ENDM
 	; The car's position is derived from its X position.
 	; This is odd / unusual vs. giving the Y axis its own speed and position,
 	; but it ensures that the two axes do not drift apart due to accumulated fixed-point imprecision.
+	cpl ; Invert, since the two axes grow in different directions.
 	srl a ; Unsigned division by 2, which is the cable's slope.
-.carAxisOfs: add a, INITIAL_CABLE_Y_POS
+	add a, INITIAL_CABLE_Y_POS - $30 ; Some offset is necessary to adjust the negation.
+	; TODO: occasionally bump the car by one pixel!
 	ld b, a
 
 ; Draw the cable car in its new position.
