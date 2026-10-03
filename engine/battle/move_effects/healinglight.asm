@@ -34,16 +34,20 @@ BattleCommand_healweather:
 	ld [wBattleAnimParam], a
 	call AnimateCurrentMove
 
+	call GetWeatherAfterUserUmbrella
+	cp WEATHER_SUN
+	jr z, .goodheal
+
+	push af
 	call GetSolarizedWeather
 	jr nz, .not_solarized
+	pop af
 	farcall BeginAndShowUserAbility
 	call .goodheal
 	farjp EndAbility
 
 .not_solarized
-	call GetWeatherAfterUserUmbrella
-	cp WEATHER_SUN
-	jr z, .goodheal
+	pop af
 	and a
 	jr nz, .badheal
 	call GetHalfMaxHP
