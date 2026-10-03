@@ -28,6 +28,7 @@ INCBIN "gfx/overworld/cable_car.bin.lzp"
 ; Tunables.
 def INITIAL_CABLE_Y_POS equ 10
 def BLANKED_PLAYER_ROWS equ 6
+def NB_CLIFF_STEPS equ 6
 
 def NEAR_TREE_PATTERN_WIDTH  equ 16
 def NEAR_TREE_PATTERN_HEIGHT equ 16 ; Must evenly divide the above.
@@ -180,10 +181,34 @@ Special_CableCar::
 	ld l, LOW(wShadowOAM + (OBJ_CAR_RIGHT - 5) * OBJ_SIZE + OAMA_FLAGS)
 	inc [hl]
 .SetUpStaticPositions
-	ld l, LOW(wShadowOAM + OBJ_CABLE * OBJ_SIZE + OAMA_Y)
+	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_CABLE * OBJ_SIZE)
 	ld a, OAM_Y_OFS + INITIAL_CABLE_Y_POS
 	ld [hli], a
 	ld [hl], OAM_X_OFS - 4
+	; Position the cliff OBJs. (TODO: may want to derive their positions from scrolling, instead.)
+	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_CLIFF_0 * OBJ_SIZE)
+	lb bc, $60 + OAM_Y_OFS, NB_CLIFF_STEPS ; TODO: un-hardcode that $60?
+	ld a, OAM_X_OFS ; TODO
+.positionCliffObjs
+	ld [hl], b
+	inc l ; X pos.
+	ld [hli], a
+	inc l ; Attrs.
+	inc l ; Y pos.
+	add a, 8 ; Move right 8 pixels.
+	ld [hl], b
+	inc l ; X pos.
+	ld [hli], a
+	inc l ; Attrs.
+	inc l ; Y pos.
+	add a, 8 ; Move right 8 pixels.
+	push af
+	ld a, b
+	add a, 8
+	ld b, a
+	pop af
+	dec c
+	jr nz, .positionCliffObjs
 
 
 .WriteMainMaps
@@ -511,6 +536,9 @@ ENDM
 	; Order matters here! Earlier OBJs have priority over later ones,
 	; both in drawing order *and* in "10+ on the scanline" drop order.
 	; Also, keep in sync with `obj_col_relative_pos`.
+FOR i, NB_CLIFF_STEPS
+	obj_block OBJ_CLIFF_{d:i},   2,       ROCKS_BASE_TILE, OBPAL_ROCK,   0
+ENDR
 	obj_block OBJ_CAR_WIN_RIGHT, 1,     CAR_WIN_BASE_TILE, OBPAL_WHITE,  0
 	obj_block OBJ_CAR_WIN_LEFT,  1,     CAR_WIN_BASE_TILE, OBPAL_WHITE,  1
 	obj_block OBJ_PLAYER,        2,      PLAYER_BASE_TILE, OBPAL_PLAYER, 0 ; Partially hidden via raster effects.
@@ -519,9 +547,8 @@ ENDM
 	obj_block OBJ_CAR,   2 + 3 + 3,    CAR_LEFT_BASE_TILE, OBPAL_CAR,    0
 	obj_block OBJ_CAR_RIGHT, 3 + 2,    CAR_LEFT_BASE_TILE, OBPAL_CAR,    1
 def OBJ_CAR_END equ _RS
-	obj_block OBJ_CLIFF,         2,       ROCKS_BASE_TILE, OBPAL_ROCK,   0
 	obj_block OBJ_CABLE,         1,       CABLE_BASE_TILE, OBPAL_HANDLE, 0
-	obj_block OBJ_UNUSED, 17, 42, 0, 0
+	obj_block OBJ_UNUSED,        7, 42, 0, 0
 .objTileBlocksEnd: static_assert _RS == OAM_COUNT, "{d:_RS} != {d:OAM_COUNT}"
 
 
@@ -692,7 +719,7 @@ ENDM
 	.bgScrollSpeed: db $0A ; Less visual than a fixed-point literal, but bit 0 must remain clear...
 ; These are Q.8 OAM-space, and the coords are roughly the attachment point's.
 	.carSpeed: db $00, $AA
-	.carXPos: db $00, OAM_X_OFS
+	.carXPos: db $00, $97
 .dirDependentVars_End
 
 .end
