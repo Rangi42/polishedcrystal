@@ -394,7 +394,7 @@ const OBPAL_HANDLE ; Also used for the cable.
 	RGB 27, 31, 27 ; Ignored.
 	RGB 21, 21, 21
 	RGB 13, 13, 13
-	RGB  0,  0,  0
+	RGB  7,  7,  7
 
 const OBPAL_CAR
 	RGB 27, 31, 27 ; Ignored.
