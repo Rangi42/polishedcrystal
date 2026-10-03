@@ -239,8 +239,8 @@ gfx/overworld/cable_car/trees.2bpp: RGBGFXFLAGS += -m
 gfx/overworld/cable_car.bin: gfx/overworld/cable_car/car_window.2bpp gfx/overworld/cable_car/car_left.2bpp gfx/overworld/cable_car/car.2bpp \
                              gfx/overworld/cable_car/handle_side.2bpp gfx/overworld/cable_car/handle.2bpp \
                              gfx/overworld/cable_car/cable.2bpp \
-                             gfx/overworld/cable_car/rocks.2bpp \
                              gfx/overworld/cable_car/trees.2bpp \
+                             gfx/overworld/cable_car/rocks.2bpp \
                              gfx/overworld/cable_car/bg.tilemap gfx/overworld/cable_car/bg.attrmap
 	$Qcat $^ > $@
 
