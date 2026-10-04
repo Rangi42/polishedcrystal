@@ -49,7 +49,7 @@ Special_CableCar::
 ; Init some cutscene vars. (TODO: many may be unnecessary!)
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, SCREEN_WIDTH_PX + WX_OFS
+	ld a, SCREEN_WIDTH_PX - 1 + WX_OFS ; 1 pixel on-screen, used to skip rows near the top.
 	ldh [hWX], a
 	ld a, 12 * 8 ; TODO: delete; will be updated on each frame anyway.
 	ldh [hWY], a
@@ -555,6 +555,7 @@ ENDM
 	; so that we behave correctly even if the cable begins further down the screen.
 	ld hl, oamSprite{02d:OBJ_CABLE}YCoord ; Y position below the cable OBJ.
 	ldh a, [rLY]
+	ldh [hLY], a ; Use a consistent value throughout, since the HW reg will change after HBlank.
 	add 14 + 1 ; The bottom 14 rows are blank (must not be shown), plus 1 because we are *after* the scanline.
 	cp [hl]
 	jr nz, .noCableMultiplex
@@ -566,11 +567,21 @@ ENDM
 	ld [hl], a
 .noCableMultiplex
 
+; Skip some of the Window's rows near the top of the screen, to scroll it vertically.
+	ldh a, [hWY]
+	ld l, a
+	; WY will have been set to 9 - <nb rows to skip>, so make sure it's not displayed after scanline 8.
+	ldh a, [hLY]
+	cp 8
+	jr nz, .notResettingWindow
+	ld hl, rLCDC
+	res B_LCDC_WIN_MAP, [hl] ; Switch it back to the cliff tilemap.
+	ldh a, [hSCX]
+	add SCREEN_WIDTH_PX + WX_OFS ; Set the Window just off-screen.
+	jr .setWx ; ...and skip the code below.
+.notResettingWindow
 ; Move the window left every scanline it's active.
 ; This distorts it so that it looks more like a separate layer, without any OBJs!
-	ldh a, [rWY]
-	ld l, a
-	ldh a, [rLY]
 	sub l
 	jr c, .noWindowShift
 	and 7 ; This repeats for every tile.
@@ -582,6 +593,7 @@ ENDM
 	ld h, a
 	ldh a, [rWX]
 	sub a, [hl]
+.setWx
 	ldh [rWX], a
 .noWindowShift
 
@@ -590,7 +602,7 @@ ENDM
 	; Regrettably, we want the scrolling to change even during `Fade*Palettes`,
 	; but those functions are blocking.
 	; So the scrolling update logic is here, instead of in the main loop where it belongs.  :(
-	ldh a, [rLY]
+	ldh a, [hLY]
 	and a ; Do this near the top of the screen...
 	call z, .UpdateScrolling ; ... where all the variables this updates haven't been read yet.
 
@@ -598,14 +610,17 @@ ENDM
 	pop af
 	reti
 
-.wxOffsets
-	db 9, 1, 2, 1, 1, 0, 1, 1
+.wxOffsets ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
+	db 1, 2, 1, 1, 0, 1, 1, 9
+.wyTable ; TODO: compute this in a less shitty way.
+	db 8, 7, 7, 6, 5, 3, 2, 1
+	db 9, 9, 9, 9, 9, 9, 9, 9
 
 
 .UpdateScrolling
 	ei ; This process takes more than a scanline, so enable nested interrupts to not delay the next one.
+
 	push bc
-	push de
 
 ; Update background scrolling.
 	ld hl, .bgScrollSpeed
@@ -620,6 +635,19 @@ ENDM
 	swap a
 	and $0F
 	ldh [hSCX], a
+	; Set up to skip the appropriate number of lines also.
+	add a, LOW(.wyTable)
+	ld l, a
+	adc a, HIGH(.wyTable)
+	sub l
+	ld h, a
+	ld a, [hl]
+	ldh [rWY], a
+	ld hl, rLCDC
+	set B_LCDC_WIN_MAP, [hl] ; Use the main tilemap, since its top scanlines are a solid colour.
+
+; Update OAM last, since the other variables may be read for real soon,
+; whereas shadow OAM will only get read on the next VBlank.
 
 ; Update cable car's position.
 	ld hl, .carSpeed
@@ -640,6 +668,8 @@ ENDM
 	add a, INITIAL_CABLE_Y_POS - $30 ; Some offset is necessary to adjust the negation.
 	; TODO: occasionally bump the car by one pixel!
 	ld b, a
+
+	push de
 
 ; Draw the cable car in its new position.
 	ld hl, wShadowOAMSprite{02d:OBJ_CAR_END}XCoord - OBJ_SIZE
