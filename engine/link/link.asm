@@ -135,7 +135,7 @@ Gen2ToGen2LinkComms:
 	jr z, .skip_mail_preamble
 	dec hl
 	ld de, wLinkReceivedMailMessages
-	ld bc, wLinkDataEnd - wLinkReceivedMail
+	ld bc, wLinkDataEnd - wLinkReceivedMail ; should be wLinkReceivedMailEnd - wLinkReceivedMail
 	rst CopyBytes
 ; Replace the escaped no-data byte across all received message bodies.
 	ld hl, wLinkReceivedMailMessages
@@ -199,7 +199,7 @@ Gen2ToGen2LinkComms:
 	pop bc
 	dec b
 	jr nz, .copy_author_loop
-; Polished has no mail-language conversion; preserve the original pointer walk.
+; Unused loop left over from mail-language conversion.
 	ld b, PARTY_LENGTH
 	ld de, wLinkOTMail
 .advance_mail_loop
@@ -528,7 +528,7 @@ Link_PrepPartyData_Gen2:
 	dec b
 	jr nz, .metadata_loop
 
-; Polished does not translate mail languages; retain the pointer walk.
+; Unused loop left over from mail-language conversion.
 	ld b, PARTY_LENGTH
 	ld de, sPartyMail
 	ld hl, wLinkSendMailMessages
@@ -1250,7 +1250,7 @@ CheckAnyOtherAliveMonsForTrade:
 	call GetPartyLocation
 	ld a, [hli]
 	or [hl]
-	jr nz, .can_battle
+	jr nz, .can_trade
 
 .next_mon
 	inc c
@@ -1261,11 +1261,11 @@ CheckAnyOtherAliveMonsForTrade:
 	call GetPartyLocation
 	ld a, [hli]
 	or [hl]
-	jr nz, .can_battle
+	jr nz, .can_trade
 	scf
 	ret
 
-.can_battle
+.can_trade
 	and a
 	ret
 
