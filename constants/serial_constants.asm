@@ -43,10 +43,8 @@ DEF CONNECTION_NOT_ESTABLISHED EQU $ff
 
 ; Similar to SERIAL_PREAMBLE_BYTE, signals the start of Polished-only link data.
 DEF SERIAL_POLISHED_PREAMBLE_BYTE     EQU $fb
-; capacity of a patch-list buffer
+; length of the patch-list buffers exchanged over the link cable
 DEF SERIAL_PATCH_LIST_LENGTH          EQU 200
-; Version-5 Polished peers exchange this many bytes of the party patch lists.
-DEF SERIAL_PATCH_TRANSFER_LENGTH      EQU 172
 ; size of each patch area (offsets must not have special values)
 DEF SERIAL_PATCH_DATA_SIZE            EQU $fc
 ; signals the start of an array of bytes transferred over the link cable

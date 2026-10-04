@@ -53,12 +53,9 @@ Gen2ToGen2LinkComms:
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
 
-; Version 5 exchanges 172 patch-list bytes. The receive buffer overlays
-; trade scratch RAM just after this span; a longer transfer would overwrite
-; unsent bytes in wPlayerPatchLists. See the buffer-separation assertions.
 	ld hl, wPlayerPatchLists
-	ld de, wLinkReceivedPatchLists
-	ld bc, SERIAL_PATCH_TRANSFER_LENGTH
+	ld de, wOTPatchLists
+	ld bc, SERIAL_PATCH_LIST_LENGTH
 	vc_hook ExchangeBytes3
 	call Serial_ExchangeBytes
 
@@ -88,7 +85,7 @@ Gen2ToGen2LinkComms:
 	ld bc, wLinkPlayerPartyDataEnd - wLinkPlayerPartyData
 	call Link_CopyOTData
 
-	ld de, wLinkReceivedPatchLists
+	ld de, wOTPatchLists
 	ld hl, wLinkPlayerPatchedData
 	ld c, 2 ; number of patch areas
 .party_patch_loop

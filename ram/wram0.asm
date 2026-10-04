@@ -246,6 +246,7 @@ SECTION UNION "Misc 404", WRAM0
 
 wPlayerPatchLists:: ds SERIAL_PATCH_LIST_LENGTH
 wOTPatchLists:: ds SERIAL_PATCH_LIST_LENGTH
+assert wOTPatchLists - wPlayerPatchLists >= SERIAL_PATCH_LIST_LENGTH
 
 
 SECTION UNION "Misc 404", WRAM0
@@ -689,11 +690,6 @@ SECTION UNION "Misc 404", WRAM0
 	ds 172
 
 wTrademons::
-; Raw received party patch lists temporarily overlay trade-menu data.
-wLinkReceivedPatchLists::
-; Receiving a byte must not overwrite an outgoing byte before it is sent.
-assert SERIAL_PATCH_TRANSFER_LENGTH <= wLinkReceivedPatchLists - wPlayerPatchLists
-assert SERIAL_PATCH_TRANSFER_LENGTH <= SERIAL_PATCH_LIST_LENGTH
 wPlayerTrademon:: trademon wPlayerTrademon
 wOTTrademon:: trademon wOTTrademon
 wTrademonsEnd::
