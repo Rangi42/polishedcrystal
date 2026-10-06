@@ -603,7 +603,21 @@ ENDM
 	ldh [rWX], a
 .noWindowShift
 
-	; TODO: raster splits
+; Split the horizontal scrolling between rows of trees.
+	ldh a, [hLY]
+	; TODO: avoid hardcoding the numbers
+	cp 8 * 6  - 1
+	jr z, .setUpXScroll
+	cp 8 * 8  - 1
+	jr z, .doubleScrollSpeed
+	cp 8 * 12 - 1
+	jr nz, .noXSplit
+.doubleScrollSpeed
+	ldh a, [rSCX]
+.setScxToDoubleThat
+	rlca ; Use the fact that the subpixel bits are still in the upper bits of SCX.
+	ldh [rSCX], a
+.noXSplit
 
 	; Regrettably, we want the scrolling to change even during `Fade*Palettes`,
 	; but those functions are blocking.
@@ -615,6 +629,12 @@ ENDM
 	pop hl
 	pop af
 	reti
+
+.setUpXScroll
+	; The initial tree pattern repeats every 4 pixels, so use 2-bit scrolling.
+	ld a, [.bgXScroll]
+	rlca
+	jr .setScxToDoubleThat
 
 .wxOffsets ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
 	db 1, 2, 1, 1, 0, 1, 1, 9
@@ -639,7 +659,6 @@ ENDM
 	add [hl]
 	ld [hld], a ; .bgXScroll
 	swap a ; No need to mask off the upper bits, since the pattern repeats every 16 pixels.
-	ldh [hSCX], a
 ; Set up the cliff's vertical scrolling.
 ; This involves a two-step process: the Window must first be on-screen to "skip" some of its lines,
 ; and then begin being shown further down the screen.
