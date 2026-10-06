@@ -28,7 +28,9 @@ INCBIN "gfx/overworld/cable_car.bin.lzp"
 ;; Tunables.
 
 def TOPMOST_CABLE_Y_POS equ 10
+
 def BLANKED_PLAYER_ROWS equ 6
+
 ; How many steps of the cliff get drawn to the tilemap,
 ; and thus indirectly how much on-screen space it should take.
 def NB_CLIFF_STEPS equ 9
@@ -183,9 +185,9 @@ Special_CableCar::
 	inc [hl]
 .SetUpStaticOamPositions
 	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_SIZE * OBJ_CABLE)
-	ld a, OAM_Y_OFS + TOPMOST_CABLE_Y_POS
+	ld a, OAM_Y_OFS
 	ld [hli], a
-	ld [hl], SCREEN_WIDTH_PX - 4 + OAM_X_OFS
+	ld [hl], OAM_X_OFS + SCREEN_WIDTH_PX + (TOPMOST_CABLE_Y_POS - 1) * 2 ; It will get moved by an extra 2px each scanline.
 
 
 .WriteMainMaps
@@ -443,7 +445,7 @@ assert BYTELEN(#HANDLE_TILE_DATA) / TILE_SIZE == _RS - HANDLE_BASE_TILE, \
 
 ; Tiles from `cable_car/cable.2bpp`:
 def CABLE_BASE_TILE        equ _RS
-	rb_skip 2 ; The bottom 12 pixels are never shown. Room for something?
+	rb_skip 2 ; The bottom 14 pixel rows are never shown. Room for something?
 def CABLE_TILE_DATA equs READFILE("gfx/overworld/cable_car/cable.2bpp")
 assert BYTELEN(#CABLE_TILE_DATA) / TILE_SIZE == _RS - CABLE_BASE_TILE, \
 	STRFMT("%u != %u", BYTELEN(#CABLE_TILE_DATA) / TILE_SIZE, _RS - CABLE_BASE_TILE)
@@ -551,24 +553,18 @@ ENDM
 ; so some of the checks have their scanline numbers stored inline, as self-modifying code,
 ; in order to fit within the HBlank budget even on the 10-OBJ scanlines.
 
-	; Note that we check for the target scanline rather than always moving the OBJ every N scanlines,
-	; so that we behave correctly even if the cable begins further down the screen.
 	ld hl, oamSprite{02d:OBJ_CABLE}YCoord ; Y position below the cable OBJ.
-	ldh a, [rLY]
-	ldh [hLY], a ; Use a consistent value throughout, since the HW reg will change after HBlank.
-	add 14 + 1 ; The bottom 14 rows are blank (must not be shown), plus 1 because we are *after* the scanline.
-	cp [hl]
-	jr nz, .noCableMultiplex
-	add a, TILE_HEIGHT * 2 - 14 ; Move it down by however many rows aren't blank.
-	ld [hli], a ; Y pos
+	inc [hl] ; Move it down by 1 pixel.
+	inc l ; Y pos -> X pos
 	ld a, [hl]
-	sub 4 ; Move it left by 4 pixels.
-	jr c, .noCableMultiplex ; ...unless that would cause it to wrap around the screen.
+	sub 2 ; Move it left by 2 pixels.
+	jr c, .noWrappingAround ; Don't let it wrap around the screen.
 	ld [hl], a
-.noCableMultiplex
+.noWrappingAround
 
 ; Split the horizontal scrolling between rows of trees.
-	ldh a, [hLY]
+	ldh a, [rLY]
+	ldh [hLY], a ; Use a consistent value throughout, since the HW reg will change after HBlank.
 	; TODO: avoid hardcoding the numbers
 	cp 8 * 6  - 1
 	jr z, .setUpXScroll
