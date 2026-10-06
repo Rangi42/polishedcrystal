@@ -576,7 +576,10 @@ ENDM
 	jr nz, .notResettingWindow
 	ld hl, rLCDC
 	res B_LCDC_WIN_MAP, [hl] ; Switch it back to the cliff tilemap.
+	; Use 5-bit horizontal scrolling.
 	ldh a, [hSCX]
+	rlca
+	and $0F ; The pattern repeats after 16 pixels, so we don't need extra range.
 	add SCREEN_WIDTH_PX + WX_OFS ; Set the Window just off-screen.
 	jr .setWx ; ...and skip the code below.
 .notResettingWindow
@@ -612,7 +615,7 @@ ENDM
 
 .wxOffsets ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
 	db 1, 2, 1, 1, 0, 1, 1, 9
-.wyTable ; TODO: compute this in a less shitty way.
+.wyTable ; This has been manually determined; it can be computed as `9 - <number of extra non-blank pixels compared to the previous scanline>`.
 	db 8, 7, 7, 6, 5, 3, 2, 1
 	db 9, 9, 9, 9, 9, 9, 9, 9
 
@@ -632,9 +635,10 @@ ENDM
 	ld a, c ; X scroll is unscaled.
 	add [hl]
 	ld [hld], a
-	swap a
-	and $0F
+	swap a ; No need to mask off the upper bits, since the pattern repeats every 16 pixels.
 	ldh [hSCX], a
+	rlca
+	and $0F ; The Window pattern repeats after 16 pixels.
 	; Set up to skip the appropriate number of lines also.
 	add a, LOW(.wyTable)
 	ld l, a
