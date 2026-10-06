@@ -505,15 +505,16 @@ def OBJ_CAR_END equ _RS
 LOAD UNION "Misc 1300", WRAM0
 wCableCar:
 
-MACRO obj_col_relative_pos ; <count>, <x>, <y>
+def ORIGIN_ON_RIGHT_OFS equ -24 ; Ensures that the car's origin wraps around after all of it is off-screen.
+MACRO obj_col_relative_pos ; <count>, <x>, <y> (coords are relative to the middle of the attachment point)
 	IF (\1) >= 0
 		FOR i, (\1)
-			db OAM_Y_OFS + (\3) + i * 16, OAM_X_OFS + (\2)
+			db OAM_Y_OFS + (\3) + i * 16, OAM_X_OFS + (\2) + ORIGIN_ON_RIGHT_OFS
 		ENDR
 
 	ELSE ; Row was flipped, thus its OBJs are upside down.
 		FOR i, -(\1) - 1, -1, -1 ; Iterate through the same positions, but in reverse.
-			db OAM_Y_OFS + (\3) + i * 16, OAM_X_OFS + (\2)
+			db OAM_Y_OFS + (\3) + i * 16, OAM_X_OFS + (\2) + ORIGIN_ON_RIGHT_OFS
 		ENDR
 	ENDC
 ENDM
@@ -705,7 +706,7 @@ ENDM
 	; but it ensures that the two axes do not drift apart due to accumulated fixed-point imprecision.
 	cpl ; Invert, since the two axes grow in different directions.
 	srl a ; Unsigned division by 2 (the cable's slope) because there are more than 128 pixels.
-	add a, TOPMOST_CABLE_Y_POS - $30 ; Some offset is necessary to adjust the negation.
+	add a, TOPMOST_CABLE_Y_POS - $24 ; Some offset is necessary to adjust the negation.
 	; TODO: occasionally bump the car by one pixel!
 	ld b, a
 
