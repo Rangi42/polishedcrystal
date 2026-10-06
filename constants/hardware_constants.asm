@@ -53,13 +53,13 @@ redef B_STAT_LYC    equ 1
 redef B_STAT_MODE_2 equ 2
 redef B_STAT_MODE_1 equ 3
 redef B_STAT_MODE_0 equ 4
-redef B_STAT_LYCF   equ 5
+redef B_STAT_LYC_EQ equ 5
 redef B_STAT_BUSY   equ 6
     redef STAT_LYC    equ 1 << B_STAT_LYC
     redef STAT_MODE_2 equ 1 << B_STAT_MODE_2
     redef STAT_MODE_1 equ 1 << B_STAT_MODE_1
     redef STAT_MODE_0 equ 1 << B_STAT_MODE_0
-    redef STAT_LYCF   equ 1 << B_STAT_LYCF
+    redef STAT_LYC_EQ equ 1 << B_STAT_LYC_EQ
     redef STAT_BUSY   equ 1 << B_STAT_BUSY
 
 redef STAT_MODE equ %11_000000

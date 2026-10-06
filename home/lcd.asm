@@ -69,7 +69,7 @@ LCDMusicPlayer::
 
 LCDSummaryScreenHideWindow::
 	ldh a, [rSTAT]
-	bit B_STAT_LYCF, a
+	bit B_STAT_LYC_EQ, a
 	jr z, LCDSummaryScreenDone
 	ldh a, [rSTAT]
 	and 3
@@ -80,7 +80,7 @@ LCDSummaryScreenHideWindow::
 
 LCDSummaryScreenShowWindow::
 	ldh a, [rSTAT]
-	bit B_STAT_LYCF, a
+	bit B_STAT_LYC_EQ, a
 	jr z, LCDSummaryScreenDone
 	ldh a, [hWX]
 	ldh [rWX], a
@@ -88,7 +88,7 @@ LCDSummaryScreenShowWindow::
 
 LCDSummaryScreenScrollBackground::
 	ldh a, [rSTAT]
-	bit B_STAT_LYCF, a
+	bit B_STAT_LYC_EQ, a
 	jr z, LCDSummaryScreenDone
 	ldh a, [rSCY]
 	add 4
