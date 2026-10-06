@@ -40,7 +40,7 @@ SECTION "Cable Car", ROMX
 
 Special_CableCar::
 	; At this point, music is faded out and the screen is faded.
-	ld e, MUSIC_MAGNET_TRAIN
+	ld e, MUSIC_CABLE_CAR_RSE
 	call PlayMusic
 	; Disable map anim processing, to save on a lot of VBlank time.
 	; This command is always followed by some `warp*` script command,
