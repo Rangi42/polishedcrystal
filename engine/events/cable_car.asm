@@ -566,6 +566,22 @@ ENDM
 	ld [hl], a
 .noCableMultiplex
 
+; Split the horizontal scrolling between rows of trees.
+	ldh a, [hLY]
+	; TODO: avoid hardcoding the numbers
+	cp 8 * 6  - 1
+	jr z, .setUpXScroll
+	cp 8 * 8  - 1
+	jr z, .doubleScrollSpeed
+	cp 8 * 12 - 1
+	jr nz, .noXSplit
+.doubleScrollSpeed
+	ldh a, [rSCX]
+.setScxToDoubleThat
+	rlca ; Use the fact that the subpixel bits are still in the upper bits of SCX.
+	ldh [rSCX], a
+.noXSplit
+
 ; Skip some of the Window's rows near the top of the screen, to scroll it vertically.
 	; L = row at which to start the window (<base scanline> - <Y scroll>)
 	ld a, [.cliffFirstScanline]
@@ -602,22 +618,6 @@ ENDM
 .setWx
 	ldh [rWX], a
 .noWindowShift
-
-; Split the horizontal scrolling between rows of trees.
-	ldh a, [hLY]
-	; TODO: avoid hardcoding the numbers
-	cp 8 * 6  - 1
-	jr z, .setUpXScroll
-	cp 8 * 8  - 1
-	jr z, .doubleScrollSpeed
-	cp 8 * 12 - 1
-	jr nz, .noXSplit
-.doubleScrollSpeed
-	ldh a, [rSCX]
-.setScxToDoubleThat
-	rlca ; Use the fact that the subpixel bits are still in the upper bits of SCX.
-	ldh [rSCX], a
-.noXSplit
 
 	; Regrettably, we want the scrolling to change even during `Fade*Palettes`,
 	; but those functions are blocking.
