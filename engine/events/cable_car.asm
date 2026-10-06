@@ -505,35 +505,35 @@ def OBJ_CAR_END equ _RS
 LOAD UNION "Misc 1300", WRAM0
 wCableCar:
 
-MACRO obj_col_relative_pos ; <count>, <y>, <x>
+MACRO obj_col_relative_pos ; <count>, <x>, <y>
 	IF (\1) >= 0
 		FOR i, (\1)
-			db OAM_Y_OFS + (\2) + i * 16, OAM_X_OFS + (\3)
+			db OAM_Y_OFS + (\3) + i * 16, OAM_X_OFS + (\2)
 		ENDR
 
 	ELSE ; Row was flipped, thus its OBJs are upside down.
 		FOR i, -(\1) - 1, -1, -1 ; Iterate through the same positions, but in reverse.
-			db OAM_Y_OFS + (\2) + i * 16, OAM_X_OFS + (\3)
+			db OAM_Y_OFS + (\3) + i * 16, OAM_X_OFS + (\2)
 		ENDR
 	ENDC
 ENDM
 .carObjPosOfs ; Keep in sync with `obj_block`!
-	obj_col_relative_pos 1, 16, 8   ; Right window.
-	obj_col_relative_pos-1, 16, -16 ; Left window.
+	obj_col_relative_pos  1,   8, 16 ; Right window.
+	obj_col_relative_pos -1, -16, 16 ; Left window.
 
 .playerPosOfs ; Player's position relative to the car's attachment point. Modified at runtime.
-	obj_col_relative_pos 1, 15 + BLANKED_PLAYER_ROWS, -8  ; Player left half.
-	obj_col_relative_pos 1, 15 + BLANKED_PLAYER_ROWS,  0  ; Player left half.
+	obj_col_relative_pos  1,  -8, 15 + BLANKED_PLAYER_ROWS  ; Player left half.
+	obj_col_relative_pos  1,   0, 15 + BLANKED_PLAYER_ROWS  ; Player left half.
 
-	obj_col_relative_pos 1,  0, -12 ; Left handle.
-	obj_col_relative_pos 1, -1, -4  ; Middle handle.
-	obj_col_relative_pos-1,  0, 4   ; Right handle.
+	obj_col_relative_pos  1, -12, 0  ; Left handle.
+	obj_col_relative_pos  1,  -4,-1  ; Middle handle.
+	obj_col_relative_pos -1,   4, 0  ; Right handle.
 
-	obj_col_relative_pos 2,  8, -20 ; Body column #1.
-	obj_col_relative_pos 3,  0, -12 ; Body column #2.
-	obj_col_relative_pos 3,  0, -4  ; Body column #3.
-	obj_col_relative_pos-3,  0, 4   ; Body column #4.
-	obj_col_relative_pos-2,  8, 12  ; Body column #5.
+	obj_col_relative_pos  2, -20, 8  ; Body column #1.
+	obj_col_relative_pos  3, -12, 0  ; Body column #2.
+	obj_col_relative_pos  3,  -4, 0  ; Body column #3.
+	obj_col_relative_pos -3,   4, 0  ; Body column #4.
+	obj_col_relative_pos -2,  12, 8  ; Body column #5.
 .carObjPosOfsEnd
 
 
@@ -700,11 +700,11 @@ ENDM
 	adc a, [hl]
 	ld [hli], a ; Pixels.
 	ld c, a
-	; The car's position is derived from its X position.
+	; The car's Y position is derived from its X position.
 	; This is odd / unusual vs. giving the Y axis its own speed and position,
 	; but it ensures that the two axes do not drift apart due to accumulated fixed-point imprecision.
 	cpl ; Invert, since the two axes grow in different directions.
-	srl a ; Unsigned division by 2, which is the cable's slope.
+	srl a ; Unsigned division by 2 (the cable's slope) because there are more than 128 pixels.
 	add a, TOPMOST_CABLE_Y_POS - $30 ; Some offset is necessary to adjust the negation.
 	; TODO: occasionally bump the car by one pixel!
 	ld b, a
@@ -744,8 +744,8 @@ ENDM
 .dirDependentVars ; These variables get negated in bulk depending on direction.
 	.bgScrollSpeed: db $0A ; Less visual than a fixed-point literal, but bit 0 must remain clear...
 ; These are Q.8 OAM-space, and the coords are roughly the attachment point's.
-	.carSpeed: db $00, $AA
-	.carXPos: db $00, $97
+	.carSpeed: bigdw $00AA
+	.carXPos: dw $0097
 .dirDependentVars_End
 	.cliffFirstScanline: db 42 ; (Dummy value.)
 
