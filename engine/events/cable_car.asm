@@ -25,14 +25,15 @@ INCBIN "gfx/overworld/cable_car.bin.lzp"
 ; as part of length checks; they are ordered after this to be robust to dependency ordering / scanning.
 
 
-; Tunables.
-def INITIAL_CABLE_Y_POS equ 10
+;; Tunables.
+
+def TOPMOST_CABLE_Y_POS equ 10
 def BLANKED_PLAYER_ROWS equ 6
-def NB_CLIFF_STEPS equ 6
-
-def NEAR_TREE_PATTERN_WIDTH  equ 16
-def NEAR_TREE_PATTERN_HEIGHT equ 16 ; Must evenly divide the above.
-
+; How many steps of the cliff get drawn to the tilemap,
+; and thus indirectly how much on-screen space it should take.
+def NB_CLIFF_STEPS equ 9
+def NB_CLIFF_FINE_Y_SCROLL equ 2 ; Keep this between 0 and 7, but between the two "breaks the grid" more.
+	def CLIFF_BASE_SCANLINE equ (SCREEN_HEIGHT - NB_CLIFF_STEPS) * 8 + NB_CLIFF_FINE_Y_SCROLL
 
 
 SECTION "Cable Car", ROMX
@@ -51,8 +52,6 @@ Special_CableCar::
 	ldh [hSCY], a
 	ld a, SCREEN_WIDTH_PX - 1 + WX_OFS ; 1 pixel on-screen, used to skip rows near the top.
 	ldh [hWX], a
-	ld a, 12 * 8 ; TODO: delete; will be updated on each frame anyway.
-	ldh [hWY], a
 	ld a, LCDC_ON | LCDC_WIN_9800 | LCDC_WIN_ON | LCDC_BG_9C00 | LCDC_OBJ_16 | LCDC_OBJ_ON | LCDC_PRIO_ON
 	ldh [rLCDC], a
 
@@ -184,7 +183,7 @@ Special_CableCar::
 	inc [hl]
 .SetUpStaticOamPositions
 	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_SIZE * OBJ_CABLE)
-	ld a, OAM_Y_OFS + INITIAL_CABLE_Y_POS
+	ld a, OAM_Y_OFS + TOPMOST_CABLE_Y_POS
 	ld [hli], a
 	ld [hl], SCREEN_WIDTH_PX - 4 + OAM_X_OFS
 
@@ -568,7 +567,8 @@ ENDM
 .noCableMultiplex
 
 ; Skip some of the Window's rows near the top of the screen, to scroll it vertically.
-	ldh a, [hWY]
+	; L = row at which to start the window (<base scanline> - <Y scroll>)
+	ld a, [.cliffFirstScanline]
 	ld l, a
 	; WY will have been set to 9 - <nb rows to skip>, so make sure it's not displayed after scanline 8.
 	ldh a, [hLY]
@@ -577,8 +577,11 @@ ENDM
 	ld hl, rLCDC
 	res B_LCDC_WIN_MAP, [hl] ; Switch it back to the cliff tilemap.
 	; Use 5-bit horizontal scrolling.
-	ldh a, [hSCX]
-	rlca
+	ld a, [.bgXScroll]
+	cpl ; SCX and WX directions are opposite, so invert the meaning.
+	rra
+	rra
+	rra
 	and $0F ; The pattern repeats after 16 pixels, so we don't need extra range.
 	add SCREEN_WIDTH_PX + WX_OFS ; Set the Window just off-screen.
 	jr .setWx ; ...and skip the code below.
@@ -631,13 +634,21 @@ ENDM
 	ld c, a
 	sra a ; Halved (using signed division here!)
 	add [hl] ; Our slope is 2:1, so Y scroll speed is halved.
-	ld [hld], a
+	ld [hld], a ; .bgYScroll
 	ld a, c ; X scroll is unscaled.
 	add [hl]
-	ld [hld], a
+	ld [hld], a ; .bgXScroll
 	swap a ; No need to mask off the upper bits, since the pattern repeats every 16 pixels.
 	ldh [hSCX], a
-	rlca
+; Set up the cliff's vertical scrolling.
+; This involves a two-step process: the Window must first be on-screen to "skip" some of its lines,
+; and then begin being shown further down the screen.
+; Note that this is derived from X scroll so that it remains precisely tied to its own X scroll;
+; and it is also inverted (full negation is not strictly necessary) as increasing SCX scrolls the BG *left*,
+; but increasing WX scrolls the Window *right*.
+	cpl
+	push af
+	rlca ; The cliff scrolls horizontally twice as fast.
 	and $0F ; The Window pattern repeats after 16 pixels.
 	; Set up to skip the appropriate number of lines also.
 	add a, LOW(.wyTable)
@@ -649,6 +660,12 @@ ENDM
 	ldh [rWY], a
 	ld hl, rLCDC
 	set B_LCDC_WIN_MAP, [hl] ; Use the main tilemap, since its top scanlines are a solid colour.
+	; Cache the scanline at which to start showing the Window.
+	pop af
+	and $07 ; The pattern repeats after 8 pixels.
+	cpl ; Subtract that from the base scanline.
+	add a, CLIFF_BASE_SCANLINE + 1
+	ld [.cliffFirstScanline], a
 
 ; Update OAM last, since the other variables may be read for real soon,
 ; whereas shadow OAM will only get read on the next VBlank.
@@ -669,7 +686,7 @@ ENDM
 	; but it ensures that the two axes do not drift apart due to accumulated fixed-point imprecision.
 	cpl ; Invert, since the two axes grow in different directions.
 	srl a ; Unsigned division by 2, which is the cable's slope.
-	add a, INITIAL_CABLE_Y_POS - $30 ; Some offset is necessary to adjust the negation.
+	add a, TOPMOST_CABLE_Y_POS - $30 ; Some offset is necessary to adjust the negation.
 	; TODO: occasionally bump the car by one pixel!
 	ld b, a
 
@@ -711,6 +728,7 @@ ENDM
 	.carSpeed: db $00, $AA
 	.carXPos: db $00, $97
 .dirDependentVars_End
+	.cliffFirstScanline: db 42 ; (Dummy value.)
 
 .end
 ENDL
