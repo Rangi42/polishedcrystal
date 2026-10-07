@@ -129,7 +129,7 @@ WaitTop::
 ; Wait until the top half of the BG Map is being updated.
 
 	ldh a, [hBGMapMode]
-	and a ; Warning: bit 7 is otherwise ignored...
+	and a
 	jr nz, .handleLoop
 	ret
 .loop
@@ -150,127 +150,39 @@ UpdateBGMap::
 ; Update the BG Map, in halves, from wTilemap and wAttrmap.
 
 	ldh a, [hBGMapMode]
-	and $7f
+	and a
 	ret z
 
-; BG Map 0
-	dec a ; 1
-	jr z, .DoTiles
-	dec a ; 2
-	jr z, .DoAttributes
-
-; BG Map 1
+	dec a
+_UpdateBGMap::
+	ldh [rVBK], a ; Load the appropriate VRAM bank (only bit 0 gets used).
+	ld [wSPBuffer], sp ; Since we're about to use the stack as the copy source, save it for restoring later.
+	ld sp, wTilemap
+	rra ; Bit 0 (now in carry) encodes which bank to use.
+	jr nc, :+
+	ld sp, wAttrmap
+:
+	rra ; Bit 1 (now in carry) encodes whether to use `hBGMapAddress` or vBGMap1.
 	ld hl, vBGMap1
-	dec a
-	jr z, .DoBGMap1Tiles
-	dec a
-	jr z, .DoBGMap1Attributes
-; Update from a specific row
-; does not update hBGMapHalf
-	dec a
-	bccoord 0, 0
-	jr z, .DoCustomSourceTiles
-	dec a
-	ret nz
-	bccoord 0, 0, wAttrmap
-	ld a, 1
-	ldh [rVBK], a
-	call .DoCustomSourceTiles
-	xor a
-	ldh [rVBK], a
-	ret
-
-.DoCustomSourceTiles
-	ld [wSPBuffer], sp
-	xor a
-	ld h, a
-	ld d, a
-	ldh a, [hBGMapHalf] ; multiply by 20 to get the tilemap offset
-	ld l, a
-	ld e, a
-	add hl, hl ; hl = hl * 2
-	add hl, hl ; hl = hl * 4
-	add hl, de ; hl = (hl*4) + de
-	add hl, hl ; hl = (5*hl)*2
-	add hl, hl ; hl = (5*hl)*4
-	add hl, bc
-	ld sp, hl
-	ldh a, [hBGMapHalf] ; multiply by 32 to get the bg map offset
-	; assumes [hBGMapHalf] < 8
-	swap a
-	add a
-	ld l, a
-	ldh a, [hBGMapAddress]
-	add l
-	ld l, a
-	ldh a, [hBGMapAddress + 1]
-	adc 0
-	ld h, a
-	ldh a, [hBGMapCopyNRows]
-	jr .startCustomCopy
-
-.DoAttributes
-	ldh a, [hBGMapAddress + 1]
-	ld h, a
+	jr c, :+
 	ldh a, [hBGMapAddress]
 	ld l, a
-.DoBGMap1Attributes
-	ld a, 1
-	ldh [rVBK], a
-	call .CopyAttributes
-	xor a
-	ldh [rVBK], a
-	ret
+	ldh a, [hBGMapAddress + 1]
+	ld h, a
+:
 
-.CopyAttributes
-	ld [wSPBuffer], sp
-
-; Which half?
 	ldh a, [hBGMapHalf]
-	and a ; 0
-	jr z, .AttributeMapTop
-; bottom row
-	coord sp, 0, 9, wAttrmap
-	ld de, HALF_HEIGHT * TILEMAP_WIDTH
-	add hl, de
-; Next time: top half
-	xor a
-	jr .startCopy
-.AttributeMapTop
-	coord sp, 0, 0, wAttrmap
-; Next time: bottom half
-	jr .AttributeMapTopContinue
-
-.DoTiles
-	ldh a, [hBGMapAddress + 1]
-	ld h, a
-	ldh a, [hBGMapAddress]
-	ld l, a
-
-.DoBGMap1Tiles
-	ld [wSPBuffer], sp
-; Which half?
-	ldh a, [hBGMapHalf]
-	and a ; 0
-	jr z, .TileMapTop
-; bottom row
-	coord sp, 0, 9
-	ld de, HALF_HEIGHT * TILEMAP_WIDTH
-	add hl, de
-; Next time: top half
-	xor a
-	jr .startCopy
-.TileMapTop
-	coord sp, 0, 0
-; Next time: bottom half
-.AttributeMapTopContinue
-	inc a
-.startCopy
-; Which half to update next time
+	xor 1
+	jr nz, :+
+	; Bottom half!
+	add sp, 127 :: add sp, HALF_HEIGHT * SCREEN_WIDTH - 127 ; Source.
+	ld de, HALF_HEIGHT * TILEMAP_WIDTH :: add hl, de ; Destination.
+:
 	ldh [hBGMapHalf], a
-; Rows of tiles in a half
-	ld a, SCREEN_HEIGHT / 2
-.startCustomCopy
+
+	ld a, HALF_HEIGHT
+
+_CopyTilemapRows:
 ; Discrepancy between wTilemap and BGMap
 	ld bc, TILEMAP_WIDTH - (SCREEN_WIDTH - 1)
 .row
@@ -294,7 +206,25 @@ endr
 	ld sp, wSPBuffer
 	pop hl
 	ld sp, hl
+
+	; Keep VRA0 loaded for the rest of the game, in case we just copied attributes.
+	xor a
+	ldh [rVBK], a
 	ret
+
+CopyTop3MapRows:: ; Called from `CopyTilemapAtOnce`.
+	ld [wSPBuffer], sp
+	; Load the destination address, which is always at the top of the map.
+	ld sp, hBGMapAddress
+	pop de
+	; Load the source address...
+	ld sp, hl
+	; Transfer the destination to `hl`.
+	ld l, e
+	ld h, d
+	; The number of rows to be copied. For why 3, see this function's caller.
+	ld a, 3
+	jr _CopyTilemapRows
 
 LYOverrideStackCopy::
 	ldh a, [hLYOverrideStackCopyAmount]
