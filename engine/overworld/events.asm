@@ -1330,15 +1330,15 @@ GetContestLocations:
 	scf
 	ret nz
 
-	ld hl, ContestMons + 1
-	ld e, (ContestMonsEnd - ContestMons) / 5
+	call FetchBugTables
 .loop
-	ld a, [hli]
+	inc hl ; skip time of day
+	ld a, [hli] ; encounter weight
 	cp c
-	ld a, [hli]
 	inc hl ; skip level min
 	inc hl ; skip level max
-	inc hl ; skip (next mon's) encounter rate
+	ld a, [hli] ; Species
+	inc hl ; skip form
 	jr nz, .next
 	call DexCompareWildForm
 	jr z, .found_mon
@@ -1355,39 +1355,85 @@ GetContestLocations:
 _TryWildEncounter_BugContest:
 	call TryWildEncounter_BugContest
 	ret nc
-; Pick a random mon out of ContestMons.
-.loop
-	call Random
-	cp 100 << 1
-	jr nc, .loop
-	srl a
-	ld hl, ContestMons
-	ld de, 5
+
+; Initialize badge level scaling.
+	farcall SetBadgeBaseLevel ; Set wBadgeBaseLevel
+; Load the correct bug contest table
+	call LoadContestMonTable  ; Set hl
+	ld b, 0  ;  b = RandomRange maximum
+; Get time of day
+; Morning 0 -> 1
+; Day     1 -> 2
+; Night   2 -> 4
+	farcall GetTimeOfDayNotEve ; Set a
+	ld c, 1  ;  c = Time of Day Mask
+	ld de, 5 ; de = Table Increment value
+.time_of_day_mask
+	cp 0
+	jr z, .accumulate
+	sla c
+	sub 1
+	jr .time_of_day_mask
+; Accumulate weight of valid table entries for time of day
+.accumulate
+	; Load time of day mask into a
+	ld a, [hli]
+	; Time of Day BITAND Time of Day Mask
+	and c
+	; If the result is zero, the Mon cannot be found at the current time of day
+	; jump to next_row operation
+	jr z, .next_row
+	; Set a to b (accumulate)
+	ld a, b
+	add [hl]
+	ld b, a
+.next_row
+	; Increment hl to next row
+	add hl, de
+	; Set a to [hl]
+	ld a, [hl]
+	; If [hl] is -1, continue, otherwise keep accumulating.
+	cp -1
+	jr nz, .accumulate
+; Load the correct bug contest table once more
+	call LoadContestMonTable
+; Pick a random value from 0 to RandomMax
+	ld a, b
+	call RandomRange
+	ld b, a
 .CheckMon:
+	; Load time of day mask into a
+	ld a, [hli]
+	; Time of Day BITAND Time of Day Mask
+	and c
+	; If the result is zero, skip
+	jr z, .SkipMon
+	; Otherwise, the next hl value is the encounter weight
+	; subtract that weight from the RandomRange result
+	; Load RandomResult to a
+	ld a, b
 	sub [hl]
+	; if the subtraction forced a carry, then skip to GotMon
+	; otherwise we go to the next row and CheckMon again
 	jr c, .GotMon
+	; Update b with the result of a - hl
+	ld b, a
+.SkipMon
+	; Increment hl to next row
 	add hl, de
 	jr .CheckMon
 .GotMon:
 	inc hl
-; Species
-	ld a, [hli]
-	ld [wTempWildMonSpecies], a
-; Form
-	ld a, [hli]
-	ld [wCurForm], a
-	ld [wWildMonForm], a
 ; Min level
 	ld a, [hli]
 	ld d, a
 ; Max level
-	ld a, [hl]
+	ld a, [hli]
 	sub d
 	jr nz, .RandomLevel
 ; If min and max are the same.
 	ld a, d
 	jr .GotLevel
-
 .RandomLevel:
 ; Get a random level between the min and max.
 	ld c, a
@@ -1397,9 +1443,61 @@ _TryWildEncounter_BugContest:
 	call SimpleDivide
 	add d
 .GotLevel:
+	ld b, a
+; Species
+	ld a, [hli]
+	ld [wTempWildMonSpecies], a
+; Form
+	ld a, [hl]
+	ld [wCurForm], a
+	ld [wWildMonForm], a
+	ld a, b
+; Adjust level scaling.
+	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 	xor a
 	farjp CheckRepelEffect
+
+FetchBugTables:
+; Postgame Bugcontest
+	; If the player has beaten Blue, load Blue Contest Table
+	eventflagcheck EVENT_BEAT_BLUE
+	jr z, .e4_bugs
+	ld hl, Blue_ContestMons + 1
+	ld e, (Blue_ContestMonsEnd - Blue_ContestMons) / 6
+	ret
+.e4_bugs
+	; If the player has beaten the E4, but not Blue, then load the
+	; E4 contest table. Otherwise skip to the regular table.
+	eventflagcheck EVENT_BEAT_ELITE_FOUR
+	jr z, .base_bugs
+	ld hl, E4_ContestMons + 1
+	ld e, (E4_ContestMonsEnd - E4_ContestMons) / 6
+	ret
+; end postgame bugcontest
+.base_bugs
+	ld hl, ContestMons + 1
+	ld e, (ContestMonsEnd - ContestMons) / 6
+	ret
+
+LoadContestMonTable:
+; Postgame Bugcontest
+	; If the player has beaten Blue, check against the Blue table
+	eventflagcheck EVENT_BEAT_BLUE
+	jr z, .e4_load
+	ld hl, Blue_ContestMons
+	ret
+	; If the player has beaten the E4, but not Blue, then load the
+	; E4 contest table. Otherwise skip to the regular table.
+.e4_load
+	eventflagcheck EVENT_BEAT_ELITE_FOUR
+	jr z, .base_load
+	ld hl, E4_ContestMons
+	ret
+; end postgame bugcontest
+.base_load
+	ld hl, ContestMons
+	ret
 
 TryWildEncounter_BugContest:
 	ld a, [wPlayerTileCollision]
