@@ -553,13 +553,12 @@ ENDM
 ; so some of the checks have their scanline numbers stored inline, as self-modifying code,
 ; in order to fit within the HBlank budget even on the 10-OBJ scanlines.
 
-	ld hl, oamSprite{02d:OBJ_CABLE}YCoord ; Y position below the cable OBJ.
-	inc [hl] ; Move it down by 1 pixel.
-	inc l ; Y pos -> X pos
+	ld hl, oamSprite{02d:OBJ_CABLE}XCoord
 	ld a, [hl]
 	sub 2 ; Move it left by 2 pixels.
 	jr c, .noWrappingAround ; Don't let it wrap around the screen.
-	ld [hl], a
+	ld [hld], a
+	inc [hl] ; Move it down by 1 pixel.
 .noWrappingAround
 
 ; Split the horizontal scrolling between rows of trees.
