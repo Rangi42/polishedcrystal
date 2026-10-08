@@ -233,13 +233,13 @@ gfx/overworld/cable_car/handle_side.2bpp: gfx/overworld/cable_car/handle.png
 gfx/overworld/cable_car/handle.2bpp: RGBGFXFLAGS += -Z -L 8,0:1,2
 # Various remaining pieces of the scene.
 gfx/overworld/cable_car/cable.2bpp: RGBGFXFLAGS += -Z
+gfx/overworld/cable_car/bg.2bpp: RGBGFXFLAGS += -m
 gfx/overworld/cable_car/rocks.2bpp: RGBGFXFLAGS += -Z # Meant for 8x16 OBJ *and* BG.
-gfx/overworld/cable_car/trees.2bpp: RGBGFXFLAGS += -m
 # Order matters here! Update the tilemap, and the `obj_block`s to reflect new tile IDs.
 gfx/overworld/cable_car.bin: gfx/overworld/cable_car/car_window.2bpp gfx/overworld/cable_car/car_left.2bpp gfx/overworld/cable_car/car.2bpp \
                              gfx/overworld/cable_car/handle_side.2bpp gfx/overworld/cable_car/handle.2bpp \
                              gfx/overworld/cable_car/cable.2bpp \
-                             gfx/overworld/cable_car/trees.2bpp \
+                             gfx/overworld/cable_car/bg.2bpp \
                              gfx/overworld/cable_car/rocks.2bpp \
                              gfx/overworld/cable_car/bg.tilemap gfx/overworld/cable_car/bg.attrmap
 	$Qcat $^ > $@
