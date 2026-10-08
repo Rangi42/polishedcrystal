@@ -287,7 +287,7 @@ def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ldh a, [rSTAT]
 	and STAT_MODE
 	jr z, .waitNotHblank ; Do not enable the interrupt during HBlank, it could trigger near its end instead of its beginning.
-	ld a, STAT_MODE_0 ; TODO: once the handler's logic is written, consider using LYC (and Mode 1 for reset?)
+	ld a, STAT_MODE_0
 	ldh [rSTAT], a
 
 
