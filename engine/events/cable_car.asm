@@ -230,10 +230,13 @@ def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ld a, [wMapGroup] ; *Current* map, not target map.
 	cp GROUP_MOUNT_MOON_SQUARE
 	jr nz, .upLeftToMountMoonSquare
-; downRightToRoute4:
+;.downRightToRoute4
 	; Invert all vars considered direction-dependent (basically, the speed vectors).
 	; This does give a one-unit difference between each direction,
 	; but each of these variables uses sub-pixels, so it'll be negligible.
+	; Actual negation of each byte is possible (replace `ld a, [hl] :: cpl` with `xor a :: sub [hl]`)
+	; but then `$00AA` gets turned into `$0056` instead of `$FF55`,
+	; which is much further off from the correct `$FF56`.
 	ld hl, wCableCar.dirDependentVars
 	ld c, wCableCar.dirDependentVars_End - wCableCar.dirDependentVars_End
 .negate
