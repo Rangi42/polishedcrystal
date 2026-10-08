@@ -37,6 +37,12 @@ def NB_CLIFF_STEPS equ 9
 def NB_CLIFF_FINE_Y_SCROLL equ 2 ; Keep this between 0 and 7, but between the two "breaks the grid" more.
 	def CLIFF_BASE_SCANLINE equ (SCREEN_HEIGHT - NB_CLIFF_STEPS) * 8 + NB_CLIFF_FINE_Y_SCROLL
 
+; Whenever the car's bump timer has all of these bits equal to 0, the car gets bumped up or down by 1 pixel.
+def CAR_BUMP_TRIGGER_MASK equ $38
+; If bit 6 is set, the car gets bumped up; otherwise, if bit 7 is reset, the car get bumped down.
+; This gives the following sequence: UDU-UDU- etc.
+def CAR_BUMP_TIMER_INCREMENT equ $01 ; By how much the bump timer gets increased each frame.
+
 
 SECTION "Cable Car", ROMX
 
@@ -49,8 +55,9 @@ Special_CableCar::
 	; which sets up a new map, and *that* runs `ActivateMapAnims`.
 	xor a
 	ldh [hMapAnims], a
-; Init some cutscene vars. (TODO: many may be unnecessary!)
+; Init some cutscene vars.
 	ldh [hSCX], a
+	ld a, $60 ; TODO: compute based on camera position instead!
 	ldh [hSCY], a
 	ld a, SCREEN_WIDTH_PX - 1 + WX_OFS ; 1 pixel on-screen, used to skip rows near the top.
 	ldh [hWX], a
@@ -193,7 +200,7 @@ Special_CableCar::
 .WriteMainMaps
 	; Since they are wider than the WRAM tilemaps, VRAM must be accessed directly;
 	; there is enough room in the decompression buffer to hold them, too!
-def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
+def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ld de, wDecompressScratch tile NB_TILES ; The tilemap and attrmap are right after the tile data.
 	ld hl, vBGMap1
 	ld c, MAP_SIZE_IN_TILES
@@ -346,20 +353,43 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ret
 
 
-def PAL_BASE_IDX equ 5
+def PAL_BASE_IDX equ 0
 .palettes: const_def PAL_BASE_IDX
-
-const BGPAL_TREELINE
-	RGB  9, 23, 29 ; Sky. Must be first for priority effects.
-	RGB 12, 25,  1
-	RGB  5, 14,  0
-	RGB  7,  7,  7
-
-const BGPAL_TREES
+const BGPAL_TREES_CLOSEST
 	RGB 22, 31, 10
 	RGB 12, 25,  1
 	RGB  5, 14,  0
 	RGB  7,  7,  7
+const BGPAL_TREES_MED_BOTTOM_HALF
+	RGB 23, 31, 12
+	RGB 12, 25,  5
+	RGB  5, 15,  3
+	RGB  8,  8,  8
+const BGPAL_TREES_MED_ROW_2
+	RGB 23, 30, 14
+	RGB 12, 25,  7
+	RGB  6, 15,  5
+	RGB  8,  8,  9
+const BGPAL_TREES_MED_ROW_1
+	RGB 23, 29, 15
+	RGB 12, 25,  8
+	RGB  6, 15,  6
+	RGB  9,  9, 10
+const BGPAL_TREES_FAR ; Each tile row only uses two colours each, but there's overlap.
+	dw 0 ; Unused.
+	RGB 11, 25, 13
+	RGB  8, 17, 11
+	RGB 12, 12, 13
+const BGPAL_SKY
+	RGB  7, 23, 30 ; Sky backdrop.
+	RGB 31, 31, 31 ; Cloud white.
+	RGB 23, 29, 31 ; Cloud shade.
+	dw 0 ; Unused.
+const BGPAL_MOUNTAINS
+	RGB  7, 23, 30 ; Sky backdrop.
+	RGB 11, 25, 13 ; Greenery.
+	RGB 23, 29, 31 ; Light snow.
+	RGB  2, 19, 27 ; Dark snow.
 
 const BGPAL_ROCK
 	RGB 27, 31, 27
@@ -371,19 +401,19 @@ assert const_value == 8, "Not at OBJ pal boundary! (pal #{d:const_value})"
 const_def 0
 
 const OBPAL_HANDLE ; Also used for the cable.
-	RGB 27, 31, 27 ; Ignored.
+	dw 0 ; Ignored.
 	RGB 21, 21, 21
 	RGB 13, 13, 13
 	RGB  7,  7,  7
 
 const OBPAL_CAR
-	RGB 27, 31, 27 ; Ignored.
+	dw 0 ; Ignored.
 	RGB 29, 26, 10
 	RGB 17, 15, 10
 	RGB  7,  7,  7
 
 const OBPAL_WHITE ; A copy of the car, but with one colour replaced with the white backdrop.
-	RGB 27, 31, 27 ; Ignored.
+	dw 0 ; Ignored.
 	RGB 29, 26, 10
 	RGB 31, 31, 31 ; Backdrop for the car. (TODO: consider some darker, desaturated colour?)
 	RGB  7,  7,  7
@@ -450,19 +480,12 @@ def CABLE_TILE_DATA equs READFILE("gfx/overworld/cable_car/cable.2bpp")
 assert BYTELEN(#CABLE_TILE_DATA) / TILE_SIZE == _RS - CABLE_BASE_TILE, \
 	STRFMT("%u != %u", BYTELEN(#CABLE_TILE_DATA) / TILE_SIZE, _RS - CABLE_BASE_TILE)
 
-; Tiles from `cable_car/trees.png`:
-def TREES_BASE_TILE        equ _RS
-	def TILE_BG_SKY                rb 1
-	def TILE_BG_TREELINE           rb 1 ; Has a bit of the sky peeking through.
-	def TILE_BG_FAR_TREES          rb 1 ; Mostly the same.
-	def TILE_BG_FAR_TO_MED         rb 1 ; Transition. 🏳️‍⚧️
-	def TILE_BG_MED_TREES          rb 2 ; Each tile is offset horizontally by 4 pixels.
-	def TILE_BG_MED_TO_NEAR        rb 2 ; Transition. 🏳️‍⚧️ Did you know that there are two ways to make people laugh? The first is running gags, and the second is running gags.
-	def TILE_BG_NEAR_TREES_MID     rb 2
-	def TILE_BG_NEAR_TREES_BOTTOM  rb 2 ; Doubles as the top of the next row of trees.
-def TREES_TILE_DATA equs READFILE("gfx/overworld/cable_car/trees.2bpp")
-assert BYTELEN(#TREES_TILE_DATA) / TILE_SIZE == _RS - TREES_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#TREES_TILE_DATA) / TILE_SIZE, _RS - TREES_BASE_TILE)
+; Tiles from `cable_car/bg.png`:
+def BG_BASE_TILE           equ _RS
+	rb_skip 42
+def BG_TILE_DATA equs READFILE("gfx/overworld/cable_car/bg.2bpp")
+assert BYTELEN(#BG_TILE_DATA) / TILE_SIZE == _RS - BG_BASE_TILE, \
+	STRFMT("%u != %u", BYTELEN(#BG_TILE_DATA) / TILE_SIZE, _RS - BG_BASE_TILE)
 
 ; Tiles from `cable_car/rocks.png`: (Note that they are all distorted by the WXzardry!)
 def ROCKS_BASE_TILE        equ _RS
@@ -702,8 +725,24 @@ ENDM
 	cpl ; Invert, since the two axes grow in different directions.
 	srl a ; Unsigned division by 2 (the cable's slope) because there are more than 128 pixels.
 	add a, TOPMOST_CABLE_Y_POS - $24 ; Some offset is necessary to adjust the negation.
-	; TODO: occasionally bump the car by one pixel!
 	ld b, a
+
+; Occasionally bump the car by one pixel.
+	assert .carXPos + 2 == .carBumpTimer
+	ld a, [hl]
+	add CAR_BUMP_TIMER_INCREMENT
+	ld [hl], a
+	and CAR_BUMP_TRIGGER_MASK
+	jr nz, .noCarBump
+	bit 6, [hl]
+	jr nz, .bumpCarUp
+	bit 7, [hl]
+	jr nz, .noCarBump
+	inc b
+	inc b ; Counteract the upcoming `dec b`.
+.bumpCarUp
+	dec b
+.noCarBump
 
 	push de
 
@@ -743,6 +782,8 @@ ENDM
 	.carSpeed: bigdw $00AA
 	.carXPos: dw $0097
 .dirDependentVars_End
+	.carBumpTimer: db 0
+
 	.cliffFirstScanline: db 42 ; (Dummy value.)
 
 .end
