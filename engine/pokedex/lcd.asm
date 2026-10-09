@@ -332,6 +332,18 @@ StackDexGraphics:
 	cp DEXDISP_NEWDESC
 	ret nz
 
+	; Only restore the frontpic if a nickname or storage message will follow.
+	; Otherwise it briefly flashes before the battle ends.
+	ld a, [wBattleType]
+	cp BATTLETYPE_CONTEST
+	ret z
+	ld a, [wOptions3]
+	bit NICKNAMES_NEVER, a
+	jr z, .restore_frontpic
+	ld a, [wPartyCount]
+	cp PARTY_LENGTH
+	ret c
+.restore_frontpic
 	call ClearTileMap
 	hlcoord 7, 2
 	ld a, $40
