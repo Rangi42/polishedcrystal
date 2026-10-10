@@ -437,7 +437,7 @@ rsset $00
 def PLAYER_BASE_TILE rb TILES_PER_CEL * CELS_PER_OBJECT * 2 ; One set for standing, another for walkies!
 def PLAYER_NB_TILES  equ _RS - PLAYER_BASE_TILE
 
-def BASE_TILE        equ $80 ; For `DecompressRequest2bpp`.
+def BASE_TILE        equ $AC
 static_assert _RS <= BASE_TILE, "Player tiles overflowing into cable car area! ({_RS})"
 rsset BASE_TILE
 
@@ -485,6 +485,7 @@ assert BYTELEN(#CABLE_TILE_DATA) / TILE_SIZE == _RS - CABLE_BASE_TILE, \
 
 ; Tiles from `cable_car/bg.png`:
 def BG_BASE_TILE           equ _RS
+	static_assert BG_BASE_TILE == $C4, "Please re-generate `gfx/overworld/cable_car/bg.tilemap` with `-b {BG_BASE_TILE}` and update this"
 	rb_skip 42
 def BG_TILE_DATA equs READFILE("gfx/overworld/cable_car/bg.2bpp")
 assert BYTELEN(#BG_TILE_DATA) / TILE_SIZE == _RS - BG_BASE_TILE, \

@@ -121,7 +121,7 @@ clean: tidy
 	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' -o -name '*.2bpp.vram[012]p' \) -delete
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' \
 		-o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
-	rm gfx/overworld/*.bin
+	rm -f gfx/overworld/*.bin
 	find data/tilesets -name '*_collision.bin' -delete
 	$(MAKE) clean -C tools/
 
@@ -234,7 +234,8 @@ gfx/overworld/cable_car/handle_side.2bpp: gfx/overworld/cable_car/handle.png
 gfx/overworld/cable_car/handle.2bpp: RGBGFXFLAGS += -Z -L 8,0:1,2
 # Various remaining pieces of the scene.
 gfx/overworld/cable_car/cable.2bpp: RGBGFXFLAGS += -Z
-gfx/overworld/cable_car/bg.2bpp: RGBGFXFLAGS += -m
+gfx/overworld/cable_car/bg.2bpp: RGBGFXFLAGS += -m -OT -b 0xC4
+gfx/overworld/cable_car/bg.tilemap: gfx/overworld/cable_car/bg.2bpp
 gfx/overworld/cable_car/rocks.2bpp: RGBGFXFLAGS += -Z # Meant for 8x16 OBJ *and* BG.
 # Order matters here! Update the tilemap, and the `obj_block`s to reflect new tile IDs.
 gfx/overworld/cable_car.bin: gfx/overworld/cable_car/car_window.2bpp gfx/overworld/cable_car/car_left.2bpp gfx/overworld/cable_car/car.2bpp \
