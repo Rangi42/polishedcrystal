@@ -190,6 +190,9 @@ NEXTU
 ; Music Player
 hMPState::  db
 hNextMPState:: db
+NEXTU
+; Cable car cutscene
+hLY:: db
 ENDU
 
 hCrashCode:: db

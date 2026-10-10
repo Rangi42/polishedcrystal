@@ -86,6 +86,7 @@ rom_obj := \
 	data/text/common.o \
 	data/tilesets.o \
 	engine/movie/credits.o \
+	engine/events/cable_car.o \
 	engine/overworld/events.o \
 	gfx/minis_icons.o \
 	gfx/pokemon.o \
@@ -120,6 +121,7 @@ clean: tidy
 	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' -o -name '*.2bpp.vram[012]p' \) -delete
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' \
 		-o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
+	rm gfx/overworld/*.bin
 	find data/tilesets -name '*_collision.bin' -delete
 	$(MAKE) clean -C tools/
 
@@ -166,7 +168,7 @@ $(ROM_NAME).patch: $(ROM_NAME)_vc.gbc $(ROM_NAME).$(EXTENSION) vc.patch.template
 $(ROM_NAME).$(EXTENSION): $(crystal_obj) layout.link
 	$Q$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -o $@ $(filter %.o,$^)
 	$Q$(RGBFIX) $(RGBFIXFLAGS) $@
-	$Qtools/bankends -q $(ROM_NAME).map >&2
+	$Qhead -n 3 $(ROM_NAME).map >&2
 
 $(ROM_NAME)_vc.gbc: $(crystal_vc_obj) layout.link
 	$Q$(RGBLINK) $(RGBLINKVCFLAGS) -l layout.link -o $@ $(filter %.o,$^)
@@ -219,6 +221,30 @@ gfx/music_player/music_player.2bpp: gfx/music_player/bg.2bpp gfx/music_player/ob
 
 gfx/new_game/shrink1.2bpp: RGBGFXFLAGS += -Z
 gfx/new_game/shrink2.2bpp: RGBGFXFLAGS += -Z
+
+# All OBJ tiles are meant for 8x16 mode, thus laid out in columns.
+gfx/overworld/cable_car/car_window.2bpp: gfx/overworld/cable_car/car.png
+	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 48,16:1,2 -o $@ $<
+gfx/overworld/cable_car/car.2bpp: RGBGFXFLAGS += -Z -L 8,0:2,6
+gfx/overworld/cable_car/car_left.2bpp: gfx/overworld/cable_car/car.png
+	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,8:1,4 -o $@ $<
+# The bit between the car and the cable.
+gfx/overworld/cable_car/handle_side.2bpp: gfx/overworld/cable_car/handle.png
+	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,1:1,2 -o $@ $<
+gfx/overworld/cable_car/handle.2bpp: RGBGFXFLAGS += -Z -L 8,0:1,2
+# Various remaining pieces of the scene.
+gfx/overworld/cable_car/cable.2bpp: RGBGFXFLAGS += -Z
+gfx/overworld/cable_car/bg.2bpp: RGBGFXFLAGS += -m -OAT
+gfx/overworld/cable_car/bg.tilemap gfx/overworld/cable_car/bg.attrmap: gfx/overworld/cable_car/bg.2bpp
+gfx/overworld/cable_car/rocks.2bpp: RGBGFXFLAGS += -Z # Meant for 8x16 OBJ *and* BG.
+# Order matters here! Update the tilemap, and the `obj_block`s to reflect new tile IDs.
+gfx/overworld/cable_car.bin: gfx/overworld/cable_car/car_window.2bpp gfx/overworld/cable_car/car_left.2bpp gfx/overworld/cable_car/car.2bpp \
+                             gfx/overworld/cable_car/handle_side.2bpp gfx/overworld/cable_car/handle.2bpp \
+                             gfx/overworld/cable_car/cable.2bpp \
+                             gfx/overworld/cable_car/bg.2bpp \
+                             gfx/overworld/cable_car/rocks.2bpp \
+                             gfx/overworld/cable_car/bg.tilemap gfx/overworld/cable_car/bg.attrmap
+	$Qcat $^ > $@
 
 gfx/overworld/overworld.2bpp: gfx/overworld/puddle_splash.2bpp gfx/overworld/cut_grass.2bpp gfx/overworld/cut_tree.2bpp gfx/overworld/heal_machine.2bpp gfx/overworld/fishing_rod.2bpp gfx/overworld/shadow.2bpp gfx/overworld/shaking_grass.2bpp gfx/overworld/boulder_dust.2bpp ; $Qcat $^ > $@
 
