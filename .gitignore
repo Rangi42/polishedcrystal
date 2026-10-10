@@ -14,6 +14,8 @@ gfx/pokemon/*/*.animated.tilemap
 gfx/pokemon/*/bitmask.asm
 gfx/pokemon/*/frames.asm
 gfx/overworld/*.bin
+gfx/overworld/cable_car/bg.tilemap
+gfx/overworld/cable_car/bg.attrmap
 gfx/pokedex/*.bin
 gfx/stats/*.bin
 gfx/title/suicune_unowns.tilemap
