@@ -32,10 +32,11 @@ SpawnPlayer:
 	ld hl, MAPOBJECT_PALETTE
 	add hl, bc
 	ld a, [wPlayerGender]
-	assert PLAYER_MALE == PAL_OW_RED
-	assert PLAYER_FEMALE == PAL_OW_BLUE
-	assert PLAYER_ENBY == PAL_OW_GREEN
-	assert PLAYER_BETA == PAL_OW_PURPLE
+	assert PLAYER_MALE + 1 == PAL_NPC_RED
+	assert PLAYER_FEMALE + 1 == PAL_NPC_BLUE
+	assert PLAYER_ENBY + 1 == PAL_NPC_GREEN
+	assert PLAYER_BETA + 1 == PAL_NPC_PURPLE
+	inc a
 	ld [hl], a
 	ld hl, MAPOBJECT_TYPE
 	add hl, bc
