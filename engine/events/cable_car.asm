@@ -909,12 +909,6 @@ def CAR_TARGET_X equ (SCREEN_WIDTH_PX / 2 - ORIGIN_ON_RIGHT_OFS) * 1.0q8 ; Coord
 .sequenceTimer: db 0
 
 
-	; FIXME: couldn't find a good way to align data around, so this wastes space :(
-	; Can't even use `ds align` because the section's alignment is set in the linker script and not in this file,
-	; so RGBASM sets a constraint that turns out to be incorrect.
-	ds 4
-
-
 .wxOffsets ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
 	db 7, 1, 1, 1, 0, 8, 1, 2, 1, 1, 1, 0
 .wyTable
