@@ -1680,10 +1680,16 @@ StealLeppaBerry:
 	pop bc
 LeppaRestorePP:
 	; Restore up to 10PP of move bc (0-3)
+	call GetUserAbility
+	cp RIPEN
+	ld d, 10
+	jr nz, .got_leppa_amount
+	ld d, 20
+.got_leppa_amount
 	ld hl, wTempMonPP
 	add hl, bc
 	ld a, [hl]
-	add 10
+	add d
 	ld d, a
 	ld a, BOXMON
 	ld [wMonType], a
@@ -3616,6 +3622,7 @@ _HeldStatBoostBerry:
 	ld b, a
 
 .got_stat
+	call DoubleStatBoostIfRipen
 	ld a, STAT_SKIPTEXT | STAT_SILENT
 	farcall _ForceRaiseStat
 	ld a, [wFailedMessage]
@@ -3705,6 +3712,7 @@ _HeldHPHealingItem:
 	ret nz
 	ld b, 0 ; bc contains HP to restore unless Figy or Sitrus
 	ld a, [hl]
+	push af
 	; for Bug Bite, treat Enigma Berry as Sitrus Berry
 	cp ENIGMA_BERRY
 	jr z, .quarter_maxhp
@@ -3717,10 +3725,32 @@ _HeldHPHealingItem:
 .quarter_maxhp
 	call GetQuarterMaxHP
 .got_hp_to_restore
+	pop af
+	cp BERRY_JUICE
+	call nz, DoubleBCIfRipen
 	farcall ShowPendingUserAbility
 	call CurItemRecoveryAnim
 	call RestoreHP
 	xor a
+	ret
+
+DoubleStatBoostIfRipen::
+	call GetUserAbility
+	cp RIPEN
+	ret nz
+	ld a, b
+	add $10
+	ld b, a
+	ret
+
+DoubleBCIfOpponentRipen::
+	call StackCallOpponentTurn
+DoubleBCIfRipen::
+	call GetUserAbility
+	cp RIPEN
+	ret nz
+	sla c
+	rl b
 	ret
 
 CurItemRecoveryAnim::

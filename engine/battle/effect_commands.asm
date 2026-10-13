@@ -3360,6 +3360,7 @@ BattleCommand_posthiteffects:
 	jr nz, .rocky_helmet_done
 
 	call GetEighthMaxHP
+	farcall DoubleBCIfOpponentRipen
 	jr .got_hurt_item_damage
 .rocky_helmet
 	call CheckContactMove
@@ -3834,6 +3835,7 @@ EndMoveDamageChecks:
 	cp c
 	ret nz
 	call SwitchTurn
+	farcall DoubleStatBoostIfRipen
 	call RaiseStatWithItem
 	jmp SwitchTurn
 
