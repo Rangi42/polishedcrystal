@@ -251,20 +251,22 @@ def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	cp GROUP_MOUNT_MOON_SQUARE
 	jr nz, .upLeftToMountMoonSquare
 ;.downRightToRoute4
-	; Invert all vars considered direction-dependent (basically, the speed vectors).
-	; This does give a one-unit difference between each direction,
-	; but each of these variables uses sub-pixels, so it'll be negligible.
-	; Actual negation of each byte is possible (replace `ld a, [hl] :: cpl` with `xor a :: sub [hl]`)
-	; but then `$00AA` gets turned into `$0056` instead of `$FF55`,
+	; Invert the car's speed vector (and one position subpixel, whatevs).
+	; This is not true negation and thus gives a one-subpixel difference in speed between directions,
+	; but that's negligible.
+	; Actual negation of each byte is possible
+	; (replace `ld a, [hl] :: cpl` with `xor a :: sub [hl]`)
+	; but then e.g. `$00AA` gets turned into `$0056` instead of `$FF55`,
 	; which is much further off from the correct `$FF56`.
-	ld hl, wCableCar.dirDependentVars
-	ld c, wCableCar.dirDependentVars_End - wCableCar.dirDependentVars
+	ld hl, wCableCar.car_Xspeed_subpx
+	ld c, 3
 .negate
 	ld a, [hl]
 	cpl
 	ld [hli], a
 	dec c
 	jr nz, .negate
+	ld [hl], SCREEN_WIDTH_PX + 40 ; Set it just off the *right* of the screen.
 	; Also patch some code.
 	ld a, $2F ; Opcode for `cpl`.
 	ld [wCableCar.xScrollInversion], a
@@ -827,9 +829,9 @@ ENDM
 	parallax_layer .farTrees2,   72,   4, SCROLL_SPEED_TREES_FAR_2
 	parallax_layer .farTrees3,   76,   4, SCROLL_SPEED_TREES_FAR_3
 	parallax_layer .medTrees0,   80,   8, SCROLL_SPEED_TREES_MED_0
-	parallax_layer .medTrees1,   88,   8, SCROLL_SPEED_TREES_MED_1
-	parallax_layer .medTrees2,   96,   8, SCROLL_SPEED_TREES_MED_2
-	parallax_layer .medTrees3,  104,   8, SCROLL_SPEED_TREES_MED_3
+	parallax_layer .medTrees1,   89,   8, SCROLL_SPEED_TREES_MED_1
+	parallax_layer .medTrees2,   97,   8, SCROLL_SPEED_TREES_MED_2
+	parallax_layer .medTrees3,  105,   8, SCROLL_SPEED_TREES_MED_3
 	parallax_layer .nearTrees0, 112,  16, SCROLL_SPEED_TREES_NEAR_0
 	parallax_layer .nearTrees1, 130,  16, SCROLL_SPEED_TREES_NEAR_1
 	db 0 ; Terminator.
@@ -839,9 +841,7 @@ ENDM
 ; TODO: consider moving some of those into SMC?
 ; TODO: make more of those initial values into tunables.
 
-.dirDependentVars ; These variables get negated in bulk depending on direction.
 	Q8pos_and_speed .car_X, $0097, $00AA
-.dirDependentVars_End
 	.carBumpTimer: db 0
 
 
