@@ -268,6 +268,8 @@ def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	jr nz, .negate
 	ld [hl], SCREEN_WIDTH_PX + 40 ; Set it just off the *right* of the screen.
 	; Also patch some code.
+	ld a, $96 ; Opcode for `sub [hl]`.
+	ld [wCableCar.cliffScrollInversion], a
 	ld a, $2F ; Opcode for `cpl`.
 	ld [wCableCar.xScrollInversion], a
 .upLeftToMountMoonSquare
@@ -646,7 +648,7 @@ ENDM
 	jr nz, .notResettingWindow
 	ld hl, rLCDC
 	res B_LCDC_WIN_MAP, [hl] ; Switch it back to the cliff tilemap.
-	ld a, [.cliff_Xpos_px]
+	.cliffWxInitialOffset: ld a, 42
 	add SCREEN_WIDTH_PX + WX_OFS ; Set the Window just off-screen.
 	ldh [rWX], a
 	jr .noWindowShift ; ...and skip the code below.
@@ -693,11 +695,14 @@ ENDM
 ; Do this early, because WY must be written to before scanline 2 begins!
 	ld hl, .cliff_Xspeed_subpx
 	call .tickQ8Pos
+	dec hl ; We're going to read that again.
 	jr c, .noCliffWrap ; Since we are adding a negative speed, we know we must have underflowed if carry *isn't* set.
 	add CLIFF_PATTERN_WIDTH ; Wrap back into the positives...
-	dec hl ; ...and write that back.
-	ld [hli], a
+	ld [hl], a
 .noCliffWrap
+	ld a, CLIFF_PATTERN_WIDTH - 1
+	.cliffScrollInversion: ld a, [hl] ; Patched to `sub [hl]` if necessary.
+	ld [.cliffWxInitialOffset + 1], a
 	push af
 	; Set up to skip the appropriate number of lines also.
 	assert .wyTable_End - .wyTable == CLIFF_PATTERN_WIDTH
@@ -851,7 +856,7 @@ ENDM
 	; FIXME: couldn't find a good way to align data around, so this wastes space :(
 	; Can't even use `ds align` because the section's alignment is set in the linker script and not in this file,
 	; so RGBASM sets a constraint that turns out to be incorrect.
-	ds 9
+	ds 4
 
 
 .wxOffsets ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
