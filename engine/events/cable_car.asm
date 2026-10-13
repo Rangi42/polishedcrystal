@@ -27,9 +27,15 @@ INCBIN "gfx/overworld/cable_car.bin.lzp"
 
 ;; Tunables.
 
+def FADE_NB_STEPS equ 10 ; Number of frames to fade in, *and* then to fade out.
+def FADE_LAG_FACTOR equ 2 ; Turns out the palette fader is SUPER CPU-heavy, and the raster effects make it lag a lot.
+	def NB_FRAMES_FADES equ FADE_NB_STEPS * FADE_LAG_FACTOR
+def NB_FRAMES_MAIN equ 600 ; Roughly the length of the music.
+
 def TOPMOST_CABLE_Y_POS equ 10
 
 def BLANKED_PLAYER_ROWS equ 6
+
 
 ; How much on-screen space the cliff should take.
 def CLIFF_ROWS_TO_SHOW equ 70
@@ -37,12 +43,6 @@ def CLIFF_ROWS_TO_SHOW equ 70
 
 def CLIFF_PATTERN_WIDTH equ 24
 	def CLIFF_PATTERN_HEIGHT equ CLIFF_PATTERN_WIDTH / 2
-
-; Whenever the car's bump timer has all of these bits equal to 0, the car gets bumped up or down by 1 pixel.
-def CAR_BUMP_TRIGGER_MASK equ $38
-; If bit 6 is set, the car gets bumped up; otherwise, if bit 7 is reset, the car get bumped down.
-; This gives the following sequence: UDU-UDU- etc.
-def CAR_BUMP_TIMER_INCREMENT equ $01 ; By how much the bump timer gets increased each frame.
 
 
 ; Each of the layers' speeds are defined individually, and thus they will accumulate imprecision
@@ -62,6 +62,15 @@ def SCROLL_SPEED_TREES_MED_3  equ 0.73q8
 def SCROLL_SPEED_TREES_NEAR_0 equ 0.8q8
 def SCROLL_SPEED_TREES_NEAR_1 equ 0.9q8
 def SCROLL_SPEED_CLIFF        equ 1.1q8 ; X scroll speed only; the Y position is always half of the X pos.
+
+
+def CAR_X_SPEED equ SCROLL_SPEED_CLIFF
+
+; Whenever the car's bump timer has all of these bits equal to 0, the car gets bumped up or down by 1 pixel.
+def CAR_BUMP_TRIGGER_MASK equ $38
+; If bit 6 is set, the car gets bumped up; otherwise, if bit 7 is reset, the car get bumped down.
+; This gives the following sequence: UDU-UDU- etc.
+def CAR_BUMP_TIMER_INCREMENT equ $01 ; By how much the bump timer gets increased each frame.
 
 
 SECTION "Cable Car", ROMX
@@ -266,13 +275,47 @@ def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ld [hli], a
 	dec c
 	jr nz, .negate
-	ld [hl], SCREEN_WIDTH_PX + 40 ; Set it just off the *right* of the screen.
+	ld [hl], (CAR_TARGET_X - NB_FRAMES_FADES * ~CAR_X_SPEED) >> 8
 	; Also patch some code.
 	ld a, $96 ; Opcode for `sub [hl]`.
 	ld [wCableCar.cliffScrollInversion], a
 	ld a, $2F ; Opcode for `cpl`.
 	ld [wCableCar.xScrollInversion], a
 .upLeftToMountMoonSquare
+
+
+.WriteWindowMaps
+	ld hl, wTilemap
+.resetTileId
+	ld a, CLIFF_BASE_TILE
+.writeTilemapRow
+REPT 4 ; The first four tiles of each row are unique...
+	ld [hli], a
+	inc a
+ENDR
+	ld c, (SCREEN_WIDTH - 4) / 2
+.writeTilemapPair ; ...and the rest of the line is followed by a repeating pair.
+	ld [hli], a
+	inc a
+	ld [hli], a
+	dec a
+	dec c
+	jr nz, .writeTilemapPair
+	add 2
+	jr nz, .writeTilemapRow ; This is taken for two of the three repeating rows.
+	static_assert SCREEN_HEIGHT % 3 == 0 ; So that we are sure to be here when it's time to exit.
+	ld a, l
+	cp LOW(wAttrmap)
+	jr nz, .resetTileId
+; The attrmap now...
+	; hl == wAttrmap
+	ld a, BGPAL_ROCK
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	rst ByteFill
+; Commit both.
+	call ApplyAttrAndTilemapInVBlank
+	xor a ; Stop further transfers.
+	ldh [hBGMapMode], a
 
 
 .InstallStatIntHandler
@@ -318,50 +361,43 @@ def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ldh [rSTAT], a
 
 
-.WriteWindowMaps
-	ld hl, wTilemap
-.resetTileId
-	ld a, CLIFF_BASE_TILE
-.writeTilemapRow
-REPT 4 ; The first four tiles of each row are unique...
-	ld [hli], a
-	inc a
-ENDR
-	ld c, (SCREEN_WIDTH - 4) / 2
-.writeTilemapPair ; ...and the rest of the line is followed by a repeating pair.
-	ld [hli], a
-	inc a
-	ld [hli], a
-	dec a
-	dec c
-	jr nz, .writeTilemapPair
-	add 2
-	jr nz, .writeTilemapRow ; This is taken for two of the three repeating rows.
-	static_assert SCREEN_HEIGHT % 3 == 0 ; So that we are sure to be here when it's time to exit.
-	ld a, l
-	cp LOW(wAttrmap)
-	jr nz, .resetTileId
-; The attrmap now...
-	; hl == wAttrmap
-	ld a, BGPAL_ROCK
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	rst ByteFill
-; Commit both.
-	call ApplyAttrAndTilemapInVBlank
-	xor a ; Stop further transfers.
-	ldh [hBGMapMode], a
-
-
+IF FADE_NB_STEPS == 10
 	farcall FadeInPalettes
+ELSE
+	ld c, FADE_NB_STEPS
+	call FadePalettes
+ENDC
 
 	; TODO: add random chance for Pokémon to fly in the sky?
 	; TODO: allow player to move around in the car with d-pad?
 
-	; TODO: allow this wait to be skipped by pressing a button (A? B?)
-	ld c, 0
-	call DelayFrames
+def FRAME_QUANTUM equ 3
+	ld hl, wCableCar.sequenceTimer
+	ld [hl], NB_FRAMES_MAIN / FRAME_QUANTUM
+.resetQuantum
+	ld c, FRAME_QUANTUM
+.mainSequence
+	call DelayFrame
+; Allow the scene to be skipped by pressing (not holding!) B or START.
+	ldh a, [hJoypadPressed]
+	and PAD_START | PAD_B
+	jr nz, .abort
+; Keep counting down.
+	dec c
+	jr nz, .mainSequence
+	; This would normally be a race condition, but the variable is only read during `.UpdateScrolling`,
+	; which always finishes before this point thanks to the VBlank handler being long.
+	dec [hl]
+	jr nz, .resetQuantum
+.abort
+	ld [hl], 0
 
+IF FADE_NB_STEPS == 10
 	farcall FadeOutPalettes
+ELSE
+	ld c, FADE_NB_STEPS
+	call FadeToWhite
+ENDC
 
 
 .UninstallStatHandler
@@ -693,13 +729,20 @@ ENDM
 ; This involves a two-step process: the Window must first be on-screen to "skip" some of its lines,
 ; and then begin being properly shown further down the screen.
 ; Do this early, because WY must be written to before scanline 2 begins!
+	ld hl, .sequenceTimer
+	ld a, [hld]
+	assert .sequenceTimer - 1 == .cliff_Xpos_px
+	and a
+	jr z, .gotCliffScroll ; Do not move the cliff if in a transition state.
+
 	ld hl, .cliff_Xspeed_subpx
 	call .tickQ8Pos
 	dec hl ; We're going to read that again.
-	jr c, .noCliffWrap ; Since we are adding a negative speed, we know we must have underflowed if carry *isn't* set.
+	jr c, .gotCliffScroll ; Since we are adding a negative speed, we know we must have underflowed if carry *isn't* set.
 	add CLIFF_PATTERN_WIDTH ; Wrap back into the positives...
 	ld [hl], a
-.noCliffWrap
+.gotCliffScroll
+
 	ld a, CLIFF_PATTERN_WIDTH - 1
 	.cliffScrollInversion: ld a, [hl] ; Patched to `sub [hl]` if necessary.
 	ld [.cliffWxInitialOffset + 1], a
@@ -712,9 +755,11 @@ ENDM
 	ld h, HIGH(.wyTable)
 	ld a, [hl]
 	ldh [rWY], a
+
 	; Use the main tilemap, since its top scanlines are a solid colour.
 	ld hl, rLCDC
 	set B_LCDC_WIN_MAP, [hl]
+
 	; Cache the scanline at which to start showing the Window.
 	pop af
 	inc a ; Make the halving round up, for a bit of extra visual variety.
@@ -730,6 +775,10 @@ ENDM
 	ld hl, .parallaxLayers
 	ld a, l
 	ld [.parallaxPtr + 1], a ; Reset that SMC.
+	ld a, [.sequenceTimer]
+	and a
+	jr z, .bgDoesntMove
+
 	inc l ; Scanline -> Max X (px).
 .tickParallaxLayer
 	ld a, [hli] ; Max X (px) -> X speed (subpx).
@@ -744,11 +793,14 @@ ENDM
 	and a ; Check for a zero terminator.
 	jr nz, .tickParallaxLayer
 
+	jr .done
+.bgDoesntMove
+
 ; Update OAM last, since the other variables may be read for real soon,
 ; whereas shadow OAM will only get read on the next VBlank.
 
 ; Update cable car's position.
-	assert .parallaxLayers_End == .car_Xspeed_subpx ; No need to update `hl`.
+	ld hl, .car_Xspeed_subpx
 	call .tickQ8Pos
 	ld c, a
 	; The car's Y position is derived from its X position.
@@ -797,6 +849,7 @@ ENDM
 	jr nz, .updateCarObjPos
 
 	pop de
+.done
 	pop bc
 	ret
 
@@ -807,15 +860,6 @@ MACRO Q8pos_and_speed ; <name prefix>, <start pos>, <speed>
 	\1speed_px: db HIGH(\3)
 	  \1pos_px: db HIGH(\2)
 ENDM
-
-.tickQ8Pos:
-	ld a, [hli] ; Speed (subpx) -> pos (subpx).
-	add a, [hl]
-	ld [hli], a ; Pos (subpx) -> speed (px).
-	ld a, [hli] ; Speed (px) -> pos (px).
-	adc a, [hl]
-	ld [hli], a ; Pos (px) -> one past struct.
-	ret
 
 
 MACRO parallax_layer ; <name prefix>, <first scanline>, <px modulo>, <speed>
@@ -843,14 +887,26 @@ ENDM
 .parallaxLayers_End
 
 
-; TODO: consider moving some of those into SMC?
-; TODO: make more of those initial values into tunables.
+.tickQ8Pos:
+	ld a, [hli] ; Speed (subpx) -> pos (subpx).
+	add a, [hl]
+	ld [hli], a ; Pos (subpx) -> speed (px).
+	ld a, [hli] ; Speed (px) -> pos (px).
+	adc a, [hl]
+	ld [hli], a ; Pos (px) -> one past struct.
+	ret
 
-	Q8pos_and_speed .car_X, $0097, $00AA
+
+def CAR_TARGET_X equ (SCREEN_WIDTH_PX / 2 - ORIGIN_ON_RIGHT_OFS) * 1.0q8 ; Coordinate so that the car is centered on the screen.
+	Q8pos_and_speed .car_X, CAR_TARGET_X - NB_FRAMES_FADES * CAR_X_SPEED, CAR_X_SPEED
 	.carBumpTimer: db 0
 
 
 	Q8pos_and_speed .cliff_X, 0, -SCROLL_SPEED_CLIFF
+
+; While zero, the car moves and nothing else.
+; While non-zero, this is inverted.
+.sequenceTimer: db 0
 
 
 	; FIXME: couldn't find a good way to align data around, so this wastes space :(
