@@ -49,7 +49,8 @@ def CLIFF_PATTERN_WIDTH equ 24
 ; at different rates and thus not be in perfect lockstep.
 ; This may actually be an aesthetic improvement, so we're sticking with that.
 def SCROLL_SPEED_CLOUDS_NEAR  equ 0.2q8 ; px/frame, all of them.
-def SCROLL_SPEED_CLOUDS_FAR   equ 0.014q8
+def SCROLL_SPEED_CLOUDS_FAR_0 equ 0.05q8
+def SCROLL_SPEED_CLOUDS_FAR_1 equ 0.014q8
 def SCROLL_SPEED_HORIZON      equ 0.025q8
 def SCROLL_SPEED_TREES_FAR_0  equ 0.3q8
 def SCROLL_SPEED_TREES_FAR_1  equ 0.35q8
@@ -459,7 +460,7 @@ const BGPAL_TREES_FAR ; Each tile row only uses two colours each, but there's ov
 const BGPAL_SKY
 	RGB  7, 23, 30 ; Sky backdrop.
 	RGB 31, 31, 31 ; Cloud white.
-	RGB 23, 29, 31 ; Cloud shade.
+	RGB 22, 26, 28 ; Cloud shade.
 	dw 0 ; Unused.
 const BGPAL_MOUNTAINS
 	RGB  7, 23, 30 ; Sky backdrop.
@@ -605,6 +606,49 @@ def OBJ_CAR_END equ _RS
 .ramBlock ; FIXME: in principle, we could add this to the asset blob, and copy it to WRAM0...
 LOAD UNION "Misc 1300", WRAM0
 wCableCar:
+
+
+MACRO Q8pos_and_speed ; <name prefix>, <start pos>, <speed>
+	\1speed_subpx: db LOW(\3)
+	  \1pos_subpx: db LOW(\2)
+	\1speed_px: db HIGH(\3)
+	  \1pos_px: db HIGH(\2)
+ENDM
+.tickQ8Pos:
+	ld a, [hli] ; Speed (subpx) -> pos (subpx).
+	add a, [hl]
+	ld [hli], a ; Pos (subpx) -> speed (px).
+	ld a, [hli] ; Speed (px) -> pos (px).
+	adc a, [hl]
+	ld [hli], a ; Pos (px) -> one past struct.
+	ret
+
+
+MACRO parallax_layer ; <name prefix>, <first scanline>, <px modulo>, <speed>
+	\1_scanline: db \2 - 1 ; Scrolling must be adjusted on the scanline *before*!
+	; X pos is always incrementing, but gets written to SCX inverted if necessary.
+	\1_XposPxModulo: db \3 ; `_Xpos_px` will remain between 0 and this (exclusive), assuming that the speed is no larger than this.
+	Q8pos_and_speed \1_X, 0, \4
+	; TODO: Y axis
+ENDM
+.parallaxLayers
+	parallax_layer .nearClouds,  13, 255, SCROLL_SPEED_CLOUDS_NEAR
+	parallax_layer .farClouds0,  30, 255, SCROLL_SPEED_CLOUDS_FAR_0
+	parallax_layer .farClouds1,  40, 255, SCROLL_SPEED_CLOUDS_FAR_1
+	parallax_layer .horizon,     48,  40, SCROLL_SPEED_HORIZON ; Mountains.
+	parallax_layer .farTrees0,   64,   4, SCROLL_SPEED_TREES_FAR_0
+	parallax_layer .farTrees1,   68,   4, SCROLL_SPEED_TREES_FAR_1
+	parallax_layer .farTrees2,   72,   4, SCROLL_SPEED_TREES_FAR_2
+	parallax_layer .farTrees3,   76,   4, SCROLL_SPEED_TREES_FAR_3
+	parallax_layer .medTrees0,   80,   8, SCROLL_SPEED_TREES_MED_0
+	parallax_layer .medTrees1,   89,   8, SCROLL_SPEED_TREES_MED_1
+	parallax_layer .medTrees2,   97,   8, SCROLL_SPEED_TREES_MED_2
+	parallax_layer .medTrees3,  105,   8, SCROLL_SPEED_TREES_MED_3
+	parallax_layer .nearTrees0, 112,  16, SCROLL_SPEED_TREES_NEAR_0
+	parallax_layer .nearTrees1, 130,  16, SCROLL_SPEED_TREES_NEAR_1
+	db 0 ; Terminator.
+.parallaxLayers_End
+
 
 def ORIGIN_ON_RIGHT_OFS equ -24 ; Ensures that the car's origin wraps around after all of it is off-screen.
 MACRO obj_col_relative_pos ; <count>, <x>, <y> (coords are relative to the middle of the attachment point)
@@ -851,49 +895,6 @@ ENDM
 	pop de
 .done
 	pop bc
-	ret
-
-
-MACRO Q8pos_and_speed ; <name prefix>, <start pos>, <speed>
-	\1speed_subpx: db LOW(\3)
-	  \1pos_subpx: db LOW(\2)
-	\1speed_px: db HIGH(\3)
-	  \1pos_px: db HIGH(\2)
-ENDM
-
-
-MACRO parallax_layer ; <name prefix>, <first scanline>, <px modulo>, <speed>
-	\1_scanline: db \2 - 1 ; Scrolling must be adjusted on the scanline *before*!
-	; X pos is always incrementing, but gets written to SCX inverted if necessary.
-	\1_XposPxModulo: db \3 ; `_Xpos_px` will remain between 0 and this (exclusive), assuming that the speed is no larger than this.
-	Q8pos_and_speed \1_X, 0, \4
-	; TODO: Y axis
-ENDM
-.parallaxLayers
-	parallax_layer .nearClouds,  13, 255, SCROLL_SPEED_CLOUDS_NEAR
-	parallax_layer .farClouds,   30, 255, SCROLL_SPEED_CLOUDS_FAR
-	parallax_layer .horizon,     48,  40, SCROLL_SPEED_HORIZON ; Mountains.
-	parallax_layer .farTrees0,   64,   4, SCROLL_SPEED_TREES_FAR_0
-	parallax_layer .farTrees1,   68,   4, SCROLL_SPEED_TREES_FAR_1
-	parallax_layer .farTrees2,   72,   4, SCROLL_SPEED_TREES_FAR_2
-	parallax_layer .farTrees3,   76,   4, SCROLL_SPEED_TREES_FAR_3
-	parallax_layer .medTrees0,   80,   8, SCROLL_SPEED_TREES_MED_0
-	parallax_layer .medTrees1,   89,   8, SCROLL_SPEED_TREES_MED_1
-	parallax_layer .medTrees2,   97,   8, SCROLL_SPEED_TREES_MED_2
-	parallax_layer .medTrees3,  105,   8, SCROLL_SPEED_TREES_MED_3
-	parallax_layer .nearTrees0, 112,  16, SCROLL_SPEED_TREES_NEAR_0
-	parallax_layer .nearTrees1, 130,  16, SCROLL_SPEED_TREES_NEAR_1
-	db 0 ; Terminator.
-.parallaxLayers_End
-
-
-.tickQ8Pos:
-	ld a, [hli] ; Speed (subpx) -> pos (subpx).
-	add a, [hl]
-	ld [hli], a ; Pos (subpx) -> speed (px).
-	ld a, [hli] ; Speed (px) -> pos (px).
-	adc a, [hl]
-	ld [hli], a ; Pos (px) -> one past struct.
 	ret
 
 
