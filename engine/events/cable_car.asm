@@ -31,17 +31,37 @@ def TOPMOST_CABLE_Y_POS equ 10
 
 def BLANKED_PLAYER_ROWS equ 6
 
-; How many steps of the cliff get drawn to the tilemap,
-; and thus indirectly how much on-screen space it should take.
-def NB_CLIFF_STEPS equ 9
-def NB_CLIFF_FINE_Y_SCROLL equ 2 ; Keep this between 0 and 7, but between the two "breaks the grid" more.
-	def CLIFF_BASE_SCANLINE equ (SCREEN_HEIGHT - NB_CLIFF_STEPS) * 8 + NB_CLIFF_FINE_Y_SCROLL
+; How much on-screen space the cliff should take.
+def CLIFF_ROWS_TO_SHOW equ 70
+	def CLIFF_BASE_SCANLINE equ SCREEN_HEIGHT * 8 - CLIFF_ROWS_TO_SHOW
+
+def CLIFF_PATTERN_WIDTH equ 24
+	def CLIFF_PATTERN_HEIGHT equ CLIFF_PATTERN_WIDTH / 2
 
 ; Whenever the car's bump timer has all of these bits equal to 0, the car gets bumped up or down by 1 pixel.
 def CAR_BUMP_TRIGGER_MASK equ $38
 ; If bit 6 is set, the car gets bumped up; otherwise, if bit 7 is reset, the car get bumped down.
 ; This gives the following sequence: UDU-UDU- etc.
 def CAR_BUMP_TIMER_INCREMENT equ $01 ; By how much the bump timer gets increased each frame.
+
+
+; Each of the layers' speeds are defined individually, and thus they will accumulate imprecision
+; at different rates and thus not be in perfect lockstep.
+; This may actually be an aesthetic improvement, so we're sticking with that.
+def SCROLL_SPEED_CLOUDS_NEAR  equ 0.2q8 ; px/frame, all of them.
+def SCROLL_SPEED_CLOUDS_FAR   equ 0.014q8
+def SCROLL_SPEED_HORIZON      equ 0.025q8
+def SCROLL_SPEED_TREES_FAR_0  equ 0.3q8
+def SCROLL_SPEED_TREES_FAR_1  equ 0.35q8
+def SCROLL_SPEED_TREES_FAR_2  equ 0.4q8
+def SCROLL_SPEED_TREES_FAR_3  equ 0.45q8
+def SCROLL_SPEED_TREES_MED_0  equ 0.5q8
+def SCROLL_SPEED_TREES_MED_1  equ 0.58q8
+def SCROLL_SPEED_TREES_MED_2  equ 0.66q8
+def SCROLL_SPEED_TREES_MED_3  equ 0.73q8
+def SCROLL_SPEED_TREES_NEAR_0 equ 0.8q8
+def SCROLL_SPEED_TREES_NEAR_1 equ 0.9q8
+def SCROLL_SPEED_CLIFF        equ 1.1q8 ; X scroll speed only; the Y position is always half of the X pos.
 
 
 SECTION "Cable Car", ROMX
@@ -238,13 +258,16 @@ def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	; but then `$00AA` gets turned into `$0056` instead of `$FF55`,
 	; which is much further off from the correct `$FF56`.
 	ld hl, wCableCar.dirDependentVars
-	ld c, wCableCar.dirDependentVars_End - wCableCar.dirDependentVars_End
+	ld c, wCableCar.dirDependentVars_End - wCableCar.dirDependentVars
 .negate
 	ld a, [hl]
 	cpl
 	ld [hli], a
 	dec c
 	jr nz, .negate
+	; Also patch some code.
+	ld a, $2F ; Opcode for `cpl`.
+	ld [wCableCar.xScrollInversion], a
 .upLeftToMountMoonSquare
 
 
@@ -293,17 +316,27 @@ def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 
 .WriteWindowMaps
 	ld hl, wTilemap
-.writeTilemap
-	ld a, TILE_BG_ROCK_SLOPE_PARTIAL
+.resetTileId
+	ld a, CLIFF_BASE_TILE
+.writeTilemapRow
+REPT 4 ; The first four tiles of each row are unique...
 	ld [hli], a
-	inc a ; TILE_BG_ROCK_SLOPE_FULL
+	inc a
+ENDR
+	ld c, (SCREEN_WIDTH - 4) / 2
+.writeTilemapPair ; ...and the rest of the line is followed by a repeating pair.
 	ld [hli], a
-	inc a ; TILE_BG_ROCK
-	ld bc, SCREEN_WIDTH - 2
-	rst ByteFill
+	inc a
+	ld [hli], a
+	dec a
+	dec c
+	jr nz, .writeTilemapPair
+	add 2
+	jr nz, .writeTilemapRow ; This is taken for two of the three repeating rows.
+	static_assert SCREEN_HEIGHT % 3 == 0 ; So that we are sure to be here when it's time to exit.
 	ld a, l
 	cp LOW(wAttrmap)
-	jr nz, .writeTilemap
+	jr nz, .resetTileId
 ; The attrmap now...
 	; hl == wAttrmap
 	ld a, BGPAL_ROCK
@@ -491,14 +524,13 @@ def BG_TILE_DATA equs READFILE("gfx/overworld/cable_car/bg.2bpp")
 assert BYTELEN(#BG_TILE_DATA) / TILE_SIZE == _RS - BG_BASE_TILE, \
 	STRFMT("%u != %u", BYTELEN(#BG_TILE_DATA) / TILE_SIZE, _RS - BG_BASE_TILE)
 
-; Tiles from `cable_car/rocks.png`: (Note that they are all distorted by the WXzardry!)
-def ROCKS_BASE_TILE        equ _RS
-	def TILE_BG_ROCK_SLOPE_PARTIAL rb 1
-	def TILE_BG_ROCK_SLOPE_FULL    rb 1
-	def TILE_BG_ROCK               rb 1
-def ROCKS_TILE_DATA equs READFILE("gfx/overworld/cable_car/rocks.2bpp")
-assert BYTELEN(#ROCKS_TILE_DATA) / TILE_SIZE == _RS - ROCKS_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#ROCKS_TILE_DATA) / TILE_SIZE, _RS - ROCKS_BASE_TILE)
+; Tiles from `cable_car/cliff.png`: (Note that they are all distorted by the WXzardry!)
+def CLIFF_BASE_TILE        equ _RS
+	rb_skip 18
+	static_assert LOW(_RS) == 0, "Cliff tiles must end at 0, not {_RS}!"
+def CLIFF_TILE_DATA equs READFILE("gfx/overworld/cable_car/cliff.2bpp")
+assert BYTELEN(#CLIFF_TILE_DATA) / TILE_SIZE == _RS - CLIFF_BASE_TILE, \
+	STRFMT("%u != %u", BYTELEN(#CLIFF_TILE_DATA) / TILE_SIZE, _RS - CLIFF_BASE_TILE)
 
 def NB_TILES         equ _RS - BASE_TILE
 
@@ -590,56 +622,50 @@ ENDM
 
 ; Split the horizontal scrolling between rows of trees.
 	ldh a, [rLY]
-	ldh [hLY], a ; Use a consistent value throughout, since the HW reg will change after HBlank.
-	; TODO: avoid hardcoding the numbers
-	cp 8 * 6  - 1
-	jr z, .setUpXScroll
-	cp 8 * 8  - 1
-	jr z, .doubleScrollSpeed
-	cp 8 * 12 - 1
+	ldh [hLY], a ; Use a consistent value throughout the handler, since the HW reg will change after HBlank.
+.parallaxPtr: ld hl, .parallaxLayers
+	cp [hl]
 	jr nz, .noXSplit
-.doubleScrollSpeed
-	ldh a, [rSCX]
-.setScxToDoubleThat
-	rlca ; Use the fact that the subpixel bits are still in the upper bits of SCX.
+	ld a, l
+	add a, LOW(.horizon_Xpos_px) - LOW(.horizon_scanline)
+	ld l, a
+	ld a, [hli]
+	.xScrollInversion: nop ; Patched to `cpl` if scrolling is inverted.
 	ldh [rSCX], a
+	assert HIGH(.parallaxLayers) == HIGH(.parallaxLayers_End - 1), "Parallax buffer iteration would cost two writes!"
+	ld a, l
+	ld [.parallaxPtr + 1], a
 .noXSplit
 
 ; Skip some of the Window's rows near the top of the screen, to scroll it vertically.
-	; L = row at which to start the window (<base scanline> - <Y scroll>)
-	ld a, [.cliffFirstScanline]
-	ld l, a
-	; WY will have been set to 9 - <nb rows to skip>, so make sure it's not displayed after scanline 8.
+	; WY will have been set to CLIFF_PATTERN_HEIGHT - <nb rows to skip>, so make sure it's not displayed on scanline CLIFF_PATTERN_HEIGHT.
 	ldh a, [hLY]
-	cp 8
+	cp CLIFF_PATTERN_HEIGHT - 1
 	jr nz, .notResettingWindow
 	ld hl, rLCDC
 	res B_LCDC_WIN_MAP, [hl] ; Switch it back to the cliff tilemap.
-	; Use 5-bit horizontal scrolling.
-	ld a, [.bgXScroll]
-	cpl ; SCX and WX directions are opposite, so invert the meaning.
-	rra
-	rra
-	rra
-	and $0F ; The pattern repeats after 16 pixels, so we don't need extra range.
+	ld a, [.cliff_Xpos_px]
 	add SCREEN_WIDTH_PX + WX_OFS ; Set the Window just off-screen.
-	jr .setWx ; ...and skip the code below.
+	ldh [rWX], a
+	jr .noWindowShift ; ...and skip the code below.
 .notResettingWindow
 ; Move the window left every scanline it's active.
 ; This distorts it so that it looks more like a separate layer, without any OBJs!
-	sub l
+	.cliffFirstScanline: cp $FF ; Dummy value, will get overwritten.
 	jr c, .noWindowShift
-	and 7 ; This repeats for every tile.
-	; Index into the offset table.
-	add LOW(.wxOffsets)
-	ld l, a
-	adc HIGH(.wxOffsets)
-	sub l
-	ld h, a
+.wxOfsPtr: ld hl, .wxOffsets
 	ldh a, [rWX]
 	sub a, [hl]
-.setWx
 	ldh [rWX], a
+	; Advance the pointer into the table.
+	assert HIGH(.wxOffsets) == HIGH(.wyTable - 1), "Please realign wCableCar.wxOffsets" ; Let me work with only the low byte, please.
+	ld a, l
+	inc a
+	cp LOW(.wyTable)
+	jr nz, .noWxOfsWrap
+	ld a, LOW(.wxOffsets)
+.noWxOfsWrap
+	ld [.wxOfsPtr + 1], a
 .noWindowShift
 
 	; Regrettably, we want the scrolling to change even during `Fade*Palettes`,
@@ -653,75 +679,70 @@ ENDM
 	pop af
 	reti
 
-.setUpXScroll
-	; The initial tree pattern repeats every 4 pixels, so use 2-bit scrolling.
-	ld a, [.bgXScroll]
-	rlca
-	jr .setScxToDoubleThat
-
-.wxOffsets ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
-	db 1, 2, 1, 1, 0, 1, 1, 9
-.wyTable ; This has been manually determined; it can be computed as `9 - <number of extra non-blank pixels compared to the previous scanline>`.
-	db 8, 7, 7, 6, 5, 3, 2, 1
-	db 9, 9, 9, 9, 9, 9, 9, 9
-
 
 .UpdateScrolling
 	ei ; This process takes more than a scanline, so enable nested interrupts to not delay the next one.
 
 	push bc
 
-; Update background scrolling.
-	ld hl, .bgScrollSpeed
-	ld a, [hld]
-	ld c, a
-	sra a ; Halved (using signed division here!)
-	add [hl] ; Our slope is 2:1, so Y scroll speed is halved.
-	ld [hld], a ; .bgYScroll
-	ld a, c ; X scroll is unscaled.
-	add [hl]
-	ld [hld], a ; .bgXScroll
-	swap a ; No need to mask off the upper bits, since the pattern repeats every 16 pixels.
 ; Set up the cliff's vertical scrolling.
 ; This involves a two-step process: the Window must first be on-screen to "skip" some of its lines,
-; and then begin being shown further down the screen.
-; Note that this is derived from X scroll so that it remains precisely tied to its own X scroll;
-; and it is also inverted (full negation is not strictly necessary) as increasing SCX scrolls the BG *left*,
-; but increasing WX scrolls the Window *right*.
-	cpl
+; and then begin being properly shown further down the screen.
+; Do this early, because WY must be written to before scanline 2 begins!
+	ld hl, .cliff_Xspeed_subpx
+	call .tickQ8Pos
+	jr c, .noCliffWrap ; Since we are adding a negative speed, we know we must have underflowed if carry *isn't* set.
+	add CLIFF_PATTERN_WIDTH ; Wrap back into the positives...
+	dec hl ; ...and write that back.
+	ld [hli], a
+.noCliffWrap
 	push af
-	rlca ; The cliff scrolls horizontally twice as fast.
-	and $0F ; The Window pattern repeats after 16 pixels.
 	; Set up to skip the appropriate number of lines also.
+	assert .wyTable_End - .wyTable == CLIFF_PATTERN_WIDTH
 	add a, LOW(.wyTable)
 	ld l, a
-	adc a, HIGH(.wyTable)
-	sub l
-	ld h, a
+	assert HIGH(.wyTable_End - 1) == HIGH(.wyTable), "Cannot index WY table efficiently, pls realign"
+	ld h, HIGH(.wyTable)
 	ld a, [hl]
 	ldh [rWY], a
+	; Use the main tilemap, since its top scanlines are a solid colour.
 	ld hl, rLCDC
-	set B_LCDC_WIN_MAP, [hl] ; Use the main tilemap, since its top scanlines are a solid colour.
+	set B_LCDC_WIN_MAP, [hl]
 	; Cache the scanline at which to start showing the Window.
 	pop af
-	and $07 ; The pattern repeats after 8 pixels.
-	cpl ; Subtract that from the base scanline.
+	inc a ; Make the halving round up, for a bit of extra visual variety.
+	srl a ; Unsigned division by 2.
+	cpl ; Subtract that from the base scanline, so that moving further right also moves further *up*.
 	add a, CLIFF_BASE_SCANLINE + 1
-	ld [.cliffFirstScanline], a
+	ld [.cliffFirstScanline + 1], a
+	; Also reset this bit of self-modifying code.
+	ld a, LOW(.wxOffsets)
+	ld [.wxOfsPtr + 1], a
+
+; Update background scrolling.
+	ld hl, .parallaxLayers
+	ld a, l
+	ld [.parallaxPtr + 1], a ; Reset that SMC.
+	inc l ; Scanline -> Max X (px).
+.tickParallaxLayer
+	ld a, [hli] ; Max X (px) -> X speed (subpx).
+	ld c, a
+	call .tickQ8Pos
+	sub c ; Overflowed the wrap-around range?
+	jr c, .noParallaxWrap
+	dec hl ; Woops, undo!
+	ld [hli], a ; NB: `a` may be non-zero if pixels increased by more than 1 this frame!
+.noParallaxWrap
+	ld a, [hli] ; Scanline -> Max X (px).
+	and a ; Check for a zero terminator.
+	jr nz, .tickParallaxLayer
 
 ; Update OAM last, since the other variables may be read for real soon,
 ; whereas shadow OAM will only get read on the next VBlank.
 
 ; Update cable car's position.
-	ld hl, .carSpeed
-	ld a, [hli]
-	ld b, a ; Cache pixels for later. (The speed is big-endian.)
-	ld a, [hli]
-	add a, [hl]
-	ld [hli], a ; Subpixels.
-	ld a, b
-	adc a, [hl]
-	ld [hli], a ; Pixels.
+	assert .parallaxLayers_End == .car_Xspeed_subpx ; No need to update `hl`.
+	call .tickQ8Pos
 	ld c, a
 	; The car's Y position is derived from its X position.
 	; This is odd / unusual vs. giving the Y axis its own speed and position,
@@ -732,7 +753,7 @@ ENDM
 	ld b, a
 
 ; Occasionally bump the car by one pixel.
-	assert .carXPos + 2 == .carBumpTimer
+	assert .car_Xpos_px + 1 == .carBumpTimer
 	ld a, [hl]
 	add CAR_BUMP_TIMER_INCREMENT
 	ld [hl], a
@@ -773,22 +794,81 @@ ENDM
 	ret
 
 
+MACRO Q8pos_and_speed ; <name prefix>, <start pos>, <speed>
+	\1speed_subpx: db LOW(\3)
+	  \1pos_subpx: db LOW(\2)
+	\1speed_px: db HIGH(\3)
+	  \1pos_px: db HIGH(\2)
+ENDM
+
+.tickQ8Pos:
+	ld a, [hli] ; Speed (subpx) -> pos (subpx).
+	add a, [hl]
+	ld [hli], a ; Pos (subpx) -> speed (px).
+	ld a, [hli] ; Speed (px) -> pos (px).
+	adc a, [hl]
+	ld [hli], a ; Pos (px) -> one past struct.
+	ret
+
+
+MACRO parallax_layer ; <name prefix>, <first scanline>, <px modulo>, <speed>
+	\1_scanline: db \2 - 1 ; Scrolling must be adjusted on the scanline *before*!
+	; X pos is always incrementing, but gets written to SCX inverted if necessary.
+	\1_XposPxModulo: db \3 ; `_Xpos_px` will remain between 0 and this (exclusive), assuming that the speed is no larger than this.
+	Q8pos_and_speed \1_X, 0, \4
+	; TODO: Y axis
+ENDM
+.parallaxLayers
+	parallax_layer .nearClouds,  13, 255, SCROLL_SPEED_CLOUDS_NEAR
+	parallax_layer .farClouds,   30, 255, SCROLL_SPEED_CLOUDS_FAR
+	parallax_layer .horizon,     48,  40, SCROLL_SPEED_HORIZON ; Mountains.
+	parallax_layer .farTrees0,   64,   4, SCROLL_SPEED_TREES_FAR_0
+	parallax_layer .farTrees1,   68,   4, SCROLL_SPEED_TREES_FAR_1
+	parallax_layer .farTrees2,   72,   4, SCROLL_SPEED_TREES_FAR_2
+	parallax_layer .farTrees3,   76,   4, SCROLL_SPEED_TREES_FAR_3
+	parallax_layer .medTrees0,   80,   8, SCROLL_SPEED_TREES_MED_0
+	parallax_layer .medTrees1,   88,   8, SCROLL_SPEED_TREES_MED_1
+	parallax_layer .medTrees2,   96,   8, SCROLL_SPEED_TREES_MED_2
+	parallax_layer .medTrees3,  104,   8, SCROLL_SPEED_TREES_MED_3
+	parallax_layer .nearTrees0, 112,  16, SCROLL_SPEED_TREES_NEAR_0
+	parallax_layer .nearTrees1, 130,  16, SCROLL_SPEED_TREES_NEAR_1
+	db 0 ; Terminator.
+.parallaxLayers_End
+
+
 ; TODO: consider moving some of those into SMC?
 ; TODO: make more of those initial values into tunables.
 
-; These are Q.4 fixed-point: the extra precision enables extra smoothness,
-;                            and the pattern repeats after 16 pixels anyway.
-	.bgXScroll: db 0
-	.bgYScroll: db 0
 .dirDependentVars ; These variables get negated in bulk depending on direction.
-	.bgScrollSpeed: db $0A ; Less visual than a fixed-point literal, but bit 0 must remain clear...
-; These are Q.8 OAM-space, and the coords are roughly the attachment point's.
-	.carSpeed: bigdw $00AA
-	.carXPos: dw $0097
+	Q8pos_and_speed .car_X, $0097, $00AA
 .dirDependentVars_End
 	.carBumpTimer: db 0
 
-	.cliffFirstScanline: db 42 ; (Dummy value.)
+
+	Q8pos_and_speed .cliff_X, 0, -SCROLL_SPEED_CLIFF
+
+
+	; FIXME: couldn't find a good way to align data around, so this wastes space :(
+	; Can't even use `ds align` because the section's alignment is set in the linker script and not in this file,
+	; so RGBASM sets a constraint that turns out to be incorrect.
+	ds 9
+
+
+.wxOffsets ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
+	db 7, 1, 1, 1, 0, 8, 1, 2, 1, 1, 1, 0
+.wyTable
+MACRO initial_wy ; Each arg is “how many blank pixels at the top of this column” (in the non-staggered version).
+	FOR i, 1, _NARG + 1
+		static_assert \<i> < CLIFF_PATTERN_HEIGHT
+		; Ranges from 1 to CLIFF_PATTERN_HEIGHT (inclusive).
+		db -\<i> % -CLIFF_PATTERN_HEIGHT + CLIFF_PATTERN_HEIGHT
+	ENDR
+ENDM
+	initial_wy 0, 0, 0, 0, 0, 0, 0 ; Sanity check: the first entry in this list should always be zero!
+	initial_wy 1, 2, 3
+	initial_wy 5, 5, 5, 5, 5, 5, 5, 5 ; 8-column flat stretch.
+	initial_wy 6, 7, 7, 8, 9, 10
+.wyTable_End
 
 .end
 ENDL
