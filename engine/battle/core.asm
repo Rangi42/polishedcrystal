@@ -6285,7 +6285,6 @@ FinalPkmnSlideInEnemyMonFrontpic:
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
-	ldh [hBGMapHalf], a
 	ld d, $0
 	push bc
 	push hl
@@ -6348,7 +6347,6 @@ BattleWinSlideInEnemyTrainerFrontpic:
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
-	ldh [hBGMapHalf], a
 	ld d, $0
 	push bc
 	push hl
@@ -7364,10 +7362,8 @@ AnimateExpBar:
 .delay
 	xor a
 	ldh [hCGBPalUpdate], a
-	inc a
-	assert TRANSFER_TILEMAP == 1
+	ld a, TRANSFER_TILEMAP | $80 ; Begin by updating the bottom half.
 	ldh [hBGMapMode], a
-	ldh [hBGMapHalf], a
 	ld c, d
 	call DelayFrames
 	xor a

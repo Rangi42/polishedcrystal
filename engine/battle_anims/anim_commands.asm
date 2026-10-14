@@ -146,17 +146,12 @@ RunBattleAnimScript:
 	ret
 
 BattleAnimClearHUD:
-	call DelayFrame
-	call WaitTop
+	call EndBGMapUpdate
 	call ClearActorHUD
-	ld a, TRANSFER_TILEMAP
-	ldh [hBGMapMode], a
-	call Delay2
-	jmp WaitTop
+	jr ApplyTilemapJustOnce
 
 BattleAnimRestoreHUDs:
-	call DelayFrame
-	call WaitTop
+	call EndBGMapUpdate
 
 	ldh a, [rWBK]
 	push af
@@ -168,10 +163,9 @@ BattleAnimRestoreHUDs:
 	pop af
 	ldh [rWBK], a
 
-	ld a, TRANSFER_TILEMAP
-	ldh [hBGMapMode], a
-	call Delay2
-	jmp WaitTop
+ApplyTilemapJustOnce:
+	call ApplyTilemapInVBlank
+	jmp EndBGMapUpdateNow
 
 BattleAnimRequestPals:
 	ldh a, [rBGP]
@@ -1259,7 +1253,7 @@ ClearBattleAnims:
 	jmp DelayFrame
 
 BattleAnim_RevertPals:
-	call WaitTop
+	call EndBGMapUpdate
 	ld a, %11100100
 	ld [wBGP], a
 	ld [wOBP0], a

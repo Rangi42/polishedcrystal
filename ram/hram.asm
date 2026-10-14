@@ -118,8 +118,10 @@ hTilemapAtomicCopyFlags:: ; Copy of the flags passed to `SafeCopyTilemapAtOnce`
 hNbRowsToCopy::           ; Temporary counter for `CopyTilemapInHBlank`
 hNbTilesToCopy::          ; Temporary counter for the `Request*bpp` functions
 	db
-hBGMapMode::    db ; See `ram_constants.asm`
-hBGMapHalf::    db ; Either 0 (top half), or 1 (bottom half)
+; See `ram_constants.asm` for all the `TRANSFER_*` constants.
+; Bit 7 instead indicates which half of the map is to be updated next;
+; packing it here ensures that every new transfer started automatically resets to the top half.
+hBGMapMode::    db
 hBGMapAddress:: dw
 
 hBGMapUpdate::    db
@@ -135,6 +137,8 @@ hLastTalked:: db
 hRandom::
 hRandomAdd:: db
 hRandomSub:: db
+
+hStopPrintingString:: db
 
 hSerialReceivedNewData::     db
 hSerialConnectionStatus::    db
@@ -193,8 +197,6 @@ hNextMPState:: db
 ENDU
 
 hCrashCode:: db
-
-hStopPrintingString:: db
 
 UNION
 ; vwf

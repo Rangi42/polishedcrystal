@@ -358,8 +358,6 @@ ParseCredits:
 	call .get
 	ld [wCreditsTimer], a
 
-	xor a
-	ldh [hBGMapHalf], a
 	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 

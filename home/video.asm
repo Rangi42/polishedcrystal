@@ -125,20 +125,61 @@ endr
 	scf
 	ret
 
-WaitTop::
-; Wait until the top half of the BG Map is being updated.
 
-	ldh a, [hBGMapMode]
-	and a
-	jr nz, .handleLoop
+ClearScreen::
+	ld a, PAL_BG_TEXT
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_AREA
+	rst ByteFill
+ClearTileMap::
+; Fill wTilemap with blank tiles.
+	ld a, ' '
+FillTileMap::
+	hlcoord 0, 0
+	ld bc, wTilemapEnd - wTilemap
+	rst ByteFill
+	; Update the BG Map.
+	ldh a, [rLCDC]
+	add a ; Check if bit 7 is set (LCD on).
+	jr c, ApplyTilemapInVBlank
 	ret
-.loop
-	call DelayFrame
-.handleLoop
-	ldh a, [hBGMapHalf]
-	and a
-	jr nz, .loop
 
+ClearBGPalettes::
+	call ClearPalettes
+	jr ApplyTilemapInVBlank
+
+ApplyAttrmapInVBlank::
+; Tell VBlank to update Attr Map
+	ld a, TRANSFER_ATTRMAP
+	jr _ApplyAttrOrTilemapInVBlank
+
+ApplyAttrAndTilemapInVBlank::
+	call ApplyAttrmapInVBlank
+ApplyTilemapInVBlank::
+	ld a, TRANSFER_TILEMAP
+_ApplyAttrOrTilemapInVBlank:
+	ldh [hBGMapMode], a
+
+WaitBGMapUpdate.awaitBottomHalf
+	call DelayFrame
+WaitBGMapUpdate::
+	ldh a, [hBGMapMode]
+	add a ; Check bit 7: is the bottom half being updated?
+	ret z ; Wait, no transfer is in progress!
+	jr nc, .awaitBottomHalf ; It's not: keep waiting.
+.awaitTopHalf
+	call DelayFrame
+	ldh a, [hBGMapMode]
+	add a ; Check bit 7: is the bottom half being updated?
+	jr c, .awaitTopHalf
+	ret
+
+EndBGMapUpdate::
+	call WaitBGMapUpdate
+; Same as above, but useful if you have already waited.
+; However, simply performing the write yourself takes as much space but more CPU cycles,
+; so please only `jmp` here and do not `call`.
+EndBGMapUpdateNow::
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
@@ -173,9 +214,11 @@ _UpdateBGMap::
 	ld h, a
 .updateMap1
 
-	ldh a, [hBGMapHalf]
-	xor 1
-	jr nz, .topHalf
+	ldh a, [hBGMapMode]
+	xor $80
+	ldh [hBGMapMode], a
+	add a ; Move that bit into carry, though mind that it has just been inverted.
+	jr c, .topHalf
 	; bottom half source
 	add sp, 127 ; `add sp` cannot do more than 127, so do it in two steps.
 	add sp, HALF_HEIGHT * SCREEN_WIDTH - 127
@@ -183,7 +226,6 @@ _UpdateBGMap::
 	ld de, HALF_HEIGHT * TILEMAP_WIDTH
 	add hl, de
 .topHalf
-	ldh [hBGMapHalf], a
 
 	ld a, HALF_HEIGHT
 
