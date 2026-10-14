@@ -1135,7 +1135,11 @@ wPokemonJournalsEnd::
 wTMsHMs:: flag_array NUM_TMS + NUM_HMS
 wTMsHMsEnd::
 
-wKeyItems:: ds NUM_KEY_ITEMS + 1
+; One byte short of NUM_KEY_ITEMS + 1 so that adding the DexNav didn't shift
+; the saved layout. That's safe because several key items are taken away
+; during the story (Mystery Egg, Lost Item, Machine Part, ...), so the list can
+; never hold every key item at once.
+wKeyItems:: ds NUM_KEY_ITEMS
 wKeyItemsEnd::
 
 wNumItems:: db

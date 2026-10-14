@@ -82,6 +82,7 @@ DoKeyItemEffect::
 	dw SquirtBottle       ; KEYITEMEFFECT_SQUIRTBOTTLE
 	dw CardKey            ; KEYITEMEFFECT_CARD_KEY
 	dw BasementKey        ; KEYITEMEFFECT_BASEMENT_KEY
+	dw DexNavItem         ; KEYITEMEFFECT_DEXNAV
 	assert_table_length NUM_KEY_ITEM_EFFECTS
 
 INCLUDE "data/items/key_effects.asm"
@@ -2387,6 +2388,9 @@ UseRod:
 
 Itemfinder:
 	farjp ItemFinder
+
+DexNavItem:
+	farjp DexNav_UseItem
 
 RestorePPEffect:
 	ld a, [wCurItem]

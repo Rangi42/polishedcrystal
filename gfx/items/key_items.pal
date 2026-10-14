@@ -132,6 +132,9 @@ endc
 ; CATCH CHARM
 	RGB 10, 29, 22
 	RGB 04, 19, 16
+; DEXNAV (Pokédex colors)
+	RGB 22, 08, 07
+	RGB 02, 09, 19
 else
 rept NUM_KEY_ITEMS
 	MONOCHROME_RGB_TWO

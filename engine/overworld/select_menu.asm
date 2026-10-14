@@ -2,10 +2,6 @@ SelectMenu::
 	call CheckRegisteredItem
 	jr nz, UseRegisteredItem
 
-if DEF(DEBUG)
-	; TODO: remove once the DexNav key item exists (Phase 2)
-	farjp DexNavDebug_SelectMenu
-endc
 	call OpenText
 	ld b, BANK(ItemMayBeRegisteredText)
 	ld hl, ItemMayBeRegisteredText

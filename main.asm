@@ -5,7 +5,6 @@ INCLUDE "engine/gfx/load_push_oam.asm"
 INCLUDE "engine/overworld/map_objects.asm"
 INCLUDE "engine/menus/intro_menu.asm"
 INCLUDE "engine/overworld/init_map.asm"
-INCLUDE "engine/pokemon/learn.asm"
 INCLUDE "data/items/attributes.asm"
 INCLUDE "engine/overworld/npc_movement.asm"
 INCLUDE "engine/events/happiness_egg.asm"
@@ -29,7 +28,6 @@ INCLUDE "engine/gfx/color.asm"
 
 SECTION "bank3", ROMX
 
-INCLUDE "engine/events/checktime.asm"
 INCLUDE "engine/events/specials.asm"
 INCLUDE "engine/pokemon/health.asm"
 INCLUDE "engine/events/overworld.asm"
@@ -83,7 +81,6 @@ INCLUDE "engine/events/itemfinder.asm"
 INCLUDE "engine/menus/start_menu.asm"
 INCLUDE "engine/pokemon/mon_menu.asm"
 INCLUDE "engine/overworld/select_menu.asm"
-INCLUDE "engine/events/elevator.asm"
 INCLUDE "engine/events/bug_contest/contest.asm"
 INCLUDE "engine/events/safari_game.asm"
 INCLUDE "engine/events/std_collision.asm"
@@ -134,7 +131,6 @@ INCLUDE "engine/pokemon/mon_submenu.asm"
 INCLUDE "engine/battle/menu.asm"
 INCLUDE "engine/items/buy_sell_toss.asm"
 INCLUDE "engine/menus/trainer_card.asm"
-INCLUDE "engine/events/prof_oaks_pc.asm"
 INCLUDE "engine/overworld/decorations.asm"
 INCLUDE "engine/pokemon/level_up_happiness.asm"
 INCLUDE "engine/battle/read_trainer_dvs.asm"
@@ -741,6 +737,33 @@ INCLUDE "audio/music/printer.asm"
 SECTION "LureMenu", ROMX
 
 INCLUDE "engine/menus/lure_menu.asm"
+
+
+; Moved out of full fixed banks to make room for the DexNav key item.
+; Everything here is only reached through farcall/predef/special.
+SECTION "Learn Move", ROMX
+
+INCLUDE "engine/pokemon/learn.asm"
+
+
+SECTION "SGB Border", ROMX
+
+INCLUDE "engine/gfx/sgb_border.asm"
+
+
+SECTION "Check Time", ROMX
+
+INCLUDE "engine/events/checktime.asm"
+
+
+SECTION "Elevator", ROMX
+
+INCLUDE "engine/events/elevator.asm"
+
+
+SECTION "Prof Oak's PC", ROMX
+
+INCLUDE "engine/events/prof_oaks_pc.asm"
 
 
 SECTION "DexNav", ROMX

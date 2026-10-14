@@ -676,6 +676,8 @@ DEF CHARMS_START EQU const_value
 	const SHINY_CHARM  ; 24
 	const OVAL_CHARM   ; 25
 	const CATCH_CHARM  ; 26
+	; Not a charm, but key items can only be appended without breaking saves
+	const DEXNAV       ; 27
 DEF NUM_KEY_ITEMS EQU const_value - 1
 
 ; Alphabetical order (see data/items/name_order.asm)
@@ -689,6 +691,7 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_CATCH_CHARM
 	const NAM_CLEAR_BELL
 	const NAM_COIN_CASE
+	const NAM_DEXNAV
 	const NAM_GBC_SOUNDS
 	const NAM_GO_GOGGLES
 	const NAM_GOOD_ROD

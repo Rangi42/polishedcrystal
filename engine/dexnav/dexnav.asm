@@ -174,23 +174,37 @@ DexNav_CheckSlotIsTarget:
 	pop hl
 	ret
 
-DexNavBattleScript:
+DexNav_UseItem:
+; Key item effect (Bag or Select). The Bag closes first, then this script runs.
+	ld a, BANK(DexNavUseScript)
+	ld hl, DexNavUseScript
+	call FarQueueScript
+	ld a, TRUE
+	ld [wItemEffectSucceeded], a
+	ret
+
+DexNavUseScript:
+	special UpdateTimePals
+	callasm DexNav_ChooseTarget
+	iffalsefwd .done
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
+.done
 	end
 
-if DEF(DEBUG)
-
-DexNavDebug_SelectMenu:
-; Temporary Phase 1 trigger: Select with nothing registered.
+DexNav_ChooseTarget:
+; Temporary target picker until the species list menu (Phase 2.2).
 ; Yes = search for the target, No = show the next wild slot as the target.
+; Sets [hScriptVar] to TRUE if a DexNav battle is ready to start.
+	xor a ; FALSE
+	ldh [hScriptVar], a
 	call OpenText
 	ld a, [wDexNavTargetSpecies]
 	and a
 	jr nz, .prompt
 	xor a
-	ld [wDexNavDebugSlot], a
+	ld [wDexNavListCursor], a
 	call .SetTargetFromSlot
 	jr nc, .no_wild_data
 
@@ -207,16 +221,12 @@ DexNavDebug_SelectMenu:
 
 	call DexNav_ChooseWildEncounter
 	jr nz, .not_here
-	call CloseText
-	ld a, BANK(DexNavBattleScript)
-	ld hl, DexNavBattleScript
-	call FarQueueScript
-	ld a, HMENURETURN_SCRIPT
-	ldh [hMenuReturn], a
-	ret
+	ld a, TRUE
+	ldh [hScriptVar], a
+	jmp CloseText
 
 .next_slot
-	ld hl, wDexNavDebugSlot
+	ld hl, wDexNavListCursor
 	inc [hl]
 	call .SetTargetFromSlot
 	jr c, .prompt
@@ -232,7 +242,7 @@ DexNavDebug_SelectMenu:
 	jmp CloseText
 
 .SetTargetFromSlot:
-; Target the species in slot [wDexNavDebugSlot] (wrapping around).
+; Target the species in slot [wDexNavListCursor] (wrapping around).
 ; Returns nc if this area has no wild data.
 	ld a, [wTimeOfDay]
 	cp EVE
@@ -241,11 +251,11 @@ DexNavDebug_SelectMenu:
 .got_time
 	call DexNav_GetSlotTable
 	ret nc
-	ld a, [wDexNavDebugSlot]
+	ld a, [wDexNavListCursor]
 	cp b
 	jr c, .slot_ok
 	xor a
-	ld [wDexNavDebugSlot], a
+	ld [wDexNavListCursor], a
 .slot_ok
 	ld bc, 3
 	rst AddNTimes
@@ -277,5 +287,3 @@ DexNavDebug_SelectMenu:
 	text "No wild #mon"
 	line "live here."
 	prompt
-
-endc

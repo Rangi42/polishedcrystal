@@ -1509,7 +1509,5 @@ SECTION "DexNav WRAM0", WRAM0
 wDexNavTargetSpecies:: db
 wDexNavTargetForm:: db
 
-if DEF(DEBUG)
-; Wild slot the debug target picker is showing.
-wDexNavDebugSlot:: db
-endc
+; Wild slot the temporary target picker is showing.
+wDexNavListCursor:: db
