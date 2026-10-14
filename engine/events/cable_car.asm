@@ -86,8 +86,8 @@ Special_CableCar::
 	xor a
 	ldh [hMapAnims], a
 ; Init some cutscene vars.
+	; a == 0.
 	ldh [hSCX], a
-	ld a, $60 ; TODO: compute based on camera position instead!
 	ldh [hSCY], a
 	ld a, SCREEN_WIDTH_PX - 1 + WX_OFS ; 1 pixel on-screen, used to skip rows near the top.
 	ldh [hWX], a
@@ -230,7 +230,7 @@ Special_CableCar::
 .WriteMainMaps
 	; Since they are wider than the WRAM tilemaps, VRAM must be accessed directly;
 	; there is enough room in the decompression buffer to hold them, too!
-def MAP_SIZE_IN_TILES equ TILEMAP_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
+def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ld de, wDecompressScratch tile NB_TILES ; The tilemap and attrmap are right after the tile data.
 	ld hl, vBGMap1
 	ld c, MAP_SIZE_IN_TILES
