@@ -29,9 +29,9 @@ ApplyTilemap::
 	; One of these:
 	const MAPS_COPY_SKIP_PALS           ; Do not transfer, but leave `hCGBPalUpdate` alone.
 	const MAPS_COPY_SET_PALS            ; Transfer just once.
-	const MAPS_COPY_SET_DEFAULT_PALS    ; Call `SetDefaultBGPAndOBP` and transfer just once.
 	const MAPS_COPY_USE_CUR_PAL_SETTING ; Use what's in `hCGBPalUpdate` before disabling it.
-	export MAPS_COPY_SKIP_PALS, MAPS_COPY_SET_PALS, MAPS_COPY_SET_DEFAULT_PALS, MAPS_COPY_USE_CUR_PAL_SETTING
+	const MAPS_COPY_SET_DEFAULT_PALS    ; Call `SetDefaultBGPAndOBP` and transfer just once.
+	export MAPS_COPY_SKIP_PALS, MAPS_COPY_SET_PALS, MAPS_COPY_USE_CUR_PAL_SETTING, MAPS_COPY_SET_DEFAULT_PALS
 	; Plus as many of these as you want:
 	export def MAPS_COPY_DISABLE_OAM_UPDATE equ 1 << 2
 	export def MAPS_COPY_NO_ATTRS           equ 1 << 3

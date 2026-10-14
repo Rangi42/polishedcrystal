@@ -8,36 +8,22 @@ _SafeCopyTilemapAtOnce::
 
 	ld a, b
 	ldh [hTilemapAtomicCopyFlags], a ; Some of these flags must be passed to the VBlank handler.
+
+	cpl
 	and %11
-	jr nz, .notZero
-	ldh a, [hCGBPalUpdate]
-	ld d, a
-	ld e, 0
-	jr .gotPalUpdate
-.notZero
-	cp 3
-	jr nz, .doNotUseOldValue
-	ldh a, [hCGBPalUpdate]
-	ld e, a
-	ld d, 0
-	jr .gotPalUpdate
-.doNotUseOldValue
-	dec a
-	call nz, SetDefaultBGPAndOBP
-	lb de, 0, 1
-.gotPalUpdate
-	xor a
-	ldh [hCGBPalUpdate], a
+	assert MAPS_COPY_SET_DEFAULT_PALS == 3
+	call z, SetDefaultBGPAndOBP
+.skipPalettes
+
 	ldh a, [rLY]
 	cp $70
 	call nc, DelayFrame ; not enough time to update music, so wait a frame
-	ld a, e
-	ldh [hCGBPalUpdate], a
 
 .waitLYAndUpdateMusic
 	ldh a, [rLY]
 	cp $70
 	jr nz, .waitLYAndUpdateMusic
+
 	bit 2, b
 	jr z, .noForceOAMUpdate
 	xor a
@@ -52,8 +38,6 @@ _SafeCopyTilemapAtOnce::
 	call MaybeDelayFrame ; VBlank may have run during `UpdateSound`, don't delay if so.
 
 	; Restore all regs.
-	ld a, d
-	ldh [hCGBPalUpdate], a
 	pop af
 	ldh [hVBlank], a
 	pop af
@@ -69,10 +53,26 @@ VBlankSafeCopyTilemapAtOnce::
 	ldh [rWY], a
 	ldh a, [hWX]
 	ldh [rWX], a
-	call UpdateCGBPals
 
 	ldh a, [hTilemapAtomicCopyFlags]
-	and 1 << 3
+	rra ; Move bit 0 bit into carry.
+	assert MAPS_COPY_SET_PALS == 1 && MAPS_COPY_SET_DEFAULT_PALS == 3
+	jr c, .forceTransfer ; 1 and 3 force a transfer.
+	rra
+	assert MAPS_COPY_SKIP_PALS == 0
+	jr nc, .skipPalettes ; Don't even reset `hCGBPalUpdate`!
+	assert MAPS_COPY_USE_CUR_PAL_SETTING == 2
+	call UpdateCGBPals
+	and a ; Reset carry to avoid the upcoming `call`.
+.forceTransfer
+	call c, ForceUpdateCGBPals
+
+	xor a
+	ldh [hCGBPalUpdate], a
+.skipPalettes
+
+	ldh a, [hTilemapAtomicCopyFlags]
+	and MAPS_COPY_NO_ATTRS
 	jr z, .copyAttrmapAndTilemap
 	; Copy only the tilemap.
 	; First, reuse the same code as `UpdateBGMap` to copy the top half during VBlank...
