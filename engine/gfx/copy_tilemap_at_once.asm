@@ -77,6 +77,7 @@ VBlankSafeCopyTilemapAtOnce::
 	; Copy only the tilemap.
 	; First, reuse the same code as `UpdateBGMap` to copy the top half during VBlank...
 	xor a
+	ld h, a ; Which VRAM bank to have loaded when returning.
 	call _UpdateBGMap
 
 	call PushOAM ; This is still the VBlank handler!
@@ -98,13 +99,12 @@ def NB_ROWS_PER_CHUNK equ 5
 	; into three chunks of 5, leaving a remainder of 3.
 export def BG_MAP_NUM_VBLANK_ROWS equ SCREEN_HEIGHT % NB_ROWS_PER_CHUNK ; 3
 	; Those 3 rows are thus what we will copy here during VBlank.  (Whew!)
-	inc a ; ld a, 1
-	ldh [rVBK], a
-	ld hl, wAttrmap
-	call CopyTopMapRows
-	; The previous function returns with VRA0 loaded.
+	ldh [rVBK], a ; a == 0 here
 	ld hl, wTilemap
+	inc a ; a := 1, so the function returns with VRA1 active.
 	call CopyTopMapRows
+	ld hl, wAttrmap
+	call CopyTopMapRows ; Which VRAM bank is active when this returns doesn't matter.
 
 	call PushOAM ; This is still a VBlank handler, after all :)
 

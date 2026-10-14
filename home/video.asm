@@ -194,9 +194,14 @@ UpdateBGMap::
 	and a
 	ret z
 
+	ldh a, [rVBK] ; Save the active
+	ld h, a
+	ldh a, [hBGMapMode]
 	dec a
 _UpdateBGMap::
 	ldh [rVBK], a ; Load the appropriate VRAM bank (only bit 0 gets used).
+	push hl ; ...and save the previous one.
+
 	ld [wSPBuffer], sp ; Since we're about to use the stack as the copy source, save it for restoring later.
 
 	ld sp, wTilemap
@@ -254,13 +259,15 @@ endr
 	pop hl
 	ld sp, hl
 
-	; Keep VRA0 loaded for the rest of the game, in case we just copied attributes.
-	xor a
+	; Restore the VRAM bank that was previously loaded.
+	pop af
 	ldh [rVBK], a
 	ret
 
 CopyTopMapRows:: ; Part of `CopyTilemapAtOnce`, placed here for a `jr`.
+	push af ; VRAM bank to make active when done.
 	ld [wSPBuffer], sp
+
 	; Load the destination address, which is always at the top of the map.
 	ld sp, hBGMapAddress
 	pop de
