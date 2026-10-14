@@ -223,6 +223,7 @@ gfx/new_game/shrink1.2bpp: RGBGFXFLAGS += -Z
 gfx/new_game/shrink2.2bpp: RGBGFXFLAGS += -Z
 
 # All OBJ tiles are meant for 8x16 mode, thus laid out in columns.
+gfx/overworld/cable_car/cumulus.2bpp: RGBGFXFLAGS += -Z
 gfx/overworld/cable_car/car_window.2bpp: gfx/overworld/cable_car/car.png
 	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 48,16:1,2 -o $@ $<
 gfx/overworld/cable_car/car.2bpp: RGBGFXFLAGS += -Z -L 8,0:2,6
@@ -237,7 +238,8 @@ gfx/overworld/cable_car/cable.2bpp: RGBGFXFLAGS += -Z
 gfx/overworld/cable_car/bg.2bpp: RGBGFXFLAGS += -m -OT -b 0xC4
 gfx/overworld/cable_car/bg.tilemap: gfx/overworld/cable_car/bg.2bpp
 # Order matters here! Update the tilemap, and the `obj_block`s to reflect new tile IDs.
-gfx/overworld/cable_car.bin: gfx/overworld/cable_car/car_window.2bpp gfx/overworld/cable_car/car_left.2bpp gfx/overworld/cable_car/car.2bpp \
+gfx/overworld/cable_car.bin: gfx/overworld/cable_car/cumulus.2bpp \
+                             gfx/overworld/cable_car/car_window.2bpp gfx/overworld/cable_car/car_left.2bpp gfx/overworld/cable_car/car.2bpp \
                              gfx/overworld/cable_car/handle_side.2bpp gfx/overworld/cable_car/handle.2bpp \
                              gfx/overworld/cable_car/cable.2bpp \
                              gfx/overworld/cable_car/bg.2bpp \
