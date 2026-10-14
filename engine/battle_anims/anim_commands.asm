@@ -153,15 +153,9 @@ BattleAnimClearHUD:
 BattleAnimRestoreHUDs:
 	call EndBGMapUpdate
 
-	ldh a, [rWBK]
-	push af
-	ld a, $1
-	ldh [rWBK], a
-
+	ld a, BANK(wCurBattleMon)
+	call StackCallInWRAMBankA
 	call UpdateBattleHuds
-
-	pop af
-	ldh [rWBK], a
 
 ApplyTilemapJustOnce:
 	call ApplyTilemapInVBlank
