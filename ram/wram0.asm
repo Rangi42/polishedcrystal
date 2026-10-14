@@ -1500,3 +1500,16 @@ wResolvedObjectPals:: ds NUM_OBJECT_STRUCTS
 ; Invalidate the selected map rectangle palettes across text/menu rendering.
 wPaletteSwapNeedsReload:: db
 wPaletteSwapReloadMask:: db
+
+
+SECTION "DexNav WRAM0", WRAM0
+
+; Species and form the DexNav is searching for (0 = none).
+; TODO (Phase 4): move into saved game data (D7).
+wDexNavTargetSpecies:: db
+wDexNavTargetForm:: db
+
+if DEF(DEBUG)
+; Wild slot the debug target picker is showing.
+wDexNavDebugSlot:: db
+endc
