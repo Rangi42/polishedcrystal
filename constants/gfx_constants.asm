@@ -48,6 +48,15 @@ DEF IMPLICIT_FRAME_DURATION EQU 6 ; measured as the most common `frame` duration
 
 DEF OAM_YCOORD_HIDDEN EQU 160 ; hides an OAM offscreen
 
+; Argument in `b` for `SafeCopyTilemapAtOnce` (see home/gfx.asm)
+	const_def
+	const MAPS_COPY_SKIP_PALS           ; 0: Do not transfer, but leave `hCGBPalUpdate` alone.
+	const MAPS_COPY_SET_PALS            ; 1: Transfer just once.
+	const MAPS_COPY_SET_DEFAULT_PALS    ; 2: Call `SetDefaultBGPAndOBP` and transfer just once.
+	const MAPS_COPY_USE_CUR_PAL_SETTING ; 3: Use what's in `hCGBPalUpdate` before disabling it.
+def MAPS_COPY_DISABLE_OAM_UPDATE equ 1 << 2
+def MAPS_COPY_NO_ATTRS           equ 1 << 3
+
 ; VWF flags (see engine/gfx/vwf.asm)
 	const_def
 	const VWF_SINGLE_F

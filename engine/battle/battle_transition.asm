@@ -8,7 +8,7 @@ DoBattleTransition:
 	lb bc, BANK(.TrainerBattlePokeballTile), 1
 	call Request2bpp
 
-	ld b, 3
+	ld b, MAPS_COPY_USE_CUR_PAL_SETTING
 	call SafeCopyTilemapAtOnce
 
 	ld a, SCREEN_HEIGHT_PX

@@ -354,7 +354,7 @@ StackDexGraphics:
 	rst CopyBytes
 	ld a, CGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	jmp SafeCopyTilemapAtOnce
 
 Pokedex_RefreshOAM:
