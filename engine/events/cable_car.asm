@@ -64,6 +64,8 @@ def SCROLL_SPEED_TREES_NEAR_0 equ 0.8q8
 def SCROLL_SPEED_TREES_NEAR_1 equ 0.9q8
 def SCROLL_SPEED_CLIFF        equ 1.1q8 ; X scroll speed only; the Y position is always half of the X pos.
 
+def CUMULUS_X_SPEED equ 0.4q8 ; px/frame. No subpixels because lazy.
+def CUMULUS_Y_POS equ 1
 
 def CAR_X_SPEED equ SCROLL_SPEED_CLIFF
 
@@ -170,6 +172,65 @@ Special_CableCar::
 	call FarCopyColorWRAM
 
 
+.WriteMainMaps
+	; Since they are wider than the WRAM tilemaps, VRAM must be accessed directly;
+	; there is enough room in the decompression buffer to hold them, too!
+def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
+	ld de, wDecompressScratch tile NB_TILES ; The tilemap and attrmap are right after the tile data.
+	ld hl, vBGMap1
+	ld c, MAP_SIZE_IN_TILES
+	call Request2bpp.Function ; Screen is on and the right banks are loaded: take a shortcut.
+	ld a, 1
+	ldh [rVBK], a
+	ld de, wDecompressScratch tile (NB_TILES + MAP_SIZE_IN_TILES)
+	ld hl, vBGMap3
+	ld c, MAP_SIZE_IN_TILES
+	call Request2bpp.Function ; Screen is on and the right banks are loaded: take a shortcut.
+	xor a
+	ldh [rVBK], a
+
+
+; Most of the engine assumes that bank 1 is loaded.
+	ld a, 1
+	ldh [rWBK], a
+
+; Init the cutscene's variables.
+	ld hl, .ramBlock
+	ld de, wCableCar
+	ld bc, wCableCar.end - wCableCar
+	rst CopyBytes
+
+; Perform direction-dependent setup.
+	assert GROUP_MOUNT_MOON_SQUARE != GROUP_ROUTE_4
+	ld a, [wMapGroup] ; *Current* map, not target map.
+	cp GROUP_MOUNT_MOON_SQUARE
+	jr nz, .upLeftToMountMoonSquare
+;.downRightToRoute4
+	; Invert the car's speed vector (and one position subpixel, whatevs).
+	; This is not true negation and thus gives a one-subpixel difference in speed between directions,
+	; but that's negligible.
+	; Actual negation of each byte is possible
+	; (replace `ld a, [hl] :: cpl` with `xor a :: sub [hl]`)
+	; but then e.g. `$00AA` gets turned into `$0056` instead of `$FF55`,
+	; which is much further off from the correct `$FF56`.
+	ld hl, wCableCar.cumulus_Xspeed_subpx
+	assert wCableCar.cumulus_Xspeed_subpx + 4 == wCableCar.car_Xspeed_subpx
+	ld c, 4 + 3 ; Cumulus X {speed,pos}x{subpx,px} + car X {speed.subpx, pos.subpx, speed.px}
+.negate
+	ld a, [hl]
+	cpl
+	ld [hli], a
+	dec c
+	jr nz, .negate
+	ld [hl], (CAR_TARGET_X - NB_FRAMES_FADES * ~CAR_X_SPEED) / 1.0q8 ; This one cannot be merely complemented.
+	; Also patch some code.
+	ld a, $96 ; Opcode for `sub [hl]`.
+	ld [wCableCar.cliffScrollInversion], a
+	ld a, $2F ; Opcode for `cpl`.
+	ld [wCableCar.xScrollInversion], a
+.upLeftToMountMoonSquare
+
+
 .SetUpOamTilesAndAttributes ; TODO: check if this does actually save space over a mere `CopyBytes`.
 	; For now, only set up the tile and attributes; all positions will be written later.
 	; Blocks are written backwards, but to keep the source code in OAM order, they are also read backwards.
@@ -213,7 +274,7 @@ Special_CableCar::
 	jr nz, .writeOamBlocks ; Checks Z from the `dec l`.
 
 	; Patch the three middle OBJs' palettes.
-	assert OBPAL_WHITE == OBPAL_CAR + 1
+	assert OBPAL_CAR_WHITE == OBPAL_CAR + 1
 	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT + 1))
 	inc [hl] ; Don't write static values! This preserves the X flip bit.
 	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT - 2))
@@ -224,65 +285,20 @@ Special_CableCar::
 	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_SIZE * OBJ_CABLE)
 	ld a, OAM_Y_OFS
 	ld [hli], a
-	ld [hl], OAM_X_OFS + SCREEN_WIDTH_PX + (TOPMOST_CABLE_Y_POS - 1) * 2 ; It will get moved by an extra 2px each scanline.
-
-
-.WriteMainMaps
-	; Since they are wider than the WRAM tilemaps, VRAM must be accessed directly;
-	; there is enough room in the decompression buffer to hold them, too!
-def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
-	ld de, wDecompressScratch tile NB_TILES ; The tilemap and attrmap are right after the tile data.
-	ld hl, vBGMap1
-	ld c, MAP_SIZE_IN_TILES
-	call Request2bpp.Function ; Screen is on and the right banks are loaded: take a shortcut.
-	ld a, 1
-	ldh [rVBK], a
-	ld de, wDecompressScratch tile (NB_TILES + MAP_SIZE_IN_TILES)
-	ld hl, vBGMap3
-	ld c, MAP_SIZE_IN_TILES
-	call Request2bpp.Function ; Screen is on and the right banks are loaded: take a shortcut.
-	xor a
-	ldh [rVBK], a
-
-
-; Most of the engine assumes that bank 1 is loaded.
-	ld a, 1
-	ldh [rWBK], a
-
-; Init the cutscene's variables.
-	ld hl, .ramBlock
-	ld de, wCableCar
-	ld bc, wCableCar.end - wCableCar
-	rst CopyBytes
-
-; Perform direction-dependent setup.
-	assert GROUP_MOUNT_MOON_SQUARE != GROUP_ROUTE_4
-	ld a, [wMapGroup] ; *Current* map, not target map.
-	cp GROUP_MOUNT_MOON_SQUARE
-	jr nz, .upLeftToMountMoonSquare
-;.downRightToRoute4
-	; Invert the car's speed vector (and one position subpixel, whatevs).
-	; This is not true negation and thus gives a one-subpixel difference in speed between directions,
-	; but that's negligible.
-	; Actual negation of each byte is possible
-	; (replace `ld a, [hl] :: cpl` with `xor a :: sub [hl]`)
-	; but then e.g. `$00AA` gets turned into `$0056` instead of `$FF55`,
-	; which is much further off from the correct `$FF56`.
-	ld hl, wCableCar.car_Xspeed_subpx
-	ld c, 3
-.negate
-	ld a, [hl]
-	cpl
+	ld a, OAM_X_OFS + SCREEN_WIDTH_PX + (TOPMOST_CABLE_Y_POS - 1) * 2 ; It will get moved by an extra 2px each scanline.
 	ld [hli], a
+	assert OBJ_CABLE + 1 == OBJ_CUMULUS
+	ld a, [wCableCar.cumulus_Xpos_px]
+	ld c, OBJ_CUMULUS_END - OBJ_CUMULUS
+.setUpCumulus
+	inc l ; Tile ID -> attrs.
+	inc l ; Attrs -> next Y pos.
+	ld [hl], CUMULUS_Y_POS + OAM_Y_OFS
+	inc l ; Y pos -> X pos.
+	add a, TILE_WIDTH ; ...which also happens to be `OAM_X_OFS` :)
+	ld [hli], a ; X pos -> tile ID.
 	dec c
-	jr nz, .negate
-	ld [hl], (CAR_TARGET_X - NB_FRAMES_FADES * ~CAR_X_SPEED) >> 8
-	; Also patch some code.
-	ld a, $96 ; Opcode for `sub [hl]`.
-	ld [wCableCar.cliffScrollInversion], a
-	ld a, $2F ; Opcode for `cpl`.
-	ld [wCableCar.xScrollInversion], a
-.upLeftToMountMoonSquare
+	jr nz, .setUpCumulus
 
 
 .WriteWindowMaps
@@ -489,11 +505,17 @@ const OBPAL_CAR
 	RGB 17, 15, 10
 	RGB  7,  7,  7
 
-const OBPAL_WHITE ; A copy of the car, but with one colour replaced with the white backdrop.
+const OBPAL_CAR_WHITE ; A copy of the car, but with one colour replaced with the white backdrop.
 	dw 0 ; Ignored.
 	RGB 29, 26, 10
 	RGB 31, 31, 31 ; Backdrop for the car. (TODO: consider some darker, desaturated colour?)
 	RGB  7,  7,  7
+
+const OBPAL_CLOUD
+	dw 0 ; Ignored.
+	RGB 31, 31, 31 ; Cloud white.
+	RGB 21, 25, 27 ; Cloud shade, slightly darkened.
+	RGB 18, 22, 24 ; Cloud shade, darkened ever so slightly more.
 
 def NB_PALETTES equ const_value + (8 - PAL_BASE_IDX)
 
@@ -511,9 +533,16 @@ rsset $00
 def PLAYER_BASE_TILE rb TILES_PER_CEL * CELS_PER_OBJECT * 2 ; One set for standing, another for walkies!
 def PLAYER_NB_TILES  equ _RS - PLAYER_BASE_TILE
 
-def BASE_TILE        equ $AC
+def BASE_TILE        equ $A0
 static_assert _RS <= BASE_TILE, "Player tiles overflowing into cable car area! ({_RS})"
 rsset BASE_TILE
+
+; Tiles from `cable_car/cloud.2bpp`:
+def CUMULUS_BASE_TILE      equ _RS
+	rb_skip 2 * 6 ; 6 OBJs.
+def CUMULUS_TILE_DATA equs READFILE("gfx/overworld/cable_car/cumulus.2bpp")
+assert BYTELEN(#CUMULUS_TILE_DATA) / TILE_SIZE == _RS - CUMULUS_BASE_TILE, \
+	STRFMT("%u != %u", BYTELEN(#CUMULUS_TILE_DATA) / TILE_SIZE, _RS - CUMULUS_BASE_TILE)
 
 ; Tiles from `cable_car/car_window.2bpp`:
 def CAR_WIN_BASE_TILE      equ _RS
@@ -590,8 +619,8 @@ ENDM
 	; Order matters here! Earlier OBJs have priority over later ones,
 	; both in drawing order *and* in "10+ on the scanline" drop order.
 	; Also, keep in sync with `obj_col_relative_pos`.
-	obj_block OBJ_CAR_WIN_RIGHT, 1,     CAR_WIN_BASE_TILE, OBPAL_WHITE,  0
-	obj_block OBJ_CAR_WIN_LEFT,  1,     CAR_WIN_BASE_TILE, OBPAL_WHITE,  1
+	obj_block OBJ_CAR_WIN_RIGHT, 1,     CAR_WIN_BASE_TILE, OBPAL_CAR_WHITE,  0
+	obj_block OBJ_CAR_WIN_LEFT,  1,     CAR_WIN_BASE_TILE, OBPAL_CAR_WHITE,  1
 	obj_block OBJ_PLAYER,        2,      PLAYER_BASE_TILE, OBPAL_PLAYER, 0 ; Partially hidden via raster effects.
 	obj_block OBJ_HANDLE,        2, HANDLE_SIDE_BASE_TILE, OBPAL_HANDLE, 0
 	obj_block OBJ_HANDLE_RIGHT,  1, HANDLE_SIDE_BASE_TILE, OBPAL_HANDLE, 1
@@ -599,7 +628,9 @@ ENDM
 	obj_block OBJ_CAR_RIGHT, 3 + 2,    CAR_LEFT_BASE_TILE, OBPAL_CAR,    1
 def OBJ_CAR_END equ _RS
 	obj_block OBJ_CABLE,         1,       CABLE_BASE_TILE, OBPAL_HANDLE, 0
-	obj_block OBJ_UNUSED,       19, 42, 0, 0 ; TODO: try 8x8 mode
+	obj_block OBJ_CUMULUS,       6,       CUMULUS_BASE_TILE, OBPAL_CLOUD, 0
+def OBJ_CUMULUS_END equ _RS
+	obj_block OBJ_UNUSED,       13, 42, 0, 0
 .objTileBlocksEnd: static_assert _RS == OAM_COUNT, "{d:_RS} != {d:OAM_COUNT}"
 
 
@@ -837,6 +868,20 @@ ENDM
 	and a ; Check for a zero terminator.
 	jr nz, .tickParallaxLayer
 
+; Move the cumulus also.
+	ld hl, .cumulus_Xspeed_subpx
+	call .tickQ8Pos
+	ld hl, wShadowOAMSprite{02d:OBJ_CUMULUS}XCoord
+	ld c, OBJ_CUMULUS_END - OBJ_CUMULUS
+.moveCumulus
+	add a, TILE_WIDTH ; ...which also happens to be `OAM_X_OFS` :)
+	ld [hli], a ; X pos -> tile ID.
+	inc l ; Tile ID -> attrs.
+	inc l ; Attrs -> next Y pos.
+	inc l ; Y pos -> X pos.
+	dec c
+	jr nz, .moveCumulus
+
 	jr .done
 .bgDoesntMove
 
@@ -897,6 +942,8 @@ ENDM
 	pop bc
 	ret
 
+
+	Q8pos_and_speed .cumulus_X, SCREEN_WIDTH_PX * 1.0q8, -CUMULUS_X_SPEED ; The direction are inverted compared to SCX!
 
 def CAR_TARGET_X equ (SCREEN_WIDTH_PX / 2 - ORIGIN_ON_RIGHT_OFS) * 1.0q8 ; Coordinate so that the car is centered on the screen.
 	Q8pos_and_speed .car_X, CAR_TARGET_X - NB_FRAMES_FADES * CAR_X_SPEED, CAR_X_SPEED
