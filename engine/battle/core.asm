@@ -5186,7 +5186,7 @@ MoveSelectionScreen:
 	call LoadTempTileMapToTileMap
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	call SafeCopyTilemapAtOnce
 	xor a
 	ret

@@ -294,7 +294,7 @@ UseBillsPC:
 	call .WriteIconTilemap
 
 	; Update attribute map data
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	call SafeCopyTilemapAtOnce
 
 	; Copy LCD code to WRAM0
@@ -1128,7 +1128,7 @@ _GetCursorMon:
 	ld [hl], OAM_BANK1
 .item_icon_done
 
-	ld b, 0
+	ld b, MAPS_COPY_SKIP_PALS
 	call SafeCopyTilemapAtOnce
 
 	; Clear text
@@ -2450,7 +2450,7 @@ _BillsPC_BagItem:
 
 	call BillsPC_TakeMail
 	push af
-	ld b, 0
+	ld b, MAPS_COPY_SKIP_PALS
 	call SafeCopyTilemapAtOnce
 	pop af
 	sbc a
@@ -3142,7 +3142,7 @@ BillsPC_ChangeBox:
 	call BillsPC_RefreshTheme
 	call DelayFrame ; Avoid screen tearing
 	call BillsPC_PrintBoxName
-	ld b, 0
+	ld b, MAPS_COPY_SKIP_PALS
 	call SafeCopyTilemapAtOnce
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
@@ -3641,7 +3641,7 @@ BillsPC_RestoreUI:
 	call _BillsPC_SetCursorMode
 	call BillsPC_ApplyPals
 	call GetCursorMon
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	call SafeCopyTilemapAtOnce
 
 	ld a, 71

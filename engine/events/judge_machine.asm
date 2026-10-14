@@ -355,7 +355,7 @@ JudgeSystem::
 	xor 1 ; $00 for EVs, $01 (selected) for IVs
 	ld [hl], a
 ; Render the chart when this returns (bc is on the stack)
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	jmp SafeCopyTilemapAtOnce
 
 SparkleMaxEVs:
