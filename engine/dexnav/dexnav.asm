@@ -185,96 +185,172 @@ DexNav_UseItem:
 
 DexNavUseScript:
 	special UpdateTimePals
+	opentext
 	callasm DexNav_ChooseTarget
 	iffalsefwd .done
+	closetext
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
-.done
 	end
 
+.done
+	endtext
+
 DexNav_ChooseTarget:
-; Temporary target picker until the species list menu (Phase 2.2).
-; Yes = search for the target, No = show the next wild slot as the target.
+; Let the player pick a species from this area's list, then set up the battle.
 ; Sets [hScriptVar] to TRUE if a DexNav battle is ready to start.
 	xor a ; FALSE
 	ldh [hScriptVar], a
-	call OpenText
-	ld a, [wDexNavTargetSpecies]
-	and a
-	jr nz, .prompt
-	xor a
-	ld [wDexNavListCursor], a
-	call .SetTargetFromSlot
-	jr nc, .no_wild_data
+	call DexNav_BuildList
+	ld hl, .NoWildDataText
+	jmp nc, .print
 
-.prompt
+	; Start the cursor on the last target if it's in the list.
+	ld hl, wDexNavList
+	ld a, [hli]
+	ld c, a
+	ld b, 1
+.find_target_loop
+	ld a, [wDexNavTargetSpecies]
+	cp [hl]
+	inc hl
+	ld a, [wDexNavTargetForm]
+	jr nz, .next_target
+	cp [hl]
+	jr z, .got_cursor
+.next_target
+	inc hl
+	inc b
+	dec c
+	jr nz, .find_target_loop
+	ld b, 1
+.got_cursor
+	ld a, b
+	cp DEXNAV_MENU_ROWS + 1
+	jr c, .cursor_ok
+	ld a, 1
+.cursor_ok
+	ld [wDexNavListCursor], a
+
+	ldh a, [hBGMapMode]
+	push af
+	ld a, [wMenuScrollPosition]
+	push af
+	call LoadStandardMenuHeader
+	ld hl, .WhichMonText
+	call PrintText
+.menu_loop
+	ld hl, .MenuHeader
+	call CopyMenuHeader
+	ld a, [wDexNavListCursor]
+	ld [wMenuCursorBuffer], a
+	xor a
+	ld [wMenuScrollPosition], a
+	call InitScrollingMenu
+	call DexNav_HideSpritesUnderMenu
+	call ScrollingMenu
+	ld a, [wMenuCursorY]
+	ld [wDexNavListCursor], a
+	ld a, [wMenuJoypad]
+	cp PAD_B
+	jr z, .cancel
+	ld a, [wMenuSelection]
+	cp CANCEL
+	jr z, .cancel
+
+	; Only seen species can be searched for (D14).
+	ld c, a
+	ld a, [wMenuSelectionQuantity]
+	ld b, a
+	push bc
+	call CheckSeenMon
+	pop bc
+	jr nz, .seen
+	ld de, SFX_WRONG
+	call PlaySFX
+	call WaitSFX
+	jr .menu_loop
+
+.seen
+	ld a, c
+	ld [wDexNavTargetSpecies], a
+	ld a, b
+	ld [wDexNavTargetForm], a
+	call ExitMenu
+	pop af
+	ld [wMenuScrollPosition], a
+	pop af
+	ldh [hBGMapMode], a
+
+	call DexNav_ChooseWildEncounter
+	ld a, TRUE
+	jr z, .done
 	ld a, [wDexNavTargetSpecies]
 	ld [wNamedObjectIndex], a
 	ld a, [wDexNavTargetForm]
 	ld [wNamedObjectIndex + 1], a
 	call GetPokemonName
-	ld hl, .TargetText
-	call PrintText
-	call YesNoBox
-	jr c, .next_slot
-
-	call DexNav_ChooseWildEncounter
-	jr nz, .not_here
-	ld a, TRUE
-	ldh [hScriptVar], a
-	jmp CloseText
-
-.next_slot
-	ld hl, wDexNavListCursor
-	inc [hl]
-	call .SetTargetFromSlot
-	jr c, .prompt
-.no_wild_data
-	ld hl, .NoWildDataText
-	jr .print_and_close
-
-.not_here
 	ld hl, .NotHereText
-.print_and_close
+.print
 	call PrintText
-	call WaitButton
-	jmp CloseText
-
-.SetTargetFromSlot:
-; Target the species in slot [wDexNavListCursor] (wrapping around).
-; Returns nc if this area has no wild data.
-	ld a, [wTimeOfDay]
-	cp EVE
-	jr nz, .got_time
-	ld a, DAY
-.got_time
-	call DexNav_GetSlotTable
-	ret nc
-	ld a, [wDexNavListCursor]
-	cp b
-	jr c, .slot_ok
-	xor a
-	ld [wDexNavListCursor], a
-.slot_ok
-	ld bc, 3
-	rst AddNTimes
-	inc hl ; skip level
-	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
-	ld [wDexNavTargetSpecies], a
-	inc hl
-	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
-	ld [wDexNavTargetForm], a
-	scf
+	xor a ; FALSE
+.done
+	ldh [hScriptVar], a
 	ret
 
-.TargetText:
-	text "DexNav target:"
-	line "@"
-	text_ram wStringBuffer1
-	text "! Search?"
+.cancel
+	call ExitMenu
+	pop af
+	ld [wMenuScrollPosition], a
+	pop af
+	ldh [hBGMapMode], a
+	ret
+
+.MenuHeader:
+	db MENU_BACKUP_TILES
+	; The border is drawn one tile outside these coords (see InitScrollingMenu).
+	menu_coords DEXNAV_MENU_LEFT, 1, SCREEN_WIDTH - 2, 1 + DEXNAV_MENU_ROWS * 2
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db SCROLLINGMENU_DISPLAY_ARROWS ; flags
+	db DEXNAV_MENU_ROWS, 0 ; rows, columns
+	db SCROLLINGMENU_ITEMS_QUANTITY ; species + form
+	dba wDexNavList
+	dba .PlaceSpeciesName
+	dba DoNothing
+	dba DoNothing
+
+.PlaceSpeciesName:
+; Unseen species show as "?????".
+	push de
+	ld a, [wMenuSelection]
+	ld c, a
+	ld a, [wMenuSelectionQuantity]
+	ld b, a
+	push bc
+	call CheckSeenMon
+	pop bc
+	ld de, .UnseenString
+	jr z, .got_name
+	ld a, c
+	ld [wNamedObjectIndex], a
+	ld a, b
+	ld [wNamedObjectIndex + 1], a
+	call GetPokemonName
+.got_name
+	pop hl
+	rst PlaceString
+	ret
+
+.UnseenString:
+	db "?????@"
+
+.WhichMonText:
+	text "Search for which"
+	line "#mon?"
 	done
 
 .NotHereText:
@@ -287,3 +363,94 @@ DexNav_ChooseTarget:
 	text "No wild #mon"
 	line "live here."
 	prompt
+
+DexNav_HideSpritesUnderMenu:
+; Hide sprites (including the player) that would draw over the list,
+; like ClearSpritesUnderStartMenu.
+	ld hl, wShadowOAMSprite00XCoord
+	ld de, OBJ_SIZE
+	ld c, OAM_COUNT
+.loop
+	ld a, [hl]
+	cp (DEXNAV_MENU_LEFT - 1) * TILE_WIDTH ; left border
+	jr c, .next
+	dec l
+	ld [hl], OAM_YCOORD_HIDDEN
+	inc l
+.next
+	add hl, de
+	dec c
+	jr nz, .loop
+	ldh a, [hOAMUpdate]
+	push af
+	ld a, TRUE
+	ldh [hOAMUpdate], a
+	call DelayFrame
+	pop af
+	ldh [hOAMUpdate], a
+	ret
+
+DexNav_BuildList:
+; Fill wDexNavList with each distinct species/form in this area's table for
+; the current time of day (both day and night in the evening).
+; Format: count, (species, form) * count, -1. Returns nc if no wild data.
+	xor a
+	ld [wDexNavList], a
+	ld a, [wTimeOfDay]
+	cp EVE
+	jr nz, .add_table
+	ld a, DAY
+	call .add_table
+	ret nc
+	ld a, NITE
+.add_table
+	call DexNav_GetSlotTable
+	ret nc
+.slot_loop
+	push hl
+	inc hl ; skip level
+	ld a, BANK(JohtoGrassWildMons)
+	call GetFarByte
+	ld e, a
+	inc hl
+	ld a, BANK(JohtoGrassWildMons)
+	call GetFarByte
+	ld d, a
+	push bc
+	call .AddToList
+	pop bc
+	pop hl
+	inc hl
+	inc hl
+	inc hl
+	dec b
+	jr nz, .slot_loop
+	scf
+	ret
+
+.AddToList:
+; Append species e / form d unless it's already listed.
+	ld hl, wDexNavList
+	ld a, [hli]
+	and a
+	jr z, .append
+	ld c, a
+.dupe_loop
+	ld a, [hli]
+	cp e
+	ld a, [hli]
+	jr nz, .next
+	cp d
+	ret z
+.next
+	dec c
+	jr nz, .dupe_loop
+.append
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld [hl], CANCEL
+	ld hl, wDexNavList
+	inc [hl]
+	ret

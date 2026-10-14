@@ -1509,5 +1509,7 @@ SECTION "DexNav WRAM0", WRAM0
 wDexNavTargetSpecies:: db
 wDexNavTargetForm:: db
 
-; Wild slot the temporary target picker is showing.
+; Species list for the DexNav menu: count, (species, form) * count, -1.
+; The evening list can combine the day and night tables.
+wDexNavList:: ds 1 + DEXNAV_LIST_MAX * 2 + 1
 wDexNavListCursor:: db
