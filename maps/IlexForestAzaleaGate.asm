@@ -22,7 +22,7 @@ ProfOaksAide1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
-	iftruefwd .Explain
+	iftruefwd .GotExpShare
 	writetext ProfOaksAide1HiText
 	waitbutton
 	setval16 15
@@ -36,18 +36,41 @@ ProfOaksAide1Script:
 	waitbutton
 	verbosegiveitem EXP_SHARE, iffalsefwd .NoRoom
 	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
-.Explain
+	writetext ProfOaksAide1ExpShareText
+	waitbutton
+	checkkeyitem DEXNAV
+	iftruefwd .AlreadyHaveDexNav
+	writetext ProfOaksAide1OneMoreThingText
+	waitbutton
+	sjumpfwd .GiveDexNav
+
+.GotExpShare
+	; Saves from before the DexNav existed get it on their next visit.
+	checkevent EVENT_GOT_DEXNAV_FROM_PROF_OAKS_AIDE
+	iftruefwd .ExplainDexNav
+	; New Game+ keeps the DexNav (it's in the charm range).
+	checkkeyitem DEXNAV
+	iftruefwd .AlreadyHaveDexNav
+	writetext ProfOaksAide1AlsoHaveThisText
+	waitbutton
+.GiveDexNav
+	verbosegivekeyitem DEXNAV
+.AlreadyHaveDexNav
+	setevent EVENT_GOT_DEXNAV_FROM_PROF_OAKS_AIDE
+.ExplainDexNav
 	jumpthisopenedtext
 
-	text "That Exp.Share"
-	line "helps a #mon"
+	text "The DexNav finds"
+	line "wild #mon that"
+	cont "live nearby."
 
-	para "gain experience"
-	line "without even"
-	cont "battling."
+	para "Pick one you've"
+	line "seen, then sneak"
+	cont "up on it!"
 
-	para "Use it to com-"
-	line "plete the #dex!"
+	para "Register it to"
+	line "Select to use it"
+	cont "on the go."
 	done
 
 .NoRoom
@@ -102,6 +125,29 @@ ProfOaksAide1UhOhText:
 	para "Come back and see"
 	line "me when you catch"
 	cont "15 kinds."
+	done
+
+ProfOaksAide1ExpShareText:
+	text "That Exp.Share"
+	line "helps a #mon"
+
+	para "gain experience"
+	line "without even"
+	cont "battling."
+
+	para "Use it to com-"
+	line "plete the #dex!"
+	done
+
+ProfOaksAide1OneMoreThingText:
+	text "Oh, and one more"
+	line "thing!"
+	done
+
+ProfOaksAide1AlsoHaveThisText:
+	text "Oh, <PLAYER>!"
+	line "Prof.Oak wants you"
+	cont "to have this, too."
 	done
 
 ProfOaksAide1HereYouGoText:
