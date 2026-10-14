@@ -75,6 +75,8 @@ def CAR_BUMP_TRIGGER_MASK equ $38
 ; This gives the following sequence: UDU-UDU- etc.
 def CAR_BUMP_TIMER_INCREMENT equ $01 ; By how much the bump timer gets increased each frame.
 
+def PLAYER_MOVEMENT_RADIUS equ 4 ; Otherwise cels can clip out of the transparency.
+
 
 SECTION "Cable Car", ROMX
 
@@ -799,6 +801,7 @@ ENDM
 	ei ; This process takes more than a scanline, so enable nested interrupts to not delay the next one.
 
 	push bc
+	push de
 
 ; Set up the cliff's vertical scrolling.
 ; This involves a two-step process: the Window must first be on-screen to "skip" some of its lines,
@@ -846,6 +849,74 @@ ENDM
 	ld a, LOW(.wxOffsets)
 	ld [.wxOfsPtr + 1], a
 
+; Little easter egg!
+	ldh a, [hJoypadDown]
+	and PAD_CTRL_PAD
+	jr z, .makePlayerStandStill
+	ld c, a ; Direction mask.
+	ld a, -4 ; Base tile.
+.seekDir
+	add a, 4
+	sla c
+	jr nc, .seekDir
+	jr nz, .doneMoving ; Do not change direction or move.
+	ld b, OBPAL_PLAYER
+	cp PLAYER_NB_TILES / 2
+	jr nz, .notRight ; Right-facing gfx reuse left-facing but flipped.
+	ld a, 4 * 2 + 2
+	set B_OAM_XFLIP, b
+.notRight
+	ld hl, wShadowOAMSprite{02d:OBJ_PLAYER}TileID
+	ld [hli], a
+	ld [hl], b
+	ld l, LOW(wShadowOAMSprite{02d:OBJ_PLAYER}Attributes + OBJ_SIZE) ; The other tile ID will be set below.
+	ld [hl], b
+	; Move also!
+	cp TILES_PER_CEL * 2
+	jr c, .bump ; Down or up.
+	ld hl, .playerPosOfs + 3
+	ld a, [hl]
+	jr nz, .right
+	; Left.
+	dec a
+	cp OAM_X_OFS - PLAYER_MOVEMENT_RADIUS + ORIGIN_ON_RIGHT_OFS
+	jr c, .bump
+.movePlayer
+	ld [hl], a
+	sub TILE_WIDTH
+	ld [.playerPosOfs + 1], a
+	jr .doneMoving
+.right
+	inc a
+	cp OAM_X_OFS + PLAYER_MOVEMENT_RADIUS + ORIGIN_ON_RIGHT_OFS + 1
+	jr c, .movePlayer
+.bump
+	call CheckSFX
+	jr nz, .doneMoving
+	ld de, SFX_BUMP
+	call PlaySFX
+.doneMoving
+	; Update the movement timer, and the player's cel accordingly.
+	ld a, [.playerMovementTimer]
+	sub $10 ; Toggles bit 7 every 8 frames.
+.makePlayerStandStill ; a == 0 if jumping to here.
+	ld [.playerMovementTimer], a
+	add a, a ; Carry set iff should be walking.
+	sbc a, a ; a == $FF iff should be walking, otherwise 0.
+	and PLAYER_NB_TILES / 2 ; a == walking offset iff should be walking, otherwise 0.
+	ld b, a
+	; Enforce standing/walking cel.
+	ld hl, wShadowOAMSprite{02d:OBJ_PLAYER}TileID
+	ld a, [hl]
+	sub PLAYER_NB_TILES / 2
+	jr nc, .wasWalking
+	ld a, [hl] ; Pretend nothing just happened~
+.wasWalking
+	add a, b ; Add the walking offset iff should be walking.
+	ld [hl], a
+	xor 2 ; Toggle between left and right half.
+	ld [wShadowOAMSprite{02d:OBJ_PLAYER}TileID + OBJ_SIZE], a
+
 ; Update background scrolling.
 	ld hl, .parallaxLayers
 	ld a, l
@@ -882,15 +953,16 @@ ENDM
 	dec c
 	jr nz, .moveCumulus
 
-	jr .done
-.bgDoesntMove
+	inc c ; The previous loop leaves c == 0, so this clears Z.
+	ld a, [.car_Xpos_px] ; Where to draw the car.
+.bgDoesntMove ; This gets jumped to with Z set.
 
 ; Update OAM last, since the other variables may be read for real soon,
 ; whereas shadow OAM will only get read on the next VBlank.
 
 ; Update cable car's position.
 	ld hl, .car_Xspeed_subpx
-	call .tickQ8Pos
+	call z, .tickQ8Pos ; Only if BG wasn't moved.
 	ld c, a
 	; The car's Y position is derived from its X position.
 	; This is odd / unusual vs. giving the Y axis its own speed and position,
@@ -917,8 +989,6 @@ ENDM
 	dec b
 .noCarBump
 
-	push de
-
 ; Draw the cable car in its new position.
 	ld hl, wShadowOAMSprite{02d:OBJ_CAR_END}XCoord - OBJ_SIZE
 	ld de, .carObjPosOfsEnd
@@ -938,7 +1008,6 @@ ENDM
 	jr nz, .updateCarObjPos
 
 	pop de
-.done
 	pop bc
 	ret
 
@@ -955,6 +1024,9 @@ def CAR_TARGET_X equ (SCREEN_WIDTH_PX / 2 - ORIGIN_ON_RIGHT_OFS) * 1.0q8 ; Coord
 ; While zero, the car moves and nothing else.
 ; While non-zero, this is inverted.
 .sequenceTimer: db 0
+
+
+.playerMovementTimer: db 0
 
 
 .wxOffsets ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
