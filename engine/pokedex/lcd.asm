@@ -138,7 +138,10 @@ StackDexGraphics:
 	set NO_TEXT_SCROLL, [hl]
 
 	push de
-	call ClearScreen
+	ld a, ' '
+	hlcoord 0, 0
+	ld bc, SCREEN_AREA
+	rst ByteFill
 	call ClearPalettes
 	farcall WipeAttrMap
 	call ClearSprites
