@@ -44,10 +44,12 @@ _SafeCopyTilemapAtOnce::
 	ldh [hOAMUpdate], a
 .noForceOAMUpdate
 
+	xor a
+	ldh [hVBlankOccurred], a ; WARNING: this is non-atomic and thus unsafe!
 	ld a, 1 << 7 | 7 ; execute actual VBlank7, which leads to `VBlankSafeCopyTilemapAtOnce` below.
 	ldh [hVBlank], a
 	call UpdateSound
-	call DelayFrame
+	call MaybeDelayFrame ; VBlank may have run during `UpdateSound`, don't delay if so.
 
 	; Restore all regs.
 	ld a, d
