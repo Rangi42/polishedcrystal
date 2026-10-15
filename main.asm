@@ -766,6 +766,11 @@ SECTION "Prof Oak's PC", ROMX
 INCLUDE "engine/events/prof_oaks_pc.asm"
 
 
+SECTION "Landmarks", ROMX
+
+INCLUDE "engine/overworld/landmarks.asm"
+
+
 SECTION "DexNav", ROMX
 
 INCLUDE "engine/dexnav/dexnav.asm"

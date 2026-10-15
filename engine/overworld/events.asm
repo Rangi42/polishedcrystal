@@ -311,6 +311,9 @@ CheckTileEvent:
 	call CountStep
 	ret c
 
+	farcall DexNav_StepCheck
+	ret c
+
 .step_count_disabled
 	call CheckWildEncountersEnabled
 	jr z, .ok
@@ -1483,6 +1486,5 @@ DoBikeStep::
 	xor a
 	ret
 
-INCLUDE "engine/overworld/landmarks.asm"
 INCLUDE "engine/overworld/stone_table.asm"
 INCLUDE "engine/overworld/scripting.asm"

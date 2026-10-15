@@ -187,21 +187,16 @@ DexNavUseScript:
 	special UpdateTimePals
 	opentext
 	callasm DexNav_ChooseTarget
-	iffalsefwd .done
-	closetext
+	endtext
+
+DexNavBattleScript:
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
 	end
 
-.done
-	endtext
-
 DexNav_ChooseTarget:
-; Let the player pick a species from this area's list, then set up the battle.
-; Sets [hScriptVar] to TRUE if a DexNav battle is ready to start.
-	xor a ; FALSE
-	ldh [hScriptVar], a
+; Let the player pick a species from this area's list, then start the hunt.
 	call DexNav_BuildList
 	ld hl, .NoWildDataText
 	jmp nc, .print
@@ -284,8 +279,20 @@ DexNav_ChooseTarget:
 	ldh [hBGMapMode], a
 
 	call DexNav_ChooseWildEncounter
-	ld a, TRUE
-	jr z, .done
+	jr nz, .not_here
+	; The battle is set up again when the player reaches the target,
+	; so don't let other battles inherit BATTLETYPE_DEXNAV meanwhile.
+	xor a ; BATTLETYPE_NORMAL
+	ld [wBattleType], a
+	call DexNav_SuccessRoll
+	jr nc, .not_found
+	call DexNav_StartHunt
+	ret c
+.not_found
+	ld hl, .NotFoundText
+	jr .print
+
+.not_here
 	ld a, [wDexNavTargetSpecies]
 	ld [wNamedObjectIndex], a
 	ld a, [wDexNavTargetForm]
@@ -293,11 +300,7 @@ DexNav_ChooseTarget:
 	call GetPokemonName
 	ld hl, .NotHereText
 .print
-	call PrintText
-	xor a ; FALSE
-.done
-	ldh [hScriptVar], a
-	ret
+	jmp PrintText
 
 .cancel
 	call ExitMenu
@@ -306,6 +309,14 @@ DexNav_ChooseTarget:
 	pop af
 	ldh [hBGMapMode], a
 	ret
+
+.NotFoundText:
+	text "It doesn't seem"
+	line "to be nearby…"
+
+	para "Try looking in"
+	line "another spot."
+	prompt
 
 .MenuHeader:
 	db MENU_BACKUP_TILES
@@ -363,6 +374,344 @@ DexNav_ChooseTarget:
 	text "No wild #mon"
 	line "live here."
 	prompt
+
+DexNav_SuccessRoll:
+; Returns carry if the search finds the target (D18). Caught species always
+; do; others succeed with twice their encounter odds in this area.
+	ld a, [wDexNavTargetSpecies]
+	ld c, a
+	ld a, [wDexNavTargetForm]
+	ld b, a
+	call CheckCaughtMon
+	scf
+	ret nz
+	ld a, [wTimeOfDay]
+	cp EVE
+	jr nz, .got_time
+	ld a, DAY
+	call .GetOdds
+	and a
+	jr nz, .roll
+	ld a, NITE
+.got_time
+	call .GetOdds
+.roll
+	add a
+	cp 100
+	ccf
+	ret c
+	ld c, a
+	ld a, 100
+	call RandomRange
+	cp c
+	ret
+
+.GetOdds:
+; Return the total encounter odds (out of 100) for the target in this area
+; at time of day a.
+	call DexNav_GetSlotTable
+	ld a, 0
+	ret nc
+	xor a
+	ld [wDexNavOddsPrev], a
+	ld [wDexNavOddsSum], a
+.odds_loop
+	push bc
+	push hl
+	ld h, d
+	ld l, e
+	ld a, BANK(GrassMonProbTable)
+	call GetFarByte
+	pop hl
+	inc de
+	; The table is cumulative, so this slot's odds are the difference.
+	ld b, a
+	ld a, [wDexNavOddsPrev]
+	ld c, a
+	ld a, b
+	ld [wDexNavOddsPrev], a
+	sub c
+	ld b, a
+	call DexNav_CheckSlotIsTarget
+	jr nz, .next_slot
+	ld a, [wDexNavOddsSum]
+	add b
+	ld [wDexNavOddsSum], a
+.next_slot
+	inc hl
+	inc hl
+	inc hl
+	pop bc
+	dec b
+	jr nz, .odds_loop
+	ld a, [wDexNavOddsSum]
+	ret
+
+DexNav_StartHunt:
+; Pick a tile 3-6 steps away that suits this area and start a rustle there.
+; Returns carry on success.
+	call DexNav_EndHunt
+	call DexNav_GetEnvironment
+	ld a, DEXNAV_TILE_TRIES
+.try_loop
+	push af
+	push hl
+	call DexNav_TryRandomTile
+	pop hl
+	jr c, .found
+	pop af
+	dec a
+	jr nz, .try_loop
+	and a
+	ret
+
+.found
+	pop af
+	; d, e = target coords; hl = environment data
+	push hl
+	call FindFirstEmptyObjectStruct
+	jr nc, .no_slot
+	ld [wDexNavHuntObject], a
+	; Effect objects track the object in their range field; point it at
+	; itself so the rustle stays on the target tile.
+	ld [wTempObjectCopyRange], a
+	ld a, TEMP_OBJECT
+	ld [wTempObjectCopyMapObjectIndex], a
+	ld a, -1
+	ld [wTempObjectCopySprite], a
+	ld [wTempObjectCopyRadius], a
+	ld a, $80
+	ld [wTempObjectCopySpriteVTile], a
+	ld a, d
+	ld [wTempObjectCopyX], a
+	ld [wDexNavHuntX], a
+	ld a, e
+	ld [wTempObjectCopyY], a
+	ld [wDexNavHuntY], a
+	ld d, h
+	ld e, l
+	pop hl
+	ld a, [hli]
+	ld [wTempObjectCopyMovement], a
+	ld a, [hli]
+	ld [wTempObjectCopyPalette], a
+	ld a, [hl]
+	push af
+	push de
+	farcall CopyTempObjectToObjectStruct
+	pop de
+	pop af
+	; Skip the effect's movement function, which would make it follow its
+	; parent and expire. Tracking itself with no duration keeps it forever.
+	ld hl, OBJECT_ACTION
+	add hl, de
+	ld [hl], a
+	ld hl, OBJECT_STEP_TYPE
+	add hl, de
+	ld [hl], STEP_TYPE_TRACKING_OBJECT
+	ld hl, OBJECT_STEP_DURATION
+	add hl, de
+	ld [hl], 0
+	ld hl, OBJECT_1D
+	add hl, de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	scf
+	ret
+
+.no_slot
+	pop hl
+	xor a
+	ld [wDexNavHuntObject], a
+	ret
+
+DexNav_TryRandomTile:
+; Try one random tile near the player for environment data hl.
+; Returns carry and its coords in d, e if it's usable.
+	ld a, DEXNAV_MAX_OFFSET * 2 + 1
+	call RandomRange
+	sub DEXNAV_MAX_OFFSET
+	ld d, a
+	ld a, DEXNAV_MAX_OFFSET * 2 + 1
+	call RandomRange
+	sub DEXNAV_MAX_OFFSET
+	ld e, a
+
+	; 3-6 steps away (taxicab)
+	ld a, d
+	bit 7, a
+	jr z, .dx_ok
+	cpl
+	inc a
+.dx_ok
+	ld c, a
+	ld a, e
+	bit 7, a
+	jr z, .dy_ok
+	cpl
+	inc a
+.dy_ok
+	add c
+	cp DEXNAV_MIN_DISTANCE
+	jr c, .fail
+	cp DEXNAV_MAX_DISTANCE + 1
+	jr nc, .fail
+
+	ld a, [wPlayerMapX]
+	add d
+	ld d, a
+	ld a, [wPlayerMapY]
+	add e
+	ld e, a
+
+	; Stay inside the map (object coords start at 4)
+	ld a, d
+	sub 4
+	jr c, .fail
+	ld c, a
+	ld a, [wMapWidth]
+	add a
+	cp c
+	jr c, .fail
+	jr z, .fail
+	ld a, e
+	sub 4
+	jr c, .fail
+	ld c, a
+	ld a, [wMapHeight]
+	add a
+	cp c
+	jr c, .fail
+	jr z, .fail
+
+	; The tile must be the kind wild Pokemon live on here
+	push de
+	push hl
+	call GetCoordTileCollision
+	pop hl
+	pop de
+	ld c, a
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hli]
+	cp c
+	jr z, .collision_ok
+	ld a, [hl]
+	cp c
+	jr nz, .fail
+.collision_ok
+
+	; Nobody can be standing there
+	push de
+	ldh a, [hMapObjectIndexBuffer]
+	push af
+	ld a, -1
+	ldh [hMapObjectIndexBuffer], a
+	farcall IsNPCAtCoord
+	sbc a
+	ld c, a
+	pop af
+	ldh [hMapObjectIndexBuffer], a
+	pop de
+	ld a, c
+	and a
+	jr nz, .fail
+	scf
+	ret
+
+.fail
+	and a
+	ret
+
+DexNav_GetEnvironment:
+; Return hl = which tiles a hunt can use here, and how the rustle looks:
+; movement, palette, action, collision 1, collision 2.
+	farcall CheckOnWater
+	ld hl, .Water
+	ret z
+	ld hl, .Cave
+	ld a, [wEnvironment]
+	cp CAVE
+	ret z
+	cp DUNGEON
+	ret z
+	ld hl, .Grass
+	ret
+
+.Grass:
+	db SPRITEMOVEDATA_GRASS, PAL_OW_COPY_BG_GREEN, OBJECT_ACTION_GRASS_SHAKE
+	db COLL_TALL_GRASS, COLL_LONG_GRASS
+.Water:
+	db SPRITEMOVEDATA_PUDDLE, PAL_OW_BLUE, OBJECT_ACTION_PUDDLE_SPLASH
+	db COLL_WATER, COLL_WATER
+.Cave:
+	db SPRITEMOVEDATA_BOULDERDUST, PAL_OW_EMOTE_GRAY, OBJECT_ACTION_BOULDER_DUST
+	db COLL_FLOOR, COLL_FLOOR
+
+DexNav_CheckHuntObject:
+; Returns z and bc = the rustle's object struct if the hunt is still going.
+	ld a, [wDexNavHuntObject]
+	and a
+	jr z, .no
+	call GetObjectStruct
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld a, [hl]
+	cp STEP_TYPE_TRACKING_OBJECT
+	ret nz
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld a, [wDexNavHuntX]
+	cp [hl]
+	ret nz
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+	ld a, [wDexNavHuntY]
+	cp [hl]
+	ret
+.no
+	inc a ; nz
+	ret
+
+DexNav_EndHunt:
+	call DexNav_CheckHuntObject
+	jr nz, .done
+	farcall DeleteMapObject
+.done
+	xor a
+	ld [wDexNavHuntObject], a
+	ret
+
+DexNav_StepCheck:
+; Called after each step. Returns carry if a DexNav battle script was started.
+	call DexNav_CheckHuntObject
+	jr nz, .no_hunt
+	ld a, [wPlayerMapX]
+	ld hl, wDexNavHuntX
+	cp [hl]
+	jr nz, .no_battle
+	ld a, [wPlayerMapY]
+	ld hl, wDexNavHuntY
+	cp [hl]
+	jr nz, .no_battle
+	call DexNav_EndHunt
+	call DexNav_ChooseWildEncounter
+	jr nz, .no_battle
+	ld a, BANK(DexNavBattleScript)
+	ld hl, DexNavBattleScript
+	call CallScript
+	scf
+	ret
+
+.no_hunt
+	; The rustle is gone (map change, battle, etc.), so the hunt is over.
+	xor a
+	ld [wDexNavHuntObject], a
+.no_battle
+	and a
+	ret
 
 DexNav_HideSpritesUnderMenu:
 ; Hide sprites (including the player) that would draw over the list,

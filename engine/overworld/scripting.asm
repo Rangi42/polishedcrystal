@@ -1239,6 +1239,9 @@ Script_loadtrainerwithpal:
 	ret
 
 Script_startbattle:
+	; Any other battle ends a DexNav hunt (D16). The map reload afterwards
+	; would otherwise bring the rustle back.
+	farcall DexNav_EndHunt
 	call BufferScreen
 	farcall StartBattle
 	ld a, [wBattleResult]
@@ -1698,7 +1701,7 @@ Script_getcurlandmarkname:
 
 ConvertLandmarkToText:
 	ld e, a
-	call GetLandmarkName
+	farcall GetLandmarkName
 	ld de, wStringBuffer1
 	jr ConvertMemToText
 

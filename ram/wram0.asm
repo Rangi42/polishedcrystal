@@ -1513,3 +1513,12 @@ wDexNavTargetForm:: db
 ; The evening list can combine the day and night tables.
 wDexNavList:: ds 1 + DEXNAV_LIST_MAX * 2 + 1
 wDexNavListCursor:: db
+
+; Active hunt: the rustle's object struct index (0 = no hunt) and its coords.
+wDexNavHuntObject:: db
+wDexNavHuntX:: db
+wDexNavHuntY:: db
+
+; Scratch for DexNav_SuccessRoll
+wDexNavOddsPrev:: db
+wDexNavOddsSum:: db
