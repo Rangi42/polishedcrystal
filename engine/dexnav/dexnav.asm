@@ -1329,18 +1329,31 @@ DexNavBoostChances:
 	assert @ - DexNavBoostChances == DEXNAV_NUM_TIERS * DEXNAV_CHANCE_SIZE
 
 DexNav_RollBoosts:
-; Roll the hunt target's Hidden Ability and potential from its search level
-; when the hunt starts (D20). A species that was never battled is still at
-; level 0, so unseen species from spontaneous hunts get no boosts (D14).
+; Roll the hunt target's egg move, Hidden Ability and potential from its
+; search level when the hunt starts (D20). A species that was never battled
+; is still at level 0, so unseen species from spontaneous hunts get no
+; boosts (D14).
 	xor a
 	ld [wDexNavHuntAbility], a
 	ld [wDexNavHuntPotential], a
+	ld [wDexNavHuntEggMove], a
 	call DexNav_GetSearchTier
 	and a
 	ret z
 	ld hl, DexNavBoostChances
 	ld bc, DEXNAV_CHANCE_SIZE
 	rst AddNTimes
+
+	; Egg move (DEXNAV_CHANCE_EGG_MOVE is the first column)
+	assert DEXNAV_CHANCE_EGG_MOVE == 0
+	ld a, 100
+	call RandomRange
+	cp [hl]
+	jr nc, .egg_move_done
+	push hl
+	call DexNav_PickEggMove
+	pop hl
+.egg_move_done
 
 	; Hidden Ability, only for species caught before (CFRU)
 	push hl
@@ -1387,6 +1400,46 @@ DexNav_RollBoosts:
 .got_potential
 	ld a, d
 	ld [wDexNavHuntPotential], a
+	ret
+
+DexNav_PickEggMove:
+; Set wDexNavHuntEggMove to a random move from the hunt species' egg moves
+; (the same lists breeding uses), or leave it at 0 if it has none.
+	ld a, [wDexNavHuntSpecies]
+	ld c, a
+	ld a, [wDexNavHuntForm]
+	ld b, a
+	call GetSpeciesAndFormIndex
+	ld hl, EggSpeciesMovesPointers
+	add hl, bc
+	add hl, bc
+	ld a, BANK(EggSpeciesMovesPointers)
+	call GetFarWord
+	inc hl ; skip species
+	inc hl ; and form
+	; Count the moves
+	push hl
+	ld c, 0
+.count_loop
+	ld a, BANK(EggSpeciesMoves)
+	call GetFarByte
+	inc a
+	jr z, .counted
+	inc hl
+	inc c
+	jr .count_loop
+.counted
+	pop hl
+	ld a, c
+	and a
+	ret z
+	call RandomRange
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, BANK(EggSpeciesMoves)
+	call GetFarByte
+	ld [wDexNavHuntEggMove], a
 	ret
 
 DexNav_ApplyPotential:
@@ -1447,15 +1500,27 @@ DexNav_ApplyPotential:
 	ret
 
 DexNav_ApplyBattleBoosts:
-; Called from LoadEnemyWildmon once the wild mon is built.
-; Give a DexNav target the Hidden Ability rolled at hunt start.
+; Called from LoadEnemyWildmon once the wild mon is built, before its PP is
+; filled. Give a DexNav target the boosts rolled at hunt start.
 	ld a, [wBattleType]
 	cp BATTLETYPE_DEXNAV
 	ret nz
 	ld a, [wDexNavHuntAbility]
-	and a
-	ret z
 	ld hl, wOTPartyMon1Ability
 	or [hl]
 	ld [hl], a
+
+	; The egg move goes in the first slot (CFRU), unless it's already known.
+	ld a, [wDexNavHuntEggMove]
+	and a
+	ret z
+	ld hl, wOTPartyMon1Moves
+	ld c, NUM_MOVES
+.known_loop
+	cp [hl]
+	ret z
+	inc hl
+	dec c
+	jr nz, .known_loop
+	ld [wOTPartyMon1Moves], a
 	ret
