@@ -187,7 +187,34 @@ DexNavUseScript:
 	special UpdateTimePals
 	opentext
 	callasm DexNav_ChooseTarget
+	iffalsefwd .done
+	; A hunt started while biking: get off the bike (D9).
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
+	closetext
+	special UpdatePlayerSprite
+	playmapmusic
+	end
+
+.done
 	endtext
+
+DexNavFledScript:
+	jumptext DexNavFledText
+
+DexNavGotAwayScript:
+	jumptext DexNavGotAwayText
+
+DexNavFledText:
+	text_ram wStringBuffer1
+	text " noticed"
+	line "you and fled!"
+	done
+
+DexNavGotAwayText:
+	text_ram wStringBuffer1
+	text " got"
+	line "away…"
+	done
 
 DexNavBattleScript:
 	randomwildmon
@@ -197,6 +224,26 @@ DexNavBattleScript:
 
 DexNav_ChooseTarget:
 ; Let the player pick a species from this area's list, then start the hunt.
+; Sets [hScriptVar] to TRUE if the player has to get off their bike.
+	xor a ; FALSE
+	ldh [hScriptVar], a
+
+	; Using the DexNav during a hunt offers to stop it (D9).
+	call DexNav_CheckHuntObject
+	jr nz, .no_hunt
+	call DexNav_GetTargetName
+	ld hl, .StopSearchText
+	call PrintText
+	call YesNoBox
+	ret c
+	jmp DexNav_EndHunt
+
+.no_hunt
+	ld a, [wTimeOfDayPalset]
+	cp DARKNESS_PALSET
+	ld hl, .TooDarkText
+	jmp z, .print
+
 	call DexNav_BuildList
 	ld hl, .NoWildDataText
 	jmp nc, .print
@@ -268,6 +315,17 @@ DexNav_ChooseTarget:
 	jr .menu_loop
 
 .seen
+	; Searching for a different species doesn't need the one-step cooldown.
+	ld a, [wDexNavTargetSpecies]
+	cp c
+	jr nz, .new_target
+	ld a, [wDexNavTargetForm]
+	cp b
+	jr z, .same_target
+.new_target
+	xor a
+	ld [wDexNavCooldown], a
+.same_target
 	ld a, c
 	ld [wDexNavTargetSpecies], a
 	ld a, b
@@ -284,20 +342,33 @@ DexNav_ChooseTarget:
 	; so don't let other battles inherit BATTLETYPE_DEXNAV meanwhile.
 	xor a ; BATTLETYPE_NORMAL
 	ld [wBattleType], a
+	; After a failed search, take a step before trying again (D18).
+	ld a, [wDexNavCooldown]
+	and a
+	jr nz, .not_found
 	call DexNav_SuccessRoll
-	jr nc, .not_found
+	jr nc, .failed
 	call DexNav_StartHunt
-	ret c
+	jr nc, .failed
+	ld a, [wPlayerState]
+	cp PLAYER_BIKE
+	ret nz
+	ld a, [wOWState]
+	bit OWSTATE_BIKING_FORCED, a
+	ret nz
+	ld a, TRUE
+	ldh [hScriptVar], a
+	ret
+
+.failed
+	ld a, TRUE
+	ld [wDexNavCooldown], a
 .not_found
 	ld hl, .NotFoundText
 	jr .print
 
 .not_here
-	ld a, [wDexNavTargetSpecies]
-	ld [wNamedObjectIndex], a
-	ld a, [wDexNavTargetForm]
-	ld [wNamedObjectIndex + 1], a
-	call GetPokemonName
+	call DexNav_GetTargetName
 	ld hl, .NotHereText
 .print
 	jmp PrintText
@@ -309,6 +380,18 @@ DexNav_ChooseTarget:
 	pop af
 	ldh [hBGMapMode], a
 	ret
+
+.StopSearchText:
+	text "Stop searching"
+	line "for "
+	text_ram wStringBuffer1
+	text "?"
+	done
+
+.TooDarkText:
+	text "It's too dark to"
+	line "use the DexNav."
+	prompt
 
 .NotFoundText:
 	text "It doesn't seem"
@@ -451,6 +534,7 @@ DexNav_StartHunt:
 ; Pick a tile 3-6 steps away that suits this area and start a rustle there.
 ; Returns carry on success.
 	call DexNav_EndHunt
+	call DexNav_MapReachableTiles
 	call DexNav_GetEnvironment
 	ld a, DEXNAV_TILE_TRIES
 .try_loop
@@ -482,6 +566,8 @@ DexNav_StartHunt:
 	ld [wTempObjectCopyRadius], a
 	ld a, $80
 	ld [wTempObjectCopySpriteVTile], a
+	xor a
+	ld [wDexNavHuntSteps], a
 	ld a, d
 	ld [wTempObjectCopyX], a
 	ld [wDexNavHuntX], a
@@ -558,32 +644,16 @@ DexNav_TryRandomTile:
 	cp DEXNAV_MAX_DISTANCE + 1
 	jr nc, .fail
 
-	ld a, [wPlayerMapX]
-	add d
-	ld d, a
-	ld a, [wPlayerMapY]
-	add e
-	ld e, a
+	; The player has to be able to walk there (CFRU flood-fills too).
+	push hl
+	call DexNav_GetReachCell
+	ld a, [hl]
+	pop hl
+	bit DEXNAV_REACHED_F, a
+	jr z, .fail
 
-	; Stay inside the map (object coords start at 4)
-	ld a, d
-	sub 4
-	jr c, .fail
-	ld c, a
-	ld a, [wMapWidth]
-	add a
-	cp c
-	jr c, .fail
-	jr z, .fail
-	ld a, e
-	sub 4
-	jr c, .fail
-	ld c, a
-	ld a, [wMapHeight]
-	add a
-	cp c
-	jr c, .fail
-	jr z, .fail
+	call DexNav_OffsetToCoords
+	jr nc, .fail
 
 	; The tile must be the kind wild Pokemon live on here
 	push de
@@ -623,6 +693,213 @@ DexNav_TryRandomTile:
 
 .fail
 	and a
+	ret
+
+DexNav_OffsetToCoords:
+; Turn offsets d, e from the player into map coords d, e.
+; Returns carry if they're inside the map (object coords start at 4).
+	ld a, [wPlayerMapX]
+	add d
+	ld d, a
+	ld a, [wPlayerMapY]
+	add e
+	ld e, a
+	ld a, d
+	sub 4
+	jr c, .outside
+	ld c, a
+	ld a, [wMapWidth]
+	add a
+	cp c
+	jr c, .outside
+	jr z, .outside
+	ld a, e
+	sub 4
+	jr c, .outside
+	ld c, a
+	ld a, [wMapHeight]
+	add a
+	cp c
+	jr c, .outside
+	jr z, .outside
+	scf
+	ret
+
+.outside
+	and a
+	ret
+
+DexNav_GetReachCell:
+; Return hl = wDexNavReach cell for offsets d, e from the player.
+	ld a, e
+	add DEXNAV_MAX_OFFSET
+	ld c, a
+	add a ; * 2
+	add a ; * 4
+	add a ; * 8
+	add c ; * 9
+	add d
+	add DEXNAV_MAX_OFFSET
+	ld hl, wDexNavReach
+	add l
+	ld l, a
+	ret nc
+	inc h
+	ret
+
+DexNav_MapReachableTiles:
+; Flood-fill wDexNavReach (a square around the player) with the tiles the
+; player can walk to without leaving it. Ledges count as blocked, since they
+; only go one way, and side walls block the edges they're on, like they do in
+; WillObjectBumpIntoTile / CanObjectLeaveTile. Surfing walks on water instead.
+; Each cell: bit 7 = reached, bit 6 = walkable, bits 0-3 = side wall edges.
+	farcall CheckOnWater
+	ld a, LAND_TILE
+	jr nz, .got_mode
+	ld a, WATER_TILE
+.got_mode
+	ld [wDexNavReachMode], a
+
+	; Which tiles can be walked on at all?
+	ld e, -DEXNAV_MAX_OFFSET
+.row_loop
+	ld d, -DEXNAV_MAX_OFFSET
+.cell_loop
+	push de
+	call DexNav_GetReachCell
+	push hl
+	call .GetCell
+	pop hl
+	ld [hl], a
+	pop de
+	inc d
+	ld a, d
+	cp DEXNAV_MAX_OFFSET + 1
+	jr nz, .cell_loop
+	inc e
+	ld a, e
+	cp DEXNAV_MAX_OFFSET + 1
+	jr nz, .row_loop
+
+	ld hl, wDexNavReach + DEXNAV_REACH_CENTER
+	set DEXNAV_REACHED_F, [hl]
+
+	; Spread out from the player until nothing changes.
+.pass_loop
+	ld b, FALSE
+	ld hl, wDexNavReach
+	ld e, 0
+.pass_row
+	ld d, 0
+.pass_cell
+	ld a, [hl]
+	and (1 << DEXNAV_REACHED_F) | (1 << DEXNAV_WALKABLE_F)
+	cp 1 << DEXNAV_WALKABLE_F
+	jr nz, .next_cell
+	ld c, [hl] ; this cell's side walls
+	; from the left: neither our left edge nor its right edge is a wall
+	ld a, d
+	and a
+	jr z, .no_left
+	bit SIDE_WALL_LEFT_F, c
+	jr nz, .no_left
+	dec hl
+	ld a, [hli]
+	and (1 << DEXNAV_REACHED_F) | (1 << SIDE_WALL_RIGHT_F)
+	cp 1 << DEXNAV_REACHED_F
+	jr z, .mark
+.no_left
+	; from the right
+	ld a, d
+	cp DEXNAV_REACH_SIZE - 1
+	jr z, .no_right
+	bit SIDE_WALL_RIGHT_F, c
+	jr nz, .no_right
+	inc hl
+	ld a, [hld]
+	and (1 << DEXNAV_REACHED_F) | (1 << SIDE_WALL_LEFT_F)
+	cp 1 << DEXNAV_REACHED_F
+	jr z, .mark
+.no_right
+	; from above
+	ld a, e
+	and a
+	jr z, .no_up
+	bit SIDE_WALL_TOP_F, c
+	jr nz, .no_up
+	push hl
+	ld a, l
+	sub DEXNAV_REACH_SIZE
+	ld l, a
+	ld a, h
+	sbc 0
+	ld h, a
+	ld a, [hl]
+	pop hl
+	and (1 << DEXNAV_REACHED_F) | (1 << SIDE_WALL_BOTTOM_F)
+	cp 1 << DEXNAV_REACHED_F
+	jr z, .mark
+.no_up
+	; from below
+	ld a, e
+	cp DEXNAV_REACH_SIZE - 1
+	jr z, .next_cell
+	bit SIDE_WALL_BOTTOM_F, c
+	jr nz, .next_cell
+	push hl
+	ld a, l
+	add DEXNAV_REACH_SIZE
+	ld l, a
+	ld a, h
+	adc 0
+	ld h, a
+	ld a, [hl]
+	pop hl
+	and (1 << DEXNAV_REACHED_F) | (1 << SIDE_WALL_TOP_F)
+	cp 1 << DEXNAV_REACHED_F
+	jr nz, .next_cell
+.mark
+	set DEXNAV_REACHED_F, [hl]
+	ld b, TRUE
+.next_cell
+	inc hl
+	inc d
+	ld a, d
+	cp DEXNAV_REACH_SIZE
+	jr nz, .pass_cell
+	inc e
+	ld a, e
+	cp DEXNAV_REACH_SIZE
+	jr nz, .pass_row
+	ld a, b
+	and a
+	jr nz, .pass_loop
+	ret
+
+.GetCell:
+; Return the starting wDexNavReach value for offsets d, e.
+	call DexNav_OffsetToCoords
+	jr nc, .blocked
+	call GetCoordTileCollision
+	ld c, a
+	cp COLL_LEDGE_RIGHT
+	jr c, .not_ledge
+	cp COLL_LEDGE_UP_LEFT + 1
+	jr c, .blocked
+.not_ledge
+	call GetTilePermission
+	ld hl, wDexNavReachMode
+	cp [hl]
+	jr nz, .blocked
+	ld a, c
+	push bc
+	farcall GetSideWallDirectionMask ; a = 0 if not a side wall
+	pop bc
+	or 1 << DEXNAV_WALKABLE_F
+	ret
+
+.blocked
+	xor a
 	ret
 
 DexNav_GetEnvironment:
@@ -685,22 +962,68 @@ DexNav_EndHunt:
 	ret
 
 DexNav_StepCheck:
-; Called after each step. Returns carry if a DexNav battle script was started.
+; Called after each step. Returns carry if a DexNav script was started.
+	xor a
+	ld [wDexNavCooldown], a
 	call DexNav_CheckHuntObject
 	jr nz, .no_hunt
-	ld a, [wPlayerMapX]
-	ld hl, wDexNavHuntX
-	cp [hl]
-	jr nz, .no_battle
-	ld a, [wPlayerMapY]
-	ld hl, wDexNavHuntY
-	cp [hl]
-	jr nz, .no_battle
+
+	; Distance to the target (taxicab)
+	ld a, [wDexNavHuntX]
+	ld hl, wPlayerMapX
+	sub [hl]
+	jr nc, .dx_ok
+	cpl
+	inc a
+.dx_ok
+	ld c, a
+	ld a, [wDexNavHuntY]
+	ld hl, wPlayerMapY
+	sub [hl]
+	jr nc, .dy_ok
+	cpl
+	inc a
+.dy_ok
+	add c
+	jr z, .reached
+
+	; Running or biking nearby scares it off (D9).
+	ld c, a
+	ld a, [wPlayerState]
+	assert PLAYER_RUN == 1 && PLAYER_BIKE == 2
+	dec a
+	cp PLAYER_BIKE
+	jr nc, .not_rushing
+	ld a, c
+	cp DEXNAV_SNEAK_DISTANCE + 1
+	ld hl, DexNavFledScript
+	jr c, .lost_target
+.not_rushing
+
+	; It doesn't wait forever.
+	ld hl, wDexNavHuntSteps
+	inc [hl]
+	ld a, [hl]
+	cp DEXNAV_HUNT_STEPS
+	ld hl, DexNavGotAwayScript
+	jr nc, .lost_target
+	and a
+	ret
+
+.lost_target
+	push hl
+	call DexNav_EndHunt
+	call DexNav_GetTargetName
+	pop hl
+	jr .call_script
+
+.reached
 	call DexNav_EndHunt
 	call DexNav_ChooseWildEncounter
 	jr nz, .no_battle
-	ld a, BANK(DexNavBattleScript)
 	ld hl, DexNavBattleScript
+.call_script
+	ld a, BANK(DexNavBattleScript)
 	call CallScript
 	scf
 	ret
@@ -712,6 +1035,14 @@ DexNav_StepCheck:
 .no_battle
 	and a
 	ret
+
+DexNav_GetTargetName:
+; Put the target's name in wStringBuffer1.
+	ld a, [wDexNavTargetSpecies]
+	ld [wNamedObjectIndex], a
+	ld a, [wDexNavTargetForm]
+	ld [wNamedObjectIndex + 1], a
+	jmp GetPokemonName
 
 DexNav_HideSpritesUnderMenu:
 ; Hide sprites (including the player) that would draw over the list,

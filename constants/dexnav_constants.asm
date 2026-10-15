@@ -11,3 +11,18 @@ DEF DEXNAV_MIN_DISTANCE EQU 3
 DEF DEXNAV_MAX_DISTANCE EQU 6
 DEF DEXNAV_MAX_OFFSET   EQU 4
 DEF DEXNAV_TILE_TRIES   EQU 24
+
+; Reachability grid around the player (wDexNavReach)
+DEF DEXNAV_REACH_SIZE   EQU DEXNAV_MAX_OFFSET * 2 + 1
+DEF DEXNAV_REACH_CENTER EQU DEXNAV_MAX_OFFSET * DEXNAV_REACH_SIZE + DEXNAV_MAX_OFFSET
+; Cell bits; 0-3 are the side wall edges from GetSideWallDirectionMask
+DEF SIDE_WALL_TOP_F    EQU 0
+DEF SIDE_WALL_BOTTOM_F EQU 1
+DEF SIDE_WALL_LEFT_F   EQU 2
+DEF SIDE_WALL_RIGHT_F  EQU 3
+DEF DEXNAV_WALKABLE_F  EQU 6
+DEF DEXNAV_REACHED_F   EQU 7
+
+; Sneaking (DexNav_StepCheck). Tunables; CFRU uses 5 tiles and a 15 s timer.
+DEF DEXNAV_SNEAK_DISTANCE EQU 4  ; running/biking this close scares it off
+DEF DEXNAV_HUNT_STEPS     EQU 20 ; steps before it gets away

@@ -1518,6 +1518,14 @@ wDexNavListCursor:: db
 wDexNavHuntObject:: db
 wDexNavHuntX:: db
 wDexNavHuntY:: db
+; Steps taken since the hunt started
+wDexNavHuntSteps:: db
+; Set by a failed search; cleared by taking a step or picking another species.
+wDexNavCooldown:: db
+
+; Which tiles around the player a hunt target can use (DexNav_MapReachableTiles)
+wDexNavReach:: ds DEXNAV_REACH_SIZE * DEXNAV_REACH_SIZE
+wDexNavReachMode:: db ; LAND_TILE or WATER_TILE
 
 ; Scratch for DexNav_SuccessRoll
 wDexNavOddsPrev:: db
