@@ -1518,6 +1518,10 @@ wDexNavListCursor:: db
 wDexNavHuntObject:: db
 wDexNavHuntX:: db
 wDexNavHuntY:: db
+; What the hunt is for (separate from the list's last target, D19)
+wDexNavHuntSpecies:: db
+wDexNavHuntForm:: db
+wDexNavHuntFlags:: db
 ; Steps taken since the hunt started
 wDexNavHuntSteps:: db
 ; Set by a failed search; cleared by taking a step or picking another species.

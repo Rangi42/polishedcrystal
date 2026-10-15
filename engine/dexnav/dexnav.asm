@@ -2,7 +2,7 @@
 ; Behavior is modeled on CFRU's src/dexnav.c. See PC-DexNav-Decisions.md.
 
 DexNav_ChooseWildEncounter:
-; Set up a wild battle against [wDexNavTargetSpecies]/[wDexNavTargetForm]
+; Set up a wild battle against [wDexNavHuntSpecies]/[wDexNavHuntForm]
 ; using this area's land or water table for the current time of day.
 ; Returns z and sets wTempWildMonSpecies, wWildMonForm, wCurPartyLevel
 ; and wBattleType on success; nz if the target isn't found here.
@@ -41,30 +41,7 @@ DexNav_ChooseWildEncounter:
 	; Roll slots with the normal encounter odds until one is the target,
 	; so the level comes from the same distribution as a normal encounter.
 	push hl
-	push de
-	ld a, 100
-	call RandomRange
-	inc a
-	ld c, a
-	ld b, -1
-	ld h, d
-	ld l, e
-.prob_bracket_loop
-	inc b
-	ld a, BANK(GrassMonProbTable)
-	call GetFarByte
-	inc hl
-	cp c
-	jr c, .prob_bracket_loop
-	pop de
-	pop hl
-	push hl
-	ld a, b
-	add b
-	add b
-	ld c, a
-	ld b, 0
-	add hl, bc
+	call DexNav_RollSlot
 	call DexNav_CheckSlotIsTarget
 	jr z, .got_slot
 	pop hl
@@ -74,10 +51,10 @@ DexNav_ChooseWildEncounter:
 	pop bc ; discard table pointer
 
 	; Same Unown check as _ChooseWildEncounter
-	ld a, [wDexNavTargetSpecies]
+	ld a, [wDexNavHuntSpecies]
 	cp UNOWN
 	jr nz, .unown_check_done
-	ld a, [wDexNavTargetForm]
+	ld a, [wDexNavHuntForm]
 	bit MON_EXTSPECIES_F, a
 	jr nz, .unown_check_done
 	ld a, [wUnlockedUnowns]
@@ -112,13 +89,40 @@ DexNav_ChooseWildEncounter:
 	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 
-	ld a, [wDexNavTargetSpecies]
+	ld a, [wDexNavHuntSpecies]
 	ld [wTempWildMonSpecies], a
-	ld a, [wDexNavTargetForm]
+	ld a, [wDexNavHuntForm]
 	ld [wWildMonForm], a
 	ld a, BATTLETYPE_DEXNAV
 	ld [wBattleType], a
 	xor a
+	ret
+
+DexNav_RollSlot:
+; Pick a slot with the normal encounter odds.
+; Input: hl = first slot, de = cumulative odds. Returns hl = the slot.
+	push hl
+	ld a, 100
+	call RandomRange
+	inc a
+	ld c, a
+	ld b, -1
+	ld h, d
+	ld l, e
+.prob_bracket_loop
+	inc b
+	ld a, BANK(GrassMonProbTable)
+	call GetFarByte
+	inc hl
+	cp c
+	jr c, .prob_bracket_loop
+	pop hl
+	ld a, b
+	add b
+	add b
+	ld c, a
+	ld b, 0
+	add hl, bc
 	ret
 
 DexNav_GetSlotTable:
@@ -161,14 +165,14 @@ DexNav_CheckSlotIsTarget:
 	ld a, BANK(JohtoGrassWildMons)
 	call GetFarByte
 	ld c, a
-	ld a, [wDexNavTargetSpecies]
+	ld a, [wDexNavHuntSpecies]
 	cp c
 	jr nz, .done
 	inc hl
 	ld a, BANK(JohtoGrassWildMons)
 	call GetFarByte
 	ld c, a
-	ld a, [wDexNavTargetForm]
+	ld a, [wDexNavHuntForm]
 	cp c
 .done
 	pop hl
@@ -197,6 +201,12 @@ DexNavUseScript:
 
 .done
 	endtext
+
+DexNavSpottedScript:
+	playsound SFX_GRASS_RUSTLE
+	showemote EMOTE_SHOCK, PLAYER, 15
+	callasm DexNav_RespawnRustle
+	end
 
 DexNavFledScript:
 	jumptext DexNavFledText
@@ -233,6 +243,11 @@ DexNav_ChooseTarget:
 	jr nz, .no_hunt
 	call DexNav_GetTargetName
 	ld hl, .StopSearchText
+	ld a, [wDexNavHuntFlags]
+	bit DEXNAV_HUNT_SPONTANEOUS_F, a
+	jr z, .got_stop_text
+	ld hl, .StopSearchHiddenText
+.got_stop_text
 	call PrintText
 	call YesNoBox
 	ret c
@@ -296,10 +311,10 @@ DexNav_ChooseTarget:
 	ld [wDexNavListCursor], a
 	ld a, [wMenuJoypad]
 	cp PAD_B
-	jr z, .cancel
+	jmp z, .cancel
 	ld a, [wMenuSelection]
 	cp CANCEL
-	jr z, .cancel
+	jmp z, .cancel
 
 	; Only seen species can be searched for (D14).
 	ld c, a
@@ -328,8 +343,12 @@ DexNav_ChooseTarget:
 .same_target
 	ld a, c
 	ld [wDexNavTargetSpecies], a
+	ld [wDexNavHuntSpecies], a
 	ld a, b
 	ld [wDexNavTargetForm], a
+	ld [wDexNavHuntForm], a
+	xor a
+	ld [wDexNavHuntFlags], a
 	call ExitMenu
 	pop af
 	ld [wMenuScrollPosition], a
@@ -386,6 +405,10 @@ DexNav_ChooseTarget:
 	line "for "
 	text_ram wStringBuffer1
 	text "?"
+	done
+
+.StopSearchHiddenText:
+	text "Stop searching?"
 	done
 
 .TooDarkText:
@@ -461,9 +484,9 @@ DexNav_ChooseTarget:
 DexNav_SuccessRoll:
 ; Returns carry if the search finds the target (D18). Caught species always
 ; do; others succeed with twice their encounter odds in this area.
-	ld a, [wDexNavTargetSpecies]
+	ld a, [wDexNavHuntSpecies]
 	ld c, a
-	ld a, [wDexNavTargetForm]
+	ld a, [wDexNavHuntForm]
 	ld b, a
 	call CheckCaughtMon
 	scf
@@ -551,7 +574,13 @@ DexNav_StartHunt:
 
 .found
 	pop af
-	; d, e = target coords; hl = environment data
+	xor a
+	ld [wDexNavHuntSteps], a
+	; fallthrough
+
+DexNav_SpawnRustle:
+; Spawn the rustle at coords d, e for environment data hl.
+; Returns carry on success.
 	push hl
 	call FindFirstEmptyObjectStruct
 	jr nc, .no_slot
@@ -566,8 +595,6 @@ DexNav_StartHunt:
 	ld [wTempObjectCopyRadius], a
 	ld a, $80
 	ld [wTempObjectCopySpriteVTile], a
-	xor a
-	ld [wDexNavHuntSteps], a
 	ld a, d
 	ld [wTempObjectCopyX], a
 	ld [wDexNavHuntX], a
@@ -611,6 +638,18 @@ DexNav_StartHunt:
 	xor a
 	ld [wDexNavHuntObject], a
 	ret
+
+DexNav_RespawnRustle:
+; showemote's cleanup (DespawnEmote) deletes every effect object, including
+; the rustle, so put it back afterwards.
+	call DexNav_CheckHuntObject
+	ret z
+	ld a, [wDexNavHuntX]
+	ld d, a
+	ld a, [wDexNavHuntY]
+	ld e, a
+	call DexNav_GetEnvironment
+	jr DexNav_SpawnRustle
 
 DexNav_TryRandomTile:
 ; Try one random tile near the player for environment data hl.
@@ -1032,15 +1071,97 @@ DexNav_StepCheck:
 	; The rustle is gone (map change, battle, etc.), so the hunt is over.
 	xor a
 	ld [wDexNavHuntObject], a
+	jr DexNav_TrySpontaneousHunt
+
 .no_battle
 	and a
 	ret
 
+DexNav_TrySpontaneousHunt:
+; While the DexNav is registered, a hidden Pokemon sometimes appears on its
+; own (D14/D19). Returns carry if it did and its script was started.
+	ld hl, wRegisteredItems
+	ld b, 4 ; wRegisteredItems:: ds 4
+.registered_loop
+	ld a, [hli]
+	cp DEXNAV
+	jr z, .registered
+	dec b
+	jr nz, .registered_loop
+	and a
+	ret
+
+.registered
+	call Random
+	and DEXNAV_SPONTANEOUS_MASK
+	ret nz
+	ld a, [wStatusFlags2]
+	and (1 << STATUSFLAGS2_SAFARI_GAME_F) | (1 << STATUSFLAGS2_BUG_CONTEST_TIMER_F)
+	ret nz
+	ld a, [wTimeOfDayPalset]
+	cp DARKNESS_PALSET
+	jr z, .no
+
+	; Only on the tiles wild Pokemon appear on here
+	call DexNav_GetEnvironment
+	ld a, [wPlayerTileCollision]
+	ld c, a
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hli]
+	cp c
+	jr z, .on_encounter_tile
+	ld a, [hl]
+	cp c
+	jr nz, .no
+.on_encounter_tile
+
+	farcall GetTimeOfDayNotEve
+	call DexNav_GetSlotTable
+	jr nc, .no
+	call DexNav_RollSlot
+	inc hl ; skip level
+	ld a, BANK(JohtoGrassWildMons)
+	call GetFarByte
+	ld [wDexNavHuntSpecies], a
+	inc hl
+	ld a, BANK(JohtoGrassWildMons)
+	call GetFarByte
+	ld [wDexNavHuntForm], a
+	call DexNav_StartHunt
+	jr nc, .no
+	ld a, 1 << DEXNAV_HUNT_SPONTANEOUS_F
+	ld [wDexNavHuntFlags], a
+	ld a, BANK(DexNavSpottedScript)
+	ld hl, DexNavSpottedScript
+	call CallScript
+	scf
+	ret
+
+.no
+	and a
+	ret
+
 DexNav_GetTargetName:
-; Put the target's name in wStringBuffer1.
-	ld a, [wDexNavTargetSpecies]
+; Put the hunted Pokemon's name in wStringBuffer1, or "It" if it appeared on
+; its own (so fleeing doesn't spoil an unseen species).
+	ld a, [wDexNavHuntFlags]
+	bit DEXNAV_HUNT_SPONTANEOUS_F, a
+	jr z, .named
+	ld hl, .It
+	ld de, wStringBuffer1
+	ld bc, .ItEnd - .It
+	jmp CopyBytes
+
+.It:
+	db "It@"
+.ItEnd:
+
+.named
+	ld a, [wDexNavHuntSpecies]
 	ld [wNamedObjectIndex], a
-	ld a, [wDexNavTargetForm]
+	ld a, [wDexNavHuntForm]
 	ld [wNamedObjectIndex + 1], a
 	jmp GetPokemonName
 

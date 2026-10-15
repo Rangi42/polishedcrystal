@@ -26,3 +26,13 @@ DEF DEXNAV_REACHED_F   EQU 7
 ; Sneaking (DexNav_StepCheck). Tunables; CFRU uses 5 tiles and a 15 s timer.
 DEF DEXNAV_SNEAK_DISTANCE EQU 4  ; running/biking this close scares it off
 DEF DEXNAV_HUNT_STEPS     EQU 20 ; steps before it gets away
+
+; Spontaneous hidden Pokemon (D19): 1 in (mask + 1) steps
+if DEF(DEBUG)
+DEF DEXNAV_SPONTANEOUS_MASK EQU %00000111 ; 1 in 8, for testing
+else
+DEF DEXNAV_SPONTANEOUS_MASK EQU %00111111 ; 1 in 64
+endc
+
+; wDexNavHuntFlags
+DEF DEXNAV_HUNT_SPONTANEOUS_F EQU 0
