@@ -36,3 +36,21 @@ endc
 
 ; wDexNavHuntFlags
 DEF DEXNAV_HUNT_SPONTANEOUS_F EQU 0
+
+; Search level gained per DexNav battle (D21)
+if DEF(DEBUG)
+DEF DEXNAV_LEVEL_STEP EQU 5 ; reach the tiers quickly for testing
+else
+DEF DEXNAV_LEVEL_STEP EQU 1
+endc
+
+; Search level tiers (CFRU): levels 0, 5, 10, 25, 50, 100
+DEF DEXNAV_NUM_TIERS EQU 6
+; Boost chances per tier (DexNavBoostChances), in percent
+	const_def
+	const DEXNAV_CHANCE_EGG_MOVE
+	const DEXNAV_CHANCE_HIDDEN_ABILITY
+	const DEXNAV_CHANCE_ONE_STAR
+	const DEXNAV_CHANCE_TWO_STAR
+	const DEXNAV_CHANCE_THREE_STAR
+DEF DEXNAV_CHANCE_SIZE EQU const_value

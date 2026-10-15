@@ -1522,6 +1522,9 @@ wDexNavHuntY:: db
 wDexNavHuntSpecies:: db
 wDexNavHuntForm:: db
 wDexNavHuntFlags:: db
+; Boosts rolled when the hunt starts (D20)
+wDexNavHuntAbility:: db ; HIDDEN_ABILITY or 0
+wDexNavHuntPotential:: db ; number of perfect stats, 0-3
 ; Steps taken since the hunt started
 wDexNavHuntSteps:: db
 ; Set by a failed search; cleared by taking a step or picking another species.

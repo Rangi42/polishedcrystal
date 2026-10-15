@@ -369,6 +369,7 @@ DexNav_ChooseTarget:
 	jr nc, .failed
 	call DexNav_StartHunt
 	jr nc, .failed
+	call DexNav_RollBoosts
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	ret nz
@@ -1060,6 +1061,7 @@ DexNav_StepCheck:
 	call DexNav_EndHunt
 	call DexNav_ChooseWildEncounter
 	jr nz, .no_battle
+	call DexNav_RaiseSearchLevel
 	ld hl, DexNavBattleScript
 .call_script
 	ld a, BANK(DexNavBattleScript)
@@ -1133,6 +1135,7 @@ DexNav_TrySpontaneousHunt:
 	jr nc, .no
 	ld a, 1 << DEXNAV_HUNT_SPONTANEOUS_F
 	ld [wDexNavHuntFlags], a
+	call DexNav_RollBoosts
 	ld a, BANK(DexNavSpottedScript)
 	ld hl, DexNavSpottedScript
 	call CallScript
@@ -1254,4 +1257,205 @@ DexNav_BuildList:
 	ld [hl], CANCEL
 	ld hl, wDexNavList
 	inc [hl]
+	ret
+
+DexNav_GetSearchLevelPointer:
+; hl = the hunt species' entry in wDexNavSearchLevels (D21)
+	ld a, [wDexNavHuntSpecies]
+	ld c, a
+	ld a, [wDexNavHuntForm]
+	ld b, a
+	call GetSpeciesAndFormIndex
+	ld hl, wDexNavSearchLevels
+	add hl, bc
+	ret
+
+DexNav_RaiseSearchLevel:
+; Each DexNav battle raises the hunt species' search level (CFRU).
+	call DexNav_GetSearchLevelPointer
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wDexNavSearchLevels)
+	ldh [rWBK], a
+	ld a, [hl]
+	add DEXNAV_LEVEL_STEP
+	jr nc, .ok
+	ld a, $ff
+.ok
+	ld [hl], a
+	pop af
+	ldh [rWBK], a
+	ret
+
+DexNav_GetSearchTier:
+; Returns a = the hunt species' search level tier (0 to DEXNAV_NUM_TIERS - 1).
+	call DexNav_GetSearchLevelPointer
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wDexNavSearchLevels)
+	ldh [rWBK], a
+	ld d, [hl]
+	pop af
+	ldh [rWBK], a
+	ld hl, DexNavTierLevels
+	ld c, 0
+.loop
+	ld a, d
+	cp [hl]
+	jr c, .done
+	inc hl
+	inc c
+	ld a, c
+	cp DEXNAV_NUM_TIERS - 1
+	jr c, .loop
+.done
+	ld a, c
+	ret
+
+DexNavTierLevels:
+; Lowest search level of tiers 1 and up
+	db 5, 10, 25, 50, 100
+	assert @ - DexNavTierLevels == DEXNAV_NUM_TIERS - 1
+
+DexNavBoostChances:
+; Percent chances per tier, from CFRU's dexnav_config.h
+;	   egg move, Hidden Ability, 1 star, 2 stars, 3 stars
+	db  0,  0,  0,  0,  0 ; level 0-4
+	db 21,  0, 14,  1,  0 ; level 5-9
+	db 46,  5, 17,  9,  1 ; level 10-24
+	db 58, 15, 17, 16,  7 ; level 25-49
+	db 63, 20, 15, 17,  6 ; level 50-99
+	db 83, 23,  8, 24, 12 ; level 100+
+	assert @ - DexNavBoostChances == DEXNAV_NUM_TIERS * DEXNAV_CHANCE_SIZE
+
+DexNav_RollBoosts:
+; Roll the hunt target's Hidden Ability and potential from its search level
+; when the hunt starts (D20). A species that was never battled is still at
+; level 0, so unseen species from spontaneous hunts get no boosts (D14).
+	xor a
+	ld [wDexNavHuntAbility], a
+	ld [wDexNavHuntPotential], a
+	call DexNav_GetSearchTier
+	and a
+	ret z
+	ld hl, DexNavBoostChances
+	ld bc, DEXNAV_CHANCE_SIZE
+	rst AddNTimes
+
+	; Hidden Ability, only for species caught before (CFRU)
+	push hl
+	ld a, [wDexNavHuntSpecies]
+	ld c, a
+	ld a, [wDexNavHuntForm]
+	ld b, a
+	call CheckCaughtMon
+	pop hl
+	jr z, .ability_done
+	push hl
+	ld bc, DEXNAV_CHANCE_HIDDEN_ABILITY
+	add hl, bc
+	ld a, 100
+	call RandomRange
+	cp [hl]
+	pop hl
+	jr nc, .ability_done
+	ld a, HIDDEN_ABILITY
+	ld [wDexNavHuntAbility], a
+.ability_done
+
+	; Potential: one roll against the 1, 2 and 3 star chances in turn
+	ld bc, DEXNAV_CHANCE_ONE_STAR
+	add hl, bc
+	ld a, 100
+	call RandomRange
+	ld c, a
+	lb de, 0, 0 ; stars, running total
+	ld b, 3
+.potential_loop
+	inc d
+	ld a, e
+	add [hl]
+	inc hl
+	ld e, a
+	ld a, c
+	cp e
+	jr c, .got_potential
+	dec b
+	jr nz, .potential_loop
+	ret
+
+.got_potential
+	ld a, d
+	ld [wDexNavHuntPotential], a
+	ret
+
+DexNav_ApplyPotential:
+; Called from ApplyLegendaryDVs for BATTLETYPE_DEXNAV.
+; Give [wDexNavHuntPotential] random stats perfect DVs.
+; hl = last DV byte, as for ApplyLegendaryDVs.
+	ld a, [wBattleMode]
+	dec a ; WILD_BATTLE?
+	ret nz
+	ld a, [wDexNavHuntPotential]
+	and a
+	ret z
+	push bc
+	push de
+	ld b, a
+	ld c, 0 ; one bit per chosen stat
+.pick_loop
+	ld a, 6
+	call RandomRange
+	inc a
+	ld e, a
+	ld a, %1
+.shift_loop
+	dec e
+	jr z, .got_bit
+	add a
+	jr .shift_loop
+.got_bit
+	ld d, a
+	and c
+	jr nz, .pick_loop ; already chosen
+	ld a, d
+	or c
+	ld c, a
+	dec b
+	jr nz, .pick_loop
+
+	; Same layout as ApplyLegendaryDVs: two stats per byte, last byte first
+	ld b, 3
+.stat_loop
+	rrc c
+	jr nc, .skip_low_nibble
+	ld a, [hl]
+	or $f
+	ld [hl], a
+.skip_low_nibble
+	rrc c
+	jr nc, .skip_high_nibble
+	ld a, [hl]
+	or $f0
+	ld [hl], a
+.skip_high_nibble
+	dec hl
+	dec b
+	jr nz, .stat_loop
+	pop de
+	pop bc
+	ret
+
+DexNav_ApplyBattleBoosts:
+; Called from LoadEnemyWildmon once the wild mon is built.
+; Give a DexNav target the Hidden Ability rolled at hunt start.
+	ld a, [wBattleType]
+	cp BATTLETYPE_DEXNAV
+	ret nz
+	ld a, [wDexNavHuntAbility]
+	and a
+	ret z
+	ld hl, wOTPartyMon1Ability
+	or [hl]
+	ld [hl], a
 	ret

@@ -247,6 +247,7 @@ WRAMX $2
 	"Sound Stack"
 	"Pic Animations RAM"
 	"Sprites Backup"
+	"DexNav Search Levels"
 
 WRAMX $3
 	org $d000
