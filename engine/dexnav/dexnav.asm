@@ -1328,6 +1328,12 @@ DexNavBoostChances:
 	db 83, 23,  8, 24, 12 ; level 100+
 	assert @ - DexNavBoostChances == DEXNAV_NUM_TIERS * DEXNAV_CHANCE_SIZE
 
+DexNavShinyPasses:
+; Extra passes through the shiny check per tier (D10), close to CFRU's
+; searchLevel * 6 / 100 bonus
+	db 0, 0, 0, 1, 2, 3
+	assert @ - DexNavShinyPasses == DEXNAV_NUM_TIERS
+
 DexNav_RollBoosts:
 ; Roll the hunt target's egg move, Hidden Ability and potential from its
 ; search level when the hunt starts (D20). A species that was never battled
@@ -1337,9 +1343,18 @@ DexNav_RollBoosts:
 	ld [wDexNavHuntAbility], a
 	ld [wDexNavHuntPotential], a
 	ld [wDexNavHuntEggMove], a
+	ld [wDexNavHuntShinyPasses], a
 	call DexNav_GetSearchTier
 	and a
 	ret z
+	ld c, a
+	ld b, 0
+	ld hl, DexNavShinyPasses
+	add hl, bc
+	ld b, [hl]
+	ld a, b
+	ld [wDexNavHuntShinyPasses], a
+	ld a, c
 	ld hl, DexNavBoostChances
 	ld bc, DEXNAV_CHANCE_SIZE
 	rst AddNTimes
@@ -1513,14 +1528,46 @@ DexNav_ApplyBattleBoosts:
 	; The egg move goes in the first slot (CFRU), unless it's already known.
 	ld a, [wDexNavHuntEggMove]
 	and a
-	ret z
+	jr z, .egg_move_done
 	ld hl, wOTPartyMon1Moves
 	ld c, NUM_MOVES
 .known_loop
 	cp [hl]
-	ret z
+	jr z, .egg_move_done
 	inc hl
 	dec c
 	jr nz, .known_loop
 	ld [wOTPartyMon1Moves], a
+.egg_move_done
+
+	; Extra passes through the normal shiny check (D10)
+	ld a, [wDexNavHuntShinyPasses]
+	and a
+	ret z
+	ld b, a
+	ld hl, wOTPartyMon1Shiny
+	bit MON_SHINY_F, [hl]
+	ret nz
+	ld a, SHINY_CHARM
+	call _CheckKeyItem
+	ld c, SHINY_NUMERATOR
+	jr nc, .shiny_loop
+	ld c, CHARMED_SHINY_NUMERATOR
+.shiny_loop
+if !DEF(DEBUG) ; debug builds skip the 1/256 step so shinies can be tested
+	call Random
+	and a
+	jr nz, .next_pass
+endc
+	call Random
+	cp c
+	jr c, .shiny
+.next_pass
+	dec b
+	jr nz, .shiny_loop
+	ret
+
+.shiny
+	ld hl, wOTPartyMon1Shiny
+	set MON_SHINY_F, [hl]
 	ret
