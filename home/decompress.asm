@@ -96,7 +96,53 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	jmp SwapHLDE
 
 ; === Main body of the decompressor starts below ===
-; The entry point, `.Main`, is in the middle of it so that everything remains reachable via `jr`s.
+;
+; Before you start reading it, here are two idioms used in a few places throughout.
+; Since they are repeated, it would be cumbersome and noisy to copy-paste explanations each time,
+; thus they are explained here once.
+;
+; 1. 9-bit loop length:
+;
+;    srl b
+;    rr c
+;    inc c
+;    jr nc, .start_odd
+;.loop
+;
+;    The decompressor's commands all repeat a certain operation for a given number of bytes;
+;    an 8-bit length is much faster than using a 16-bit reg, but is more limiting.
+;    Unrolling each loop once (thus performing two iterations per loop) doubles the range,
+;    making the lengths 9-bit but dropping support for odd lengths.
+;    That support can be restored by truncating the first iteration if the length is odd.
+;
+;    So, to recap:
+;    1. Halve BC so all bits are in C, except the odd/even bit.
+;         srl b
+;         rr c
+;    2. Require at least one loop (TODO: this is unnecessary, do it in the compressor instead)
+;         inc c
+;    3. If the length before halving was even, truncate the first iteration.
+;         jr nc, .start_odd
+;       If BC = 0, then halved it becomes 0 and truncates the first loop = 1 iteration;
+;       If BC = 1, then halved it becomes 0 and doesn't truncate         = 2 iterations;
+;       If BC = 2, then halved it becomes 1 and truncates the first loop = 3 iterations; and so on.
+;       ...so, in all, this iterates BC + 1 times.
+;
+; 2. Three-command dispatch:
+;
+;    The decompressor's commands are generally in groups of 3 (they are 2-bit, but one is always special)
+;    and this checks for all three in a single `cp`: the labels should already explain it, but just in case...
+;
+;    cp MIDDLE     ; Is it exactly MIDDLE?
+;    jr z, .middle ; If yes, then... it's MIDDLE!
+;    jr c, .first  ; Otherwise, either it's smaller and thus can only be FIRST...
+;.last             ; ...or it must be LAST.
+;
+;    Note that it is possible to put the `jr c, .first` before `jr z, .middle` as they are mutually exclusive,
+;    or to swap the last two lines for `jr nc, .last :: .first`... but not both!
+;
+;
+; One last thing: the entry point, `.Main`, is in the middle of the code so that everything remains reachable via `jr`s.
 ; Do not attempt to start reading from the next line, **start at `.Main`**.
 
 ;; LZ_COPY_FLIPPED: Copy N previously-emitted bytes, swapping each's bits (bit 7 ↔ bit 0, bit 6 ↔ bit 1, etc.)
@@ -253,9 +299,9 @@ ENDM
 
 ; Since `LZ_DATA` always has a 5-bit length, we skip setting B and jump here instead.
 .lz_data ; Jumped to with carry clear, so `rr c` will act as `srl c`.
-	rr c ; Halve C so it counts in pairs (and stores a 9-bit length for basically free)
-	inc c ; TODO: the compressor should be able to make this unnecessary
-	jr nc, .copy_start_odd ; If the LSB was set, then we need to copy an odd number of bytes.
+	rr c
+	inc c
+	jr nc, .copy_start_odd
 
 .copy_loop
 	ld a, [de]
@@ -296,9 +342,7 @@ ENDM
 	rla
 	jr c, .lz_copy
 
-	; Dispatch between LZ_REPEAT, LZ_ALTERNATE, and LZ_ZERO.
-	; Compare against the middle one: Z indicates we matched it, and otherwise, carry distinguishes the other two.
-	cp LOW(LZ_ALTERNATE << 1)
+	cp LOW(LZ_ALTERNATE << 1) ; `rla` just shifted it left.
 	jr z, .lz_alternate
 	jr nc, .lz_zero
 
