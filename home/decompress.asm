@@ -70,13 +70,13 @@ DEF LZ_LONG_HI       EQU %00000011
 
 ; Extended opcode bytes ($fc-$fe)
 ; These are in the LZ_LONG range and would otherwise decode as an invalid long command.
-DEF LZ_EXT_MASK          EQU %11111100
-DEF LZ_EXT_BASE          EQU $fc
-DEF LZ_EXT_SUBTYPE_MASK  EQU %00000011
+DEF LZ_SPECIAL_MASK          EQU %11111100
+DEF LZ_SPECIAL_BASE          EQU $fc
+DEF LZ_SPECIAL_SUBTYPE_MASK  EQU %00000011
 
-DEF LZ_EXT_PACKHI0       EQU 0 ; $fc
-DEF LZ_EXT_PACK16_SHORT  EQU 1 ; $fd (len 1..256)
-DEF LZ_EXT_PACKLO0       EQU 2 ; $fe (len 1..256)
+DEF LZ_SPECIAL_PACKHI0       EQU 0 ; $fc
+DEF LZ_SPECIAL_PACK16_SHORT  EQU 1 ; $fd (len 1..256)
+DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
 DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 
 ; In other words, the structure of the command becomes
@@ -410,31 +410,31 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	ret z ; LZ_END
 	ld b, c
 
-	; Extended opcodes: $fc-$fe.
+; Special opcodes: $fc-$fe.
 	; Detect by masking off the low two bits.
 	ld a, b
-	and LZ_EXT_MASK
-	cp LZ_EXT_BASE
+	and LZ_SPECIAL_MASK
+	cp LZ_SPECIAL_BASE
 	jr nz, .long_normal
 	ld a, b
-	and LZ_EXT_SUBTYPE_MASK
-	; subtype in a: LZ_EXT_PACKHI0/LZ_EXT_PACK16_SHORT/LZ_EXT_PACKLO0
+	and LZ_SPECIAL_SUBTYPE_MASK
+	; subtype in a: LZ_SPECIAL_PACKHI0/LZ_SPECIAL_PACK16_SHORT/LZ_SPECIAL_PACKLO0
 	push af
 	ld a, [de]
 	inc de
 	ld c, a
 	ld b, 0
 	inc c
-	jr nz, .ext_have_len
+	jr nz, .special_have_len
 	inc b
-.ext_have_len
+.special_have_len
 	pop af
-	cp LZ_EXT_PACKHI0
-	jr nz, .ext_pack16
+	cp LZ_SPECIAL_PACKHI0
+	jr nz, .special_pack16
 
-;; LZ_EXT_PACKHI0: Read nibbles from the input stream, and output them right-padded (`$x0`).
+;; LZ_SPECIAL_PACKHI0: Read nibbles from the input stream, and output them right-padded (`$x0`).
 
-.ext_packhi0
+.special_packhi0
 	; Decode packed literals where each output byte is (nibble << 4).
 	; Payload is ceil(count/2) bytes.
 .packhi0_loop
@@ -461,11 +461,11 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	pop af
 	jr .Main
 
-;; LZ_EXT_PACK16: Read nibbles from the input stream, and output one of 16 common bytes from that.
+;; LZ_SPECIAL_PACK16: Read nibbles from the input stream, and output one of 16 common bytes from that.
 
-.ext_pack16
-	cp LZ_EXT_PACKLO0
-	jr z, .ext_packlo0
+.special_pack16
+	cp LZ_SPECIAL_PACKLO0
+	jr z, .special_packlo0
 	; Decode packed literals. Payload is ceil(count/2) bytes.
 	; Uses a small fixed table of 16 bytes.
 .pack_loop
@@ -484,9 +484,9 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	call .pack_lookup
 	jr .pack_loop
 
-;; LZ_EXT_PACKLO0: Read nibbles from the input stream, and output them left-padded (`$0x`).
+;; LZ_SPECIAL_PACKLO0: Read nibbles from the input stream, and output them left-padded (`$0x`).
 
-.ext_packlo0
+.special_packlo0
 	; Decode packed literals where each output byte has high nibble 0.
 	; Payload is ceil(count/2) bytes.
 .packlo0_loop
