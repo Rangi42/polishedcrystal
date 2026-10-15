@@ -362,7 +362,7 @@ DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
 	ld a, [de]
 	ld [hli], a
 	inc de
-	jr .fill
+	db $FE ; cp <imm8>, gobbling next byte.
 
 ;; LZ_ZERO: set N of the output bytes to zeros.
 
