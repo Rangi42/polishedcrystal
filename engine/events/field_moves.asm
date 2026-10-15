@@ -542,6 +542,7 @@ FlyFunction_FrameTimer:
 	ld e, 0
 	ld a, SPRITE_ANIM_INDEX_FLY_LEAF ; fly land
 	call InitSpriteAnimStruct
+	ret c ; no more anim structs available for leaves
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $70
