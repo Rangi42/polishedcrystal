@@ -185,7 +185,7 @@ EndBGMapUpdateNow::
 	ldh [hBGMapMode], a
 	ret
 
-DEF HALF_HEIGHT EQU SCREEN_HEIGHT / 2
+export def BG_MAP_COPY_HEIGHT equ SCREEN_HEIGHT / 2
 
 UpdateBGMap::
 ; Update the BG Map, in halves, from wTilemap and wAttrmap.
@@ -226,13 +226,13 @@ _UpdateBGMap::
 	jr c, .topHalf
 	; bottom half source
 	add sp, 127 ; `add sp` cannot do more than 127, so do it in two steps.
-	add sp, HALF_HEIGHT * SCREEN_WIDTH - 127
+	add sp, BG_MAP_COPY_HEIGHT * SCREEN_WIDTH - 127
 	; bottom half destination
-	ld de, HALF_HEIGHT * TILEMAP_WIDTH
+	ld de, BG_MAP_COPY_HEIGHT * TILEMAP_WIDTH
 	add hl, de
 .topHalf
 
-	ld a, HALF_HEIGHT
+	ld a, BG_MAP_COPY_HEIGHT
 
 _CopyTilemapRows:
 ; Discrepancy between wTilemap and BGMap

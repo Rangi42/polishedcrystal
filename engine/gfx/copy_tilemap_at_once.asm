@@ -83,9 +83,9 @@ VBlankSafeCopyTilemapAtOnce::
 	call PushOAM ; This is still the VBlank handler!
 
 	; ...and then, copy the bottom half during HBlank.
-	hlcoord 0, SCREEN_HEIGHT / 2 ; HALF_HEIGHT from `video.asm`.
-	ld de, TILEMAP_WIDTH * (SCREEN_HEIGHT / 2)
-	ld b, SCREEN_HEIGHT / 2
+	hlcoord 0, BG_MAP_COPY_HEIGHT
+	ld de, TILEMAP_WIDTH * BG_MAP_COPY_HEIGHT
+	ld b, BG_MAP_COPY_HEIGHT
 	jr CopyTilemapInHBlank
 
 .copyAttrmapAndTilemap
