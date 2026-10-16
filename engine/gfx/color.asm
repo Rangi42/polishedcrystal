@@ -1171,4 +1171,6 @@ INCLUDE "data/trainers/palettes.asm"
 
 INCLUDE "data/events/paintings/palettes.asm"
 
+INCLUDE "engine/gfx/sgb_border.asm"
+
 INCLUDE "engine/gfx/vary_colors.asm"
