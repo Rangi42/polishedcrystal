@@ -30,7 +30,6 @@ CrystalIntro:
 .done
 	call ClearBGPalettes
 	call ClearSprites
-	call ClearTileMap
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -98,7 +97,6 @@ IntroScene1:
 ; Setup the next scene.
 	call Intro_ClearBGPals
 	call ClearSprites
-	call ClearTileMap
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
@@ -168,7 +166,6 @@ IntroScene3:
 ; More setup. Transition to the outdoor scene.
 	call Intro_ClearBGPals
 	call ClearSprites
-	call ClearTileMap
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
@@ -199,7 +196,6 @@ IntroScene5:
 ; Go back to the Unown.
 	call Intro_ClearBGPals
 	call ClearSprites
-	call ClearTileMap
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	xor a
@@ -290,7 +286,6 @@ IntroScene7:
 ; Back to the outdoor scene.
 	call Intro_ClearBGPals
 	call ClearSprites
-	call ClearTileMap
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
@@ -420,7 +415,6 @@ IntroScene11:
 ; Back to Unown again.
 	call Intro_ClearBGPals
 	call ClearSprites
-	call ClearTileMap
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	xor a
@@ -537,7 +531,6 @@ IntroScene13:
 ; Switch scenes again.
 	call Intro_ClearBGPals
 	call ClearSprites
-	call ClearTileMap
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
@@ -609,7 +602,6 @@ IntroScene15:
 ; Transition to a new scene.
 	call Intro_ClearBGPals
 	call ClearSprites
-	call ClearTileMap
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
@@ -686,7 +678,6 @@ IntroScene17:
 ; ...
 	call Intro_ClearBGPals
 	call ClearSprites
-	call ClearTileMap
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
@@ -747,7 +738,6 @@ IntroScene19:
 ; More setup.
 	call Intro_ClearBGPals
 	call ClearSprites
-	call ClearTileMap
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
@@ -897,7 +887,6 @@ IntroScene26:
 ; Load the final scene.
 	call ClearBGPalettes
 	call ClearSprites
-	call ClearTileMap
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
