@@ -19,15 +19,13 @@ CrystalIntro:
 	and PAD_BUTTONS
 	ld e, MUSIC_NONE
 	jmp nz, PlayMusic ; If something was pressed, kill the music and exit.
-	ld a, [wJumptableIndex]
-	bit 7, a
-	ret nz
-	call SceneJumper
+
+	call .Dispatch
 	farcall PlaySpriteAnimations
 	call DelayFrame
 	jr .loop
 
-SceneJumper:
+.Dispatch:
 	call StandardStackJumpTable
 
 .Jumptable:
@@ -59,6 +57,11 @@ SceneJumper:
 	dw Scene_SpellOut_Setup
 	dw Scene_SpellOut
 	dw Scene_FinalFadeOut
+	dw Exit
+
+Exit:
+	pop af ; Do not return to the caller, exit `CrystalIntro`, do not receive 2000 Pokédollars...
+	ret
 
 NextIntroScene:
 	ld hl, wJumptableIndex
@@ -740,7 +743,7 @@ Scene_FinalFadeOut:
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	and a
-	jr z, .done
+	jmp z, NextIntroScene
 	dec [hl]
 	cp $30
 	jmp z, ClearBGPalettes
@@ -748,11 +751,6 @@ Scene_FinalFadeOut:
 	ret nz
 	ld de, SFX_TITLE_SCREEN_INTRO
 	jmp PlaySFX
-
-.done
-	ld hl, wJumptableIndex
-	set 7, [hl]
-	ret
 
 Scene_FadeToWhite_ApplyPaletteFade:
 ; load the (a)th palette from .FadePals to all wBGPals2
@@ -1072,11 +1070,8 @@ endc
 
 Scene_SuicuneAppears_AnimateSuicune:
 	ld a, [wIntroSceneFrameCounter]
-	and $3
-	jr z, ColoredSuicuneFrameSwap
-	cp $3
+	and 3 ; Animate every 4 frames.
 	ret nz
-	ret
 
 ; Iterate throughout the tilemap, and swap the two frames of Suicune.
 ColoredSuicuneFrameSwap:
