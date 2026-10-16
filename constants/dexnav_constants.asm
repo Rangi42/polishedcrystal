@@ -6,6 +6,10 @@ DEF DEXNAV_LIST_MAX  EQU NUM_GRASSMON * 2
 DEF DEXNAV_MENU_ROWS EQU 4
 DEF DEXNAV_MENU_LEFT EQU 8
 
+; Fishing species join the water list and hunts (D3): Old, Good and Super Rod
+DEF NUM_DEXNAV_RODS          EQU 3
+DEF DEXNAV_MAX_FISH_ENTRIES  EQU 3 + 4 + 4 ; entries per rod table
+
 ; Target tile for a hunt (DexNav_StartHunt). Offsets keep it on screen.
 DEF DEXNAV_MIN_DISTANCE EQU 3
 DEF DEXNAV_MAX_DISTANCE EQU 6
