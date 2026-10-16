@@ -71,7 +71,6 @@ NextIntroScene:
 Scene_UnownA_Setup:
 ; Setup the next scene.
 	call CutToBlackAndPause
-	call ClearSprites
 	ld hl, UnownsGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
@@ -111,7 +110,6 @@ Scene_UnownA:
 Scene_ScrollOutdoors_Setup:
 ; More setup. Transition to the outdoor scene.
 	call CutToBlackAndPause
-	call ClearSprites
 	; Load the outdoor map to BG map 1, where it will stay for the next few scenes.
 	ld hl, IntroBGMaps.Outdoors
 	ld de, vBGMap1
@@ -128,7 +126,7 @@ Scene_ScrollOutdoors_Setup:
 	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
-	jmp NextIntroScene
+	jr NextIntroScene
 
 Scene_ScrollOutdoors:
 ; Scroll the outdoor panorama for a bit.
@@ -143,7 +141,6 @@ Scene_ScrollOutdoors:
 Scene_UnownHI_Setup:
 ; Go back to the Unown.
 	call CutToBlackAndPause
-	call ClearSprites
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	ldh [hLCDCPointer], a
@@ -206,7 +203,6 @@ Scene_UnownHI:
 Scene_ScrollThenSuicuneZoomingBy_Setup:
 ; Back to the outdoor scene.
 	call CutToBlackAndPause
-	call ClearSprites
 
 	xor a
 	ldh [rVBK], a
@@ -268,7 +264,6 @@ Scene_GrassRustleThenWooperAndPichu_Setup:
 	xor a
 	ldh [hLCDCPointer], a
 	ld [wIntroSceneFrameCounter], a
-	call ClearSprites
 	ld a, $c
 	ld [wGlobalAnimXOffset], a
 	jmp NextIntroScene
@@ -390,7 +385,6 @@ Scene_Unowns:
 Scene_SuicuneRunsThenJumps_Setup:
 ; Switch scenes again.
 	call CutToBlackAndPause
-	call ClearSprites
 	ld hl, SuicuneRunGFX
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad255Tiles
@@ -452,7 +446,6 @@ Scene_SuicuneRunsThenJumps:
 Scene_SuicuneAppears_Setup:
 ; Transition to a new scene.
 	call CutToBlackAndPause
-	call ClearSprites
 	ld hl, SuicuneJumpGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
@@ -504,7 +497,6 @@ Scene_SuicuneAppears:
 Scene_SuicuneCloseUp_Setup:
 ; ...
 	call CutToBlackAndPause
-	call ClearSprites
 	ld hl, SuicuneCloseGFX
 	ld de, vTiles1 tile $00
 	call DecompressAndLoad255Tiles
@@ -536,7 +528,6 @@ Scene_SuicuneCloseUp:
 Scene_UnownsAroundSuicune_Setup:
 ; More setup.
 	call CutToBlackAndPause
-	call ClearSprites
 	ld hl, SuicuneBackGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
@@ -653,7 +644,6 @@ Scene_Wait:
 Scene_SpellOut_Setup:
 ; Load the final scene.
 	call ClearPalettes
-	call ClearSprites
 	ld hl, CrystalUnownsGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
