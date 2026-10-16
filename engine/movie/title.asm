@@ -178,9 +178,7 @@ _TitleScreen:
 	ld a, -112
 	ldh [hWY], a
 
-	ld a, 1
-	ldh [hCGBPalUpdate], a
-
+	call QueueCGBPalUpdate ; This returns with a == 1.
 	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 
