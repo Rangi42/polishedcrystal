@@ -1,7 +1,8 @@
 SECTION "Intro movie", ROMX
 
 CrystalIntro:
-	ld a, 5
+	ld a, BANK(wLYOverrides)
+	assert BANK(wLYOverrides) == BANK(wBGPals1) ; ...and the other palette buffers.
 	ldh [rWBK], a
 	xor a
 	ldh [hVBlank], a
@@ -84,10 +85,6 @@ IntroScene1:
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroTilemap02
 	call Intro_DecompressAndLoadTilemap
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	ld hl, Palette_365ad
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -96,8 +93,6 @@ IntroScene1:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
-	pop af
-	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -186,10 +181,6 @@ IntroScene5:
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroTilemap06
 	call Intro_DecompressAndLoadTilemap
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	ld hl, Palette_365ad
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -198,8 +189,6 @@ IntroScene5:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
-	pop af
-	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -402,10 +391,6 @@ IntroScene11:
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroTilemap08
 	call Intro_DecompressAndLoadTilemap
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	ld hl, Palette_365ad
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -414,8 +399,6 @@ IntroScene11:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
-	pop af
-	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -594,10 +577,6 @@ IntroScene15:
 	ld hl, IntroTilemap10
 	call Intro_DecompressAndLoadTilemap
 	call Intro_LoadTilemap
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	ld hl, Palette_e77dd
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -606,8 +585,6 @@ IntroScene15:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
-	pop af
-	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ld a, $90
@@ -662,10 +639,6 @@ IntroScene17:
 	call Intro_DecompressRequest2bpp_255Tiles
 	ld hl, IntroTilemap12
 	call Intro_DecompressAndLoadTilemap
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	ld hl, Palette_e6d6d
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -674,8 +647,6 @@ IntroScene17:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
-	pop af
-	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -730,10 +701,6 @@ IntroScene19:
 	ld hl, IntroTilemap14
 	call Intro_DecompressAndLoadTilemap
 	call Intro_LoadTilemap
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	ld hl, Palette_e77dd
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -742,8 +709,6 @@ IntroScene19:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
-	pop af
-	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ld a, $d8
@@ -871,10 +836,6 @@ IntroScene26:
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroTilemap17
 	call Intro_DecompressAndLoadTilemap
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	ld hl, Palette_e679d
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -883,8 +844,6 @@ IntroScene26:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
-	pop af
-	ldh [rWBK], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -949,10 +908,6 @@ Intro_Scene24_ApplyPaletteFade:
 	ld d, 0
 	add hl, de
 
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	ld de, wBGPals2
 	ld b, 8 ; number of BG pals
 .loop1
@@ -967,8 +922,6 @@ Intro_Scene24_ApplyPaletteFade:
 	pop hl
 	dec b
 	jr nz, .loop1
-	pop af
-	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -1032,10 +985,6 @@ CrystalIntro_UnownFade:
 .okay
 	ld c, a
 	ld b, $0
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 
 	push hl
 	push bc
@@ -1096,8 +1045,6 @@ endc
 	ld a, d
 	ld [hli], a
 
-	pop af
-	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -1175,10 +1122,6 @@ Intro_Scene20_AppearUnown:
 	ld c, a
 	ld b, 0
 
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 
 	push bc
 	ld hl, wBGPals2
@@ -1188,8 +1131,6 @@ Intro_Scene20_AppearUnown:
 	ld hl, wBGPals1
 	call .copypal
 
-	pop af
-	ldh [rWBK], a
 
 	ld a, $1
 	ldh [hCGBPalUpdate], a
@@ -1220,10 +1161,6 @@ Intro_FadeUnownWordPals:
 	ld c, a
 	ld b, $0
 
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 
 	push hl
 	ld hl, .FastFadePalettes
@@ -1249,8 +1186,6 @@ Intro_FadeUnownWordPals:
 	ld a, d
 	ld [hli], a
 
-	pop af
-	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -1393,10 +1328,6 @@ Intro_SetCGBPalUpdate:
 	ret
 
 Intro_ClearBGPals:
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 
 ; Fill wBGPals2 and wOBPals2 with $0000 (black)
 	ld hl, wBGPals2
@@ -1415,8 +1346,6 @@ else
 	jr nz, .mono_loop
 endc
 
-	pop af
-	ldh [rWBK], a
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ld c, 64
@@ -1436,18 +1365,12 @@ Intro_DecompressRequest2bpp_255Tiles:
 	jmp DecompressRequest2bpp
 
 Intro_ResetLYOverrides:
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 
 	ld hl, wLYOverrides
 	ld bc, wLYOverridesEnd - wLYOverrides
 	xor a
 	rst ByteFill
 
-	pop af
-	ldh [rWBK], a
 	ld hl, rIE
 	set B_IE_STAT, [hl]
 	ld a, LOW(rSCX)
@@ -1455,10 +1378,6 @@ Intro_ResetLYOverrides:
 	ret
 
 Intro_PerspectiveScrollBG:
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	; Scroll the grass every frame.
 	; Scroll the trees every other frame and at half speed.
 	; This creates an illusion of perspective.
@@ -1481,8 +1400,6 @@ Intro_PerspectiveScrollBG:
 	rst ByteFill
 	ld a, [wLYOverrides + 0]
 	ldh [hSCX], a
-	pop af
-	ldh [rWBK], a
 	ret
 
 IntroSuicuneRunGFX:
@@ -1499,11 +1416,6 @@ Intro_SetupCommonScenery:
 	ld hl, IntroTilemap04
 	call Intro_DecompressAndLoadTilemap
 
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-
 	ld hl, Palette_e5edd
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -1513,9 +1425,6 @@ Intro_SetupCommonScenery:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
-
-	pop af
-	ldh [rWBK], a
 
 	xor a
 	ldh [hSCX], a

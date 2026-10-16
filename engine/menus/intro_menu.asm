@@ -1090,9 +1090,8 @@ CrystalIntroSequence:
 	farcall CrystalIntro
 
 StartTitleScreen:
-	ldh a, [rWBK]
-	push af
-	ld a, $5
+	ld a, BANK(wLYOverrides)
+	assert BANK(wLYOverrides) == BANK(wBGPals2)
 	ldh [rWBK], a
 
 	farcall _TitleScreen
@@ -1104,7 +1103,7 @@ StartTitleScreen:
 	call ClearSprites
 	call ClearBGPalettes
 
-	pop af
+	ld a, 1 ; The rest of the game expects this bank to be loaded by default. :(
 	ldh [rWBK], a
 
 	ld hl, rLCDC
