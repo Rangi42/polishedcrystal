@@ -1425,9 +1425,12 @@ wDexNavChain:: db ; battles in a row (0 = no chain)
 ; Species and form the DexNav list last searched for (0 = none)
 wDexNavTargetSpecies:: db
 wDexNavTargetForm:: db
+; Species and form the chain is for (D24); only valid while the chain is > 0
+wDexNavChainSpecies:: db
+wDexNavChainForm:: db
 wDexNavSavedDataEnd::
 
-	ds 16 ; unused
+	ds 14 ; unused
 
 wHiddenGrottoContents::
 ; dbw content type, content id
