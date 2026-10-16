@@ -166,22 +166,26 @@ DexNav_GetSlotTable:
 	ret
 
 DexNav_CheckSlotIsTarget:
-; Returns z if the wild slot at hl is the DexNav target. Clobbers a and c.
+; Returns z if the wild slot at hl is the DexNav target. Clobbers a.
+	push de
+	call DexNav_GetSlotMon
+	ld a, [wDexNavHuntSpecies]
+	cp e
+	jr nz, .done
+	ld a, [wDexNavHuntForm]
+	cp d
+.done
+	pop de
+	ret
+
+DexNav_GetSlotMon:
+; Return e = species and d = form of the wild slot at hl. Preserves hl and bc.
 	push hl
 	inc hl ; skip level
 	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
-	ld c, a
-	ld a, [wDexNavHuntSpecies]
-	cp c
-	jr nz, .done
-	inc hl
-	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
-	ld c, a
-	ld a, [wDexNavHuntForm]
-	cp c
-.done
+	call GetFarWord
+	ld e, l
+	ld d, h
 	pop hl
 	ret
 
@@ -492,11 +496,7 @@ DexNav_ChooseTarget:
 DexNav_SuccessRoll:
 ; Returns carry if the search finds the target (D18). Caught species always
 ; do; others succeed with twice their encounter odds in this area.
-	ld a, [wDexNavHuntSpecies]
-	ld c, a
-	ld a, [wDexNavHuntForm]
-	ld b, a
-	call CheckCaughtMon
+	call DexNav_CheckHuntCaught
 	scf
 	ret nz
 	ld a, [wTimeOfDay]
@@ -708,17 +708,8 @@ DexNav_TryRandomTile:
 	call GetCoordTileCollision
 	pop hl
 	pop de
-	ld c, a
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hli]
-	cp c
-	jr z, .collision_ok
-	ld a, [hl]
-	cp c
+	call DexNav_IsEnvironmentTile
 	jr nz, .fail
-.collision_ok
 
 	; Nobody can be standing there
 	push de
@@ -974,6 +965,19 @@ DexNav_GetEnvironment:
 	db SPRITEMOVEDATA_BOULDERDUST, PAL_OW_EMOTE_GRAY, OBJECT_ACTION_BOULDER_DUST
 	db COLL_FLOOR, COLL_FLOOR
 
+DexNav_IsEnvironmentTile:
+; Returns z if collision a is one of environment hl's tiles. Clobbers c and hl.
+	ld c, a
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hli]
+	cp c
+	ret z
+	ld a, [hl]
+	cp c
+	ret
+
 DexNav_CheckHuntObject:
 ; Returns z and bc = the rustle's object struct if the hunt is still going.
 	ld a, [wDexNavHuntObject]
@@ -1175,29 +1179,17 @@ DexNav_TrySpontaneousHunt:
 	; Only on the tiles wild Pokemon appear on here
 	call DexNav_GetEnvironment
 	ld a, [wPlayerTileCollision]
-	ld c, a
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hli]
-	cp c
-	jr z, .on_encounter_tile
-	ld a, [hl]
-	cp c
+	call DexNav_IsEnvironmentTile
 	jr nz, .no
-.on_encounter_tile
 
 	farcall GetTimeOfDayNotEve
 	call DexNav_GetSlotTable
 	jr nc, .no
 	call DexNav_RollSlot
-	inc hl ; skip level
-	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
+	call DexNav_GetSlotMon
+	ld a, e
 	ld [wDexNavHuntSpecies], a
-	inc hl
-	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
+	ld a, d
 	ld [wDexNavHuntForm], a
 	call DexNav_StartHunt
 	jr nc, .no
@@ -1212,6 +1204,24 @@ DexNav_TrySpontaneousHunt:
 
 .no
 	and a
+	ret
+
+DexNav_CheckHuntCaught:
+; Returns nz if the hunt species has been caught.
+	call DexNav_GetHuntMon
+	jmp CheckCaughtMon
+
+DexNav_GetHuntIndex:
+; Return bc = the hunt species' GetSpeciesAndFormIndex.
+	call DexNav_GetHuntMon
+	jmp GetSpeciesAndFormIndex
+
+DexNav_GetHuntMon:
+; Return c = hunt species, b = hunt form.
+	ld a, [wDexNavHuntSpecies]
+	ld c, a
+	ld a, [wDexNavHuntForm]
+	ld b, a
 	ret
 
 DexNav_GetTargetName:
@@ -1279,15 +1289,8 @@ DexNav_BuildList:
 	call DexNav_GetSlotTable
 	ret nc
 .slot_loop
+	call DexNav_GetSlotMon
 	push hl
-	inc hl ; skip level
-	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
-	ld e, a
-	inc hl
-	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
-	ld d, a
 	push bc
 	call .AddToList
 	pop bc
@@ -1329,11 +1332,7 @@ DexNav_BuildList:
 
 DexNav_GetSearchLevelPointer:
 ; hl = the hunt species' entry in wDexNavSearchLevels (D21)
-	ld a, [wDexNavHuntSpecies]
-	ld c, a
-	ld a, [wDexNavHuntForm]
-	ld b, a
-	call GetSpeciesAndFormIndex
+	call DexNav_GetHuntIndex
 	ld hl, wDexNavSearchLevels
 	add hl, bc
 	ret
@@ -1532,11 +1531,7 @@ DexNav_RollBoosts:
 
 	; Hidden Ability, only for species caught before (CFRU)
 	push hl
-	ld a, [wDexNavHuntSpecies]
-	ld c, a
-	ld a, [wDexNavHuntForm]
-	ld b, a
-	call CheckCaughtMon
+	call DexNav_CheckHuntCaught
 	pop hl
 	jr z, .ability_done
 	push hl
@@ -1587,11 +1582,7 @@ DexNav_RollChainBonus:
 DexNav_PickEggMove:
 ; Set wDexNavHuntEggMove to a random move from the hunt species' egg moves
 ; (the same lists breeding uses), or leave it at 0 if it has none.
-	ld a, [wDexNavHuntSpecies]
-	ld c, a
-	ld a, [wDexNavHuntForm]
-	ld b, a
-	call GetSpeciesAndFormIndex
+	call DexNav_GetHuntIndex
 	ld hl, EggSpeciesMovesPointers
 	add hl, bc
 	add hl, bc
