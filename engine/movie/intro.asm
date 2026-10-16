@@ -78,10 +78,10 @@ Scene1:
 	ldh [rVBK], a
 	ld hl, UnownsGFX
 	ld de, vTiles2 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld hl, PulseGFX
 	ld de, vTiles0 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld hl, UnownA.tilemap
 	call DecompressAndLoadTilemap
 	ld hl, UnownsPalette
@@ -96,7 +96,7 @@ Scene1:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -137,7 +137,7 @@ Scene3:
 	ldh [rVBK], a
 	call SetupCommonScenery
 	call ResetLYOverrides
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	jmp NextIntroScene
@@ -170,10 +170,10 @@ Scene5:
 	ldh [rVBK], a
 	ld hl, UnownsGFX
 	ld de, vTiles2 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld hl, PulseGFX
 	ld de, vTiles0 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld hl, UnownHI.tilemap
 	call DecompressAndLoadTilemap
 	ld hl, UnownsPalette
@@ -188,7 +188,7 @@ Scene5:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -247,13 +247,13 @@ Scene7:
 
 	ld hl, PichuWooperGFX
 	ld de, vTiles0 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 
 	xor a
 	ldh [rVBK], a
 	ld hl, SuicuneRunGFX
 	ld de, vTiles0 tile $00
-	call DecompressRequest2bpp_255Tiles
+	call DecompressAndLoad255Tiles
 
 	call SetupCommonScenery
 
@@ -264,7 +264,7 @@ Scene7:
 	call InitSpriteAnimStruct
 	ld a, $f0
 	ld [wGlobalAnimXOffset], a
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -379,7 +379,7 @@ Scene11:
 	ldh [rVBK], a
 	ld hl, UnownsGFX
 	ld de, vTiles2 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld hl, Unowns.tilemap
 	call DecompressAndLoadTilemap
 	ld hl, UnownsPalette
@@ -394,7 +394,7 @@ Scene11:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -482,7 +482,7 @@ Scene13:
 	ldh [rVBK], a
 	ld hl, SuicuneRunGFX
 	ld de, vTiles0 tile $00
-	call DecompressRequest2bpp_255Tiles
+	call DecompressAndLoad255Tiles
 	call SetupCommonScenery
 	call ClearSpriteAnims
 	depixel 13, 11, 4, 0
@@ -492,7 +492,7 @@ Scene13:
 	call PlayMusic
 	xor a
 	ld [wGlobalAnimXOffset], a
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -553,10 +553,10 @@ Scene15:
 	ldh [rVBK], a
 	ld hl, SuicuneJumpGFX
 	ld de, vTiles2 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld hl, UnownBackGFX
 	ld de, vTiles0 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld de, Grass4GFX
 	ld hl, vTiles1 tile $00
 	lb bc, BANK(Grass4GFX), 1
@@ -577,7 +577,7 @@ Scene15:
 	ld a, $90
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	depixel 8, 5
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN_F
 	call InitSpriteAnimStruct
@@ -619,7 +619,7 @@ Scene17:
 	ldh [rVBK], a
 	ld hl, SuicuneCloseGFX
 	ld de, vTiles1 tile $00
-	call DecompressRequest2bpp_255Tiles
+	call DecompressAndLoad255Tiles
 	ld hl, SuicuneClose.tilemap
 	call DecompressAndLoadTilemap
 	ld hl, SuicuneClosePalette
@@ -634,7 +634,7 @@ Scene17:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -669,10 +669,10 @@ Scene19:
 	ldh [rVBK], a
 	ld hl, SuicuneBackGFX
 	ld de, vTiles2 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld hl, UnownsGFX
 	ld de, vTiles1 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld de, Grass4GFX
 	ld hl, vTiles1 tile $7f
 	lb bc, BANK(Grass4GFX), 1
@@ -697,7 +697,7 @@ Scene19:
 	xor a
 	ld [hli], a
 	ld [hl], $7f
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	depixel 12, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE_AWAY
 	call InitSpriteAnimStruct
@@ -808,7 +808,7 @@ Scene26:
 	ldh [rVBK], a
 	ld hl, CrystalUnownsGFX
 	ld de, vTiles2 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 	ld hl, CrystalUnowns.tilemap
 	call DecompressAndLoadTilemap
 	ld hl, CrystalUnownsPalette
@@ -823,7 +823,7 @@ Scene26:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call SetCGBPalUpdate
+	call EnableCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -1293,7 +1293,7 @@ RustleGrass:
 	dw Grass3GFX
 	dw Grass2GFX
 
-SetCGBPalUpdate:
+EnableCGBPalUpdate:
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -1327,11 +1327,11 @@ DecompressAndLoadTilemap:
 	lb bc, BANK("Intro tilemaps"), TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE
 	jmp DecompressRequest2bpp
 
-DecompressRequest2bpp_128Tiles:
+DecompressAndLoad128Tiles:
 	lb bc, BANK(@), 128
 	jmp DecompressRequest2bpp
 
-DecompressRequest2bpp_255Tiles:
+DecompressAndLoad255Tiles:
 	lb bc, BANK(@), 255
 	jmp DecompressRequest2bpp
 
@@ -1382,7 +1382,7 @@ INCBIN "gfx/intro/pichu_wooper.2bpp.lzp"
 SetupCommonScenery:
 	ld hl, BackgroundGFX
 	ld de, vTiles2 tile $00
-	call DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 
 	ld hl, Outdoors.tilemap
 	call DecompressAndLoadTilemap
