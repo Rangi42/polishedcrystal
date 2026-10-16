@@ -77,6 +77,13 @@ DEF DEXNAV_CHAIN_PASSES_2     EQU 10
 DEF DEXNAV_CHAIN_BONUS_CHANCE EQU 4
 DEF DEXNAV_CHAIN_BONUS_LEVELS EQU 10
 DEF DEXNAV_CHAIN_BONUS_PASSES EQU 4
+; Using the DexNav right next to the hunt target shows its preview (D32)
+DEF DEXNAV_PREVIEW_DISTANCE EQU 1
+; The preview page's mini (bottom-left tile) and name row
+DEF DEXNAV_PREVIEW_X EQU 1
+DEF DEXNAV_PREVIEW_Y EQU 2
+; Potential: up to this many perfect stats (shown as stars, D32)
+DEF DEXNAV_MAX_POTENTIAL EQU 3
 ; The level bonus never goes past this (D25); the level stays <= MAX_LEVEL.
 DEF DEXNAV_MAX_LEVEL_BONUS    EQU 19
 

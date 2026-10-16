@@ -1518,6 +1518,11 @@ wDexNavNewMarks:: db
 wDexNavTab:: db
 ; The search level the info panel is showing
 wDexNavShownLevel:: db
+; Which mini slot (tiles and palette) DexNav_DrawMini uses
+wDexNavMiniSlot:: db
+; DexNav_ShowPreview scratch
+wDexNavPreviewLevel:: db
+wDexNavPreviewPersonality:: ds 2
 ; Colors 1-3 of a list row's mini palette, before they're copied in
 wDexNavMiniPal:: ds 3 * 2
 NEXTU
@@ -1541,11 +1546,12 @@ wDexNavHuntSpecies:: db
 wDexNavHuntForm:: db
 wDexNavHuntFlags:: db
 ; Boosts rolled when the hunt starts (D20)
-wDexNavHuntAbility:: db ; HIDDEN_ABILITY or 0
+wDexNavHuntAbility:: db ; ABILITY_1, ABILITY_2 or HIDDEN_ABILITY (D32)
 wDexNavHuntPotential:: db ; number of perfect stats, 0-3
 wDexNavHuntEggMove:: db ; replaces move slot 1, or 0
 wDexNavHuntShinyPasses:: db ; extra shiny checks (D10)
 wDexNavHuntLevelBonus:: db ; added to the wild level (chain)
+wDexNavHuntLevel:: db ; slot level from hunt start (D32), before the bonus
 ; Steps taken since the hunt started
 wDexNavHuntSteps:: db
 ; Set by a failed search; cleared by taking a step or picking another species.

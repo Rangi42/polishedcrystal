@@ -98,13 +98,8 @@ DexNav_ChooseWildEncounter:
 DexNav_SetUpBattle:
 ; Finish setting up the DexNav battle for the hunt species at level a.
 ; Returns z.
-	; Chain level bonus, rolled at hunt start (CFRU caps it at MAX_LEVEL)
-	ld hl, wDexNavHuntLevelBonus
-	add [hl]
-	cp MAX_LEVEL + 1
-	jr c, .got_level
-	ld a, MAX_LEVEL
-.got_level
+	ld [wDexNavHuntLevel], a
+	call DexNav_GetHuntLevel
 	ld [wCurPartyLevel], a
 
 	ld a, [wDexNavHuntSpecies]
@@ -114,6 +109,17 @@ DexNav_SetUpBattle:
 	ld a, BATTLETYPE_DEXNAV
 	ld [wBattleType], a
 	xor a
+	ret
+
+DexNav_GetHuntLevel:
+; Return a = the hunt's level: its slot level plus the chain bonus rolled at
+; hunt start, up to MAX_LEVEL (CFRU).
+	ld a, [wDexNavHuntLevel]
+	ld hl, wDexNavHuntLevelBonus
+	add [hl]
+	cp MAX_LEVEL + 1
+	ret c
+	ld a, MAX_LEVEL
 	ret
 
 DexNav_RollSlot:
@@ -292,6 +298,10 @@ DexNav_ChooseTarget:
 	; Using the DexNav during a hunt offers to stop it (D9).
 	call DexNav_CheckHuntObject
 	jr nz, .no_hunt
+	; Close to it, the DexNav shows what it has instead (D32).
+	call DexNav_GetHuntDistance
+	cp DEXNAV_PREVIEW_DISTANCE + 1
+	jmp c, DexNav_ShowPreview
 	call DexNav_GetTargetName
 	ld hl, .StopSearchText
 	ld a, [wDexNavHuntFlags]
@@ -1239,14 +1249,8 @@ DexNav_ClearSavedData:
 	rst ByteFill
 	ret
 
-DexNav_StepCheck:
-; Called after each step. Returns carry if a DexNav script was started.
-	xor a
-	ld [wDexNavCooldown], a
-	call DexNav_CheckHuntObject
-	jr nz, .no_hunt
-
-	; Distance to the target (taxicab)
+DexNav_GetHuntDistance:
+; Return a = the player's taxicab distance to the hunt target (z if 0).
 	ld a, [wDexNavHuntX]
 	ld hl, wPlayerMapX
 	sub [hl]
@@ -1263,6 +1267,15 @@ DexNav_StepCheck:
 	inc a
 .dy_ok
 	add c
+	ret
+
+DexNav_StepCheck:
+; Called after each step. Returns carry if a DexNav script was started.
+	xor a
+	ld [wDexNavCooldown], a
+	call DexNav_CheckHuntObject
+	jr nz, .no_hunt
+	call DexNav_GetHuntDistance
 	jr z, .reached
 
 	; Running or biking nearby scares it off (D9).
@@ -1297,8 +1310,16 @@ DexNav_StepCheck:
 
 .reached
 	call DexNav_EndHunt
+	; The level was set at hunt start (D32), so keep it.
+	ld a, [wDexNavHuntLevel]
+	push af
 	call DexNav_ChooseWildEncounter
+	pop bc
 	jr nz, .no_battle
+	ld a, b
+	ld [wDexNavHuntLevel], a
+	call DexNav_GetHuntLevel
+	ld [wCurPartyLevel], a
 	call DexNav_RaiseSearchLevel
 	ld hl, DexNavBattleScript
 .call_script
@@ -1357,6 +1378,10 @@ DexNav_TrySpontaneousHunt:
 	ld [wDexNavHuntSpecies], a
 	ld a, d
 	ld [wDexNavHuntForm], a
+	; Its level, kept until the battle (D32)
+	call DexNav_ChooseWildEncounter
+	xor a ; BATTLETYPE_NORMAL
+	ld [wBattleType], a
 	call DexNav_StartHunt
 	jr nc, .no
 	ld a, 1 << DEXNAV_HUNT_SPONTANEOUS_F
@@ -1389,6 +1414,116 @@ DexNav_GetHuntMon:
 	ld a, [wDexNavHuntForm]
 	ld b, a
 	ret
+
+DexNav_ShowPreview:
+; A full-screen page with what the hunt rolled (D32): its mini, name and
+; level, potential, egg move and ability. A or B goes back to the map.
+	call FadeToMenu_BackupSprites
+	call ClearTileMap
+	hlcoord 0, 0
+	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
+	call Textbox
+	ld a, CGB_PLAIN
+	call GetCGBLayout
+
+	; Mini (slot 0, BG palette 1), name and level
+	hlcoord DEXNAV_PREVIEW_X, DEXNAV_PREVIEW_Y - 1, wAttrmap
+	ld a, 1
+	ld [hli], a
+	ld [hl], a
+	ld bc, SCREEN_WIDTH - 1
+	add hl, bc
+	ld [hli], a
+	ld [hl], a
+	xor a
+	ld [wDexNavMiniSlot], a
+	call DexNav_GetHuntMon
+	hlcoord DEXNAV_PREVIEW_X, DEXNAV_PREVIEW_Y
+	call DexNav_DrawMini
+	call DexNav_GetTargetName
+	ld de, wStringBuffer1
+	hlcoord DEXNAV_PREVIEW_X + DEXNAV_NAME_OFFSET, DEXNAV_PREVIEW_Y
+	rst PlaceString
+	call DexNav_GetHuntLevel
+	ld [wDexNavPreviewLevel], a
+	hlcoord SCREEN_WIDTH - 5, DEXNAV_PREVIEW_Y
+	ld [hl], '<LV>'
+	inc hl
+	ld de, wDexNavPreviewLevel
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
+	call PrintNum
+
+	; Labels, then one star per perfect stat
+	ld de, .LabelsString
+	hlcoord 1, DEXNAV_PREVIEW_Y + 2
+	rst PlaceString
+	hlcoord 12, DEXNAV_PREVIEW_Y + 2
+	ld a, [wDexNavHuntPotential]
+	ld b, a
+	ld c, DEXNAV_MAX_POTENTIAL
+.star_loop
+	ld a, b
+	and a
+	ld a, '-'
+	jr z, .got_star
+	dec b
+	ld a, '★'
+.got_star
+	ld [hli], a
+	dec c
+	jr nz, .star_loop
+
+	; Egg move, or "-"
+	ld a, [wDexNavHuntEggMove]
+	and a
+	ld de, .NoneString
+	jr z, .got_egg_move
+	ld [wNamedObjectIndex], a
+	call GetMoveName
+.got_egg_move
+	hlcoord 2, DEXNAV_PREVIEW_Y + 5
+	rst PlaceString
+
+	; Ability. GetAbility reads the ability bits and form from a
+	; personality; it gives 0 if abilities are off (new-game option).
+	ld a, [wDexNavHuntAbility]
+	ld hl, wDexNavPreviewPersonality
+	ld [hli], a
+	ld a, [wDexNavHuntForm]
+	ld [hld], a
+	ld a, [wDexNavHuntSpecies]
+	ld c, a
+	call GetAbility
+	ld a, b
+	and a
+	jr z, .done
+	farcall BufferAbility
+	ld a, [wDexNavHuntAbility]
+	cp HIDDEN_ABILITY
+	ld de, .AbilityString
+	jr nz, .got_ability_label
+	ld de, .HiddenAbilityString
+.got_ability_label
+	hlcoord 1, DEXNAV_PREVIEW_Y + 7
+	rst PlaceString
+	ld de, wStringBuffer1
+	hlcoord 2, DEXNAV_PREVIEW_Y + 8
+	rst PlaceString
+
+.done
+	call ApplyAttrAndTilemapInVBlank
+	farcall FadeInPalettes
+	call WaitButton
+	jmp ExitAllMenus
+
+.LabelsString:
+	db "Potential:<LNBRK><LNBRK>Egg move:@"
+.NoneString:
+	db "-@"
+.AbilityString:
+	db "Ability:@"
+.HiddenAbilityString:
+	db "Hidden Ability:@"
 
 DexNav_GetTargetName:
 ; Put the hunted Pokemon's name in wStringBuffer1, or "It" if it appeared on
@@ -1731,16 +1866,23 @@ endc
 
 DexNav_DrawListMini:
 ; Draw the menu's current species as a mini in this row's 2x2 tiles, on the
-; tile row above de and left of the name: full color if caught, faded if only
-; seen (like the Pokédex), a "?" if unseen. The Cancel row just gets black text.
+; tile row above de and left of the name. The Cancel row just gets black text.
+	call DexNav_GetMenuRow
+	ld [wDexNavMiniSlot], a
 	ld h, d
 	ld l, e
 	ld a, [wMenuSelection]
 	cp CANCEL
-	jr z, .plain
+	jr z, DexNav_DrawMini.plain
 	ld c, a
 	ld a, [wMenuSelectionQuantity]
 	ld b, a
+	; fallthrough
+
+DexNav_DrawMini:
+; Draw species c / form b's mini with its bottom-left tile at hl, using mini
+; slot [wDexNavMiniSlot] (its tiles and BG palette 1 + slot): full color if
+; caught, faded if only seen (like the Pokédex), a "?" if unseen.
 	push hl
 	push bc
 	call CheckSeenMon
@@ -1756,9 +1898,9 @@ DexNav_DrawListMini:
 	jr DexNav_SetRowPalette
 
 .seen
-	; This row's 4 tiles are vTiles2 tiles row * 4 to row * 4 + 3, in the
+	; This slot's 4 tiles are vTiles2 tiles slot * 4 to slot * 4 + 3, in the
 	; minis' order: top left, top right, bottom left, bottom right.
-	call DexNav_GetMenuRow
+	ld a, [wDexNavMiniSlot]
 	add a
 	add a
 	ld de, -SCREEN_WIDTH
@@ -1777,7 +1919,7 @@ DexNav_DrawListMini:
 	ld [wCurIconSpecies], a
 	ld a, b
 	ld [wCurIconForm], a
-	call DexNav_GetMenuRow
+	ld a, [wDexNavMiniSlot]
 	swap a
 	add a
 	add a ; row * 4 tiles
@@ -1813,7 +1955,7 @@ DexNav_DrawListMini:
 	; fallthrough
 
 DexNav_SetRowPalette:
-; Set colors 1-3 of this menu row's mini palette to bc, de and hl.
+; Set colors 1-3 of mini slot [wDexNavMiniSlot]'s palette to bc, de and hl.
 	push hl
 	ld hl, wDexNavMiniPal
 	ld a, c
@@ -1828,7 +1970,7 @@ DexNav_SetRowPalette:
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-	call DexNav_GetMenuRow
+	ld a, [wDexNavMiniSlot]
 	inc a ; palettes 1-4
 	add a
 	add a
@@ -2328,10 +2470,24 @@ DexNav_RollBoosts:
 ; is still at level 0, so unseen species from spontaneous hunts get no
 ; boosts (D14).
 	xor a
-	ld [wDexNavHuntAbility], a
 	ld [wDexNavHuntPotential], a
 	ld [wDexNavHuntEggMove], a
 	ld [wDexNavHuntShinyPasses], a
+
+	; Its ability, rolled now so the preview can show it (D32): like any wild
+	; mon (move_mon.asm), 5% Hidden Ability, else either main one. The
+	; search-level boost below can still make it the Hidden Ability.
+	call Random
+	cp 1 + 5 percent
+	ld b, HIDDEN_ABILITY
+	jr c, .got_ability
+	and 1
+	ld b, ABILITY_1
+	jr z, .got_ability
+	ld b, ABILITY_2
+.got_ability
+	ld a, b
+	ld [wDexNavHuntAbility], a
 
 	; Chain boosts (CFRU), whatever the search level, but only from a chain
 	; for this species (D24)
@@ -2560,9 +2716,13 @@ DexNav_ApplyBattleBoosts:
 	ld a, [wBattleType]
 	cp BATTLETYPE_DEXNAV
 	ret nz
+	; The ability rolled at hunt start replaces the one it was built with.
 	ld a, [wDexNavHuntAbility]
+	ld b, a
 	ld hl, wOTPartyMon1Ability
-	or [hl]
+	ld a, [hl]
+	and ~ABILITY_MASK
+	or b
 	ld [hl], a
 
 	; The egg move goes in the first slot (CFRU), unless it's already known.
