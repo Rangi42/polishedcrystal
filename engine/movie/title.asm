@@ -165,10 +165,8 @@ _TitleScreen:
 
 ; Reset audio
 	call ChannelsOff
-	call EnableLCD
 
-	ldh a, [rLCDC]
-	set B_LCDC_OBJ_SIZE, a
+	ld a, LCDC_DEFAULT | LCDC_OBJ_SIZE
 	ldh [rLCDC], a
 
 	ld a, +112
