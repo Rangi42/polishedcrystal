@@ -1536,6 +1536,7 @@ wDexNavHuntAbility:: db ; HIDDEN_ABILITY or 0
 wDexNavHuntPotential:: db ; number of perfect stats, 0-3
 wDexNavHuntEggMove:: db ; replaces move slot 1, or 0
 wDexNavHuntShinyPasses:: db ; extra shiny checks (D10)
+wDexNavHuntItem:: db ; held item rolled at hunt start (D27), or NO_ITEM
 wDexNavHuntLevelBonus:: db ; added to the wild level (chain)
 ; Steps taken since the hunt started
 wDexNavHuntSteps:: db

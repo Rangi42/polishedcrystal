@@ -1763,6 +1763,12 @@ DexNavShinyPasses:
 	db 0, 0, 0, 1, 2, 3
 	assert @ - DexNavShinyPasses == DEXNAV_NUM_TIERS
 
+DexNavRareItemChances:
+; Percent chance per tier of holding the species' rare item (D27): ORAS's
+; "5% item" column, in place of the usual 5%
+	db 10, 10, 15, 20, 20, 30
+	assert @ - DexNavRareItemChances == DEXNAV_NUM_TIERS
+
 DexNav_RollBoosts:
 ; Roll the hunt target's egg move, Hidden Ability and potential from its
 ; search level when the hunt starts (D20). A species that was never battled
@@ -1813,6 +1819,8 @@ DexNav_RollBoosts:
 .got_bonus_passes
 	ld a, b
 	ld [wDexNavHuntShinyPasses], a
+
+	call DexNav_RollHeldItem
 
 	; Search level boosts
 	call DexNav_GetSearchTier
@@ -1882,6 +1890,69 @@ DexNav_RollBoosts:
 .got_potential
 	ld a, d
 	ld [wDexNavHuntPotential], a
+	ret
+
+DexNav_RollHeldItem:
+; Roll the hunt target's held item at hunt start (D27), like LoadEnemyWildmon
+; does for any wild mon: item 1 50% and item 2 5% (60% and 20% with Compound
+; Eyes or Super Luck leading, or an Amulet Coin outside Faithful), but item 2
+; gets DexNavRareItemChances instead if that's higher.
+	ld a, [wDexNavHuntSpecies]
+	ld [wCurSpecies], a
+	ld a, [wDexNavHuntForm]
+	ld [wCurForm], a
+	call GetBaseData
+	; Some species always hold item 2.
+	ld a, [wBaseItems]
+	inc a ; cp ALWAYS_ITEM_2
+	ld a, [wBaseItems + 1]
+	jr z, .got_item
+
+	call DexNav_GetSearchTier
+	ld c, a
+	ld b, 0
+	ld hl, DexNavRareItemChances
+	add hl, bc
+	ld d, [hl] ; item 2 chance
+	ld e, 50 ; item 1 chance
+	call GetLeadAbility
+	cp SUPER_LUCK
+	jr z, .better_odds
+	cp COMPOUND_EYES
+if DEF(FAITHFUL)
+	jr nz, .roll
+else
+	jr z, .better_odds
+	ld a, [wPartyMon1Item]
+	cp AMULET_COIN
+	jr nz, .roll
+endc
+.better_odds
+	ld e, 60
+	ld a, d
+	cp 20
+	jr nc, .roll
+	ld d, 20
+.roll
+	; One roll out of 100: below d is item 2, then e more is item 1.
+	ld a, d
+	add e
+	ld e, a
+	push de
+	ld a, 100
+	call RandomRange
+	pop de
+	ld b, a
+	cp d
+	ld a, [wBaseItems + 1]
+	jr c, .got_item
+	ld a, b
+	cp e
+	ld a, [wBaseItems]
+	jr c, .got_item
+	xor a ; NO_ITEM
+.got_item
+	ld [wDexNavHuntItem], a
 	ret
 
 DexNav_GetHuntChain:
@@ -2005,6 +2076,8 @@ DexNav_ApplyBattleBoosts:
 	ld hl, wOTPartyMon1Ability
 	or [hl]
 	ld [hl], a
+	ld a, [wDexNavHuntItem]
+	ld [wOTPartyMon1Item], a
 
 	; The egg move goes in the first slot (CFRU), unless it's already known.
 	ld a, [wDexNavHuntEggMove]
