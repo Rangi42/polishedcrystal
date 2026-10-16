@@ -1523,6 +1523,13 @@ DexNav_FinishListBox:
 .got_tab
 	hlcoord DEXNAV_MINI_X, DEXNAV_MENU_TOP - 1
 	rst PlaceString
+	; Every species on this tab caught: a star after its name (D31).
+	push bc
+	call DexNav_IsTabComplete
+	pop hl
+	jr nz, .not_complete
+	ld [hl], '★'
+.not_complete
 	hlcoord DEXNAV_MINI_X, DEXNAV_MENU_TOP, wAttrmap
 	ld de, SCREEN_WIDTH - 1
 	ld a, 1
@@ -1542,6 +1549,30 @@ DexNav_FinishListBox:
 	db "◀Land▶@"
 .WaterTab:
 	db "◀Water▶@"
+
+DexNav_IsTabComplete:
+; Returns z if every species in the list has been caught.
+	ld hl, wDexNavList
+	ld a, [hli]
+	ld e, a
+.loop
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	push hl
+	push de
+	call CheckCaughtMon
+	pop de
+	pop hl
+	jr z, .not_caught
+	dec e
+	jr nz, .loop
+	ret
+
+.not_caught
+	or 1
+	ret
 
 DexNav_LoadMarkTiles:
 ; Load the mark tiles: gray copies (color 2 only) of the font's rod letters,
