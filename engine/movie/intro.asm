@@ -1465,7 +1465,7 @@ endc
 
 Intro_DecompressAndLoadTilemap:
 	debgcoord 0, 0
-	lb bc, BANK("Intro tilemaps"), TILEMAP_WIDTH * TILEMAP_HEIGHT / TILE_SIZE
+	lb bc, BANK("Intro tilemaps"), TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE
 	jmp DecompressRequest2bpp
 
 Intro_DecompressRequest2bpp_128Tiles:
