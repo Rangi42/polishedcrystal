@@ -8,6 +8,8 @@ CrystalIntro:
 	ldh [hVBlank], a
 	ldh [hMapAnims], a
 	ld [wJumptableIndex], a
+	assert NO_BG_MAP_TRANSFER == 0
+	ldh [hBGMapMode], a ; Disable BG map transfers since this movie doesn't use them.
 	inc a ; a := 1
 	ldh [hInMenu], a
 
@@ -67,9 +69,6 @@ Scene_UnownA_Setup:
 ; Setup the next scene.
 	call ClearBGPals
 	call ClearSprites
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, UnownA.attrmap
@@ -126,9 +125,6 @@ Scene_ScrollOutdoors_Setup:
 ; More setup. Transition to the outdoor scene.
 	call ClearBGPals
 	call ClearSprites
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, Outdoors.attrmap
@@ -158,9 +154,6 @@ Scene_UnownHI_Setup:
 	call ClearSprites
 	ld hl, rIE
 	res B_IE_STAT, [hl]
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
 	ld a, $1
 	ldh [rVBK], a
@@ -236,9 +229,6 @@ Scene_ScrollThenSuicuneZoomingBy_Setup:
 ; Back to the outdoor scene.
 	call ClearBGPals
 	call ClearSprites
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 
 	ld a, $1
 	ldh [rVBK], a
@@ -340,9 +330,6 @@ Scene_Unowns_Setup:
 	call ClearSprites
 	ld hl, rIE
 	res B_IE_STAT, [hl]
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
 	ld a, $1
 	ldh [rVBK], a
@@ -444,9 +431,6 @@ Scene_SuicuneRunsThenJumps_Setup:
 ; Switch scenes again.
 	call ClearBGPals
 	call ClearSprites
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, Outdoors.attrmap
@@ -515,9 +499,6 @@ Scene_SuicuneAppears_Setup:
 ; Transition to a new scene.
 	call ClearBGPals
 	call ClearSprites
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, SuicuneJump.attrmap
@@ -536,7 +517,6 @@ Scene_SuicuneAppears_Setup:
 	call Request2bpp
 	ld hl, SuicuneJump.tilemap
 	call DecompressAndLoadTilemap
-	call LoadTilemap
 	ld hl, SuicunePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -581,9 +561,6 @@ Scene_SuicuneCloseUp_Setup:
 ; ...
 	call ClearBGPals
 	call ClearSprites
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, SuicuneClose.attrmap
@@ -631,9 +608,6 @@ Scene_UnownsAroundSuicune_Setup:
 ; More setup.
 	call ClearBGPals
 	call ClearSprites
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, SuicuneBack.attrmap
@@ -652,7 +626,6 @@ Scene_UnownsAroundSuicune_Setup:
 	call Request2bpp
 	ld hl, SuicuneBack.tilemap
 	call DecompressAndLoadTilemap
-	call LoadTilemap
 	ld hl, SuicunePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -715,9 +688,6 @@ Scene_SuicuneFadesAway:
 	call ColoredSuicuneFrameSwap
 	ld c, 3
 	call DelayFrames
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
@@ -768,11 +738,8 @@ Scene_Wait:
 
 Scene_SpellOut_Setup:
 ; Load the final scene.
-	call ClearBGPalettes
+	call ClearPalettes
 	call ClearSprites
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, CrystalUnowns.attrmap
@@ -1169,73 +1136,32 @@ rept 8
 endr
 endc
 
-LoadTilemap:
-	ldh a, [rWBK]
-	push af
-	ld a, $6
-	ldh [rWBK], a
-
-	ld hl, wScratchTileMap
-	decoord 0, 0
-	ld b, SCREEN_HEIGHT
-.row
-	ld c, SCREEN_WIDTH
-.col
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .col
-; "add hl, TILEMAP_WIDTH - SCREEN_WIDTH"
-; 6 bytes, 12 cycles
-	push de
-	ld de, TILEMAP_WIDTH - SCREEN_WIDTH
-	add hl, de
-	pop de
-;; 8 bytes, 8 cycles
-;	ld a, TILEMAP_WIDTH - SCREEN_WIDTH
-;	add l
-;	ld l, a
-;	ld a, 0
-;	adc h
-;	ld h, a
-	dec b
-	jr nz, .row
-
-	pop af
-	ldh [rWBK], a
-	ret
-
 Scene_SuicuneAppears_AnimateSuicune:
 	ld a, [wIntroSceneFrameCounter]
 	and $3
 	jr z, ColoredSuicuneFrameSwap
 	cp $3
 	ret nz
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ret
 
+; Iterate throughout the tilemap, and swap the two frames of Suicune.
 ColoredSuicuneFrameSwap:
-	hlcoord 0, 0
-	ld bc, SCREEN_AREA
+	hlbgcoord 0, 0
 .loop
+	ldh a, [rSTAT]
+	and STAT_BUSY
+	jr nz, .loop
 	ld a, [hl]
 	and a
 	jr z, .skip
 	cp $80
 	jr nc, .skip
 	xor $8
-	ld [hl], a
 .skip
-	inc hl
-	dec bc
-	ld a, c
-	or b
+	ld [hli], a
+	ld a, h
+	cp $9A ; Stop when we have scanned all of the screen area, except the last two rows.
 	jr nz, .loop
-	ld a, TRANSFER_TILEMAP
-	ldh [hBGMapMode], a
 	ret
 
 RustleGrass:
