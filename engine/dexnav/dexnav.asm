@@ -1048,6 +1048,20 @@ DexNav_HandleNewMap:
 	call DexNav_BreakChain
 	farjp HandleNewMap
 
+DexNav_TryWildEncounter:
+; RandomEncounter's TryWildEncounter call: with "Hunt encounters" set to No,
+; no random encounters while a hunt is going (D16). Returns nz for no battle.
+	ld a, [wInitialOptions2]
+	bit DEXNAV_CALM_OPT, a
+	jr z, .encounter
+	call DexNav_CheckHuntObject
+	jr nz, .encounter
+	or 1 ; nz
+	ret
+
+.encounter
+	farjp TryWildEncounter
+
 DexNav_ClearSavedData:
 	xor a
 	ld hl, wDexNavSavedData

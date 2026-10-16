@@ -1217,7 +1217,7 @@ RandomEncounter::
 	jr nz, .safari_game
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	jr nz, .bug_contest
-	farcall TryWildEncounter
+	farcall DexNav_TryWildEncounter
 	jr nz, .nope
 .ok
 	ld a, [wTempWildMonSpecies]
