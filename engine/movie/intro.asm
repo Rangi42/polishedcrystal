@@ -95,7 +95,7 @@ Scene_UnownA_Setup:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -133,7 +133,7 @@ Scene_ScrollOutdoors_Setup:
 	ldh [rVBK], a
 	call SetupCommonScenery
 	call ResetLYOverrides
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	jmp NextIntroScene
@@ -181,7 +181,7 @@ Scene_UnownHI_Setup:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -254,7 +254,7 @@ Scene_ScrollThenSuicuneZoomingBy_Setup:
 	call InitSpriteAnimStruct
 	ld a, $f0
 	ld [wGlobalAnimXOffset], a
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -354,7 +354,7 @@ Scene_Unowns_Setup:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -449,7 +449,7 @@ Scene_SuicuneRunsThenJumps_Setup:
 	call PlayMusic
 	xor a
 	ld [wGlobalAnimXOffset], a
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -530,7 +530,7 @@ Scene_SuicuneAppears_Setup:
 	ld a, $90
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	depixel 8, 5
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN_F
 	call InitSpriteAnimStruct
@@ -584,7 +584,7 @@ Scene_SuicuneCloseUp_Setup:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -643,7 +643,7 @@ Scene_UnownsAroundSuicune_Setup:
 	xor a
 	ld [hli], a
 	ld [hl], $7f
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	depixel 12, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE_AWAY
 	call InitSpriteAnimStruct
@@ -763,7 +763,7 @@ Scene_SpellOut_Setup:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call ClearSpriteAnims
-	call EnableCGBPalUpdate
+	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -833,9 +833,7 @@ Scene_FadeToWhite_ApplyPaletteFade:
 	pop hl
 	dec b
 	jr nz, .loop1
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
+	jmp QueueCGBPalUpdate
 
 .FadePals:
 INCLUDE "gfx/intro/fade.pal"
@@ -956,9 +954,7 @@ endc
 	ld a, d
 	ld [hli], a
 
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
+	jmp QueueCGBPalUpdate
 
 .BWFade:
 ; Fade between black and white.
@@ -1043,9 +1039,7 @@ Scene_UnownsAroundSuicune_AppearUnown:
 	call .copypal
 
 
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
+	jmp QueueCGBPalUpdate
 
 .copypal:
 	add hl, bc
@@ -1097,9 +1091,7 @@ FadeUnownWordPals:
 	ld a, d
 	ld [hli], a
 
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
+	jmp QueueCGBPalUpdate
 
 .FastFadePalettes:
 if !DEF(MONOCHROME)
@@ -1192,11 +1184,6 @@ RustleGrass:
 	dw Grass3GFX
 	dw Grass2GFX
 
-EnableCGBPalUpdate:
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
 ClearBGPals:
 
 ; Fill wBGPals2 and wOBPals2 with $0000 (black)
@@ -1216,8 +1203,7 @@ else
 	jr nz, .mono_loop
 endc
 
-	ld a, $1
-	ldh [hCGBPalUpdate], a
+	call QueueCGBPalUpdate
 	ld c, 64
 	jmp DelayFrames
 
