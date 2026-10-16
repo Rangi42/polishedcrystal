@@ -69,20 +69,14 @@ Scene_UnownA_Setup:
 ; Setup the next scene.
 	call ClearBGPals
 	call ClearSprites
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, UnownA.attrmap
-	call DecompressAndLoadTilemap
-	xor a
-	ldh [rVBK], a
 	ld hl, UnownsGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
 	ld hl, PulseGFX
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad128Tiles
-	ld hl, UnownA.tilemap
-	call DecompressAndLoadTilemap
+	ld hl, IntroBGMaps.UnownA
+	call DecompressAndLoadMaps
 	ld hl, UnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -125,12 +119,6 @@ Scene_ScrollOutdoors_Setup:
 ; More setup. Transition to the outdoor scene.
 	call ClearBGPals
 	call ClearSprites
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, Outdoors.attrmap
-	call DecompressAndLoadTilemap
-	xor a
-	ldh [rVBK], a
 	call SetupCommonScenery
 	call ResetLYOverrides
 	call QueueCGBPalUpdate
@@ -155,20 +143,14 @@ Scene_UnownHI_Setup:
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	ldh [hLCDCPointer], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, UnownHI.attrmap
-	call DecompressAndLoadTilemap
-	xor a
-	ldh [rVBK], a
 	ld hl, UnownsGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
 	ld hl, PulseGFX
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad128Tiles
-	ld hl, UnownHI.tilemap
-	call DecompressAndLoadTilemap
+	ld hl, IntroBGMaps.UnownHI
+	call DecompressAndLoadMaps
 	ld hl, UnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -232,13 +214,9 @@ Scene_ScrollThenSuicuneZoomingBy_Setup:
 
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, Outdoors.attrmap
-	call DecompressAndLoadTilemap
-
 	ld hl, PichuWooperGFX
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad128Tiles
-
 	xor a
 	ldh [rVBK], a
 	ld hl, SuicuneRunGFX
@@ -331,17 +309,11 @@ Scene_Unowns_Setup:
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	ldh [hLCDCPointer], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, Unowns.attrmap
-	call DecompressAndLoadTilemap
-	xor a
-	ldh [rVBK], a
 	ld hl, UnownsGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
-	ld hl, Unowns.tilemap
-	call DecompressAndLoadTilemap
+	ld hl, IntroBGMaps.Unowns
+	call DecompressAndLoadMaps
 	ld hl, UnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -431,12 +403,6 @@ Scene_SuicuneRunsThenJumps_Setup:
 ; Switch scenes again.
 	call ClearBGPals
 	call ClearSprites
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, Outdoors.attrmap
-	call DecompressAndLoadTilemap
-	xor a
-	ldh [rVBK], a
 	ld hl, SuicuneRunGFX
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad255Tiles
@@ -499,12 +465,6 @@ Scene_SuicuneAppears_Setup:
 ; Transition to a new scene.
 	call ClearBGPals
 	call ClearSprites
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, SuicuneJump.attrmap
-	call DecompressAndLoadTilemap
-	xor a
-	ldh [rVBK], a
 	ld hl, SuicuneJumpGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
@@ -515,8 +475,8 @@ Scene_SuicuneAppears_Setup:
 	ld hl, vTiles1 tile $00
 	lb bc, BANK(Grass4GFX), 1
 	call Request2bpp
-	ld hl, SuicuneJump.tilemap
-	call DecompressAndLoadTilemap
+	ld hl, IntroBGMaps.SuicuneJump
+	call DecompressAndLoadMaps
 	ld hl, SuicunePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -561,17 +521,11 @@ Scene_SuicuneCloseUp_Setup:
 ; ...
 	call ClearBGPals
 	call ClearSprites
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, SuicuneClose.attrmap
-	call DecompressAndLoadTilemap
-	xor a
-	ldh [rVBK], a
 	ld hl, SuicuneCloseGFX
 	ld de, vTiles1 tile $00
 	call DecompressAndLoad255Tiles
-	ld hl, SuicuneClose.tilemap
-	call DecompressAndLoadTilemap
+	ld hl, IntroBGMaps.SuicuneClose
+	call DecompressAndLoadMaps
 	ld hl, SuicuneClosePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -608,12 +562,6 @@ Scene_UnownsAroundSuicune_Setup:
 ; More setup.
 	call ClearBGPals
 	call ClearSprites
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, SuicuneBack.attrmap
-	call DecompressAndLoadTilemap
-	xor a
-	ldh [rVBK], a
 	ld hl, SuicuneBackGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
@@ -624,8 +572,8 @@ Scene_UnownsAroundSuicune_Setup:
 	ld hl, vTiles1 tile $7f
 	lb bc, BANK(Grass4GFX), 1
 	call Request2bpp
-	ld hl, SuicuneBack.tilemap
-	call DecompressAndLoadTilemap
+	ld hl, IntroBGMaps.SuicuneBack
+	call DecompressAndLoadMaps
 	ld hl, SuicunePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -740,17 +688,11 @@ Scene_SpellOut_Setup:
 ; Load the final scene.
 	call ClearPalettes
 	call ClearSprites
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, CrystalUnowns.attrmap
-	call DecompressAndLoadTilemap
-	xor a
-	ldh [rVBK], a
 	ld hl, CrystalUnownsGFX
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
-	ld hl, CrystalUnowns.tilemap
-	call DecompressAndLoadTilemap
+	ld hl, IntroBGMaps.CrystalUnowns
+	call DecompressAndLoadMaps
 	ld hl, CrystalUnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -1207,11 +1149,6 @@ endc
 	ld c, 64
 	jmp DelayFrames
 
-DecompressAndLoadTilemap:
-	debgcoord 0, 0
-	lb bc, BANK("Intro tilemaps"), TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE
-	jmp DecompressRequest2bpp
-
 DecompressAndLoad128Tiles:
 	lb bc, BANK(@), 128
 	jmp DecompressRequest2bpp
@@ -1269,8 +1206,8 @@ SetupCommonScenery:
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
 
-	ld hl, Outdoors.tilemap
-	call DecompressAndLoadTilemap
+	ld hl, IntroBGMaps.Outdoors
+	call DecompressAndLoadMaps
 
 	ld hl, BackgroundPalette
 	ld de, wBGPals1
@@ -1341,38 +1278,30 @@ INCBIN "gfx/intro/grass3.2bpp"
 Grass4GFX:
 INCBIN "gfx/intro/grass4.2bpp"
 
-PUSHS "Intro tilemaps", ROMX
+DecompressAndLoadMaps:
+	ld a, 1 ; Load the attrmap.
+	ldh [rVBK], a
+	debgcoord 0, 0
+	lb bc, BANK("Intro BG maps"), TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE
+	call DecompressRequest2bpp
 
-UnownA:
-.tilemap: INCBIN "gfx/intro/unown_a.tilemap.lzp"
-.attrmap: INCBIN "gfx/intro/unown_a.attrmap.lzp"
+	xor a ; Load the tilemap.
+	ldh [rVBK], a
+	debgcoord 0, SCREEN_HEIGHT, wDecompressScratch
+	hlbgcoord 0, 0 ; Different calling convention than `DecompressRequest2bpp`!
+	ld c, TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE ; B doesn't matter since the source isn't in ROM.
+	jmp Request2bppInWRA6
 
-Outdoors:
-.tilemap: INCBIN "gfx/intro/outdoors.tilemap.lzp"
-.attrmap: INCBIN "gfx/intro/outdoors.attrmap.lzp"
+PUSHS "Intro BG maps", ROMX
 
-UnownHI:
-.tilemap: INCBIN "gfx/intro/unown_hi.tilemap.lzp"
-.attrmap: INCBIN "gfx/intro/unown_hi.attrmap.lzp"
-
-Unowns:
-.tilemap: INCBIN "gfx/intro/unowns.tilemap.lzp"
-.attrmap: INCBIN "gfx/intro/unowns.attrmap.lzp"
-
-SuicuneJump:
-.tilemap: INCBIN "gfx/intro/suicune_jump.tilemap.lzp"
-.attrmap: INCBIN "gfx/intro/suicune_jump.attrmap.lzp"
-
-SuicuneClose:
-.tilemap: INCBIN "gfx/intro/suicune_close.tilemap.lzp"
-.attrmap: INCBIN "gfx/intro/suicune_close.attrmap.lzp"
-
-SuicuneBack:
-.tilemap: INCBIN "gfx/intro/suicune_back.tilemap.lzp"
-.attrmap: INCBIN "gfx/intro/suicune_back.attrmap.lzp"
-
-CrystalUnowns:
-.tilemap: INCBIN "gfx/intro/crystal_unowns.tilemap.lzp"
-.attrmap: INCBIN "gfx/intro/crystal_unowns.attrmap.lzp"
+IntroBGMaps: ; Each of those contains the attrmap followed by the tilemap.
+.UnownA:        INCBIN "gfx/intro/unown_a.bgmaps.lzp"
+.Outdoors:      INCBIN "gfx/intro/outdoors.bgmaps.lzp"
+.UnownHI:       INCBIN "gfx/intro/unown_hi.bgmaps.lzp"
+.Unowns:        INCBIN "gfx/intro/unowns.bgmaps.lzp"
+.SuicuneJump:   INCBIN "gfx/intro/suicune_jump.bgmaps.lzp"
+.SuicuneClose:  INCBIN "gfx/intro/suicune_close.bgmaps.lzp"
+.SuicuneBack:   INCBIN "gfx/intro/suicune_back.bgmaps.lzp"
+.CrystalUnowns: INCBIN "gfx/intro/crystal_unowns.bgmaps.lzp"
 
 POPS

@@ -210,6 +210,8 @@ gfx/evo/bubble.2bpp: tools/gfx += --trim-whitespace
 gfx/font/%.1bpp: tools/gfx += --trim-whitespace
 gfx/font/space.2bpp: tools/gfx =
 
+gfx/intro/%.bgmaps: gfx/intro/%.attrmap gfx/intro/%.tilemap ; $Qcat $^ > $@
+
 gfx/mail/dragonite.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/flower_mail_border.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/large_note.1bpp: tools/gfx += --remove-whitespace
