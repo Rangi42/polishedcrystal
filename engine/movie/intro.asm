@@ -70,7 +70,7 @@ NextIntroScene:
 
 Scene_UnownA_Setup:
 ; Setup the next scene.
-	call ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
 	ld hl, UnownsGFX
 	ld de, vTiles2 tile $00
@@ -110,7 +110,7 @@ Scene_UnownA:
 
 Scene_ScrollOutdoors_Setup:
 ; More setup. Transition to the outdoor scene.
-	call ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
 	; Load the outdoor map to BG map 1, where it will stay for the next few scenes.
 	ld hl, IntroBGMaps.Outdoors
@@ -142,7 +142,7 @@ Scene_ScrollOutdoors:
 
 Scene_UnownHI_Setup:
 ; Go back to the Unown.
-	call ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
 	ld hl, rIE
 	res B_IE_STAT, [hl]
@@ -205,7 +205,7 @@ Scene_UnownHI:
 
 Scene_ScrollThenSuicuneZoomingBy_Setup:
 ; Back to the outdoor scene.
-	call ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
 
 	xor a
@@ -300,7 +300,7 @@ Scene_GrassRustleThenWooperAndPichu:
 
 Scene_Unowns_Setup:
 ; Back to Unown again.
-	call ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
 	ld hl, rIE
 	res B_IE_STAT, [hl]
@@ -389,7 +389,7 @@ Scene_Unowns:
 
 Scene_SuicuneRunsThenJumps_Setup:
 ; Switch scenes again.
-	call ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
 	ld hl, SuicuneRunGFX
 	ld de, vTiles0 tile $00
@@ -451,7 +451,7 @@ Scene_SuicuneRunsThenJumps:
 
 Scene_SuicuneAppears_Setup:
 ; Transition to a new scene.
-	call ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
 	ld hl, SuicuneJumpGFX
 	ld de, vTiles2 tile $00
@@ -503,7 +503,7 @@ Scene_SuicuneAppears:
 
 Scene_SuicuneCloseUp_Setup:
 ; ...
-	call ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
 	ld hl, SuicuneCloseGFX
 	ld de, vTiles1 tile $00
@@ -535,7 +535,7 @@ Scene_SuicuneCloseUp:
 
 Scene_UnownsAroundSuicune_Setup:
 ; More setup.
-	call ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
 	ld hl, SuicuneBackGFX
 	ld de, vTiles2 tile $00
@@ -1073,7 +1073,7 @@ RustleGrass:
 	ldh [hRequested2bpp], a
 	ret
 
-ClearBGPals:
+CutToBlackAndPause:
 
 ; Fill wBGPals2 and wOBPals2 with $0000 (black)
 	ld hl, wBGPals2
