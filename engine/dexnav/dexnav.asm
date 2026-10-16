@@ -1484,6 +1484,24 @@ DexNav_ShowPreview:
 	hlcoord 2, DEXNAV_PREVIEW_Y + 5
 	rst PlaceString
 
+	; Held item, "???" until the species' search level is high enough (D27)
+	ld de, .ItemString
+	hlcoord 1, DEXNAV_PREVIEW_Y + 10
+	rst PlaceString
+	call DexNav_GetSearchTier
+	cp DEXNAV_ITEM_PREVIEW_TIER
+	ld de, .UnknownString
+	jr c, .got_item
+	ld a, [wDexNavHuntItem]
+	and a
+	ld de, .NoneString
+	jr z, .got_item
+	ld [wNamedObjectIndex], a
+	call GetItemName
+.got_item
+	hlcoord 7, DEXNAV_PREVIEW_Y + 10
+	rst PlaceString
+
 	; Ability. GetAbility reads the ability bits and form from a
 	; personality; it gives 0 if abilities are off (new-game option).
 	ld a, [wDexNavHuntAbility]
@@ -1520,6 +1538,10 @@ DexNav_ShowPreview:
 	db "Potential:<LNBRK><LNBRK>Egg move:@"
 .NoneString:
 	db "-@"
+.ItemString:
+	db "Item:@"
+.UnknownString:
+	db "???@"
 .AbilityString:
 	db "Ability:@"
 .HiddenAbilityString:

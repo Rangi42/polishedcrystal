@@ -82,6 +82,8 @@ DEF DEXNAV_PREVIEW_DISTANCE EQU 1
 ; The preview page's mini (bottom-left tile) and name row
 DEF DEXNAV_PREVIEW_X EQU 1
 DEF DEXNAV_PREVIEW_Y EQU 2
+; The preview shows the held item from this search level tier on (level 10)
+DEF DEXNAV_ITEM_PREVIEW_TIER EQU 2
 ; Potential: up to this many perfect stats (shown as stars, D32)
 DEF DEXNAV_MAX_POTENTIAL EQU 3
 ; The level bonus never goes past this (D25); the level stays <= MAX_LEVEL.
