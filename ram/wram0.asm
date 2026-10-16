@@ -1461,7 +1461,8 @@ wInitialOptions2::
 ; bit 2: no exp on/off (cannot be set together with scaled exp)
 ; bit 3: use RTC
 ; bit 4: evolve in battle
-; bits 5-6: unused
+; bit 5: unused
+; bit 6: no random encounters during a DexNav hunt
 ; bit 7: ask to reset at start
 	db
 wOptionsEnd::
