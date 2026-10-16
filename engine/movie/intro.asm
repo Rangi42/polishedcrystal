@@ -303,37 +303,10 @@ Scene_GrassRustleThenWooperAndPichu_Setup:
 	res B_IE_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
-	call ClearSprites
-	hlcoord 0, 0, wAttrmap
-	; first 12 rows have palette 1
-	ld bc, 12 * SCREEN_WIDTH
-	ld a, $1
-	rst ByteFill
-	; middle 3 rows have palette 2
-	ld bc, 3 * SCREEN_WIDTH
-	ld a, $2
-	rst ByteFill
-	; last three rows have palette 3
-	ld bc, 3 * SCREEN_WIDTH
-	ld a, $3
-	rst ByteFill
-	ld a, TRANSFER_ATTRMAP
-	ldh [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
-	ld a, $c
-	ldh [hBGMapAddress], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ldh [hBGMapAddress], a
-	ld [wGlobalAnimXOffset], a
-	xor a
 	ld [wIntroSceneFrameCounter], a
+	call ClearSprites
+	ld a, $c
+	ld [wGlobalAnimXOffset], a
 	jmp NextIntroScene
 
 Scene_GrassRustleThenWooperAndPichu:
