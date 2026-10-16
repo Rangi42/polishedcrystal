@@ -1516,6 +1516,8 @@ wDexNavListMarks:: ds DEXNAV_LIST_MAX
 wDexNavNewMarks:: db
 ; Which tab the list shows (DEXNAV_TAB_*)
 wDexNavTab:: db
+; The search level the info panel is showing
+wDexNavShownLevel:: db
 ; Colors 1-3 of a list row's mini palette, before they're copied in
 wDexNavMiniPal:: ds 3 * 2
 NEXTU

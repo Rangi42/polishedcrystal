@@ -551,13 +551,13 @@ DexNav_ChooseTarget:
 
 .MenuData:
 	db SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_CALL_FUNCTION1_CANCEL \
-		| SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT ; flags
+		| SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT 		| SCROLLINGMENU_ENABLE_FUNCTION3 ; flags
 	db DEXNAV_MENU_ROWS, 0 ; rows, columns
 	db SCROLLINGMENU_ITEMS_QUANTITY ; species + form
 	dba wDexNavList
 	dba .PlaceSpeciesName
 	dba DoNothing
-	dba DoNothing
+	dba DexNav_ShowSearchLevel
 
 .PlaceSpeciesName:
 ; Each row has the species' mini to the left of its name, and its marks at
@@ -565,6 +565,9 @@ DexNav_ChooseTarget:
 ; the Cancel row too.
 	push de
 	call DexNav_DrawListMarks
+	pop de
+	push de
+	call DexNav_DrawChainMark
 	pop de
 	push de
 	call DexNav_DrawListMini
@@ -1442,16 +1445,71 @@ DexNav_OpenPage:
 	hlcoord 0, DEXNAV_PROMPT_Y
 	lb bc, 2, SCREEN_WIDTH - 2
 	call Textbox
-	ld de, .PromptString
+	; Info panel (D30): the chain, and the highlighted species' search level
+	; (DexNav_ShowSearchLevel).
+	ld de, .PanelString
 	hlcoord 1, DEXNAV_PROMPT_Y + 1
 	rst PlaceString
+	ld de, wDexNavChain
+	hlcoord DEXNAV_CHAIN_NUM_X, DEXNAV_PROMPT_Y + 1
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
+	call PrintNum
 	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call ApplyAttrAndTilemapInVBlank
 	farjp FadeInPalettes
 
-.PromptString:
-	db "Search for which<LNBRK>#mon?@"
+.PanelString:
+	db "Chain:<LNBRK>Search level:@"
+
+DexNav_ShowSearchLevel:
+; Scrolling menu function 3, when the cursor moves: show the highlighted
+; species' search level in the info panel (nothing on Cancel).
+	hlcoord DEXNAV_LEVEL_NUM_X, DEXNAV_PROMPT_Y + 2
+	ld a, ' '
+	ld [hli], a
+	ld [hli], a
+	ld [hld], a
+	dec hl
+	ld a, [wMenuSelection]
+	cp CANCEL
+	ret z
+	push hl
+	ld c, a
+	ld a, [wMenuSelectionQuantity]
+	ld b, a
+	call DexNav_GetMonSearchLevelPointer
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wDexNavSearchLevels)
+	ldh [rWBK], a
+	ld a, [hl]
+	pop bc
+	ld c, a
+	ld a, b
+	ldh [rWBK], a
+	ld a, c
+	ld [wDexNavShownLevel], a
+	pop hl
+	ld de, wDexNavShownLevel
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
+	jmp PrintNum
+
+DexNav_DrawChainMark:
+; The chain's species gets a circle between its mini and its name (D30).
+	ld a, [wDexNavChain]
+	and a
+	ret z
+	ld a, [wMenuSelection]
+	ld c, a
+	ld a, [wMenuSelectionQuantity]
+	ld b, a
+	call DexNav_IsChainSpecies
+	ret nz
+	ld hl, DEXNAV_NAME_OFFSET - 1
+	add hl, de
+	ld [hl], DEXNAV_CHAIN_TILE
+	ret
 
 DexNav_FinishListBox:
 ; Label the box's top border with the tab, and give the list rows' minis BG
@@ -1520,7 +1578,7 @@ endr
 .time_icons
 	assert DEXNAV_TIME_TILES == DEXNAV_GRAY_ROD_TILES + DEXNAV_NUM_MARKS
 	ld hl, DexNavTimeIconsGFX
-	ld c, DEXNAV_NUM_MARKS * TILE_SIZE / 2
+	ld c, (DEXNAV_NUM_MARKS + 1) * TILE_SIZE / 2 ; and the chain icon
 .dark_loop
 	ld a, [hli]
 	ld [de], a
@@ -1529,7 +1587,7 @@ endr
 	inc de
 	dec c
 	jr nz, .dark_loop
-	assert DEXNAV_GRAY_TIME_TILES == DEXNAV_TIME_TILES + DEXNAV_NUM_MARKS
+	assert DEXNAV_GRAY_TIME_TILES == DEXNAV_CHAIN_TILE + 1
 	ld hl, DexNavTimeIconsGFX
 	ld c, DEXNAV_NUM_MARKS * TILE_SIZE / 2
 .gray_loop
@@ -1544,7 +1602,7 @@ endr
 	ret
 
 DexNavTimeIconsGFX:
-; Morning (sunrise), day (sun), night (moon), 1bpp
+; Morning (sunrise), day (sun), night (moon), then the chain icon; 1bpp
 	db %00010000
 	db %01000100
 	db %00000000
@@ -1570,6 +1628,18 @@ DexNavTimeIconsGFX:
 	db %11110000
 	db %01111000
 	db %00111100
+	db %00000000
+
+	; The chain's species (dark only). Its right columns are blank so it
+	; doesn't touch the name.
+	assert DEXNAV_CHAIN_TILE == DEXNAV_TIME_TILES + DEXNAV_NUM_MARKS
+	db %00000000
+	db %01111000
+	db %11111100
+	db %11111100
+	db %11111100
+	db %11111100
+	db %01111000
 	db %00000000
 
 DexNav_DrawListMarks:
