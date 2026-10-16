@@ -70,6 +70,10 @@ ProfOaksAide1Script:
 	line "seen, then sneak"
 	cont "up on it!"
 
+	para "Use it again right"
+	line "next to it to see"
+	cont "what it's like!"
+
 	para "Register it to"
 	line "Select to use it"
 	cont "on the go."
