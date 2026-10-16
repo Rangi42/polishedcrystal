@@ -295,10 +295,6 @@ DexNav_ChooseTarget:
 	ld b, 1
 .got_cursor
 	ld a, b
-	cp DEXNAV_MENU_ROWS + 1
-	jr c, .cursor_ok
-	ld a, 1
-.cursor_ok
 	ld [wDexNavListCursor], a
 
 	ldh a, [hBGMapMode]
@@ -311,14 +307,24 @@ DexNav_ChooseTarget:
 .menu_loop
 	ld hl, .MenuHeader
 	call CopyMenuHeader
+	; Scroll so the remembered entry is on screen.
 	ld a, [wDexNavListCursor]
+	ld c, 0
+	cp DEXNAV_MENU_ROWS + 1
+	jr c, .got_scroll
+	sub DEXNAV_MENU_ROWS
+	ld c, a
+	ld a, DEXNAV_MENU_ROWS
+.got_scroll
 	ld [wMenuCursorBuffer], a
-	xor a
+	ld a, c
 	ld [wMenuScrollPosition], a
 	call InitScrollingMenu
 	call DexNav_HideSpritesUnderMenu
 	call ScrollingMenu
-	ld a, [wMenuCursorY]
+	ld a, [wMenuScrollPosition]
+	ld hl, wMenuCursorY
+	add [hl]
 	ld [wDexNavListCursor], a
 	ld a, [wMenuJoypad]
 	cp PAD_B
@@ -341,6 +347,33 @@ DexNav_ChooseTarget:
 	jr .menu_loop
 
 .seen
+	push bc
+	call ExitMenu
+	pop bc
+	pop af
+	ld [wMenuScrollPosition], a
+	pop af
+	ldh [hBGMapMode], a
+
+	; The chain is for one species (D24), so ask before searching for another.
+	ld a, [wDexNavChain]
+	and a
+	jr z, .confirmed
+	call DexNav_IsChainSpecies
+	jr z, .confirmed
+	push bc
+	ld a, c
+	ld [wNamedObjectIndex], a
+	ld a, b
+	ld [wNamedObjectIndex + 1], a
+	call GetPokemonName
+	ld hl, .SearchInsteadText
+	call PrintText
+	call YesNoBox
+	pop bc
+	ret c
+.confirmed
+
 	; Searching for a different species doesn't need the one-step cooldown.
 	ld a, [wDexNavTargetSpecies]
 	cp c
@@ -360,11 +393,6 @@ DexNav_ChooseTarget:
 	ld [wDexNavHuntForm], a
 	xor a
 	ld [wDexNavHuntFlags], a
-	call ExitMenu
-	pop af
-	ld [wMenuScrollPosition], a
-	pop af
-	ldh [hBGMapMode], a
 
 	call DexNav_ChooseWildEncounter
 	jr nz, .not_here
@@ -414,6 +442,13 @@ DexNav_ChooseTarget:
 
 .StopSearchText:
 	text "Stop searching"
+	line "for "
+	text_ram wStringBuffer1
+	text "?"
+	done
+
+.SearchInsteadText:
+	text "Search instead"
 	line "for "
 	text_ram wStringBuffer1
 	text "?"
@@ -1013,8 +1048,12 @@ DexNav_EndHunt:
 	ret
 
 DexNav_BreakHunt:
-; End the hunt and the chain (flee, timeout, cancel).
+; End the hunt (flee, timeout, cancel). A searched hunt ends the chain too;
+; one that appeared on its own doesn't (D24).
 	call DexNav_EndHunt
+	ld a, [wDexNavHuntFlags]
+	bit DEXNAV_HUNT_SPONTANEOUS_F, a
+	ret nz
 	; fallthrough
 
 DexNav_BreakChain:
@@ -1024,7 +1063,8 @@ DexNav_BreakChain:
 
 DexNav_UpdateChain:
 ; Called from ExitBattle. Winning or catching in a DexNav battle extends the
-; chain (CFRU: 0 -> 2, then +1, and 100 wraps to 1); any other battle ends it.
+; chain (CFRU: 0 -> 2, then +1, and 100 wraps to 1) if it's the chain's
+; species, or starts a new chain for it (ORAS, D24); any other battle ends it.
 	ld a, [wBattleType]
 	cp BATTLETYPE_DEXNAV
 	jr nz, DexNav_BreakChain
@@ -1032,18 +1072,37 @@ DexNav_UpdateChain:
 	and ~BATTLERESULT_BITMASK
 	assert WIN == 0
 	jr nz, DexNav_BreakChain
+	call DexNav_GetHuntMon
 	ld hl, wDexNavChain
 	ld a, [hl]
 	and a
-	ld a, DEXNAV_CHAIN_START
-	jr z, .got_chain
+	jr z, .new_chain
+	call DexNav_IsChainSpecies
+	jr nz, .new_chain
 	ld a, [hl]
 	add DEXNAV_CHAIN_STEP
 	cp DEXNAV_MAX_CHAIN + 1
 	jr c, .got_chain
 	ld a, 1
+	jr .got_chain
+
+.new_chain
+	ld a, c
+	ld [wDexNavChainSpecies], a
+	ld a, b
+	ld [wDexNavChainForm], a
+	ld a, DEXNAV_CHAIN_START
 .got_chain
 	ld [hl], a
+	ret
+
+DexNav_IsChainSpecies:
+; Returns z if species c / form b is the chain's.
+	ld a, [wDexNavChainSpecies]
+	cp c
+	ret nz
+	ld a, [wDexNavChainForm]
+	cp b
 	ret
 
 DexNav_HandleNewMap:
@@ -1467,9 +1526,10 @@ DexNav_RollBoosts:
 	ld [wDexNavHuntEggMove], a
 	ld [wDexNavHuntShinyPasses], a
 
-	; Chain boosts (CFRU), whatever the search level
+	; Chain boosts (CFRU), whatever the search level, but only from a chain
+	; for this species (D24)
 	; Level: +chain / 5, and sometimes +10 more
-	ld a, [wDexNavChain]
+	call DexNav_GetHuntChain
 	ld b, -1
 .divide_by_5
 	inc b
@@ -1484,7 +1544,7 @@ DexNav_RollBoosts:
 	ld a, b
 	ld [wDexNavHuntLevelBonus], a
 	; Shiny passes: some at the chain milestones, and sometimes a few more
-	ld a, [wDexNavChain]
+	call DexNav_GetHuntChain
 	ld b, DEXNAV_CHAIN_PASSES_1
 	cp DEXNAV_CHAIN_MILESTONE_1
 	jr z, .got_chain_passes
@@ -1570,6 +1630,17 @@ DexNav_RollBoosts:
 .got_potential
 	ld a, d
 	ld [wDexNavHuntPotential], a
+	ret
+
+DexNav_GetHuntChain:
+; Return a = the chain if it's for the hunt species, else 0. Preserves b.
+	push bc
+	call DexNav_GetHuntMon
+	call DexNav_IsChainSpecies
+	pop bc
+	ld a, 0
+	ret nz
+	ld a, [wDexNavChain]
 	ret
 
 DexNav_RollChainBonus:
