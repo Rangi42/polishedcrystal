@@ -95,10 +95,6 @@ IntroScene1:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
 	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
@@ -191,10 +187,6 @@ IntroScene5:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
 	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
@@ -401,10 +393,6 @@ IntroScene11:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
 	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
@@ -588,10 +576,6 @@ IntroScene15:
 	ldh [hSCX], a
 	ld a, $90
 	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
 	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	depixel 8, 5
@@ -649,10 +633,6 @@ IntroScene17:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
 	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
@@ -712,10 +692,6 @@ IntroScene19:
 	ldh [hSCX], a
 	ld a, $d8
 	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
 	call ClearSpriteAnims
 	ld hl, wSpriteAnimDict
 	xor a
@@ -846,10 +822,6 @@ IntroScene26:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
 	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
