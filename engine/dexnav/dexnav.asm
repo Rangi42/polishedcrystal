@@ -322,9 +322,7 @@ DexNav_ChooseTarget:
 	push af
 	ld a, [wMenuScrollPosition]
 	push af
-	call LoadStandardMenuHeader
-	ld hl, .WhichMonText
-	call PrintText
+	call DexNav_OpenPage
 .menu_loop
 	ld hl, .MenuHeader
 	call CopyMenuHeader
@@ -341,7 +339,6 @@ DexNav_ChooseTarget:
 	ld a, c
 	ld [wMenuScrollPosition], a
 	call InitScrollingMenu
-	call DexNav_HideSpritesUnderMenu
 	call ScrollingMenu
 	ld a, [wMenuScrollPosition]
 	ld hl, wMenuCursorY
@@ -369,7 +366,7 @@ DexNav_ChooseTarget:
 
 .seen
 	push bc
-	call ExitMenu
+	call ExitAllMenus
 	pop bc
 	pop af
 	ld [wMenuScrollPosition], a
@@ -454,7 +451,7 @@ DexNav_ChooseTarget:
 	jmp PrintText
 
 .cancel
-	call ExitMenu
+	call ExitAllMenus
 	pop af
 	ld [wMenuScrollPosition], a
 	pop af
@@ -495,7 +492,7 @@ DexNav_ChooseTarget:
 .MenuHeader:
 	db MENU_BACKUP_TILES
 	; The border is drawn one tile outside these coords (see InitScrollingMenu).
-	menu_coords DEXNAV_MENU_LEFT, 1, SCREEN_WIDTH - 2, 1 + DEXNAV_MENU_ROWS * 2
+	menu_coords 1, DEXNAV_MENU_TOP, SCREEN_WIDTH - 2, DEXNAV_MENU_TOP + DEXNAV_MENU_ROWS * 2
 	dw .MenuData
 	db 1 ; default option
 
@@ -532,11 +529,6 @@ DexNav_ChooseTarget:
 
 .UnseenString:
 	db "?????@"
-
-.WhichMonText:
-	text "Search for which"
-	line "#mon?"
-	done
 
 .NotHereText:
 	text_ram wStringBuffer1
@@ -1337,31 +1329,46 @@ DexNav_GetTargetName:
 	ld [wNamedObjectIndex + 1], a
 	jmp GetPokemonName
 
-DexNav_HideSpritesUnderMenu:
-; Hide sprites (including the player) that would draw over the list,
-; like ClearSpritesUnderStartMenu.
-	ld hl, wShadowOAMSprite00XCoord
-	ld de, OBJ_SIZE
-	ld c, OAM_COUNT
-.loop
+DexNav_OpenPage:
+; Fade to the full-screen list page: this area's name, the list box (drawn
+; by the scrolling menu) and a prompt. ExitAllMenus returns to the map.
+	call FadeToMenu_BackupSprites
+	call ClearTileMap
+	hlcoord 0, 0
+	lb bc, 1, SCREEN_WIDTH - 2
+	call Textbox
+	call GetCurrentLandmark
+	ld e, a
+	farcall GetLandmarkName
+	; Some names have a line break ('¯'); show them on one line.
+	ld hl, wStringBuffer1
+.name_loop
 	ld a, [hl]
-	cp (DEXNAV_MENU_LEFT - 1) * TILE_WIDTH ; left border
-	jr c, .next
-	dec l
-	ld [hl], OAM_YCOORD_HIDDEN
-	inc l
-.next
-	add hl, de
-	dec c
-	jr nz, .loop
-	ldh a, [hOAMUpdate]
-	push af
-	ld a, TRUE
-	ldh [hOAMUpdate], a
-	call DelayFrame
-	pop af
-	ldh [hOAMUpdate], a
-	ret
+	cp '@'
+	jr z, .got_name
+	cp '¯'
+	jr nz, .next_char
+	ld [hl], ' '
+.next_char
+	inc hl
+	jr .name_loop
+.got_name
+	ld de, wStringBuffer1
+	hlcoord 1, 1
+	rst PlaceString
+	hlcoord 0, DEXNAV_PROMPT_Y
+	lb bc, 2, SCREEN_WIDTH - 2
+	call Textbox
+	ld de, .PromptString
+	hlcoord 1, DEXNAV_PROMPT_Y + 1
+	rst PlaceString
+	ld a, CGB_PLAIN
+	call GetCGBLayout
+	call ApplyAttrAndTilemapInVBlank
+	farjp FadeInPalettes
+
+.PromptString:
+	db "Search for which<LNBRK>#mon?@"
 
 DexNav_BuildList:
 ; Fill wDexNavList with each distinct species/form in this area's table for
