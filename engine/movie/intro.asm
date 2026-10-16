@@ -72,7 +72,7 @@ IntroScene1:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap01
+	ld hl, UnownA.attrmap
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -82,13 +82,13 @@ IntroScene1:
 	ld hl, IntroPulseGFX
 	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap02
+	ld hl, UnownA.tilemap
 	call Intro_DecompressAndLoadTilemap
-	ld hl, Palette_365ad
+	ld hl, IntroUnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
 	rst CopyBytes
-	ld hl, Palette_365ad
+	ld hl, IntroUnownsPalette
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
@@ -135,7 +135,7 @@ IntroScene3:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap03
+	ld hl, Outdoors.attrmap
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -168,7 +168,7 @@ IntroScene5:
 	ldh [hLCDCPointer], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap05
+	ld hl, UnownHI.attrmap
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -178,13 +178,13 @@ IntroScene5:
 	ld hl, IntroPulseGFX
 	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap06
+	ld hl, UnownHI.tilemap
 	call Intro_DecompressAndLoadTilemap
-	ld hl, Palette_365ad
+	ld hl, IntroUnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
 	rst CopyBytes
-	ld hl, Palette_365ad
+	ld hl, IntroUnownsPalette
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
@@ -250,7 +250,7 @@ IntroScene7:
 
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap03
+	ld hl, Outdoors.attrmap
 	call Intro_DecompressAndLoadTilemap
 
 	ld hl, IntroPichuWooperGFX
@@ -381,20 +381,20 @@ IntroScene11:
 	ldh [hLCDCPointer], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap07
+	ld hl, Unowns.attrmap
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
 	ld hl, IntroUnownsGFX
 	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap08
+	ld hl, Unowns.tilemap
 	call Intro_DecompressAndLoadTilemap
-	ld hl, Palette_365ad
+	ld hl, IntroUnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
 	rst CopyBytes
-	ld hl, Palette_365ad
+	ld hl, IntroUnownsPalette
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
@@ -488,7 +488,7 @@ IntroScene13:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap03
+	ld hl, Outdoors.attrmap
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -559,7 +559,7 @@ IntroScene15:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap09
+	ld hl, SuicuneJump.attrmap
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -573,14 +573,14 @@ IntroScene15:
 	ld hl, vTiles1 tile $00
 	lb bc, BANK(IntroGrass4GFX), 1
 	call Request2bpp
-	ld hl, IntroTilemap10
+	ld hl, SuicuneJump.tilemap
 	call Intro_DecompressAndLoadTilemap
 	call Intro_LoadTilemap
-	ld hl, Palette_e77dd
+	ld hl, IntroSuicunePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
 	rst CopyBytes
-	ld hl, Palette_e77dd
+	ld hl, IntroSuicunePalette
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
@@ -629,20 +629,20 @@ IntroScene17:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap11
+	ld hl, SuicuneClose.attrmap
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
 	ld hl, IntroSuicuneCloseGFX
 	ld de, vTiles1 tile $00
 	call Intro_DecompressRequest2bpp_255Tiles
-	ld hl, IntroTilemap12
+	ld hl, SuicuneClose.tilemap
 	call Intro_DecompressAndLoadTilemap
-	ld hl, Palette_e6d6d
+	ld hl, IntroSuicuneClosePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
 	rst CopyBytes
-	ld hl, Palette_e6d6d
+	ld hl, IntroSuicuneClosePalette
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
@@ -683,7 +683,7 @@ IntroScene19:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap13
+	ld hl, SuicuneBack.attrmap
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -697,14 +697,14 @@ IntroScene19:
 	ld hl, vTiles1 tile $7f
 	lb bc, BANK(IntroGrass4GFX), 1
 	call Request2bpp
-	ld hl, IntroTilemap14
+	ld hl, SuicuneBack.tilemap
 	call Intro_DecompressAndLoadTilemap
 	call Intro_LoadTilemap
-	ld hl, Palette_e77dd
+	ld hl, IntroSuicunePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
 	rst CopyBytes
-	ld hl, Palette_e77dd
+	ld hl, IntroSuicunePalette
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
@@ -826,20 +826,20 @@ IntroScene26:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap15
+	ld hl, CrystalUnowns.attrmap
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
 	ld hl, IntroCrystalUnownsGFX
 	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap17
+	ld hl, CrystalUnowns.tilemap
 	call Intro_DecompressAndLoadTilemap
-	ld hl, Palette_e679d
+	ld hl, IntroCrystalUnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
 	rst CopyBytes
-	ld hl, Palette_e679d
+	ld hl, IntroCrystalUnownsPalette
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
@@ -1412,15 +1412,15 @@ Intro_SetupCommonScenery:
 	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 
-	ld hl, IntroTilemap04
+	ld hl, Outdoors.tilemap
 	call Intro_DecompressAndLoadTilemap
 
-	ld hl, Palette_e5edd
+	ld hl, IntroBackgroundPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
 	rst CopyBytes
 
-	ld hl, Palette_e5edd
+	ld hl, IntroBackgroundPalette
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
@@ -1439,7 +1439,7 @@ Intro_SetupCommonScenery:
 IntroBackgroundGFX:
 INCBIN "gfx/intro/background.2bpp.lzp"
 
-Palette_e5edd:
+IntroBackgroundPalette:
 INCLUDE "gfx/intro/background.pal"
 
 IntroUnownsGFX:
@@ -1448,19 +1448,19 @@ INCBIN "gfx/intro/unowns.2bpp.lzp"
 IntroPulseGFX:
 INCBIN "gfx/intro/pulse.2bpp.lzp"
 
-Palette_365ad:
+IntroUnownsPalette:
 INCLUDE "gfx/intro/unowns.pal"
 
 IntroCrystalUnownsGFX:
 INCBIN "gfx/intro/crystal_unowns.2bpp.lzp"
 
-Palette_e679d:
+IntroCrystalUnownsPalette:
 INCLUDE "gfx/intro/crystal_unowns.pal"
 
 IntroSuicuneCloseGFX:
 INCBIN "gfx/intro/suicune_close.2bpp.lzp"
 
-Palette_e6d6d:
+IntroSuicuneClosePalette:
 INCLUDE "gfx/intro/suicune_close.pal"
 
 IntroSuicuneJumpGFX:
@@ -1469,7 +1469,7 @@ INCBIN "gfx/intro/suicune_jump.2bpp.lzp"
 IntroSuicuneBackGFX:
 INCBIN "gfx/intro/suicune_back.2bpp.lzp"
 
-Palette_e77dd:
+IntroSuicunePalette:
 INCLUDE "gfx/intro/suicune.pal"
 
 IntroUnownBackGFX:
@@ -1486,21 +1486,36 @@ INCBIN "gfx/intro/grass4.2bpp"
 
 PUSHS "Intro tilemaps", ROMX
 
-IntroTilemap01: INCBIN "gfx/intro/01.tilemap.lzp"
-IntroTilemap02: INCBIN "gfx/intro/02.tilemap.lzp"
-IntroTilemap03: INCBIN "gfx/intro/03.tilemap.lzp"
-IntroTilemap04: INCBIN "gfx/intro/04.tilemap.lzp"
-IntroTilemap05: INCBIN "gfx/intro/05.tilemap.lzp"
-IntroTilemap06: INCBIN "gfx/intro/06.tilemap.lzp"
-IntroTilemap07: INCBIN "gfx/intro/07.tilemap.lzp"
-IntroTilemap08: INCBIN "gfx/intro/08.tilemap.lzp"
-IntroTilemap09: INCBIN "gfx/intro/09.tilemap.lzp"
-IntroTilemap10: INCBIN "gfx/intro/10.tilemap.lzp"
-IntroTilemap11: INCBIN "gfx/intro/11.tilemap.lzp"
-IntroTilemap12: INCBIN "gfx/intro/12.tilemap.lzp"
-IntroTilemap13: INCBIN "gfx/intro/13.tilemap.lzp"
-IntroTilemap14: INCBIN "gfx/intro/14.tilemap.lzp"
-IntroTilemap15: INCBIN "gfx/intro/15.tilemap.lzp"
-IntroTilemap17: INCBIN "gfx/intro/17.tilemap.lzp"
+UnownA:
+.tilemap: INCBIN "gfx/intro/unown_a.tilemap.lzp"
+.attrmap: INCBIN "gfx/intro/unown_a.attrmap.lzp"
+
+Outdoors:
+.tilemap: INCBIN "gfx/intro/outdoors.tilemap.lzp"
+.attrmap: INCBIN "gfx/intro/outdoors.attrmap.lzp"
+
+UnownHI:
+.tilemap: INCBIN "gfx/intro/unown_hi.tilemap.lzp"
+.attrmap: INCBIN "gfx/intro/unown_hi.attrmap.lzp"
+
+Unowns:
+.tilemap: INCBIN "gfx/intro/unowns.tilemap.lzp"
+.attrmap: INCBIN "gfx/intro/unowns.attrmap.lzp"
+
+SuicuneJump:
+.tilemap: INCBIN "gfx/intro/suicune_jump.tilemap.lzp"
+.attrmap: INCBIN "gfx/intro/suicune_jump.attrmap.lzp"
+
+SuicuneClose:
+.tilemap: INCBIN "gfx/intro/suicune_close.tilemap.lzp"
+.attrmap: INCBIN "gfx/intro/suicune_close.attrmap.lzp"
+
+SuicuneBack:
+.tilemap: INCBIN "gfx/intro/suicune_back.tilemap.lzp"
+.attrmap: INCBIN "gfx/intro/suicune_back.attrmap.lzp"
+
+CrystalUnowns:
+.tilemap: INCBIN "gfx/intro/crystal_unowns.tilemap.lzp"
+.attrmap: INCBIN "gfx/intro/crystal_unowns.attrmap.lzp"
 
 POPS
