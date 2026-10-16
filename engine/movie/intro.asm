@@ -81,7 +81,6 @@ Scene_UnownA_Setup:
 	call DecompressAndLoadMap0
 	call ResetScrollingAndFillBothPalBufsWithUnownPal
 	call ClearSpriteAnims
-	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -123,7 +122,6 @@ Scene_ScrollOutdoors_Setup:
 	call Request2bppInWRA6
 	call SetupOutdoors
 	call ResetLYOverrides
-	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	jr NextIntroScene
@@ -156,7 +154,6 @@ Scene_UnownHI_Setup:
 	call ResetScrollingAndFillBothPalBufsWithUnownPal
 
 	call ClearSpriteAnims
-	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -224,7 +221,6 @@ Scene_ScrollThenSuicuneZoomingBy_Setup:
 	call InitSpriteAnimStruct
 	ld a, $f0
 	ld [wGlobalAnimXOffset], a
-	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -309,7 +305,6 @@ Scene_Unowns_Setup:
 	call ResetScrollingAndFillBothPalBufsWithUnownPal
 
 	call ClearSpriteAnims
-	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -397,7 +392,6 @@ Scene_SuicuneRunsThenJumps_Setup:
 	call PlayMusic
 	xor a
 	ld [wGlobalAnimXOffset], a
-	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -467,7 +461,6 @@ Scene_SuicuneAppears_Setup:
 	call SetScrollingAndFillBothPalBufs
 
 	call ClearSpriteAnims
-	call QueueCGBPalUpdate
 	depixel 8, 5
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN_F
 	call InitSpriteAnimStruct
@@ -505,7 +498,6 @@ Scene_SuicuneCloseUp_Setup:
 	ld hl, SuicuneClosePalette
 	call ResetScrollingAndFillBothPalBufs
 	call ClearSpriteAnims
-	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -548,7 +540,6 @@ Scene_UnownsAroundSuicune_Setup:
 	xor a
 	ld [hli], a
 	ld [hl], $7f
-	call QueueCGBPalUpdate
 	depixel 12, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE_AWAY
 	call InitSpriteAnimStruct
@@ -652,7 +643,6 @@ Scene_SpellOut_Setup:
 	ld hl, CrystalUnownsPalette
 	call ResetScrollingAndFillBothPalBufs
 	call ClearSpriteAnims
-	call QueueCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -1156,7 +1146,7 @@ FillBothPalBufs:
 .fillBuf
 	ld bc, 16 palettes ; 8 for BG, 8 for OBJ.
 	rst CopyBytes
-	ret
+	jmp QueueCGBPalUpdate
 
 SetupOutdoors:
 	ld a, LCDC_DEFAULT | LCDC_BG_9C00
