@@ -290,6 +290,7 @@ SRAM $1
 	"Box metadata"
 	"PokeDB bank 1C"
 	"PokeDB bank 2C"
+	"DexNav Save"
 
 SRAM $2
 	"PokeDB bank 1A"

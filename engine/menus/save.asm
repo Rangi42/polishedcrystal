@@ -197,7 +197,7 @@ WriteBackupSave:
 ; and mail, then creates the backup save. This process is automatically run
 ; on game load if we have a valid main save but not a backup save.
 	; Save storage and mail to backup
-	farcall BackupPartyMonMail
+	farcall DexNav_BackupPartyMonMail ; also saves DexNav search levels
 	call SaveStorageSystem
 
 	; Save the backup copy of game data.

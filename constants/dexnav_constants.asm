@@ -56,6 +56,9 @@ DEF DEXNAV_CHAIN_BONUS_PASSES EQU 4
 ; wDexNavHuntFlags
 DEF DEXNAV_HUNT_SPONTANEOUS_F EQU 0
 
+; Marks the saved search-level table as valid (D6)
+DEF DEXNAV_SAVE_MAGIC EQU $DE
+
 ; Search level gained per DexNav battle (D21)
 if DEF(DEBUG)
 DEF DEXNAV_LEVEL_STEP EQU 5 ; reach the tiers quickly for testing

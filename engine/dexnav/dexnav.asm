@@ -1341,6 +1341,61 @@ DexNav_RaiseSearchLevel:
 	ldh [rWBK], a
 	ret
 
+DexNav_TryLoadSaveFile:
+; Continue: load the search levels before the save, so the backup copy that
+; loading may write keeps them.
+	call DexNav_ClearSearchLevels
+	ld a, BANK(sDexNavMagic)
+	call GetSRAMBank
+	ld a, [sDexNavMagic]
+	cp DEXNAV_SAVE_MAGIC
+	ld hl, sDexNavSearchLevels
+	ld de, wDexNavSearchLevels
+	call z, DexNav_CopySearchLevels
+	call CloseSRAM
+	farjp TryLoadSaveFile
+
+DexNav_BackupPartyMonMail:
+; Called while saving the game.
+	ld a, BANK(sDexNavMagic)
+	call GetSRAMBank
+	ld a, DEXNAV_SAVE_MAGIC
+	ld [sDexNavMagic], a
+	ld hl, wDexNavSearchLevels
+	ld de, sDexNavSearchLevels
+	call DexNav_CopySearchLevels
+	call CloseSRAM
+	farjp BackupPartyMonMail
+
+DexNav_SetInitialOptions:
+; New Game (and New Game+): start with no search levels.
+	call DexNav_ClearSearchLevels
+	farjp SetInitialOptions
+
+DexNav_ClearSearchLevels:
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wDexNavSearchLevels)
+	ldh [rWBK], a
+	ld hl, wDexNavSearchLevels
+	ld bc, NUM_EXT_POKEMON
+	xor a
+	rst ByteFill
+	jr DexNav_RestoreWRAMBank
+
+DexNav_CopySearchLevels:
+; Copy the search-level table from hl to de with WRAMX 2 switched in.
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wDexNavSearchLevels)
+	ldh [rWBK], a
+	ld bc, NUM_EXT_POKEMON
+	rst CopyBytes
+DexNav_RestoreWRAMBank:
+	pop af
+	ldh [rWBK], a
+	ret
+
 DexNav_GetSearchTier:
 ; Returns a = the hunt species' search level tier (0 to DEXNAV_NUM_TIERS - 1).
 	call DexNav_GetSearchLevelPointer
