@@ -29,41 +29,41 @@ SceneJumper:
 	call StandardStackJumpTable
 
 .Jumptable:
-	dw Scene1
-	dw Scene2
-	dw Scene3
-	dw Scene4
-	dw Scene5
-	dw Scene6
-	dw Scene7
-	dw Scene8
-	dw Scene9
-	dw Scene10
-	dw Scene11
-	dw Scene12
-	dw Scene13
-	dw Scene14
-	dw Scene15
-	dw Scene16
-	dw Scene17
-	dw Scene18
-	dw Scene19
-	dw Scene20
-	dw Scene21
-	dw Scene22
-	dw Scene23
-	dw Scene24
-	dw Scene25
-	dw Scene26
-	dw Scene27
-	dw Scene28
+	dw Scene_UnownA_Setup
+	dw Scene_UnownA
+	dw Scene_ScrollOutdoors_Setup
+	dw Scene_ScrollOutdoors
+	dw Scene_UnownHI_Setup
+	dw Scene_UnownHI
+	dw Scene_ScrollThenSuicuneZoomingBy_Setup
+	dw Scene_ScrollThenSuicuneZoomingBy
+	dw Scene_GrassRustleThenWooperAndPichu_Setup
+	dw Scene_GrassRustleThenWooperAndPichu
+	dw Scene_Unowns_Setup
+	dw Scene_Unowns
+	dw Scene_SuicuneRunsThenJumps_Setup
+	dw Scene_SuicuneRunsThenJumps
+	dw Scene_SuicuneAppears_Setup
+	dw Scene_SuicuneAppears
+	dw Scene_SuicuneCloseUp_Setup
+	dw Scene_SuicuneCloseUp
+	dw Scene_UnownsAroundSuicune_Setup
+	dw Scene_UnownsAroundSuicune
+	dw Scene_SuicuneFadesAway
+	dw Scene_WaitAndDeinitSprites
+	dw Scene_ResetFrameCounter
+	dw Scene_FadeToWhite
+	dw Scene_Wait
+	dw Scene_SpellOut_Setup
+	dw Scene_SpellOut
+	dw Scene_FinalFadeOut
 
 NextIntroScene:
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
 
-Scene1:
+Scene_UnownA_Setup:
 ; Setup the next scene.
 	call ClearBGPals
 	call ClearSprites
@@ -102,7 +102,7 @@ Scene1:
 	ld [wIntroSceneTimer], a
 	jr NextIntroScene
 
-Scene2:
+Scene_UnownA:
 ; First Unown (A) fades in, pulses, then fades out.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -122,7 +122,7 @@ Scene2:
 	xor a
 	jmp CrystalIntro_UnownFade
 
-Scene3:
+Scene_ScrollOutdoors_Setup:
 ; More setup. Transition to the outdoor scene.
 	call ClearBGPals
 	call ClearSprites
@@ -142,7 +142,7 @@ Scene3:
 	ld [wIntroSceneFrameCounter], a
 	jmp NextIntroScene
 
-Scene4:
+Scene_ScrollOutdoors:
 ; Scroll the outdoor panorama for a bit.
 	call PerspectiveScrollBG
 	ld hl, wIntroSceneFrameCounter
@@ -152,7 +152,7 @@ Scene4:
 	inc [hl]
 	ret
 
-Scene5:
+Scene_UnownHI_Setup:
 ; Go back to the Unown.
 	call ClearBGPals
 	call ClearSprites
@@ -194,7 +194,7 @@ Scene5:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-Scene6:
+Scene_UnownHI:
 ; Two more Unown (I, H) fade in.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -232,7 +232,7 @@ Scene6:
 	ld a, $1
 	jmp CrystalIntro_UnownFade
 
-Scene7:
+Scene_ScrollThenSuicuneZoomingBy_Setup:
 ; Back to the outdoor scene.
 	call ClearBGPals
 	call ClearSprites
@@ -270,7 +270,7 @@ Scene7:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-Scene8:
+Scene_ScrollThenSuicuneZoomingBy:
 ; Scroll the scene, then show Suicune running across the screen.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -297,7 +297,7 @@ Scene8:
 	farcall DeinitializeAllSprites
 	jmp NextIntroScene
 
-Scene9:
+Scene_GrassRustleThenWooperAndPichu_Setup:
 ; Set up the next scene (same bg).
 	ld hl, rIE
 	res B_IE_STAT, [hl]
@@ -336,7 +336,7 @@ Scene9:
 	ld [wIntroSceneFrameCounter], a
 	jmp NextIntroScene
 
-Scene10:
+Scene_GrassRustleThenWooperAndPichu:
 ; Wooper and Pichu enter.
 	call RustleGrass
 	ld hl, wIntroSceneFrameCounter
@@ -361,7 +361,7 @@ Scene10:
 	ld de, SFX_INTRO_PICHU
 	jmp PlaySFX
 
-Scene11:
+Scene_Unowns_Setup:
 ; Back to Unown again.
 	call ClearBGPals
 	call ClearSprites
@@ -400,7 +400,7 @@ Scene11:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-Scene12:
+Scene_Unowns:
 ; Even more Unown.
 	call .PlayUnownSound
 	ld hl, wIntroSceneFrameCounter
@@ -467,7 +467,7 @@ Scene12:
 	dbw $b0, SFX_INTRO_UNOWN_2
 	db -1
 
-Scene13:
+Scene_SuicuneRunsThenJumps_Setup:
 ; Switch scenes again.
 	call ClearBGPals
 	call ClearSprites
@@ -498,7 +498,7 @@ Scene13:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-Scene14:
+Scene_SuicuneRunsThenJumps:
 ; Suicune runs then jumps.
 	ldh a, [hSCX]
 	sub 10
@@ -538,7 +538,7 @@ Scene14:
 	ld [wGlobalAnimXOffset], a
 	ret
 
-Scene15:
+Scene_SuicuneAppears_Setup:
 ; Transition to a new scene.
 	call ClearBGPals
 	call ClearSprites
@@ -589,14 +589,14 @@ Scene15:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-Scene16:
+Scene_SuicuneAppears:
 ; Suicune shows its face. An Unown appears in front.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	inc [hl]
 	cp $80
 	jmp nc, NextIntroScene
-	call Scene16_AnimateSuicune
+	call Scene_SuicuneAppears_AnimateSuicune
 	ldh a, [hSCY]
 	and a
 	ret z
@@ -604,7 +604,7 @@ Scene16:
 	ldh [hSCY], a
 	ret
 
-Scene17:
+Scene_SuicuneCloseUp_Setup:
 ; ...
 	call ClearBGPals
 	call ClearSprites
@@ -640,7 +640,7 @@ Scene17:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-Scene18:
+Scene_SuicuneCloseUp:
 ; Suicune close up.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -654,7 +654,7 @@ Scene18:
 	ldh [hSCX], a
 	ret
 
-Scene19:
+Scene_UnownsAroundSuicune_Setup:
 ; More setup.
 	call ClearBGPals
 	call ClearSprites
@@ -706,7 +706,7 @@ Scene19:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-Scene20:
+Scene_UnownsAroundSuicune:
 ; Suicune running away. A bunch of Unown appear.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -735,9 +735,9 @@ Scene20:
 	srl a
 	srl a
 	ld [wIntroSceneTimer], a
-	jmp Scene20_AppearUnown
+	jmp Scene_UnownsAroundSuicune_AppearUnown
 
-Scene21:
+Scene_SuicuneFadesAway:
 ; Suicune gets more distant and turns black.
 	call ColoredSuicuneFrameSwap
 	ld c, 3
@@ -749,7 +749,7 @@ Scene21:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-Scene22:
+Scene_WaitAndDeinitSprites:
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	inc [hl]
@@ -758,12 +758,12 @@ Scene22:
 	farcall DeinitializeAllSprites
 	jmp NextIntroScene
 
-Scene23:
+Scene_ResetFrameCounter:
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	jmp NextIntroScene
 
-Scene24:
+Scene_FadeToWhite:
 ; Fade to white.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -778,14 +778,14 @@ Scene24:
 	ld a, c
 	and $1c
 	add a
-	jmp Scene24_ApplyPaletteFade
+	jmp Scene_FadeToWhite_ApplyPaletteFade
 
 .done
 	ld a, $40
 	ld [wIntroSceneFrameCounter], a
 	jmp NextIntroScene
 
-Scene25:
+Scene_Wait:
 ; Wait around a bit.
 	ld a, [wIntroSceneFrameCounter]
 	dec a
@@ -793,7 +793,7 @@ Scene25:
 	ld [wIntroSceneFrameCounter], a
 	ret
 
-Scene26:
+Scene_SpellOut_Setup:
 ; Load the final scene.
 	call ClearBGPalettes
 	call ClearSprites
@@ -829,7 +829,7 @@ Scene26:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-Scene27:
+Scene_SpellOut:
 ; Spell out C R Y S T A L with Unown.
 	ld hl, wIntroSceneTimer
 	inc [hl]
@@ -853,7 +853,7 @@ Scene27:
 	ld [wIntroSceneFrameCounter], a
 	ret
 
-Scene28:
+Scene_FinalFadeOut:
 ; Cut out when the music ends, and lead into the title screen.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -872,7 +872,7 @@ Scene28:
 	set 7, [hl]
 	ret
 
-Scene24_ApplyPaletteFade:
+Scene_FadeToWhite_ApplyPaletteFade:
 ; load the (a)th palette from .FadePals to all wBGPals2
 	ld hl, .FadePals
 	ld e, a
@@ -1083,7 +1083,7 @@ rept 8
 endr
 endc
 
-Scene20_AppearUnown:
+Scene_UnownsAroundSuicune_AppearUnown:
 ; Spawn the palette for the nth Unown
 	ld a, [wIntroSceneTimer]
 	and $7
@@ -1233,7 +1233,7 @@ LoadTilemap:
 	ldh [rWBK], a
 	ret
 
-Scene16_AnimateSuicune:
+Scene_SuicuneAppears_AnimateSuicune:
 	ld a, [wIntroSceneFrameCounter]
 	and $3
 	jr z, ColoredSuicuneFrameSwap
