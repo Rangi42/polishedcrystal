@@ -86,6 +86,8 @@ rom_obj := \
 	data/text/common.o \
 	data/tilesets.o \
 	engine/movie/credits.o \
+	engine/movie/intro.o \
+	engine/movie/splash.o \
 	engine/overworld/events.o \
 	gfx/minis_icons.o \
 	gfx/pokemon.o \

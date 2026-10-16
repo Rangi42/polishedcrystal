@@ -1,3 +1,5 @@
+SECTION "Splash screen", ROMX
+
 SplashScreen:
 ; Play the copyright screen and GameFreak Presents sequence.
 ; Return carry if user cancels animation by pressing a button.

@@ -1,3 +1,5 @@
+SECTION "Intro movie", ROMX
+
 CrystalIntro:
 	ldh a, [rWBK]
 	push af
