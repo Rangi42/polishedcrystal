@@ -104,7 +104,7 @@ IntroScene1:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap001
+	ld hl, IntroTilemap01
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -114,7 +114,7 @@ IntroScene1:
 	ld hl, IntroPulseGFX
 	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap002
+	ld hl, IntroTilemap02
 	call Intro_DecompressAndLoadTilemap
 	ldh a, [rWBK]
 	push af
@@ -174,7 +174,7 @@ IntroScene3:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap003
+	ld hl, IntroTilemap03
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -208,7 +208,7 @@ IntroScene5:
 	ldh [hLCDCPointer], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap005
+	ld hl, IntroTilemap05
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -218,7 +218,7 @@ IntroScene5:
 	ld hl, IntroPulseGFX
 	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap006
+	ld hl, IntroTilemap06
 	call Intro_DecompressAndLoadTilemap
 	ldh a, [rWBK]
 	push af
@@ -297,7 +297,7 @@ IntroScene7:
 
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap003
+	ld hl, IntroTilemap03
 	call Intro_DecompressAndLoadTilemap
 
 	ld hl, IntroPichuWooperGFX
@@ -429,14 +429,14 @@ IntroScene11:
 	ldh [hLCDCPointer], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap007
+	ld hl, IntroTilemap07
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
 	ld hl, IntroUnownsGFX
 	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap008
+	ld hl, IntroTilemap08
 	call Intro_DecompressAndLoadTilemap
 	ldh a, [rWBK]
 	push af
@@ -543,7 +543,7 @@ IntroScene13:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap003
+	ld hl, IntroTilemap03
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -615,7 +615,7 @@ IntroScene15:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap009
+	ld hl, IntroTilemap09
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -629,7 +629,7 @@ IntroScene15:
 	ld hl, vTiles1 tile $00
 	lb bc, BANK(IntroGrass4GFX), 1
 	call Request2bpp
-	ld hl, IntroTilemap010
+	ld hl, IntroTilemap10
 	call Intro_DecompressAndLoadTilemap
 	call Intro_LoadTilemap
 	ldh a, [rWBK]
@@ -692,14 +692,14 @@ IntroScene17:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap011
+	ld hl, IntroTilemap11
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
 	ld hl, IntroSuicuneCloseGFX
 	ld de, vTiles1 tile $00
 	call Intro_DecompressRequest2bpp_255Tiles
-	ld hl, IntroTilemap012
+	ld hl, IntroTilemap12
 	call Intro_DecompressAndLoadTilemap
 	ldh a, [rWBK]
 	push af
@@ -753,7 +753,7 @@ IntroScene19:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap013
+	ld hl, IntroTilemap13
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
@@ -767,7 +767,7 @@ IntroScene19:
 	ld hl, vTiles1 tile $7f
 	lb bc, BANK(IntroGrass4GFX), 1
 	call Request2bpp
-	ld hl, IntroTilemap014
+	ld hl, IntroTilemap14
 	call Intro_DecompressAndLoadTilemap
 	call Intro_LoadTilemap
 	ldh a, [rWBK]
@@ -903,14 +903,14 @@ IntroScene26:
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap015
+	ld hl, IntroTilemap15
 	call Intro_DecompressAndLoadTilemap
 	xor a
 	ldh [rVBK], a
 	ld hl, IntroCrystalUnownsGFX
 	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap017
+	ld hl, IntroTilemap17
 	call Intro_DecompressAndLoadTilemap
 	ldh a, [rWBK]
 	push af
@@ -1537,7 +1537,7 @@ Intro_SetupCommonScenery:
 	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 
-	ld hl, IntroTilemap004
+	ld hl, IntroTilemap04
 	call Intro_DecompressAndLoadTilemap
 
 	ldh a, [rWBK]
@@ -1619,21 +1619,21 @@ INCBIN "gfx/intro/grass4.2bpp"
 
 PUSHS "Intro tilemaps", ROMX
 
-IntroTilemap001: INCBIN "gfx/intro/001.tilemap.lzp"
-IntroTilemap002: INCBIN "gfx/intro/002.tilemap.lzp"
-IntroTilemap003: INCBIN "gfx/intro/003.tilemap.lzp"
-IntroTilemap004: INCBIN "gfx/intro/004.tilemap.lzp"
-IntroTilemap005: INCBIN "gfx/intro/005.tilemap.lzp"
-IntroTilemap006: INCBIN "gfx/intro/006.tilemap.lzp"
-IntroTilemap007: INCBIN "gfx/intro/007.tilemap.lzp"
-IntroTilemap008: INCBIN "gfx/intro/008.tilemap.lzp"
-IntroTilemap009: INCBIN "gfx/intro/009.tilemap.lzp"
-IntroTilemap010: INCBIN "gfx/intro/010.tilemap.lzp"
-IntroTilemap011: INCBIN "gfx/intro/011.tilemap.lzp"
-IntroTilemap012: INCBIN "gfx/intro/012.tilemap.lzp"
-IntroTilemap013: INCBIN "gfx/intro/013.tilemap.lzp"
-IntroTilemap014: INCBIN "gfx/intro/014.tilemap.lzp"
-IntroTilemap015: INCBIN "gfx/intro/015.tilemap.lzp"
-IntroTilemap017: INCBIN "gfx/intro/017.tilemap.lzp"
+IntroTilemap01: INCBIN "gfx/intro/01.tilemap.lzp"
+IntroTilemap02: INCBIN "gfx/intro/02.tilemap.lzp"
+IntroTilemap03: INCBIN "gfx/intro/03.tilemap.lzp"
+IntroTilemap04: INCBIN "gfx/intro/04.tilemap.lzp"
+IntroTilemap05: INCBIN "gfx/intro/05.tilemap.lzp"
+IntroTilemap06: INCBIN "gfx/intro/06.tilemap.lzp"
+IntroTilemap07: INCBIN "gfx/intro/07.tilemap.lzp"
+IntroTilemap08: INCBIN "gfx/intro/08.tilemap.lzp"
+IntroTilemap09: INCBIN "gfx/intro/09.tilemap.lzp"
+IntroTilemap10: INCBIN "gfx/intro/10.tilemap.lzp"
+IntroTilemap11: INCBIN "gfx/intro/11.tilemap.lzp"
+IntroTilemap12: INCBIN "gfx/intro/12.tilemap.lzp"
+IntroTilemap13: INCBIN "gfx/intro/13.tilemap.lzp"
+IntroTilemap14: INCBIN "gfx/intro/14.tilemap.lzp"
+IntroTilemap15: INCBIN "gfx/intro/15.tilemap.lzp"
+IntroTilemap17: INCBIN "gfx/intro/17.tilemap.lzp"
 
 POPS
