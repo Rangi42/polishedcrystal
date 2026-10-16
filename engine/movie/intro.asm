@@ -6,11 +6,10 @@ CrystalIntro:
 	ldh [rWBK], a
 	xor a
 	ldh [hVBlank], a
-	ld a, $1
-	ldh [hInMenu], a
-	xor a
 	ldh [hMapAnims], a
 	ld [wJumptableIndex], a
+	inc a ; a := 1
+	ldh [hInMenu], a
 
 .loop
 	call JoyTextDelay
