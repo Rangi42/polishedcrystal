@@ -1504,11 +1504,6 @@ wPaletteSwapReloadMask:: db
 
 SECTION "DexNav WRAM0", WRAM0
 
-; Species and form the DexNav is searching for (0 = none).
-; TODO (Phase 4): move into saved game data (D7).
-wDexNavTargetSpecies:: db
-wDexNavTargetForm:: db
-
 ; Species list for the DexNav menu: count, (species, form) * count, -1.
 ; The evening list can combine the day and night tables.
 wDexNavList:: ds 1 + DEXNAV_LIST_MAX * 2 + 1

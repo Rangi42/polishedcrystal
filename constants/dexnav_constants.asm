@@ -34,6 +34,9 @@ else
 DEF DEXNAV_SPONTANEOUS_MASK EQU %00111111 ; 1 in 64
 endc
 
+; Chain (D7): wraps from this back to 1, as in CFRU
+DEF DEXNAV_MAX_CHAIN EQU 100
+
 ; wDexNavHuntFlags
 DEF DEXNAV_HUNT_SPONTANEOUS_F EQU 0
 

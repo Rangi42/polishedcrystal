@@ -8145,6 +8145,7 @@ ExitBattle:
 	call PostBattleTasks
 	call .HandleEndOfBattle
 	call BattleEnd_HandleRoamMons
+	farcall DexNav_UpdateChain
 	xor a
 	ld [wLowHealthAlarm], a
 	ld [wBattleMode], a

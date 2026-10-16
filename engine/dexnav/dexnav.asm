@@ -251,7 +251,7 @@ DexNav_ChooseTarget:
 	call PrintText
 	call YesNoBox
 	ret c
-	jmp DexNav_EndHunt
+	jmp DexNav_BreakHunt
 
 .no_hunt
 	ld a, [wTimeOfDayPalset]
@@ -1001,6 +1001,53 @@ DexNav_EndHunt:
 	ld [wDexNavHuntObject], a
 	ret
 
+DexNav_BreakHunt:
+; End the hunt and the chain (flee, timeout, cancel).
+	call DexNav_EndHunt
+	; fallthrough
+
+DexNav_BreakChain:
+	xor a
+	ld [wDexNavChain], a
+	ret
+
+DexNav_UpdateChain:
+; Called from ExitBattle. Winning or catching in a DexNav battle extends the
+; chain (CFRU: 0 -> 2, then +1, and 100 wraps to 1); any other battle ends it.
+	ld a, [wBattleType]
+	cp BATTLETYPE_DEXNAV
+	jr nz, DexNav_BreakChain
+	ld a, [wBattleResult]
+	and ~BATTLERESULT_BITMASK
+	assert WIN == 0
+	jr nz, DexNav_BreakChain
+	ld hl, wDexNavChain
+	ld a, [hl]
+	and a
+	jr nz, .extend
+	inc a
+.extend
+	inc a
+	cp DEXNAV_MAX_CHAIN + 1
+	jr c, .got_chain
+	ld a, 1
+.got_chain
+	ld [hl], a
+	ret
+
+DexNav_HandleNewMap:
+; Map setup command: a real map change (not Continue or a battle) breaks the
+; chain (D13 Strict).
+	call DexNav_BreakChain
+	farjp HandleNewMap
+
+DexNav_ClearSavedData:
+	xor a
+	ld hl, wDexNavSavedData
+	ld bc, wDexNavSavedDataEnd - wDexNavSavedData
+	rst ByteFill
+	ret
+
 DexNav_StepCheck:
 ; Called after each step. Returns carry if a DexNav script was started.
 	xor a
@@ -1052,7 +1099,7 @@ DexNav_StepCheck:
 
 .lost_target
 	push hl
-	call DexNav_EndHunt
+	call DexNav_BreakHunt
 	call DexNav_GetTargetName
 	pop hl
 	jr .call_script

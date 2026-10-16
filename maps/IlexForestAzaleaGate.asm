@@ -56,6 +56,8 @@ ProfOaksAide1Script:
 .GiveDexNav
 	verbosegivekeyitem DEXNAV
 .AlreadyHaveDexNav
+	; Clear leftover bits from older saves (D7) before the chain can start.
+	callasm DexNav_ClearSavedData
 	setevent EVENT_GOT_DEXNAV_FROM_PROF_OAKS_AIDE
 .ExplainDexNav
 	jumpthisopenedtext

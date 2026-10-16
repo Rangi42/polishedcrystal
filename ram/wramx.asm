@@ -1418,7 +1418,16 @@ wTimerEventStartDay:: db
 
 wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 
-	ds 19 ; unused
+; DexNav (D7). These bytes held the Nuzlocke landmark flags, so older saves
+; may have leftover bits here; they're zeroed when the DexNav is given.
+wDexNavSavedData::
+wDexNavChain:: db ; battles in a row (0 = no chain)
+; Species and form the DexNav list last searched for (0 = none)
+wDexNavTargetSpecies:: db
+wDexNavTargetForm:: db
+wDexNavSavedDataEnd::
+
+	ds 16 ; unused
 
 wHiddenGrottoContents::
 ; dbw content type, content id
