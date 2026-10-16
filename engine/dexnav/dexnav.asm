@@ -147,22 +147,24 @@ DexNav_GetSlotTable:
 ; Find this area's wild slots for time of day a (ignored on water).
 ; Returns carry and hl = first slot (in BANK(JohtoGrassWildMons)),
 ; de = cumulative odds (in BANK(GrassMonProbTable)), b = slot count.
-; Returns nc if this area has no wild data.
+; Returns nc if this area has no wild data. Uses the water slots while surfing.
 	push af
-	farcall LoadWildMonDataPointer
-	jr nc, .none
-	inc hl ; skip map group
-	inc hl ; skip map number
-	inc hl ; skip encounter chance
 	farcall CheckOnWater
-	jr nz, .grass
-	pop af
-	ld de, WaterMonProbTable
-	ld b, NUM_WATERMON
-	scf
-	ret
+	jr z, DexNav_GetWaterSlots
+	jr DexNav_GetLandSlots
 
-.grass
+DexNav_GetTabSlotTable:
+; Same, for the list's tab (wDexNavTab) instead of where the player is.
+	push af
+	ld a, [wDexNavTab]
+	and a
+	jr nz, DexNav_GetWaterSlots
+	assert DEXNAV_TAB_LAND == 0
+DexNav_GetLandSlots:
+; (time of day on the stack)
+	farcall _GrassWildmonLookup
+	jr nc, DexNav_NoSlots
+	call DexNav_SkipWildHeader
 	pop af
 	ld bc, NUM_GRASSMON * 3
 	rst AddNTimes
@@ -171,9 +173,26 @@ DexNav_GetSlotTable:
 	scf
 	ret
 
-.none
+DexNav_GetWaterSlots:
+; (time of day on the stack, unused)
+	farcall _WaterWildmonLookup
+	jr nc, DexNav_NoSlots
+	call DexNav_SkipWildHeader
+	pop af
+	ld de, WaterMonProbTable
+	ld b, NUM_WATERMON
+	scf
+	ret
+
+DexNav_NoSlots:
 	pop af
 	and a
+	ret
+
+DexNav_SkipWildHeader:
+	inc hl ; skip map group
+	inc hl ; skip map number
+	inc hl ; skip encounter chance
 	ret
 
 DexNav_CheckSlotIsTarget:
@@ -291,32 +310,21 @@ DexNav_ChooseTarget:
 	ld hl, .TooDarkText
 	jmp z, .print
 
+	; Open on the tab for where the player is, or the other one if that's
+	; empty (D29).
+	farcall CheckOnWater
+	ld a, DEXNAV_TAB_LAND
+	jr nz, .got_tab
+	ld a, DEXNAV_TAB_WATER
+.got_tab
+	ld [wDexNavTab], a
 	call DexNav_BuildList
+	jr nz, .got_list
+	call DexNav_SwitchTab
 	ld hl, .NoWildDataText
-	jmp nc, .print
-
-	; Start the cursor on the last target if it's in the list.
-	ld hl, wDexNavList
-	ld a, [hli]
-	ld c, a
-	ld b, 1
-.find_target_loop
-	ld a, [wDexNavTargetSpecies]
-	cp [hl]
-	inc hl
-	ld a, [wDexNavTargetForm]
-	jr nz, .next_target
-	cp [hl]
-	jr z, .got_cursor
-.next_target
-	inc hl
-	inc b
-	dec c
-	jr nz, .find_target_loop
-	ld b, 1
-.got_cursor
-	ld a, b
-	ld [wDexNavListCursor], a
+	jmp z, .print
+.got_list
+	call .SetCursor
 
 	ldh a, [hBGMapMode]
 	push af
@@ -339,7 +347,7 @@ DexNav_ChooseTarget:
 	ld a, c
 	ld [wMenuScrollPosition], a
 	call InitScrollingMenu
-	call DexNav_SetMiniAttrs
+	call DexNav_FinishListBox
 	call ScrollingMenu
 	ld a, [wMenuScrollPosition]
 	ld hl, wMenuCursorY
@@ -348,6 +356,19 @@ DexNav_ChooseTarget:
 	ld a, [wMenuJoypad]
 	cp PAD_B
 	jmp z, .cancel
+	; Left/Right switch tabs, skipping an empty one.
+	and PAD_LEFT | PAD_RIGHT
+	jr z, .not_tab
+	call DexNav_SwitchTab
+	jr nz, .switched_tab
+	call DexNav_SwitchTab
+	ld de, SFX_WRONG
+	call PlaySFX
+.switched_tab
+	call .SetCursor
+	jr .menu_loop
+
+.not_tab
 	ld a, [wMenuSelection]
 	cp CANCEL
 	jmp z, .cancel
@@ -373,6 +394,22 @@ DexNav_ChooseTarget:
 	ld [wMenuScrollPosition], a
 	pop af
 	ldh [hBGMapMode], a
+
+	; Other tabs and times are only for viewing (D29), so check first.
+	ld a, c
+	ld [wDexNavHuntSpecies], a
+	ld a, b
+	ld [wDexNavHuntForm], a
+	xor a
+	ld [wDexNavHuntFlags], a
+	push bc
+	call DexNav_ChooseWildEncounter
+	pop bc
+	jr nz, .not_here
+	; The battle is set up again when the player reaches the target,
+	; so don't let other battles inherit BATTLETYPE_DEXNAV meanwhile.
+	xor a ; BATTLETYPE_NORMAL
+	ld [wBattleType], a
 
 	; The chain is for one species (D24), so ask before searching for another.
 	ld a, [wDexNavChain]
@@ -406,19 +443,9 @@ DexNav_ChooseTarget:
 .same_target
 	ld a, c
 	ld [wDexNavTargetSpecies], a
-	ld [wDexNavHuntSpecies], a
 	ld a, b
 	ld [wDexNavTargetForm], a
-	ld [wDexNavHuntForm], a
-	xor a
-	ld [wDexNavHuntFlags], a
 
-	call DexNav_ChooseWildEncounter
-	jr nz, .not_here
-	; The battle is set up again when the player reaches the target,
-	; so don't let other battles inherit BATTLETYPE_DEXNAV meanwhile.
-	xor a ; BATTLETYPE_NORMAL
-	ld [wBattleType], a
 	; After a failed search, take a step before trying again (D18).
 	ld a, [wDexNavCooldown]
 	and a
@@ -457,6 +484,31 @@ DexNav_ChooseTarget:
 	ld [wMenuScrollPosition], a
 	pop af
 	ldh [hBGMapMode], a
+	ret
+
+.SetCursor:
+; Start the cursor on the last target if it's in the list.
+	ld hl, wDexNavList
+	ld a, [hli]
+	ld c, a
+	ld b, 1
+.find_target_loop
+	ld a, [wDexNavTargetSpecies]
+	cp [hl]
+	inc hl
+	ld a, [wDexNavTargetForm]
+	jr nz, .next_target
+	cp [hl]
+	jr z, .got_cursor
+.next_target
+	inc hl
+	inc b
+	dec c
+	jr nz, .find_target_loop
+	ld b, 1
+.got_cursor
+	ld a, b
+	ld [wDexNavListCursor], a
 	ret
 
 .StopSearchText:
@@ -498,7 +550,8 @@ DexNav_ChooseTarget:
 	db 1 ; default option
 
 .MenuData:
-	db SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_CALL_FUNCTION1_CANCEL ; flags
+	db SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_CALL_FUNCTION1_CANCEL \
+		| SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_ENABLE_RIGHT ; flags
 	db DEXNAV_MENU_ROWS, 0 ; rows, columns
 	db SCROLLINGMENU_ITEMS_QUANTITY ; species + form
 	dba wDexNavList
@@ -507,8 +560,12 @@ DexNav_ChooseTarget:
 	dba DoNothing
 
 .PlaceSpeciesName:
-; Each row has the species' mini to the left of its name. Unseen species
-; show as "?" and "?????". The menu calls this for the Cancel row too.
+; Each row has the species' mini to the left of its name, and its marks at
+; the end. Unseen species show as "?" and "?????". The menu calls this for
+; the Cancel row too.
+	push de
+	call DexNav_DrawListMarks
+	pop de
 	push de
 	call DexNav_DrawListMini
 	pop hl
@@ -547,7 +604,7 @@ DexNav_ChooseTarget:
 .NotHereText:
 	text_ram wStringBuffer1
 	text " isn't"
-	line "around here."
+	line "around right now."
 	prompt
 
 .NoWildDataText:
@@ -1357,6 +1414,9 @@ DexNav_OpenPage:
 ; by the scrolling menu) and a prompt. ExitAllMenus returns to the map.
 	call FadeToMenu_BackupSprites
 	call ClearTileMap
+	call DisableLCD
+	call DexNav_LoadGrayMarks
+	call EnableLCD
 	hlcoord 0, 0
 	lb bc, 1, SCREEN_WIDTH - 2
 	call Textbox
@@ -1393,9 +1453,18 @@ DexNav_OpenPage:
 .PromptString:
 	db "Search for which<LNBRK>#mon?@"
 
-DexNav_SetMiniAttrs:
-; List rows use BG palettes 1-4 for their minis' tiles. InitScrollingMenu
-; just set the whole box to the text palette, so set these after it.
+DexNav_FinishListBox:
+; Label the box's top border with the tab, and give the list rows' minis BG
+; palettes 1-4. InitScrollingMenu just set the whole box to the text
+; palette, so this comes after it.
+	ld a, [wDexNavTab]
+	and a
+	ld de, .LandTab
+	jr z, .got_tab
+	ld de, .WaterTab
+.got_tab
+	hlcoord DEXNAV_MINI_X, DEXNAV_MENU_TOP - 1
+	rst PlaceString
 	hlcoord DEXNAV_MINI_X, DEXNAV_MENU_TOP, wAttrmap
 	ld de, SCREEN_WIDTH - 1
 	ld a, 1
@@ -1410,6 +1479,80 @@ DexNav_SetMiniAttrs:
 	cp DEXNAV_MENU_ROWS + 1
 	jr nz, .loop
 	jmp ApplyAttrAndTilemapInVBlank
+
+.LandTab:
+	db "◀Land▶@"
+.WaterTab:
+	db "◀Water▶@"
+
+DexNav_LoadGrayMarks:
+; Gray copies (color 2 only) of the mark tiles, from the font already in
+; VRAM. The LCD has to be off.
+	ld bc, DexNav_DrawListMarks.RodLetters
+	ld de, vTiles2 tile DEXNAV_GRAY_TILES
+.tile_loop
+	ld a, [bc]
+	inc bc
+	cp '@'
+	ret z
+	push bc
+	ld l, a
+	ld h, 0
+rept 4
+	add hl, hl
+endr
+	ld bc, vTiles0
+	add hl, bc
+	ld c, TILE_SIZE / 2
+.row_loop
+	xor a
+	ld [de], a
+	inc de
+	ld a, [hli]
+	inc hl
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .row_loop
+	pop bc
+	jr .tile_loop
+
+DexNav_DrawListMarks:
+; At the end of the row on the Water tab: O, G and S, dark for each rod that
+; hooks this species here and gray for the others (D29). Surf-only species
+; (no marks) get none.
+	ld a, [wMenuSelection]
+	cp CANCEL
+	ret z
+	ld hl, wDexNavListMarks
+	ld a, [wScrollingMenuCursorPosition]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	and a
+	ret z
+	ld c, a
+	ld hl, DEXNAV_MARKS_X - DEXNAV_MINI_X
+	add hl, de
+	ld de, .RodLetters
+	ld b, DEXNAV_GRAY_TILES
+.loop
+	ld a, [de]
+	inc de
+	rrc c
+	jr c, .got_tile
+	ld a, b
+.got_tile
+	ld [hli], a
+	inc b
+	ld a, b
+	cp DEXNAV_GRAY_TILES + DEXNAV_NUM_MARKS
+	jr nz, .loop
+	ret
+
+.RodLetters:
+	db "OGS@"
 
 if !DEF(MONOCHROME)
 DEF DEXNAV_MINI_WHITE EQU palred 31 + palgreen 31 + palblue 31
@@ -1558,26 +1701,50 @@ DexNav_GetMenuRow:
 	pop hl
 	ret
 
+DexNav_SwitchTab:
+; Switch the list to the other tab. Returns z if it's empty.
+	ld hl, wDexNavTab
+	ld a, [hl]
+	xor DEXNAV_TAB_LAND ^ DEXNAV_TAB_WATER
+	ld [hl], a
+	; fallthrough
+
 DexNav_BuildList:
-; Fill wDexNavList with each distinct species/form in this area's table for
-; the current time of day (both day and night in the evening).
-; Format: count, (species, form) * count, -1. Returns nc if no wild data.
+; Fill wDexNavList with each distinct species/form on the list's tab
+; (wDexNavTab): land for the current time of day (both day and night in the
+; evening), or water with every rod's fishing species (D29).
+; Format: count, (species, form) * count, -1. Each entry's marks are in
+; wDexNavListMarks. Returns z if the list is empty.
 	xor a
 	ld [wDexNavList], a
+	ld [wDexNavNewMarks], a
+	ld hl, wDexNavListMarks
+	ld bc, DEXNAV_LIST_MAX
+	rst ByteFill
+	ld a, [wDexNavTab]
+	and a
+	jr nz, .water
+	assert DEXNAV_TAB_LAND == 0
 	ld a, [wTimeOfDay]
 	cp EVE
 	jr nz, .one_time
 	ld a, DAY
 	call .add_table
-	ret nc
 	ld a, NITE
 .one_time
 	call .add_table
-	ret nc
-	jmp DexNav_AddFishToList
+	jr .done
+
+.water
+	call .add_table
+	call DexNav_AddFishToList
+.done
+	ld a, [wDexNavList]
+	and a
+	ret
 
 .add_table
-	call DexNav_GetSlotTable
+	call DexNav_GetTabSlotTable
 	ret nc
 .slot_loop
 	call DexNav_GetSlotMon
@@ -1591,24 +1758,26 @@ DexNav_BuildList:
 	inc hl
 	dec b
 	jr nz, .slot_loop
-	scf
 	ret
 
 .AddToList:
-; Append species e / form d unless it's already listed.
+; Add species e / form d unless it's already listed, and add
+; wDexNavNewMarks to its marks.
 	ld hl, wDexNavList
 	ld a, [hli]
+	ld c, a
+	ld b, 0 ; entry index
 	and a
 	jr z, .append
-	ld c, a
 .dupe_loop
 	ld a, [hli]
 	cp e
 	ld a, [hli]
 	jr nz, .next
 	cp d
-	ret z
+	jr z, .mark
 .next
+	inc b
 	dec c
 	jr nz, .dupe_loop
 .append
@@ -1619,20 +1788,30 @@ DexNav_BuildList:
 	ld [hl], CANCEL
 	ld hl, wDexNavList
 	inc [hl]
+.mark
+	ld c, b
+	ld b, 0
+	ld hl, wDexNavListMarks
+	add hl, bc
+	ld a, [wDexNavNewMarks]
+	or [hl]
+	ld [hl], a
 	ret
 
 DexNav_AddFishToList:
-; While surfing, add the species the player's rods can hook here (D3).
-; Returns carry.
+; Add the species each rod can hook here, marking which rods (D29).
 	assert NUM_WATERMON + DEXNAV_MAX_FISH_ENTRIES <= DEXNAV_LIST_MAX
-	call DexNav_GetFishGroup
-	jr nc, .done
-	ld e, 0 ; Old Rod first
+	farcall GetFishingGroup
+	ret nc
+	lb de, 1 << 0, 0 ; Old Rod first, and its mark
 .rod_loop
 	push af
 	push de
-	call DexNav_GetFishRodTable
-	jr nc, .next_rod
+	ld b, a
+	ld a, d
+	ld [wDexNavNewMarks], a
+	ld a, b
+	call DexNav_GetAnyFishRodTable
 .entry_loop
 	ld a, BANK(FishGroups)
 	call DexNav_GetSlotMonInBank
@@ -1647,17 +1826,15 @@ DexNav_AddFishToList:
 	inc hl
 	dec b
 	jr nz, .entry_loop
-.next_rod
 	pop de
 	pop af
+	sla d
 	inc e
-	ld d, a
+	ld b, a
 	ld a, e
 	cp NUM_DEXNAV_RODS
-	ld a, d
+	ld a, b
 	jr c, .rod_loop
-.done
-	scf
 	ret
 
 DexNav_GetFishGroup:
@@ -1675,14 +1852,21 @@ DexNav_GetFishRodTable:
 ; if the player has that rod.
 	assert GOOD_ROD == OLD_ROD + 1 && SUPER_ROD == OLD_ROD + 2
 	assert FISHGROUP_DATA_LENGTH == 8 && NUM_FISHGROUPS * 8 < $100
-	ld d, a
+	push af
 	push de
 	ld a, e
 	add OLD_ROD
 	call _CheckKeyItem
 	pop de
-	ret nc
-	ld a, d
+	jr c, .owned
+	pop af
+	and a
+	ret
+
+.owned
+	pop af
+DexNav_GetAnyFishRodTable:
+; Same, whether or not the player has the rod.
 	add a
 	add a
 	add a

@@ -10,6 +10,15 @@ DEF DEXNAV_PROMPT_Y  EQU DEXNAV_MENU_TOP + DEXNAV_MENU_ROWS * 2 + 2
 ; tiles vTiles2 $00-$0F); the name starts 3 tiles right of the menu's text column.
 DEF DEXNAV_MINI_X      EQU 2
 DEF DEXNAV_NAME_OFFSET EQU 3
+; List tabs (wDexNavTab, D29)
+DEF DEXNAV_TAB_LAND  EQU 0
+DEF DEXNAV_TAB_WATER EQU 1
+; Each row's marks (wDexNavListMarks) end at x 18: on the Water tab, which
+; rods hook it (bit 0 Old, 1 Good, 2 Super). Gray copies of the mark tiles
+; follow the minis' tiles.
+DEF DEXNAV_NUM_MARKS  EQU 3
+DEF DEXNAV_MARKS_X    EQU SCREEN_WIDTH - 1 - DEXNAV_NUM_MARKS
+DEF DEXNAV_GRAY_TILES EQU DEXNAV_MENU_ROWS * 4
 
 ; Fishing species join the water list and hunts (D3): Old, Good and Super Rod
 DEF NUM_DEXNAV_RODS          EQU 3
