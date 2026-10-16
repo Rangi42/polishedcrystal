@@ -9,13 +9,19 @@ DexNav_ChooseWildEncounter:
 	farcall SetBadgeBaseLevel
 	ld a, [wTimeOfDay]
 	cp EVE
-	jr nz, .try
+	jr nz, .one_time
 	; Evening normally uses day or night encounters at random,
 	; so a target from either table can be found.
 	ld a, DAY
 	call .try
 	ret z
 	ld a, NITE
+.one_time
+	call .try
+	ret z
+	; While surfing, fishing species can be found too (D3).
+	jmp DexNav_ChooseFishEncounter
+
 .try
 	call DexNav_GetSlotTable
 	jr nc, .fail
@@ -87,6 +93,11 @@ DexNav_ChooseWildEncounter:
 .level_ok
 	ld a, b
 	farcall AdjustLevelForBadges
+	; fallthrough
+
+DexNav_SetUpBattle:
+; Finish setting up the DexNav battle for the hunt species at level a.
+; Returns z.
 	; Chain level bonus, rolled at hunt start (CFRU caps it at MAX_LEVEL)
 	ld hl, wDexNavHuntLevelBonus
 	add [hl]
@@ -167,8 +178,14 @@ DexNav_GetSlotTable:
 
 DexNav_CheckSlotIsTarget:
 ; Returns z if the wild slot at hl is the DexNav target. Clobbers a.
+	ld a, BANK(JohtoGrassWildMons)
+	; fallthrough
+
+DexNav_CheckSlotIsTargetInBank:
+; Same for a slot in bank a (fishing entries put species and form at the
+; same offsets as wild slots).
 	push de
-	call DexNav_GetSlotMon
+	call DexNav_GetSlotMonInBank
 	ld a, [wDexNavHuntSpecies]
 	cp e
 	jr nz, .done
@@ -180,9 +197,13 @@ DexNav_CheckSlotIsTarget:
 
 DexNav_GetSlotMon:
 ; Return e = species and d = form of the wild slot at hl. Preserves hl and bc.
-	push hl
-	inc hl ; skip level
 	ld a, BANK(JohtoGrassWildMons)
+	; fallthrough
+
+DexNav_GetSlotMonInBank:
+; Same for a slot in bank a.
+	push hl
+	inc hl ; skip level (or a fishing entry's chance)
 	call GetFarWord
 	ld e, l
 	ld d, h
@@ -544,6 +565,17 @@ DexNav_SuccessRoll:
 	ld a, NITE
 .got_time
 	call .GetOdds
+	and a
+	jr nz, .roll
+	; A fishing species (D3): its odds are out of 256, not 100.
+	call DexNav_FindFishTable
+	add a
+	ret c
+	ld c, a
+	call Random
+	cp c
+	ret
+
 .roll
 	add a
 	cp 100
@@ -1339,11 +1371,16 @@ DexNav_BuildList:
 	ld [wDexNavList], a
 	ld a, [wTimeOfDay]
 	cp EVE
-	jr nz, .add_table
+	jr nz, .one_time
 	ld a, DAY
 	call .add_table
 	ret nc
 	ld a, NITE
+.one_time
+	call .add_table
+	ret nc
+	jmp DexNav_AddFishToList
+
 .add_table
 	call DexNav_GetSlotTable
 	ret nc
@@ -1387,6 +1424,193 @@ DexNav_BuildList:
 	ld [hl], CANCEL
 	ld hl, wDexNavList
 	inc [hl]
+	ret
+
+DexNav_AddFishToList:
+; While surfing, add the species the player's rods can hook here (D3).
+; Returns carry.
+	assert NUM_WATERMON + DEXNAV_MAX_FISH_ENTRIES <= DEXNAV_LIST_MAX
+	call DexNav_GetFishGroup
+	jr nc, .done
+	ld e, 0 ; Old Rod first
+.rod_loop
+	push af
+	push de
+	call DexNav_GetFishRodTable
+	jr nc, .next_rod
+.entry_loop
+	ld a, BANK(FishGroups)
+	call DexNav_GetSlotMonInBank
+	push hl
+	push bc
+	call DexNav_BuildList.AddToList
+	pop bc
+	pop hl
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	dec b
+	jr nz, .entry_loop
+.next_rod
+	pop de
+	pop af
+	inc e
+	ld d, a
+	ld a, e
+	cp NUM_DEXNAV_RODS
+	ld a, d
+	jr c, .rod_loop
+.done
+	scf
+	ret
+
+DexNav_GetFishGroup:
+; Returns carry and a = this map's fishing group while surfing.
+	farcall CheckOnWater
+	jr nz, .no
+	farjp GetFishingGroup
+.no
+	and a
+	ret
+
+DexNav_GetFishRodTable:
+; For fishing group a and rod e (0 = Old, 1 = Good, 2 = Super), return carry,
+; hl = the rod's first entry (in BANK(FishGroups)) and b = its entry count,
+; if the player has that rod.
+	assert GOOD_ROD == OLD_ROD + 1 && SUPER_ROD == OLD_ROD + 2
+	assert FISHGROUP_DATA_LENGTH == 8 && NUM_FISHGROUPS * 8 < $100
+	ld d, a
+	push de
+	ld a, e
+	add OLD_ROD
+	call _CheckKeyItem
+	pop de
+	ret nc
+	ld a, d
+	add a
+	add a
+	add a
+	add e
+	add e
+	ld c, a
+	ld b, 0
+	ld hl, FishGroups + 2 ; skip the bite chances
+	add hl, bc
+	ld a, BANK(FishGroups)
+	call GetFarWord
+	; Old Rod tables have 3 entries; Good and Super Rod tables have 4.
+	ld b, 3
+	ld a, e
+	and a
+	jr z, .got_count
+	inc b
+.got_count
+	scf
+	ret
+
+DexNav_FindFishTable:
+; Find the best rod the player has that can hook the hunt species here (D3).
+; Returns carry, hl = that rod's first entry and b = its entry count, with
+; a = the species' odds there (out of 256). Returns nc and a = 0 otherwise.
+	call DexNav_GetFishGroup
+	jr nc, .none
+	ld e, NUM_DEXNAV_RODS - 1
+.rod_loop
+	push af
+	push de
+	call DexNav_GetFishRodTable
+	jr nc, .next_rod
+	push hl
+	push bc
+	; The chances are cumulative, so each entry's odds are the difference.
+	xor a
+	ld [wDexNavOddsPrev], a
+	ld [wDexNavOddsSum], a
+.entry_loop
+	ld a, BANK(FishGroups)
+	call GetFarByte
+	ld c, a
+	ld a, [wDexNavOddsPrev]
+	ld d, a
+	ld a, c
+	ld [wDexNavOddsPrev], a
+	sub d
+	ld d, a
+	ld a, BANK(FishGroups)
+	call DexNav_CheckSlotIsTargetInBank
+	jr nz, .next_entry
+	ld a, [wDexNavOddsSum]
+	add d
+	ld [wDexNavOddsSum], a
+.next_entry
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	dec b
+	jr nz, .entry_loop
+	pop bc
+	pop hl
+	ld a, [wDexNavOddsSum]
+	and a
+	jr nz, .found
+.next_rod
+	pop de
+	pop af
+	dec e
+	bit 7, e
+	jr z, .rod_loop
+.none
+	xor a
+	ret
+
+.found
+	pop de ; discard rod
+	pop de ; discard fishing group
+	scf
+	ret
+
+DexNav_ChooseFishEncounter:
+; Set up a DexNav battle for a fishing species, with the best rod the player
+; has that can hook it here. Returns z on success, nz if it can't be found.
+	call DexNav_FindFishTable
+	jr nc, .fail
+.roll
+	; Roll entries with the rod's odds until one is the target, like Fish does.
+	push hl
+	call Random
+	ld c, a
+.entry_loop
+	ld a, BANK(FishGroups)
+	call GetFarByte
+	cp c
+	jr nc, .got_entry
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	jr .entry_loop
+
+.got_entry
+	ld a, BANK(FishGroups)
+	call DexNav_CheckSlotIsTargetInBank
+	jr z, .found
+	pop hl
+	jr .roll
+
+.found
+	pop bc ; discard first entry
+	inc hl ; skip chance
+	inc hl ; skip species
+	inc hl ; skip form
+	ld a, BANK(FishGroups)
+	call GetFarByte
+	; Fished Pokemon don't get the badge or surfing level adjustments.
+	jmp DexNav_SetUpBattle
+
+.fail
+	or 1
 	ret
 
 DexNav_GetSearchLevelPointer:
