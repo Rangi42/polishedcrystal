@@ -1,51 +1,8 @@
 SECTION "Intro movie", ROMX
 
 CrystalIntro:
-	ldh a, [rWBK]
-	push af
 	ld a, 5
 	ldh [rWBK], a
-	ldh a, [hInMenu]
-	push af
-	ldh a, [hVBlank]
-	push af
-	call .InitRAMAddrs
-.loop
-	call JoyTextDelay
-	ldh a, [hJoyLast]
-	and PAD_BUTTONS
-	jr nz, .ShutOffMusic
-	ld a, [wJumptableIndex]
-	bit 7, a
-	jr nz, .done
-	call IntroSceneJumper
-	farcall PlaySpriteAnimations
-	call DelayFrame
-	jr .loop
-
-.ShutOffMusic:
-	ld e, MUSIC_NONE
-	call PlayMusic
-
-.done
-	call ClearBGPalettes
-	call ClearSprites
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
-	pop af
-	ldh [hVBlank], a
-	pop af
-	ldh [hInMenu], a
-	pop af
-	ldh [rWBK], a
-	ret
-
-.InitRAMAddrs:
 	xor a
 	ldh [hVBlank], a
 	ld a, $1
@@ -53,7 +10,20 @@ CrystalIntro:
 	xor a
 	ldh [hMapAnims], a
 	ld [wJumptableIndex], a
-	ret
+
+.loop
+	call JoyTextDelay
+	ldh a, [hJoyLast]
+	and PAD_BUTTONS
+	ld e, MUSIC_NONE
+	jmp nz, PlayMusic ; If something was pressed, kill the music and exit.
+	ld a, [wJumptableIndex]
+	bit 7, a
+	ret nz
+	call IntroSceneJumper
+	farcall PlaySpriteAnimations
+	call DelayFrame
+	jr .loop
 
 IntroSceneJumper:
 	call StandardStackJumpTable
