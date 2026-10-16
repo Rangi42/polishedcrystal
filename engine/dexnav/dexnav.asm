@@ -87,6 +87,13 @@ DexNav_ChooseWildEncounter:
 .level_ok
 	ld a, b
 	farcall AdjustLevelForBadges
+	; Chain level bonus, rolled at hunt start (CFRU caps it at MAX_LEVEL)
+	ld hl, wDexNavHuntLevelBonus
+	add [hl]
+	cp MAX_LEVEL + 1
+	jr c, .got_level
+	ld a, MAX_LEVEL
+.got_level
 	ld [wCurPartyLevel], a
 
 	ld a, [wDexNavHuntSpecies]
@@ -1024,10 +1031,10 @@ DexNav_UpdateChain:
 	ld hl, wDexNavChain
 	ld a, [hl]
 	and a
-	jr nz, .extend
-	inc a
-.extend
-	inc a
+	ld a, DEXNAV_CHAIN_START
+	jr z, .got_chain
+	ld a, [hl]
+	add DEXNAV_CHAIN_STEP
 	cp DEXNAV_MAX_CHAIN + 1
 	jr c, .got_chain
 	ld a, 1
@@ -1391,6 +1398,43 @@ DexNav_RollBoosts:
 	ld [wDexNavHuntPotential], a
 	ld [wDexNavHuntEggMove], a
 	ld [wDexNavHuntShinyPasses], a
+
+	; Chain boosts (CFRU), whatever the search level
+	; Level: +chain / 5, and sometimes +10 more
+	ld a, [wDexNavChain]
+	ld b, -1
+.divide_by_5
+	inc b
+	sub 5
+	jr nc, .divide_by_5
+	call DexNav_RollChainBonus
+	jr nc, .got_level_bonus
+	ld a, DEXNAV_CHAIN_BONUS_LEVELS
+	add b
+	ld b, a
+.got_level_bonus
+	ld a, b
+	ld [wDexNavHuntLevelBonus], a
+	; Shiny passes: some at the chain milestones, and sometimes a few more
+	ld a, [wDexNavChain]
+	ld b, DEXNAV_CHAIN_PASSES_1
+	cp DEXNAV_CHAIN_MILESTONE_1
+	jr z, .got_chain_passes
+	ld b, DEXNAV_CHAIN_PASSES_2
+	cp DEXNAV_CHAIN_MILESTONE_2
+	jr z, .got_chain_passes
+	ld b, 0
+.got_chain_passes
+	call DexNav_RollChainBonus
+	jr nc, .got_bonus_passes
+	ld a, DEXNAV_CHAIN_BONUS_PASSES
+	add b
+	ld b, a
+.got_bonus_passes
+	ld a, b
+	ld [wDexNavHuntShinyPasses], a
+
+	; Search level boosts
 	call DexNav_GetSearchTier
 	and a
 	ret z
@@ -1398,8 +1442,8 @@ DexNav_RollBoosts:
 	ld b, 0
 	ld hl, DexNavShinyPasses
 	add hl, bc
-	ld b, [hl]
-	ld a, b
+	ld a, [wDexNavHuntShinyPasses]
+	add [hl]
 	ld [wDexNavHuntShinyPasses], a
 	ld a, c
 	ld hl, DexNavBoostChances
@@ -1462,6 +1506,13 @@ DexNav_RollBoosts:
 .got_potential
 	ld a, d
 	ld [wDexNavHuntPotential], a
+	ret
+
+DexNav_RollChainBonus:
+; Return carry DEXNAV_CHAIN_BONUS_CHANCE percent of the time. Preserves bc.
+	ld a, 100
+	call RandomRange
+	cp DEXNAV_CHAIN_BONUS_CHANCE
 	ret
 
 DexNav_PickEggMove:

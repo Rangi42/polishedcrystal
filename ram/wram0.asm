@@ -1522,6 +1522,7 @@ wDexNavHuntAbility:: db ; HIDDEN_ABILITY or 0
 wDexNavHuntPotential:: db ; number of perfect stats, 0-3
 wDexNavHuntEggMove:: db ; replaces move slot 1, or 0
 wDexNavHuntShinyPasses:: db ; extra shiny checks (D10)
+wDexNavHuntLevelBonus:: db ; added to the wild level (chain)
 ; Steps taken since the hunt started
 wDexNavHuntSteps:: db
 ; Set by a failed search; cleared by taking a step or picking another species.

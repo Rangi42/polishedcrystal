@@ -34,8 +34,24 @@ else
 DEF DEXNAV_SPONTANEOUS_MASK EQU %00111111 ; 1 in 64
 endc
 
-; Chain (D7): wraps from this back to 1, as in CFRU
+; Chain (D7). CFRU: the first win makes it 2, then +1, and 100 wraps to 1.
 DEF DEXNAV_MAX_CHAIN EQU 100
+if DEF(DEBUG)
+DEF DEXNAV_CHAIN_START EQU 10 ; reach the milestones quickly for testing
+DEF DEXNAV_CHAIN_STEP  EQU 10
+else
+DEF DEXNAV_CHAIN_START EQU 2
+DEF DEXNAV_CHAIN_STEP  EQU 1
+endc
+; Chain boosts (CFRU): +chain/5 levels; extra shiny passes at exactly these
+; chains; and a DEXNAV_CHAIN_BONUS_CHANCE% chance each of +10 levels and +4 passes
+DEF DEXNAV_CHAIN_MILESTONE_1  EQU 50
+DEF DEXNAV_CHAIN_PASSES_1     EQU 5
+DEF DEXNAV_CHAIN_MILESTONE_2  EQU 100
+DEF DEXNAV_CHAIN_PASSES_2     EQU 10
+DEF DEXNAV_CHAIN_BONUS_CHANCE EQU 4
+DEF DEXNAV_CHAIN_BONUS_LEVELS EQU 10
+DEF DEXNAV_CHAIN_BONUS_PASSES EQU 4
 
 ; wDexNavHuntFlags
 DEF DEXNAV_HUNT_SPONTANEOUS_F EQU 0
