@@ -94,7 +94,7 @@ NextIntroScene:
 
 Scene_UnownA_Setup:
 ; Setup the next scene.
-	call Intro_ClearBGPals
+	call Intro_CutToBlackAndPause
 	call ClearSprites
 	call ClearTileMap
 	xor a
@@ -166,7 +166,7 @@ Scene_UnownA:
 
 Scene_ScrollOutdoors_Setup:
 ; More setup. Transition to the outdoor scene.
-	call Intro_ClearBGPals
+	call Intro_CutToBlackAndPause
 	call ClearSprites
 	call ClearTileMap
 	xor a
@@ -198,7 +198,7 @@ Scene_ScrollOutdoors:
 
 Scene_UnownHI_Setup:
 ; Go back to the Unown.
-	call Intro_ClearBGPals
+	call Intro_CutToBlackAndPause
 	call ClearSprites
 	call ClearTileMap
 	ld hl, rIE
@@ -291,7 +291,7 @@ Scene_UnownHI:
 
 Scene_ScrollThenSuicuneZoomingBy_Setup:
 ; Back to the outdoor scene.
-	call Intro_ClearBGPals
+	call Intro_CutToBlackAndPause
 	call ClearSprites
 	call ClearTileMap
 	xor a
@@ -422,7 +422,7 @@ Scene_GrassRustleThenWooperAndPichu:
 
 Scene_Unowns_Setup:
 ; Back to Unown again.
-	call Intro_ClearBGPals
+	call Intro_CutToBlackAndPause
 	call ClearSprites
 	call ClearTileMap
 	ld hl, rIE
@@ -541,7 +541,7 @@ Scene_Unowns:
 
 Scene_SuicuneRunsThenJumps_Setup:
 ; Switch scenes again.
-	call Intro_ClearBGPals
+	call Intro_CutToBlackAndPause
 	call ClearSprites
 	call ClearTileMap
 	xor a
@@ -614,7 +614,7 @@ Scene_SuicuneRunsThenJumps:
 
 Scene_SuicuneAppears_Setup:
 ; Transition to a new scene.
-	call Intro_ClearBGPals
+	call Intro_CutToBlackAndPause
 	call ClearSprites
 	call ClearTileMap
 	xor a
@@ -693,7 +693,7 @@ Scene_SuicuneAppears:
 
 Scene_SuicuneCloseUp_Setup:
 ; ...
-	call Intro_ClearBGPals
+	call Intro_CutToBlackAndPause
 	call ClearSprites
 	call ClearTileMap
 	xor a
@@ -756,7 +756,7 @@ Scene_SuicuneCloseUp:
 
 Scene_UnownsAroundSuicune_Setup:
 ; More setup.
-	call Intro_ClearBGPals
+	call Intro_CutToBlackAndPause
 	call ClearSprites
 	call ClearTileMap
 	xor a
@@ -1448,7 +1448,7 @@ Intro_SetCGBPalUpdate:
 	ldh [hCGBPalUpdate], a
 	ret
 
-Intro_ClearBGPals:
+Intro_CutToBlackAndPause:
 	ldh a, [rWBK]
 	push af
 	ld a, $5
