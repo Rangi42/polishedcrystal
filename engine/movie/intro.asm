@@ -79,7 +79,7 @@ Scene_UnownA_Setup:
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad128Tiles
 	ld hl, IntroBGMaps.UnownA
-	call DecompressAndLoadMaps
+	call DecompressAndLoadMap0
 	ld hl, UnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -122,7 +122,18 @@ Scene_ScrollOutdoors_Setup:
 ; More setup. Transition to the outdoor scene.
 	call ClearBGPals
 	call ClearSprites
-	call SetupCommonScenery
+	; Load the outdoor map to BG map 1, where it will stay for the next few scenes.
+	ld hl, IntroBGMaps.Outdoors
+	ld de, vBGMap1
+	call DecompressAndLoadMapTo
+	; The above will also have decompressed its tiles; load them to somewhere they won't be overwritten by subsequent scenes.
+	ld a, 1
+	ldh [rVBK], a
+	debgcoord 0, SCREEN_HEIGHT * 2, wDecompressScratch ; The tiles will be after both maps.
+	ld hl, vTiles5 tile 89
+	ld c, 39
+	call Request2bppInWRA6
+	call SetupOutdoors
 	call ResetLYOverrides
 	call QueueCGBPalUpdate
 	xor a
@@ -146,14 +157,15 @@ Scene_UnownHI_Setup:
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	ldh [hLCDCPointer], a
-	ld hl, UnownsGFX
-	ld de, vTiles2 tile $00
-	call DecompressAndLoad128Tiles
+	ld hl, IntroBGMaps.UnownHI
+	call DecompressAndLoadMap0
 	ld hl, PulseGFX
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad128Tiles
-	ld hl, IntroBGMaps.UnownHI
-	call DecompressAndLoadMaps
+	; Switch back to the 9800 tilemap.
+	ld a, LCDC_DEFAULT
+	ldh [rLCDC], a
+
 	ld hl, UnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -162,6 +174,7 @@ Scene_UnownHI_Setup:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
+
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -215,18 +228,18 @@ Scene_ScrollThenSuicuneZoomingBy_Setup:
 	call ClearBGPals
 	call ClearSprites
 
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, PichuWooperGFX
-	ld de, vTiles0 tile $00
-	call DecompressAndLoad128Tiles
 	xor a
 	ldh [rVBK], a
 	ld hl, SuicuneRunGFX
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad255Tiles
+	ld a, $1
+	ldh [rVBK], a
+	ld hl, PichuWooperGFX
+	ld de, vTiles0 tile $00
+	call DecompressAndLoad128Tiles
 
-	call SetupCommonScenery
+	call SetupOutdoors
 
 	call ResetLYOverrides
 	call ClearSpriteAnims
@@ -312,11 +325,12 @@ Scene_Unowns_Setup:
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	ldh [hLCDCPointer], a
-	ld hl, UnownsGFX
-	ld de, vTiles2 tile $00
-	call DecompressAndLoad128Tiles
 	ld hl, IntroBGMaps.Unowns
-	call DecompressAndLoadMaps
+	call DecompressAndLoadMap0
+	; Switch back to the 9800 tilemap.
+	ld a, LCDC_DEFAULT
+	ldh [rLCDC], a
+
 	ld hl, UnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -325,6 +339,7 @@ Scene_Unowns_Setup:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
+
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -409,7 +424,7 @@ Scene_SuicuneRunsThenJumps_Setup:
 	ld hl, SuicuneRunGFX
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad255Tiles
-	call SetupCommonScenery
+	call SetupOutdoors
 	call ClearSpriteAnims
 	depixel 13, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
@@ -479,7 +494,11 @@ Scene_SuicuneAppears_Setup:
 	lb bc, BANK(Grass4GFX), 1
 	call Request2bpp
 	ld hl, IntroBGMaps.SuicuneJump
-	call DecompressAndLoadMaps
+	call DecompressAndLoadMap0
+	; Switch back to the 9800 tilemap.
+	ld a, LCDC_DEFAULT
+	ldh [rLCDC], a
+
 	ld hl, SuicunePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -488,6 +507,7 @@ Scene_SuicuneAppears_Setup:
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
+
 	xor a
 	ldh [hSCX], a
 	ld a, $90
@@ -528,7 +548,7 @@ Scene_SuicuneCloseUp_Setup:
 	ld de, vTiles1 tile $00
 	call DecompressAndLoad255Tiles
 	ld hl, IntroBGMaps.SuicuneClose
-	call DecompressAndLoadMaps
+	call DecompressAndLoadMap0
 	ld hl, SuicuneClosePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -576,7 +596,7 @@ Scene_UnownsAroundSuicune_Setup:
 	lb bc, BANK(Grass4GFX), 1
 	call Request2bpp
 	ld hl, IntroBGMaps.SuicuneBack
-	call DecompressAndLoadMaps
+	call DecompressAndLoadMap0
 	ld hl, SuicunePalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -695,7 +715,7 @@ Scene_SpellOut_Setup:
 	ld de, vTiles2 tile $00
 	call DecompressAndLoad128Tiles
 	ld hl, IntroBGMaps.CrystalUnowns
-	call DecompressAndLoadMaps
+	call DecompressAndLoadMap0
 	ld hl, CrystalUnownsPalette
 	ld de, wBGPals1
 	ld bc, 16 palettes
@@ -1107,9 +1127,9 @@ RustleGrass:
 	ldh [hRequestedVTileSource], a
 	ld a, [hli]
 	ldh [hRequestedVTileSource + 1], a
-	ld a, LOW(vTiles2 tile $09)
+	ld a, LOW(vTiles5 tile (89 + 31))
 	ldh [hRequestedVTileDest], a
-	ld a, HIGH(vTiles2 tile $09)
+	ld a, HIGH(vTiles5 tile (89 + 31))
 	ldh [hRequestedVTileDest + 1], a
 	ld a, 4
 	ldh [hRequested2bpp], a
@@ -1196,40 +1216,24 @@ INCBIN "gfx/intro/suicune_run.2bpp.lzp"
 PichuWooperGFX:
 INCBIN "gfx/intro/pichu_wooper.2bpp.lzp"
 
-SetupCommonScenery:
-	ld hl, BackgroundGFX
-	ld de, vTiles2 tile $00
-	call DecompressAndLoad128Tiles
-
-	ld hl, IntroBGMaps.Outdoors
-	call DecompressAndLoadMaps
-
-	ld hl, BackgroundPalette
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	rst CopyBytes
-
-	ld hl, BackgroundPalette
-	ld de, wBGPals2
-	ld bc, 16 palettes
-	rst CopyBytes
-
+SetupOutdoors:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
+	ld a, LCDC_DEFAULT | LCDC_BG_9C00
+	ldh [rLCDC], a
 
-	ld a, $7
-	ldh [hWX], a
-
-	ld a, $90
-	ldh [hWY], a
+	ld hl, .palette
+	ld de, wBGPals1
+	ld bc, 16 palettes
+	rst CopyBytes
+	ld hl, .palette
+	ld de, wBGPals2
+	ld bc, 16 palettes
+	rst CopyBytes
 	ret
 
-BackgroundGFX:
-INCBIN "gfx/intro/background.2bpp.lzp"
-
-BackgroundPalette:
-INCLUDE "gfx/intro/background.pal"
+.palette: INCLUDE "gfx/intro/outdoors.pal"
 
 UnownsGFX:
 INCBIN "gfx/intro/unowns.2bpp.lzp"
@@ -1273,25 +1277,29 @@ INCBIN "gfx/intro/grass3.2bpp"
 Grass4GFX:
 INCBIN "gfx/intro/grass4.2bpp"
 
-DecompressAndLoadMaps:
+; Load the compressed attrmap+tilemap at `hl` to vBGMap0.
+DecompressAndLoadMap0:
+	ld de, vBGMap0
+; Load the compressed attrmap+tilemap at `hl` to the VRAM address `de`.
+DecompressAndLoadMapTo:
+	push de ; Will be reused for the tilemap.
 	ld a, 1 ; Load the attrmap.
 	ldh [rVBK], a
-	debgcoord 0, 0
 	lb bc, BANK("Intro BG maps"), TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE
 	call DecompressRequest2bpp
 
 	xor a ; Load the tilemap.
 	ldh [rVBK], a
+	pop hl ; Different calling convention than `DecompressRequest2bpp`!
 	debgcoord 0, SCREEN_HEIGHT, wDecompressScratch
-	hlbgcoord 0, 0 ; Different calling convention than `DecompressRequest2bpp`!
-	ld c, TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE ; B doesn't matter since the source isn't in ROM.
+	ld c, TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE ; This function ignores B.
 	jmp Request2bppInWRA6
 
 PUSHS "Intro BG maps", ROMX
 
 IntroBGMaps: ; Each of those contains the attrmap followed by the tilemap.
 .UnownA:        INCBIN "gfx/intro/unown_a.bgmaps.lzp"
-.Outdoors:      INCBIN "gfx/intro/outdoors.bgmaps.lzp"
+.Outdoors:      INCBIN "gfx/intro/outdoors.bgmaps_tiles.lzp" ; ...this one also has its tiles bundled.
 .UnownHI:       INCBIN "gfx/intro/unown_hi.bgmaps.lzp"
 .Unowns:        INCBIN "gfx/intro/unowns.bgmaps.lzp"
 .SuicuneJump:   INCBIN "gfx/intro/suicune_jump.bgmaps.lzp"

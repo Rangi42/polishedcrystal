@@ -9,7 +9,7 @@
 *.lz
 *.lzp
 *.widths
-gfx/intro/*.bgmaps
+gfx/intro/*.bgmaps*
 gfx/pokemon/*/*.dimensions
 gfx/pokemon/*/*.animated.tilemap
 gfx/pokemon/*/bitmask.asm
