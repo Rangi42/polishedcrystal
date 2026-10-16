@@ -1505,9 +1505,22 @@ wPaletteSwapReloadMask:: db
 
 SECTION "DexNav WRAM0", WRAM0
 
+; Scratch that's never needed at the same time, so it shares space.
+UNION
 ; Species list for the DexNav menu: count, (species, form) * count, -1.
-; The evening list can combine the day and night tables.
+; The evening list can combine the day and night tables. Only read while
+; the menu is open.
 wDexNavList:: ds 1 + DEXNAV_LIST_MAX * 2 + 1
+NEXTU
+; Which tiles around the player a hunt target can use (DexNav_StartHunt)
+wDexNavReach:: ds DEXNAV_REACH_SIZE * DEXNAV_REACH_SIZE
+wDexNavReachMode:: db ; LAND_TILE or WATER_TILE
+NEXTU
+; DexNav_SuccessRoll
+wDexNavOddsPrev:: db
+wDexNavOddsSum:: db
+ENDU
+
 wDexNavListCursor:: db
 
 ; Active hunt: the rustle's object struct index (0 = no hunt) and its coords.
@@ -1528,11 +1541,3 @@ wDexNavHuntLevelBonus:: db ; added to the wild level (chain)
 wDexNavHuntSteps:: db
 ; Set by a failed search; cleared by taking a step or picking another species.
 wDexNavCooldown:: db
-
-; Which tiles around the player a hunt target can use (DexNav_MapReachableTiles)
-wDexNavReach:: ds DEXNAV_REACH_SIZE * DEXNAV_REACH_SIZE
-wDexNavReachMode:: db ; LAND_TILE or WATER_TILE
-
-; Scratch for DexNav_SuccessRoll
-wDexNavOddsPrev:: db
-wDexNavOddsSum:: db
