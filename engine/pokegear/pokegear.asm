@@ -1363,18 +1363,18 @@ AnimateTownMapFly:
 	jr z, .done
 	dec a
 	cp b
-	jr nz, .skip
+	jr z, .found
+	inc hl
+	jr .loop
+
+.found
 	ld a, [hli]
 	ld c, a
 	ld [wPokegearMapCursorSpawnpoint], a
 	call HasVisitedSpawn
 	and a
-	jr z, .loop
-	ld a, 144
-	jr .done
-.skip
-	inc hl
-	jr .loop
+	jr z, .done
+	ld a, SCREEN_HEIGHT_PX
 .done
 	pop bc
 	ld hl, SPRITEANIMSTRUCT_YCOORD
