@@ -1088,10 +1088,19 @@ DexNav_BreakChain:
 DexNav_UpdateChain:
 ; Called from ExitBattle. Winning or catching in a DexNav battle extends the
 ; chain (CFRU: 0 -> 2, then +1, and 100 wraps to 1) if it's the chain's
-; species, or starts a new chain for it (ORAS, D24); any other battle ends it.
+; species, or starts a new chain for it (D24); any other battle ends it.
+; Other wild battles still raise that species' search level (D26); DexNav
+; battles already did at the target.
 	ld a, [wBattleType]
 	cp BATTLETYPE_DEXNAV
-	jr nz, DexNav_BreakChain
+	jr z, .dexnav_battle
+	ld a, [wBattleMode]
+	assert WILD_BATTLE == 1
+	dec a
+	call z, DexNav_RaiseWildSearchLevel
+	jr DexNav_BreakChain
+
+.dexnav_battle
 	ld a, [wBattleResult]
 	and ~BATTLERESULT_BITMASK
 	assert WIN == 0
@@ -1622,14 +1631,29 @@ DexNav_ChooseFishEncounter:
 
 DexNav_GetSearchLevelPointer:
 ; hl = the hunt species' entry in wDexNavSearchLevels (D21)
-	call DexNav_GetHuntIndex
+	call DexNav_GetHuntMon
+DexNav_GetMonSearchLevelPointer:
+; hl = species c / form b's entry in wDexNavSearchLevels
+	call GetSpeciesAndFormIndex
 	ld hl, wDexNavSearchLevels
 	add hl, bc
 	ret
 
+DexNav_RaiseWildSearchLevel:
+; Any other wild battle raises that species' search level too (D26).
+	ld a, [wTempWildMonSpecies]
+	and a
+	ret z
+	ld c, a
+	ld a, [wWildMonForm]
+	ld b, a
+	call DexNav_GetMonSearchLevelPointer
+	jr DexNav_RaiseSearchLevelAtHL
+
 DexNav_RaiseSearchLevel:
 ; Each DexNav battle raises the hunt species' search level (CFRU).
 	call DexNav_GetSearchLevelPointer
+DexNav_RaiseSearchLevelAtHL:
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wDexNavSearchLevels)
@@ -1773,6 +1797,10 @@ DexNav_RollBoosts:
 	ld b, a
 .got_level_bonus
 	ld a, b
+	cp DEXNAV_MAX_LEVEL_BONUS + 1
+	jr c, .level_bonus_ok
+	ld a, DEXNAV_MAX_LEVEL_BONUS
+.level_bonus_ok
 	ld [wDexNavHuntLevelBonus], a
 	; Shiny passes: some at the chain milestones, and sometimes a few more
 	call DexNav_GetHuntChain
