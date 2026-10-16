@@ -6,6 +6,10 @@ DEF DEXNAV_LIST_MAX  EQU NUM_GRASSMON * 2
 DEF DEXNAV_MENU_ROWS EQU 4
 DEF DEXNAV_MENU_TOP  EQU 4
 DEF DEXNAV_PROMPT_Y  EQU DEXNAV_MENU_TOP + DEXNAV_MENU_ROWS * 2 + 2
+; Each row's 16x16 mini sits above the name's row, at x 2-3 (BG palettes 1-4,
+; tiles vTiles2 $00-$0F); the name starts 3 tiles right of the menu's text column.
+DEF DEXNAV_MINI_X      EQU 2
+DEF DEXNAV_NAME_OFFSET EQU 3
 
 ; Fishing species join the water list and hunts (D3): Old, Good and Super Rod
 DEF NUM_DEXNAV_RODS          EQU 3

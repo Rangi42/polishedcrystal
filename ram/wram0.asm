@@ -1511,6 +1511,8 @@ UNION
 ; The evening list can combine the day and night tables. Only read while
 ; the menu is open.
 wDexNavList:: ds 1 + DEXNAV_LIST_MAX * 2 + 1
+; Colors 1-3 of a list row's mini palette, before they're copied in
+wDexNavMiniPal:: ds 3 * 2
 NEXTU
 ; Which tiles around the player a hunt target can use (DexNav_StartHunt)
 wDexNavReach:: ds DEXNAV_REACH_SIZE * DEXNAV_REACH_SIZE

@@ -339,6 +339,7 @@ DexNav_ChooseTarget:
 	ld a, c
 	ld [wMenuScrollPosition], a
 	call InitScrollingMenu
+	call DexNav_SetMiniAttrs
 	call ScrollingMenu
 	ld a, [wMenuScrollPosition]
 	ld hl, wMenuCursorY
@@ -497,7 +498,7 @@ DexNav_ChooseTarget:
 	db 1 ; default option
 
 .MenuData:
-	db SCROLLINGMENU_DISPLAY_ARROWS ; flags
+	db SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_CALL_FUNCTION1_CANCEL ; flags
 	db DEXNAV_MENU_ROWS, 0 ; rows, columns
 	db SCROLLINGMENU_ITEMS_QUANTITY ; species + form
 	dba wDexNavList
@@ -506,9 +507,18 @@ DexNav_ChooseTarget:
 	dba DoNothing
 
 .PlaceSpeciesName:
-; Unseen species show as "?????".
+; Each row has the species' mini to the left of its name. Unseen species
+; show as "?" and "?????". The menu calls this for the Cancel row too.
 	push de
+	call DexNav_DrawListMini
+	pop hl
 	ld a, [wMenuSelection]
+	cp CANCEL
+	ld de, .CancelString
+	jr z, .got_name
+	ld bc, DEXNAV_NAME_OFFSET
+	add hl, bc
+	push hl
 	ld c, a
 	ld a, [wMenuSelectionQuantity]
 	ld b, a
@@ -516,19 +526,23 @@ DexNav_ChooseTarget:
 	call CheckSeenMon
 	pop bc
 	ld de, .UnseenString
-	jr z, .got_name
+	jr z, .got_mon_name
 	ld a, c
 	ld [wNamedObjectIndex], a
 	ld a, b
 	ld [wNamedObjectIndex + 1], a
 	call GetPokemonName
-.got_name
+.got_mon_name
 	pop hl
+.got_name
 	rst PlaceString
 	ret
 
 .UnseenString:
 	db "?????@"
+
+.CancelString:
+	db "Cancel@"
 
 .NotHereText:
 	text_ram wStringBuffer1
@@ -1378,6 +1392,171 @@ DexNav_OpenPage:
 
 .PromptString:
 	db "Search for which<LNBRK>#mon?@"
+
+DexNav_SetMiniAttrs:
+; List rows use BG palettes 1-4 for their minis' tiles. InitScrollingMenu
+; just set the whole box to the text palette, so set these after it.
+	hlcoord DEXNAV_MINI_X, DEXNAV_MENU_TOP, wAttrmap
+	ld de, SCREEN_WIDTH - 1
+	ld a, 1
+.loop
+	ld [hli], a
+	ld [hl], a
+	add hl, de
+	ld [hli], a
+	ld [hl], a
+	add hl, de
+	inc a
+	cp DEXNAV_MENU_ROWS + 1
+	jr nz, .loop
+	jmp ApplyAttrAndTilemapInVBlank
+
+if !DEF(MONOCHROME)
+DEF DEXNAV_MINI_WHITE EQU palred 31 + palgreen 31 + palblue 31
+DEF DEXNAV_MINI_GRAY  EQU palred 16 + palgreen 16 + palblue 16
+DEF DEXNAV_MINI_BLACK EQU 0
+else
+DEF DEXNAV_MINI_WHITE EQU PAL_MONOCHROME_WHITE
+DEF DEXNAV_MINI_GRAY  EQU PAL_MONOCHROME_DARK
+DEF DEXNAV_MINI_BLACK EQU PAL_MONOCHROME_BLACK
+endc
+
+DexNav_DrawListMini:
+; Draw the menu's current species as a mini in this row's 2x2 tiles, on the
+; tile row above de and left of the name: full color if caught, faded if only
+; seen (like the Pokédex), a "?" if unseen. The Cancel row just gets black text.
+	ld h, d
+	ld l, e
+	ld a, [wMenuSelection]
+	cp CANCEL
+	jr z, .plain
+	ld c, a
+	ld a, [wMenuSelectionQuantity]
+	ld b, a
+	push hl
+	push bc
+	call CheckSeenMon
+	pop bc
+	pop hl
+	jr nz, .seen
+	ld [hl], '?'
+.plain
+	ld bc, DEXNAV_MINI_WHITE
+	ld d, b
+	ld e, c
+	ld hl, DEXNAV_MINI_BLACK
+	jr DexNav_SetRowPalette
+
+.seen
+	; This row's 4 tiles are vTiles2 tiles row * 4 to row * 4 + 3, in the
+	; minis' order: top left, top right, bottom left, bottom right.
+	call DexNav_GetMenuRow
+	add a
+	add a
+	ld de, -SCREEN_WIDTH
+	add hl, de
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	ld de, SCREEN_WIDTH - 1
+	add hl, de
+	ld [hli], a
+	inc a
+	ld [hl], a
+	push bc
+	ld a, c
+	ld [wCurIconSpecies], a
+	ld a, b
+	ld [wCurIconForm], a
+	call DexNav_GetMenuRow
+	swap a
+	add a
+	add a ; row * 4 tiles
+	ld l, a
+	ld h, HIGH(vTiles2)
+	assert LOW(vTiles2) == 0
+	farcall GetStorageMini
+	pop bc
+
+	push bc
+	xor a ; not shiny
+	farcall GetMonPalInBCDE
+	pop hl
+	push bc
+	push de
+	ld c, l
+	ld b, h
+	call CheckCaughtMon
+	pop de
+	pop bc
+	ld hl, DEXNAV_MINI_BLACK
+	jr nz, DexNav_SetRowPalette
+	; Seen but not caught: faded, with a gray outline
+	farcall ApplyWhiteTransparency
+	push bc
+	ld b, d
+	ld c, e
+	farcall ApplyWhiteTransparency
+	ld d, b
+	ld e, c
+	pop bc
+	ld hl, DEXNAV_MINI_GRAY
+	; fallthrough
+
+DexNav_SetRowPalette:
+; Set colors 1-3 of this menu row's mini palette to bc, de and hl.
+	push hl
+	ld hl, wDexNavMiniPal
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	pop de
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+	call DexNav_GetMenuRow
+	inc a ; palettes 1-4
+	add a
+	add a
+	add a ; * PAL_SIZE
+	add 2 ; skip color 0 (white)
+	ld e, a
+	ld d, 0
+	ld hl, wBGPals1
+	add hl, de
+	push hl
+	call .copy
+	pop hl
+	ld de, wBGPals2 - wBGPals1
+	add hl, de
+	call .copy
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	ret
+
+.copy
+	ld d, h
+	ld e, l
+	ld hl, wDexNavMiniPal
+	ld bc, 3 * 2 ; colors 1-3
+	jmp FarCopyColorWRAM
+
+DexNav_GetMenuRow:
+; Return a = the scrolling menu row being drawn (0 = the top one).
+	push hl
+	ld a, [wMenuScrollPosition]
+	ld hl, wScrollingMenuCursorPosition
+	sub [hl]
+	cpl
+	inc a
+	pop hl
+	ret
 
 DexNav_BuildList:
 ; Fill wDexNavList with each distinct species/form in this area's table for
