@@ -130,8 +130,8 @@ Scene_ScrollOutdoors_Setup:
 	ld a, 1
 	ldh [rVBK], a
 	debgcoord 0, SCREEN_HEIGHT * 2, wDecompressScratch ; The tiles will be after both maps.
-	ld hl, vTiles5 tile 89
-	ld c, 39
+	ld hl, vTiles5 tile 77
+	ld c, 39 + 3 * 4 ; The base picture, plus the four grass animations.
 	call Request2bppInWRA6
 	call SetupOutdoors
 	call ResetLYOverrides
@@ -1113,33 +1113,33 @@ ColoredSuicuneFrameSwap:
 	jr nz, .loop
 	ret
 
+; Overwrite the grass tiles with the appropriate rustling cel.
+; (This is done on every frame that this scene is active.)
 RustleGrass:
 	ld a, [wIntroSceneFrameCounter]
-	cp 36
+	cp 4 * 9 ; Animate the grass 8 times, but return *before* the beginning of the 9th loop.
 	ret nc
-	and $c
-	srl a
-	ld e, a
-	ld d, $0
-	ld hl, .RustlingGrassPointers
-	add hl, de
-	ld a, [hli]
+
+	; Compute the cel's ID. We want to sway the grass left, middle, right, then middle again.
+	add 4
+	and $c ; Move to the next cel every 4 frames, looping around after the 4th.
+	jr nz, .gotIndex ; `add 4` above turns [0, 4, 8, C] into [4, 8, C, 0]...
+	ld a, 8 ; ...and we correct that last one to the same as the middle.
+.gotIndex
+	; The grass tiles are loaded in chunks of 4, starting at tile ID $74 ($9740).
+	; Conveniently (wink wink), this means we only need to change the low byte of the source address
+	; which we obtain by multiplying A by 16.
+	swap a
 	ldh [hRequestedVTileSource], a
-	ld a, [hli]
+	ld a, $97 ; Note that this assumes where the outdoors tiles are loaded.
 	ldh [hRequestedVTileSource + 1], a
-	ld a, LOW(vTiles5 tile (89 + 31))
+	ld a, LOW(vTiles5 tile (77 + 31))
 	ldh [hRequestedVTileDest], a
-	ld a, HIGH(vTiles5 tile (89 + 31))
+	ld a, HIGH(vTiles5 tile (77 + 31))
 	ldh [hRequestedVTileDest + 1], a
 	ld a, 4
 	ldh [hRequested2bpp], a
 	ret
-
-.RustlingGrassPointers:
-	dw Grass1GFX
-	dw Grass2GFX
-	dw Grass3GFX
-	dw Grass2GFX
 
 ClearBGPals:
 
@@ -1268,12 +1268,6 @@ INCLUDE "gfx/intro/suicune.pal"
 UnownBackGFX:
 INCBIN "gfx/intro/unown_back.2bpp.lzp"
 
-Grass1GFX:
-INCBIN "gfx/intro/grass1.2bpp"
-Grass2GFX:
-INCBIN "gfx/intro/grass2.2bpp"
-Grass3GFX:
-INCBIN "gfx/intro/grass3.2bpp"
 Grass4GFX:
 INCBIN "gfx/intro/grass4.2bpp"
 
@@ -1299,7 +1293,8 @@ PUSHS "Intro BG maps", ROMX
 
 IntroBGMaps: ; Each of those contains the attrmap followed by the tilemap.
 .UnownA:        INCBIN "gfx/intro/unown_a.bgmaps.lzp"
-.Outdoors:      INCBIN "gfx/intro/outdoors.bgmaps_tiles.lzp" ; ...this one also has its tiles bundled.
+; This one also has its tiles bundled, including the grass rustling animation.
+.Outdoors:      INCBIN "gfx/intro/outdoors.bgmaps_tiles_anim.lzp"
 .UnownHI:       INCBIN "gfx/intro/unown_hi.bgmaps.lzp"
 .Unowns:        INCBIN "gfx/intro/unowns.bgmaps.lzp"
 .SuicuneJump:   INCBIN "gfx/intro/suicune_jump.bgmaps.lzp"

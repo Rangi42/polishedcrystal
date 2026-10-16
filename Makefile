@@ -213,6 +213,10 @@ gfx/font/space.2bpp: tools/gfx =
 gfx/intro/%.bgmaps: gfx/intro/%.attrmap gfx/intro/%.tilemap ; $Qcat $^ > $@
 gfx/intro/%.bgmaps_tiles: gfx/intro/%.bgmaps gfx/intro/%.2bpp ; $Qcat $^ > $@
 gfx/intro/outdoors.2bpp: RGBGFXFLAGS += -m
+gfx/intro/outdoors.bgmaps_tiles_anim: gfx/intro/outdoors.bgmaps_tiles gfx/intro/grass1.2bpp \
+                                                                      gfx/intro/grass2.2bpp \
+                                                                      gfx/intro/grass3.2bpp
+	cat $^ > $@
 
 gfx/mail/dragonite.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/flower_mail_border.1bpp: tools/gfx += --remove-whitespace
