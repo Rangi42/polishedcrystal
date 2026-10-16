@@ -1,6 +1,6 @@
 ; DexNav species list (see engine/dexnav/dexnav.asm)
-; Evening lists can combine the day and night grass tables.
-DEF DEXNAV_LIST_MAX  EQU NUM_GRASSMON * 2
+; The Land tab lists all three grass tables (morning, day, night; D29).
+DEF DEXNAV_LIST_MAX  EQU NUM_GRASSMON * (NITE + 1)
 ; Full-screen page: area name box (rows 0-2), list box (rows 3-13),
 ; prompt box (rows 14-17). Each list row is two tiles tall.
 DEF DEXNAV_MENU_ROWS EQU 4
@@ -13,12 +13,15 @@ DEF DEXNAV_NAME_OFFSET EQU 3
 ; List tabs (wDexNavTab, D29)
 DEF DEXNAV_TAB_LAND  EQU 0
 DEF DEXNAV_TAB_WATER EQU 1
-; Each row's marks (wDexNavListMarks) end at x 18: on the Water tab, which
-; rods hook it (bit 0 Old, 1 Good, 2 Super). Gray copies of the mark tiles
-; follow the minis' tiles.
-DEF DEXNAV_NUM_MARKS  EQU 3
-DEF DEXNAV_MARKS_X    EQU SCREEN_WIDTH - 1 - DEXNAV_NUM_MARKS
-DEF DEXNAV_GRAY_TILES EQU DEXNAV_MENU_ROWS * 4
+; Each row's marks (wDexNavListMarks) end at x 18: on the Land tab, when it
+; appears (bit 0 MORN, 1 DAY, 2 NITE); on the Water tab, which rods hook it
+; (bit 0 Old, 1 Good, 2 Super). The mark tiles follow the minis' tiles: gray
+; rod letters (the dark ones are the font's), then dark and gray time icons.
+DEF DEXNAV_NUM_MARKS       EQU 3
+DEF DEXNAV_MARKS_X         EQU SCREEN_WIDTH - 1 - DEXNAV_NUM_MARKS
+DEF DEXNAV_GRAY_ROD_TILES  EQU DEXNAV_MENU_ROWS * 4
+DEF DEXNAV_TIME_TILES      EQU DEXNAV_GRAY_ROD_TILES + DEXNAV_NUM_MARKS
+DEF DEXNAV_GRAY_TIME_TILES EQU DEXNAV_TIME_TILES + DEXNAV_NUM_MARKS
 
 ; Fishing species join the water list and hunts (D3): Old, Good and Super Rod
 DEF NUM_DEXNAV_RODS          EQU 3

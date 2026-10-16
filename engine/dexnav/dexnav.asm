@@ -1415,7 +1415,7 @@ DexNav_OpenPage:
 	call FadeToMenu_BackupSprites
 	call ClearTileMap
 	call DisableLCD
-	call DexNav_LoadGrayMarks
+	call DexNav_LoadMarkTiles
 	call EnableLCD
 	hlcoord 0, 0
 	lb bc, 1, SCREEN_WIDTH - 2
@@ -1485,16 +1485,16 @@ DexNav_FinishListBox:
 .WaterTab:
 	db "◀Water▶@"
 
-DexNav_LoadGrayMarks:
-; Gray copies (color 2 only) of the mark tiles, from the font already in
-; VRAM. The LCD has to be off.
+DexNav_LoadMarkTiles:
+; Load the mark tiles: gray copies (color 2 only) of the font's rod letters,
+; already in VRAM, then the time icons, dark and gray. The LCD has to be off.
 	ld bc, DexNav_DrawListMarks.RodLetters
-	ld de, vTiles2 tile DEXNAV_GRAY_TILES
-.tile_loop
+	ld de, vTiles2 tile DEXNAV_GRAY_ROD_TILES
+.letter_loop
 	ld a, [bc]
 	inc bc
 	cp '@'
-	ret z
+	jr z, .time_icons
 	push bc
 	ld l, a
 	ld h, 0
@@ -1504,7 +1504,7 @@ endr
 	ld bc, vTiles0
 	add hl, bc
 	ld c, TILE_SIZE / 2
-.row_loop
+.letter_row_loop
 	xor a
 	ld [de], a
 	inc de
@@ -1513,14 +1513,70 @@ endr
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .row_loop
+	jr nz, .letter_row_loop
 	pop bc
-	jr .tile_loop
+	jr .letter_loop
+
+.time_icons
+	assert DEXNAV_TIME_TILES == DEXNAV_GRAY_ROD_TILES + DEXNAV_NUM_MARKS
+	ld hl, DexNavTimeIconsGFX
+	ld c, DEXNAV_NUM_MARKS * TILE_SIZE / 2
+.dark_loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .dark_loop
+	assert DEXNAV_GRAY_TIME_TILES == DEXNAV_TIME_TILES + DEXNAV_NUM_MARKS
+	ld hl, DexNavTimeIconsGFX
+	ld c, DEXNAV_NUM_MARKS * TILE_SIZE / 2
+.gray_loop
+	xor a
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .gray_loop
+	ret
+
+DexNavTimeIconsGFX:
+; Morning (sunrise), day (sun), night (moon), 1bpp
+	db %00010000
+	db %01000100
+	db %00000000
+	db %00111000
+	db %01111100
+	db %11111110
+	db %00000000
+	db %11111110
+
+	db %00010000
+	db %01010100
+	db %00111000
+	db %11111110
+	db %00111000
+	db %01010100
+	db %00010000
+	db %00000000
+
+	db %00111100
+	db %01111000
+	db %11110000
+	db %11110000
+	db %11110000
+	db %01111000
+	db %00111100
+	db %00000000
 
 DexNav_DrawListMarks:
-; At the end of the row on the Water tab: O, G and S, dark for each rod that
-; hooks this species here and gray for the others (D29). Surf-only species
-; (no marks) get none.
+; At the end of the row (D29): on the Land tab, morning, day and night icons,
+; dark for the times this species appears and gray for the others; on the
+; Water tab, O, G and S the same way for the rods that hook it. Surf-only
+; species (no marks) get none.
 	ld a, [wMenuSelection]
 	cp CANCEL
 	ret z
@@ -1535,8 +1591,14 @@ DexNav_DrawListMarks:
 	ld c, a
 	ld hl, DEXNAV_MARKS_X - DEXNAV_MINI_X
 	add hl, de
+	ld a, [wDexNavTab]
+	and a
+	ld de, .TimeIcons
+	ld b, DEXNAV_GRAY_TIME_TILES
+	jr z, .loop
+	assert DEXNAV_TAB_LAND == 0
 	ld de, .RodLetters
-	ld b, DEXNAV_GRAY_TILES
+	ld b, DEXNAV_GRAY_ROD_TILES
 .loop
 	ld a, [de]
 	inc de
@@ -1546,11 +1608,13 @@ DexNav_DrawListMarks:
 .got_tile
 	ld [hli], a
 	inc b
-	ld a, b
-	cp DEXNAV_GRAY_TILES + DEXNAV_NUM_MARKS
+	ld a, [de]
+	cp '@'
 	jr nz, .loop
 	ret
 
+.TimeIcons:
+	db DEXNAV_TIME_TILES, DEXNAV_TIME_TILES + 1, DEXNAV_TIME_TILES + 2, '@'
 .RodLetters:
 	db "OGS@"
 
@@ -1725,14 +1789,38 @@ DexNav_BuildList:
 	and a
 	jr nz, .water
 	assert DEXNAV_TAB_LAND == 0
+	; Every time of day, starting with the current one (D29), marking when
+	; each species appears. The evening uses the day and night tables.
+	assert MORN == 0 && DAY == 1 && NITE == 2
 	ld a, [wTimeOfDay]
 	cp EVE
-	jr nz, .one_time
+	jr nz, .got_time
 	ld a, DAY
+.got_time
+	ld c, NITE + 1
+.time_loop
+	push bc
+	push af
+	ld b, a
+	inc b
+	ld a, 1 << 7
+.mark_loop
+	rlca
+	dec b
+	jr nz, .mark_loop
+	ld [wDexNavNewMarks], a
+	pop af
+	push af
 	call .add_table
-	ld a, NITE
-.one_time
-	call .add_table
+	pop af
+	inc a
+	cp NITE + 1
+	jr c, .next_time
+	xor a ; MORN
+.next_time
+	pop bc
+	dec c
+	jr nz, .time_loop
 	jr .done
 
 .water
