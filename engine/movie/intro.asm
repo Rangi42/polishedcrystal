@@ -1481,34 +1481,16 @@ endc
 	jmp DelayFrames
 
 Intro_DecompressRequest2bpp_64Tiles:
-	lb bc, 1, 64
-	jr Intro_DecompressRequest2bpp
+	lb bc, BANK(@), 64
+	jmp DecompressRequest2bpp
 
 Intro_DecompressRequest2bpp_128Tiles:
-	lb bc, 1, 128
-	jr Intro_DecompressRequest2bpp
+	lb bc, BANK(@), 128
+	jmp DecompressRequest2bpp
 
 Intro_DecompressRequest2bpp_255Tiles:
-	lb bc, 1, 255
-Intro_DecompressRequest2bpp:
-	ldh a, [rWBK]
-	push af
-	ld a, $6
-	ldh [rWBK], a
-
-	push bc
-	push de
-	ld de, wDecompressScratch
-	call Decompress
-	pop hl
-	pop bc
-
-	ld de, wDecompressScratch
-	call Request2bpp
-
-	pop af
-	ldh [rWBK], a
-	ret
+	lb bc, BANK(@), 255
+	jmp DecompressRequest2bpp
 
 Intro_ResetLYOverrides:
 	ldh a, [rWBK]
