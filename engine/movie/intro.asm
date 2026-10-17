@@ -193,7 +193,7 @@ Scene_UnownHI:
 	pop af
 .StopUnown:
 	ld [wIntroSceneTimer], a
-	ld a, $1
+	ld a, 1 palettes
 	jmp CrystalIntro_UnownFade
 
 Scene_ScrollThenSuicuneZoomingBy_Setup:
@@ -316,30 +316,16 @@ Scene_Unowns:
 	inc [hl]
 	cp $c0
 	jmp nc, NextIntroScene
-	cp $80
-	jr nc, .second_half
-; first half
+	add a ; Double, and check if bit 7 is set.
+	jr nc, .first_half ; Second half plays over the latter 4 palettes at double speed.
+	adc a ; Double the speed, and set bit 0 (carry is set right now).
+.first_half
 	ld c, a
-	and $1f
-	add a
+	and $3e ; Ignore bit 0, it's actually part of the palette index.
 	ld [wIntroSceneTimer], a
-	ld a, c
-	and $e0
-	srl a
-	swap a
-	jmp CrystalIntro_UnownFade
-
-.second_half
-; double speed
-	ld c, a
-	and $f
-	add a
-	add a
-	ld [wIntroSceneTimer], a
-	ld a, c
-	and $70
-	or $40
-	swap a
+	xor c ; `ld a, c :: and $C1`, thus giving us the palette ID * 64 (wrapped around A).
+	swap a ; Contains palette ID * 4...
+	add a ; ...now * 8 = offset within wBGPals1.
 	jmp CrystalIntro_UnownFade
 
 .PlayUnownSound:
@@ -750,25 +736,12 @@ CrystalIntro_InitUnownAnim:
 	jmp ReinitSpriteAnimFrame
 
 CrystalIntro_UnownFade:
-	add a
-	add a
-	add a
+	add LOW(wBGPals2) + 2 ; We fade the second colour of palettes.
 	ld e, a
-	ld d, 0
-	ld hl, wBGPals2 + 2
-	add hl, de
-	ld a, [wIntroSceneTimer]
-	and $3f
-	cp $1f + 1
-	jr c, .okay
-	cpl
-	add $3f + 1 ; a = $3f - a
-.okay
-	ld c, a
-	ld b, $0
+	assert HIGH(wBGPals2) == HIGH(wOBPals2 - 1) ; The entire buffer fits within a single page.
+	ld d, HIGH(wBGPals2)
 
-	push hl
-	push bc
+	; Clear all palettes, in case some animation didn't reach step #31.
 	ld hl, wBGPals2
 if !DEF(MONOCHROME)
 	ld bc, 8 palettes
@@ -784,12 +757,21 @@ else
 	dec b
 	jr nz, .mono_loop
 endc
-	pop bc
-	pop hl
 
-	push hl
+	; Compute the fade index.
+	ld a, [wIntroSceneTimer]
+	and $3f ; The fade wraps around every 64 steps.
+	cp $1f + 1
+	jr c, .okay ; ...but the second half is the first one reversed.
+	cpl
+	add $3f + 1 ; a = $3f - a
+.okay
+	add a ; One colour is 2 bytes.
+	ld c, a
+	ld b, 0
+
+	push de
 	ld hl, .BWFade
-	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
@@ -803,7 +785,6 @@ endc
 	push hl
 	ld hl, .BlackLBlueFade
 	add hl, bc
-	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -815,7 +796,6 @@ endc
 
 	push hl
 	ld hl, .BlackBlueFade
-	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
