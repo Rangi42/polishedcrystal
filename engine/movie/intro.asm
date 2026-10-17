@@ -253,10 +253,7 @@ Scene_ScrollThenSuicuneZoomingBy:
 
 Scene_GrassRustleThenWooperAndPichu_Setup:
 ; Set up the next scene (same bg).
-	ld hl, rIE
-	res B_IE_STAT, [hl]
 	xor a
-	ldh [hLCDCPointer], a
 	ld [wIntroSceneFrameCounter], a
 	ld a, $c
 	ld [wGlobalAnimXOffset], a
@@ -1058,8 +1055,6 @@ PerspectiveScrollBG:
 	inc a
 	ld bc, $31
 	rst ByteFill
-	ld a, [wLYOverrides + 0]
-	ldh [hSCX], a
 	ret
 
 SuicuneRunGFX:
