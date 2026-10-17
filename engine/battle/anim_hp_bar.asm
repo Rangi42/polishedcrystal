@@ -224,14 +224,7 @@ ApplyHPBarPals:
 	hlcoord 11, 1, wAttrmap
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wCurPartyMon]
-.loop
-	and a
-	jr z, .done
-	add hl, bc
-	dec a
-	jr .loop
-
-.done
+	rst AddNTimes
 	lb bc, 2, 8
 	ld a, e
 	jmp FillBoxWithByte
