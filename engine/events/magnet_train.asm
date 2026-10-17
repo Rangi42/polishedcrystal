@@ -14,10 +14,8 @@ Special_MagnetTrain:
 
 .continue
 	ld h, a
-	ldh a, [rWBK]
-	push af
 	ld a, BANK(wMagnetTrain)
-	ldh [rWBK], a
+	call StackCallInWRAMBankA
 
 	ld a, h
 	ld [wMagnetTrainDirection], a
@@ -81,9 +79,6 @@ Special_MagnetTrain:
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
-
-	pop af
-	ldh [rWBK], a
 	ret
 
 MagnetTrain_UpdateLYOverrides:
