@@ -230,22 +230,17 @@ Scene_ScrollThenSuicuneZoomingBy:
 	ld a, [hl]
 	inc [hl]
 	cp $40
-	jr z, .suicune_sound
-	jr nc, .animate_suicune
-	jmp PerspectiveScrollBG
+	jmp c, PerspectiveScrollBG
 
-.suicune_sound
 	ld de, SFX_INTRO_SUICUNE_3
-	call PlaySFX
+	call z, PlaySFX
 .animate_suicune
-	ld a, [wGlobalAnimXOffset]
-	and a
-	jr z, .finish
-	sub $8
-	ld [wGlobalAnimXOffset], a
-	ret
+	ld hl, wGlobalAnimXOffset
+	ld a, [hl]
+	sub 8
+	ld [hl], a
+	ret nc
 
-.finish
 	ld de, SFX_INTRO_SUICUNE_2
 	call PlaySFX
 	farcall DeinitializeAllSprites
