@@ -156,7 +156,10 @@ MagnetTrain_LoadGFX_PlayMusic:
 	ld c, 4
 	call Request2bppInWRA6
 
-	call MagnetTrain_InitLYOverrides
+	ld a, [wMagnetTrainInitPosition]
+	call StartUniformSCXOverrides.withCustomX
+	ld a, [wMagnetTrainInitPosition]
+	call FillBackupLYOverrides
 
 	ld hl, wJumptableIndex
 	xor a
@@ -230,21 +233,6 @@ DrawMagnetTrain:
 MagnetTrainBGTiles:
 ; 2x18 tilemap, repeated in vertical strips for the background.
 INCBIN "gfx/overworld/magnet_train_bg.tilemap"
-
-MagnetTrain_InitLYOverrides:
-	ld hl, wLYOverrides
-	ld bc, wLYOverridesEnd - wLYOverrides
-	ld a, [wMagnetTrainInitPosition]
-	rst ByteFill
-	ld hl, wLYOverridesBackup
-	ld bc, wLYOverridesBackupEnd - wLYOverridesBackup
-	ld a, [wMagnetTrainInitPosition]
-	rst ByteFill
-	ld hl, rIE
-	set B_IE_STAT, [hl]
-	ld a, LOW(rSCX)
-	ldh [hLCDCPointer], a
-	ret
 
 SetMagnetTrainPals:
 	ld a, 1

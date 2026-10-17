@@ -50,21 +50,7 @@ Credits::
 	xor a
 	ld [wCreditsLYOverride], a
 
-	ldh a, [rWBK]
-	push af
-	ld a, BANK(wLYOverrides)
-	ldh [rWBK], a
-	ld hl, wLYOverrides
-	ld bc, $100
-	xor a
-	rst ByteFill
-	pop af
-	ldh [rWBK], a
-
-	ld hl, rIE
-	set B_IE_STAT, [hl]
-	ld a, LOW(rSCX)
-	ldh [hLCDCPointer], a
+	farcall FarStartUniformSCXOverrides
 
 	call GetCreditsPalette
 	call SetDefaultBGPAndOBP

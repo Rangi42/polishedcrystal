@@ -1,30 +1,25 @@
 BattleIntroSlidingPics:
-	ldh a, [rWBK]
-	push af
 	ld a, BANK(wLYOverrides)
-	ldh [rWBK], a
+	call StackCallInWRAMBankA
+
+	ld a, $90
+	ldh [hSCX], a
+	farcall StartUniformSCXOverrides.withCustomX
+
 	call .subfunction1
-	ld hl, rIE
-	set B_IE_STAT, [hl]
-	ld a, LOW(rSCX)
-	ldh [hLCDCPointer], a
-	call .subfunction2
+
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	xor a
 	ldh [hLCDCPointer], a
-	pop af
-	ldh [rWBK], a
 	ret
 
 .subfunction1
-	call .subfunction4
-	ld a, $90
-	ldh [hSCX], a
 	ld a, %11100100
 	call DmgToCgbBGPals
 	lb de, %11100100, %11100100
-	jmp DmgToCgbObjPals
+	call DmgToCgbObjPals
+	; fallthrough
 
 .subfunction2
 	lb de, $90, $72
@@ -64,13 +59,6 @@ BattleIntroSlidingPics:
 	dec c
 	jr nz, .loop3
 	pop de
-	ret
-
-.subfunction4
-	ld hl, wLYOverrides
-	ld a, $90
-	ld bc, SCREEN_HEIGHT_PX
-	rst ByteFill
 	ret
 
 .subfunction5

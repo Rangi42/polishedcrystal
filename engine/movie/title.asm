@@ -148,17 +148,8 @@ _TitleScreen:
 	ld a, BANK(wLYOverrides)
 	ldh [rWBK], a
 
-; Make sure the LYOverrides buffer is empty
-	ld hl, wLYOverrides
-	xor a
-	ld bc, wLYOverridesEnd - wLYOverrides
-	rst ByteFill
-
-; Let LCD Stat know we're messing around with SCX
-	ld hl, rIE
-	set B_IE_STAT, [hl]
-	ld a, rSCX - rJOYP
-	ldh [hLCDCPointer], a
+; Set up LYOverrides to write 0 to SCX after every scanline.
+	farcall StartUniformSCXOverrides
 
 	pop af
 	ldh [rWBK], a

@@ -121,7 +121,6 @@ Scene_ScrollOutdoors_Setup:
 	ld c, 39 + 3 * 4 ; The base picture, plus the four grass animations.
 	call Request2bppInWRA6
 	call SetupOutdoors
-	call ResetLYOverrides
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	jr NextIntroScene
@@ -132,7 +131,7 @@ Scene_ScrollOutdoors:
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	cp $80
-	jmp z, NextIntroScene
+	jr z, NextIntroScene
 	inc [hl]
 	ret
 
@@ -214,7 +213,6 @@ Scene_ScrollThenSuicuneZoomingBy_Setup:
 
 	call SetupOutdoors
 
-	call ResetLYOverrides
 	call ClearSpriteAnims
 	depixel 13, 27, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
@@ -383,7 +381,7 @@ Scene_SuicuneRunsThenJumps_Setup:
 	ld hl, SuicuneRunGFX
 	ld de, vTiles0 tile $00
 	call DecompressAndLoad255Tiles
-	call SetupOutdoors
+	call SetupOutdoors.noScrollingReset
 	call ClearSpriteAnims
 	depixel 13, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
@@ -1084,19 +1082,6 @@ DecompressAndLoad255Tiles:
 	lb bc, BANK(@), 255
 	jmp DecompressRequest2bpp
 
-ResetLYOverrides:
-
-	ld hl, wLYOverrides
-	ld bc, wLYOverridesEnd - wLYOverrides
-	xor a
-	rst ByteFill
-
-	ld hl, rIE
-	set B_IE_STAT, [hl]
-	ld a, LOW(rSCX)
-	ldh [hLCDCPointer], a
-	ret
-
 PerspectiveScrollBG:
 	; Scroll the grass every frame.
 	; Scroll the trees every other frame and at half speed.
@@ -1149,6 +1134,8 @@ FillBothPalBufs:
 	jmp QueueCGBPalUpdate
 
 SetupOutdoors:
+	farcall StartUniformSCXOverrides
+.noScrollingReset:
 	ld a, LCDC_DEFAULT | LCDC_BG_9C00
 	ldh [rLCDC], a
 
