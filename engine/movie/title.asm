@@ -166,6 +166,13 @@ _TitleScreen:
 ; Reset audio
 	call ChannelsOff
 
+	call QueueCGBPalUpdate ; This returns with a == 1.
+	assert TRANSFER_TILEMAP == 1
+	ldh [hBGMapMode], a
+	; The tilemap needs two frames to be transferred, but the LCD un-blanks after just one.
+	; So, perform one half of the copy now, so the first frame shown is pristine.
+	call UpdateBGMap
+
 	ld a, LCDC_DEFAULT | LCDC_OBJ_SIZE
 	ldh [rLCDC], a
 
@@ -178,17 +185,14 @@ _TitleScreen:
 	ld a, -112
 	ldh [hWY], a
 
-	call QueueCGBPalUpdate ; This returns with a == 1.
-	assert TRANSFER_TILEMAP == 1
-	ldh [hBGMapMode], a
-
 	xor a
 	ld [wSuicuneFrame], a
 
 ; Play starting sound effect
 	call SFXChannelsOff
 	ld de, SFX_TITLE_SCREEN_ENTRANCE
-	jmp PlaySFX
+	call PlaySFX
+	; fallthrough: write the initial Suicune frame to the bottom half of the map.
 
 SuicuneFrameIterator:
 	ld hl, wSuicuneFrame
