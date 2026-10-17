@@ -758,55 +758,101 @@ else
 	jr nz, .mono_loop
 endc
 
-	; Compute the fade index.
+	; Compute the hue.
 	ld a, [wIntroSceneTimer]
 	and $3f ; The fade wraps around every 64 steps.
 	cp $1f + 1
-	jr c, .okay ; ...but the second half is the first one reversed.
+	jr c, .gotHue ; ...but the second half is the first one reversed.
 	cpl
 	add $3f + 1 ; a = $3f - a
-.okay
-	add a ; One colour is 2 bytes.
-	ld c, a
-	ld b, 0
+.gotHue
 
-	ld hl, .Colors
-	add hl, bc ; Each entry...
-	add hl, bc ; ...contains...
-	add hl, bc ; ...3 colors.
-	ld bc, 3 colors
-	rst CopyBytes
+	; Write the faded colors.
+	ld l, e
+	ld h, d
+
+if !DEF(MONOCHROME)
+	; Primer on GBC color format: %_bbb bbgg | gggr rrrr. (`_` is ignored by the hardware.)
+	; Red is unshifted, but blue needs to be shifted left twice,
+	; and green rotated three times and distributed across both bytes.
+	ld c, a ; Red (%000r rrrr).
+	rlca
+	rlca
+	ld b, a ; OK, we got blue (%0bbb bb00).
+	swap a
+	rrca ; Believe it or not, this is green (%ggg0 00gg) just wrapped around within a byte.
+	ld d, a
+	; First color:  `RGB hue, hue, hue`   (between black and white).
+	and $e0 ; %ggg0 0000
+	or c    ; %gggr rrrr
+	ld [hli], a
+	ld a, d ; %ggg0 00gg
+	and $03 ; %0000 00gg
+	or b    ; %0bbb bbgg
+	ld [hli], a
+	; Second color: `RGB 0, hue / 2, hue` (between black and light blue).
+	rrc d ; Halve green (%gggg 000g); bit 4 is out of place, but we can just ignore it.
+	ld a, d ; %gggg 000g
+	and $e0 ; %ggg0 0000 (red = 0)
+	ld [hli], a
+	xor a   ; %0000 0000
+	rr d    ; %0ggg g000 | g into carry...
+	adc b   ; %0bbb bb0g
+	ld [hli], a
+	; Third color:  `RGB 0, 0, hue`       (between black and blue).
+	xor a
+	ld [hli], a
+	ld [hl], b
+else
+	; Monochrome instead has three gradients, quantized to 4 steps:
+	; the first one does the full range,
+	; the second one is capped at PAL_MONOCHROME_LIGHT, and
+	; the third one is capped at PAL_MONOCHROME_DARK.
+	and $30
+	jr z, .all_black ; $00 jumps.
+	ld de, PAL_MONOCHROME_DARK
+	cp $20 ; We have $10, $20, or $30...
+	jr c, .three_identical ; $10 jumps.
+
+	ld bc, .first_color
+	jr nz, .full_gradient ; $30 jumps.
+	inc bc ; Skip the first colour,
+	inc bc ; so that we write LIGHT twice.
+.full_gradient
+	ld a, [bc]
+	ld [hli], a
+	inc bc
+	ld a, [bc]
+	ld [hli], a
+	; Second color is always light.
+	ld a, LOW(PAL_MONOCHROME_LIGHT)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_LIGHT)
+	ld [hli], a
+	; The last color is always dark.
+	ld a, e
+.write_last_color
+	ld [hli], a
+	ld [hl], d
+endc
 
 	jmp QueueCGBPalUpdate
 
-.Colors:
-if !DEF(MONOCHROME)
-	for hue, 32
-		RGB hue, hue, hue   ; Fade between black and white.
-		RGB 0, hue / 2, hue ; Fade between black and light blue.
-		RGB 0, 0, hue       ; Fade between black and blue.
-	endr
-else
-	rept 8
-		RGB_MONOCHROME_BLACK
-		RGB_MONOCHROME_BLACK
-		RGB_MONOCHROME_BLACK
-	endr
-	rept 8
-		RGB_MONOCHROME_DARK
-		RGB_MONOCHROME_DARK
-		RGB_MONOCHROME_DARK
-	endr
-	rept 8
-		RGB_MONOCHROME_LIGHT
-		RGB_MONOCHROME_LIGHT
-		RGB_MONOCHROME_DARK
-	endr
-	rept 8
-		RGB_MONOCHROME_WHITE
-		RGB_MONOCHROME_LIGHT
-		RGB_MONOCHROME_DARK
-	endr
+if def(MONOCHROME) ; Little outlined helpers from above!
+.first_color:
+	dw PAL_MONOCHROME_WHITE, PAL_MONOCHROME_LIGHT
+
+.all_black
+	ld de, PAL_MONOCHROME_BLACK
+.three_identical
+	ld a, e
+REPT 2
+	ld [hli], a
+	ld [hl], d
+	assert HIGH(wBGPals2) == HIGH(wOBPals2 - 1) ; The entire buffer fits within a single page.
+	inc l
+ENDR
+	jr .write_last_color
 endc
 
 Scene_UnownsAroundSuicune_AppearUnown:
