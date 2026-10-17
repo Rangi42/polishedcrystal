@@ -736,7 +736,7 @@ CrystalIntro_InitUnownAnim:
 	jmp ReinitSpriteAnimFrame
 
 CrystalIntro_UnownFade:
-	add LOW(wBGPals2) + 2 ; We fade the second colour of palettes.
+	add LOW(wBGPals2) + 2 ; We fade from the second colour of palettes (the first remains black).
 	ld e, a
 	assert HIGH(wBGPals2) == HIGH(wOBPals2 - 1) ; The entire buffer fits within a single page.
 	ld d, HIGH(wBGPals2)
@@ -770,105 +770,43 @@ endc
 	ld c, a
 	ld b, 0
 
-	push de
-	ld hl, .BWFade
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	pop hl
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-
-	push hl
-	ld hl, .BlackLBlueFade
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	pop hl
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-
-	push hl
-	ld hl, .BlackBlueFade
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	pop hl
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
+	ld hl, .Colors
+	add hl, bc ; Each entry...
+	add hl, bc ; ...contains...
+	add hl, bc ; ...3 colors.
+	ld bc, 3 colors
+	rst CopyBytes
 
 	jmp QueueCGBPalUpdate
 
-.BWFade:
-; Fade between black and white.
+.Colors:
 if !DEF(MONOCHROME)
-for hue, 32
-	RGB hue, hue, hue
-endr
+	for hue, 32
+		RGB hue, hue, hue   ; Fade between black and white.
+		RGB 0, hue / 2, hue ; Fade between black and light blue.
+		RGB 0, 0, hue       ; Fade between black and blue.
+	endr
 else
-rept 8
-	RGB_MONOCHROME_BLACK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
-rept 8
-	RGB_MONOCHROME_LIGHT
-endr
-rept 8
-	RGB_MONOCHROME_WHITE
-endr
-endc
-
-.BlackLBlueFade:
-; Fade between black and light blue.
-if !DEF(MONOCHROME)
-for hue, 32
-	RGB 0, hue / 2, hue
-endr
-else
-rept 8
-	RGB_MONOCHROME_BLACK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
-rept 8
-	RGB_MONOCHROME_LIGHT
-endr
-rept 8
-	RGB_MONOCHROME_LIGHT
-endr
-endc
-
-.BlackBlueFade:
-; Fade between black and blue.
-if !DEF(MONOCHROME)
-for hue, 32
-	RGB 0, 0, hue
-endr
-else
-rept 8
-	RGB_MONOCHROME_BLACK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
+	rept 8
+		RGB_MONOCHROME_BLACK
+		RGB_MONOCHROME_BLACK
+		RGB_MONOCHROME_BLACK
+	endr
+	rept 8
+		RGB_MONOCHROME_DARK
+		RGB_MONOCHROME_DARK
+		RGB_MONOCHROME_DARK
+	endr
+	rept 8
+		RGB_MONOCHROME_LIGHT
+		RGB_MONOCHROME_LIGHT
+		RGB_MONOCHROME_DARK
+	endr
+	rept 8
+		RGB_MONOCHROME_WHITE
+		RGB_MONOCHROME_LIGHT
+		RGB_MONOCHROME_DARK
+	endr
 endc
 
 Scene_UnownsAroundSuicune_AppearUnown:
