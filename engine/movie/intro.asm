@@ -79,7 +79,7 @@ Scene_UnownA_Setup:
 	call DecompressAndLoad128Tiles
 	ld hl, IntroBGMaps.UnownA
 	call DecompressAndLoadMap0
-	call ResetScrollingAndFillBothPalBufsWithUnownPal
+	call ResetScrollingAndFillPalBufWithUnownPal
 	call ClearSpriteAnims
 	xor a
 	ld [wIntroSceneFrameCounter], a
@@ -150,7 +150,7 @@ Scene_UnownHI_Setup:
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 
-	call ResetScrollingAndFillBothPalBufsWithUnownPal
+	call ResetScrollingAndFillPalBufWithUnownPal
 
 	call ClearSpriteAnims
 	xor a
@@ -300,7 +300,7 @@ Scene_Unowns_Setup:
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 
-	call ResetScrollingAndFillBothPalBufsWithUnownPal
+	call ResetScrollingAndFillPalBufWithUnownPal
 
 	call ClearSpriteAnims
 	xor a
@@ -442,7 +442,7 @@ Scene_SuicuneAppears_Setup:
 
 	ld hl, SuicunePalette
 	ld a, 144
-	call SetScrollingAndFillBothPalBufs
+	call SetScrollingAndFillPalBuf
 
 	call ClearSpriteAnims
 	depixel 8, 5
@@ -480,7 +480,7 @@ Scene_SuicuneCloseUp_Setup:
 	ld hl, IntroBGMaps.SuicuneClose
 	call DecompressAndLoadMap0
 	ld hl, SuicuneClosePalette
-	call ResetScrollingAndFillBothPalBufs
+	call ResetScrollingAndFillPalBuf
 	call ClearSpriteAnims
 	xor a
 	ld [wIntroSceneFrameCounter], a
@@ -518,7 +518,7 @@ Scene_UnownsAroundSuicune_Setup:
 	call DecompressAndLoadMap0
 	ld hl, SuicunePalette
 	ld a, $D8
-	call SetScrollingAndFillBothPalBufs
+	call SetScrollingAndFillPalBuf
 	call ClearSpriteAnims
 	ld hl, wSpriteAnimDict
 	xor a
@@ -625,7 +625,7 @@ Scene_SpellOut_Setup:
 	ld hl, IntroBGMaps.CrystalUnowns
 	call DecompressAndLoadMap0
 	ld hl, CrystalUnownsPalette
-	call ResetScrollingAndFillBothPalBufs
+	call ResetScrollingAndFillPalBuf
 	call ClearSpriteAnims
 	xor a
 	ld [wIntroSceneFrameCounter], a
@@ -865,24 +865,15 @@ Scene_UnownsAroundSuicune_AppearUnown:
 	ld c, a
 	ld b, 0
 
-	push bc
 	ld hl, wBGPals2
-	call .copypal
-	pop bc
-
-	ld hl, wBGPals1
-	call .copypal
-
-	jmp QueueCGBPalUpdate
-
-.copypal:
 	add hl, bc
 	ld d, h
 	ld e, l
 	ld hl, .pal
 	ld c, 8 ; b is already 0
 	rst CopyBytes
-	ret
+
+	jmp QueueCGBPalUpdate
 
 .pal
 INCLUDE "gfx/intro/unown.pal"
@@ -1077,22 +1068,17 @@ INCBIN "gfx/intro/suicune_run.2bpp.lzp"
 PichuWooperGFX:
 INCBIN "gfx/intro/pichu_wooper.2bpp.lzp"
 
-ResetScrollingAndFillBothPalBufsWithUnownPal:
+ResetScrollingAndFillPalBufWithUnownPal:
 	ld hl, UnownsPalette
-ResetScrollingAndFillBothPalBufs:
+ResetScrollingAndFillPalBuf:
 	xor a
-SetScrollingAndFillBothPalBufs:
+SetScrollingAndFillPalBuf:
 	ldh [hSCY], a
 	xor a
 	ldh [hSCX], a
 
-FillBothPalBufs:
-	ld de, wBGPals1
-	push hl
-	call .fillBuf
-	pop hl ; Copy the same source again, but this time...
-	assert wBGPals1 + 16 palettes == wBGPals2
-.fillBuf
+FillPalBuf:
+	ld de, wBGPals2
 	ld bc, 16 palettes ; 8 for BG, 8 for OBJ.
 	rst CopyBytes
 	jmp QueueCGBPalUpdate
@@ -1104,7 +1090,7 @@ SetupOutdoors:
 	ldh [rLCDC], a
 
 	ld hl, .palette
-	jr ResetScrollingAndFillBothPalBufs
+	jr ResetScrollingAndFillPalBuf
 .palette: INCLUDE "gfx/intro/outdoors.pal"
 
 UnownsGFX:
