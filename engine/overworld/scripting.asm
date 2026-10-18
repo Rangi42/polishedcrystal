@@ -1056,6 +1056,10 @@ Script_variablesprite:
 	add hl, de
 	call GetScriptByte
 	ld [hl], a
+	; Keep battle text intact until the overworld graphics are reloaded.
+	ld a, [wSpriteUpdatesEnabled]
+	and a
+	ret z
 	farjp ReloadSpriteIndex
 
 Script_appear:
