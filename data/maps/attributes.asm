@@ -167,7 +167,7 @@ ENDM
 
 	map_attributes Route46, ROUTE_46, $5
 	connection south, Route29, ROUTE_29, -10
-	connection east, Route45, ROUTE_45, -37
+	connection east, Route45, ROUTE_45, -39
 
 	map_attributes PewterCity, PEWTER_CITY, $f
 	connection south, Route2North, ROUTE_2_NORTH, 5
