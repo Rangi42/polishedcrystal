@@ -1919,6 +1919,46 @@ AteAbilities:
 	ln a, 6, 5 ; x1.2
 	jmp MultiplyAndDivide
 
+GetPlayerMoveDisplayType::
+; Return in a the type to show for the move in wPlayerMoveStruct: Hidden Power's
+; real type, or the type AteAbilities will change it to. Expects the player's turn.
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farjp GetHiddenPowerType
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+	and a ; cp NORMAL
+	ret nz
+
+	; AteAbilities runs in damagecalc, which status moves and
+	; constant damage moves don't use.
+	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
+	cp STATUS
+	jr z, .normal
+	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
+	cp EFFECT_STATIC_DAMAGE
+	jr z, .normal
+	cp EFFECT_SUPER_FANG
+	jr z, .normal
+
+	call GetUserAbility
+	ld b, FAIRY
+	cp PIXILATE
+	jr z, .ate_type
+	ld b, ELECTRIC
+	cp GALVANIZE
+	jr z, .ate_type
+.normal
+	xor a ; NORMAL
+	ret
+
+.ate_type
+	ld a, b
+	ret
+
 EnemyMultiscaleAbility:
 ; 50% damage if user is at full HP
 	farcall CheckOpponentFullHP
