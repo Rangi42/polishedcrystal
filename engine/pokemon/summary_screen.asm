@@ -398,6 +398,21 @@ SummaryScreen_InitLayout:
 	ld de, wSummaryScreenOAMSprite36
 	ld bc, 4 * OBJ_SIZE
 	rst CopyBytes
+	; the lower window is a row lower when choosing a move to forget
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr z, .got_tab_title
+	ld hl, wSummaryScreenOAMSprite36YCoord
+	ld de, OBJ_SIZE
+	ld c, 4
+.tab_title_loop
+	ld a, [hl]
+	add TILE_WIDTH
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .tab_title_loop
+.got_tab_title
 
 	; Right window
 	hlcoord 7, 1
@@ -511,7 +526,7 @@ SummaryScreen_InitLayout:
 
 .ForgetMoveWindow:
 ; Extend the right window to the top of the screen, replacing the page arrows,
-; with a line separating the new move from the current ones.
+; and down a row, with a line separating the new move from the current ones.
 	; the bottom border tiles, flipped, make a top border
 	hlcoord 7, 0
 	ld a, SUMMARY_TILE_SIDE_WINDOW_BL
@@ -532,6 +547,26 @@ SummaryScreen_InitLayout:
 	hlcoord 8, 9
 	ld bc, 12
 	ld a, SUMMARY_TILE_SIDE_WINDOW_B
+	rst ByteFill
+
+	; move the lower window (and the bottom of this one) down a row, which the
+	; move description has room for without a blank line between its lines
+	hlcoord 0, 12
+	decoord 0, 13
+	ld bc, SCREEN_WIDTH
+	rst CopyBytes
+	hlcoord 0, 11
+	decoord 0, 12
+	ld bc, SCREEN_WIDTH
+	rst CopyBytes
+	hlcoord 0, 11
+	ld bc, 7
+	ld a, ' '
+	rst ByteFill
+	ld a, SUMMARY_TILE_SIDE_WINDOW_L
+	ld [hli], a
+	ld bc, 12
+	ld a, ' '
 	rst ByteFill
 	ret
 
@@ -671,8 +706,7 @@ SummaryScreen_LoadPage:
 	ld a, [wSummaryScreenFlags]
 	and SUMMARY_FLAGS_PAGE_MASK
 	ld c, a
-	hlcoord 0, 13
-	lb bc, 5, 20
+	call SummaryScreen_GetLowerBox
 	jmp ClearBox
 
 .PlaceLevelAndGender:
@@ -954,17 +988,20 @@ endr
 	db 127, SUMMARY_LCD_SCROLL_BACKGROUND
 	db -1
 .ForgetMoveInterrupts:
-	; like .GreenInterrupts, but 15 lines higher and with a fifth move
-	db 16,  SUMMARY_LCD_HIDE_WINDOW
-	db 20,  SUMMARY_LCD_SHOW_WINDOW
-	db 36,  SUMMARY_LCD_HIDE_WINDOW
-	db 40,  SUMMARY_LCD_SHOW_WINDOW
-	db 56,  SUMMARY_LCD_HIDE_WINDOW
-	db 60,  SUMMARY_LCD_SHOW_WINDOW
-	db 76,  SUMMARY_LCD_HIDE_WINDOW
-	db 80,  SUMMARY_LCD_SHOW_WINDOW
-	db 95,  SUMMARY_LCD_HIDE_WINDOW
-	db 127, SUMMARY_LCD_SCROLL_BACKGROUND
+	; like .GreenInterrupts, but 14 lines higher and with a fifth move; the lower
+	; window is a row lower, and its description (with no blank line between its
+	; lines) is scrolled up halfway into the blank row above it. The scroll lands
+	; a little late, so it starts while the lines before and after it are blank.
+	db 17,  SUMMARY_LCD_HIDE_WINDOW
+	db 21,  SUMMARY_LCD_SHOW_WINDOW
+	db 37,  SUMMARY_LCD_HIDE_WINDOW
+	db 41,  SUMMARY_LCD_SHOW_WINDOW
+	db 57,  SUMMARY_LCD_HIDE_WINDOW
+	db 61,  SUMMARY_LCD_SHOW_WINDOW
+	db 77,  SUMMARY_LCD_HIDE_WINDOW
+	db 81,  SUMMARY_LCD_SHOW_WINDOW
+	db 97,  SUMMARY_LCD_HIDE_WINDOW
+	db 122, SUMMARY_LCD_SCROLL_BACKGROUND
 	db -1
 .EggInterrupts:
 	db 22,  SUMMARY_LCD_SHOW_WINDOW
@@ -1070,6 +1107,31 @@ SummaryScreen_LoadTextboxSpaceGFX:
 	jmp PopAFBCDEHL
 
 ; Other utilities
+
+SummaryScreen_GetLowerBox:
+; Return hl and bc for ClearBox to clear the lower window's contents, which
+; start a row lower when choosing a move to forget.
+	hlcoord 0, 13
+	lb bc, 5, SCREEN_WIDTH
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	ret z
+	hlcoord 0, 14
+	dec b
+	ret
+
+SummaryScreen_PickLowerCoord:
+; Return hl = de when choosing a move to forget, whose lower window is laid out
+; differently, else keep hl. Preserves af and bc.
+	push af
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr z, .done
+	ld h, d
+	ld l, e
+.done
+	pop af
+	ret
 
 ; a  = first tile
 SummaryScreen_UpdateTabTitle:

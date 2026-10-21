@@ -1575,6 +1575,22 @@ SummaryScreen_ApplyHPPals:
 	ld a, [wSummaryScreenFlags]
 	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
 	jr z, _CGB_FinishLayout
+	; and the lower window is a row lower
+	hlcoord 0, 12, wAttrmap
+	decoord 0, 13, wAttrmap
+	ld bc, SCREEN_WIDTH
+	rst CopyBytes
+	hlcoord 0, 11, wAttrmap
+	decoord 0, 12, wAttrmap
+	ld bc, SCREEN_WIDTH
+	rst CopyBytes
+	hlcoord 0, 11, wAttrmap
+	ld bc, 7
+	ld a, SUMMARY_PAL_POKEMON
+	rst ByteFill
+	ld bc, 13
+	ld a, SUMMARY_PAL_SIDE_WINDOW
+	rst ByteFill
 	hlcoord 7, 0, wAttrmap
 	ld bc, 13
 	ld a, BG_YFLIP | SUMMARY_PAL_SIDE_WINDOW

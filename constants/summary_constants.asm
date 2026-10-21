@@ -20,7 +20,7 @@ DEF SUMMARY_FLAGS_PAGE_MASK EQU %00000011
 
 ; When choosing a move to forget, the move list starts this many pixels higher
 ; to make room for the new move.
-DEF SUMMARY_FORGET_MOVE_SHIFT EQU 15
+DEF SUMMARY_FORGET_MOVE_SHIFT EQU 14
 
 ; vTiles0
 DEF SUMMARY_TILE_OAM_START                  EQU $3C

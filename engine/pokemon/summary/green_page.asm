@@ -8,8 +8,11 @@ SummaryScreen_GreenPage:
 	ld bc, 1 palettes
 	ld de, wSummaryScreenPals palette SUMMARY_PAL_SIDE_WINDOW
 	rst CopyBytes
-	call .PlaceItemText
-	; show level and gender like the other pages when choosing a move to forget
+	; when choosing a move to forget, show level and gender like the other pages,
+	; and the selected move's details instead of the item
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	call z, .PlaceItemText
 	ld a, [wSummaryScreenFlags]
 	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
 	hlcoord 2, 8
@@ -233,8 +236,7 @@ endr
 	ld c, 4
 	call .ShiftSpritesForForgetMove
 .arrow_done
-	hlcoord 0, 13
-	lb bc, 5, 20
+	call SummaryScreen_GetLowerBox
 	call ClearBox
 	pop af
 	ld b, 0
@@ -250,6 +252,12 @@ endr
 	ld [wCurMove], a
 	hlcoord 4, 13
 	ld de, .String_PowAcc
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr z, .got_pow_acc
+	hlcoord 8, 14
+	ld de, .String_ForgetMovePowAcc
+.got_pow_acc
 	rst PlaceString
 
 	call GetCurMoveFixedCategory
@@ -277,6 +285,8 @@ endr
 	pop af ; get category back
 	add SUMMARY_TILE_CATEGORY_START
 	hlcoord 1, 13
+	decoord 1, 14
+	call SummaryScreen_PickLowerCoord
 	ld [hli], a
 	inc a
 	ld [hl], a
@@ -284,6 +294,8 @@ endr
 	ld hl, Moves + MOVE_POWER
 	call GetCurMoveProperty
 	hlcoord 3, 13
+	decoord 5, 14
+	call SummaryScreen_PickLowerCoord
 	cp 2
 	jr c, .no_power
 	ld [wTextDecimalByte], a
@@ -299,6 +311,8 @@ endr
 	ld hl, Moves + MOVE_ACC
 	call GetCurMoveProperty
 	hlcoord 8, 13
+	decoord 11, 14
+	call SummaryScreen_PickLowerCoord
 	cp 255
 	jr z, .no_acc
 	ld [wTextDecimalByte], a
@@ -311,7 +325,19 @@ endr
 	rst PlaceString
 
 .description
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
 	hlcoord 1, 15
+	jr nz, .forget_move_description
+	farjp PrintMoveDesc
+
+.forget_move_description
+	; a row lower, with no blank line between its lines
+	hlcoord 1, 16
+	ld de, .PrintMoveDesc
+	jmp SummaryScreen_PlaceSingleSpaced
+
+.PrintMoveDesc:
 	farjp PrintMoveDesc
 
 .String_na:
@@ -319,6 +345,9 @@ endr
 
 .String_PowAcc:
 	db "  <BOLDP>/   %@"
+
+.String_ForgetMovePowAcc:
+	db "<BOLDP>     %@"
 
 SummaryScreen_MoveInfoLoop:
 	ld a, SUMMARY_TILE_OAM_MOVE_TITLE
@@ -406,11 +435,16 @@ SummaryScreen_MoveInfoJoypad:
 	call SummaryScreen_ClearSwapArrow
 	jmp SummaryScreen_UpdateGFX
 .quit
+	; choosing a move to forget closes the screen right away
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr nz, .exit
 	ld a, SUMMARY_TILE_OAM_ITEM_TITLE
 	call SummaryScreen_UpdateTabTitle
 	call SummaryScreen_GreenPage.PlaceItemText
 	call SummaryScreen_GreenPage.PlaceAInfo
 	call SummaryScreen_UpdateGFX
+.exit
 	add sp, 2 ; exit SummaryScreen_MoveInfoLoop, return to SummaryScreenLoop
 	ret
 .d_up
@@ -479,7 +513,7 @@ SummaryScreen_MoveInfoJoypad:
 	call WaitSFX
 	ld de, SFX_SWITCH_POKEMON
 	call PlaySFX
-	jr SummaryScreen_UpdateGFX
+	jmp SummaryScreen_UpdateGFX
 ; hl = address
 .swap_addresses:
 	ld d, h
@@ -539,19 +573,35 @@ SummaryScreen_ChooseMoveToForget:
 	ld de, SFX_WRONG
 	call PlaySFX
 	; replace the move's description until the cursor moves
-	hlcoord 1, 15
-	lb bc, 3, 18
+	hlcoord 1, 16
+	lb bc, 2, 18
 	call ClearBox
-	hlcoord 1, 15
-	ld de, .CantForgetHMString
-	rst PlaceString
+	hlcoord 1, 16
+	ld de, .PlaceCantForgetHMString
+	call SummaryScreen_PlaceSingleSpaced
 	call SummaryScreen_UpdateGFX
 	and a
+	ret
+
+.PlaceCantForgetHMString:
+	ld de, .CantForgetHMString
+	rst PlaceString
 	ret
 
 .CantForgetHMString:
 	db "HM moves can't be"
 	next "forgotten now.@"
+
+SummaryScreen_PlaceSingleSpaced:
+; Call de with no blank line between lines of text (for text at hl).
+	ld a, [wTextboxFlags]
+	set NO_LINE_SPACING_F, a
+	ld [wTextboxFlags], a
+	call _de_
+	ld a, [wTextboxFlags]
+	res NO_LINE_SPACING_F, a
+	ld [wTextboxFlags], a
+	ret
 
 SummaryScreen_ClearSwapArrow:
 	ld hl, wSummaryScreenOAMSprite24
