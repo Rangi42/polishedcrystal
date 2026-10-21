@@ -290,6 +290,9 @@ DexNav_ChooseTarget:
 	cp DARKNESS_PALSET
 	ld hl, .TooDarkText
 	jmp z, .print
+	call DexNav_CheckGhostArea
+	ld hl, .GhostAreaText
+	jmp c, .print
 
 	call DexNav_BuildList
 	ld hl, .NoWildDataText
@@ -482,6 +485,12 @@ DexNav_ChooseTarget:
 .TooDarkText:
 	text "It's too dark to"
 	line "use the DexNav."
+	prompt
+
+.GhostAreaText:
+	text "The DexNav can't"
+	line "identify the"
+	cont "#mon here."
 	prompt
 
 .NotFoundText:
@@ -1275,6 +1284,8 @@ DexNav_TrySpontaneousHunt:
 	ld a, [wTimeOfDayPalset]
 	cp DARKNESS_PALSET
 	jr z, .no
+	call DexNav_CheckGhostArea
+	jr c, .no
 
 	; Only on the tiles wild Pokemon appear on here
 	call DexNav_GetEnvironment
@@ -1300,6 +1311,27 @@ DexNav_TrySpontaneousHunt:
 	ld hl, DexNavSpottedScript
 	call CallScript
 	scf
+	ret
+
+.no
+	and a
+	ret
+
+DexNav_CheckGhostArea:
+; Returns carry where wild battles are ghost battles, which DexNav battles
+; can't be: the same check as _ChooseWildEncounter's in wildmons.asm.
+	ld a, [wMapGroup]
+	cp GROUP_SOUL_HOUSE_B1F ; Soul House or Lavender Radio Tower
+	jr nz, .no
+	ld a, [wMapNumber]
+	cp MAP_SOUL_HOUSE_B1F ; first Ghost map in its group
+	jr c, .no
+	cp MAP_ROUTE_16_WEST ; non-ghost map in soul house group
+	jr z, .no
+	ld a, SILPHSCOPE2
+	ld [wCurKeyItem], a
+	call CheckKeyItem
+	ccf
 	ret
 
 .no
