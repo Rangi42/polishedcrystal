@@ -859,10 +859,7 @@ ChooseMoveToForget:
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call LoadTileMapToTempTileMap
-	call LoadFontsBattleExtra
-	ld a, MOVESCREEN_NEWMOVE
-	ld [wMoveScreenMode], a
-	call MoveScreen
+	call .SummaryScreen
 	pop bc
 	push af
 	ld a, b
@@ -896,6 +893,21 @@ ChooseMoveToForget:
 	call SetDefaultBGPAndOBP
 	call DelayFrame
 	pop af
+	ret
+
+.SummaryScreen:
+; Returns the chosen move's slot (1-4) in a with nz, or 0 with z if cancelled.
+	call PreparePartyTempMon
+	xor a
+	ld [wMoveScreenSelectedMove], a
+	ld [wMoveScreenCursor], a
+	ld hl, wSummaryScreenFlags
+	set SUMMARY_FLAGS_FORGET_MOVE_F, [hl]
+	call _OpenTempmonSummary
+	ld hl, wSummaryScreenFlags
+	res SUMMARY_FLAGS_FORGET_MOVE_F, [hl]
+	ld a, [wMoveScreenCursor]
+	and a
 	ret
 
 ChooseMoveToRelearn:

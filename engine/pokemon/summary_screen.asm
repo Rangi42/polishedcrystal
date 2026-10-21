@@ -94,16 +94,26 @@ SummaryScreenInit:
 	ld c, a
 	push bc
 
-	; Load initial mon
-	xor a
+	; Load initial mon, starting on the moves page if choosing a move to forget
+	ld a, [wSummaryScreenFlags]
+	and 1 << SUMMARY_FLAGS_FORGET_MOVE_F
+	jr z, .got_flags
+	or SUMMARY_GREEN_PAGE
+.got_flags
 	ld [wSummaryScreenFlags], a
 	call SummaryScreen_InitMon
 	call DelayFrame
 	call SummaryScreen_LoadPage
 
 	; Enter loop
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr nz, .forget_move
 	call SummaryScreenLoop
-	; Clean up
+	jr .clean_up
+.forget_move
+	call SummaryScreen_MoveInfoLoop
+.clean_up
 
 	call ClearSprites
 	call ClearBGPalettes

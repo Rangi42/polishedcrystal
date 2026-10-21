@@ -285,7 +285,15 @@ SummaryScreen_MoveInfoJoypad:
 	ld b, 0
 	jr .adjust_move_index
 .a_button
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr nz, .choose_move_to_forget
 .select
+	; Don't swap moves while choosing one to forget
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	ret nz
+
 	; Don't swap moves during battle
 	ld a, [wBattleMode]
 	ld b, a
@@ -309,6 +317,20 @@ SummaryScreen_MoveInfoJoypad:
 	and %00000111
 	ld [wSummaryMoveSwap], a
 	ret
+.choose_move_to_forget
+	; return the 1-based slot in wMoveScreenCursor and the move in wMoveScreenSelectedMove
+	ld a, c
+	inc a
+	ld [wMoveScreenCursor], a
+	ld b, 0
+	ld hl, wTempMonMoves
+	add hl, bc
+	ld a, [hl]
+	ld [wMoveScreenSelectedMove], a
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
+	jr .quit
+
 .b_button
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
