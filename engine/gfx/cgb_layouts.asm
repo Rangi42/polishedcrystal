@@ -503,6 +503,10 @@ _CGB_NamingScreen:
 	; de == wBGPals1 palette 2 color 0
 	call LoadOneColor
 
+	ld hl, wBGPals1 palette 0 color 3
+	ld de, wBGPals1 palette 2 color 3
+	call LoadOneColor
+
 	ld hl, wBGPals1 palette 0
 	ld de, wBGPals1 palette 3
 	call LoadOneColor
