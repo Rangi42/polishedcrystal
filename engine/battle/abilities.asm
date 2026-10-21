@@ -789,7 +789,7 @@ EffectSporeAbility:
 	call GetBattleVarAddr
 	ld a, [hl]
 	and a
-	ret z
+	ret nz
 	push hl
 	ld hl, CanSleepTarget
 	ld c, SLP_MASK
