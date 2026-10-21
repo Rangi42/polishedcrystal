@@ -897,7 +897,8 @@ ChooseMoveToForget:
 	ret
 
 .SummaryScreen:
-; Returns the chosen move's slot (1-4) in a with nz, or 0 with z if cancelled.
+; Returns the chosen move's slot (1-4, 5 for the new move) in a with nz
+; or 0 with z if cancelled.
 	call PreparePartyTempMon
 	xor a
 	ld [wMoveScreenSelectedMove], a
