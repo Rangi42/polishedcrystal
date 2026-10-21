@@ -72,5 +72,9 @@ CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
 	assert_table_length NUM_CATEGORIES
 
+EffectivenessIconGFX:
+; super effective, not very effective, no effect
+INCBIN "gfx/battle/effectiveness.2bpp"
+
 PaintingFrameGFX:
 INCBIN "gfx/signs/painting.2bpp"
