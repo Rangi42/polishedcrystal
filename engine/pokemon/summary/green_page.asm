@@ -133,6 +133,64 @@ for n, NUM_MOVES
 	debgcoord 0, 1 + n * 2, wSummaryScreenWindowBuffer
 	call SummaryScreen_PlaceTypeBG
 endr
+
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	ret z
+
+	; move the type icons up with the move list
+	ld hl, wSummaryScreenOAMSprite04YCoord
+	ld c, NUM_MOVES * 4
+	call .ShiftSpritesForForgetMove
+
+	; show the new move below the current ones
+	ld a, [wPutativeTMHMMove]
+	ld [wNamedObjectIndex], a
+	ld [wCurMove], a
+	call GetMoveName
+	hlbgcoord 0, NUM_MOVES * 2, wSummaryScreenWindowBuffer
+	rst PlaceString
+
+	ld a, [wSummaryScreenTypes + 1]
+	ld d, 1 | 8
+	lb bc, 72, 41 + NUM_MOVES * 20 - SUMMARY_FORGET_MOVE_SHIFT
+	ld hl, wSummaryScreenOAMSprite28
+	call SummaryScreen_PlaceTypeOBJ
+	debgcoord 0, 1 + NUM_MOVES * 2, wSummaryScreenWindowBuffer
+	call SummaryScreen_PlaceTypeBG
+
+	; a new move has full PP
+	hlbgcoord 4, 1 + NUM_MOVES * 2, wSummaryScreenWindowBuffer
+	ld a, SUMMARY_TILE_PP_START
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hli], a
+	push hl
+	ld hl, Moves + MOVE_PP
+	call GetCurMoveProperty
+	ld [wTextDecimalByte], a
+	pop hl
+	ld de, wTextDecimalByte
+	lb bc, 1, 2
+	call PrintNum
+	ld a, '/'
+	ld [hli], a
+	ld de, wTextDecimalByte
+	lb bc, 1, 2
+	jmp PrintNum
+
+; hl = first sprite's y coord, c = number of sprites
+.ShiftSpritesForForgetMove:
+	ld de, OBJ_SIZE
+.shift_loop
+	ld a, [hl]
+	sub SUMMARY_FORGET_MOVE_SHIFT
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .shift_loop
 	ret
 
 ; a = move
@@ -165,6 +223,13 @@ endr
 	ld c, a
 	ld b, 58
 	call SummaryScreen_PlaceArrow
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr z, .arrow_done
+	ld hl, wSummaryScreenOAMSprite20YCoord
+	ld c, 4
+	call .ShiftSpritesForForgetMove
+.arrow_done
 	hlcoord 0, 13
 	lb bc, 5, 20
 	call ClearBox
@@ -173,7 +238,12 @@ endr
 	ld c, a
 	ld hl, wTempMonMoves
 	add hl, bc
+	cp NUM_MOVES
 	ld a, [hl]
+	jr c, .got_move
+	; the new move, when choosing a move to forget
+	ld a, [wPutativeTMHMMove]
+.got_move
 	ld [wCurMove], a
 	hlcoord 4, 13
 	ld de, .String_PowAcc

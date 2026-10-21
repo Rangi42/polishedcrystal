@@ -1570,6 +1570,15 @@ SummaryScreen_ApplyHPPals:
 	ld a, SUMMARY_PAL_ITEM
 	call FillBoxWithByte
 
+	; when choosing a move to forget, the right window's top border
+	; is its bottom border flipped (see SummaryScreen_InitLayout)
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr z, _CGB_FinishLayout
+	hlcoord 7, 0, wAttrmap
+	ld bc, 13
+	ld a, BG_YFLIP | SUMMARY_PAL_SIDE_WINDOW
+	rst ByteFill
 	; fallthrough
 
 _CGB_FinishLayout:

@@ -118,6 +118,9 @@ SummaryScreenInit:
 	call ClearSprites
 	call ClearBGPalettes
 	call ClearTileMap
+	; SummaryScreen_SwitchPage leaves VRAM bank 1 selected
+	xor a
+	ldh [rVBK], a
 
 	; restore old values
 	pop bc
@@ -334,6 +337,12 @@ SummaryScreen_InitMon:
 	dec c
 	jr nz, .moves_loop
 .moves_loop_end
+	; the new move is a fifth choice when choosing a move to forget
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr z, .got_move_count
+	inc b
+.got_move_count
 	ld a, b
 	ld [wSummaryScreenMoveCount], a
 
@@ -376,6 +385,11 @@ SummaryScreen_InitLayout:
 	call .PlaceHPBar
 
 	ld hl, .PageSprites
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr z, .got_page_sprites
+	ld hl, .NoPageSprites
+.got_page_sprites
 	ld de, wSummaryScreenOAMSprite00
 	ld bc, 4 * OBJ_SIZE
 	rst CopyBytes
@@ -465,11 +479,60 @@ SummaryScreen_InitLayout:
 	jr nz, .moveTypes
 .moveTypesEnd
 
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr z, .got_types
+	; the new move uses the second species type's palette,
+	; since species types aren't shown on the moves page
+	ld a, [wPutativeTMHMMove]
+	cp HIDDEN_POWER
+	jr nz, .new_move_not_hidden_power
+	ld hl, wTempMonDVs
+	farcall GetHiddenPowerType
+	jr .got_new_move_type
+.new_move_not_hidden_power
+	ld [wCurMove], a
+	ld hl, Moves + MOVE_TYPE
+	call GetCurMoveProperty
+.got_new_move_type
+	ld [wSummaryScreenTypes + 1], a
+.got_types
+
 	call .ApplySummaryPalettes
+
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr nz, .ForgetMoveWindow
 
 	ld a, SUMMARY_TILE_ARROW
 	ldcoord_a 19 - NUM_SUMMARY_PAGES * 2, 0
 	ldcoord_a 19, 0
+	ret
+
+.ForgetMoveWindow:
+; Extend the right window to the top of the screen, replacing the page arrows,
+; with a line separating the new move from the current ones.
+	; the bottom border tiles, flipped, make a top border
+	hlcoord 7, 0
+	ld a, SUMMARY_TILE_SIDE_WINDOW_BL
+	ld [hli], a
+	ld bc, 12
+	ld a, SUMMARY_TILE_SIDE_WINDOW_B
+	rst ByteFill
+	; (SummaryScreen_ApplyHPPals flips them)
+
+	hlcoord 7, 1
+	ld a, SUMMARY_TILE_SIDE_WINDOW_L
+	ld [hli], a
+	ld bc, 12
+	ld a, ' '
+	rst ByteFill
+
+	; the bottom border's line is visible between the fourth and fifth moves
+	hlcoord 8, 9
+	ld bc, 12
+	ld a, SUMMARY_TILE_SIDE_WINDOW_B
+	rst ByteFill
 	ret
 
 .PlaceHPBar:
@@ -524,6 +587,9 @@ SummaryScreen_InitLayout:
 	db 17, 136, SUMMARY_TILE_OAM_PAGE, $2
 	db 17, 152, SUMMARY_TILE_OAM_PAGE, $3
 
+.NoPageSprites:
+	ds 4 * OBJ_SIZE, 0
+
 .TabTitleSprites:
 	db 108, 20, SUMMARY_TILE_OAM_TITLES + 0, $0
 	db 108, 28, SUMMARY_TILE_OAM_TITLES + 1, $0
@@ -575,7 +641,12 @@ SummaryScreen_LoadPage:
 	farcall HDMATransferTileMapToWRAMBank3
 	ld a, 7 + 64
 	ldh [hWX], a
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
 	ld a, 16
+	jr z, .got_window_y
+	ld a, 16 - SUMMARY_FORGET_MOVE_SHIFT
+.got_window_y
 	ldh [hWY], a
 
 	ldh a, [rWBK]
@@ -756,6 +827,10 @@ SummaryScreen_SwitchPage:
 	bit MON_IS_EGG_F, a
 	ld hl, .EggInterrupts
 	jr nz, .egg
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	ld hl, .ForgetMoveInterrupts
+	jr nz, .egg
 	ld hl, .InterruptTable
 	ld b, 0
 	ld a, [wSummaryScreenFlags]
@@ -876,6 +951,19 @@ endr
 	db 79,  SUMMARY_LCD_HIDE_WINDOW
 	db 83,  SUMMARY_LCD_SHOW_WINDOW
 	db 91,  SUMMARY_LCD_HIDE_WINDOW
+	db 127, SUMMARY_LCD_SCROLL_BACKGROUND
+	db -1
+.ForgetMoveInterrupts:
+	; like .GreenInterrupts, but 15 lines higher and with a fifth move
+	db 16,  SUMMARY_LCD_HIDE_WINDOW
+	db 20,  SUMMARY_LCD_SHOW_WINDOW
+	db 36,  SUMMARY_LCD_HIDE_WINDOW
+	db 40,  SUMMARY_LCD_SHOW_WINDOW
+	db 56,  SUMMARY_LCD_HIDE_WINDOW
+	db 60,  SUMMARY_LCD_SHOW_WINDOW
+	db 76,  SUMMARY_LCD_HIDE_WINDOW
+	db 80,  SUMMARY_LCD_SHOW_WINDOW
+	db 95,  SUMMARY_LCD_HIDE_WINDOW
 	db 127, SUMMARY_LCD_SCROLL_BACKGROUND
 	db -1
 .EggInterrupts:

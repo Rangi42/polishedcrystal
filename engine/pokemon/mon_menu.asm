@@ -877,6 +877,8 @@ ChooseMoveToForget:
 	call UpdateSprites
 	farcall FinishBattleAnim
 	farcall _LoadBattleFontsHPBar
+	; the summary screen's icons replaced the status icon's tiles
+	farcall LoadPlayerStatusIcon
 	farcall GetMonBackpic
 	call LoadTempTileMapToTileMap
 	jr .done
