@@ -1976,5 +1976,5 @@ SECTION "DexNav Search Levels", WRAMX
 
 ; One byte per species and variant form, indexed like GetSpeciesAndFormIndex
 ; (D21). Raised by each DexNav battle, capped at 255.
-; TODO (Phase 4): save to SRAM bank 1.
+; Saved in sDexNavSearchLevels (see DexNav_BackupPartyMonMail).
 wDexNavSearchLevels:: ds NUM_EXT_POKEMON

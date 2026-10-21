@@ -591,7 +591,7 @@ DexNav_SuccessRoll:
 ; Return the total encounter odds (out of 100) for the target in this area
 ; at time of day a.
 	call DexNav_GetSlotTable
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0 (xor a would clear carry)
 	ret nc
 	xor a
 	ld [wDexNavOddsPrev], a
@@ -702,8 +702,8 @@ DexNav_SpawnRustle:
 	ld [hl], 0
 	ld hl, OBJECT_1D
 	add hl, de
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	ld [hl], d
 	scf
 	ret
@@ -936,8 +936,8 @@ DexNav_MapReachableTiles:
 	ld a, l
 	sub DEXNAV_REACH_SIZE
 	ld l, a
-	ld a, h
-	sbc 0
+	sbc a
+	add h
 	ld h, a
 	ld a, [hl]
 	pop hl
@@ -955,8 +955,8 @@ DexNav_MapReachableTiles:
 	ld a, l
 	add DEXNAV_REACH_SIZE
 	ld l, a
-	ld a, h
-	adc 0
+	adc h
+	sub l
 	ld h, a
 	ld a, [hl]
 	pop hl
@@ -1961,7 +1961,7 @@ DexNav_GetHuntChain:
 	call DexNav_GetHuntMon
 	call DexNav_IsChainSpecies
 	pop bc
-	ld a, 0
+	ld a, 0 ; no-optimize a = 0 (xor a would set z)
 	ret nz
 	ld a, [wDexNavChain]
 	ret
