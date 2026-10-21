@@ -9,8 +9,11 @@ SummaryScreen_GreenPage:
 	ld de, wSummaryScreenPals palette SUMMARY_PAL_SIDE_WINDOW
 	rst CopyBytes
 	call .PlaceItemText
+	; show level and gender like the other pages when choosing a move to forget
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
 	hlcoord 2, 8
-	call .ReplaceLevelGenderWithItemIcon
+	call z, .ReplaceLevelGenderWithItemIcon
 
 	call .PrintMoves
 
@@ -388,17 +391,8 @@ SummaryScreen_MoveInfoJoypad:
 	ld [wSummaryMoveSwap], a
 	ret
 .choose_move_to_forget
-	; return the 1-based slot in wMoveScreenCursor and the move in wMoveScreenSelectedMove
-	ld a, c
-	inc a
-	ld [wMoveScreenCursor], a
-	ld b, 0
-	ld hl, wTempMonMoves
-	add hl, bc
-	ld a, [hl]
-	ld [wMoveScreenSelectedMove], a
-	ld de, SFX_READ_TEXT_2
-	call PlaySFX
+	call SummaryScreen_ChooseMoveToForget
+	ret nc
 	jr .quit
 
 .b_button
@@ -511,6 +505,53 @@ SummaryScreen_MoveInfoJoypad:
 	ld a, b
 	ld [de], a
 	ret
+
+SummaryScreen_ChooseMoveToForget:
+; c = cursor position
+; Returns c if a move was chosen, with its 1-based slot in wMoveScreenCursor
+; and the move in wMoveScreenSelectedMove.
+	ld b, 0
+	ld hl, wTempMonMoves
+	add hl, bc
+	ld a, c
+	cp NUM_MOVES
+	ld a, [hl]
+	jr nc, .ok ; the new move
+	push bc
+	push af
+	farcall CheckUnforgettableHM
+	jr c, .cant_forget
+	pop af
+	pop bc
+.ok
+	ld [wMoveScreenSelectedMove], a
+	ld a, c
+	inc a
+	ld [wMoveScreenCursor], a
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
+	scf
+	ret
+
+.cant_forget
+	pop af
+	pop bc
+	ld de, SFX_WRONG
+	call PlaySFX
+	; replace the move's description until the cursor moves
+	hlcoord 1, 15
+	lb bc, 3, 18
+	call ClearBox
+	hlcoord 1, 15
+	ld de, .CantForgetHMString
+	rst PlaceString
+	call SummaryScreen_UpdateGFX
+	and a
+	ret
+
+.CantForgetHMString:
+	db "HM moves can't be"
+	next "forgotten now.@"
 
 SummaryScreen_ClearSwapArrow:
 	ld hl, wSummaryScreenOAMSprite24
