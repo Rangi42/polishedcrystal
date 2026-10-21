@@ -170,18 +170,18 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; a9
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; aa
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; ab
-	tilecoll LEDGE_DOWN, LEDGE_DOWN, WALL, WALL ; ac
-	tilecoll LEDGE_DOWN, LEDGE_DOWN, WALL, WALL ; ad
+	tilecoll LEDGE_DOWN, FLOOR, WALL, FLOOR ; ac
+	tilecoll FLOOR, LEDGE_DOWN, FLOOR, WALL ; ad
 	tilecoll FLOOR, LEDGE_DOWN, FLOOR, WALL ; ae
-	tilecoll LEDGE_DOWN, FLOOR, WALL, FLOOR ; af
-	tilecoll LEDGE_DOWN, LEDGE_DOWN, WALL, WALL ; b0
+	tilecoll FLOOR, FLOOR, FLOOR, WALL ; af
+	tilecoll BUOY, BUOY, BUOY, BUOY ; b0
 	tilecoll WALL, WALL, WALL, WALL ; b1
 	tilecoll FLOOR, FLOOR, WALL, WALL ; b2
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; b3
 	tilecoll WALL, WALL, WALL, WALL ; b4
 	tilecoll WALL, WALL, WALL, WALL ; b5
 	tilecoll WALL, WALL, WALL, DOOR ; b6
-	tilecoll WALL, WALL, DOOR, DOOR ; b7
+	tilecoll WALL, WALL, DOOR, WALL ; b7
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; b8
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; b9
 	tilecoll WALL, WALL, WALL, DOOR ; ba
@@ -248,6 +248,5 @@
 	tilecoll WALL, WALL, WALL, WALL ; f7
 	tilecoll WALL, WATER, WALL, WATER ; f8
 	tilecoll WATER, BUOY, WATER, BUOY ; f9
-	tilecoll BUOY, BUOY, BUOY, BUOY ; fa
-	tilecoll BUOY, BUOY, WATER, WATER ; fb
-	tilecoll WATER, BUOY, WATER, BUOY ; fc
+	tilecoll BUOY, BUOY, WATER, WATER ; fa
+	tilecoll WATER, BUOY, WATER, BUOY ; fb
