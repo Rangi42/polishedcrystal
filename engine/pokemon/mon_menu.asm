@@ -1003,14 +1003,13 @@ MoveScreenLoop:
 .movecopy_loop
 	ld a, [hli]
 	and a
-	jr z, .movecopy_done
+	jr z, .got_num_moves
 	ld [de], a
 	inc de
 	inc b
 	dec c
 	jr nz, .movecopy_loop
 
-.movecopy_done
 	jr .got_num_moves
 
 .movecopy_reminder
