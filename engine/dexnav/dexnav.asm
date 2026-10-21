@@ -1447,8 +1447,8 @@ DexNav_ShowPreview:
 	call DexNav_GetHuntLevel
 	ld [wDexNavPreviewLevel], a
 	hlcoord SCREEN_WIDTH - 5, DEXNAV_PREVIEW_Y
-	ld [hl], '<LV>'
-	inc hl
+	ld a, '<LV>'
+	ld [hli], a
 	ld de, wDexNavPreviewLevel
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	call PrintNum
@@ -1742,11 +1742,13 @@ DexNav_LoadMarkTiles:
 	cp '@'
 	jr z, .time_icons
 	push bc
+	; hl = a * 16
+	swap a
 	ld l, a
-	ld h, 0
-rept 4
-	add hl, hl
-endr
+	and $f
+	ld h, a
+	xor l
+	ld l, a
 	ld bc, vTiles0
 	add hl, bc
 	ld c, TILE_SIZE / 2
