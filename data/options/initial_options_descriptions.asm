@@ -13,6 +13,7 @@ InitialOptionDescriptions:
 	dw .TradedMon
 	dw .EvolveInBattle
 	dw .ColorVariation
+	dw .HuntEncounters
 	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
 .Natures:
@@ -163,6 +164,16 @@ InitialOptionDescriptions:
 
 	para "variation based"
 	line "on nicknames."
+	prompt
+
+.HuntEncounters:
+	text "Wild #mon can"
+	line "interrupt a DexNav"
+	cont "hunt."
+
+	para "Choose No to stop"
+	line "random encounters"
+	cont "during a hunt."
 	prompt
 
 InitialOptionsDoneDescription:

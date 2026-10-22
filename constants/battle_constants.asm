@@ -147,6 +147,7 @@ DEF STAT_SKIPTEXT  EQU 1 << STAT_SKIPTEXT_F
 	const BATTLETYPE_GHOST
 	const BATTLETYPE_GROTTO
 	const BATTLETYPE_INVERSE
+	const BATTLETYPE_DEXNAV
 
 	; constants below this is assumed to be unfleeable
 	const BATTLETYPE_TRAP

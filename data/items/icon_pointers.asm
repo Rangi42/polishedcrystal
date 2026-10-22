@@ -298,6 +298,7 @@ KeyItemIconPointers:
 	dba ShinyCharmIcon
 	dba OvalCharmIcon
 	dba CatchCharmIcon
+	dba PokedexItemIcon ; TODO: DexNav icon
 	assert_table_length NUM_KEY_ITEMS + 1
 
 ExpCandyIconPointers:

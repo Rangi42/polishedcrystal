@@ -311,6 +311,9 @@ CheckTileEvent:
 	call CountStep
 	ret c
 
+	farcall DexNav_StepCheck
+	ret c
+
 .step_count_disabled
 	call CheckWildEncountersEnabled
 	jr z, .ok
@@ -1214,7 +1217,7 @@ RandomEncounter::
 	jr nz, .safari_game
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	jr nz, .bug_contest
-	farcall TryWildEncounter
+	farcall DexNav_TryWildEncounter
 	jr nz, .nope
 .ok
 	ld a, [wTempWildMonSpecies]

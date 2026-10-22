@@ -82,7 +82,7 @@ _NewGame_FinishSetup:
 	ld [wOvercastRandomDay], a
 	call NewGame_ClearTileMapEtc
 	call WarnVBA
-	farcall SetInitialOptions
+	farcall DexNav_SetInitialOptions ; also clears DexNav search levels
 	call ProfElmSpeech
 	call InitializeWorld
 	ld a, 1
@@ -339,7 +339,7 @@ LoadOrRegenerateLuckyIDNumber:
 	jmp CloseSRAM
 
 Continue:
-	farcall TryLoadSaveFile
+	farcall DexNav_TryLoadSaveFile ; also loads DexNav search levels
 	ret c
 
 	call LoadStandardMenuHeader

@@ -350,5 +350,6 @@ KeyItemNameOrder:
 	db NAM_SHINY_CHARM
 	db NAM_OVAL_CHARM
 	db NAM_CATCH_CHARM
+	db NAM_DEXNAV
 	assert_table_length NUM_KEY_ITEMS
 	db -1 ; end

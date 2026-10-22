@@ -6097,6 +6097,7 @@ endc
 
 .Moves:
 	farcall CheckUniqueWildMove
+	farcall DexNav_ApplyBattleBoosts
 
 	; Fill wild PP
 	ld hl, wOTPartyMon1Moves
@@ -6104,6 +6105,11 @@ endc
 	farjp FillPP
 
 ApplyLegendaryDVs:
+	ld a, [wBattleType]
+	cp BATTLETYPE_DEXNAV
+	jr nz, .not_dexnav
+	farjp DexNav_ApplyPotential
+.not_dexnav
 	push de
 	push bc
 	ld a, [wBattleType]
@@ -8139,6 +8145,7 @@ ExitBattle:
 	call PostBattleTasks
 	call .HandleEndOfBattle
 	call BattleEnd_HandleRoamMons
+	farcall DexNav_UpdateChain
 	xor a
 	ld [wLowHealthAlarm], a
 	ld [wBattleMode], a

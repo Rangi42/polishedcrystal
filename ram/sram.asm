@@ -175,3 +175,11 @@ sBoxMons1C:: pokedb sBoxMons1C, MONDB_ENTRIES_C
 SECTION "PokeDB bank 2C", SRAM
 
 sBoxMons2C:: pokedb sBoxMons2C, MONDB_ENTRIES_C
+
+
+SECTION "DexNav Save", SRAM
+
+; DexNav search levels (D6), saved outside the checksummed game data.
+; sDexNavMagic marks the table as valid; older saves start it at zero.
+sDexNavMagic:: db
+sDexNavSearchLevels:: ds NUM_EXT_POKEMON
