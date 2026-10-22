@@ -1856,6 +1856,68 @@ _CheckTypeMatchup:
 	pop hl
 	ret
 
+GetPlayerMoveEffectiveness::
+; Return in a how effective the move in wPlayerMoveStruct is against the enemy,
+; or EFFECTIVE if there's nothing to show. Only uses what the player can see:
+; types (including Inverse Battles and Ground vs Flying), the user's Scrappy,
+; and Foresight, but not the enemy's ability or item. Expects the player's turn.
+	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
+	cp STATUS
+	jr z, .nothing
+	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
+	cp EFFECT_COUNTER
+	jr z, .nothing
+	push af
+	ld a, [wTypeMatchup]
+	push af
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+	push af
+	farcall GetPlayerMoveDisplayType
+	ld [wPlayerMoveStruct + MOVE_TYPE], a
+	ld hl, wEnemyMonType1
+	call _CheckTypeMatchup
+
+	; CheckTypeMatchup handles Ground vs Flying through CheckAirborne
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+	cp GROUND
+	jr nz, .got_matchup
+	ld a, [wBattleType]
+	cp BATTLETYPE_INVERSE
+	jr z, .got_matchup
+	ld a, [wEnemyMonType1]
+	cp FLYING
+	jr z, .immune
+	ld a, [wEnemyMonType2]
+	cp FLYING
+	jr nz, .got_matchup
+.immune
+	xor a
+	ld [wTypeMatchup], a
+.got_matchup
+	ld a, [wTypeMatchup]
+	ld b, a
+	pop af
+	ld [wPlayerMoveStruct + MOVE_TYPE], a
+	pop af
+	ld [wTypeMatchup], a
+	pop af
+
+	; constant damage moves only care about immunity
+	cp EFFECT_STATIC_DAMAGE
+	jr z, .constant_damage
+	cp EFFECT_LEVEL_DAMAGE
+	jr z, .constant_damage
+	cp EFFECT_SUPER_FANG
+	ld a, b
+	ret nz
+.constant_damage
+	ld a, b
+	and a
+	ret z
+.nothing
+	ld a, EFFECTIVE
+	ret
+
 BattleCommand_checkpowder:
 	farcall CheckNullificationAbilities
 	ld a, [wTypeMatchup]

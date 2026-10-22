@@ -504,6 +504,7 @@ ParsePlayerAction:
 	ld [wFXAnimIDLo], a
 	call MoveSelectionScreen
 	push af
+	call HideEffectivenessIcons
 	call SafeLoadTempTileMapToTileMap
 
 	ld hl, wBGPals1 palette PAL_BATTLE_BG_PLAYER
@@ -5481,6 +5482,47 @@ SwapBattleMoves:
 	ld [de], a
 	ret
 
+GetPlayerMoveDisplayType::
+; Return in a the type to show for the move in wPlayerMoveStruct: Hidden Power's
+; real type, or the type AteAbilities (in abilities.asm) will change it to.
+; Keep the two in sync. Expects the player's turn.
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farjp GetHiddenPowerType
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+	and a ; cp NORMAL
+	ret nz
+
+	; AteAbilities runs in damagecalc, which status moves and
+	; constant damage moves don't use.
+	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
+	cp STATUS
+	jr z, .normal
+	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
+	cp EFFECT_STATIC_DAMAGE
+	jr z, .normal
+	cp EFFECT_SUPER_FANG
+	jr z, .normal
+
+	call GetUserAbility
+	ld b, FAIRY
+	cp PIXILATE
+	jr z, .ate_type
+	ld b, ELECTRIC
+	cp GALVANIZE
+	jr z, .ate_type
+.normal
+	xor a ; NORMAL
+	ret
+
+.ate_type
+	ld a, b
+	ret
+
 MoveInfoBox:
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
@@ -5568,16 +5610,7 @@ MoveInfoBox:
 	ld hl, vTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
-	ld a, [wPlayerMoveStruct + MOVE_ANIM]
-	cp HIDDEN_POWER
-	jr nz, .not_hidden_power
-	ld hl, wBattleMonDVs
-	farcall GetHiddenPowerType
-	jr .got_type
-
-.not_hidden_power
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
-.got_type
+	call GetPlayerMoveDisplayType
 	ld hl, TypeIconGFX
 	ld bc, 4 * TILE_1BPP_SIZE
 	rst AddNTimes
@@ -5594,6 +5627,7 @@ MoveInfoBox:
 	inc a
 	dec b
 	jr nz, .loop
+	call PlaceEffectivenessIcons
 	pop af
 	call nz, ApplyTilemap
 	ret
@@ -5621,6 +5655,75 @@ MoveInfoBox:
 	ld de, wNamedObjectIndex
 	lb bc, 1, 2
 	jmp PrintNum
+
+; The icons are sprites, since there are no free BG tiles in battle.
+; They come right after the weather icon's tiles and sprites.
+DEF EFFECTIVENESS_ICON_TILE EQU $04
+
+PlaceEffectivenessIcons:
+; Show how effective the selected move is next to its type icon,
+; if the option is on.
+	call HideEffectivenessIcons
+	ld a, [wOptions3]
+	bit SHOW_EFFECTIVENESS, a
+	ret z
+	ld a, [wMoveSelectionMenuType]
+	and a
+	ret nz
+
+	farcall GetPlayerMoveEffectiveness
+	and a
+	lb bc, EFFECTIVENESS_ICON_TILE + 2, PAL_BATTLE_OB_GRAY
+	ld d, 1
+	jr z, .got_icon
+	cp EFFECTIVE
+	ret z
+	jr c, .not_very_effective
+	cp SUPER_EFFECTIVE + 1
+	ccf
+	lb bc, EFFECTIVENESS_ICON_TILE, PAL_BATTLE_OB_GREEN
+	jr .check_double
+
+.not_very_effective
+	cp NOT_VERY_EFFECTIVE
+	lb bc, EFFECTIVENESS_ICON_TILE + 1, PAL_BATTLE_OB_RED
+.check_double
+	; c means x4 or x1/4
+	jr nc, .got_icon
+	inc d
+.got_icon
+	push bc
+	push de
+	ld de, EffectivenessIconGFX
+	ld hl, vTiles0 tile EFFECTIVENESS_ICON_TILE
+	lb bc, BANK(EffectivenessIconGFX), 3
+	call Request2bpp
+	pop de
+	pop bc
+
+	; place the icons after the type icon
+	ld hl, wShadowOAMSprite04
+	ld e, 7 * TILE_WIDTH + OAM_X_OFS
+.loop
+	ld a, 9 * TILE_WIDTH + OAM_Y_OFS
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	add TILE_WIDTH
+	ld e, a
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	dec d
+	jr nz, .loop
+	ret
+
+HideEffectivenessIcons:
+	xor a
+	ld [wShadowOAMSprite04YCoord], a
+	ld [wShadowOAMSprite05YCoord], a
+	ret
 
 CheckUsableMoves:
 ; Return nz if we have no usable moves
