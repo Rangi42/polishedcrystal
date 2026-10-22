@@ -92,6 +92,7 @@ EggHatchGFX::     INCBIN "gfx/evo/egg_hatch.2bpp"
 SECTION "Stats Graphics", ROMX
 
 GFX_Summary:: INCBIN "gfx/stats/summary.2bpp.lzp"
+GFX_SummaryForgetMove:: INCBIN "gfx/stats/summary_forget_move.2bpp"
 GFX_Summary_Sprites:: INCBIN "gfx/stats/summary_sprites.2bpp.lzp"
 GFX_Balls:: INCBIN "gfx/stats/balls.2bpp.lzp"
 
