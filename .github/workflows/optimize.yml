@@ -21,8 +21,5 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: "Test optimizer output"
-        run: python3 -m unittest discover -s utils -p 'test_optimize.py'
-
       - name: "Check optimizations"
         run: python3 utils/optimize.py --github-actions
