@@ -27,56 +27,6 @@ WipeAttrMap:
 	rst ByteFill
 	ret
 
-ApplyHPBarPals:
-	ld a, [wWhichHPBar]
-	and a
-	jr z, .Enemy
-	dec a
-	jr z, .Player
-	dec a
-	jr z, .PartyMenu
-	ret
-
-.Enemy:
-	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP + 2
-	jr .okay
-
-.Player:
-	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP + 2
-
-.okay
-	ld a, c
-	add a
-	add a
-	add LOW(HPBarInteriorPals)
-	ld l, a
-	adc HIGH(HPBarInteriorPals)
-	sub l
-	ld h, a
-	ld bc, 4
-	call FarCopyColorWRAM
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
-.PartyMenu:
-	ld e, c
-	inc e
-	hlcoord 11, 1, wAttrmap
-	ld bc, 2 * SCREEN_WIDTH
-	ld a, [wCurPartyMon]
-.loop
-	and a
-	jr z, .done
-	add hl, bc
-	dec a
-	jr .loop
-
-.done
-	lb bc, 2, 8
-	ld a, e
-	jmp FillBoxWithByte
-
 LoadSummaryStatusIconPalette:
 	ld de, wTempMonStatus
 	ld hl, wOBPals1 palette 5 color 2
