@@ -15,7 +15,7 @@ PerformAbilityGFX:
 
 	; Change tilemap references
 	call .WriteTilemap
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	call SafeCopyTilemapAtOnce
 
 	ld de, SFX_ABILITYSLIDEOUT
@@ -26,7 +26,7 @@ PerformAbilityGFX:
 	ld b, PAL_BATTLE_BG_TEXT
 	call SetUserAbilityOverlayAttributes
 
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	call SafeCopyTilemapAtOnce
 
 	call AbilityVWF
@@ -340,7 +340,7 @@ DismissAbilityOverlays:
 	ldh [rWBK], a
 
 	; Reload the graphics
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	call SafeCopyTilemapAtOnce
 
 	pop bc

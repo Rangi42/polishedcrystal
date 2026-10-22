@@ -379,7 +379,7 @@ HatchEggs:
 
 	; This prints "Huh?" and does the egg hatch animation.
 	ld a, TRUE
-	ld [wSpriteUpdatesEnabled], a ; needed so SafeCopyTilemapAtOnceproperly updates textbox palettes when within nickname menu
+	ld [wSpriteUpdatesEnabled], a ; needed so SafeCopyTilemapAtOnce properly updates textbox palettes when within nickname menu
 	ld hl, .Text_HatchEgg
 	call PrintText
 
@@ -663,7 +663,7 @@ GetHatchlingFrontpic:
 
 Hatch_UpdateFrontpicBGMapCenter:
 	push af
-	call WaitTop
+	call EndBGMapUpdate
 	push hl
 	push bc
 	hlcoord 0, 0

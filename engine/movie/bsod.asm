@@ -21,9 +21,8 @@ BSOD:
 
 	ld a, 1
 	ldh [hCGBPalUpdate], a
-
-	xor a
-	ldh [hBGMapHalf], a
+	assert TRANSFER_TILEMAP == 1
+	ldh [hBGMapMode], a
 	call DelayFrame
 
 	ld de, FontNormal

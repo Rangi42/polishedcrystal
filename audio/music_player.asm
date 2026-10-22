@@ -108,8 +108,8 @@ MusicPlayer::
 	ldh [hCGBPalUpdate], a
 
 	; refresh top two portions
-	xor a
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP
+	ldh [hBGMapMode], a
 	call DelayFrame
 
 ; Load graphics
@@ -192,8 +192,8 @@ MusicPlayerLoop:
 	jpbutton PAD_SELECT, .select
 
 	; prioritize refreshing the note display
-	ld a, 1
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP | $80
+	ldh [hBGMapMode], a
 	jr MusicPlayerLoop
 
 .left:
@@ -298,8 +298,8 @@ SongEditor:
 	jpbutton PAD_SELECT, .select
 
 	; prioritize refreshing the note display
-	ld a, 1
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP | $80
+	ldh [hBGMapMode], a
 	jr SongEditor
 
 .left:
@@ -523,8 +523,8 @@ endr
 	ld [wPitchTransposition], a
 	call DrawPitchTransposition
 	; refresh top two portions
-	xor a
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP
+	ldh [hBGMapMode], a
 	jmp DelayFrame
 
 AdjustTempo:
@@ -535,8 +535,8 @@ AdjustTempo:
 
 	call DrawChannelSelector
 	; refresh top two portions
-	xor a
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP
+	ldh [hBGMapMode], a
 	call DelayFrame
 
 .loop:
@@ -552,8 +552,8 @@ AdjustTempo:
 	jrbutton PAD_START, .start
 
 	; prioritize refreshing the note display
-	ld a, 1
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP | $80
+	ldh [hBGMapMode], a
 	jr .loop
 
 .up:
@@ -600,8 +600,8 @@ AdjustTempo:
 	ld [wTempoAdjustment], a
 	call DrawTempoAdjustment
 	; refresh top two portions
-	xor a
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP
+	ldh [hBGMapMode], a
 	call DelayFrame
 	jmp .loop
 
@@ -623,8 +623,8 @@ AdjustTempo:
 	call DrawChannelSelector
 	call DrawTempoAdjustment
 	; refresh top two portions
-	xor a
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP
+	ldh [hBGMapMode], a
 	call DelayFrame
 	jmp SongEditor
 
@@ -655,8 +655,8 @@ DrawPianoRollOverlay:
 	ldh [hVBlank], a
 
 	; refresh top two portions
-	xor a
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP
+	ldh [hBGMapMode], a
 	jmp DelayFrame
 
 DrawPitchTransposition:
