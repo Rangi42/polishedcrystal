@@ -654,7 +654,22 @@ def preprocess_properties(lines):
 		)
 	return processed
 
-def optimize(filename):
+def escape_annotation(text, property=False):
+	# Match GitHub Actions' workflow-command escaping (percent must come first).
+	text = text.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+	if property:
+		text = text.replace(':', '%3A').replace(',', '%2C')
+	return text
+
+def print_annotation(filename, pattern_name, lines):
+	# Absolute paths also work when invoked from a subdirectory; the Actions
+	# runner converts paths within GITHUB_WORKSPACE to repository-relative paths.
+	filename = escape_annotation(filename.absolute().as_posix(), property=True)
+	message = pattern_name + '\n' + '\n'.join(line.text for line in lines)
+	print(f'::error file={filename},line={lines[0].num},endLine={lines[-1].num}'
+		f'::{escape_annotation(message)}')
+
+def optimize(filename, github_actions=False):
 	# Count the total instances of patterns in this file
 	count = 0
 	printed = False
@@ -696,14 +711,17 @@ def optimize(filename):
 				if state == len(conditions):
 					# All the conditions were met; print the result and reset the state
 					count += 1
-					if not printed_this and len(patterns) > 1:
-						print(f'### {pattern_name} ###')
-						printed_this = True
-					if cur_label:
-						print(f'{filename}:{cur_label.num}:{cur_label.text}')
-					for line in prev_lines:
-						print(f'{filename}:{line.num}:{line.text}')
-					printed = True
+					if github_actions:
+						print_annotation(filename, pattern_name, prev_lines)
+					else:
+						if not printed_this and len(patterns) > 1:
+							print(f'### {pattern_name} ###')
+							printed_this = True
+						if cur_label:
+							print(f'{filename}:{cur_label.num}:{cur_label.text}')
+						for line in prev_lines:
+							print(f'{filename}:{line.num}:{line.text}')
+						printed = True
 					prev_lines = []
 					state = 0
 			elif allow_rewind and not skip:
@@ -723,6 +741,8 @@ def optimize(filename):
 
 # Gather all the file paths passed to this script as argument
 parser = ArgumentParser()
+parser.add_argument('--github-actions', action='store_true',
+	help='emit GitHub Actions error annotations; exit 1 if any patterns are found')
 parser.add_argument('path', type=Path, nargs='*', default=[Path('.')])
 args = parser.parse_args()
 
@@ -733,12 +753,13 @@ for path in args.path:
 		print('File not found:', path, file=stderr)
 		continue
 	if path.is_file():
-		total_count += optimize(path)
+		total_count += optimize(path, args.github_actions)
 	else:
 		for filename in path.rglob('*.asm'):
-			total_count += optimize(filename)
+			total_count += optimize(filename, args.github_actions)
 
 # Print the total count
 print('Found', total_count, 'instances.')
 
-exit(total_count)
+# Do not let multiples of 256 findings become successful exit codes on Unix.
+exit(bool(total_count) if args.github_actions else total_count)
