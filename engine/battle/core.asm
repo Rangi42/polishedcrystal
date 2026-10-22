@@ -5493,7 +5493,8 @@ GetPlayerMoveDisplayType::
 
 .not_hidden_power
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
-	and a ; cp NORMAL
+	assert NORMAL == 0
+	and a
 	ret nz
 
 	; AteAbilities runs in damagecalc, which status moves and
@@ -5515,7 +5516,8 @@ GetPlayerMoveDisplayType::
 	cp GALVANIZE
 	jr z, .ate_type
 .normal
-	xor a ; NORMAL
+	assert NORMAL == 0
+	xor a
 	ret
 
 .ate_type
