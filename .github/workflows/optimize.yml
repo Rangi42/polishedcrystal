@@ -1,0 +1,28 @@
+name: "CI Optimize"
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  optimize:
+    name: "Optimize"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: "Test optimizer output"
+        run: python3 -m unittest discover -s utils -p 'test_optimize.py'
+
+      - name: "Check optimizations"
+        run: python3 utils/optimize.py --github-actions
