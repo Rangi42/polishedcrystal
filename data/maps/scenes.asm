@@ -61,6 +61,7 @@ MapScenes::
 	scene_var POKEMON_LEAGUE_GATE,               wPokemonLeagueGateSceneID
 	scene_var POWER_PLANT,                       wPowerPlantSceneID
 	scene_var RADIO_TOWER_5F,                    wRadioTower5FSceneID
+	scene_var ROUTE_4,                           wAlways0SceneID
 	scene_var ROUTE_10_NORTH,                    wRoute10NorthSceneID
 	scene_var ROUTE_16_17_GATE,                  wAlways0SceneID
 	scene_var ROUTE_18_GATE,                     wAlways0SceneID
