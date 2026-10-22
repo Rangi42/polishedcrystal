@@ -158,6 +158,15 @@ SummaryScreen_InitTiles:
 	lb bc, BANK(GFX_Summary), 16
 	call DecompressRequest2bpp
 
+	ld a, [wSummaryScreenFlags]
+	bit SUMMARY_FLAGS_FORGET_MOVE_F, a
+	jr z, .no_separator
+	ld de, GFX_SummaryForgetMove
+	ld hl, vTiles2 tile SUMMARY_TILE_SEPARATOR_JOIN
+	lb bc, BANK(GFX_SummaryForgetMove), 2
+	call Request2bpp
+.no_separator
+
 	farcall LoadBoldPDoubled
 
 	ld a, 1
@@ -543,10 +552,12 @@ SummaryScreen_InitLayout:
 	ld a, ' '
 	rst ByteFill
 
-	; the bottom border's line is visible between the fourth and fifth moves
-	hlcoord 8, 9
+	; a dotted line between the fourth and fifth moves, joined to the left border
+	hlcoord 7, 10
+	ld a, SUMMARY_TILE_SEPARATOR_JOIN
+	ld [hli], a
 	ld bc, 12
-	ld a, SUMMARY_TILE_SIDE_WINDOW_B
+	ld a, SUMMARY_TILE_SEPARATOR
 	rst ByteFill
 
 	; move the lower window (and the bottom of this one) down a row, which the
@@ -988,19 +999,19 @@ endr
 	db 127, SUMMARY_LCD_SCROLL_BACKGROUND
 	db -1
 .ForgetMoveInterrupts:
-	; like .GreenInterrupts, but 14 lines higher and with a fifth move; the lower
+	; like .GreenInterrupts, but 12 lines higher and with a fifth move; the lower
 	; window is a row lower, and its description (with no blank line between its
 	; lines) is scrolled up halfway into the blank row above it. The scroll lands
 	; a little late, so it starts while the lines before and after it are blank.
-	db 17,  SUMMARY_LCD_HIDE_WINDOW
-	db 21,  SUMMARY_LCD_SHOW_WINDOW
-	db 37,  SUMMARY_LCD_HIDE_WINDOW
-	db 41,  SUMMARY_LCD_SHOW_WINDOW
-	db 57,  SUMMARY_LCD_HIDE_WINDOW
-	db 61,  SUMMARY_LCD_SHOW_WINDOW
-	db 77,  SUMMARY_LCD_HIDE_WINDOW
-	db 81,  SUMMARY_LCD_SHOW_WINDOW
-	db 97,  SUMMARY_LCD_HIDE_WINDOW
+	db 19,  SUMMARY_LCD_HIDE_WINDOW
+	db 23,  SUMMARY_LCD_SHOW_WINDOW
+	db 39,  SUMMARY_LCD_HIDE_WINDOW
+	db 43,  SUMMARY_LCD_SHOW_WINDOW
+	db 59,  SUMMARY_LCD_HIDE_WINDOW
+	db 63,  SUMMARY_LCD_SHOW_WINDOW
+	db 79,  SUMMARY_LCD_HIDE_WINDOW
+	db 83,  SUMMARY_LCD_SHOW_WINDOW
+	db 99,  SUMMARY_LCD_HIDE_WINDOW
 	db 122, SUMMARY_LCD_SCROLL_BACKGROUND
 	db -1
 .EggInterrupts:
