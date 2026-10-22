@@ -31,11 +31,16 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * vulcandth for implementing weather effects in the overworld, to include rain, lightning, snow, and sandstorm.
 * vulcandth for implementing the dynamic palettes for objects in the overworld.
 * vulcandth for adding compatibility to build the virtual console patches.
+* vulcandth for expanded overworld weather and lighting, overworld performance improvements, nickname options, fishing retries, and fixes to link transfers, menus, and events.
 * VermilionCosmos for various bug fixes and improvements (including PC cursor adjustments, the TownMap_InitFlyPossible fix, making Throat Spray work for non-damaging moves, and palette fixes after swapping Pokémon).
 * Emi for the revamped summary screen.
 * Emi for data and macro migrations (Evos/Attacks) and related improvements.
 * Zumi for the revamped trade animation (originally for SourApple's Sour Crystal).
 * rofl0r for DayCare UX improvements and small bugfixes.
+* ariscop for the animated music player keyboard, audio rest handling, and interrupt improvements.
+* ISSOtm for graphics and animation optimizations, memory-layout cleanup, and the music player's background-map transfer fix.
+* leo-petrucci for the Name Rater palette fix, party selection at the Goldenrod happiness rater, and item icon transparency fixes.
+* CiXwOw for replacing Galarian Mr. Mime's hard-coded hatch rate with the named constant.
 * TAG1Kilo, walkawayy, Penndragyn37, Phoenix (DarkPhoenix911), Super (bmwalshy), The Chosen Lalafell (ddeeringwater), and other recent contributors for smaller fixes and text tweaks.
 
 
@@ -59,7 +64,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * ShadowOne333, Mia, and Quichless for Paldean Pokémon sprites and animations.
 * metalflygon08 for many Pokémon and trainer sprites.
-* JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, many overworld tiles, Prof. Ivy's overworld sprite, and map name sign borders.
+* JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, many overworld tiles (including Hidden Grottoes and the Ilex Forest shrine), type chart notebook tiles, Prof. Ivy's overworld sprite, and map name sign borders.
 * bloodless (BloodlessNS) for sprites of Buck, Maylene, Veteran♂, Mismagius (with SoupPotato), Honchkrow, Bonsly, Mime Jr., Munchlax, Galarian Mr. Mime, some variant Pikachu, Alolan Diglett, and Alolan Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist, and Engineer.
 * Gmerc for sprites of Alolan Meowth, Persian, and Exeggutor.
@@ -69,7 +74,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Dave.K for sprites and animations of Magmortar, Bloodmoon Ursaluna, Sneasler and Alolan Marowak.
 * Megaman-Omega for some of Prism's overworld sprites.
 * SourApple for many Pokémon sprites, move animations, overworld weather sprites, and the Ace Duo and Soldier sprites.
-* SoupPotato for Chinchou (modified front and shiny front) and related sprite/palette contributions (see PR #1164).
+* SoupPotato for Chinchou (modified front and shiny front) and related sprite/palette contributions (see PR #1164), updated Pokémon overworld and party icons, Persian and Gengar sprite updates, and move and status animations.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
 * ShockSlayer for the Gen 1 and 2 mini icons and for Yellow's overworld sprite.
 * Scarlax for sprites and animations of Ambipom, Electivire, Rhyperior (edited sprite by Egg3ggEgg), Magnezone (palette by BloodlessNS, backpic by SoupPotato), Galarian Moltres, Galarian Rapidash, Hisuian Typhlosion, Hisuian Sneasel, Paldean Tauros, and many other Pokémon animations.
@@ -80,7 +85,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * mauvesea for sprites and animations including Hisuian Arcanine, Hisuian Growlithe (animation and back sprite), Alolan Raticate (back), Alolan Rattata (back), Alolan Sandshrew (front, back, animation), Paldean Wooper (back), the Pokédex icon and overworld sprite, Crys's fishing sprites and DJ Mary's overworld sprite.
 * ShadowOne333 for Hitmonchan's and Gengar's front sprite and animations, and back sprites of Hitmonchan, Gengar, Suicune, and Alolan Grimer.
 * ShadowOne333 and mauvesea for Annihilape's and Alolan Sandslash's front and back sprites.
-* FrenchOrange for Ruins of Alph tiles, Boarder's overworld sprite, and surfing Pikachu's overworld sprite.
+* FrenchOrange for Ruins of Alph tiles, Boarder's and surfing Pikachu's overworld sprites, elements of Firebreather's overworld sprite, and female Officer sprite tweaks.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
@@ -102,7 +107,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
 * Paps for Twins' sprite.
-* coraldev for the sailboat sprite, and rowboat and sakura petal tiles.
+* coraldev for the sailboat sprite, rowboat and sakura petal tiles, and Rugged Road's arid grass color.
 * MissingNo. Studio for Farigiraf's mini icon.
 * lilbluedemon for some bridge tiles.
 * Th3Element05 for water tile animations in Kanto and caves.
@@ -127,6 +132,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Hello for correcting composers in the music player.
 * Salamandar for Battle Tower sets.
 * Drayano and AphexCubed for many non-Faithful adjusted base stat distributions.
+* CensoredHarp and Bit for initiating and developing the late-game trainer team rebalance, and NickF56 for implementing and refining it (PR #1300) and adding Bloodmoon Ursaluna battle facility sets.
+* Rev3lation (KohKaiSern) for FAQ updates, encounter data and sign corrections, Galarian Weezing's Hyper Beam compatibility, and Professor Elm's Pokérus explanation.
+* Rik Smeets (rik-smeets) for correcting the Ilex Forest Trainer Tips text.
 
 
 ## Special Thanks
