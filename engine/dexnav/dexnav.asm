@@ -1982,7 +1982,15 @@ DexNav_DrawMini:
 	ld l, a
 	ld h, HIGH(vTiles2)
 	assert LOW(vTiles2) == 0
-	farcall GetStorageMini
+	; Not GetStorageMini: its Bill's PC copy waits for a scanline near the top
+	; of the screen, and loops forever where VBlank ends early (Quiet Cave B1F).
+	push hl
+	farcall LoadMini
+	ld h, d
+	ld l, e
+	pop de
+	ld c, 4 ; first frame
+	call DecompressRequest2bpp
 	pop bc
 
 	push bc
