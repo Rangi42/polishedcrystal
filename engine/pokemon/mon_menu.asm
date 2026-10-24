@@ -883,6 +883,8 @@ ChooseMoveToForget:
 	jr .done
 
 .tm_tutor
+	; the summary screen's buffers share space with the overworld map blocks
+	farcall ReloadMapBlockData
 	ld a, [wCurPartyMon]
 	push af
 	farcall InitPartyMenuLayout

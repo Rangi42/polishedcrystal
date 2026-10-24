@@ -14,6 +14,16 @@ RunMapSetupScript::
 
 INCLUDE "data/maps/setup_scripts.asm"
 
+ReloadMapBlockData::
+; Restore wOverworldMapBlocks after a screen that shares its WRAM.
+	ld hl, .Script
+	jr ReadMapSetupScript
+
+.Script:
+	mapsetup LoadBlockData
+	mapsetup LoadConnectionBlockData
+	db -1 ; end
+
 ReadMapSetupScript:
 .loop
 	ld a, [hli]
