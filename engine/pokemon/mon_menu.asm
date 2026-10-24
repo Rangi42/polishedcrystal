@@ -833,7 +833,6 @@ MonMenu_FreshSnack:
 	const_def
 	const MOVESCREEN_NORMAL
 	const MOVESCREEN_DELETER
-	const MOVESCREEN_NEWMOVE
 	const MOVESCREEN_REMINDER
 
 ChooseMoveToDelete:
@@ -859,10 +858,7 @@ ChooseMoveToForget:
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call LoadTileMapToTempTileMap
-	call LoadFontsBattleExtra
-	ld a, MOVESCREEN_NEWMOVE
-	ld [wMoveScreenMode], a
-	call MoveScreen
+	call .SummaryScreen
 	pop bc
 	push af
 	ld a, b
@@ -880,11 +876,15 @@ ChooseMoveToForget:
 	call UpdateSprites
 	farcall FinishBattleAnim
 	farcall _LoadBattleFontsHPBar
+	; the summary screen's icons replaced the status icon's tiles
+	farcall LoadPlayerStatusIcon
 	farcall GetMonBackpic
 	call LoadTempTileMapToTileMap
 	jr .done
 
 .tm_tutor
+	; the summary screen's buffers share space with the overworld map blocks
+	farcall ReloadMapBlockData
 	ld a, [wCurPartyMon]
 	push af
 	farcall InitPartyMenuLayout
@@ -896,6 +896,22 @@ ChooseMoveToForget:
 	call SetDefaultBGPAndOBP
 	call DelayFrame
 	pop af
+	ret
+
+.SummaryScreen:
+; Returns the chosen move's slot (1-4, 5 for the new move) in a with nz
+; or 0 with z if cancelled.
+	call PreparePartyTempMon
+	xor a
+	ld [wMoveScreenSelectedMove], a
+	ld [wMoveScreenCursor], a
+	ld hl, wSummaryScreenFlags
+	set SUMMARY_FLAGS_FORGET_MOVE_F, [hl]
+	call _OpenTempmonSummary
+	ld hl, wSummaryScreenFlags
+	res SUMMARY_FLAGS_FORGET_MOVE_F, [hl]
+	ld a, [wMoveScreenCursor]
+	and a
 	ret
 
 ChooseMoveToRelearn:
@@ -990,27 +1006,19 @@ MoveScreenLoop:
 .movecopy_loop
 	ld a, [hli]
 	and a
-	jr z, .movecopy_done
+	jr z, .got_num_moves
 	ld [de], a
 	inc de
 	inc b
 	dec c
 	jr nz, .movecopy_loop
 
-.movecopy_done
-	; If we're learning a new move, append the move to the move list buffer
-	ld a, [wMoveScreenMode]
-	cp MOVESCREEN_NEWMOVE
-	jr nz, .newmove_done
-	ld a, [wPutativeTMHMMove]
-	ld [de], a
-	inc b
-	jr .newmove_done
+	jr .got_num_moves
 
 .movecopy_reminder
 	call GetForgottenMoves
 	ld b, c
-.newmove_done
+.got_num_moves
 	ld a, b
 	ld [wMoveScreenNumMoves], a
 	sub 1 ; no-optimize a++|a-- (dec a can't set carry)
@@ -1063,57 +1071,6 @@ MoveScreenLoop:
 	add hl, bc
 	ld a, [hl]
 	ld [wMoveScreenSelectedMove], a
-
-	push de
-	push bc
-	ld a, [wMoveScreenMode]
-	cp MOVESCREEN_NEWMOVE
-	jr nz, .ok
-	ld a, c
-	cp 4 ; selected new move
-	jr z, .ok
-
-	; Certain HMs introduce potential for accidental softlocks if forgotten
-	; at bad spots. There are other softlock situations, but they require
-	; releasing Pokémon, and isn't really something the player does by accident.
-	; This failsafe only kicks in if the player doesn't carry the HM.
-	; Players can skip HM acquisition by trade or New Game+. Some Pokémon also
-	; learn HMs naturally (notably Machamp with Strength).
-	ld a, [hl]
-
-	; Player flies somewhere, forgets Fly and gets stuck on the island.
-	cp FLY
-	ld e, HM_FLY
-	jr z, .checkhm
-
-	; Player surfs to a tiny island, forgets surf, can't re-surf.
-	cp SURF
-	ld e, HM_SURF
-	jr z, .checkhm
-
-	; Players forgetting Strength mid-puzzle.
-	cp STRENGTH
-	ld e, HM_STRENGTH
-	jr z, .checkhm
-
-	; Whirlpool implies surf, but not all water have wild encounters.
-	; This is just in case a whirlpool is added to one such location.
-	cp WHIRLPOOL
-	ld e, HM_WHIRLPOOL
-	jr nz, .ok
-	; Other HMs (Cut, Fly, Flash, Waterfall) can't softlock the player.
-
-.checkhm
-	call _CheckTMHM
-	jr c, .ok
-	pop bc
-	pop de
-	ld hl, Text_CantForgetHM
-	call PrintTextNoBox
-	jmp .outer_loop
-.ok
-	pop bc
-	pop de
 	ld a, c
 	inc a
 	and a
@@ -1705,5 +1662,42 @@ String_na:
 String_PowAcc:
 	db "   <BOLDP>/   %@"
 
-Text_CantForgetHM:
-	text_farend _MoveCantForgetHMText
+CheckUnforgettableHM::
+; Returns c if move a can't be forgotten, because it's one of the HMs below
+; and the player doesn't carry it.
+; Certain HMs introduce potential for accidental softlocks if forgotten
+; at bad spots. There are other softlock situations, but they require
+; releasing Pokémon, and isn't really something the player does by accident.
+; This failsafe only kicks in if the player doesn't carry the HM.
+; Players can skip HM acquisition by trade or New Game+. Some Pokémon also
+; learn HMs naturally (notably Machamp with Strength).
+
+	; Player flies somewhere, forgets Fly and gets stuck on the island.
+	cp FLY
+	ld e, HM_FLY
+	jr z, .checkhm
+
+	; Player surfs to a tiny island, forgets surf, can't re-surf.
+	cp SURF
+	ld e, HM_SURF
+	jr z, .checkhm
+
+	; Players forgetting Strength mid-puzzle.
+	cp STRENGTH
+	ld e, HM_STRENGTH
+	jr z, .checkhm
+
+	; Whirlpool implies surf, but not all water have wild encounters.
+	; This is just in case a whirlpool is added to one such location.
+	cp WHIRLPOOL
+	ld e, HM_WHIRLPOOL
+	jr z, .checkhm
+	; Other HMs (Cut, Fly, Flash, Waterfall) can't softlock the player.
+	and a
+	ret
+
+.checkhm
+	call _CheckTMHM
+	ccf
+	ret
+
