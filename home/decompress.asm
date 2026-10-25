@@ -77,7 +77,6 @@ DEF LZ_SPECIAL_SUBTYPE_MASK  EQU %00000011
 DEF LZ_SPECIAL_PACKHI0       EQU 0 ; $fc
 DEF LZ_SPECIAL_PACK16_SHORT  EQU 1 ; $fd (len 1..256)
 DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
-DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 
 ; In other words, the structure of the command becomes
 ; 111xxxyy yyyyyyyy
@@ -451,7 +450,7 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	or c
 	jr z, .pack_done
 	pop af
-	and LZ_PACK16_NIBBLE_MASK
+	and $0f
 	swap a
 	ld [hli], a
 	dec bc
@@ -497,22 +496,22 @@ DEF LZ_PACK16_NIBBLE_MASK EQU $0f
 	inc de
 	push af
 	swap a
-	and LZ_PACK16_NIBBLE_MASK
+	and $0f
 	ld [hli], a
 	dec bc
 	ld a, b
 	or c
 	jr z, .pack_done
 	pop af
-	and LZ_PACK16_NIBBLE_MASK
+	and $0f
 	ld [hli], a
 	dec bc
 	jr .packlo0_loop
 
-; Output the `a & LZ_PACK16_NIBBLE_MASK`th element of `.pack16_table`,
+; Output the `a & $0f`th element of `.pack16_table`,
 ; and decrement the count.
 .pack_lookup
-	and LZ_PACK16_NIBBLE_MASK
+	and $0f
 	push de
 	add LOW(.pack16_table)
 	ld e, a
