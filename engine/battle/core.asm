@@ -1682,14 +1682,13 @@ LeppaRestorePP:
 	; Restore up to 10PP of move bc (0-3)
 	call GetUserAbility
 	cp RIPEN
-	ld d, 10
+	ld a, 10
 	jr nz, .got_leppa_amount
-	ld d, 20
+	add a
 .got_leppa_amount
 	ld hl, wTempMonPP
 	add hl, bc
-	ld a, [hl]
-	add d
+	add [hl]
 	ld d, a
 	ld a, BOXMON
 	ld [wMonType], a
@@ -1713,6 +1712,7 @@ LeppaRestorePP:
 
 .got_pp_to_restore
 	; d: PP to restore, bc: memory offset of move
+	call ShowRipenAbility
 	call CurItemRecoveryAnim
 	push bc
 	push de
@@ -1728,6 +1728,7 @@ LeppaRestorePP:
 	call GetCurItemName
 	ld hl, BattleText_UserRecoveredPPUsing
 	call StdBattleTextbox
+	farcall EndAbility
 	pop de
 	pop bc
 
@@ -3629,7 +3630,9 @@ _HeldStatBoostBerry:
 	and a
 	ret nz
 	farcall ShowPendingUserAbility
+	call ShowRipenAbility
 	farcall UseStatItemText
+	farcall EndAbility
 
 	; Don't call CheckMirrorHerb; Bug Bite/Pluck needs to proc the copy later.
 	xor a
@@ -3657,7 +3660,8 @@ ReconsumeBattleItem:
 	call RefreshBattleHuds
 	call GetCurItemName
 	ld hl, RecoveredUsingText
-	jmp StdBattleTextbox
+	call StdBattleTextbox
+	farjp EndAbility
 
 StealHPHealingItem:
 ; treat Enigma Berry as a HP-recovery berry
@@ -3677,6 +3681,7 @@ StealBattleItem:
 	call GetCurItemName
 	ld hl, RecoveredUsingText
 	call StdBattleTextbox
+	farcall EndAbility
 	farcall SetCudChewBerry
 	farjp ConsumeStolenOpponentItem
 
@@ -3704,6 +3709,7 @@ UseBattleItem:
 	call GetCurItemName
 	ld hl, RecoveredUsingText
 	call StdBattleTextbox
+	farcall EndAbility
 	farjp ConsumeUserItem
 
 _HeldHPHealingItem:
@@ -3743,6 +3749,12 @@ DoubleStatBoostIfRipen::
 	ld b, a
 	ret
 
+ShowRipenAbility::
+	call GetUserAbility
+	cp RIPEN
+	ret nz
+	farjp BeginAndShowUserAbility
+
 DoubleBCIfOpponentRipen::
 	call StackCallOpponentTurn
 DoubleBCIfRipen::
@@ -3751,7 +3763,7 @@ DoubleBCIfRipen::
 	ret nz
 	sla c
 	rl b
-	ret
+	farjp BeginUserAbility
 
 CurItemRecoveryAnim::
 	xor a

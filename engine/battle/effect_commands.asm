@@ -3318,7 +3318,7 @@ BattleCommand_posthiteffects:
 	; Do Jaboca and Rowap berries, Rocky Helmet,
 	; Absorb Bulb, Snowball, Cell Battery, Luminous Moss
 	call HasUserFainted
-	jr z, .rocky_helmet_done
+	jmp z, .rocky_helmet_done
 	call GetFutureSightUser
 	jr nz, .rocky_helmet_done
 	call GetOpponentItemAfterUnnerve
@@ -3369,7 +3369,8 @@ BattleCommand_posthiteffects:
 .got_hurt_item_damage
 	call GetTrueUserIgnorableAbility
 	cp MAGIC_GUARD
-	jr z, .rocky_helmet_done
+	jr z, .item_damage_done
+	farcall ShowPendingOpponentAbility
 	farcall SubtractHPFromUser_OverrideFaintOrder
 	call GetOpponentItem
 	call GetCurItemName
@@ -3382,6 +3383,8 @@ BattleCommand_posthiteffects:
 	ld a, b
 	cp HELD_ROCKY_HELMET
 	call nz, ConsumeOpponentItem
+.item_damage_done
+	farcall EndAbility
 
 .rocky_helmet_done
 	call GetTrueUserIgnorableAbility
@@ -3836,7 +3839,16 @@ EndMoveDamageChecks:
 	ret nz
 	call SwitchTurn
 	farcall DoubleStatBoostIfRipen
-	call RaiseStatWithItem
+	ld a, STAT_SKIPTEXT
+	call _RaiseStat
+	ld a, [wFailedMessage]
+	and a
+	jr nz, .defend_hit_done
+	farcall ShowRipenAbility
+	farcall UseStatItemText
+	call ConsumeUserItem
+	farcall EndAbility
+.defend_hit_done
 	jmp SwitchTurn
 
 RaiseStatWithItem:
