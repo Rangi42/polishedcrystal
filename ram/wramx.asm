@@ -732,8 +732,11 @@ wSummaryCaughtLevel:: db
 NEXTU
 ; link data
 	ds 9
-wLinkBattleRNPreamble:: ds 4
-wLinkBattleRNs:: ds 10
+; The prepared RNG preamble is four bytes; the exchange window still
+; allows SERIAL_RN_PREAMBLE_LENGTH (seven) preamble bytes.
+wLinkBattleRNPreamble:: ds SERIAL_RN_SEND_PREAMBLE_LENGTH
+wLinkBattleRNs:: ds SERIAL_RNS_LENGTH
+assert wLinkBattleRNs - wLinkBattleRNPreamble == SERIAL_RN_SEND_PREAMBLE_LENGTH
 
 NEXTU
 ; battle data
@@ -745,6 +748,7 @@ ENDU
 
 	ds 2 ; unused
 
+wOTLinkBattleRNData::
 wEnemyMon:: battle_struct wEnemyMon
 
 wTempBattleMonSpecies:: db
@@ -879,6 +883,8 @@ SECTION "Enemy Party", WRAMX
 wEnemyFleeing:: db
 wNumFleeAttempts:: db
 
+; Initially used for the raw received party, including its preamble.
+wLinkReceivedPartyData::
 wOTPartyData::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
@@ -904,7 +910,10 @@ wOTPartyMonNicknames::
 for n, 1, PARTY_LENGTH + 1
 wOTPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
+wLinkReceivedPartyEnd::
 wOTPartyDataEnd::
+
+assert wLinkReceivedPartyEnd - wLinkReceivedPartyData == wLinkSendPartyEnd - wLinkSendParty
 
 NEXTU
 	ds PARTYMON_STRUCT_LENGTH ; skip first OT partymon since wildmon use that
