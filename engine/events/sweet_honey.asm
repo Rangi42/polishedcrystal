@@ -2,7 +2,6 @@ _SweetHoney:
 	farcall CanUseSweetHoney
 	jr nc, .no_battle
 	farcall GetMapEncounterRate
-	ld a, b
 	and a
 	jr z, .no_battle
 	ld hl, wStatusFlags2

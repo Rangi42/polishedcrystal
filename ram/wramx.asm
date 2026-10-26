@@ -827,14 +827,11 @@ wBaseEVYield2:: db
 wBaseTMHM:: flag_array NUM_TM_HM_TUTOR
 wCurBaseDataEnd::
 
-	ds 1 ; unused
+	ds 4 ; unused
 
 wCurDamage:: dw
 
-wMornEncounterRate:: db
-wDayEncounterRate:: db
-wNiteEncounterRate:: db
-wEveEncounterRate:: db
+wGrassEncounterRate:: db
 wWaterEncounterRate:: db
 
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
