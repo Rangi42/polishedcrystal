@@ -36,7 +36,7 @@ MultiplyAndDivide::
 	push bc
 	ld b, a
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, BANK(Multiply)
 	rst Bankswitch

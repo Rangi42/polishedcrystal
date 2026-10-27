@@ -7,7 +7,7 @@ InitSound::
 	push bc
 	push af
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, BANK(_InitSound)
 	rst Bankswitch
@@ -26,7 +26,7 @@ UpdateSound::
 	push bc
 	push af
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
@@ -71,7 +71,7 @@ _LoadMusicWord::
 CheckSpecialMapMusic:
 ; Returns z if the current map has a special music handler.
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, BANK(GetOvercastIndex)
 	rst Bankswitch
@@ -163,7 +163,7 @@ PlayMusic::
 	push bc
 	push af
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, BANK(_PlayMusic) ; and BANK(_InitSound)
 	rst Bankswitch
@@ -193,7 +193,7 @@ PlayMusic2::
 	push bc
 	push af
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	ld a, BANK(_PlayMusic)
@@ -218,7 +218,7 @@ PlayCry::
 	push bc
 	push af
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	ld a, BANK(PokemonCries)
@@ -256,7 +256,7 @@ PlaySFX::
 	jr c, .done
 
 .play
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 	ld a, BANK(_PlaySFX)
 	rst Bankswitch

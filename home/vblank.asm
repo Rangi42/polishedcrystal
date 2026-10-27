@@ -12,7 +12,7 @@ VBlank::
 	push bc
 	push af
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	ldh [hROMBankBackup], a
 
 	; Skip the .VBlanks table if [hVBlank] is just 7.
@@ -345,7 +345,7 @@ VBlank8:
 	; serial
 	; sound
 
-	ldh a, [hROMBank]
+	ld a, [CurROMBank] ; ??? seems redundant with caller
 	ldh [hROMBankBackup], a
 
 	call UpdateBGMap
