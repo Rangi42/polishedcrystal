@@ -5481,6 +5481,49 @@ SwapBattleMoves:
 	ld [de], a
 	ret
 
+GetPlayerMoveDisplayType::
+; Return in a the type to show for the move in wPlayerMoveStruct: Hidden Power's
+; real type, or the type AteAbilities (in abilities.asm) will change it to.
+; Keep the two in sync. Expects the player's turn.
+	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+	cp HIDDEN_POWER
+	jr nz, .not_hidden_power
+	ld hl, wBattleMonDVs
+	farjp GetHiddenPowerType
+
+.not_hidden_power
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+	assert NORMAL == 0
+	and a
+	ret nz
+
+	; AteAbilities runs in damagecalc, which status moves and
+	; constant damage moves don't use.
+	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
+	cp STATUS
+	jr z, .normal
+	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
+	cp EFFECT_STATIC_DAMAGE
+	jr z, .normal
+	cp EFFECT_SUPER_FANG
+	jr z, .normal
+
+	call GetUserAbility
+	ld b, FAIRY
+	cp PIXILATE
+	jr z, .ate_type
+	ld b, ELECTRIC
+	cp GALVANIZE
+	jr z, .ate_type
+.normal
+	assert NORMAL == 0
+	xor a
+	ret
+
+.ate_type
+	ld a, b
+	ret
+
 MoveInfoBox:
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0
@@ -5568,16 +5611,7 @@ MoveInfoBox:
 	ld hl, vTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
-	ld a, [wPlayerMoveStruct + MOVE_ANIM]
-	cp HIDDEN_POWER
-	jr nz, .not_hidden_power
-	ld hl, wBattleMonDVs
-	farcall GetHiddenPowerType
-	jr .got_type
-
-.not_hidden_power
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
-.got_type
+	call GetPlayerMoveDisplayType
 	ld hl, TypeIconGFX
 	ld bc, 4 * TILE_1BPP_SIZE
 	rst AddNTimes
