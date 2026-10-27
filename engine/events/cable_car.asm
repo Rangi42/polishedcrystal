@@ -20,7 +20,7 @@ def CELS_PER_OBJECT equ 3 ; Down, Up, Left/Right (shared, mirrored).
 SECTION "Cable car asset blob", ROMX
 
 CableCarAssets:
-INCBIN "gfx/overworld/cable_car.bin.lzp"
+INCBIN "gfx/overworld/cable_car/cable_car.bin.lzp"
 ; Some of `cable_car.2bpp.lzp`'s dependency `.2bpp` files get `READFILE()`'d below,
 ; as part of length checks; they are ordered after this to be robust to dependency ordering / scanning.
 
@@ -169,7 +169,7 @@ Special_CableCar::
 
 .LoadCutscenePalettes
 	ld hl, .palettes ; TODO: load a time-of-day palette
-	ld de, wBGPals1 palette PAL_BASE_IDX
+	ld de, wBGPals1
 	ld bc, NB_PALETTES palettes
 	call FarCopyColorWRAM
 
@@ -448,82 +448,28 @@ ENDC
 	ret
 
 
-def PAL_BASE_IDX equ 0
-.palettes: const_def PAL_BASE_IDX
-const BGPAL_TREES_CLOSEST
-	RGB 22, 31, 10
-	RGB 12, 25,  1
-	RGB  5, 14,  0
-	RGB  7,  7,  7
-const BGPAL_TREES_MED_BOTTOM_HALF
-	RGB 23, 31, 12
-	RGB 12, 25,  5
-	RGB  5, 15,  3
-	RGB  8,  8,  8
-const BGPAL_TREES_MED_ROW_2
-	RGB 23, 30, 14
-	RGB 12, 25,  7
-	RGB  6, 15,  5
-	RGB  8,  8,  9
-const BGPAL_TREES_MED_ROW_1
-	RGB 23, 29, 15
-	RGB 12, 25,  8
-	RGB  6, 15,  6
-	RGB  9,  9, 10
-const BGPAL_TREES_FAR ; Each tile row only uses two colours each, but there's overlap.
-	dw 0 ; Unused.
-	RGB 11, 25, 13
-	RGB  8, 17, 11
-	RGB 12, 12, 13
-const BGPAL_SKY
-	RGB  7, 23, 30 ; Sky backdrop.
-	RGB 31, 31, 31 ; Cloud white.
-	RGB 22, 26, 28 ; Cloud shade.
-	dw 0 ; Unused.
-const BGPAL_MOUNTAINS
-	RGB  7, 23, 30 ; Sky backdrop.
-	RGB 11, 25, 13 ; Greenery.
-	RGB 23, 29, 31 ; Light snow.
-	RGB  2, 19, 27 ; Dark snow.
+.palettes:
+INCLUDE "gfx/overworld/cable_car/cable_car.pal"
 
-const BGPAL_ROCK
-	RGB 27, 31, 27
-	RGB 24, 18,  7
-	RGB 20, 15,  3
-	RGB  7,  7,  7
-
+	const_def
+	const BGPAL_TREES_CLOSEST         ; 0
+	const BGPAL_TREES_MED_BOTTOM_HALF ; 1
+	const BGPAL_TREES_MED_ROW_2       ; 2
+	const BGPAL_TREES_MED_ROW_1       ; 3
+	const BGPAL_TREES_FAR             ; 4
+	const BGPAL_SKY                   ; 5
+	const BGPAL_MOUNTAINS             ; 6
+	const BGPAL_ROCK                  ; 7
 assert const_value == 8, "Not at OBJ pal boundary! (pal #{d:const_value})"
-const_def 0
-
-const OBPAL_HANDLE ; Also used for the cable.
-	dw 0 ; Ignored.
-	RGB 21, 21, 21
-	RGB 13, 13, 13
-	RGB  7,  7,  7
-
-const OBPAL_CAR
-	dw 0 ; Ignored.
-	RGB 29, 26, 10
-	RGB 17, 15, 10
-	RGB  7,  7,  7
-
-const OBPAL_CAR_WHITE ; A copy of the car, but with one colour replaced with the white backdrop.
-	dw 0 ; Ignored.
-	RGB 29, 26, 10
-	RGB 31, 31, 31 ; Backdrop for the car. (TODO: consider some darker, desaturated colour?)
-	RGB  7,  7,  7
-
-const OBPAL_CLOUD
-	dw 0 ; Ignored.
-	RGB 31, 31, 31 ; Cloud white.
-	RGB 21, 25, 27 ; Cloud shade, slightly darkened.
-	RGB 18, 22, 24 ; Cloud shade, darkened ever so slightly more.
-
-def NB_PALETTES equ const_value + (8 - PAL_BASE_IDX)
-
-const OBPAL_PLAYER
+	const_def
+	const OBPAL_HANDLE    ; 0
+	const OBPAL_CAR       ; 1
+	const OBPAL_CAR_WHITE ; 2
+	const OBPAL_CLOUD     ; 3
+def NB_PALETTES equ const_value + 8
 	; Filled in dynamically depending on player gender.
 	; (Thus, must be last.)
+	const OBPAL_PLAYER    ; 4
 
 
 ; We now define constants for tile indices.

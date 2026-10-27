@@ -14,6 +14,7 @@ gfx/pokemon/*/*.animated.tilemap
 gfx/pokemon/*/bitmask.asm
 gfx/pokemon/*/frames.asm
 gfx/overworld/*.bin
+gfx/overworld/cable_car/*.bin
 gfx/overworld/cable_car/bg.tilemap
 gfx/pokedex/*.bin
 gfx/stats/*.bin

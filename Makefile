@@ -238,16 +238,30 @@ gfx/overworld/cable_car/cable.2bpp: RGBGFXFLAGS += -Z
 gfx/overworld/cable_car/bg.2bpp: RGBGFXFLAGS += -m -OT -b 0xC4
 gfx/overworld/cable_car/bg.tilemap: gfx/overworld/cable_car/bg.2bpp
 # Order matters here! Update the tilemap, and the `obj_block`s to reflect new tile IDs.
-gfx/overworld/cable_car.bin: gfx/overworld/cable_car/cumulus.2bpp \
-                             gfx/overworld/cable_car/car_window.2bpp gfx/overworld/cable_car/car_left.2bpp gfx/overworld/cable_car/car.2bpp \
-                             gfx/overworld/cable_car/handle_side.2bpp gfx/overworld/cable_car/handle.2bpp \
-                             gfx/overworld/cable_car/cable.2bpp \
-                             gfx/overworld/cable_car/bg.2bpp \
-                             gfx/overworld/cable_car/cliff.2bpp \
-                             gfx/overworld/cable_car/bg.tilemap gfx/overworld/cable_car/bg.attrmap
+gfx/overworld/cable_car/cable_car.bin: \
+        gfx/overworld/cable_car/cumulus.2bpp \
+        gfx/overworld/cable_car/car_window.2bpp \
+        gfx/overworld/cable_car/car_left.2bpp \
+        gfx/overworld/cable_car/car.2bpp \
+        gfx/overworld/cable_car/handle_side.2bpp \
+        gfx/overworld/cable_car/handle.2bpp \
+        gfx/overworld/cable_car/cable.2bpp \
+        gfx/overworld/cable_car/bg.2bpp \
+        gfx/overworld/cable_car/cliff.2bpp \
+        gfx/overworld/cable_car/bg.tilemap \
+        gfx/overworld/cable_car/bg.attrmap
 	$Qcat $^ > $@
 
-gfx/overworld/overworld.2bpp: gfx/overworld/puddle_splash.2bpp gfx/overworld/cut_grass.2bpp gfx/overworld/cut_tree.2bpp gfx/overworld/heal_machine.2bpp gfx/overworld/fishing_rod.2bpp gfx/overworld/shadow.2bpp gfx/overworld/shaking_grass.2bpp gfx/overworld/boulder_dust.2bpp ; $Qcat $^ > $@
+gfx/overworld/overworld.2bpp: \
+        gfx/overworld/puddle_splash.2bpp \
+        gfx/overworld/cut_grass.2bpp \
+        gfx/overworld/cut_tree.2bpp \
+        gfx/overworld/heal_machine.2bpp \
+        gfx/overworld/fishing_rod.2bpp \
+        gfx/overworld/shadow.2bpp \
+        gfx/overworld/shaking_grass.2bpp \
+        gfx/overworld/boulder_dust.2bpp
+	$Qcat $^ > $@
 
 gfx/pack/pack_left.2bpp: tools/gfx += --trim-whitespace
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; $Qcat $^ > $@
