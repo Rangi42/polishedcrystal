@@ -77,6 +77,25 @@ def CAR_BUMP_TIMER_INCREMENT equ $01 ; By how much the bump timer gets increased
 
 def PLAYER_MOVEMENT_RADIUS equ 4 ; Otherwise cels can clip out of the transparency.
 
+	const_def
+	const BGPAL_TREES_CLOSEST         ; 0
+	const BGPAL_TREES_MED_BOTTOM_HALF ; 1
+	const BGPAL_TREES_MED_ROW_2       ; 2
+	const BGPAL_TREES_MED_ROW_1       ; 3
+	const BGPAL_TREES_FAR             ; 4
+	const BGPAL_SKY                   ; 5
+	const BGPAL_MOUNTAINS             ; 6
+	const BGPAL_ROCK                  ; 7
+assert const_value == 8, "Not at OBJ pal boundary! (pal #{d:const_value})"
+	const_def
+	const OBPAL_HANDLE                ; 0
+	const OBPAL_CAR                   ; 1
+	const OBPAL_CAR_WHITE             ; 2
+	const OBPAL_CLOUD                 ; 3
+def NB_PALETTES equ const_value + 8
+	; Filled in dynamically depending on player gender. (Thus, must be last.)
+	const OBPAL_PLAYER                ; 4
+
 
 SECTION "Cable Car", ROMX
 
@@ -168,11 +187,24 @@ Special_CableCar::
 	call DecompressRequest2bpp
 
 .LoadCutscenePalettes
-	ld hl, .palettes ; TODO: load a time-of-day palette
+	ld a, BANK(wTimeOfDayPal)
+	ld hl, wTimeOfDayPal
+	call GetFarWRAMByte
+	and 3
+	; bc = a * 32
+	swap a
+	add a
+	ld b, 0
+	ld c, a
+	; hl = .palettes + bc * 3
+	ld hl, .palettes
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	assert 32 * 3 == PAL_SIZE * NB_PALETTES
 	ld de, wBGPals1
 	ld bc, NB_PALETTES palettes
 	call FarCopyColorWRAM
-
 
 .WriteMainMaps
 	; Since they are wider than the WRAM tilemaps, VRAM must be accessed directly;
@@ -450,26 +482,6 @@ ENDC
 
 .palettes:
 INCLUDE "gfx/overworld/cable_car/cable_car.pal"
-
-	const_def
-	const BGPAL_TREES_CLOSEST         ; 0
-	const BGPAL_TREES_MED_BOTTOM_HALF ; 1
-	const BGPAL_TREES_MED_ROW_2       ; 2
-	const BGPAL_TREES_MED_ROW_1       ; 3
-	const BGPAL_TREES_FAR             ; 4
-	const BGPAL_SKY                   ; 5
-	const BGPAL_MOUNTAINS             ; 6
-	const BGPAL_ROCK                  ; 7
-assert const_value == 8, "Not at OBJ pal boundary! (pal #{d:const_value})"
-	const_def
-	const OBPAL_HANDLE    ; 0
-	const OBPAL_CAR       ; 1
-	const OBPAL_CAR_WHITE ; 2
-	const OBPAL_CLOUD     ; 3
-def NB_PALETTES equ const_value + 8
-	; Filled in dynamically depending on player gender.
-	; (Thus, must be last.)
-	const OBPAL_PLAYER    ; 4
 
 
 ; We now define constants for tile indices.
