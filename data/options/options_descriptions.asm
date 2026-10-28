@@ -8,6 +8,7 @@ OptionsDescriptions:
 	dw .Sound
 	dw .BattleEffects
 	dw .BattleStyle
+	dw .Effectiveness
 	dw .Nicknames
 	dw .RunningShoes
 	dw .TurningSpeed
@@ -67,6 +68,12 @@ OptionsDescriptions:
 
 	para "Predict: tells"
 	line "you the next foe."
+	prompt
+
+.Effectiveness:
+	text "Show how effective"
+	line "your moves are"
+	cont "against the foe."
 	prompt
 
 .Nicknames:
