@@ -29,7 +29,7 @@ endr
 	ld c, 8
 	ret
 
-LoadMini:
+LoadMini::
 	; c = species
 	ld a, [wCurIconSpecies]
 	ld c, a

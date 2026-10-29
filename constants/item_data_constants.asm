@@ -100,6 +100,7 @@ DEF NUM_ITEM_EFFECTS EQU const_value
 	const KEYITEMEFFECT_SQUIRTBOTTLE
 	const KEYITEMEFFECT_CARD_KEY
 	const KEYITEMEFFECT_BASEMENT_KEY
+	const KEYITEMEFFECT_DEXNAV
 DEF NUM_KEY_ITEM_EFFECTS EQU const_value
 
 ; held item effects (see data/items/attributes.asm)

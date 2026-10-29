@@ -296,6 +296,7 @@ KeyItemDescriptions:
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
 	dw CatchCharmDesc
+	dw DexNavDesc
 	assert_table_length NUM_KEY_ITEMS
 
 ExpCandyDescriptions:
@@ -1679,6 +1680,11 @@ OvalCharmDesc:
 CatchCharmDesc:
 	text "A charm for catch-"
 	next "ing #mon."
+	done
+
+DexNavDesc:
+	text "Searches for wild"
+	next "#mon nearby."
 	done
 
 SilphScope2Desc:

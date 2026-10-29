@@ -741,3 +741,8 @@ INCLUDE "audio/music/printer.asm"
 SECTION "LureMenu", ROMX
 
 INCLUDE "engine/menus/lure_menu.asm"
+
+
+SECTION "DexNav", ROMX
+
+INCLUDE "engine/dexnav/dexnav.asm"

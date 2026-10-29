@@ -61,7 +61,7 @@ SetInitialOptions:
 .BGPalettes:
 INCLUDE "gfx/options/initial_options_bg.pal"
 
-DEF NUM_INITIAL_MENU_OPTIONS EQU 11
+DEF NUM_INITIAL_MENU_OPTIONS EQU 12
 
 InitialOptions_CallOptionRoutine:
 	ld a, [wMenuSelection]
@@ -81,6 +81,7 @@ InitialOptions_CallOptionRoutine:
 	dw InitialOptions_TradedMon
 	dw InitialOptions_EvolveInBattle
 	dw InitialOptions_ColorVariation
+	dw InitialOptions_HuntEncounters
 	assert_table_length NUM_INITIAL_MENU_OPTIONS
 
 MenuDataHeader_InitialOptions:
@@ -384,6 +385,27 @@ InitialOptions_ColorVariation:
 .SetYes:
 	set COLOR_VARY_OPT, [hl]
 	ld de, YesString
+	jmp OptionsShared_PlaceStringAtValueCoord
+
+InitialOptions_HuntEncounters:
+; "Yes" (default) = bit clear, so encounters can interrupt a hunt (D16).
+	ld hl, wInitialOptions2
+	ldh a, [hJoyPressed]
+	and PAD_LEFT | PAD_RIGHT
+	jr nz, .Toggle
+	bit DEXNAV_CALM_OPT, [hl]
+	jr z, .SetYes
+	jr .SetNo
+.Toggle:
+	bit DEXNAV_CALM_OPT, [hl]
+	jr z, .SetNo
+.SetYes:
+	res DEXNAV_CALM_OPT, [hl]
+	ld de, YesString
+	jmp OptionsShared_PlaceStringAtValueCoord
+.SetNo:
+	set DEXNAV_CALM_OPT, [hl]
+	ld de, NoString
 	jmp OptionsShared_PlaceStringAtValueCoord
 
 INCLUDE "data/options/initial_options_descriptions.asm"

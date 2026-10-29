@@ -1243,6 +1243,9 @@ Script_loadtrainerwithpal:
 	ret
 
 Script_startbattle:
+	; Any other battle ends a DexNav hunt (D16). The map reload afterwards
+	; would otherwise bring the rustle back.
+	farcall DexNav_EndHunt
 	call BufferScreen
 	farcall StartBattle
 	ld a, [wBattleResult]

@@ -1132,7 +1132,11 @@ wPokemonJournalsEnd::
 wTMsHMs:: flag_array NUM_TMS + NUM_HMS
 wTMsHMsEnd::
 
-wKeyItems:: ds NUM_KEY_ITEMS + 1
+; One byte short of NUM_KEY_ITEMS + 1 so that adding the DexNav didn't shift
+; the saved layout. That's safe because several key items are taken away
+; during the story (Mystery Egg, Lost Item, Machine Part, ...), so the list can
+; never hold every key item at once.
+wKeyItems:: ds NUM_KEY_ITEMS
 wKeyItemsEnd::
 
 wNumItems:: db
@@ -1411,7 +1415,19 @@ wTimerEventStartDay:: db
 
 wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 
-	ds 19 ; unused
+; DexNav (D7). These bytes held the Nuzlocke landmark flags, so older saves
+; may have leftover bits here; they're zeroed when the DexNav is given.
+wDexNavSavedData::
+wDexNavChain:: db ; battles in a row (0 = no chain)
+; Species and form the DexNav list last searched for (0 = none)
+wDexNavTargetSpecies:: db
+wDexNavTargetForm:: db
+; Species and form the chain is for (D24); only valid while the chain is > 0
+wDexNavChainSpecies:: db
+wDexNavChainForm:: db
+wDexNavSavedDataEnd::
+
+	ds 14 ; unused
 
 wHiddenGrottoContents::
 ; dbw content type, content id
@@ -1951,3 +1967,11 @@ SECTION "Window Stack", WRAMX
 
 wWindowStack:: ds $1000 - 1
 wWindowStackBottom:: db
+
+
+SECTION "DexNav Search Levels", WRAMX
+
+; One byte per species and variant form, indexed like GetSpeciesAndFormIndex
+; (D21). Raised by each DexNav battle, capped at 255.
+; Saved in sDexNavSearchLevels (see DexNav_BackupPartyMonMail).
+wDexNavSearchLevels:: ds NUM_EXT_POKEMON

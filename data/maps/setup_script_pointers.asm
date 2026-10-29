@@ -24,7 +24,8 @@ MapSetupCommands:
 	add_mapsetup LoadMapPalettes ; 11
 	add_mapsetup LoadWildMonData ; 12
 	add_mapsetup RefreshMapSprites ; 13
-	add_mapsetup HandleNewMap ; 14
+HandleNewMap_MapSetupCmd: ; 14
+	dba DexNav_HandleNewMap ; breaks the DexNav chain, then HandleNewMap
 	add_mapsetup HandleContinueMap ; 15
 	add_mapsetup LoadMapObjects ; 16
 	add_mapsetup EnterMapSpawnPoint ; 17

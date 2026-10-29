@@ -39,4 +39,5 @@ KeyItemNames::
 	li "Shiny Charm"
 	li "Oval Charm"
 	li "Catch Charm"
+	li "DexNav"
 	assert_list_length NUM_KEY_ITEMS + 1
