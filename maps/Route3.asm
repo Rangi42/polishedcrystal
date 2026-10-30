@@ -6,7 +6,7 @@ Route3_MapScriptHeader:
 
 	def_warp_events
 	warp_event 68,  1, MOUNT_MOON_1F, 1
-	warp_event 61,  3, ROUTE_3_POKECENTER_1F, 1
+	warp_event 61,  3, ROUTE_3_CABLE_CAR_GATE, 1
 
 	def_coord_events
 

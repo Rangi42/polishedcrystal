@@ -19,7 +19,6 @@ PokeCenter2F_BlockData:
 
 ViridianPokeCenter1F_BlockData:
 PewterPokeCenter1F_BlockData:
-Route3PokeCenter1F_BlockData:
 CeruleanPokeCenter1F_BlockData:
 VermilionPokeCenter1F_BlockData:
 Route10PokeCenter1F_BlockData:
@@ -456,6 +455,10 @@ GoldenrodGameCorner_BlockData:
 SECTION "GoldenrodMagnetTrainStation_BlockData", ROMX
 GoldenrodMagnetTrainStation_BlockData:
 	INCBIN "maps/GoldenrodMagnetTrainStation.ablk.lzp"
+
+SECTION "Route3CableCarGate_BlockData", ROMX
+Route3CableCarGate_BlockData:
+	INCBIN "maps/CableCarGate.ablk.lzp"
 
 SECTION "DayCare_BlockData", ROMX
 DayCare_BlockData:

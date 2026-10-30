@@ -51,6 +51,7 @@ SpecialBGPalettes:
 	special_bg_pal map,      GOLDENROD_MUSEUM_2F,         SINGLE,      YELLOW, 1, GoldenrodMuseumPalette
 	special_bg_pal map,      FUCHSIA_AQUARIUM_1F,         SINGLE,      GREEN,  5, FuchsiaAquariumPalette
 	special_bg_pal map,      FUCHSIA_AQUARIUM_2F,         SINGLE,      GREEN,  5, FuchsiaAquariumPalette
+	special_bg_pal map,      ROUTE_3_CABLE_CAR_GATE,      SINGLE,      WATER,  3, CableCargatePalette
 	special_bg_pal map,      MAGNET_TUNNEL_INSIDE,        SINGLE,      RED,    4, MagnetTunnelPalette
 	special_bg_pal map,      OAKS_LAB,                    SINGLE,      GREEN,  1, OaksLabPalette
 	special_bg_pal map,      TIN_TOWER_ROOF,              TIMEWEATHER, RED,    6, TinTowerRoofPalette
@@ -673,6 +674,15 @@ else
 	RGB_MONOCHROME WHITE, LIGHT, LIGHT, DARK ; yellow
 	MONOCHROME_RGB_FOUR_NIGHT ; brown
 	MONOCHROME_RGB_FOUR_NIGHT ; roof
+endc
+
+CableCargatePalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/cable_car_gate.pal"
+else
+	MONOCHROME_RGB_FOUR ; water
+	MONOCHROME_RGB_FOUR ; yellow
+	MONOCHROME_RGB_FOUR ; brown
 endc
 
 CeladonMansionRoofPalette:
