@@ -7,20 +7,20 @@ MountMoonSquare_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, MountMoonSquareDisappearRockCallback
 
 	def_warp_events
-	warp_event 13,  7, MOUNT_MOON_GIFT_SHOP, 1
+	warp_event 15,  7, MOUNT_MOON_GIFT_SHOP, 1
 
 	def_coord_events
-	coord_event  7, 11, SCENE_MOUNTMOONSQUARE_CLEFAIRY_DANCE, ClefairyDance
-	coord_event 21, 11, SCENE_MOUNTMOONSQUARE_CLEFAIRY_DANCE, MountMoonSquareCableCarScript
+	coord_event 21, 11, SCENE_MOUNTMOONSQUARE_CLEFAIRY_DANCE, ClefairyDance
+	coord_event  7, 11, SCENE_MOUNTMOONSQUARE_CLEFAIRY_DANCE, MountMoonSquareCableCarScript
 
 	def_bg_events
-	bg_event  7,  7, BGEVENT_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
-	bg_event 17,  7, BGEVENT_JUMPTEXT, DontLitterSignText
+	bg_event 21,  7, BGEVENT_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
+	bg_event 13,  7, BGEVENT_JUMPTEXT, DontLitterSignText
 
 	def_object_events
-	object_event  6,  6, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	object_event  7,  6, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	object_event  7,  7, SPRITE_N64, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, PAL_NPC_COPY_BG_GRAY, OBJECTTYPE_COMMAND, jumpstd, smashrock, 0, EVENT_MT_MOON_SQUARE_ROCK
+	object_event 20,  6, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
+	object_event 21,  6, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
+	object_event 21,  7, SPRITE_N64, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, PAL_NPC_COPY_BG_GRAY, OBJECTTYPE_COMMAND, jumpstd, smashrock, 0, EVENT_MT_MOON_SQUARE_ROCK
 
 	object_const_def
 	const MOUNTMOONSQUARE_CLEFAIRY1
@@ -86,8 +86,8 @@ ClefairyDance:
 	turnobject MOUNTMOONSQUARE_CLEFAIRY1, DOWN
 	cry CLEFAIRY
 	pause 15
-	follow MOUNTMOONSQUARE_CLEFAIRY1, MOUNTMOONSQUARE_CLEFAIRY2
-	applymovement MOUNTMOONSQUARE_CLEFAIRY1, ClefairyFleeMovement
+	follow MOUNTMOONSQUARE_CLEFAIRY2, MOUNTMOONSQUARE_CLEFAIRY1
+	applymovement MOUNTMOONSQUARE_CLEFAIRY2, ClefairyFleeMovement
 	disappear MOUNTMOONSQUARE_CLEFAIRY1
 	disappear MOUNTMOONSQUARE_CLEFAIRY2
 	stopfollow
@@ -106,12 +106,10 @@ ClefairyDanceStep3:
 	step_end
 
 ClefairyFleeMovement:
-	step_right
-	step_right
-	step_right
-	jump_step_right
-	step_right
-	step_right
+	step_left
+	jump_step_left
+	step_left
+	step_left
 	step_end
 
 DontLitterSignText:
