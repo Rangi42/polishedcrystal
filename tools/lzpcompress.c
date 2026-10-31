@@ -6,21 +6,21 @@
 #define MAX_FILE_SIZE            32768
 #define SHORT_COMMAND_COUNT         32
 #define MAX_COMMAND_COUNT          512
-#define MAX_EXT_COUNT              256 /* max output count for an extended opcode (8-bit len-1) */
+#define MAX_SPECIAL_COUNT          256 /* max output count for an special opcode (8-bit len-1) */
 #define LOOKBACK_LIMIT             128 /* highest negative valid count for a copy command */
 
 #define LZ_END                  0xff
 
-// Extended opcode bytes ($fc-$fe)
-#define LZ_EXT_MASK             0xfc
-#define LZ_EXT_BASE             0xfc
-// $fc is reserved for an extended opcode; this project uses it for packhi0.
-#define LZ_EXT_PACKHI0          0xfc
-// $fd is reserved for an extended opcode; this project uses it for pack16.
-#define LZ_EXT_PACK16_SHORT     0xfd
-// $fe is reserved for an extended opcode; this project uses it for packlo0.
-#define LZ_EXT_PACKLO0          0xfe
-#define LZ_EXT_SUBTYPE_MASK     0x03
+// Special opcode bytes ($fc-$fe)
+#define LZ_SPECIAL_MASK         0xfc
+#define LZ_SPECIAL_BASE         0xfc
+// $fc is reserved for a special opcode; this project uses it for packhi0.
+#define LZ_SPECIAL_PACKHI0      0xfc
+// $fd is reserved for a special opcode; this project uses it for pack16.
+#define LZ_SPECIAL_PACK16_SHORT 0xfd
+// $fe is reserved for a special opcode; this project uses it for packlo0.
+#define LZ_SPECIAL_PACKLO0      0xfe
+#define LZ_SPECIAL_SUBTYPE_MASK 0x03
 #define LZ_PACK16_NIBBLE_MASK   0x0f
 #define PACK16_TABLE_SIZE         16
 
@@ -33,10 +33,10 @@
 #define LZ_COPY_REVERSED 6 /* Repeat n bytes in reverse.       */
 #define LZ_LONG          7 /* Expand n to 9 bits (wire format) */
 
-// Internal pseudo-command for extended opcodes ($fc-$fe).
+// Internal pseudo-command for special opcodes ($fc-$fe).
 // Uses the same numeric value as LZ_LONG since it falls in that byte range,
 // but represents a distinct concept in the tools' internal representation.
-#define LZ_EXT           7
+#define LZ_SPECIAL       7
 
 #if __STDC_VERSION__ >= 201112L
 	// <noreturn.h> forces "noreturn void", which is silly and redundant; this is simpler
@@ -47,7 +47,7 @@
 
 struct command {
   // commands 0-6 are as per the base compression spec.
-  // LZ_EXT (7) is used internally as a pseudo-command for extended opcodes ($fc-$fe).
+  // LZ_SPECIAL (7) is used internally as a pseudo-command for special opcodes ($fc-$fe).
   unsigned command: 3;
   unsigned count:  12; // always equals the uncompressed data length
   signed value:    17; // offset for commands 0 (into source) and 4-6 (into decompressed output); repeated bytes for commands 1-2
@@ -159,10 +159,10 @@ unsigned minimum_count (unsigned command) {
         return 3;
     case LZ_REPEAT:
         return 2;
-    // LZ_EXT is used internally by tools as a pseudo-command for
-    // extended opcodes ($fc-$fe). It always represents an opcode whose count
+    // LZ_SPECIAL is used internally by tools as a pseudo-command for
+    // special opcodes ($fc-$fe). It always represents an opcode whose count
     // is explicitly stored, so its minimum is 1.
-    case LZ_EXT:
+    case LZ_SPECIAL:
         return 1;
     default:
         return 1;
@@ -170,8 +170,8 @@ unsigned minimum_count (unsigned command) {
 }
 
 short command_size (struct command command) {
-  if (command.command == LZ_EXT) {
-    // Extended commands encoded using $fc-$fe headers.
+  if (command.command == LZ_SPECIAL) {
+    // Special commands encoded using $fc-$fe headers.
     // - value in [-MAX_FILE_SIZE..-1]: lzpackhi0 (2-byte header + ceil(count/2) payload)
     // - value < -MAX_FILE_SIZE: lzpacklo0 (2-byte header + ceil(count/2) payload)
     // - value >= 0: lzpack16 (2-byte header + ceil(count/2) payload)
@@ -373,23 +373,23 @@ void process_input(void) {
 
         // lzpackhi0: packed literals where every byte has low nibble 0.
         // Consider runs ending at (plen - 1) where (byte & 0x0f) == 0.
-        // Minimum length 4: extended opcode (2-byte header + 2 payload) = 4 bytes,
+        // Minimum length 4: special opcode (2-byte header + 2 payload) = 4 bytes,
         // vs LZ_DATA (1-byte header + 4 literal) = 5 bytes. Saves 1 byte.
         unsigned packhi0 = 0;
-        while (packhi0 < MAX_EXT_COUNT && packhi0 < plen && (data[plen - (packhi0 + 1)] & 0x0f) == 0) packhi0++;
+        while (packhi0 < MAX_SPECIAL_COUNT && packhi0 < plen && (data[plen - (packhi0 + 1)] & 0x0f) == 0) packhi0++;
         if (packhi0 >= 4) {
             unsigned start = plen - packhi0;
             // Consider all lengths >= 4. We do two parity passes so we still step by 2.
             for (unsigned prev = start; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_EXT,
+                    .command = LZ_SPECIAL,
                     .count = plen - prev,
                     .value = -(int)prev - 1,
                 });
             }
             for (unsigned prev = start + 1; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_EXT,
+                    .command = LZ_SPECIAL,
                     .count = plen - prev,
                     .value = -(int)prev - 1,
                 });
@@ -398,23 +398,23 @@ void process_input(void) {
 
         // lzpacklo0: packed literals where every byte has high nibble 0.
         // Consider runs ending at (plen - 1) where (byte & 0xf0) == 0.
-        // Minimum length 4: extended opcode (2-byte header + 2 payload) = 4 bytes,
+        // Minimum length 4: special opcode (2-byte header + 2 payload) = 4 bytes,
         // vs LZ_DATA (1-byte header + 4 literal) = 5 bytes. Saves 1 byte.
         unsigned packlo0 = 0;
-        while (packlo0 < MAX_EXT_COUNT && packlo0 < plen && (data[plen - (packlo0 + 1)] & 0xf0) == 0) packlo0++;
+        while (packlo0 < MAX_SPECIAL_COUNT && packlo0 < plen && (data[plen - (packlo0 + 1)] & 0xf0) == 0) packlo0++;
         if (packlo0 >= 4) {
             unsigned start = plen - packlo0;
             // Consider all lengths >= 4. We do two parity passes so we still step by 2.
             for (unsigned prev = start; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_EXT,
+                    .command = LZ_SPECIAL,
                     .count = plen - prev,
                     .value = -(int)prev - 1 - MAX_FILE_SIZE,
                 });
             }
             for (unsigned prev = start + 1; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_EXT,
+                    .command = LZ_SPECIAL,
                     .count = plen - prev,
                     .value = -(int)prev - 1 - MAX_FILE_SIZE,
                 });
@@ -424,20 +424,20 @@ void process_input(void) {
         // lzpack16: packed literals using 4-bit indices into pack16_table.
         // Consider runs ending at (plen - 1) where every byte is in the table.
         unsigned pack = 0;
-        while (pack < MAX_EXT_COUNT && pack < plen && pack_index[data[plen - (pack + 1)]] >= 0) pack++;
+        while (pack < MAX_SPECIAL_COUNT && pack < plen && pack_index[data[plen - (pack + 1)]] >= 0) pack++;
         if (pack >= 4) {
             unsigned start = plen - pack;
             // Consider all lengths >= 4. We do two parity passes so we still step by 2.
             for (unsigned prev = start; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_EXT,
+                    .command = LZ_SPECIAL,
                     .count = plen - prev,
                     .value = prev,
                 });
             }
             for (unsigned prev = start + 1; prev + 4 <= plen; prev += 2) {
                 consider(plen, (struct command) {
-                    .command = LZ_EXT,
+                    .command = LZ_SPECIAL,
                     .count = plen - prev,
                     .value = prev,
                 });
@@ -521,25 +521,25 @@ struct command * get_commands_from_file (const unsigned char * file_buffer, unsi
     unsigned char b0 = *(rp ++);
     if (b0 == LZ_END) break;
 
-    // Extended opcode bytes: $fc-$fe
-    if ((b0 & LZ_EXT_MASK) == LZ_EXT_BASE) {
+    // Special opcode bytes: $fc-$fe
+    if ((b0 & LZ_SPECIAL_MASK) == LZ_SPECIAL_BASE) {
       if (!(remaining --)) goto error;
       unsigned char len_lo = *(rp ++);
       unsigned out_count = (unsigned)len_lo + 1;
 
-      current -> command = LZ_EXT;
+      current -> command = LZ_SPECIAL;
       current -> count = out_count;
 
       unsigned payload = (out_count + 1) / 2;
       if (remaining < payload) goto error;
 
-      if (b0 == LZ_EXT_PACKHI0) {
+      if (b0 == LZ_SPECIAL_PACKHI0) {
         // lzpackhi0
         current -> value = -(int)(rp - file_buffer) - 1;
-      } else if (b0 == LZ_EXT_PACK16_SHORT) {
+      } else if (b0 == LZ_SPECIAL_PACK16_SHORT) {
         // lzpack16
         current -> value = rp - file_buffer;
-      } else if (b0 == LZ_EXT_PACKLO0) {
+      } else if (b0 == LZ_SPECIAL_PACKLO0) {
         // lzpacklo0
         current -> value = -(int)(rp - file_buffer) - 1 - MAX_FILE_SIZE;
       } else {
@@ -619,7 +619,7 @@ unsigned char * get_uncompressed_data (const struct command * commands, const un
         memset(current, 0, commands -> count);
         current += commands -> count;
         break;
-      case LZ_EXT:
+      case LZ_SPECIAL:
         if (commands -> value < 0) {
           unsigned remaining = commands -> count;
           if (commands -> value < -MAX_FILE_SIZE) {
@@ -747,7 +747,7 @@ void write_command_to_textfile (FILE * fp, struct command command, const unsigne
     case LZ_ZERO:
       rv = fprintf(fp, "\tlzzero %u\n", command.count);
       break;
-    case LZ_EXT:
+    case LZ_SPECIAL:
       if (command.value < -MAX_FILE_SIZE) {
         rv = fprintf(fp, "\tlzpacklo0 %u\n", command.count);
       } else if (command.value < 0) {
@@ -801,17 +801,17 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
   /* Check for over and under sized commands */
   if (command.count > MAX_COMMAND_COUNT - 1) error_exit(2, "invalid command in output stream");
 
-  if (command.command == LZ_EXT) {
-    // Extended opcodes encoded with $fc-$fe.
+  if (command.command == LZ_SPECIAL) {
+    // Special opcodes encoded with $fc-$fe.
     // After the header, packed-literal opcodes have ceil(count/2) payload bytes.
     unsigned original_count = command.count + minimum_count(command.command);
-    if (original_count > MAX_EXT_COUNT) error_exit(2, "invalid command in output stream");
+    if (original_count > MAX_SPECIAL_COUNT) error_exit(2, "invalid command in output stream");
 
     if (command.value < 0) {
       unsigned payload = (original_count + 1) / 2;
       if (command.value < -MAX_FILE_SIZE) {
         // lzpacklo0: $fe <len-1> then ceil(len/2) packed low nibbles.
-        *(pos ++) = LZ_EXT_PACKLO0;
+        *(pos ++) = LZ_SPECIAL_PACKLO0;
         *(pos ++) = (unsigned char)(original_count - 1);
         if (fwrite(buf, 1, pos - buf, fp) != (unsigned)(pos - buf)) error_exit(1, "could not write command to compressed output");
 
@@ -827,7 +827,7 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
       }
 
       // lzpackhi0: $fc <len-1> then ceil(len/2) packed bytes.
-      *(pos ++) = LZ_EXT_PACKHI0;
+      *(pos ++) = LZ_SPECIAL_PACKHI0;
       *(pos ++) = (unsigned char)(original_count - 1);
       if (fwrite(buf, 1, pos - buf, fp) != (unsigned)(pos - buf)) error_exit(1, "could not write command to compressed output");
 
@@ -843,7 +843,7 @@ void write_command_to_file (FILE * fp, struct command command, const unsigned ch
     }
 
     // lzpack16: $fd <len-1> for 1..256
-    *(pos ++) = LZ_EXT_PACK16_SHORT;
+    *(pos ++) = LZ_SPECIAL_PACK16_SHORT;
     *(pos ++) = (unsigned char)(original_count - 1);
     if (fwrite(buf, 1, pos - buf, fp) != (unsigned)(pos - buf)) error_exit(1, "could not write command to compressed output");
 
