@@ -8,10 +8,10 @@ MountMoonSquare_MapScriptHeader:
 
 	def_warp_events
 	warp_event 15,  7, MOUNT_MOON_GIFT_SHOP, 1
+	warp_event  7, 11, MOUNT_MOON_SQUARE_CABLE_CAR_GATE, 1
 
 	def_coord_events
 	coord_event 21, 11, SCENE_MOUNTMOONSQUARE_CLEFAIRY_DANCE, ClefairyDance
-	coord_event  7, 11, SCENE_MOUNTMOONSQUARE_CLEFAIRY_DANCE, MountMoonSquareCableCarScript
 
 	def_bg_events
 	bg_event 21,  7, BGEVENT_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
@@ -34,19 +34,6 @@ MountMoonSquareDisappearMoonStoneCallback:
 MountMoonSquareDisappearRockCallback:
 	disappear MOUNTMOONSQUARE_ROCK
 	endcallback
-
-MountMoonSquareCableCarScript:
-	playsound SFX_EXIT_BUILDING
-	applyonemovement PLAYER, hide_object
-	waitsfx
-	disappear PLAYER
-	pause 10
-	special Special_FadeOutMusic
-	special FadeOutPalettes
-	pause 15
-	special Special_CableCar
-	warpfacing DOWN, ROUTE_4, 19, 6
-	end
 
 ClefairyDance:
 	checkflag ENGINE_MT_MOON_SQUARE_CLEFAIRY

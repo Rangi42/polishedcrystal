@@ -527,6 +527,7 @@ INCLUDE "maps/MountMoonB1F.asm"
 INCLUDE "maps/MountMoonB2F.asm"
 INCLUDE "maps/MountMoonGiftShop.asm"
 INCLUDE "maps/MountMoonSquare.asm"
+INCLUDE "maps/MountMoonSquareCableCarGate.asm"
 
 
 SECTION "Cerulean Scripts", ROMX

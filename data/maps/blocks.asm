@@ -458,6 +458,7 @@ GoldenrodMagnetTrainStation_BlockData:
 
 SECTION "Route3CableCarGate_BlockData", ROMX
 Route3CableCarGate_BlockData:
+MountMoonSquareCableCarGate_BlockData:
 	INCBIN "maps/CableCarGate.ablk.lzp"
 
 SECTION "DayCare_BlockData", ROMX

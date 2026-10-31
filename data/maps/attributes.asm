@@ -603,6 +603,7 @@ ENDM
 	map_attributes CeruleanCoupleHouse, CERULEAN_COUPLE_HOUSE, $0
 	map_attributes CeruleanWaterShowSpeechHouse, CERULEAN_WATER_SHOW_SPEECH_HOUSE, $0
 	map_attributes Route3CableCarGate, ROUTE_3_CABLE_CAR_GATE, $0
+	map_attributes MountMoonSquareCableCarGate, MOUNT_MOON_SQUARE_CABLE_CAR_GATE, $0
 	map_attributes Route10PokeCenter1F, ROUTE_10_POKECENTER_1F, $0
 	map_attributes PowerPlant, POWER_PLANT, $0
 	map_attributes BillsHouse, BILLS_HOUSE, $0
