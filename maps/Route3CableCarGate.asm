@@ -1,7 +1,10 @@
 Route3CableCarGate_MapScriptHeader:
 	def_scene_scripts
+	scene_script Route3CableCarGateAskEnterScene, SCENE_ROUTE3CABLECARGATE_ASK_ENTER
+	scene_script Route3CableCarGateLeaveScene, SCENE_ROUTE3CABLECARGATE_LEAVE
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, Route3CableCarGateMoveReceptionistCallback
 
 	def_warp_events
 	warp_event  6, 11, ROUTE_3, 2
@@ -18,6 +21,32 @@ Route3CableCarGate_MapScriptHeader:
 
 	object_const_def
 	const ROUTE3CABLECARGATE_RECEPTIONIST
+
+Route3CableCarGateMoveReceptionistCallback:
+	readmem wCableCarGatesSceneID
+	iffalsefwd .Nothing
+	moveobject ROUTE3CABLECARGATE_RECEPTIONIST, 5, 4
+	turnobject ROUTE3CABLECARGATE_RECEPTIONIST, RIGHT
+.Nothing
+	endcallback
+
+Route3CableCarGateLeaveScene:
+	sdefer Route3CableCarGate_PlayerArrives
+Route3CableCarGateAskEnterScene:
+	end
+
+Route3CableCarGate_PlayerArrives:
+	follow PLAYER, ROUTE3CABLECARGATE_RECEPTIONIST
+	applymovement PLAYER, .LeaveCableCarMovement
+	stopfollow
+	setscene SCENE_ROUTE3CABLECARGATE_ASK_ENTER
+	end
+
+.LeaveCableCarMovement:
+	step_down
+	step_down
+	step_down
+	step_end
 
 Route3CableCarGateReceptionistScript:
 	faceplayer
@@ -40,7 +69,8 @@ Route3CableCarGateReceptionistScript:
 	special FadeOutPalettes
 	pause 15
 	special Special_CableCar
-	warpfacing DOWN, MOUNT_MOON_SQUARE_CABLE_CAR_GATE, 6, 7
+	setmapscene MOUNT_MOON_SQUARE_CABLE_CAR_GATE, SCENE_MOUNTMOONSQUARECABLECARGATE_LEAVE
+	warpfacing DOWN, MOUNT_MOON_SQUARE_CABLE_CAR_GATE, 6, 4
 	end
 
 .ReadyToGoUpText:

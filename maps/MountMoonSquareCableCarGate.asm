@@ -1,7 +1,10 @@
 MountMoonSquareCableCarGate_MapScriptHeader:
 	def_scene_scripts
+	scene_script MountMoonSquareCableCarGateAskEnterScene, SCENE_MOUNTMOONSQUARECABLECARGATE_ASK_ENTER
+	scene_script MountMoonSquareCableCarGateLeaveScene, SCENE_MOUNTMOONSQUARECABLECARGATE_LEAVE
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, MountMoonSquareCableCarGateMoveReceptionistCallback
 
 	def_warp_events
 	warp_event  6, 11, MOUNT_MOON_SQUARE, 2
@@ -17,6 +20,32 @@ MountMoonSquareCableCarGate_MapScriptHeader:
 
 	object_const_def
 	const MOUNTMOONSQUARECABLECARGATE_RECEPTIONIST
+
+MountMoonSquareCableCarGateMoveReceptionistCallback:
+	readmem wCableCarGatesSceneID
+	iffalsefwd .Nothing
+	moveobject MOUNTMOONSQUARECABLECARGATE_RECEPTIONIST, 7, 4
+	turnobject MOUNTMOONSQUARECABLECARGATE_RECEPTIONIST, LEFT
+.Nothing
+	endcallback
+
+MountMoonSquareCableCarGateLeaveScene:
+	sdefer MountMoonSquareCableCarGate_PlayerArrives
+MountMoonSquareCableCarGateAskEnterScene:
+	end
+
+MountMoonSquareCableCarGate_PlayerArrives:
+	follow PLAYER, MOUNTMOONSQUARECABLECARGATE_RECEPTIONIST
+	applymovement PLAYER, .LeaveCableCarMovement
+	stopfollow
+	setscene SCENE_MOUNTMOONSQUARECABLECARGATE_ASK_ENTER
+	end
+
+.LeaveCableCarMovement:
+	step_down
+	step_down
+	step_down
+	step_end
 
 MountMoonSquareCableCarGateReceptionistScript:
 	faceplayer
@@ -39,7 +68,8 @@ MountMoonSquareCableCarGateReceptionistScript:
 	special FadeOutPalettes
 	pause 15
 	special Special_CableCar
-	warpfacing DOWN, ROUTE_3_CABLE_CAR_GATE, 6, 7
+	setmapscene ROUTE_3_CABLE_CAR_GATE, SCENE_ROUTE3CABLECARGATE_LEAVE
+	warpfacing DOWN, ROUTE_3_CABLE_CAR_GATE, 6, 4
 	end
 
 .ReadyToGoDownText:
