@@ -520,7 +520,7 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 
 TradeAnim_EnterLinkTube1:
 	call ClearTileMap
-	call WaitTop
+	call EndBGMapUpdate
 	ld a, $60
 	ldh [hSCX], a
 	call DelayFrame
@@ -624,7 +624,7 @@ TradeAnim_TextboxScrollStart:
 	jmp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_ScrollOutRight:
-	call WaitTop
+	call EndBGMapUpdate
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	call ApplyTilemapInVBlank
@@ -632,8 +632,7 @@ TradeAnim_ScrollOutRight:
 	ldh [hWX], a
 	xor a
 	ldh [hWY], a
-	call DelayFrame
-	call WaitTop
+	call EndBGMapUpdate
 	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	call ClearTileMap
@@ -738,7 +737,7 @@ TradeAnim_ShowFrontpic:
 	ld hl, vTiles2
 	lb bc, 10, $31
 	call Request2bpp
-	call WaitTop
+	call EndBGMapUpdate
 	call TradeAnim_BlankTileMap
 	hlcoord 7, 2
 	xor a
@@ -829,7 +828,7 @@ ShowOTTrademonStats:
 	jr TrademonStats_WaitBGMap
 
 TrademonStats_MonTemplate:
-	call WaitTop
+	call EndBGMapUpdate
 	call TradeAnim_BlankTileMap
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
@@ -842,7 +841,7 @@ TrademonStats_MonTemplate:
 	ret
 
 TrademonStats_Egg:
-	call WaitTop
+	call EndBGMapUpdate
 	call TradeAnim_BlankTileMap
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
@@ -856,7 +855,9 @@ TrademonStats_Egg:
 
 TrademonStats_WaitBGMap:
 	call ApplyTilemapInVBlank
-	call WaitTop
+	xor a
+	assert NO_BG_MAP_TRANSFER == 0
+	ldh [hBGMapMode], a
 	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	ret
@@ -1070,7 +1071,7 @@ TradeAnim_OTBidsFarewell:
 	; .
 	text_farend _MonNameBidsFarewellText
 TradeAnim_TakeCareOfText:
-	call WaitTop
+	call EndBGMapUpdate
 	hlcoord 0, 10
 	ld bc, 8 * SCREEN_WIDTH
 	ld a, ' '

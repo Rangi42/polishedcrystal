@@ -316,8 +316,6 @@ BattleBGEffect_HideMon:
 .got_pointer
 	call ClearBox
 	pop bc
-	xor a
-	ldh [hBGMapHalf], a
 	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
@@ -563,8 +561,6 @@ BattleBGEffect_RemoveMon:
 	dec e
 	jr nz, .row2
 .okay2
-	xor a
-	ldh [hBGMapHalf], a
 	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call BattleBGEffects_IncrementJumptable

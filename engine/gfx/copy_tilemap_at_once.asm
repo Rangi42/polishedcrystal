@@ -1,102 +1,47 @@
 _SafeCopyTilemapAtOnce::
-	ldh a, [hBGMapMode]
-	push af
 	ldh a, [hMapAnims]
 	push af
 	ldh a, [hVBlank]
 	push af
 	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ldh [hMapAnims], a
 
 	ld a, b
+	ldh [hTilemapAtomicCopyFlags], a ; Some of these flags must be passed to the VBlank handler.
+
+	cpl
 	and %11
-	jr nz, .notZero
-	ldh a, [hCGBPalUpdate]
-	ld d, a
-	ld e, 0
-	jr .gotPalUpdate
-.notZero
-	cp 3
-	jr nz, .doNotUseOldValue
-	ldh a, [hCGBPalUpdate]
-	ld e, a
-	ld d, 0
-	jr .gotPalUpdate
-.doNotUseOldValue
-	dec a
-	call nz, SetDefaultBGPAndOBP
-	lb de, 0, 1
-.gotPalUpdate
-	xor a
-	ldh [hCGBPalUpdate], a
+	assert MAPS_COPY_SET_DEFAULT_PALS == 3
+	call z, SetDefaultBGPAndOBP
+.skipPalettes
+
 	ldh a, [rLY]
 	cp $70
 	call nc, DelayFrame ; not enough time to update music, so wait a frame
-	ld a, e
-	ldh [hCGBPalUpdate], a
+
 .waitLYAndUpdateMusic
 	ldh a, [rLY]
 	cp $70
 	jr nz, .waitLYAndUpdateMusic
-	xor a
-	ldh [hBGMapHalf], a
+
 	bit 2, b
 	jr z, .noForceOAMUpdate
 	xor a
 	ldh [hOAMUpdate], a
 .noForceOAMUpdate
-	bit 3, b
-	ld a, 3
-	jr z, .gotRowCount
-	ld a, 9
-.gotRowCount
-	ldh [hBGMapCopyNRows], a
-	ld a, b
-	and %1000
-	swap a
-	or TRANSFER_TILEMAP_OFS
-	ldh [hBGMapMode], a ; bit 7 = skip attr map
-	ld a, 1 << 7 | 7 ; execute actual VBlank7
-	ldh [hVBlank], a
-	call UpdateSound
-	call DelayFrame
-	ld a, d
-	ldh [hCGBPalUpdate], a
-	pop af
-	ldh [hVBlank], a
-	pop af
-	ldh [hMapAnims], a
-	pop af
-	ldh [hBGMapMode], a
-	ret
-
-_CopyTilemapAtOnce::
-	ldh a, [hBGMapMode]
-	push af
-	ldh a, [hMapAnims]
-	push af
 
 	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ldh [hMapAnims], a
+	ldh [hVBlankOccurred], a ; WARNING: this is non-atomic and thus unsafe!
+	ld a, 1 << 7 | 7 ; execute actual VBlank7, which leads to `VBlankSafeCopyTilemapAtOnce` below.
+	ldh [hVBlank], a
+	call UpdateSound
+	call MaybeDelayFrame ; VBlank may have run during `UpdateSound`, don't delay if so.
 
-	di
-	hlcoord 0, 0, wAttrmap
-	ld a, 1 ; BANK(vStandingFrameTiles)
-	call CopyFullTilemapInHBlank
-	hlcoord 0, 0
-	xor a ; BANK(vObjTiles)
-	call CopyFullTilemapInHBlank
-
-	ei ; in case we've passed vblank
-
+	; Restore all regs.
+	pop af
+	ldh [hVBlank], a
 	pop af
 	ldh [hMapAnims], a
-	pop af
-	ldh [hBGMapMode], a
 	ret
 
 VBlankSafeCopyTilemapAtOnce::
@@ -108,45 +53,72 @@ VBlankSafeCopyTilemapAtOnce::
 	ldh [rWY], a
 	ldh a, [hWX]
 	ldh [rWX], a
+
+	ldh a, [hTilemapAtomicCopyFlags]
+	rra ; Move bit 0 bit into carry.
+	assert MAPS_COPY_SET_PALS == 1 && MAPS_COPY_SET_DEFAULT_PALS == 3
+	jr c, .forceTransfer ; 1 and 3 force a transfer.
+	rra
+	assert MAPS_COPY_SKIP_PALS == 0
+	jr nc, .skipPalettes ; Don't even reset `hCGBPalUpdate`!
+	assert MAPS_COPY_USE_CUR_PAL_SETTING == 2
 	call UpdateCGBPals
-; values for the bg map update part should already be loaded
-	call UpdateBGMap
-; specify the values for attr map update
-	ldh a, [hBGMapMode]
-	bit 7, a
-	jr nz, .skipAttr
-	ld a, TRANSFER_ATTRMAP_OFS
-	ldh [hBGMapMode], a
-	call UpdateBGMap
-.skipAttr
-	call PushOAM
-	ldh a, [hBGMapMode]
-	bit 7, a
-	jr z, .attrAndBGCopy
-; if we only need to update tiles, copy the remaining half in hblank
-	hlcoord 0, 9
-	ld de, TILEMAP_WIDTH * 9
-	ld b, 9
+	and a ; Reset carry to avoid the upcoming `call`.
+.forceTransfer
+	call c, ForceUpdateCGBPals
+
+	xor a
+	ldh [hCGBPalUpdate], a
+.skipPalettes
+
+	ldh a, [hTilemapAtomicCopyFlags]
+	and MAPS_COPY_NO_ATTRS
+	jr z, .copyAttrmapAndTilemap
+	; Copy only the tilemap.
+	; First, reuse the same code as `UpdateBGMap` to copy the top half during VBlank...
+	xor a
+	ld h, a ; Which VRAM bank to have loaded when returning.
+	call _UpdateBGMap
+
+	call PushOAM ; This is still the VBlank handler!
+
+	; ...and then, copy the bottom half during HBlank.
+	hlcoord 0, BG_MAP_COPY_HEIGHT
+	ld de, TILEMAP_WIDTH * BG_MAP_COPY_HEIGHT
+	ld b, BG_MAP_COPY_HEIGHT
 	jr CopyTilemapInHBlank
-.attrAndBGCopy
-; now copy both tile and attr map, of alternating groups of 5/5/4
-	hlcoord 0, 3, wAttrmap
-	ld de, TILEMAP_WIDTH * 3
+
+.copyAttrmapAndTilemap
+	; We do not have enough time to copy one half of each map; instead, the strategy is to copy some
+	; during VBlank, and then copy the rest during rendering.
+	; To avoid tearing, we must stay ahead of the rendering, which requires alternating between updating
+	; the tilemap and attrmap. However, it is more efficient to copy in bulk from the same one, since
+	; switching between the two carries some overhead.
+def NB_ROWS_PER_CHUNK equ 5
+	; 5 rows turns out to be an appreciable compromise; this means we can split the 18 {tile,attr}map rows
+	; into three chunks of 5, leaving a remainder of 3.
+export def BG_MAP_NUM_VBLANK_ROWS equ SCREEN_HEIGHT % NB_ROWS_PER_CHUNK ; 3
+	; Those 3 rows are thus what we will copy here during VBlank.  (Whew!)
+	ldh [rVBK], a ; a == 0 here
+	ld hl, wTilemap
+	inc a ; a := 1, so the function returns with VRA1 active.
+	call CopyTopMapRows
+	ld hl, wAttrmap
+	call CopyTopMapRows ; Which VRAM bank is active when this returns doesn't matter.
+
+	call PushOAM ; This is still a VBlank handler, after all :)
+
+	; Perform the rest of the copies in HBlank.
+for row_idx, BG_MAP_NUM_VBLANK_ROWS, SCREEN_HEIGHT, NB_ROWS_PER_CHUNK
+	hlcoord 0, row_idx, wAttrmap
+	ld de, TILEMAP_WIDTH * row_idx
 	call Copy5RowsOfTilemapInHBlank_VBK1
-	hlcoord 0, 3
-	ld de, TILEMAP_WIDTH * 3
+	hlcoord 0, row_idx
+	ld de, TILEMAP_WIDTH * row_idx
+	if row_idx != SCREEN_HEIGHT - NB_ROWS_PER_CHUNK ; The last call is a fallthrough instead.
 	call Copy5RowsOfTilemapInHBlank_VBK0
-	hlcoord 0, 8, wAttrmap
-	ld de, TILEMAP_WIDTH * 8
-	call Copy5RowsOfTilemapInHBlank_VBK1
-	hlcoord 0, 8
-	ld de, TILEMAP_WIDTH * 8
-	call Copy5RowsOfTilemapInHBlank_VBK0
-	hlcoord 0, 13, wAttrmap
-	ld de, TILEMAP_WIDTH * 13
-	call Copy5RowsOfTilemapInHBlank_VBK1
-	hlcoord 0, 13
-	ld de, TILEMAP_WIDTH * 13
+	endc
+endr
 
 ; fallthrough
 Copy5RowsOfTilemapInHBlank_VBK0:
@@ -271,4 +243,31 @@ CopyTilemapInHBlank:
 	ld sp, wSPBuffer
 	pop hl
 	ld sp, hl
+	ret
+
+_CopyTilemapAtOnce::
+	ldh a, [hBGMapMode]
+	push af
+	ldh a, [hMapAnims]
+	push af
+
+	xor a
+	assert NO_BG_MAP_TRANSFER == 0
+	ldh [hBGMapMode], a
+	ldh [hMapAnims], a
+
+	di
+	hlcoord 0, 0, wAttrmap
+	ld a, 1 ; BANK(vStandingFrameTiles)
+	call CopyFullTilemapInHBlank
+	hlcoord 0, 0
+	xor a ; BANK(vObjTiles)
+	call CopyFullTilemapInHBlank
+
+	ei ; in case we've passed vblank
+
+	pop af
+	ldh [hMapAnims], a
+	pop af
+	ldh [hBGMapMode], a
 	ret

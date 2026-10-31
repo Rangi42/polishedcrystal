@@ -333,10 +333,6 @@ FinishVolatileTiles::
 	ld [de], a
 	; fallthrough
 UpdateSprites::
-	ld a, [wStateFlags]
-	bit SPRITE_UPDATES_DISABLED_F, a
-	ret z
-
 	farjp UpdateMapObjectDataAndSprites
 
 GetObjectStruct::
