@@ -148,27 +148,23 @@ _TitleScreen:
 	ld a, BANK(wLYOverrides)
 	ldh [rWBK], a
 
-; Make sure the LYOverrides buffer is empty
-	ld hl, wLYOverrides
-	xor a
-	ld bc, wLYOverridesEnd - wLYOverrides
-	rst ByteFill
-
-; Let LCD Stat know we're messing around with SCX
-	ld hl, rIE
-	set B_IE_STAT, [hl]
-	ld a, rSCX - rJOYP
-	ldh [hLCDCPointer], a
+; Set up LYOverrides to write 0 to SCX after every scanline.
+	farcall StartUniformSCXOverrides
 
 	pop af
 	ldh [rWBK], a
 
 ; Reset audio
 	call ChannelsOff
-	call EnableLCD
 
-	ldh a, [rLCDC]
-	set B_LCDC_OBJ_SIZE, a
+	call QueueCGBPalUpdate ; This returns with a == 1.
+	assert TRANSFER_TILEMAP == 1
+	ldh [hBGMapMode], a
+	; The tilemap needs two frames to be transferred, but the LCD un-blanks after just one.
+	; So, perform one half of the copy now, so the first frame shown is pristine.
+	call UpdateBGMap
+
+	ld a, LCDC_DEFAULT | LCDC_OBJ_SIZE
 	ldh [rLCDC], a
 
 	ld a, +112
@@ -180,19 +176,14 @@ _TitleScreen:
 	ld a, -112
 	ldh [hWY], a
 
-	ld a, 1
-	ldh [hCGBPalUpdate], a
-
-	assert TRANSFER_TILEMAP == 1
-	ldh [hBGMapMode], a
-
 	xor a
 	ld [wSuicuneFrame], a
 
 ; Play starting sound effect
 	call SFXChannelsOff
 	ld de, SFX_TITLE_SCREEN_ENTRANCE
-	jmp PlaySFX
+	call PlaySFX
+	; fallthrough: write the initial Suicune frame to the bottom half of the map.
 
 SuicuneFrameIterator:
 	ld hl, wSuicuneFrame

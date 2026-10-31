@@ -26,6 +26,7 @@ endc
 	pop af
 	ldh [rWBK], a
 
+QueueCGBPalUpdate::
 ; Request palette update
 	ld a, 1
 	ldh [hCGBPalUpdate], a
