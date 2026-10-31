@@ -68,7 +68,7 @@ DEF LZ_LONG          EQU 7 << 5
 DEF LZ_LONG_CMD      EQU %00011100
 DEF LZ_LONG_HI       EQU %00000011
 
-; Extended opcode bytes ($fc-$fe)
+; Special opcode bytes ($fc-$fe)
 ; These are in the LZ_LONG range and would otherwise decode as an invalid long command.
 DEF LZ_SPECIAL_MASK          EQU %11111100
 DEF LZ_SPECIAL_BASE          EQU $fc
