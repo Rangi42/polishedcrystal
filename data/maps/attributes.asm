@@ -695,7 +695,7 @@ ENDM
 	map_attributes FastShipCabins_SW_SSW_NW, FAST_SHIP_CABINS_SW_SSW_NW, $0
 	map_attributes FastShipCabins_SE_SSE_CaptainsCabin, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN, $0
 	map_attributes FastShipB1F, FAST_SHIP_B1F, $0
-	map_attributes MountMoonSquare, MOUNT_MOON_SQUARE, $2d
+	map_attributes MountMoonSquare, MOUNT_MOON_SQUARE, $2c
 	map_attributes MountMoonGiftShop, MOUNT_MOON_GIFT_SHOP, $0
 	map_attributes TinTowerRoof, TIN_TOWER_ROOF, $1
 	map_attributes IndigoPlateauPokecenter1F, INDIGO_PLATEAU_POKECENTER_1F, $0
