@@ -265,7 +265,7 @@ The LC_LZ3 document is a useful mental model for the *base* command set, but Pol
 | Component | Language | Location |
 |---|---|---|
 | Runtime decompressor | Game Boy ASM | `home/decompress.asm` |
-| Compressor + decompressor | C | `tools/lzcompress.c` |
+| Compressor + decompressor | C | `tools/lzpcompress.c` |
 | Post‑hoc analysis | Python | `utils/lz_analyze_pack16.py` |
 
 ## Named constants
@@ -277,11 +277,11 @@ Key named constants from `tools/lz/proto.h`:
 | `MAX_FILE_SIZE` | 32768 | Maximum uncompressed data size |
 | `SHORT_COMMAND_COUNT` | 32 | Short-header count field range (5 bits) |
 | `MAX_COMMAND_COUNT` | 512 | Max encoded count for base commands |
-| `MAX_EXT_COUNT` | 256 | Max output count for special opcodes |
+| `MAX_SPECIAL_COUNT` | 256 | Max output count for special opcodes |
 | `LOOKBACK_LIMIT` | 128 | Max negative offset for copy commands |
 | `PACK16_TABLE_SIZE` | 16 | Entries in the pack16 dictionary |
 | `LZ_END` | `0xff` | Stream terminator byte |
 
 ## Tooling notes
 
-The `tools/lzcompress.c` source uses an internal pseudo-command id `7` to represent special opcodes while optimizing/printing commands. This `7` is **not** written as a base-format `LZ_LONG` command; it is serialized using the `0xfc..0xfe` bytes described above.
+The `tools/lzpcompress.c` source uses an internal pseudo-command id `7` to represent special opcodes while optimizing/printing commands. This `7` is **not** written as a base-format `LZ_LONG` command; it is serialized using the `0xfc..0xfe` bytes described above.
