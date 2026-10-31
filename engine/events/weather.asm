@@ -48,8 +48,7 @@ SetCurrentWeather::
 	; Move any object out of the fixed weather slot before overwriting it.
 	farcall CheckForUsedObjPals
 	farcall LoadWeatherPal
-	call LoadWeatherGraphics
-	ret
+	jmp LoadWeatherGraphics
 
 .do_cooldown
 	ld [wPrevWeather], a
