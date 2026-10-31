@@ -310,7 +310,7 @@ endr
 	setmapscene VERMILION_CITY, SCENE_VERMILIONCITY_NOOP
 	closetext
 	setevent EVENT_MT_MOON_RIVAL
-	warpfacing UP, ROUTE_4, 19, 8 ; DOWN, GOLDENROD_CITY, 13, 14
+	warpfacing UP, ROUTE_4, 19, 6 ; DOWN, GOLDENROD_CITY, 13, 14
 	end
 
 FillPokedex:
