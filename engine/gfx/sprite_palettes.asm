@@ -2,7 +2,12 @@ LoadWeatherPalNoApply:
 	ld hl, wPalFlags
 	set NO_DYN_PAL_APPLY_ONCE_F, [hl]
 LoadWeatherPal::
+	ld a, [wOverworldWeatherCooldown]
+	and a
 	ld a, [wCurWeather]
+	jr z, .got_weather
+	ld a, [wPrevWeather]
+.got_weather
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z

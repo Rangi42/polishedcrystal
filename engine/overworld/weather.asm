@@ -27,6 +27,7 @@ DoOverworldWeather:
 	and a
 	jr z, .no_cooldown
 	dec a
+	jr z, .finish_cooldown
 	ld [wOverworldWeatherCooldown], a
 .no_cooldown
 
@@ -77,6 +78,8 @@ DoOverworldWeather:
 	ld a, [wOverworldWeatherCooldown]
 	dec a
 	jr nz, .done
+.finish_cooldown
+	ld [wOverworldWeatherCooldown], a
 	call ClearWeather
 	call LoadWeatherGraphics
 	jr .done
@@ -1240,7 +1243,14 @@ Lightning:
 	farjp OWFadePalettesInit
 
 LoadWeatherGraphics:
+	; Lingering particles still use the previous weather during
+	; transitions.
+	ld a, [wOverworldWeatherCooldown]
+	and a
 	ld a, [wCurWeather]
+	jr z, .got_weather
+	ld a, [wPrevWeather]
+.got_weather
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z

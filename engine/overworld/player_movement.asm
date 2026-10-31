@@ -514,9 +514,10 @@ DoPlayerMovement::
 	ld a, [hl]
 	ld [wPlayerTurningDirection], a
 
+	; Leave the final cooldown tick for DoOverworldWeather to finish.
 	ld a, [wOverworldWeatherCooldown]
-	and a
-	jr z, .no_cooldown
+	cp 2
+	jr c, .no_cooldown
 	dec a
 	ld [wOverworldWeatherCooldown], a
 .no_cooldown
