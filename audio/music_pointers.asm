@@ -122,6 +122,7 @@ Music:
 	dba Music_LookOfficer
 	dba Music_MtMoon
 	dba Music_MtMoonSquare
+	dba Music_CableCarRSE
 	dba Music_Route1
 	dba Music_PalletTown
 	dba Music_ProfOak

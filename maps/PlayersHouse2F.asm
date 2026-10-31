@@ -309,7 +309,7 @@ endr
 	; vermilion events
 	setmapscene VERMILION_CITY, SCENE_VERMILIONCITY_NOOP
 	closetext
-	warpfacing DOWN, GOLDENROD_CITY, 13, 14
+	warpfacing UP, ROUTE_3, 59, 6 ; DOWN, GOLDENROD_CITY, 13, 14
 	end
 
 FillPokedex:
