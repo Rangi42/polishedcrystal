@@ -187,10 +187,10 @@ Special_CableCar::
 	call DecompressRequest2bpp
 
 .LoadCutscenePalettes
-	ld a, BANK(wTimeOfDayPal)
-	ld hl, wTimeOfDayPal
+	ld a, BANK(wTimeOfDay)
+	ld hl, wTimeOfDay
 	call GetFarWRAMByte
-	and 3
+	maskbits NUM_DAYTIMES
 	; bc = a * 32
 	swap a
 	add a
