@@ -485,84 +485,41 @@ INCLUDE "gfx/overworld/cable_car/cable_car.pal"
 
 
 ; We now define constants for tile indices.
-; Some `assert`s act as sanity checks that the tile layout *should* be what we expect;
+; The `check_2bpp` assertions act as sanity checks that the tile layout *should* be what we expect;
 ; this has already caught a mistake in the `.2bpp` file during development
 ; (one tile was unique and it shouldn't have been), so this seems worth the trouble.
 ; (And, even after I'm done, keep in mind that other people may want to tweak all this later!)
-rsset $00
-def PLAYER_BASE_TILE rb TILES_PER_CEL * CELS_PER_OBJECT * 2 ; One set for standing, another for walkies!
-def PLAYER_NB_TILES  equ _RS - PLAYER_BASE_TILE
+MACRO check_2bpp
+	redef tile_data\@ equs READFILE("gfx/overworld/cable_car/\2")
+	assert BYTELEN(#tile_data\@) == (_RS - \1) * TILE_SIZE, \
+		STRFMT("\2: %u != %u", BYTELEN(#tile_data\@) / TILE_SIZE, _RS - \1)
+ENDM
 
-def BASE_TILE        equ $A0
-static_assert _RS <= BASE_TILE, "Player tiles overflowing into cable car area! ({_RS})"
+def PLAYER_BASE_TILE equ $00
+def PLAYER_NB_TILES equ TILES_PER_CEL * CELS_PER_OBJECT * 2
+
+def BASE_TILE equ $A0
+static_assert PLAYER_BASE_TILE + PLAYER_NB_TILES <= BASE_TILE, "Player tiles overflowing into cable car area!"
+
 rsset BASE_TILE
-
-; Tiles from `cable_car/cloud.2bpp`:
-def CUMULUS_BASE_TILE      equ _RS
-	rb_skip 2 * 6 ; 6 OBJs.
-def CUMULUS_TILE_DATA equs READFILE("gfx/overworld/cable_car/cumulus.2bpp")
-assert BYTELEN(#CUMULUS_TILE_DATA) / TILE_SIZE == _RS - CUMULUS_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#CUMULUS_TILE_DATA) / TILE_SIZE, _RS - CUMULUS_BASE_TILE)
-
-; Tiles from `cable_car/car_window.2bpp`:
-def CAR_WIN_BASE_TILE      equ _RS
-	rb_skip 2 ; Just one OBJ.
-def CAR_WIN_TILE_DATA equs READFILE("gfx/overworld/cable_car/car_window.2bpp")
-assert BYTELEN(#CAR_WIN_TILE_DATA) / TILE_SIZE == _RS - CAR_WIN_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#CAR_WIN_TILE_DATA) / TILE_SIZE, _RS - CAR_WIN_BASE_TILE)
-
-; Tiles from `cable_car/car_left.2bpp`:
-def CAR_LEFT_BASE_TILE     equ _RS
-	rb_skip 4 ; First column, also mirrored as the fifth.
-def CAR_LEFT_TILE_DATA equs READFILE("gfx/overworld/cable_car/car_left.2bpp")
-assert BYTELEN(#CAR_LEFT_TILE_DATA) / TILE_SIZE == _RS - CAR_LEFT_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#CAR_LEFT_TILE_DATA) / TILE_SIZE, _RS - CAR_LEFT_BASE_TILE)
-
-; Tiles from `cable_car/car.2bpp`:
-def CAR_BASE_TILE          equ _RS
-	rb_skip 2 * 6 ; Second and third column; the fourth mirrors the second.
-def CAR_TILE_DATA equs READFILE("gfx/overworld/cable_car/car.2bpp")
-assert BYTELEN(#CAR_TILE_DATA) / TILE_SIZE == _RS - CAR_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#CAR_TILE_DATA) / TILE_SIZE, _RS - CAR_BASE_TILE)
-
-; Tiles from `cable_car/handle_side.2bpp`:
-def HANDLE_SIDE_BASE_TILE  equ _RS
-	rb_skip 2
-def HANDLE_SIDE_TILE_DATA equs READFILE("gfx/overworld/cable_car/handle_side.2bpp")
-assert BYTELEN(#HANDLE_SIDE_TILE_DATA) / TILE_SIZE == _RS - HANDLE_SIDE_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#HANDLE_SIDE_TILE_DATA) / TILE_SIZE, _RS - HANDLE_SIDE_BASE_TILE)
-
-; Tiles from `cable_car/handle.2bpp`:
-def HANDLE_BASE_TILE       equ _RS
-	rb_skip 2
-def HANDLE_TILE_DATA equs READFILE("gfx/overworld/cable_car/handle.2bpp")
-assert BYTELEN(#HANDLE_TILE_DATA) / TILE_SIZE == _RS - HANDLE_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#HANDLE_TILE_DATA) / TILE_SIZE, _RS - HANDLE_BASE_TILE)
-
-; Tiles from `cable_car/cable.2bpp`:
-def CABLE_BASE_TILE        equ _RS
-	rb_skip 2 ; The bottom 14 pixel rows are never shown. Room for something?
-def CABLE_TILE_DATA equs READFILE("gfx/overworld/cable_car/cable.2bpp")
-assert BYTELEN(#CABLE_TILE_DATA) / TILE_SIZE == _RS - CABLE_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#CABLE_TILE_DATA) / TILE_SIZE, _RS - CABLE_BASE_TILE)
-
-; Tiles from `cable_car/bg.png`:
-def BG_BASE_TILE           equ _RS
+; Use `rw` to count 8x16px OBJs (2 tiles per OBJ).
+def CUMULUS_BASE_TILE     rw 6
+	check_2bpp CUMULUS_BASE_TILE, cumulus.2bpp
+def CAR_WIN_BASE_TILE     rw 1
+def CAR_LEFT_BASE_TILE    rw 2 ; First column, also mirrored as the fifth.
+def CAR_BASE_TILE         rw 6 ; Second and third column; the fourth mirrors the second.
+def HANDLE_SIDE_BASE_TILE rw 1
+def HANDLE_BASE_TILE      rw 1
+def CABLE_BASE_TILE       rw 1 ; The bottom 14 pixel rows are never shown. Room for something?
+	check_2bpp CAR_WIN_BASE_TILE, cable_car.2bpp
+; Use `rb` to count 8x8px BG tiles.
+def BG_BASE_TILE          rb 42
+	check_2bpp BG_BASE_TILE, bg.2bpp
 	static_assert BG_BASE_TILE == $C4, "Please re-generate `gfx/overworld/cable_car/bg.tilemap` with `-b {BG_BASE_TILE}` and update this"
-	rb_skip 42
-def BG_TILE_DATA equs READFILE("gfx/overworld/cable_car/bg.2bpp")
-assert BYTELEN(#BG_TILE_DATA) / TILE_SIZE == _RS - BG_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#BG_TILE_DATA) / TILE_SIZE, _RS - BG_BASE_TILE)
-
-; Tiles from `cable_car/cliff.png`: (Note that they are all distorted by the WXzardry!)
-def CLIFF_BASE_TILE        equ _RS
-	rb_skip 18
+def CLIFF_BASE_TILE       rb 18
+	check_2bpp CLIFF_BASE_TILE, cliff.2bpp
 	static_assert LOW(_RS) == 0, "Cliff tiles must end at 0, not {_RS}!"
-def CLIFF_TILE_DATA equs READFILE("gfx/overworld/cable_car/cliff.2bpp")
-assert BYTELEN(#CLIFF_TILE_DATA) / TILE_SIZE == _RS - CLIFF_BASE_TILE, \
-	STRFMT("%u != %u", BYTELEN(#CLIFF_TILE_DATA) / TILE_SIZE, _RS - CLIFF_BASE_TILE)
-
-def NB_TILES         equ _RS - BASE_TILE
+def NB_TILES equ _RS - BASE_TILE
 
 
 .objTileBlocks: rsreset ; `const_def` would require awkward `const_skip`s.
