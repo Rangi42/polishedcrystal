@@ -11,12 +11,6 @@
 ; Still, enjoy the read! ^w^ ~ISSOtm
 
 
-; FIXME: feels like those should be defined and used more globally... `map_object_constants.asm`?
-;        They still make some magic numbers below disappear, so I've kept them.
-def TILES_PER_CEL equ 4
-def CELS_PER_OBJECT equ 3 ; Down, Up, Left/Right (shared, mirrored).
-
-
 SECTION "Cable car asset blob", ROMX
 
 CableCarAssets:
@@ -139,7 +133,7 @@ Special_CableCar::
 	; Shuffle each cel from row-first to column-first, for 8x16 OAM friendliness. (Grr.)
 	; This "only" requires swapping tiles 1 and 2 of each cel, though!
 	ld hl, wDecompressScratch tile -2
-	ld b, PLAYER_NB_TILES / TILES_PER_CEL ; How many cels to process?
+	ld b, PLAYER_NB_TILES / 4 ; How many cels to process?
 .shufflePlayerCel
 	ld de, 3 tiles
 	add hl, de
@@ -496,7 +490,7 @@ MACRO check_2bpp
 ENDM
 
 def PLAYER_BASE_TILE equ $00
-def PLAYER_NB_TILES equ TILES_PER_CEL * CELS_PER_OBJECT * 2
+def PLAYER_NB_TILES equ 4 * 3 * 2 ; 4 tiles/cel * 3 cels (down, up, left/right) * (standing & walking)
 
 def BASE_TILE equ $A0
 static_assert PLAYER_BASE_TILE + PLAYER_NB_TILES <= BASE_TILE, "Player tiles overflowing into cable car area!"
@@ -787,7 +781,7 @@ ENDM
 	ld l, LOW(wShadowOAMSprite{02d:OBJ_PLAYER}Attributes + OBJ_SIZE) ; The other tile ID will be set below.
 	ld [hl], b
 	; Move also!
-	cp TILES_PER_CEL * 2
+	cp 4 * 2
 	jr c, .bump ; Down or up.
 	ld hl, .playerPosOfs + 3
 	ld a, [hl]
