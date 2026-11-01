@@ -3,6 +3,7 @@ INCLUDE "data/sprites/map_objects.asm"
 BlankScreen:
 	call DisableSpriteUpdates
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call ClearBGPalettes
 	call ClearSprites
@@ -281,7 +282,7 @@ InitializeVisibleSprites:
 	ret
 
 CheckObjectEnteringVisibleRange::
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	cp STANDING
 	ret z
 	call StackJumpTable
@@ -452,6 +453,10 @@ CopyTempObjectToObjectStruct:
 	; the "radius" for Pokémon icons is the species, so don't alter it
 	ld a, [wTempObjectCopySprite]
 	cp SPRITE_MON_ICON
+	ld a, [wTempObjectCopyRadius]
+	jr z, .keep_radius
+	ld a, [wTempObjectCopySprite]
+	cp SPRITE_AQUARIUM_MON
 	ld a, [wTempObjectCopyRadius]
 	jr z, .keep_radius
 	; add 1 to the y and x radii

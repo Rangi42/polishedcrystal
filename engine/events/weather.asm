@@ -43,11 +43,12 @@ SetCurrentWeather::
 .skip_cooldown
 	ld a, b
 	ld [wCurWeather], a
-	farcall LoadWeatherPal
-	call LoadWeatherGraphics
 	xor a
 	ld [wOverworldWeatherCooldown], a
-	ret
+	; Move any object out of the fixed weather slot before overwriting it.
+	farcall CheckForUsedObjPals
+	farcall LoadWeatherPal
+	jmp LoadWeatherGraphics
 
 .do_cooldown
 	ld [wPrevWeather], a

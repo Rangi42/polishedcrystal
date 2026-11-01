@@ -19,6 +19,7 @@ Pokepic::
 .got_palette
 	call UpdateTimePals
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
@@ -86,9 +87,12 @@ Trainerpic::
 	call MenuBox
 	call UpdateSprites
 	call SafeCopyTilemapAtOnce
+	xor a
+	ld [wTrainerPal], a
 	farcall LoadTrainerPalette
 	call UpdateTimePals
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wTrainerClass]
 	ld de, vTiles1
@@ -114,6 +118,7 @@ Paintingpic::
 	ld [hl], a
 	call UpdateSprites
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wTrainerClass]
 	ld de, vTiles1
@@ -126,6 +131,7 @@ ClosePokepic::
 	call ClearMenuBoxInterior
 	call GetMemCGBLayout
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call RestoreSprites

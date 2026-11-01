@@ -64,5 +64,5 @@ CeladonDeptStore1FDirectoryText:
 	para "5F: Drug Store"
 
 	para "6F: Rooftop"
-	line "    Atrium"
+	line "    Square"
 	done

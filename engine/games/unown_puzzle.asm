@@ -11,6 +11,7 @@ UnownPuzzle:
 	call ClearTileMap
 	call ClearSprites
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call DisableLCD
 	ld hl, wUnownPuzzle

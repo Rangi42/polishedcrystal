@@ -29,24 +29,21 @@ PickBerryScript:
 	ifequalfwd $1, .try_one
 	ifequalfwd $2, .try_two
 	readmem wCurFruit
-	giveitem ITEM_FROM_MEM, 3
-	iffalsefwd .try_two
+	giveitems ITEM_FROM_MEM, 3, iffalsefwd .try_two
 	promptbutton
 	farwritetext _ObtainedThreeFruitText
 	callasm .ShowBerryIcon
 	sjumpfwd .continue
 .try_two
 	readmem wCurFruit
-	giveitem ITEM_FROM_MEM, 2
-	iffalsefwd .try_one
+	giveitems ITEM_FROM_MEM, 2, iffalsefwd .try_one
 	promptbutton
 	farwritetext _ObtainedTwoFruitText
 	callasm .ShowBerryIcon
 	sjumpfwd .continue
 .try_one
 	readmem wCurFruit
-	giveitem ITEM_FROM_MEM
-	iffalsefwd .packisfull
+	giveitem ITEM_FROM_MEM, iffalsefwd .packisfull
 	promptbutton
 	farwritetext _ObtainedOneFruitText
 	callasm .ShowBerryIcon

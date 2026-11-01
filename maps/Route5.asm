@@ -12,7 +12,7 @@ Route5_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 17, 29, BGEVENT_JUMPTEXT, Route5UndergroundPathSignText
+	bg_event 18, 28, BGEVENT_JUMPTEXT, Route5UndergroundPathSignText
 	bg_event  5, 27, BGEVENT_JUMPTEXT, Route5AdvancedTipsSignText
 
 	def_object_events

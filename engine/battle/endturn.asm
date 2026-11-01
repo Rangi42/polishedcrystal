@@ -63,7 +63,7 @@ HandleBetweenTurnEffects:
 	; gravity
 	; terrain (dissipating, grass terrain recovery is elsewhere)
 	call HandleEndturnBlockB
-	call CheckFaint
+	call CheckFaint ; handle Moody -> Eject Pack -> switch -> hazard faint
 	ret c
 	; Things below do not exist in 7gen -- it's here to avoid some quirks
 	call HandleLeppaBerry
@@ -535,7 +535,7 @@ HandleLeechSeed:
 	pop bc
 	call SwitchTurn
 	farcall GetHPAbsorption
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call GetOpponentIgnorableAbility
 	cp LIQUID_OOZE

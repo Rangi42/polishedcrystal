@@ -3,7 +3,7 @@ DimCave4F_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, DimCave4FBouldersLand
-	callback MAPCALLBACK_STONETABLE, DimCave4FSetUpStoneTable
+	callback MAPCALLBACK_CMDQUEUE, DimCave4FSetUpStoneTable
 
 	def_warp_events
 	warp_event  2, 16, DIM_CAVE_5F, 2

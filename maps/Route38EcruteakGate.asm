@@ -33,8 +33,7 @@ ProfOaksAide2Script:
 .HereYouGo
 	writetext ProfOaksAide2HereYouGoText
 	waitbutton
-	verbosegiveitem LINKING_CORD
-	iffalsefwd .NoRoom
+	verbosegiveitem LINKING_CORD, iffalsefwd .NoRoom
 	setevent EVENT_GOT_LINKING_CORD_FROM_PROF_OAKS_AIDE
 .Explain
 	jumpthisopenedtext

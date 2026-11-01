@@ -91,10 +91,6 @@ GetPokemonName::
 	pop hl
 	ret
 
-GetCurTMHMName::
-	ld a, [wCurTMHM]
-	ld [wNamedObjectIndex], a
-	; fallthrough
 GetTMHMName::
 	homecall _GetTMHMName
 	ret

@@ -3,6 +3,7 @@ PewterCity_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, PewterCityFlyPoint
+	callback MAPCALLBACK_CMDQUEUE, PewterCitySetUpPaletteSwap
 
 	def_warp_events
 	warp_event 29, 15, PEWTER_NIDORAN_SPEECH_HOUSE, 1
@@ -19,7 +20,7 @@ PewterCity_MapScriptHeader:
 	def_bg_events
 	bg_event 25, 25, BGEVENT_JUMPTEXT, PewterCitySignText
 	bg_event 13, 19, BGEVENT_JUMPTEXT, PewterGymSignText
-	bg_event 13, 11, BGEVENT_JUMPTEXT, PewterMuseumOfScienceSignText
+	bg_event 13, 10, BGEVENT_JUMPTEXT, PewterMuseumOfScienceSignText
 	bg_event 33, 21, BGEVENT_JUMPTEXT, PewterCityMtMoonGiftShopSignText
 	bg_event 19, 31, BGEVENT_JUMPTEXT, PewterCityTrainerTipsText
 
@@ -37,6 +38,14 @@ PewterCityFlyPoint:
 	setflag ENGINE_FLYPOINT_PEWTER
 	endcallback
 
+PewterCitySetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 0, 255, 0, 13, PAL_BG_WATER, OverworldWaterPalettes, PewterCityMuseumRoofPalettes
+	db -1 ; end
+
 PewterCityGrampsScript:
 	checkevent EVENT_GOT_OLD_AMBER
 	iftrue_jumptextfaceplayer PewterCityGrampsText_GotSilverWing
@@ -44,8 +53,7 @@ PewterCityGrampsScript:
 	opentext
 	writetext PewterCityGrampsText
 	promptbutton
-	verbosegiveitem OLD_AMBER
-	iffalse_endtext
+	verbosegiveitem OLD_AMBER, iffalse_endtext
 	setevent EVENT_GOT_OLD_AMBER
 	endtext
 
@@ -72,8 +80,7 @@ PewterCityPokefanMScript:
 	iffalse_jumpopenedtext .Text3
 	checkmoney YOUR_MONEY, 300
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem PEWTERCRUNCH
-	iffalse_jumpopenedtext .Text4
+	giveitem PEWTERCRUNCH, iffalse_jumpopenedtext .Text4
 	waitsfx
 	takemoney YOUR_MONEY, 300
 	special PlaceMoneyTopRight

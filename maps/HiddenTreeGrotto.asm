@@ -64,8 +64,7 @@ HiddenGrottoHiddenItemScript:
 HiddenGrottoItemScript:
 	special GetHiddenGrottoContents
 	getitemname USE_SCRIPT_VAR, STRING_BUFFER_4
-	giveitem ITEM_FROM_MEM
-	iffalsefwd .PackFull
+	giveitem ITEM_FROM_MEM, iffalsefwd .PackFull
 	disappear HIDDENTREEGROTTO_ITEM
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	opentext

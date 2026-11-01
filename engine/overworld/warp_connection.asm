@@ -5,9 +5,17 @@ HandleNewMap:
 	call RunMapCallback
 HandleContinueMap:
 	xor a
-	ld [wStoneTableAddress], a
-	ld [wStoneTableAddress+1], a
-	ld a, MAPCALLBACK_STONETABLE
+	ld hl, wStoneTableAddress
+	ld [hli], a
+	ld [hl], a
+	ld hl, wPaletteSwapAddress
+	ld [hli], a
+	ld [hli], a
+	assert wPaletteSwapAddress + 2 == wPaletteSwapStates
+	ld [hli], a
+	assert wPaletteSwapStates + 1 == wPaletteSwapInits
+	ld [hl], a
+	ld a, MAPCALLBACK_CMDQUEUE
 	call RunMapCallback
 	call GetMapTimeOfDay
 	ld [wMapTimeOfDay], a
@@ -16,12 +24,8 @@ HandleContinueMap:
 ResetOWMapState:
 ; reset flash if out of cave
 	ld a, [wEnvironment]
-	sub TOWN
-	jr z, .reset_flash
-	assert TOWN + 1 == ROUTE
-	dec a ; cp ROUTE
-	jr nz, .keep_flash
-.reset_flash
+	cp LAST_OUTDOOR_ENV + 1
+	jr nc, .keep_flash
 	ld hl, wStatusFlags
 	res 2, [hl]
 .keep_flash
@@ -60,7 +64,7 @@ EnterMapConnection:
 ; check step direction
 	ld a, [hli]
 	ld b, a
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	cp b
 	jr nz, .skip29
 ; check coordinate
@@ -91,7 +95,7 @@ EnterMapConnection:
 	ld bc, wFollowedWarpDataEnd - wFollowedWarpData
 	rst ByteFill
 
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	and a
 	jmp z, EnterSouthConnection
 	dec a
@@ -113,8 +117,13 @@ EnterMapConnection:
 
 EnterWestConnection:
 	ld a, [wWestConnectedMapGroup]
-	ld [wMapGroup], a
+	ld b, a
 	ld a, [wWestConnectedMapNumber]
+	ld c, a
+	call CheckMapConnectionPaletteFadeOverride
+	ld a, b
+	ld [wMapGroup], a
+	ld a, c
 	ld [wMapNumber], a
 	ld a, [wXCoord]
 	ld [wLastMapXCoord], a
@@ -146,16 +155,21 @@ _FinishEastWestConnection:
 
 .skip_to_load
 	ld a, l
-	ld [wOverworldMapAnchor], a
+	ldh [hOverworldMapAnchor], a
 	ld a, h
-	ld [wOverworldMapAnchor + 1], a
+	ldh [hOverworldMapAnchor + 1], a
 	scf
 	ret
 
 EnterEastConnection:
 	ld a, [wEastConnectedMapGroup]
-	ld [wMapGroup], a
+	ld b, a
 	ld a, [wEastConnectedMapNumber]
+	ld c, a
+	call CheckMapConnectionPaletteFadeOverride
+	ld a, b
+	ld [wMapGroup], a
+	ld a, c
 	ld [wMapNumber], a
 	ld a, [wXCoord]
 	ld [wLastMapXCoord], a
@@ -178,8 +192,13 @@ EnterEastConnection:
 
 EnterNorthConnection:
 	ld a, [wNorthConnectedMapGroup]
-	ld [wMapGroup], a
+	ld b, a
 	ld a, [wNorthConnectedMapNumber]
+	ld c, a
+	call CheckMapConnectionPaletteFadeOverride
+	ld a, b
+	ld [wMapGroup], a
+	ld a, c
 	ld [wMapNumber], a
 	ld a, [wYCoord]
 	ld [wLastMapYCoord], a
@@ -196,8 +215,13 @@ EnterNorthConnection:
 
 EnterSouthConnection:
 	ld a, [wSouthConnectedMapGroup]
-	ld [wMapGroup], a
+	ld b, a
 	ld a, [wSouthConnectedMapNumber]
+	ld c, a
+	call CheckMapConnectionPaletteFadeOverride
+	ld a, b
+	ld [wMapGroup], a
+	ld a, c
 	ld [wMapNumber], a
 	ld a, [wYCoord]
 	ld [wLastMapYCoord], a
@@ -219,11 +243,48 @@ _FinishNorthSouthConnection:
 	srl c
 	add hl, bc
 	ld a, l
-	ld [wOverworldMapAnchor], a
+	ldh [hOverworldMapAnchor], a
 	ld a, h
-	ld [wOverworldMapAnchor + 1], a
+	ldh [hOverworldMapAnchor + 1], a
 	scf
 	ret
+
+CheckMapConnectionPaletteFadeOverride:
+; Set SKIP_MAP_CONNECTION_PAL_FADE_F if the connection from the current map
+; to destination bc is listed in MapConnectionsWithoutPaletteFade.
+	ld hl, wPalFlags
+	res SKIP_MAP_CONNECTION_PAL_FADE_F, [hl]
+	ld a, [wMapGroup]
+	ld d, a
+	ld a, [wMapNumber]
+	ld e, a
+	ld hl, MapConnectionsWithoutPaletteFade
+.loop
+	ld a, [hli]
+	cp -1
+	ret z
+	cp d
+	jr nz, .skip_source_number_and_destination
+	ld a, [hli]
+	cp e
+	jr nz, .skip_destination
+	ld a, [hli]
+	cp b
+	jr nz, .skip_destination_number
+	ld a, [hli]
+	cp c
+	jr nz, .loop
+	ld hl, wPalFlags
+	set SKIP_MAP_CONNECTION_PAL_FADE_F, [hl]
+	ret
+
+.skip_source_number_and_destination
+	inc hl
+.skip_destination
+	inc hl
+.skip_destination_number
+	inc hl
+	jr .loop
 
 EnterMapWarp:
 	call .SaveDigWarp
@@ -238,15 +299,15 @@ EnterMapWarp:
 
 .SaveDigWarp:
 	call GetMapEnvironment
-	call CheckOutdoorOrIsolatedMap
-	ret nz
+	cp FIRST_INDOOR_ENV
+	ret nc
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]
 	ld c, a
 	call GetAnyMapEnvironment
-	call CheckIndoorMap
-	ret nz
+	cp FIRST_INDOOR_ENV
+	ret c
 	ld a, [wPrevWarp]
 	ld [wDigWarpNumber], a
 	ld a, [wPrevMapGroup]
@@ -257,15 +318,15 @@ EnterMapWarp:
 
 .SetSpawn:
 	call GetMapEnvironment
-	call CheckOutdoorMap
-	ret nz
+	cp LAST_OUTDOOR_ENV + 1
+	ret nc
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]
 	ld c, a
 	call GetAnyMapEnvironment
-	call CheckIndoorMap
-	ret nz
+	cp FIRST_INDOOR_ENV
+	ret c
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]
@@ -345,7 +406,7 @@ DeferredLoadMapGraphics:
 	call TilesetUnchanged
 	jr z, .done
 	call LoadMapTileset
-	ld a, 3
+	ld a, 4
 	ld [wPendingOverworldGraphics], a
 .done
 	xor a
@@ -372,6 +433,7 @@ LoadMapPalettes:
 RefreshMapSprites:
 	call ClearSprites
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	farcall InitMapNameSign
@@ -391,7 +453,7 @@ RefreshMapSprites:
 	ret
 
 CheckMovingOffEdgeOfMap::
-	ld a, [wPlayerStepDirection]
+	ldh a, [hPlayerStepDirection]
 	cp STANDING
 	ret z
 	and a ; DOWN
@@ -482,15 +544,16 @@ GetMapScreenCoords::
 .resume2
 	rst AddNTimes
 	ld a, l
-	ld [wOverworldMapAnchor], a
+	ldh [hOverworldMapAnchor], a
 	ld a, h
-	ld [wOverworldMapAnchor + 1], a
+	ldh [hOverworldMapAnchor + 1], a
 	ld a, [wYCoord]
 	and $1
-	ld [wMetatileStandingY], a
+	ldh [hMetatileStandingY], a
 	ld a, [wXCoord]
 	and $1
-	ld [wMetatileStandingX], a
+	ldh [hMetatileStandingX], a
 	ret
 
 INCLUDE "data/maps/dual_connections.asm"
+INCLUDE "data/maps/no_connection_palette_fades.asm"

@@ -2,7 +2,7 @@ CinnabarVolcano1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_STONETABLE, CinnabarVolcano1FBouldersFall
+	callback MAPCALLBACK_CMDQUEUE, CinnabarVolcano1FBouldersFall
 
 	def_warp_events
 	warp_event 13, 25, CINNABAR_ISLAND, 2
@@ -102,8 +102,7 @@ CinnabarVolcano1FBuckScript:
 	opentext
 	writetext .ItemText
 	promptbutton
-	verbosegiveitem POWER_BELT
-	iffalse_endtext
+	verbosegiveitem POWER_BELT, iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext

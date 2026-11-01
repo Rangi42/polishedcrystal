@@ -97,8 +97,7 @@ Route43SightseerfScript:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem FLAME_ORB
-	iffalse_endtext
+	verbosegiveitem FLAME_ORB, iffalse_endtext
 	setevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
 	jumpthisopenedtext
 
@@ -436,8 +435,7 @@ PicnickerTiffany1Script:
 
 .HasFairyFeather:
 	scall .Gift
-	verbosegiveitem FAIRYFEATHER
-	iffalsefwd .NoRoom
+	verbosegiveitem FAIRYFEATHER, iffalsefwd .NoRoom
 	clearflag ENGINE_TIFFANY_HAS_FAIRYFEATHER
 	setevent EVENT_TIFFANY_GAVE_FAIRYFEATHER
 	sjumpfwd .NumberAccepted

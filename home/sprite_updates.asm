@@ -1,5 +1,6 @@
 FadeToMenu::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadStandardMenuHeader
 	farcall FadeOutPalettes

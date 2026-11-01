@@ -50,6 +50,7 @@ Tilesets::
 	tileset TilesetUnderground
 	tileset TilesetCave
 	tileset TilesetQuietCave
+	tileset TilesetVolcano
 	tileset TilesetIcePath
 	tileset TilesetTunnel
 	tileset TilesetForest
@@ -126,6 +127,11 @@ SECTION "Tileset Graphics - johto outlands vram1", ROMX
 TilesetJohtoOutlandsGFX1:: INCBIN "gfx/tilesets/johto_outlands.johto_common.2bpp.vram0.lzp"
 
 
+SECTION "Tileset Graphics - johto outlands vram2", ROMX
+
+TilesetJohtoOutlandsGFX2:: INCBIN "gfx/tilesets/johto_outlands.johto_common.2bpp.vram1.lzp"
+
+
 SECTION "Tileset Data - johto outlands", ROMX
 
 TilesetJohtoOutlandsMeta:: INCBIN "data/tilesets/johto_outlands_metatiles.bin.lzp"
@@ -174,8 +180,7 @@ TilesetIndigoPlateauGFX0:: INCBIN "gfx/tilesets/kanto_common.2bpp.lzp"
 
 SECTION "Tileset Graphics - kanto vram1", ROMX
 
-TilesetKantoGFX1::
-TilesetKantoUrbanGFX1:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.lzp"
+TilesetKantoGFX1:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.lzp"
 
 
 SECTION "Tileset Data - kanto", ROMX
@@ -195,6 +200,11 @@ SECTION "Tileset Data - kanto north", ROMX
 TilesetKantoNorthMeta:: INCBIN "data/tilesets/kanto_north_metatiles.bin.lzp"
 TilesetKantoNorthAttr:: INCBIN "data/tilesets/kanto_north_attributes.bin.lzp"
 TilesetKantoNorthColl:: INCBIN "data/tilesets/kanto_north_collision.bin.lzp"
+
+
+SECTION "Tileset Graphics - kanto urban vram1", ROMX
+
+TilesetKantoUrbanGFX1:: INCBIN "gfx/tilesets/kanto_urban.kanto_common.2bpp.lzp"
 
 
 SECTION "Tileset Data - kanto urban", ROMX
@@ -554,6 +564,11 @@ SECTION "Tileset Graphics - museum vram1", ROMX
 TilesetMuseumGFX1:: INCBIN "gfx/tilesets/museum.2bpp.vram1.lzp"
 
 
+SECTION "Tileset Graphics - museum vram2", ROMX
+
+TilesetMuseumGFX2:: INCBIN "gfx/tilesets/museum.2bpp.vram2.lzp"
+
+
 SECTION "Tileset Data - museum", ROMX
 
 TilesetMuseumMeta:: INCBIN "data/tilesets/museum_metatiles.bin.lzp"
@@ -665,12 +680,14 @@ TilesetUndergroundColl:: INCBIN "data/tilesets/underground_collision.bin.lzp"
 
 SECTION "Tileset Graphics - cave vram0", ROMX
 
-TilesetCaveGFX0:: INCBIN "gfx/tilesets/cave.2bpp.vram0.lzp"
+TilesetCaveGFX0::
+TilesetVolcanoGFX0:: INCBIN "gfx/tilesets/cave.2bpp.vram0.lzp"
 
 
 SECTION "Tileset Graphics - cave vram1", ROMX
 
-TilesetCaveGFX1:: INCBIN "gfx/tilesets/cave.2bpp.vram1.lzp"
+TilesetCaveGFX1::
+TilesetVolcanoGFX1:: INCBIN "gfx/tilesets/cave.2bpp.vram1.lzp"
 
 
 SECTION "Tileset Data - cave", ROMX
@@ -695,6 +712,13 @@ SECTION "Tileset Data - quiet cave", ROMX
 TilesetQuietCaveMeta:: INCBIN "data/tilesets/quiet_cave_metatiles.bin.lzp"
 TilesetQuietCaveAttr:: INCBIN "data/tilesets/quiet_cave_attributes.bin.lzp"
 TilesetQuietCaveColl:: INCBIN "data/tilesets/quiet_cave_collision.bin.lzp"
+
+
+SECTION "Tileset Data - volcano", ROMX
+
+TilesetVolcanoMeta:: INCBIN "data/tilesets/volcano_metatiles.bin.lzp"
+TilesetVolcanoAttr:: INCBIN "data/tilesets/volcano_attributes.bin.lzp"
+TilesetVolcanoColl:: INCBIN "data/tilesets/volcano_collision.bin.lzp"
 
 
 SECTION "Tileset Graphics - ice path vram0", ROMX
@@ -920,7 +944,6 @@ TilesetKantoGymColl:: INCBIN "data/tilesets/kanto_gym_collision.bin.lzp"
 
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
-TilesetJohtoOutlandsGFX2::
 TilesetJohtoAncientGFX2::
 TilesetBattleTowerOutsideGFX2::
 TilesetKantoGFX2::
@@ -945,7 +968,6 @@ TilesetFacilityGFX2::
 TilesetMansionGFX2::
 TilesetGameCornerGFX2::
 TilesetDecorGFX2::
-TilesetMuseumGFX2::
 TilesetHotelGFX2::
 TilesetTowerGFX2::
 TilesetBattleTowerInsideGFX2::
@@ -954,6 +976,7 @@ TilesetLighthouseGFX2::
 TilesetUndergroundGFX2::
 TilesetCaveGFX2::
 TilesetQuietCaveGFX2::
+TilesetVolcanoGFX2::
 TilesetIcePathGFX2::
 TilesetTunnelGFX2::
 TilesetForestGFX2::

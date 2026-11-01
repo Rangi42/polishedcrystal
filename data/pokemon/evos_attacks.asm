@@ -3714,7 +3714,7 @@ endc
 	learnset 13, NASTY_PLOT
 	learnset 18, THUNDER_WAVE
 	learnset 23, SCARY_FACE ; event move
-	learnset 28, SING ; event move
+	learnset 28, HEAL_BELL ; new move (replaces previous event move Sing)
 	learnset 38, PETAL_DANCE ; event move
 
 	evos_attacks Cleffa

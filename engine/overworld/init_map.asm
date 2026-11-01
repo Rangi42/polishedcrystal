@@ -2,7 +2,7 @@ ReanchorBGMap_NoOAMUpdate::
 	ldh a, [hOAMUpdate]
 	push af
 
-	ld a, $1
+	ld a, 1
 	ldh [hOAMUpdate], a
 	ldh a, [hBGMapMode]
 	push af
@@ -10,6 +10,7 @@ ReanchorBGMap_NoOAMUpdate::
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
 	ld a, $90
@@ -24,6 +25,7 @@ ReanchorBGMap_NoOAMUpdate::
 	farcall LoadBlindingFlashPalette
 	farcall ApplyPals
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hWY], a
 	ldh [hBGMapAddress], a
@@ -65,7 +67,7 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ldh a, [hOAMUpdate]
 	push af
 
-	ld a, $1
+	ld a, 1
 	ldh [hOAMUpdate], a
 	ldh a, [hBGMapMode]
 	push af
@@ -73,6 +75,7 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
 	ld a, $90

@@ -6,6 +6,7 @@ _TitleScreen:
 
 ; Turn BG Map update off
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 ; Reset timing variables
@@ -179,10 +180,10 @@ _TitleScreen:
 	ld a, -112
 	ldh [hWY], a
 
-	ld a, $1
+	ld a, 1
 	ldh [hCGBPalUpdate], a
 
-; Update BG Map 0 (bank 0)
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 
 	xor a
@@ -212,6 +213,7 @@ SuicuneFrameIterator:
 	rst AddNTimes
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	decoord 1, 11
@@ -230,7 +232,7 @@ endr
 	dec b
 	jr nz, .bgrows
 
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ldh [hBGMapHalf], a
 	ret

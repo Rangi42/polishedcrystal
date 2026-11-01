@@ -271,6 +271,7 @@ DEF BETA EQU __trainer_class__
 	const GIDEON
 	const HALL
 	const DALLAS
+	const CARLOS
 
 	trainerclass BIRD_KEEPER
 	const VANCE1
@@ -304,6 +305,7 @@ DEF BETA EQU __trainer_class__
 	const EASTON
 	const BRYAN
 	const TRENT
+	const SALIM ; custom pal
 
 	trainerclass HIKER
 	const ANTHONY1
@@ -342,6 +344,8 @@ DEF BETA EQU __trainer_class__
 	const STEVE
 	const DERRICK
 	const FLOYD
+	const ELIJAH
+	const MAYNARD
 
 	trainerclass GRUNTM
 
@@ -840,6 +844,7 @@ DEF BETA EQU __trainer_class__
 	const PADMA
 	const EMY
 	const SASHA
+	const MEI
 
 	trainerclass DRAGON_TAMER
 	const PAUL

@@ -130,6 +130,7 @@ CheckDailyResetTimer::
 	ld hl, wDailyResetTimer
 	call CheckDayDependentEventHL
 	ret nc
+
 	xor a
 	ld hl, wDailyFlags
 	ld [hli], a ; wDailyFlags
@@ -160,16 +161,42 @@ rept 4 - 1
 	ld [hli], a
 endr
 	ld [hl], a
-	ld [wDailyTrainerHouseOpponent], a
+
+	call PickDailyTrainerHouseOpponent
+
 	ld hl, wKenjiBreakTimer
 	ld a, [hl]
 	and a
 	jr z, .RestartKenjiBreakCountdown
 	dec [hl]
-	jr nz, RestartDailyResetTimer
 .RestartKenjiBreakCountdown:
-	call Special_SampleKenjiBreakCountdown
+	call z, Special_SampleKenjiBreakCountdown
 	jr RestartDailyResetTimer
+
+PickDailyTrainerHouseOpponent::
+	ld a, NUM_TRAINER_HOUSE_OPPONENTS
+	call RandomRange
+	inc a
+	ld [wDailyTrainerHouseOpponent], a
+.got_opponent
+	call .IsOpponentValid
+	and a
+	jr z, PickDailyTrainerHouseOpponent
+	ret
+
+.IsOpponentValid:
+	cp OPP_EN
+	jr nz, .not_en
+	; must have caught all three legendary birds to battle En
+	farjp SpecialBirdsCheck
+.not_en
+	cp OPP_MADOKA
+	jr nz, .not_madoka
+	; must have caught all three legendary beasts to battle Madoka
+	farjp SpecialBeastsCheck
+.not_madoka
+	ld a, TRUE
+	ret
 
 Special_SampleKenjiBreakCountdown:
 ; Generate a random number between 3 and 6

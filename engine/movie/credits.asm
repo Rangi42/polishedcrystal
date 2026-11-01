@@ -75,6 +75,7 @@ Credits::
 	ld a, $1
 	ldh [hInMenu], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld [wCreditsPos], a
 	ld [wCreditsPos+1], a
@@ -162,6 +163,7 @@ Credits_LoopBack:
 
 Credits_PrepBGMapUpdate:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	; fallthrough
 
@@ -184,6 +186,7 @@ Credits_UpdateGFXRequestPath:
 
 Credits_RequestGFX:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $8
 	ldh [hRequested2bpp], a
@@ -236,6 +239,7 @@ ParseCredits:
 ; First, let's clear the current text display,
 ; starting from line 5.
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 5
 	ld bc, 20 * 12
@@ -356,7 +360,7 @@ ParseCredits:
 
 	xor a
 	ldh [hBGMapHalf], a
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 
 .done
@@ -397,6 +401,7 @@ ParseCredits:
 
 ConstructCreditsTilemap:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $c
 	ldh [hBGMapAddress], a
@@ -441,6 +446,7 @@ ConstructCreditsTilemap:
 
 	call ApplyAttrAndTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hBGMapAddress], a
 	hlcoord 0, 0

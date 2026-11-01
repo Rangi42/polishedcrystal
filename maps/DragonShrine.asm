@@ -6,26 +6,41 @@ DragonShrine_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  4,  9, DRAGONS_DEN_B1F, 2
-	warp_event  5,  9, DRAGONS_DEN_B1F, 2
+	warp_event  4, 13, DRAGONS_DEN_B1F, 2
+	warp_event  5, 13, DRAGONS_DEN_B1F, 2
+	warp_event  4,  1, DRAGONS_DEN_B1F, 3
+	warp_event  5,  1, DRAGONS_DEN_B1F, 4
 
 	def_coord_events
 
 	def_bg_events
 
 	def_object_events
-	object_event  5,  1, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DragonShrineElder1Script, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  4,  8, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
-	object_event  2,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder2Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  7,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder3Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  4,  5, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DragonShrineElder1Script, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  5, 12, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
+	object_event  3,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, KimonoGirlMinaScript, -1
+	object_event  2,  8, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder2Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  7,  8, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder3Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 
 	object_const_def
 	const DRAGONSHRINE_ELDER1
 	const DRAGONSHRINE_CLAIR
+	const DRAGONSHRINE_KIMONO_GIRL
 
 DragonShrineTakeTestScene:
+	callasm .CheckUsedBackDoor
+	iftruefwd .NoCutscene
 	sdefer DragonShrineTestScript
+.NoCutscene
 	end
+
+.CheckUsedBackDoor:
+	ld hl, wPrevWarp
+	ld a, [hl]
+	dec a
+	dec a ; warp 2? (all warps to here are from DragonsDenB1F)
+	ldh [hScriptVar], a ; 0/false if used main door (warp 2), nonzero/true if used back door
+	ret
 
 DragonShrineTestScript:
 	applymovement PLAYER, DragonShrinePlayerWalkInMovement
@@ -100,7 +115,7 @@ DragonShrineTestScript:
 	iftrue .Question2
 .WrongAnswer:
 	closetext
-	turnobject DRAGONSHRINE_ELDER1, LEFT
+	turnobject DRAGONSHRINE_ELDER1, RIGHT
 	showtext DragonShrineWrongAnswerText1
 	turnobject DRAGONSHRINE_ELDER1, DOWN
 	showtext DragonShrineWrongAnswerText2
@@ -128,21 +143,21 @@ DragonShrineTestScript:
 	turnobject PLAYER, DOWN
 	pause 30
 	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairWalkInMovement
-	turnobject DRAGONSHRINE_CLAIR, RIGHT
-	turnobject PLAYER, LEFT
-	turnobject DRAGONSHRINE_ELDER1, LEFT
+	turnobject DRAGONSHRINE_CLAIR, LEFT
+	turnobject PLAYER, RIGHT
+	turnobject DRAGONSHRINE_ELDER1, RIGHT
 	showtext DragonShrineClairYouPassedText
 	special Special_FadeOutMusic
-	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairBigStepLeftMovement
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairBigStepAwayMovement
 	showtext DragonShrineClairThatCantBeText
-	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairSlowStepLeftMovement
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairSlowStepAwayMovement
 	showtext DragonShrineClairYoureLyingText
 	applymovement DRAGONSHRINE_ELDER1, DragonShrineElderWalkToClairMovement
 	turnobject DRAGONSHRINE_CLAIR, UP
 	showtext DragonShrineMustIInformLanceText
 	showemote EMOTE_SHOCK, DRAGONSHRINE_CLAIR, 15
 	showtext DragonShrineIUnderstandText
-	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairTwoSlowStepsRightMovement
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairTwoSlowStepsCloserMovement
 	opentext
 	writetext DragonShrineHereRisingBadgeText
 	waitbutton
@@ -274,26 +289,25 @@ DragonShrinePlayerWalkInMovement:
 	slow_step_up
 	slow_step_up
 	slow_step_up
-	slow_step_right
 	slow_step_up
 	slow_step_up
 	slow_step_up
 	step_end
 
 DragonShrineElderWalkToClairMovement:
-	slow_step_left
-	slow_step_left
-	slow_step_left
+	slow_step_right
+	slow_step_right
+	slow_step_right
 	turn_head_down
 	step_end
 
 DragonShrineElderWalkAway1Movement:
-	slow_step_right
-	slow_step_right
+	slow_step_left
+	slow_step_left
 	step_end
 
 DragonShrineElderWalkAway2Movement:
-	slow_step_right
+	slow_step_left
 	turn_head_down
 	step_end
 
@@ -305,19 +319,19 @@ DragonShrineClairWalkInMovement:
 	slow_step_up
 	step_end
 
-DragonShrineClairBigStepLeftMovement:
+DragonShrineClairBigStepAwayMovement:
 	fix_facing
-	run_step_left
+	run_step_right
 	step_end
 
-DragonShrineClairSlowStepLeftMovement:
-	slow_step_left
+DragonShrineClairSlowStepAwayMovement:
+	slow_step_right
 	remove_fixed_facing
 	step_end
 
-DragonShrineClairTwoSlowStepsRightMovement:
-	slow_step_right
-	slow_step_right
+DragonShrineClairTwoSlowStepsCloserMovement:
+	slow_step_left
+	slow_step_left
 	step_end
 
 DragonShrineClairWalkOutMovement:
@@ -569,6 +583,90 @@ DragonShrineRisingBadgeExplanationText:
 	line "question."
 	done
 
-DragonShrineSpeechlessText: ; text > text
+DragonShrineSpeechlessText:
 	text "………………………………"
+	done
+
+KimonoGirlMinaScript:
+	checkevent EVENT_GOT_ABILITYPATCH_FROM_KIMONO_GIRL_MINA
+	iftrue_jumptextfaceplayer .OutroText
+	faceplayer
+	checkevent EVENT_BEAT_KIMONO_GIRL_MINA
+	iftruefwd .Beaten
+	checkevent EVENT_BEAT_KIMONO_GIRL_NAOKO
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_KIMONO_GIRL_SAYO
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_KIMONO_GIRL_ZUKI
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_KIMONO_GIRL_KUNI
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_KIMONO_GIRL_MIKI
+	iffalse_jumptext .IntroText
+	showtext .SeenText
+	winlosstext .BeatenText, 0
+	setlasttalked DRAGONSHRINE_KIMONO_GIRL
+	loadtrainerwithpal KIMONO_GIRL, MINA, TRAINERPAL_MINA
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_KIMONO_GIRL_MINA
+.Beaten:
+	opentext
+	writetext .AfterText
+	promptbutton
+	verbosegiveitem ABILITYPATCH, iffalse_jumpopenedtext .BagFullText
+	setevent EVENT_GOT_ABILITYPATCH_FROM_KIMONO_GIRL_MINA
+	jumpthisopenedtext
+
+.OutroText:
+	text "Coming here from"
+	line "Ecruteak City"
+
+	para "was worth the"
+	line "trouble."
+
+	para "Dragon's Den is an"
+	line "ideal place for me"
+	cont "to train."
+	done
+
+.BagFullText:
+	text "…That is, once you"
+	line "have freed up some"
+	cont "space in your Bag."
+	done
+
+.IntroText:
+	text "I am a Kimono"
+	line "Girl."
+
+	para "Haven't you met my"
+	line "five dancing cou-"
+	cont "sins in Ecruteak?"
+
+	para "Let me know if"
+	line "you do."
+	done
+
+.SeenText:
+	text "She who knows the"
+	line "most speaks the"
+	cont "least!"
+
+	para "Allow me to cha-"
+	line "llenge you and"
+	cont "your #mon!"
+	done
+
+.BeatenText:
+	text "Oh, you are"
+	line "wonderful…"
+	done
+
+.AfterText:
+	text "You are quite the"
+	line "Trainer."
+
+	para "You are worthy of"
+	line "this item!"
 	done

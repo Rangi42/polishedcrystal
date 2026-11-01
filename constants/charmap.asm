@@ -1,25 +1,3 @@
-MACRO ctxtmap
-	DEF x = \2
-	DEF ___huffman_data_{02X:x} EQU %\3
-	DEF ___huffman_length_{02X:x} EQU STRLEN("\3")
-	DEF ___huffman_char_\3 EQUS "\1"
-	charmap \1, x
-ENDM
-
-; Huffman text compression (see data/text/compressed_text.asm and home/text.asm)
-; tree starts at parent node $00
-DEF ROOT_NODE_ID               EQU $00
-; characters $7f-$eb correspond to leaf nodes $7f-$eb
-DEF FIRST_LEAF_NODE_ID         EQU $7f
-DEF LAST_LEAF_NODE_ID          EQU $ff
-; characters $4d-$5c correspond to leaf nodes $ec-$fb
-DEF FIRST_SHIFTED_LEAF_CHAR_ID EQU $4d
-DEF LAST_SHIFTED_LEAF_CHAR_ID  EQU $5c
-DEF FIRST_SHIFTED_LEAF_NODE_ID EQU $ec
-DEF LAST_SHIFTED_LEAF_NODE_ID  EQU FIRST_SHIFTED_LEAF_NODE_ID + LAST_SHIFTED_LEAF_CHAR_ID - FIRST_SHIFTED_LEAF_CHAR_ID ; $fb
-assert LAST_SHIFTED_LEAF_NODE_ID <= LAST_LEAF_NODE_ID
-assert FIRST_SHIFTED_LEAF_CHAR_ID < LAST_SHIFTED_LEAF_CHAR_ID && LAST_SHIFTED_LEAF_CHAR_ID < FIRST_LEAF_NODE_ID
-
 	newcharmap no_ngrams
 
 ; Control characters
@@ -34,23 +12,29 @@ assert FIRST_SHIFTED_LEAF_CHAR_ID < LAST_SHIFTED_LEAF_CHAR_ID && LAST_SHIFTED_LE
 	charmap "<DAY>",    $07
 	charmap "<FAR>",    $08
 	charmap "<PLURAL>", $09
+DEF NUM_TEXT_COMMANDS EQU $0a
 
-	; n-grams: $0a - $51 (defined below)
+	; unused: $0a - $4c
+	; (Low values can be used for additional text commands; high values can be
+	; used for additional n-grams; or existing n-grams can be shifted down to
+	; make room for additional special characters.)
+
+	; n-grams: $4d - $51 (defined below)
 
 DEF SPECIALS_START EQU $52
 
-	ctxtmap "<DONE>",   $52, 101100
-	ctxtmap "@",        $53, 001011010
-	ctxtmap "<PROMPT>", $54, 1101011001
-	ctxtmap "<LNBRK>",  $55, 100001100111
-	ctxtmap "<NEXT>",   $56, 1101011100
-	ctxtmap "<LINE>",   $57, 01011
-	ctxtmap "<CONT>",   $58, 1011100
-	ctxtmap "<PARA>",   $59, 101111
+	charmap "<DONE>",   $52
+	charmap "@",        $53
+	charmap "<PROMPT>", $54
+	charmap "<LNBRK>",  $55
+	charmap "<NEXT>",   $56
+	charmap "<LINE>",   $57
+	charmap "<CONT>",   $58
+	charmap "<PARA>",   $59
 
-	ctxtmap "<TARGET>", $5a, 001101000110100
-	ctxtmap "<USER>",   $5b, 001101000011001
-	ctxtmap "<ENEMY>",  $5c, 0011010001101011
+	charmap "<TARGET>", $5a
+	charmap "<USER>",   $5b
+	charmap "<ENEMY>",  $5c
 
 	charmap "<CTXT>",   $5d
 
@@ -90,133 +74,133 @@ DEF FIRST_REGULAR_TEXT_CHAR EQU $7f
 
 ; map tiles:
 
-	ctxtmap " ",        $7f, 011
+	charmap " ",        $7f
 
 ; typeface font:
 
-	ctxtmap "A",        $80, 00101100
-	ctxtmap "B",        $81, 101110111
-	ctxtmap "C",        $82, 100001111
-	ctxtmap "D",        $83, 1011101100
-	ctxtmap "E",        $84, 0101000111
-	ctxtmap "F",        $85, 1000011000
-	ctxtmap "G",        $86, 1101011110
-	ctxtmap "H",        $87, 010100010
-	ctxtmap "I",        $88, 1100100
-	ctxtmap "J",        $89, 10000110010
-	ctxtmap "K",        $8a, 10111011011
-	ctxtmap "L",        $8b, 1101011101
-	ctxtmap "M",        $8c, 001011011
-	ctxtmap "N",        $8d, 11010100100
-	ctxtmap "O",        $8e, 1101010011
-	ctxtmap "P",        $8f, 001011100
-	ctxtmap "Q",        $90, 110101111100110
-	ctxtmap "R",        $91, 1000011011
-	ctxtmap "S",        $92, 110101101
-	ctxtmap "T",        $93, 00110110
-	ctxtmap "U",        $94, 100001110111
-	ctxtmap "V",        $95, 001101000111
-	ctxtmap "W",        $96, 001101110
-	ctxtmap "X",        $97, 0011010000110111
-	ctxtmap "Y",        $98, 001101001
-	ctxtmap "Z",        $99, 11010111110111
+	charmap "A",        $80
+	charmap "B",        $81
+	charmap "C",        $82
+	charmap "D",        $83
+	charmap "E",        $84
+	charmap "F",        $85
+	charmap "G",        $86
+	charmap "H",        $87
+	charmap "I",        $88
+	charmap "J",        $89
+	charmap "K",        $8a
+	charmap "L",        $8b
+	charmap "M",        $8c
+	charmap "N",        $8d
+	charmap "O",        $8e
+	charmap "P",        $8f
+	charmap "Q",        $90
+	charmap "R",        $91
+	charmap "S",        $92
+	charmap "T",        $93
+	charmap "U",        $94
+	charmap "V",        $95
+	charmap "W",        $96
+	charmap "X",        $97
+	charmap "Y",        $98
+	charmap "Z",        $99
 
-	ctxtmap "(",        $9a, 001101000000
-	ctxtmap ")",        $9b, 001101000010
-	ctxtmap ".",        $9c, 100000
-	ctxtmap ",",        $9d, 0101001
-	ctxtmap "?",        $9e, 11010101
-	ctxtmap "!",        $9f, 1111011
+	charmap "(",        $9a
+	charmap ")",        $9b
+	charmap ".",        $9c
+	charmap ",",        $9d
+	charmap "?",        $9e
+	charmap "!",        $9f
 
-	ctxtmap "a",        $a0, 0100
-	ctxtmap "b",        $a1, 1111010
-	ctxtmap "c",        $a2, 101101
-	ctxtmap "d",        $a3, 00100
-	ctxtmap "e",        $a4, 000
-	ctxtmap "f",        $a5, 001100
-	ctxtmap "g",        $a6, 110100
-	ctxtmap "h",        $a7, 11000
-	ctxtmap "i",        $a8, 11101
-	ctxtmap "j",        $a9, 0101000110
-	ctxtmap "k",        $aa, 1100101
-	ctxtmap "l",        $ab, 10001
-	ctxtmap "m",        $ac, 110011
-	ctxtmap "n",        $ad, 11111
-	ctxtmap "o",        $ae, 1001
-	ctxtmap "p",        $af, 001010
-	ctxtmap "q",        $b0, 00110100010
-	ctxtmap "r",        $b1, 11100
-	ctxtmap "s",        $b2, 11011
-	ctxtmap "t",        $b3, 1010
-	ctxtmap "u",        $b4, 00111
-	ctxtmap "v",        $b5, 1000010
-	ctxtmap "w",        $b6, 010101
-	ctxtmap "x",        $b7, 1101011000
-	ctxtmap "y",        $b8, 111100
-	ctxtmap "z",        $b9, 11010100101
+	charmap "a",        $a0
+	charmap "b",        $a1
+	charmap "c",        $a2
+	charmap "d",        $a3
+	charmap "e",        $a4
+	charmap "f",        $a5
+	charmap "g",        $a6
+	charmap "h",        $a7
+	charmap "i",        $a8
+	charmap "j",        $a9
+	charmap "k",        $aa
+	charmap "l",        $ab
+	charmap "m",        $ac
+	charmap "n",        $ad
+	charmap "o",        $ae
+	charmap "p",        $af
+	charmap "q",        $b0
+	charmap "r",        $b1
+	charmap "s",        $b2
+	charmap "t",        $b3
+	charmap "u",        $b4
+	charmap "v",        $b5
+	charmap "w",        $b6
+	charmap "x",        $b7
+	charmap "y",        $b8
+	charmap "z",        $b9
 
-	ctxtmap "“",        $ba, 11010111110101
-	ctxtmap "”",        $bb, 0011010001100
-	ctxtmap "-",        $bc, 00110101
-	ctxtmap ":",        $bd, 001011101
-	ctxtmap "♂",        $be, 001101000011011000
-	ctxtmap "♀",        $bf, 1000011101101000001
+	charmap "“",        $ba
+	charmap "”",        $bb
+	charmap "-",        $bc
+	charmap ":",        $bd
+	charmap "♂",        $be
+	charmap "♀",        $bf
 
-	ctxtmap "'",        $c0, 0011010000111
-	ctxtmap "'d",       $c1, 100001100110
-	ctxtmap "'l",       $c2, 1000011010
-	ctxtmap "'m",       $c3, 1000011100
-	ctxtmap "'r",       $c4, 0011011111
-	ctxtmap "'s",       $c5, 00101111
-	ctxtmap "'t",       $c6, 110101000
-	ctxtmap "'v",       $c7, 10111011010
+	charmap "'",        $c0
+	charmap "'d",       $c1
+	charmap "'l",       $c2
+	charmap "'m",       $c3
+	charmap "'r",       $c4
+	charmap "'s",       $c5
+	charmap "'t",       $c6
+	charmap "'v",       $c7
 
-	ctxtmap "é",        $c8, 001101000110110
-	ctxtmap "É",        $c9, 1000011101101000000
-	ctxtmap "á",        $ca, 00110100001101101
-	ctxtmap "<BOLDH>",  $cb, 0011010001101010111
-	ctxtmap "í",        $cc, 100001110110100010
-	ctxtmap "ó",        $cd, 110101111100111000
+	charmap "é",        $c8
+	charmap "É",        $c9
+	charmap "á",        $ca
+	charmap "<BOLDH>",  $cb
+	charmap "í",        $cc
+	charmap "ó",        $cd
 
-	ctxtmap "¿",        $ce, 100001110110100011
-	ctxtmap "¡",        $cf, 0011010001101010110
+	charmap "¿",        $ce
+	charmap "¡",        $cf
 
-	ctxtmap "<PO>",     $d0, 0011010001101010101
-	ctxtmap "<KE>",     $d1, 0011010001101010100
-	ctxtmap "<PK>",     $d2, 1000011101101111
-	ctxtmap "<MN>",     $d3, 1000011101101110
+	charmap "<PO>",     $d0
+	charmap "<KE>",     $d1
+	charmap "<PK>",     $d2
+	charmap "<MN>",     $d3
 
-	ctxtmap "<ID>",     $d4, 0011010000110110011
-	ctxtmap "№",        $d5, 100001110110100001
-	ctxtmap "<LV>",     $d6, 11010111110011101
-	ctxtmap "<BOLDP>",  $d7, 00110100011010100
+	charmap "<ID>",     $d4
+	charmap "№",        $d5
+	charmap "<LV>",     $d6
+	charmap "<BOLDP>",  $d7
 
-	ctxtmap "&",        $d8, 1000011101101010
+	charmap "&",        $d8
 
-	ctxtmap "♪",        $d9, 100001110110110
-	ctxtmap "♥",        $da, 1101011111001111
+	charmap "♪",        $d9
+	charmap "♥",        $da
 
-	ctxtmap "×",        $db, 1000011101101011
-	ctxtmap "/",        $dc, 001101000110111
-	ctxtmap "%",        $dd, 110101111100111001
+	charmap "×",        $db
+	charmap "/",        $dc
+	charmap "%",        $dd
 
-	ctxtmap "+",        $de, 0011010000110100
-	ctxtmap "<SHARP>",  $df, 0011010000110110010
+	charmap "+",        $de
+	charmap "<SHARP>",  $df
 
-	ctxtmap "0",        $e0, 110101111110
-	ctxtmap "1",        $e1, 001101000001
-	ctxtmap "2",        $e2, 1101011111111
-	ctxtmap "3",        $e3, 1101011111110
-	ctxtmap "4",        $e4, 1000011101100
-	ctxtmap "5",        $e5, 1101011111000
-	ctxtmap "6",        $e6, 11010111110010
-	ctxtmap "7",        $e7, 110101111101000
-	ctxtmap "8",        $e8, 001101000011000
-	ctxtmap "9",        $e9, 110101111101001
+	charmap "0",        $e0
+	charmap "1",        $e1
+	charmap "2",        $e2
+	charmap "3",        $e3
+	charmap "4",        $e4
+	charmap "5",        $e5
+	charmap "6",        $e6
+	charmap "7",        $e7
+	charmap "8",        $e8
+	charmap "9",        $e9
 
-	ctxtmap "¥",        $ea, 11010111110110
+	charmap "¥",        $ea
 
-	ctxtmap "…",        $eb, 10111010
+	charmap "…",        $eb
 
 	charmap "★",        $ec
 
@@ -245,89 +229,20 @@ DEF FIRST_REGULAR_TEXT_CHAR EQU $7f
 	charmap "┘",        $ff
 
 
-DEF NGRAMS_START EQU $0a
-
 	newcharmap compressing, no_ngrams
 
-	ctxtmap "#",        $4d, 10000111010
-	ctxtmap "#mon",     $4e, 01010000
+DEF NGRAMS_START EQU $4d
+	charmap "#",        $4d
+	charmap "#mon",     $4e
 DEF NGRAMS_VAR_START EQU $4f
 	; these below are implemented as n-grams whose string is stored in WRAM
-	ctxtmap "<PLAYER>", $4f, 0011011110
-	ctxtmap "<RIVAL>",  $50, 1000011101101001
-	ctxtmap "<TRENDY>", $51, 0011010000110101
+	charmap "<PLAYER>", $4f
+	charmap "<RIVAL>",  $50
+	charmap "<TRENDY>", $51
+DEF NGRAMS_END EQU $51
+
 
 	newcharmap default, compressing
-
-	charmap "ou",       $0a
-	charmap "th",       $0b
-	charmap "in",       $0c
-	charmap "t ",       $0d
-	charmap "er",       $0e
-	charmap "s ",       $0f
-	charmap "an",       $10
-	charmap "on",       $11
-	charmap "to ",      $12
-	charmap "d ",       $13
-	charmap "ea",       $14
-	charmap "y ",       $15
-	charmap "en",       $16
-	charmap "or",       $17
-	charmap "at",       $18
-	charmap ", ",       $19
-	charmap "ll",       $1a
-	charmap "I ",       $1b
-	charmap "ar",       $1c
-	charmap "it",       $1d
-	charmap "st",       $1e
-	charmap "ow",       $1f
-	charmap "ha",       $20
-	charmap "a ",       $21
-	charmap "om",       $22
-	charmap "le",       $23
-	charmap "of ",      $24
-	charmap "se",       $25
-	charmap "re",       $26
-	charmap "to",       $27
-	charmap "'s ",      $28
-	charmap "Th",       $29
-	charmap "is",       $2a
-	charmap "ra",       $2b
-	charmap "ch",       $2c
-	charmap "I'm ",     $2d
-	charmap "o ",       $2e
-	charmap "gh",       $2f
-	charmap "es",       $30
-	charmap "wa",       $31
-	charmap "e.",       $32
-	charmap "oo",       $33
-	charmap "ck",       $34
-	charmap "r ",       $35
-	charmap "l ",       $36
-	charmap "be",       $37
-	charmap "li",       $38
-	charmap "ed",       $39
-	charmap "us",       $3a
-	charmap "ti",       $3b
-	charmap " you",     $3c
-	charmap "ing ",     $3d
-	charmap "the ",     $3e
-	charmap "you",      $3f
-	charmap "ing",      $40
-	charmap "is ",      $41
-	charmap "the",      $42
-	charmap "You ",     $43
-	charmap "er ",      $44
-	charmap "with",     $45
-	charmap "batt",     $46
-	charmap "for",      $47
-	charmap "ve ",      $48
-	charmap "ed ",      $49
-	charmap "It's ",    $4a
-	charmap "that ",    $4b
-	charmap "e ",       $4c
-
-DEF NGRAMS_END EQU $51
 
 	setcharmap default
 
@@ -337,3 +252,6 @@ MACRO rawchar
 	db \#
 	setcharmap default
 ENDM
+
+
+INCLUDE "constants/huffman_text.asm"

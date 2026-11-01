@@ -136,7 +136,7 @@ INCLUDE "gfx/stats/egg_page.pal"
 	pop de
 	hlcoord 0, 1
 	ld d, $0
-	farcall LoadMonAnimation
+	farcall LoadFrontpicAnim
 	ld hl, wSummaryScreenFlags
 	set SUMMARY_FLAGS_DO_ANIM_F, [hl]
 	ret

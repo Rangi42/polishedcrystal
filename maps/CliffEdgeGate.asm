@@ -33,8 +33,7 @@ ProfOaksAide3Script:
 .HereYouGo
 	writetext ProfOaksAide3HereYouGoText
 	waitbutton
-	verbosegiveitem MACHO_BRACE
-	iffalsefwd .NoRoom
+	verbosegiveitem MACHO_BRACE, iffalsefwd .NoRoom
 	setevent EVENT_GOT_MACHO_BRACE_FROM_PROF_OAKS_AIDE
 .Explain
 	jumpthisopenedtext

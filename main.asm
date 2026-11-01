@@ -64,6 +64,7 @@ SECTION "Load Map Part", ROMX
 ; do not separate
 INCLUDE "engine/overworld/player_step.asm"
 INCLUDE "engine/overworld/load_map_part.asm"
+INCLUDE "engine/overworld/stream_map_part.asm"
 
 
 SECTION "bank4", ROMX
@@ -284,6 +285,7 @@ INCLUDE "engine/events/card_key.asm"
 INCLUDE "engine/events/basement_key.asm"
 INCLUDE "engine/events/sacred_ash.asm"
 INCLUDE "engine/events/sweet_honey.asm"
+INCLUDE "engine/events/fossils.asm"
 
 
 SECTION "bank14", ROMX
@@ -521,7 +523,6 @@ SECTION "bank38", ROMX
 
 INCLUDE "engine/games/card_flip.asm"
 INCLUDE "engine/games/unown_puzzle.asm"
-;INCLUDE "engine/games/memory_game.asm"
 INCLUDE "engine/gfx/fade.asm"
 
 

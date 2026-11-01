@@ -61,8 +61,7 @@ CeladonUniversityLoungeNeeshaScript:
 	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
 	promptbutton
-	verbosegiveitem CHOICE_BAND
-	iffalse_endtext
+	verbosegiveitem CHOICE_BAND, iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
 	jumpopenedtext .FinalText
 
@@ -205,8 +204,7 @@ CeladonUniversityLoungeBookshelf2:
 	waitbutton
 	checkevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
 	iftruefwd .GotItem
-	verbosegiveitem PP_MAX
-	iffalsefwd .Done
+	verbosegiveitem PP_MAX, iffalsefwd .Done
 	setevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
 .Done
 	endtext

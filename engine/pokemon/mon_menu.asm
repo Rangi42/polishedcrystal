@@ -1439,6 +1439,7 @@ SetUpMoveScreenBG:
 	call ClearTileMap
 	call ClearSprites
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
@@ -1476,6 +1477,7 @@ MoveScreen_ListMoves:
 	lb bc, 14, 18
 	call ClearBox
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, wMoveScreenMoves
 	ld b, a
@@ -1605,12 +1607,13 @@ MoveScreen_ListMovesFast:
 	hlcoord 1, 14
 	ld de, String_MoveSwap
 	rst PlaceString
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
 .not_swapping
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	hlcoord 10, 12
@@ -1692,7 +1695,7 @@ MoveScreen_ListMovesFast:
 .description
 	hlcoord 1, 14
 	farcall PrintMoveDesc
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 

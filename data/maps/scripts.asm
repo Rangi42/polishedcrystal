@@ -101,6 +101,7 @@ SECTION "Cherrygrove Bay Scripts", ROMX
 INCLUDE "maps/CherrygroveBay.asm"
 INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/Route32CoastHouse.asm"
+INCLUDE "maps/CherrygroveTrainTrackDual.asm"
 
 
 SECTION "Dark Cave Scripts", ROMX
@@ -656,7 +657,7 @@ INCLUDE "maps/CeladonDeptStore2F.asm"
 INCLUDE "maps/CeladonDeptStore3F.asm"
 INCLUDE "maps/CeladonDeptStore4F.asm"
 INCLUDE "maps/CeladonDeptStore5F.asm"
-INCLUDE "maps/CeladonDeptStore6F.asm"
+INCLUDE "maps/CeladonDeptStoreRoof.asm"
 INCLUDE "maps/CeladonDeptStoreElevator.asm"
 
 
@@ -765,6 +766,8 @@ INCLUDE "maps/FuchsiaGym.asm"
 INCLUDE "maps/FuchsiaBillSpeechHouse.asm"
 INCLUDE "maps/FuchsiaSafariBallHouse.asm"
 INCLUDE "maps/SafariZoneWardensHome.asm"
+INCLUDE "maps/FuchsiaAquarium1F.asm"
+INCLUDE "maps/FuchsiaAquarium2F.asm"
 INCLUDE "maps/LuckyIsland.asm"
 
 
@@ -908,7 +911,8 @@ INCLUDE "maps/NavelRockRoof.asm"
 
 SECTION "Faraway Island Scripts", ROMX
 
-INCLUDE "maps/FarawayIsland.asm"
+INCLUDE "maps/FarawayIslandNorth.asm"
+INCLUDE "maps/FarawayIslandSouth.asm"
 INCLUDE "maps/FarawayJungle.asm"
 
 

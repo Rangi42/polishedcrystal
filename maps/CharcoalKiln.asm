@@ -70,8 +70,7 @@ CharcoalKilnApprentice:
 	opentext
 	writetext .Text2
 	promptbutton
-	verbosegiveitem CHARCOAL
-	iffalse_endtext
+	verbosegiveitem CHARCOAL, iffalse_endtext
 	setevent EVENT_GOT_CHARCOAL_IN_CHARCOAL_KILN
 	endtext
 

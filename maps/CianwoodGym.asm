@@ -3,7 +3,7 @@ CianwoodGym_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, CianwoodGymBouldersCallback
-	callback MAPCALLBACK_STONETABLE, CianwoodGymSetUpStoneTable
+	callback MAPCALLBACK_CMDQUEUE, CianwoodGymSetUpStoneTable
 
 	def_warp_events
 	warp_event 12, 17, CIANWOOD_CITY, 2

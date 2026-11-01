@@ -73,8 +73,7 @@ RandyScript:
 .questcomplete
 	writetext Route35GoldenrodGateRandySomethingForYourTroubleText
 	promptbutton
-	verbosegiveitem HP_UP
-	iffalsefwd .bagfull
+	verbosegiveitem HP_UP, iffalsefwd .bagfull
 	setevent EVENT_GOT_HP_UP_FROM_RANDY
 .gothpup
 	writetext Route35GoldenrodGateRandyMyPalWasSnoozingRightText

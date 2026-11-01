@@ -188,8 +188,7 @@ MonicaScript:
 .MetMonica:
 	writetext MonicaGivesGiftText
 	promptbutton
-	verbosegiveitem SHARP_BEAK
-	iffalsefwd MonicaDoneScript
+	verbosegiveitem SHARP_BEAK, iffalsefwd MonicaDoneScript
 	setevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
 	jumpthisopenedtext
 

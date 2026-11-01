@@ -462,7 +462,7 @@ AI_Items:
 AIUpdateHUD:
 	call UpdateEnemyMonInParty
 	farcall UpdateEnemyHUD
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld hl, wEnemyItemState
 	dec [hl]

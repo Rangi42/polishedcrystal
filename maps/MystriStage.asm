@@ -78,8 +78,7 @@ MystriStageBeatCynthiaScript:
 	iftrue_jumpopenedtext MystriStageCynthiaFinalText
 	writetext MystriStageCynthiaItemText
 	waitbutton
-	verbosegiveitem WISE_GLASSES
-	iffalse_endtext
+	verbosegiveitem WISE_GLASSES, iffalse_endtext
 	setevent EVENT_GOT_WISE_GLASSES_FROM_CYNTHIA
 	writetext MystriStageCynthiaAfterText
 	waitbutton

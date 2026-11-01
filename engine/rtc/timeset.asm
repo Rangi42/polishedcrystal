@@ -19,6 +19,7 @@ InitClock:
 	ld a, CGB_PLAIN
 	call GetCGBLayout
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadStandardFont
 	call BlackOutScreen
@@ -379,6 +380,7 @@ Special_SetDayOfWeek:
 
 .finish_dpad
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 10, 4
 	lb bc, 2, 9

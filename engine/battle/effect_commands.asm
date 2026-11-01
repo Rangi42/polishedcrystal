@@ -296,7 +296,7 @@ endc
 	ld hl, UpdateEnemyHUD
 .ok1
 	call CallBattleCore
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	jr .not_asleep
 
@@ -746,7 +746,7 @@ HitConfusion:
 	and a
 	jr nz, .enemy
 	farcall UpdatePlayerHUD
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 .enemy
 	call TakeOpponentDamage
@@ -3461,7 +3461,7 @@ BattleCommand_posthiteffects:
 	call c, FlinchTarget
 	ret
 
-CheckStatHerbsAfterIntimidate:
+CheckStatHerbsAfterAbility:
 	ld hl, wDeferredSwitch
 	ld a, [hl]
 	push af
@@ -4910,7 +4910,7 @@ BattleCommand_sleep:
 	ld [wNumHits], a
 	ld de, ANIM_SLP
 	call PlayOpponentBattleAnim
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
@@ -5510,6 +5510,7 @@ BattleCommand_raisesubnoanim:
 	ld hl, GetMonFrontpic
 .PlayerTurn:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call CallBattleCore
 	jmp ApplyTilemapInVBlank
@@ -5522,6 +5523,7 @@ BattleCommand_lowersubnoanim:
 	ld hl, DropEnemySub
 .PlayerTurn:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call CallBattleCore
 	jmp ApplyTilemapInVBlank

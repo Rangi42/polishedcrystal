@@ -16,7 +16,7 @@ sometimes referred to as "Polished LZ."
 It is broadly compatible with the command set described in the LC_LZ3 reference:
 https://github.com/bonimy/MushROMs/blob/master/doc/LC_LZ3%20Compression%20Format.md
 
-However, Polished Crystal has **intentional format differences** (documented below), including new extended opcode bytes. The standard `lzcompress` / `lzcomp` / `lz.py` tools cannot handle this format; only the custom compressor in `tools/lzpcompress` produces valid streams.
+However, Polished Crystal has **intentional format differences** (documented below), including new special opcode bytes. The standard `lzcompress` / `lzcomp` / `lz.py` tools cannot handle this format; only the custom compressor in `tools/lzpcompress` produces valid streams.
 
 Compressed assets use the **`.lzp`** file extension ("LZ Polished") to distinguish them from standard `.lz` files.
 
@@ -32,7 +32,7 @@ several stages:
    length from 10 bits to 9 bits (`111CCCL0 LLLLLLLL`; bit 1 always `0`).
    This makes decompression noticeably faster with a minor trade-off in maximum
    encodable length.
-3. **Extended opcodes** (this branch): Added packed-literal opcodes
+3. **Special opcodes** (this branch): Added packed-literal opcodes
    `0xfc`–`0xfe` (`lzpackhi0`, `lzpack16`, `lzpacklo0`) for more compact
    representation of common byte patterns.
 
@@ -93,7 +93,7 @@ So, for example:
 
 The current toolchain constrains **base** command output lengths to at most 512 bytes.
 
-The extended pack opcodes (`0xfc..0xfe`) store an 8-bit `len-1` length code, so they are
+The special pack opcodes (`0xfc..0xfe`) store an 8-bit `len-1` length code, so they are
 currently limited to output lengths in `1..256`.
 
 ## Base commands (0..6)
@@ -158,17 +158,17 @@ This is the “AYYYYYYY ZZZZZZZZ with A=0” form in the LC_LZ3 doc.
 
 Copy sources may overlap with the region being written. The decompressor reads from the output buffer one byte at a time, so a copy offset of `−1` with length `N` replicates the last emitted byte `N` times (similar to `LZ_REPEAT`). More generally, when the copy source is closer than `count` bytes, the pattern repeats with a period equal to the distance. The compressor exploits this for periodic patterns that `LZ_REPEAT` (period 1) and `LZ_ALTERNATE` (period 2) cannot express.
 
-## Extended opcodes (`0xfc`–`0xfe`) (customization)
+## Special opcodes (`0xfc`–`0xfe`) (customization)
 
-Polished Crystal defines additional commands using single-byte “extended opcode” headers:
+Polished Crystal defines additional commands using single-byte “special opcode” headers:
 
-- `0xfc` (`LZ_EXT_PACKHI0`)
-- `0xfd` (`LZ_EXT_PACK16_SHORT`)
-- `0xfe` (`LZ_EXT_PACKLO0`)
+- `0xfc` (`LZ_SPECIAL_PACKHI0`)
+- `0xfd` (`LZ_SPECIAL_PACK16_SHORT`)
+- `0xfe` (`LZ_SPECIAL_PACKLO0`)
 
 These values are in the `0xe0..0xff` range, but are treated specially by the decompressor. (`0xff` remains the stream terminator.)
 
-### Common extended header layout
+### Common special header layout
 
 ```
 byte0: 111111ss  (0xfc..0xfe)
@@ -257,15 +257,15 @@ The LC_LZ3 document is a useful mental model for the *base* command set, but Pol
 
 1. **Per-command minimum lengths** (see "Format history" §1): output length is **not always** `(L + 1)`. Each command has its own minimum count (e.g., `LZ_REPEAT` stores `output_length - 2`).
 2. **Long header length is 9-bit, not 10-bit** (see "Format history" §2): the header is `111CCCL0 LLLLLLLL`, where bit 1 of the first byte is always `0`.
-3. **New extended opcode bytes** (see "Format history" §3): `0xfc..0xfe` add `lzpackhi0`, `lzpack16`, and `lzpacklo0` packed-literal commands.
-4. **Practical maximum length**: the current compressor/tooling bounds **base** command output lengths to 512 bytes (the extended pack opcodes are `1..256`).
+3. **New special opcode bytes** (see "Format history" §3): `0xfc..0xfe` add `lzpackhi0`, `lzpack16`, and `lzpacklo0` packed-literal commands.
+4. **Practical maximum length**: the current compressor/tooling bounds **base** command output lengths to 512 bytes (the special pack opcodes are `1..256`).
 
 ## Implementation reference
 
 | Component | Language | Location |
 |---|---|---|
 | Runtime decompressor | Game Boy ASM | `home/decompress.asm` |
-| Compressor + decompressor | C | `tools/lzcompress.c` |
+| Compressor + decompressor | C | `tools/lzpcompress.c` |
 | Post‑hoc analysis | Python | `utils/lz_analyze_pack16.py` |
 
 ## Named constants
@@ -277,11 +277,11 @@ Key named constants from `tools/lz/proto.h`:
 | `MAX_FILE_SIZE` | 32768 | Maximum uncompressed data size |
 | `SHORT_COMMAND_COUNT` | 32 | Short-header count field range (5 bits) |
 | `MAX_COMMAND_COUNT` | 512 | Max encoded count for base commands |
-| `MAX_EXT_COUNT` | 256 | Max output count for extended opcodes |
+| `MAX_SPECIAL_COUNT` | 256 | Max output count for special opcodes |
 | `LOOKBACK_LIMIT` | 128 | Max negative offset for copy commands |
 | `PACK16_TABLE_SIZE` | 16 | Entries in the pack16 dictionary |
 | `LZ_END` | `0xff` | Stream terminator byte |
 
 ## Tooling notes
 
-The `tools/lzcompress.c` source uses an internal pseudo-command id `7` to represent extended opcodes while optimizing/printing commands. This `7` is **not** written as a base-format `LZ_LONG` command; it is serialized using the `0xfc..0xfe` bytes described above.
+The `tools/lzpcompress.c` source uses an internal pseudo-command id `7` to represent special opcodes while optimizing/printing commands. This `7` is **not** written as a base-format `LZ_LONG` command; it is serialized using the `0xfc..0xfe` bytes described above.

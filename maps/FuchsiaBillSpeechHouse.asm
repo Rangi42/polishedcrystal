@@ -25,4 +25,13 @@ BillsBrothersHouseYoungsterText:
 	text "I saw these weird,"
 	line "slow #mon on"
 	cont "Cycling Road."
+
+	para "They look like"
+	line "living lava."
+
+	para "They must have"
+	line "come from the"
+
+	para "volcano eruption"
+	line "on Cinnabar."
 	done

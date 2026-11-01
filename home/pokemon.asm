@@ -1,3 +1,5 @@
+IsCurPartySpeciesAPokemon::
+	ld a, [wCurPartySpecies]
 IsAPokemon::
 ; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
 ; Returns carry if species a is not a Pokemon (including $ff)

@@ -395,6 +395,7 @@ Mom_SetUpDepositMenu:
 Mom_ContinueMenuSetup:
 	push de
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	lb bc, 6, 18
@@ -439,6 +440,7 @@ Mom_WithdrawDepositMenuJoypad:
 	jr nz, .pressedA
 	call .dpadaction
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 11, 6
 	ld bc, 8

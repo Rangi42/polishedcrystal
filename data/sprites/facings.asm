@@ -420,10 +420,9 @@ FacingTinyWindows0:
 	db  0, 20, 0, $84
 
 FacingTinyWindows1:
-	db 3 ; #
-	db  8, -12, 0, $84
-	db  8,   4, 0, $84
-	db  8,  20, 0, $84
+	db 2 ; #
+	db  8,   0, 0, $84
+	db  8,   8, 0, $84
 
 FacingTinyWindows2:
 	db 2 ; #

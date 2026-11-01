@@ -15,9 +15,6 @@ ram_rx = re.compile(r'^[vswh][A-Z]')
 suppress = 'far-ok'
 
 exclude = {
-'data/text/unused_sweet_honey.asm',
-'engine/games/memory_game.asm',
-'gfx/pokemon/frame_pointers.asm',
 'ram/wram0.asm',
 'ram/wramx.asm',
 }

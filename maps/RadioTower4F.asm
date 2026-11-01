@@ -46,8 +46,7 @@ RadioTower4FDJMaryScript:
 .ClearedRockets:
 	writetext RadioTower4FDJMaryText_ClearedRockets
 	promptbutton
-	verbosegiveitem FAIRYFEATHER
-	iffalse_endtext
+	verbosegiveitem FAIRYFEATHER, iffalse_endtext
 	setevent EVENT_GOT_FAIRYFEATHER_FROM_MARY
 	jumpthisopenedtext
 

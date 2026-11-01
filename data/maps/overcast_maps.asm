@@ -9,12 +9,13 @@ ENDM
 
 RandomAliasedOvercastMapGroups:
 	const_def NUM_MAP_GROUPS + 1 ; aliased groups start after normal groups
+	overcast_area AREA_CHERRYGROVE_BAY, CHERRYGROVE_BAY, CHERRYGROVE_TRAIN_TRACK_DUAL
 	overcast_area AREA_ROUTE_32, ROUTE_32, MAGNET_TUNNEL_EAST
 	overcast_area AREA_AZALEA, AZALEA_TOWN, ROUTE_33
 	overcast_area AREA_ROUTE_34, ROUTE_34, ROUTE_34_COAST
 	overcast_area AREA_GOLDENROD, GOLDENROD_CITY, MAGNET_TUNNEL_WEST
 	overcast_area AREA_NATIONAL_PARK, NATIONAL_PARK, NATIONAL_PARK_BUG_CONTEST
-	overcast_area AREA_ECRUTEAK, ECRUTEAK_CITY, ECRUTEAK_SHRINE_OUTSIDE, BELLCHIME_TRAIL
+	overcast_area AREA_ECRUTEAK, ECRUTEAK_CITY, ECRUTEAK_SHRINE_OUTSIDE
 	overcast_area AREA_ROUTE_35_COAST, ROUTE_35_COAST_NORTH, ROUTE_35_COAST_SOUTH
 	overcast_area AREA_ROUTE_40, ROUTE_40, BATTLE_TOWER_OUTSIDE
 	overcast_area AREA_ROUTES_47_48, ROUTE_47, ROUTE_48
@@ -40,7 +41,6 @@ ENDM
 RandomOvercastMapsJohto:
 	const_def
 	overcast_map BLACKTHORN_CITY
-	overcast_map CHERRYGROVE_BAY
 	overcast_map CHERRYGROVE_CITY
 	overcast_map CIANWOOD_CITY
 	overcast_map GOLDENROD_HARBOR
@@ -64,11 +64,10 @@ RandomOvercastMapsJohto:
 	overcast_map ROUTE_46
 	overcast_map RUINS_OF_ALPH_OUTSIDE
 	overcast_map SILVER_CAVE_OUTSIDE
-	overcast_map SINJOH_RUINS
 	overcast_map STORMY_BEACH
 	overcast_map VIOLET_CITY
-	overcast_map YELLOW_FOREST
 	; aliases
+	overcast_map AREA_CHERRYGROVE_BAY
 	overcast_map AREA_ROUTE_32
 	overcast_map AREA_AZALEA
 	overcast_map AREA_ROUTE_34
@@ -84,25 +83,25 @@ RandomOvercastMapsJohto:
 
 RandomOvercastMapsKanto:
 	const_def
-	overcast_map BEAUTIFUL_BEACH
 	overcast_map CELADON_CITY
 	overcast_map CERULEAN_CAPE
 	overcast_map CERULEAN_CITY
 	overcast_map CINNABAR_ISLAND
-	overcast_map FARAWAY_ISLAND
-	overcast_map FARAWAY_JUNGLE
-	overcast_map FIRE_ISLAND_ROOF
 	overcast_map FUCHSIA_CITY
-	overcast_map ICE_ISLAND_ROOF
 	overcast_map INDIGO_PLATEAU
 	overcast_map LAVENDER_TOWN
-	overcast_map LIGHTNING_ISLAND_ROOF
 	overcast_map LUCKY_ISLAND
 	overcast_map MOUNT_MOON_SQUARE
 	overcast_map PALLET_TOWN
 	overcast_map PEWTER_CITY
-	overcast_map ROCKY_BEACH
 	overcast_map ROUTE_1
+	overcast_map ROUTE_3
+	overcast_map ROUTE_4
+	overcast_map ROUTE_5
+	overcast_map ROUTE_6
+	overcast_map ROUTE_7
+	overcast_map ROUTE_8
+	overcast_map ROUTE_9
 	overcast_map ROUTE_11
 	overcast_map ROUTE_13
 	overcast_map ROUTE_14
@@ -118,28 +117,10 @@ RandomOvercastMapsKanto:
 	overcast_map ROUTE_26
 	overcast_map ROUTE_27
 	overcast_map ROUTE_28
-	overcast_map ROUTE_3
-	overcast_map ROUTE_4
-	overcast_map ROUTE_49
-	overcast_map ROUTE_5
-	overcast_map ROUTE_6
-	overcast_map ROUTE_7
-	overcast_map ROUTE_8
-	overcast_map ROUTE_9
-	overcast_map SAFARI_ZONE_EAST
-	overcast_map SAFARI_ZONE_HUB
-	overcast_map SAFARI_ZONE_NORTH
-	overcast_map SAFARI_ZONE_WEST
 	overcast_map SAFFRON_CITY
-	overcast_map SHAMOUTI_COAST
-	overcast_map SHAMOUTI_ISLAND
-	overcast_map SHAMOUTI_SHRINE_RUINS
-	overcast_map VALENCIA_ISLAND
 	overcast_map VERMILION_CITY
 	overcast_map VERMILION_PORT
 	overcast_map VIRIDIAN_CITY
-	overcast_map VIRIDIAN_FOREST
-	overcast_map WARM_BEACH
 	; aliases
 	overcast_map AREA_ROUTE_2
 	overcast_map AREA_ROUTE_10

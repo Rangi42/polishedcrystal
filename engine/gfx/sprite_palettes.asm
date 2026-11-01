@@ -2,10 +2,18 @@ LoadWeatherPalNoApply:
 	ld hl, wPalFlags
 	set NO_DYN_PAL_APPLY_ONCE_F, [hl]
 LoadWeatherPal::
+	ld a, [wOverworldWeatherCooldown]
+	and a
 	ld a, [wCurWeather]
+	jr z, .got_weather
+	ld a, [wPrevWeather]
+.got_weather
 	assert OW_WEATHER_NONE == 0
 	and a
 	ret z
+	; Weather replaces any previous two-color Pokémon palette in this slot.
+	ld hl, wLoadedObjPalType
+	res PAL_OW_WEATHER, [hl]
 	dec a
 	call StackJumpTable
 
@@ -38,15 +46,15 @@ LoadWeatherPal::
 	jr CopySpritePalHandler
 
 .snow
+	; Snow uses an all-white palette, not an indexed object palette. Update
+	; its identity before switching from object WRAM to palette WRAM.
+	ld a, NO_PAL_LOADED
+	ld [wLoadedObjPal{d:PAL_OW_WEATHER}], a
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wOBPals1)
 	ldh [rWBK], a
-	; we are not loading an official palette,
-	; so this tells dynamic pals to not associate this
-	; palette with a sprite.
 	ld a, NO_PAL_LOADED
-	ld [wLoadedObjPal7], a
 	ld hl, wOBPals1 palette PAL_OW_WEATHER
 if !DEF(MONOCHROME)
 	assert LOW(NO_PAL_LOADED) == $ff
@@ -74,6 +82,15 @@ endc
 	ldh [rWBK], a
 	ret
 
+CopyLeafGreenToOBPal7:
+; Fly leaves should use standard green if PAL_BG_GREEN has been "swapped" to
+; other colors like purple. (We can assume that if PAL_BG_GREEN is *not* swapped,
+; then it's still appropriate for use as a leaf/tree color.)
+	ld a, [wPaletteSwapStates]
+	and a
+	ld a, PAL_OW_LEAF_GREEN
+	jr nz, CopySpritePalToOBPal7
+	; fallthrough
 CopyBGGreenToOBPal7:
 ; Some overworld effects (Fly leaves, Cut leaves, Cut trees, Headbutt trees)
 ; have hard-coded OB palette 7 in their OAM data.
@@ -87,6 +104,30 @@ CopySpritePalToOBPal7:
 	ld de, wOBPals1 palette 7
 	; fallthrough
 CopySpritePalHandler::
+	; Non-object users of this routine always request an unmodified palette.
+	xor a
+	ld [wNeededObjPalGlow], a
+	ld [wPrevNeededObjPalGlow], a
+	push hl
+	push bc
+	ld a, e
+	sub LOW(wOBPals1)
+	rrca
+	rrca
+	rrca
+	and %00011111
+	ld c, a
+	ld b, 0
+	ld hl, wLoadedObjPalGlows
+	add hl, bc
+	ld [hl], OBJ_GLOW_NONE
+	ld hl, wLoadedObjPalPrevGlows
+	add hl, bc
+	ld [hl], OBJ_GLOW_NONE
+	pop bc
+	pop hl
+	; fallthrough
+CopyObjectSpritePalHandler::
 	; check if we are fading palettes
 	ldh a, [rWBK]
 	push af
@@ -130,6 +171,20 @@ CopySpritePalHandler::
 	ld [wPalState], a
 	call CalculateStates
 	call CopySpritePal
+	; An ordinary copy-BG palette sourced its active color from the matching,
+	; already partially faded BG palette. Replaying the elapsed fade steps would
+	; put it ahead of the BG palette it is meant to match. Fades from white still
+	; need the normal catch-up path because their active palette started as white;
+	; PAL_OW_COPY_BG_WHITE also needs it because it is built from target colors.
+	ld a, [wPalWhiteState]
+	and a
+	jr nz, .catch_up
+	ld a, [wNeededPalIndex]
+	cp PAL_OW_COPY_BG_WHITE
+	jr z, .catch_up
+	cp FIRST_COPY_BG_PAL
+	jr nc, .caught_up
+.catch_up
 	push de
 	push bc
 	ld c, 1 palettes
@@ -142,6 +197,7 @@ CopySpritePalHandler::
 	pop hl
 	pop bc
 	pop de
+.caught_up
 	pop af
 	ld [wPalFlags], a
 	ret
@@ -161,10 +217,56 @@ CopySpritePal::
 	ld a, [wNeededPalIndex]
 	sub FIRST_COPY_BG_PAL
 	jr c, .not_copy_bg
-	ld hl, wBGPals1
+
+	cp PAL_OW_COPY_BG_WHITE - FIRST_COPY_BG_PAL
+	jr z, .copy_white
+
+.copy_bg
+	; Copy-BG palettes use the corresponding buffer for the requested state.
+	; wBGPals2 is the active, possibly partially faded palette; wBGPals1 is the
+	; destination palette.
+	push af
+	ld a, [wPalState]
+	assert PREV_PALSTATE == 0
+	and a
+	ld hl, wBGPals2
+	jr z, .got_copy_bg_source
+	assert HIGH(wBGPals2) == HIGH(wBGPals1)
+	ld l, LOW(wBGPals1)
+.got_copy_bg_source
+	pop af
 	ld bc, 1 palettes
 	rst AddNTimes
 	jr .got_pal
+
+.copy_white
+	pop de
+	push de ; push wOBPals1 palette *
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wBGPals1)
+	ldh [rWBK], a
+	ld hl, wBGPals1 color 0
+rept 2
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hld]
+	ld [de], a
+	inc de
+endr
+	ld hl, wBGPals1 color 3
+rept 2
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hld]
+	ld [de], a
+	inc de
+endr
+	pop af
+	ldh [rWBK], a
+	jr .copied_pal
 
 .not_copy_bg
 	ld a, [wNeededPalIndex]
@@ -174,6 +276,7 @@ CopySpritePal::
 	push de ; push wOBPals1 palette *
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
+.copied_pal
 	pop hl ; pop wOBPals1 palette *
 
 	; Check if we need to copy a light color from a secondary palette (for SPRITE_MON_ICON)
@@ -182,6 +285,8 @@ CopySpritePal::
 	; hl = target palette (wOBPals1 palette *)
 	; a = light color OW palette index (0–15, raw PAL_OW_* value for LookupOBPalette / CopyMonIconLightColor)
 	call nz, CopyMonIconLightColor
+
+	call ApplyObjectGlowToPalette
 
 	ld a, [wPalFlags]
 	and NO_DYN_PAL_APPLY
@@ -238,6 +343,12 @@ LookupOBPalette:
 	ld a, [wPalFlags]
 	bit USE_DAYTIME_PAL_F, a
 	jr nz, .not_overcast
+	; Day/night-lit objects use their non-overcast palette for this fade endpoint.
+	call GetNeededObjPalGlow
+	cp OBJ_GLOW_DAY
+	jr z, .not_overcast
+	cp OBJ_GLOW_NITE
+	jr z, .not_overcast
 
 	; check darkness
 	ld a, PALSTATE_DARKNESS
@@ -283,10 +394,21 @@ LookupOBPalette:
 	ld a, [wPalFlags]
 	bit USE_DAYTIME_PAL_F, a
 	ld a, DAY
-	jr nz, .daytime
+	jr nz, .got_time
+	call GetNeededObjPalGlow
+	cp OBJ_GLOW_DAY
+	jr z, .daytime
+	cp OBJ_GLOW_NITE
+	jr nz, .get_time_state
+	ld a, NITE
+	jr .got_time
+.daytime
+	ld a, DAY
+	jr .got_time
+.get_time_state
 	ld a, PALSTATE_TIME_OF_DAY
 	call GetPalState
-.daytime
+.got_time
 	maskbits NUM_DAYTIMES
 	ld bc, NUM_OW_TIME_OF_DAY_PALS palettes
 	rst AddNTimes
@@ -364,6 +486,147 @@ CalculateStates:
 	pop hl
 	ret
 
+GetNeededObjPalGlow:
+; Return the glow associated with the palette endpoint being constructed.
+	ld a, [wPalState]
+	and a
+	ld a, [wPrevNeededObjPalGlow]
+	ret z
+	ld a, [wNeededObjPalGlow]
+	ret
+
+ApplyObjectGlowToPalette:
+; Add cool aquarium light to one dynamically loaded object palette. Campfire
+; glow is handled by selecting the daytime source palette in LookupOBPalette.
+	call GetNeededObjPalGlow
+	and a ; OBJ_GLOW_NONE?
+	ret z
+	cp NUM_OBJ_GLOW_TYPES + 1 ; no adjustments?
+	ret nc
+
+	ld d, a
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wOBPals1)
+	ldh [rWBK], a
+
+	push hl
+	dec d
+	ld a, d
+	add d
+	add d
+	add LOW(PaletteGlowAdjustments)
+	ld l, a
+	adc HIGH(PaletteGlowAdjustments)
+	sub l
+	ld h, a
+	ld de, wPalGlowAdjustments
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	pop hl
+
+	push hl
+rept PAL_COLORS - 1 ; leave black color 3 unchanged
+	call .apply_to_color
+endr
+	pop hl
+
+	pop af
+	ldh [rWBK], a
+	ret
+
+.apply_to_color
+; Input: hl = pointer to current little-endian CGB color.
+; Output: hl = pointer to next CGB color, after adjusting the current one.
+
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+
+	ld a, e
+	and COLOR_RED
+	ld b, a
+	ld a, [wPalGlowRedAdjustment]
+	add b
+	cp COLOR_CH_MAX + 1
+	jr c, .red_ok
+	ld a, COLOR_CH_MAX
+.red_ok
+	ld b, a
+
+	ld a, e
+rept 8 - B_COLOR_GREEN
+	rlca
+endr
+	and (1 << (8 - B_COLOR_GREEN)) - 1
+	ld c, a
+	ld a, d
+	and COLOR_GREEN_HIGH
+rept COLOR_CH_WIDTH - 2
+	add a
+endr
+	or c
+	ld c, a
+	ld a, [wPalGlowGreenAdjustment]
+	add c
+	cp COLOR_CH_MAX + 1
+	jr c, .green_ok
+	ld a, COLOR_CH_MAX
+.green_ok
+	ld c, a
+
+	ld a, d
+rept B_COLOR_BLUE - 8
+	rrca
+endr
+	and COLOR_CH_MAX
+	ld d, a
+	ld a, [wPalGlowBlueAdjustment]
+	add d
+	cp COLOR_CH_MAX + 1
+	jr c, .blue_ok
+	ld a, COLOR_CH_MAX
+.blue_ok
+rept B_COLOR_BLUE - 8
+	add a
+endr
+	and COLOR_BLUE
+	ld d, a
+
+	ld a, c
+	and (1 << (COLOR_CH_WIDTH - 2)) - 1
+rept 8 - B_COLOR_GREEN
+	rrca
+endr
+	and COLOR_GREEN_LOW
+	ld e, a
+	ld a, c
+rept COLOR_CH_WIDTH - 2
+	rrca
+endr
+	and COLOR_GREEN_HIGH
+	or d
+	ld d, a
+	ld a, b
+	or e
+	ld e, a
+
+	dec hl
+	ld a, d
+	ld [hld], a
+	ld a, e
+	ld [hli], a
+	inc hl
+	ret
+
 CopyWhitePal:
 ; target palette in de
 	push hl
@@ -417,3 +680,5 @@ OvercastOBPalette:
 	table_width 1 palettes
 INCLUDE "gfx/overworld/npc_sprites_overcast.pal"
 	assert_table_length NUM_OW_TIME_OF_DAY_PALS * NUM_DAYTIMES
+
+INCLUDE "data/collision/glow_adjustments.asm"

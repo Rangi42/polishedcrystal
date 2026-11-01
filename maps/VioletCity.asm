@@ -14,8 +14,8 @@ VioletCity_MapScriptHeader:
 	warp_event 23,  1, SPROUT_TOWER_1F, 1
 	warp_event 39, 24, ROUTE_31_VIOLET_GATE, 1
 	warp_event 39, 25, ROUTE_31_VIOLET_GATE, 2
-	warp_event  2,  8, ROUTE_36_VIOLET_GATE, 3
-	warp_event  2,  9, ROUTE_36_VIOLET_GATE, 4
+	warp_event  0,  8, ROUTE_36_VIOLET_GATE, 3
+	warp_event  0,  9, ROUTE_36_VIOLET_GATE, 4
 
 	def_coord_events
 

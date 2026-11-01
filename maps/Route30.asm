@@ -2,6 +2,7 @@ Route30_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_CMDQUEUE, Route30SetUpPaletteSwap
 
 	def_warp_events
 	warp_event  9, 39, ROUTE_30_BERRY_SPEECH_HOUSE, 1
@@ -27,7 +28,8 @@ Route30_MapScriptHeader:
 	object_event  3,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherDon, -1
 	object_event 10, 31, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, PAL_NPC_ORANGE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route30YoungsterText, -1
 	object_event  4, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route30CooltrainerFText, -1
-	cuttree_event 10,  6, EVENT_ROUTE_30_CUT_TREE
+	cuttree_event 10,  6, EVENT_ROUTE_30_CUT_TREE_1
+	cuttree_event  3, 29, EVENT_ROUTE_30_CUT_TREE_2
 	fruittree_event 12, 39, FRUITTREE_ROUTE_30_1, ORAN_BERRY, PAL_NPC_BLUE
 	fruittree_event 13,  5, FRUITTREE_ROUTE_30_2, PECHA_BERRY, PAL_NPC_PINK
 	itemball_event 10, 35, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
@@ -36,6 +38,14 @@ Route30_MapScriptHeader:
 	const ROUTE30_YOUNGSTER1
 	const ROUTE30_PIDGEY
 	const ROUTE30_RATTATA
+
+Route30SetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 11, 255, 0, 27, PAL_BG_WATER, OverworldWaterPalettes, MrPokemonsHouseRoofPalettes
+	db -1 ; end
 
 YoungsterJoey_ImportantBattleScript:
 	waitsfx
@@ -149,8 +159,7 @@ TrainerYoungsterJoey:
 	checkevent EVENT_GOT_HP_UP_FROM_JOEY
 	iftruefwd .done
 	callstd rematchgiftm
-	verbosegiveitem HP_UP
-	iffalsefwd .PackFull
+	verbosegiveitem HP_UP, iffalsefwd .PackFull
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
 	jumpstd numberacceptedm
 
@@ -161,8 +170,7 @@ TrainerYoungsterJoey:
 	opentext
 	writetext YoungsterJoeyText_GiveHPUpAfterBattle
 	waitbutton
-	verbosegiveitem HP_UP
-	iffalsefwd .PackFull
+	verbosegiveitem HP_UP, iffalsefwd .PackFull
 	clearevent EVENT_JOEY_HP_UP
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
 	jumpstd numberacceptedm

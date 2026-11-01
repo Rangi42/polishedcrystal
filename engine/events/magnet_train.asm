@@ -79,6 +79,7 @@ Special_MagnetTrain:
 	pop af
 	ldh [hSCX], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	pop af
@@ -126,6 +127,7 @@ MagnetTrain_LoadGFX_PlayMusic:
 	ldh [hWY], a
 	call EnableLCD
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -390,7 +392,8 @@ MagnetTrain_Jumptable_FirstRunThrough:
 	ld a, [wTimeOfDay]
 	maskbits NUM_DAYTIMES
 	ld [wTimeOfDayPal], a
-	ld a, TOWN
+	assert TOWN == 0
+	xor a
 	ld [wEnvironment], a
 	ld a, CGB_MAPPALS
 	call GetCGBLayout

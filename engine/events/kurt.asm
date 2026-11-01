@@ -52,6 +52,7 @@ Kurt_SelectApricorn:
 	ld a, [wMenuSelection]
 	ld [wMenuCursorBuffer], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call InitScrollingMenu
 	call UpdateSprites
@@ -121,7 +122,7 @@ Kurt_SelectQuantity:
 	call MenuBox
 	call ApplyTilemap
 .loop
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call MenuBox
 	call .PlaceApricornName

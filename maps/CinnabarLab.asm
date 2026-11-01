@@ -256,7 +256,7 @@ CinnabarLabPanUpAndDownMovementData:
 	slow_step_up
 	slow_step_up
 	slow_step_up
-	step_sleep 32
+	step_sleep 96
 	slow_step_down
 	slow_step_down
 	slow_step_down

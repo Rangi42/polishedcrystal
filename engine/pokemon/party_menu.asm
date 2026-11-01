@@ -355,6 +355,7 @@ BT_ConfirmPartySelection:
 BT_DisplayMenu:
 	call CopyMenuHeader
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call MenuBox
 	call UpdateSprites
@@ -523,6 +524,7 @@ WritePartyMenuTilemap:
 	set NO_TEXT_SCROLL, [hl]
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	hlcoord 0, 0
@@ -622,12 +624,17 @@ PlacePartyHPBar:
 	pop hl
 	ld d, 6
 	call DrawBattleHPBar
-	ld hl, wHPPals
 	ld a, [wHPPalIndex]
-	ld c, a
-	ld b, 0
-	add hl, bc
-	call SetHPPal
+	ld hl, wPartyMon1HP
+	call GetPartyLocation
+	call GetHPPal
+	ld a, [wHPPalIndex]
+	add LOW(wHPPals)
+	ld l, a
+	adc HIGH(wHPPals)
+	sub l
+	ld h, a
+	ld [hl], d
 	farcall ApplyPartyMenuHPPals ; updates wHPPalIndex
 .skip
 	ld hl, wHPPalIndex

@@ -33,7 +33,7 @@ MapScenes::
 	scene_var ECRUTEAK_GYM,                      wEcruteakGymSceneID
 	scene_var ECRUTEAK_HOUSE,                    wEcruteakHouseSceneID
 	scene_var ELMS_LAB,                          wElmsLabSceneID
-	scene_var FARAWAY_ISLAND,                    wFarawayIslandSceneID
+	scene_var FARAWAY_ISLAND_SOUTH,              wFarawayIslandSouthSceneID
 	scene_var FAST_SHIP_1F,                      wFastShip1FSceneID
 	scene_var FAST_SHIP_B1F,                     wFastShipB1FSceneID
 	scene_var GIOVANNIS_CAVE,                    wGiovannisCaveSceneID
@@ -68,6 +68,7 @@ MapScenes::
 	scene_var ROUTE_22_PAST,                     wAlways0SceneID
 	scene_var ROUTE_23_NORTH,                    wRoute23SceneID
 	scene_var ROUTE_23_SOUTH,                    wRoute23SceneID
+	scene_var CERULEAN_CITY,                     wRoute24SceneID ; intentional reuse
 	scene_var ROUTE_24,                          wRoute24SceneID
 	scene_var ROUTE_27,                          wRoute27SceneID
 	scene_var ROUTE_29,                          wRoute29SceneID

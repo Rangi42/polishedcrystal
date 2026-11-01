@@ -1313,7 +1313,6 @@ endc
 		tr_moves EXTREMESPEED, FIRE_SPIN, PLAY_ROUGH, FIRE_BLAST
 	end_trainer
 
-
 	def_trainer 2, "Blaine"
 	tr_mon 71, MAGCARGO @ FOCUS_SASH, MALE
 		tr_extra WEAK_ARMOR, SPE_UP_ATK_DOWN
@@ -2956,7 +2955,6 @@ FisherGroup:
 	tr_mon 9, POLIWAG
 	end_trainer
 
-
 	def_trainer MARVIN, "Marvin"
 	tr_mon 20, MAGIKARP, MALE | MAGIKARP_CALICO1_FORM
 	tr_mon 25, MAGIKARP, MALE | MAGIKARP_CALICO2_FORM
@@ -2966,7 +2964,6 @@ FisherGroup:
 	def_trainer ANDRE, "Andre"
 	tr_mon 32, GYARADOS
 	end_trainer
-
 
 	def_trainer RAYMOND, "Raymond"
 	tr_mon 30, MAGIKARP, MALE | MAGIKARP_CALICO2_FORM
@@ -3075,6 +3072,12 @@ FisherGroup:
 	tr_mon 61, QWILFISH
 	tr_mon 63, LANTURN
 	tr_mon 65, GYARADOS
+	end_trainer
+
+	def_trainer CARLOS, "Carlos"
+	tr_mon LEVEL_FROM_BADGES + 0, GOLDEEN
+	tr_mon LEVEL_FROM_BADGES + 1, SEAKING
+	tr_mon LEVEL_FROM_BADGES + 3, QWILFISH, HISUIAN_FORM
 	end_trainer
 
 
@@ -3246,6 +3249,12 @@ BirdKeeperGroup:
 	tr_mon 33, PIDGEY
 	tr_mon 44, PIDGEOTTO
 	tr_mon 55, PIDGEOT
+	end_trainer
+
+	def_trainer SALIM, "Salim"
+	tr_mon LEVEL_FROM_BADGES + 1, MURKROW, MALE
+	tr_mon LEVEL_FROM_BADGES + 2, FARFETCH_D, MALE | GALARIAN_FORM
+	tr_mon LEVEL_FROM_BADGES + 3, FEAROW, MALE
 	end_trainer
 
 
@@ -3458,6 +3467,17 @@ HikerGroup:
 	tr_mon 57, STEELIX
 	end_trainer
 
+	def_trainer ELIJAH, "Elijah"
+	tr_mon LEVEL_FROM_BADGES + 1, GRAVELER
+	tr_mon LEVEL_FROM_BADGES + 2, GLIGAR
+	end_trainer
+
+	def_trainer MAYNARD, "Maynard"
+	tr_mon LEVEL_FROM_BADGES + 0, GRAVELER, MALE | ALOLAN_FORM
+	tr_mon LEVEL_FROM_BADGES + 1, DONPHAN, MALE
+	tr_mon LEVEL_FROM_BADGES + 2, SHUCKLE, MALE
+	end_trainer
+
 
 SECTION "GruntMGroup", ROMX
 GruntMGroup:
@@ -3472,7 +3492,6 @@ GruntMGroup:
 	tr_mon 10, ZUBAT
 	tr_mon 10, GASTLY
 	end_trainer
-
 
 	def_trainer 3, "Grunt"
 	tr_mon 33, RATICATE, MALE | ALOLAN_FORM
@@ -4216,7 +4235,6 @@ endc
 	tr_mon 63, RAICHU @ LEFTOVERS
 		tr_moves THUNDERBOLT, SURF, THUNDER_WAVE, SUBSTITUTE
 	end_trainer
-
 
 	def_trainer ALICE, "Alice"
 	tr_mon 60, "VuiVui", EEVEE @ EVIOLITE, FEMALE
@@ -6136,6 +6154,12 @@ BattleGirlGroup:
 	tr_mon 54, RAPIDASH
 	end_trainer
 
+	def_trainer MEI, "Mei"
+	tr_mon LEVEL_FROM_BADGES + 2, HITMONTOP, FEMALE
+	tr_mon LEVEL_FROM_BADGES + 2, MACHOKE, FEMALE
+	tr_mon LEVEL_FROM_BADGES + 3, SNEASEL, FEMALE | HISUIAN_FORM
+	end_trainer
+
 
 SECTION "DragonTamerGroup", ROMX
 DragonTamerGroup:
@@ -6515,7 +6539,6 @@ ArtistGroup:
 	tr_mon 55, MR__MIME
 	tr_mon 55, SUDOWOODO
 	end_trainer
-
 
 	def_trainer ALINA, "Alina"
 	tr_mon 57, SMEARGLE @ MIRACLE_SEED
@@ -7465,7 +7488,6 @@ GiovanniGroup:
 		tr_moves SHADOW_BALL, PSYSTRIKE, NASTY_PLOT, AURA_SPHERE
 	end_trainer
 
-
 	def_trainer GIOVANNI2, "Giovanni"
 	tr_mon 64, NIDOKING @ LIFE_ORB, MALE
 		tr_extra SHEER_FORCE, SPE_UP_ATK_DOWN
@@ -8011,7 +8033,6 @@ endc
 		tr_evs 252 HP, 4 Def, 252 Spe
 		tr_moves SWORDS_DANCE, EARTHQUAKE, FLY, ROOST
 	end_trainer
-
 
 INCLUDE "data/trainers/psychic_inver.asm"
 

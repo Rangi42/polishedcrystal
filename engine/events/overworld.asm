@@ -299,6 +299,7 @@ CutDownGrass:
 	ld a, [wCutWhirlpoolReplacementBlock] ; ReplacementTile
 	ld [hl], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call UpdateSprites
@@ -370,6 +371,7 @@ CutDownTree:
 	farcall CancelOWFadePalettes
 	farcall CopyBGGreenToOBPal7
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call UpdateSprites
@@ -672,8 +674,8 @@ CheckFlyAllowedOnMap:
 	jr z, .no_fly
 .not_orange
 	call GetMapEnvironment
-	call CheckOutdoorMap
-	ret z
+	cp LAST_OUTDOOR_ENV + 1
+	jr c, .yes_fly
 	ld a, [wMapGroup]
 	ld d, a
 	ld a, [wMapNumber]
@@ -684,17 +686,15 @@ CheckFlyAllowedOnMap:
 	and a
 	jr z, .no_fly
 	cp d
-	jr nz, .skip
 	ld a, [hli]
+	jr nz, .loop
 	cp e
-	ret z
-	jr .loop
-.skip
-	inc hl
-	jr .loop
+	jr nz, .loop
+.yes_fly
+	xor a ; z
+	ret
 .no_fly
-	inc a
-	and a ; nz
+	inc a ; nz
 	ret
 
 INCLUDE "data/maps/indoor_fly_maps.asm"
@@ -767,7 +767,7 @@ FlyFunction:
 	refreshmap
 	callasm .StopPalFading
 	callasm ClearSavedObjPals
-	callasm CopyBGGreenToOBPal7
+	callasm CopyLeafGreenToOBPal7
 	callasm LoadWeatherPal
 	special UpdateTimePals
 	callasm PrepareOverworldMove
@@ -779,7 +779,7 @@ FlyFunction:
 	callasm SkipUpdateMapSprites
 	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY
-	callasm CopyBGGreenToOBPal7
+	callasm CopyLeafGreenToOBPal7
 	callasm FlyToAnim
 	callasm .ClearWeatherFlyFlag
 	special WaitSFX
@@ -953,15 +953,8 @@ EscapeRopeOrDig:
 
 .CheckCanDig:
 	call GetMapEnvironment
-	cp CAVE
-	jr z, .incave
-	cp DUNGEON
-	jr z, .incave
-.fail
-	ld a, $2
-	ret
-
-.incave
+	cp FIRST_DIGGABLE_ENV
+	jr c, .fail
 	ld hl, wDigWarpNumber
 	ld a, [hli]
 	and a
@@ -973,6 +966,10 @@ EscapeRopeOrDig:
 	and a
 	jr z, .fail
 	ld a, $1
+	ret
+
+.fail
+	ld a, $2
 	ret
 
 .DoDig:
@@ -1541,7 +1538,8 @@ AutoRockSmashScript:
 	callasm RockItemEncounter
 	iffalsefwd .no_item
 	opentext
-	verbosegiveitem ITEM_FROM_MEM
+	; This random item is forfeited if the Bag is full.
+	verbosegiveitem_unsafe ITEM_FROM_MEM
 	closetext
 .no_item
 	end
@@ -1704,7 +1702,8 @@ Script_GotAnItem:
 	callasm PutTheRodAway
 	callasm CurItemToScriptVar
 	opentext
-	verbosegiveitem ITEM_FROM_MEM
+	; This random item is forfeited if the Bag is full.
+	verbosegiveitem_unsafe ITEM_FROM_MEM
 	endtext
 
 Script_GotABite:
@@ -1764,7 +1763,7 @@ Fishing_CheckFacingUp:
 
 Script_FishCastRod:
 	refreshmap
-	loadmem hBGMapMode, $0
+	loadmem hBGMapMode, NO_BG_MAP_TRANSFER
 	special UpdateTimePals
 	callasm LoadFishingGFX
 	loademote EMOTE_SHOCK
@@ -1778,6 +1777,7 @@ MovementData_CastRod:
 
 PutTheRodAway:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $1
 	ld [wPlayerAction], a
@@ -1912,13 +1912,11 @@ BikeFunction:
 
 .CheckEnvironment:
 	call GetMapEnvironment
-	call CheckOutdoorMap
-	jr z, .ok
+	cp FIRST_INDOOR_ENV
+	jr c, .ok
 	cp CAVE
 	jr z, .ok
 	cp GATE
-	jr z, .ok
-	cp ISOLATED
 	jr nz, .nope
 
 .ok

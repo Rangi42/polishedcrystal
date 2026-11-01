@@ -70,6 +70,7 @@ Pack:
 	ld [wOptions1], a
 .declined
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -199,6 +200,7 @@ UseKeyItem:
 	jr z, .NoPokemon
 	farcall DoKeyItemEffect
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -389,6 +391,7 @@ UseItem:
 	jr z, .NoPokemon
 	call DoItemEffect
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -528,6 +531,7 @@ GiveItem:
 	pop af
 	ld [wOptions1], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -577,6 +581,7 @@ BattlePack:
 
 PackJumptable_InitGFX:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call Pack_InitColors
@@ -698,6 +703,7 @@ ItemSubmenu:
 	and a
 	jr nz, .quit_run_script
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -770,6 +776,7 @@ KeyItemSubmenu:
 	and a
 	jr nz, .quit_run_script
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -811,6 +818,7 @@ InitPackBuffers:
 
 DepositSellInitPackBuffers:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld [wCurPocket], a ; ITEM_POCKET
 	ld [wPackUsedItem], a

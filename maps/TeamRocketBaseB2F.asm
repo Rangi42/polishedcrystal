@@ -6,7 +6,7 @@ TeamRocketBaseB2F_MapScriptHeader:
 	scene_const SCENE_TEAMROCKETBASEB2F_NOOP
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, TransmitterDoorCallback
+	callback MAPCALLBACK_TILES, TransmitterDoorAndTurbinesCallback
 
 	def_warp_events
 	warp_event  3, 14, TEAM_ROCKET_BASE_B1F, 2
@@ -80,13 +80,22 @@ TeamRocketBaseB2F_MapScriptHeader:
 	const TEAMROCKETBASEB2F_ROCKET2
 	const TEAMROCKETBASEB2F_ROCKET3
 
-TransmitterDoorCallback:
+TransmitterDoorAndTurbinesCallback:
 	checkevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
-	iftruefwd .Change
-	endcallback
-
-.Change:
+	iffalsefwd .ClosedTransmitterDoor
 	changeblock 14, 12, $0d
+.ClosedTransmitterDoor
+	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
+	iffalsefwd .TurbinesStillRunning
+	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
+	iffalsefwd .TurbinesStillRunning
+	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
+	iffalsefwd .TurbinesStillRunning
+	changeblock 12, 4, $94
+	changeblock 16, 4, $95
+	changeblock 12, 6, $96
+	changeblock 16, 6, $97
+.TurbinesStillRunning
 	endcallback
 
 RocketBaseBossFLeft:

@@ -7,6 +7,8 @@ DEF _compression_terminator = 0
 ; A terminator has stopped compressing text; see if we need to resume trying to compress.
 DEF _stopped_compressing_text = 0
 
+DEF _ctxt_context EQUS "b"
+
 ; Text commands
 
 MACRO text_start
@@ -153,9 +155,13 @@ MACRO page
 ENDM
 
 MACRO _dtxt
+	if DEF(HUFFMAN)
+		_print_huffman_text \#
+	endc
 	if _stopped_compressing_text && !_might_compress_text && !_compressing_text
 		DEF _might_compress_text = 1
 		DEF _compression_terminator = 0
+		REDEF _ctxt_context EQUS "b"
 	endc
 	DEF _stopped_compressing_text = 0
 	if !_might_compress_text && !_compressing_text
@@ -178,11 +184,34 @@ MACRO _dtxt
 	endc
 ENDM
 
+MACRO _print_huffman_text
+	rept _NARG
+		DEF _huffman_str EQUS \1
+		rept $7fff_ffff
+			if !STRLEN(#_huffman_str)
+				break
+			endc
+			DEF _huffman_sub EQUS STRCHAR(#_huffman_str, 0)
+			REDEF _huffman_str EQUS STRSLICE(#_huffman_str, STRLEN(#_huffman_sub))
+			println STRFMT("\"%#s\"", #_huffman_sub)
+			PURGE _huffman_sub
+		endr
+		PURGE _huffman_str
+		shift
+	endr
+ENDM
+
 MACRO _dchr
-	DEF _chr = CHARVAL(\1, 0)
-	if _might_compress_text && DEF(___huffman_data_{02X:_chr}) && DEF(___huffman_length_{02X:_chr})
+	DEF _chr = CHARVAL(\1)
+	DEF _huffman_defined = 0
+	if DEF(___huffman_data_{_ctxt_context}_{02X:_chr}) && DEF(___huffman_length_{_ctxt_context}_{02X:_chr})
+		DEF _huffman_defined = 1
+		DEF _huffman_data = ___huffman_data_{_ctxt_context}_{02X:_chr}
+		DEF _huffman_length = ___huffman_length_{_ctxt_context}_{02X:_chr}
+	endc
+	if _might_compress_text && _huffman_defined
 		; We might compress text, and this character has a Huffman code
-		if ___huffman_length_{02X:_chr} < 8
+		if _huffman_length < 8
 			; This character's Huffman code is smaller than a byte; start compressing
 			DEF _might_compress_text = 0
 			DEF _compressing_text = 1
@@ -194,7 +223,7 @@ MACRO _dchr
 			setcharmap compressing
 		endc
 	endc
-	if _compressing_text && (!DEF(___huffman_data_{02X:_chr}) || !DEF(___huffman_length_{02X:_chr}))
+	if _compressing_text && !_huffman_defined
 		; We're compressing text, but this character does not have a Huffman code; don't compress after all
 		if DEF(DEBUG)
 			warn "Uncompressible character in text: {#02X:_chr}"
@@ -216,15 +245,12 @@ MACRO _dchr
 		endc
 	else
 		; We're compressing text; count up the raw and compressed data
-		if DEF(HUFFMAN)
-			println STRFMT("\"%#s\"", \1)
-		endc
 		; Append the raw character
 		DEF _raw_byte_{d:_raw_bytes} = _chr
 		DEF _raw_bytes += 1
 		; Append the compressed bits
-		DEF _ctxt_bits = (_ctxt_bits << ___huffman_length_{02X:_chr}) | ___huffman_data_{02X:_chr}
-		DEF _ctxt_length += ___huffman_length_{02X:_chr}
+		DEF _ctxt_bits = (_ctxt_bits << _huffman_length) | _huffman_data
+		DEF _ctxt_length += _huffman_length
 		rept 4 ; the longest Huffman code can be 31 bits, so this will ensure _ctxt_bits < 8
 			if _ctxt_length >= 8
 				; Append the compressed byte
@@ -235,6 +261,14 @@ MACRO _dchr
 				DEF _ctxt_bits &= (1 << _ctxt_length) - 1
 			endc
 		endr
+		if _chr == ' ' || ('<LNBRK>' <= _chr && _chr <= '<PARA>')
+			REDEF _ctxt_context EQUS "b"
+		elif _chr == 'A' || _chr == 'E' || _chr == 'I' || _chr == 'O' || _chr == 'U' \
+			|| _chr == 'a' || _chr == 'e' || _chr == 'i' || _chr == 'o' || _chr == 'u'
+			REDEF _ctxt_context EQUS "v"
+		else
+			REDEF _ctxt_context EQUS "o"
+		endc
 		if _chr == '@' || _chr == '<DONE>' || _chr == '<PROMPT>'
 			; We've reached the end of the text
 			if _ctxt_length > 0

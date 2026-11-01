@@ -6,6 +6,12 @@ PokegearPhone_Init:
 	ld [wPokegearPhoneCursorPosition], a
 	ld [wPokegearPhoneSelectedPerson], a
 
+	ld hl, wPhoneList
+	ld b, wPhoneListEnd - wPhoneList
+	call CountSetBits
+	dec a
+	ld [wPokegearPhoneMaxContact], a
+
 	ld a, CGB_POKEGEAR_PALS
 	call GetCGBLayout
 	call SetDefaultBGPAndOBP
@@ -163,6 +169,12 @@ PokegearPhone_GetDPad:
 
 .down
 	ld hl, wPokegearPhoneCursorPosition
+	ld a, [wPokegearPhoneMaxContact]
+	ld b, a
+	ld a, [wPokegearPhoneScrollPosition]
+	add [hl]
+	cp b
+	ret nc
 	ld a, [hl]
 	cp $3
 	jr nc, .scroll_page_down
@@ -181,12 +193,14 @@ PokegearPhone_GetDPad:
 
 .done_joypad_same_page
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call PokegearPhone_UpdateCursor
 	jmp ApplyTilemapInVBlank
 
 .done_joypad_update_page
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call PokegearPhone_UpdateDisplayList
 	jmp ApplyTilemapInVBlank
@@ -249,6 +263,8 @@ PokegearPhone_UpdateCursor:
 PokegearPhone_DeletePhoneNumber:
 	call PokegearPhone_GetCellNumber
 	call DelCellNum
+	ld hl, wPokegearPhoneMaxContact
+	dec [hl]
 ; Check if scroll position should be decremented as a result
 	ld hl, wNumSetBits
 	dec [hl]
@@ -308,6 +324,7 @@ PokegearPhoneContactSubmenu:
 	ld de, .CallCancelStrings
 .got_menu_data
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	push hl
 	push de
@@ -375,9 +392,10 @@ PokegearPhoneContactSubmenu:
 
 .a_b
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call PokegearPhone_UpdateDisplayList
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	pop hl
 	ldh a, [hJoyPressed]
@@ -400,6 +418,7 @@ PokegearPhoneContactSubmenu:
 	jr c, .CancelDelete
 	call PokegearPhone_DeletePhoneNumber
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call PokegearPhone_UpdateDisplayList
 	ld hl, PokegearText_WhomToCall

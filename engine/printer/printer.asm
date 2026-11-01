@@ -75,6 +75,7 @@ _PrintDiploma:
 
 	call LoadTileMapToTempTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	farcall PlaceDiplomaPage2OnScreen
@@ -193,6 +194,7 @@ PlacePrinterStatusString:
 	ret z
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 5
 	lb bc, 10, 18
@@ -211,7 +213,7 @@ PlacePrinterStatusString:
 	hlcoord 2, 15
 	ld de, String_PressBToCancel
 	rst PlaceString
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	xor a
 	ld [wPrinterStatus], a

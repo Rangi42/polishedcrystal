@@ -836,31 +836,6 @@ BillsPC_Withdraw:
 	ld b, 0
 	jr MoveCurMonToBox
 
-BillsPC_Deposit:
-	ld a, [wCurBox]
-	inc a
-	ld b, a
-	; fallthrough
-MoveCurMonToBox:
-	push bc
-	call BillsPC_GetCursorSlot
-	ld d, b
-	ld e, c
-	pop bc
-	ld c, 0
-	call BillsPC_SwapStorage
-	ret nz ; failed
-
-	; Perform movement animation.
-	ld c, a
-	push de
-	ld d, b
-	ld e, c
-	pop bc
-	push bc
-	call BillsPC_PerformQuickAnim
-	pop bc
-	; fallthrough
 CheckPartyShift:
 ; Shifts entries around to ensure there are no blank party entries.
 ; This is a purely graphical effect, internal PC functions has already
@@ -904,6 +879,34 @@ CheckPartyShift:
 	ld a, [hl]
 	and a
 	ret
+
+BillsPC_Deposit:
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	; fallthrough
+MoveCurMonToBox:
+	push bc
+	call BillsPC_GetCursorSlot
+	ld d, b
+	ld e, c
+	pop bc
+	ld c, 0
+	call BillsPC_SwapStorage
+	ret nz ; failed
+
+	; Perform movement animation.
+	ld c, a
+	push de
+	ld d, b
+	ld e, c
+	pop bc
+	push bc
+	call BillsPC_PerformQuickAnim
+	pop bc
+	call CheckPartyShift
+	; Refresh the portrait and details for the slot left under the cursor.
+	; fallthrough
 
 GetCursorMon:
 ; Prints data about Pokémon at cursor if nothing is held (underline to force).
@@ -1668,6 +1671,7 @@ BillsPC_MoveIconData:
 	ld a, BANK(wOBPals1)
 	ldh [rWBK], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	; Copy palette data
@@ -1757,6 +1761,7 @@ BillsPC_MoveIconData:
 	xor a
 	ldh [rVBK], a
 	inc a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 	ret
 
@@ -2082,6 +2087,7 @@ BillsPC_FinishQuickAnim:
 	ld c, a
 	push bc
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	inc a
 	ldh [rVBK], a
@@ -2346,6 +2352,7 @@ BillsPC_MoveItem:
 	ld a, 1
 	ldh [rVBK], a
 	dec a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	; Load held item icon
@@ -2370,6 +2377,7 @@ BillsPC_MoveItem:
 	xor a
 	ldh [rVBK], a
 	inc a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 
 	call GetCursorMon
@@ -2498,6 +2506,7 @@ BillsPC_UpdateStorage_CheckMewtwo:
 .update
 	; Reload icon
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	inc a
 	ldh [rVBK], a
@@ -2523,6 +2532,7 @@ BillsPC_UpdateStorage_CheckMewtwo:
 	xor a
 	ldh [rVBK], a
 	inc a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 .done
 	jmp PopBCDEHL
@@ -2678,16 +2688,11 @@ BillsPC_EggsCantHoldItemsText:
 
 BillsPC_CanReleaseMon:
 ; Verifies if the given mon in box b, slot c, can be released. Sets wTempMon.
-; Returns the following in a:
-; 0: Can release
-; 1: Can't release last healthy mon
-; 2: Can't release Egg
-; 3: Can't release mon knowing HMs
-; 4: Empty slot
+; Returns a `RELEASE_*` enum in a.
 	; Is there even anything there?
 	call GetStorageBoxMon
 	ld a, RELEASE_EMPTY
-	jr z, .done
+	ret z
 
 	; If we're dealing with our party, ensure that this isn't our last mon.
 	ld a, b
@@ -2704,24 +2709,29 @@ BillsPC_CanReleaseMon:
 	pop de
 	pop hl
 	ld a, RELEASE_LAST_HEALTHY
-	jr c, .done
+	ret c
 	; fallthrough
 .not_last_healthy
-	; Can't release Eggs.
 	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	jr z, .not_egg
+	and 1 << MON_IS_EGG_F
+	jr nz, .is_egg
+	assert RELEASE_OK == 0
+	xor a
+	ret
 
+.is_egg
 	; Allow release of Bad Eggs.
 	ld a, [wTempMonNickname]
 	cp 'B' ; Assume "Bad Egg" (since the only alternative is "Egg").
 	ld a, RELEASE_EGG
-	ret nz
+	ret z
 
-.not_egg
-	xor a ; RELEASE_OK
-.done
-	and a
+	; Releasing Eggs is allowed after Togepi hatches, with different flavor text.
+	eventflagcheck EVENT_TOGEPI_HATCHED
+	ld a, RELEASE_EGG_BEFORE_TOGEPI
+	ret z
+	assert RELEASE_EGG_BEFORE_TOGEPI - 1 == RELEASE_EGG
+	dec a
 	ret
 
 RemoveStorageBoxMon_MaybeRespawn:
@@ -2752,6 +2762,13 @@ RemoveStorageBoxMon_MaybeRespawn:
 	jr nz, .loop
 
 	; This is ours. Check which, if any, beast we should respawn.
+	; All the beasts have 8-bit species, so a single extspecies check covers all.
+	assert HIGH(RAIKOU) == 0
+	assert HIGH(ENTEI) == 0
+	assert HIGH(SUICUNE) == 0
+	ld a, [wTempMonForm]
+	and EXTSPECIES_MASK
+	jr z, .done
 	ld a, [wTempMonSpecies]
 	cp RAIKOU
 	jr nz, .not_raikou
@@ -2799,7 +2816,8 @@ BillsPC_ReleaseAll:
 	jr z, .releases_done
 
 	call BillsPC_CanReleaseMon
-	jr nz, .failed_release
+	cp CANNOT_RELEASE
+	jr nc, .failed_release
 	inc d
 	push de
 	call RemoveStorageBoxMon_MaybeRespawn
@@ -2854,10 +2872,14 @@ BillsPC_ReleaseAll:
 	text "The Box is empty."
 	prompt
 
+; The only possible reason a Pokémon cannot be released is if it is an Egg *and*
+; you have not hatched the Mystery Egg (Togepi) yet. As such, if the .NothingReleased
+; or .TheRestWasnt messages are printed, it's because Eggs can't be released *yet*,
+; so they're accurate.
+
 .NothingReleased:
 	text "You can't release"
-	line "Eggs or #mon"
-	cont "with HM moves."
+	line "Eggs."
 	prompt
 
 .ReleasedXMon:
@@ -2867,25 +2889,26 @@ BillsPC_ReleaseAll:
 	prompt
 
 .TheRestWasnt:
-	text "The rest are Eggs"
-	line "or know HM moves."
+	text "The rest are Eggs."
 	prompt
 
 BillsPC_Release:
 	call BillsPC_GetCursorSlot
 	call BillsPC_CanReleaseMon
-	ld hl, BillsPC_LastPartyMon
-	dec a ; RELEASE_LAST_HEALTHY
-	jr z, .print
-	ld hl, .CantReleaseEgg
-	dec a ; RELEASE_EGG
-	jr z, .print
-	ld hl, .CantReleaseHMMons
-	dec a ; RELEASE_HM
-	jr z, .print
 
-	; We don't need to check for empty slot since we can't get to this menu in
-	; that case.
+	cp RELEASE_LAST_HEALTHY
+	ld hl, BillsPC_LastPartyMon
+	jmp z, BillsPC_PrintText
+
+	cp RELEASE_EGG_BEFORE_TOGEPI
+	ld hl, BillsPC_MysteriousEgg
+	jmp z, BillsPC_PrintText
+
+	; We don't need to check for RELEASE_EMPTY since we can't get to this menu
+	; in that case.
+
+	push af
+
 	call BillsPC_HideCursorAndMode
 	ld hl, .ReallyReleaseMon
 	call MenuTextbox
@@ -2901,14 +2924,22 @@ BillsPC_Release:
 
 	; Then release the mon.
 	call BillsPC_GetCursorSlot
+	pop af
 	push bc
+	push af
 	call RemoveStorageBoxMon_MaybeRespawn
 
 	; Print message and reload current cursor mon.
+	pop af
+	assert RELEASE_EGG == 1
+	dec a
+	ld hl, .ReleasedEgg
+	jr z, .got_text
 	ld hl, .WasReleasedOutside
+.got_text
 	call PrintText
 
-	call .done
+	call .finish
 	pop bc
 	lb de, -1, -1
 	call BillsPC_MoveIconData
@@ -2916,20 +2947,14 @@ BillsPC_Release:
 	jmp GetCursorMon
 
 .done
+	pop af
+.finish
 	call BillsPC_UpdateCursorLocation
 	jmp CloseWindow
 
-.print
-	jmp BillsPC_PrintText
-
-.CantReleaseEgg:
-	text "You can't release"
-	line "an Egg!"
-	prompt
-
-.CantReleaseHMMons:
-	text "You can't release"
-	line "<PK><MN> with HM moves!"
+.ReleasedEgg:
+	text "The Egg was sent"
+	line "to Prof.Elm."
 	prompt
 
 .ReallyReleaseMon:
@@ -3120,6 +3145,7 @@ BillsPC_ChangeBox:
 	ld b, 0
 	call SafeCopyTilemapAtOnce
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	inc a
 	ldh [rVBK], a
@@ -3127,6 +3153,7 @@ BillsPC_ChangeBox:
 	xor a
 	ldh [rVBK], a
 	inc a
+	assert TRANSFER_TILEMAP == 1
 	ldh [hBGMapMode], a
 	ret
 
@@ -3429,6 +3456,11 @@ BillsPC_LastPartyMon:
 	line "healthy #mon!"
 	prompt
 
+BillsPC_MysteriousEgg:
+	text "That's a mysterious"
+	line "#mon Egg!"
+	prompt
+
 BillsPC_MustSaveToContinue:
 	text "Save the game to"
 	line "do this?"
@@ -3617,7 +3649,7 @@ BillsPC_RestoreUI:
 	ld hl, rIE
 	set B_IE_STAT, [hl]
 
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -3666,7 +3698,7 @@ LOAD UNION "Misc 1300", WRAM0
 wLCDBillsPC1::
 	; Write boxmon palettes
 	ldh a, [rSTAT]
-	bit B_STAT_LYCF, a
+	bit B_STAT_LYC_EQ, a
 	jr z, .donepc
 	push hl
 	push bc

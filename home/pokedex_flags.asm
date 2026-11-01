@@ -25,9 +25,8 @@ Pokedex_SetWildLandmark_MaintainNoCarry:
 	jr nc, .no_carry
 	farjp Pokedex_SetWildLandmark
 .no_carry
-	push af
 	farcall Pokedex_SetWildLandmark
-	pop af
+	and a
 	ret
 
 GetWeekday::

@@ -174,14 +174,6 @@ Special_CardFlip:
 	ld hl, _CardFlip
 	; fallthrough
 
-;Special_UnusedMemoryGame:
-;	call Special_CheckCoins
-;	ret c
-;	ld a, BANK(_MemoryGame)
-;	ld hl, _MemoryGame
-;	call Special_StartGameCornerGame
-;	ret
-
 Special_StartGameCornerGame:
 	call FarQueueScript
 	call FadeToMenu_BackupSprites

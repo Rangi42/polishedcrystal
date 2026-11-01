@@ -26,7 +26,7 @@ MapGroupRoofGFX:
 	fardw VioletRoofGFX
 	fardw AzaleaRoofGFX
 	fardw OlivineRoofGFX
-	fardw GoldenrodRoofGFX
+	fardw ParkRoofGFX
 	fardw SinjohRoofGFX
 	assert_table_length NUM_ROOFS
 

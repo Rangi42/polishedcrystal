@@ -12,6 +12,7 @@ TMHMPocket:
 
 TMHM_PocketLoop:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call TMHM_DisplayPocketItems
 	ld a, 2
@@ -58,6 +59,7 @@ TMHM_JoypadLoop:
 	ld [hl], a
 	pop hl
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [w2DMenuFlags2]
 	bit 7, a
@@ -338,18 +340,29 @@ InnerCheckTMHM:
 
 PrintMoveDesc:
 	push hl
-	ld hl, MoveDescriptions
 	ld a, [wCurSpecies]
+	call GetMoveDesc
+	ld d, h
+	ld e, l
+	pop hl
+	rst PlaceString
+	ret
+
+; input: a = move ID
+PrintMoveDescInBattle:
+	call GetMoveDesc
+	jmp BattleTextbox
+
+GetMoveDesc:
 	dec a
 	ld c, a
 	ld b, 0
+	ld hl, MoveDescriptions
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	pop hl
-	rst PlaceString
+	ld h, [hl]
+	ld l, a
 	ret
 
 AskTeachTMHM:
@@ -357,8 +370,6 @@ AskTeachTMHM:
 	ld a, [hl]
 	push af
 	res NO_TEXT_SCROLL, [hl]
-	ld hl, wForgettingMove
-	set LEARNING_TM_F, [hl]
 	ld a, [wCurTMHM]
 	ld [wTempTMHM], a
 	farcall GetTMHMMove
@@ -368,12 +379,9 @@ AskTeachTMHM:
 	call CopyName1
 	ld hl, Text_BootedTM ; Booted up a TM
 	ld a, [wCurTMHM]
-	cp HM01 + 1 ; off by one error?
+	cp HM01 + 1
 	jr c, .TM
 
-	; allow full PP restore for HMs
-	ld hl, wForgettingMove
-	res LEARNING_TM_F, [hl]
 	ld hl, Text_BootedHM ; Booted up an HM
 .TM:
 	call PrintText
@@ -386,8 +394,6 @@ AskTeachTMHM:
 	pop bc
 	ld a, b
 	ld [wOptions1], a
-	ld hl, wForgettingMove
-	res LEARNING_TM_F, [hl]
 	ret
 
 ChooseMonToLearnTMHM:
@@ -471,7 +477,12 @@ TeachTMHM:
 	call KnowsMove
 	jr c, .nope
 
+; Keep the TM flag set while learning either a TM or HM.
+	ld hl, wForgettingMove
+	set LEARNING_TM_F, [hl]
 	farcall LearnMove
+	ld hl, wForgettingMove
+	res LEARNING_TM_F, [hl]
 	ld a, b
 	and a
 	jr z, .nope

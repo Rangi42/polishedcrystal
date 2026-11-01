@@ -325,8 +325,7 @@ SummaryScreen_MoveInfoJoypad:
 	call SummaryScreen_GreenPage.PlaceItemText
 	call SummaryScreen_GreenPage.PlaceAInfo
 	call SummaryScreen_UpdateGFX
-	inc sp
-	inc sp
+	add sp, 2 ; exit SummaryScreen_MoveInfoLoop, return to SummaryScreenLoop
 	ret
 .d_up
 	dec c

@@ -104,7 +104,7 @@ MACRO object_event
 	db \2 + 4 ; y
 	db \1 + 4 ; x
 	db \4 ; movement function
-	if \3 == SPRITE_MON_ICON
+	if \3 == SPRITE_MON_ICON || \3 == SPRITE_AQUARIUM_MON
 		dn \5, LOW(\6) ; mon index
 	else
 		dn \5, \6 ; radius: y, x
@@ -114,7 +114,7 @@ MACRO object_event
 	db \9 ; type
 	if \9 == OBJECTTYPE_COMMAND
 		db \<10>_command ; command id
-	elif \3 == SPRITE_MON_ICON
+	elif \3 == SPRITE_MON_ICON || \3 == SPRITE_AQUARIUM_MON
 		db (HIGH(\6) << MON_EXTSPECIES_F) | \<10> ; extspecies | form
 	else
 		db \<10> ; sight_range
@@ -190,33 +190,55 @@ ENDM
 
 
 MACRO trainer
-	; flag, group, id, seen text, win text, lost text, after script
-	dw \3
-	db \1, \2
-	dw \4, \5, \6, \7
+	dw \3 ; event flag
+	db \1 ; trainer class
+	db \2 ; trainer id
+	dw \4 ; seen text
+	dw \5 ; win text
+	dw \6 ; loss text
+	dw \7 ; after script
 	if _NARG == 8
-		db \8
+		db \8 ; trainer palette
 	else
 		db 0
 	endc
 ENDM
 
 MACRO generictrainer
-	; flag, group, id, seen text, win text
-	dw \3
-	db \1, \2
-	dw \4, \5
+	dw \3 ; event flag
+	db \1 ; trainer class
+	db \2 ; trainer id
+	dw \4 ; seen text
+	dw \5 ; win text
 ENDM
 
 
 MACRO elevfloor
-	db \1, \2
-	map_id \3
+	db \1 ; destination floor
+	db \2 ; destination warp id
+	map_id \3 ; destination map
 ENDM
 
 MACRO stonetable
-	db \1, \2
-	dw \3
+	db \1 ; warp id
+	db \2 ; object event id
+	dw \3 ; script pointer
+ENDM
+
+MACRO paletteswap
+	db \1, \2 ; X range
+	db \3, \4 ; Y range
+	db \5 ; palette ID
+	dw \6 ; out-of-range palette list
+	dw \7 ; in-range palette list
+	assert BANK(\6) == BANK(SwapColorPalette) || BANK(\6) == 0, \
+		"\6 is not accessible in the color ROMX bank!"
+	assert BANK(\7) == BANK(SwapColorPalette) || BANK(\6) == 0, \
+		"\7 is not accessible in the color ROMX bank!"
+	; wPaletteSwapStates and wPaletteSwapInits use one bit per entry,
+	; so max 8 paletteswaps for the 8 bits.
+	assert _NUM_PALETTE_SWAPS < 8, "A palette swap list may have at most 8 entries"
+	redef _NUM_PALETTE_SWAPS += 1
 ENDM
 
 ; Connections go in order: north, south, west, east

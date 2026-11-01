@@ -4,32 +4,33 @@ Route45_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  4,  5, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
-	warp_event 16, 22, HIDDEN_CAVE_GROTTO, 1
+	warp_event  7,  3, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
+	warp_event 16, 26, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 17,  5, BGEVENT_JUMPTEXT, Route45SignText
-	bg_event 17, 78, BGEVENT_ITEM + PP_UP, EVENT_ROUTE_45_HIDDEN_PP_UP
-	bg_event 16, 21, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_45
+	bg_event 17,  3, BGEVENT_JUMPTEXT, Route45SignText
+	bg_event  6,  4, BGEVENT_JUMPTEXT, Route45DarkCaveSignText
+	bg_event 17, 82, BGEVENT_ITEM + PP_UP, EVENT_ROUTE_45_HIDDEN_PP_UP
+	bg_event 16, 25, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_45
 
 	def_object_events
-	object_event 19, 75, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45Dragon_tamerScript, -1
-	object_event  5, 59, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBattleGirlNozomi, -1
-	object_event 12, 18, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerHikerErik, -1
-	object_event 19, 65, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerHikerMichael, -1
-	object_event  7, 28, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerHikerParry, -1
-	object_event 13, 65, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerHikerTimothy, -1
-	object_event 16, 50, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerBlackbeltKenji, -1
-	object_event 21, 18, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermRyan, -1
-	object_event  6, 33, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfKelly, -1
-	fruittree_event 20, 80, FRUITTREE_ROUTE_45, LEPPA_BERRY, PAL_NPC_RED
-	itemball_event  8, 51, NUGGET, 1, EVENT_ROUTE_45_NUGGET
-	itemball_event  5, 66, REVIVE, 1, EVENT_ROUTE_45_REVIVE
-	itemball_event  7, 20, ELIXIR, 1, EVENT_ROUTE_45_ELIXIR
-	itemball_event 15, 32, MAX_POTION, 1, EVENT_ROUTE_45_MAX_POTION
-	object_event  4, 70, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCamperQuentin, -1
+	object_event 19, 79, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45Dragon_tamerScript, -1
+	object_event  5, 63, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBattleGirlNozomi, -1
+	object_event 12, 20, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerHikerErik, -1
+	object_event 19, 69, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerHikerMichael, -1
+	object_event  7, 32, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerHikerParry, -1
+	object_event 13, 69, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerHikerTimothy, -1
+	object_event 16, 54, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerBlackbeltKenji, -1
+	object_event 21, 22, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermRyan, -1
+	object_event  6, 37, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfKelly, -1
+	fruittree_event 20, 84, FRUITTREE_ROUTE_45, LEPPA_BERRY, PAL_NPC_RED
+	itemball_event  8, 55, NUGGET, 1, EVENT_ROUTE_45_NUGGET
+	itemball_event  5, 70, REVIVE, 1, EVENT_ROUTE_45_REVIVE
+	itemball_event  7, 24, ELIXIR, 1, EVENT_ROUTE_45_ELIXIR
+	itemball_event 15, 36, MAX_POTION, 1, EVENT_ROUTE_45_MAX_POTION
+	object_event  4, 74, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCamperQuentin, -1
 
 	object_const_def
 	const ROUTE45_DRAGON_TAMER
@@ -75,8 +76,7 @@ Route45Dragon_tamerScript:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem FOCUS_SASH
-	iffalse_endtext
+	verbosegiveitem FOCUS_SASH, iffalse_endtext
 	setevent EVENT_GOT_FOCUS_SASH_FROM_ROUTE_45_LEADER
 	jumpthisopenedtext
 
@@ -191,8 +191,7 @@ BlackbeltKenji1Script:
 	checkevent EVENT_KENJI_ON_BREAK
 	iffalsefwd Route45NumberAcceptedM
 	scall Route45GiftM
-	verbosegiveitem PP_UP
-	iffalsefwd .NoRoom
+	verbosegiveitem PP_UP, iffalsefwd .NoRoom
 	clearevent EVENT_KENJI_ON_BREAK
 	special Special_SampleKenjiBreakCountdown
 	sjumpfwd Route45NumberAcceptedM
@@ -345,8 +344,7 @@ HikerParry1Script:
 	checkevent EVENT_GOT_IRON_FROM_PARRY
 	iftruefwd .GotIron
 	scall Route45RematchGiftM
-	verbosegiveitem IRON
-	iffalse HikerParryHasIron
+	verbosegiveitem IRON, iffalse HikerParryHasIron
 	setevent EVENT_GOT_IRON_FROM_PARRY
 	sjump Route45NumberAcceptedM
 
@@ -357,8 +355,7 @@ HikerParry1Script:
 	opentext
 	writetext HikerParryGivesIronText
 	waitbutton
-	verbosegiveitem IRON
-	iffalse HikerParryHasIron
+	verbosegiveitem IRON, iffalse HikerParryHasIron
 	clearevent EVENT_PARRY_IRON
 	setevent EVENT_GOT_IRON_FROM_PARRY
 	sjump Route45NumberAcceptedM
@@ -514,8 +511,6 @@ BlackbeltKenjiAfterBattleText:
 	cont "solitude."
 	done
 
-
-
 CooltrainermRyanSeenText:
 	text "What are your"
 	line "thoughts on rais-"
@@ -557,4 +552,8 @@ CamperQuentinBeatenText:
 Route45SignText:
 	text "Route 45"
 	line "Mountain Rd. Ahead"
+	done
+
+Route45DarkCaveSignText:
+	text "Dark Cave"
 	done

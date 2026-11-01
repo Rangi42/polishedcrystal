@@ -57,8 +57,7 @@ OlivineCafeLyraScript:
 	opentext
 	writetext OlivineCafeLyraText1
 	promptbutton
-	verbosegiveitem AMULET_COIN
-	iffalse_endtext
+	verbosegiveitem AMULET_COIN, iffalse_endtext
 	writetext OlivineCafeLyraText2
 	waitbutton
 	closetext

@@ -63,28 +63,50 @@ TilesetJohtoCoastAnim::
 	tileframe DoneTileAnimation
 
 TilesetKantoAnim::
-TilesetKantoUrbanAnim::
 	tileframe AnimateKantoWaterTile,          $0:14
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
-	tileframe AnimateFountainTile,            $1:51
+	tileframe AnimateKantoBuoyTiles,          $0:6c
 	tileframe DoNothing
-	tileframe AnimateGameCornerTiles,         $1:64
+	tileframe DoNothing
+	tileframe DoNothing
 	tileframe AnimateKantoFlowerTile,         $0:03
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
-	tileframe AnimateWaterfallTiles,          $0:6b
+	tileframe DoNothing
+	tileframe DoNothing
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
 TilesetKantoNorthAnim::
-TilesetIndigoPlateauAnim::
 	tileframe AnimateKantoWaterTile,          $0:14
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
+	tileframe AnimateKantoBuoyTiles,          $0:6c
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe AnimateKantoFlowerTile,         $0:03
-	tileframe ScrollFourTilesUpDownLeftRight, $0:10
-	tileframe AnimateWaterfallTiles,          $0:6b
+	tileframe DoNothing
+	tileframe AnimateWaterfallTiles,          $1:0c
+	tileframe StandingTileFrame8
+	tileframe DoneTileAnimation
+
+TilesetKantoUrbanAnim::
+	tileframe AnimateKantoWaterTile,          $0:14
+	tileframe AnimateKantoBuoyTiles,          $0:6c
+	tileframe AnimateFountainTile,            $1:1a
+	tileframe DoNothing
+	tileframe AnimateGameCornerTiles,         $1:16
+	tileframe AnimateKantoFlowerTile,         $0:03
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe StandingTileFrame8
+	tileframe DoneTileAnimation
+
+TilesetIndigoPlateauAnim::
+	tileframe AnimateKantoWaterTile,          $0:14
+	tileframe AnimateKantoBuoyTiles,          $0:6c
+	tileframe ScrollFourTilesUpDownLeftRight, $1:49
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe AnimateKantoFlowerTile,         $0:03
+	tileframe DoNothing
+	tileframe ScrollFourTilesUpDownLeftRight, $1:49
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
@@ -121,6 +143,18 @@ TilesetGymAnim::
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
+TilesetMuseumAnim::
+	tileframe AnimateWaterBubbleTiles,        $1:81
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe StandingTileFrame8
+	tileframe DoneTileAnimation
+
 TilesetTowerAnim::
 	tileframe AnimateTowerPillarTiles1,       $1:20
 	tileframe AnimateTowerPillarTiles2,       $1:24
@@ -150,6 +184,7 @@ TilesetUndergroundAnim::
 
 TilesetCaveAnim::
 TilesetQuietCaveAnim::
+TilesetVolcanoAnim::
 	tileframe FlickeringCaveEntrancePalette
 	tileframe AnimateCaveWaterTile,           $0:25
 	tileframe FlickeringCaveEntrancePalette
@@ -211,7 +246,7 @@ TilesetForestAnim::
 	tileframe DoNothing
 	tileframe DoNothing
 	tileframe AnimateFlowerTile,              $0:03
-	tileframe DoNothing
+	tileframe AnimateKantoFlowerTile,         $0:04
 	tileframe AnimateWaterfallTiles,          $0:42
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
@@ -323,6 +358,20 @@ TilesetHideoutAnim::
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 
+TilesetPokemonMansionAnim::
+	tileframe AnimateTurbineTiles,            $0:64
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe AnimateTurbineTiles,            $0:64
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe AnimateTurbineTiles,            $0:64
+	tileframe DoNothing
+	tileframe DoNothing
+	tileframe AnimateTurbineTiles,            $0:64
+	tileframe StandingTileFrame8
+	tileframe DoneTileAnimation
+
 TilesetJohtoHouseAnim::
 TilesetKantoHouseAnim::
 TilesetPokeCenterAnim::
@@ -336,9 +385,7 @@ TilesetLighthouseAnim::
 TilesetBattleTowerInsideAnim::
 TilesetRuinsOfAlphAnim::
 TilesetRadioTowerAnim::
-TilesetPokemonMansionAnim::
 TilesetDecorAnim::
-TilesetMuseumAnim::
 TilesetHotelAnim::
 TilesetBattleFactoryAnim::
 TilesetHiddenGrottoAnim::

@@ -264,7 +264,7 @@ IntimidateAbility:
 	call SwitchTurn
 	call EndAbility
 	farcall CheckMirrorHerb
-	farjp CheckStatHerbsAfterIntimidate
+	farjp CheckStatHerbsAfterAbility
 
 DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
@@ -789,7 +789,7 @@ EffectSporeAbility:
 	call GetBattleVarAddr
 	ld a, [hl]
 	and a
-	ret z
+	ret nz
 	push hl
 	ld hl, CanSleepTarget
 	ld c, SLP_MASK
@@ -1108,6 +1108,8 @@ StatUpAbility:
 	cp MOTOR_DRIVE
 	jr z, .print_immunity
 	cp SAP_SIPPER
+	jr z, .print_immunity
+	cp WIND_RIDER
 	jr nz, .done
 .print_immunity
 	call BeginAndShowUserAbility
@@ -1627,7 +1629,8 @@ MoodyAbility:
 	farcall ForceLowerStat
 .lower_done
 	call EndAbility
-	farjp CheckMirrorHerb
+	farcall CheckMirrorHerb
+	farjp CheckStatHerbsAfterAbility
 
 BadDreamsAbility:
 ; Inflict 1/8th of Max HP damage to sleeping foes.

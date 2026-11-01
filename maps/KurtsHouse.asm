@@ -202,8 +202,7 @@ endr
 	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
-	verbosegiveitemvar LEVEL_BALL, VAR_KURT_APRICORNS
-	iffalse_endtext
+	verbosegiveitemvar LEVEL_BALL, VAR_KURT_APRICORNS, iffalse_endtext
 	clearevent EVENT_GAVE_KURT_RED_APRICORN
 	sjump .ThatTurnedOutGreat
 
@@ -212,8 +211,7 @@ endr
 	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
-	verbosegiveitemvar LURE_BALL, VAR_KURT_APRICORNS
-	iffalse_endtext
+	verbosegiveitemvar LURE_BALL, VAR_KURT_APRICORNS, iffalse_endtext
 	clearevent EVENT_GAVE_KURT_BLU_APRICORN
 	sjump .ThatTurnedOutGreat
 
@@ -222,8 +220,7 @@ endr
 	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
-	verbosegiveitemvar MOON_BALL, VAR_KURT_APRICORNS
-	iffalse_endtext
+	verbosegiveitemvar MOON_BALL, VAR_KURT_APRICORNS, iffalse_endtext
 	clearevent EVENT_GAVE_KURT_YLW_APRICORN
 	sjump .ThatTurnedOutGreat
 
@@ -232,8 +229,7 @@ endr
 	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
-	verbosegiveitemvar FRIEND_BALL, VAR_KURT_APRICORNS
-	iffalse_endtext
+	verbosegiveitemvar FRIEND_BALL, VAR_KURT_APRICORNS, iffalse_endtext
 	clearevent EVENT_GAVE_KURT_GRN_APRICORN
 	sjump .ThatTurnedOutGreat
 
@@ -242,8 +238,7 @@ endr
 	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
-	verbosegiveitemvar FAST_BALL, VAR_KURT_APRICORNS
-	iffalse_endtext
+	verbosegiveitemvar FAST_BALL, VAR_KURT_APRICORNS, iffalse_endtext
 	clearevent EVENT_GAVE_KURT_WHT_APRICORN
 	sjump .ThatTurnedOutGreat
 
@@ -252,8 +247,7 @@ endr
 	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
-	verbosegiveitemvar HEAVY_BALL, VAR_KURT_APRICORNS
-	iffalse_endtext
+	verbosegiveitemvar HEAVY_BALL, VAR_KURT_APRICORNS, iffalse_endtext
 	clearevent EVENT_GAVE_KURT_BLK_APRICORN
 	sjump .ThatTurnedOutGreat
 
@@ -262,8 +256,7 @@ endr
 	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
-	verbosegiveitemvar LOVE_BALL, VAR_KURT_APRICORNS
-	iffalse_endtext
+	verbosegiveitemvar LOVE_BALL, VAR_KURT_APRICORNS, iffalse_endtext
 	clearevent EVENT_GAVE_KURT_PNK_APRICORN
 	sjump .ThatTurnedOutGreat
 

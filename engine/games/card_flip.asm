@@ -122,9 +122,10 @@ _CardFlip:
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call CardFlip_PrintCoinBalance
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call WaitSFX
 	jr .Increment
@@ -134,6 +135,7 @@ _CardFlip:
 	text_farend _CardFlipNotEnoughCoinsText
 .ChooseACard:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	lb bc, 12, 9
@@ -144,13 +146,13 @@ _CardFlip:
 	ld a, [wCardFlipNumCardsPlayed]
 	rst AddNTimes
 	ld [hl], CARDFLIP_LIGHT_ON
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld c, 20
 	call DelayFrames
 	hlcoord 2, 0
 	call PlaceCardFaceDown
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld c, 20
 	call DelayFrames
@@ -269,7 +271,7 @@ _CardFlip:
 	cp 12
 	jr c, .KeepTheCurrentDeck
 	call CardFlip_InitTilemap
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call CardFlip_ShuffleDeck
 	ld hl, .CardsShuffledText
@@ -331,6 +333,7 @@ GetCoordsOfChosenCard:
 
 PlaceCardFaceDown:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld de, .FaceDownCardTilemap
 	lb bc, 6, 5
@@ -346,6 +349,7 @@ PlaceCardFaceDown:
 
 CardFlip_DisplayCardFaceUp:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	push hl
 	push hl
@@ -443,6 +447,7 @@ CardFlip_PrintCoinBalance:
 
 CardFlip_InitTilemap:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
@@ -500,6 +505,7 @@ CardFlip_CopyOAM:
 
 CardFlip_BlankDiscardedCardSlot:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wCardFlipFaceUpCard]
 	ld e, a

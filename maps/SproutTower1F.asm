@@ -130,8 +130,7 @@ KimonoGirlMakoScript:
 	opentext
 	writetext .AfterText
 	promptbutton
-	verbosegiveitem RARE_CANDY
-	iffalse_endtext
+	verbosegiveitem RARE_CANDY, iffalse_endtext
 	setevent EVENT_GOT_RARE_CANDY_FROM_KIMONO_GIRL_MAKO
 	jumpthisopenedtext
 

@@ -29,8 +29,21 @@ DeleteMapObject::
 	farjp CheckForUsedObjPals
 
 HandleObjectStep:
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	ld a, [hl]
+	push af
 	call _CheckObjectStillVisible
+	pop de ; d = previous OBJECT_FLAGS2; preserve the deletion carry flag
 	ret c
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	ld a, [hl]
+	xor d
+	and OFF_SCREEN
+	jr z, .visibility_unchanged
+	farcall CheckForUsedObjPals
+.visibility_unchanged
 	call _HandleStepType
 
 	ld hl, OBJECT_FLAGS1
@@ -445,7 +458,7 @@ UpdatePlayerStep:
 	add hl, bc
 	ld a, [hl]
 	and %00000011
-	ld [wPlayerStepDirection], a
+	ldh [hPlayerStepDirection], a
 	call AddStepVector
 ApplyPlayerStep:
 	ld a, [wPlayerStepVectorX]
@@ -2495,7 +2508,7 @@ HandleNPCStep::
 	ld [wPlayerStepFlags], a
 	ret nz
 	dec a ; STANDING
-	ld [wPlayerStepDirection], a
+	ldh [hPlayerStepDirection], a
 	ret
 
 RefreshPlayerSprite:
@@ -2934,9 +2947,9 @@ InitSprites:
 	add hl, bc
 	add [hl]
 	add OAM_X_OFS
-	ld e, a
+	ld h, a
 	ld a, [wPlayerBGMapOffsetX]
-	add e
+	add h
 	ldh [hCurSpriteXPixel], a
 	ld hl, OBJECT_SPRITE_Y
 	add hl, bc
@@ -2944,16 +2957,32 @@ InitSprites:
 	ld hl, OBJECT_SPRITE_Y_OFFSET
 	add hl, bc
 	add [hl]
-	add OAM_Y_OFS - 4
+	; if normal (not BG_ALIGNED and not BG_OFFSET):
+	;     add 12 (OAM_Y_OFS - 4) to be 4px offset above the cell grid
+	; if BG_ALIGNED (and not BG_OFFSET):
+	;     add 16 (OAM_Y_OFS) to be aligned with the cell grid
+	; if BG_OFFSET (and not BG_ALIGNED):
+	;     add 8 (OAM_Y_OFS - 8) to be 8px offset above the cell grid
+	; if both BG_ALIGNED and BG_OFFSET:
+	;     add 20 (OAM_Y_OFS + 4) to be 4px offset below the cell grid
+	add 8
 	ld hl, OBJECT_PALETTE
 	add hl, bc
 	bit BG_ALIGNED_F, [hl]
 	jr z, .not_bg_aligned
 	add 4
 .not_bg_aligned
-	ld e, a
+	bit BG_OFFSET_F, e
+	jr z, .not_bg_offset
+	bit BG_ALIGNED_F, [hl]
+	jr z, .got_y_offset
+	add 4
+.not_bg_offset
+	add 4
+.got_y_offset
+	ld h, a
 	ld a, [wPlayerBGMapOffsetY]
-	add e
+	add h
 	ldh [hCurSpriteYPixel], a
 	ld hl, OBJECT_FACING
 	add hl, bc

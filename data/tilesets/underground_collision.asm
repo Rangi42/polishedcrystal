@@ -27,7 +27,7 @@
 	tilecoll ELEVATOR_BUTTON, WALL, FLOOR, FLOOR ; 1a
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 1b
 	tilecoll WALL, WALL, WALL, WALL ; 1c
-	tilecoll WALL, WALL, FLOOR, FLOOR ; 1d
+	tilecoll WALL, WALL, LANTERN_GLOW, LANTERN_GLOW ; 1d
 	tilecoll WALL, WALL, WALL, FLOOR ; 1e
 	tilecoll WALL, WALL, WALL, FLOOR ; 1f
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 20
@@ -46,8 +46,8 @@
 	tilecoll FLOOR, WALL, WALL, WALL ; 2d
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 2e
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 2f
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 30
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 31
+	tilecoll FLOOR, LANTERN_GLOW, FLOOR, FLOOR ; 30
+	tilecoll LANTERN_GLOW, FLOOR, FLOOR, FLOOR ; 31
 	tilecoll LADDER, FLOOR, FLOOR, FLOOR ; 32
 	tilecoll WALL, WALL, WALL, WALL ; 33
 	tilecoll WALL, WALL, WALL, WALL ; 34
@@ -99,7 +99,7 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 62
 	tilecoll FLOOR, WALL, FLOOR, WALL ; 63
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; 64
-	tilecoll WALL, WALL, FLOOR, FLOOR ; 65
+	tilecoll WALL, WALL, LANTERN_GLOW, LANTERN_GLOW ; 65
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 66
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 67
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 68

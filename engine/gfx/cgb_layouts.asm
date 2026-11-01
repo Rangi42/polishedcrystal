@@ -29,7 +29,9 @@ LoadCGBLayout::
 	dw _CGB_BillsPC
 	dw _CGB_UnownPuzzle
 	dw _CGB_GameFreakLogo
+	dw _CGB_TradePic
 	dw _CGB_TradeTube
+	dw _CGB_TradeBG
 	dw _CGB_IntroPals
 	dw _CGB_IntroGenderPals
 	dw _CGB_PlayerOrMonFrontpicPals
@@ -499,6 +501,10 @@ _CGB_NamingScreen:
 	call LoadOneColor
 	ld hl, wBGPals1 palette 1 color 0
 	; de == wBGPals1 palette 2 color 0
+	call LoadOneColor
+
+	ld hl, wBGPals1 palette 0 color 3
+	ld de, wBGPals1 palette 2 color 3
 	call LoadOneColor
 
 	ld hl, wBGPals1 palette 0
@@ -1246,26 +1252,78 @@ INCLUDE "gfx/splash/logo.pal"
 .GameFreakDittoPalette:
 INCLUDE "gfx/splash/ditto.pal"
 
-_CGB_TradeTube:
+_CGB_TradePic:
 	ld de, wBGPals1
-	ld hl, .TradeTubeBGPalette
-	call LoadOnePalette
+	ld a, [wCurPartySpecies]
+	ld bc, wTempMonPersonality
+	call GetPlayerOrMonPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	call VaryBGPal0ByTempMonDVs
 
-	ld hl, .TradeTubeOBPalette
 	ld de, wOBPals1
-	call LoadOnePalette
+	call GetTradeBallPal
 
+	ld hl, TradeTubeOBPalette
 	ld de, wOBPals1 palette 7
-	ld hl, .TradeTubeBGPalette
 	call LoadOnePalette
 
-	jmp WipeAttrMap
+	ld de, wOBPals1 palette 6
+	ld hl, TradeTubeBGPalette
+	call LoadOnePalette
 
-.TradeTubeBGPalette:
+	call WipeAttrMap
+	call ApplyAttrMap
+	jmp ApplyPals
+
+_CGB_TradeTube:
+	ld de, wBGPals2
+	ld hl, TradeTubeBGPalette
+	call LoadOnePalette
+
+	ld de, wOBPals2
+	call GetTradeBallPal
+
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	jmp DelayFrame
+
+GetTradeBallPal:
+	ld a, [wTempMonCaughtBall]
+	add a
+	add a
+	add LOW(CaughtBallPals)
+	ld l, a
+	adc HIGH(CaughtBallPals)
+	sub l
+	ld h, a
+	jmp LoadPalette_White_Col1_Col2_Black
+
+TradeTubeBGPalette:
 INCLUDE "gfx/trade/trade_tube_bg.pal"
 
-.TradeTubeOBPalette:
+TradeTubeOBPalette:
 INCLUDE "gfx/trade/trade_tube_ob.pal"
+
+_CGB_TradeBG:
+	ld hl, .BGPalettes
+	ld de, wBGPals2 palette 0
+	ld c, 8 palettes
+	call LoadPalettes
+
+	ld hl, .BubblePalette
+	ld de, wOBPals2 palette 6
+	ld c, 2 palettes
+	call LoadPalettes
+
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+	jmp DelayFrame
+
+.BGPalettes:
+INCLUDE "gfx/trade/background.pal"
+
+.BubblePalette:
+INCLUDE "gfx/trade/bubble.pal"
 
 _CGB_IntroPals:
 	ld de, wBGPals1
@@ -1516,6 +1574,7 @@ SummaryScreen_ApplyHPPals:
 
 _CGB_FinishLayout:
 	call ApplyAttrMap
+_CGB_ForceUpdateLayout:
 	call ApplyPals
 	ld a, $1
 	ldh [hCGBPalUpdate], a

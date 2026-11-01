@@ -274,7 +274,7 @@ DEF MALE   EQU %00000000
 DEF FEMALE EQU %10000000
 DEF GENDERLESS EQU MALE ; for trainer party parsing
 
-; caught data
+; caught data (high bit 7 is unused, formerly OT gender)
 DEF CAUGHT_TIME_MASK   EQU %01100000
 DEF CAUGHT_BALL_MASK   EQU %00011111
 

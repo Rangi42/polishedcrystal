@@ -67,6 +67,8 @@ RGBASMFLAGS += -DANALOGUE_POCKET -DNO_RTC
 RGBFIXFLAGS = -Weverything -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3 -L $(POCKET_LOGO)
 endif
 ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
+# Context models require token output to remain in source order.
+.NOTPARALLEL:
 Q := @
 RGBASMFLAGS += -DHUFFMAN
 endif
@@ -264,10 +266,9 @@ gfx/title/suicune_unowns.tilemap: gfx/title/suicune_unowns.png
 
 gfx/town_map/town_map.2bpp: tools/gfx += --trim-whitespace
 
-gfx/trade/ball.2bpp: tools/gfx += --remove-whitespace
-gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
-gfx/trade/link_cable.2bpp: tools/gfx += --remove-duplicates
-gfx/trade/ball_poof_cable.2bpp: gfx/trade/ball.2bpp gfx/trade/poof.2bpp gfx/trade/cable.2bpp ; $Qcat $^ > $@
+gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip --remove-whitespace
+gfx/trade/link_cable.2bpp: tools/gfx += --remove-duplicates --remove-whitespace
+gfx/trade/poof_cable.2bpp: gfx/trade/poof.2bpp gfx/trade/cable.2bpp ; $Qcat $^ > $@
 gfx/trade/game_boy_cable.2bpp: gfx/trade/game_boy.2bpp gfx/trade/link_cable.2bpp ; $Qcat $^ > $@
 gfx/trade/trade_screen.2bpp: gfx/trade/border.2bpp gfx/trade/textbox.2bpp ; $Qcat $^ > $@
 

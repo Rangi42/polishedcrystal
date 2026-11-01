@@ -174,6 +174,7 @@ HandleMapTimeAndJoypad:
 HandleMapObjects:
 	farcall HandleNPCStep ; engine/map_objects.asm
 	farcall _HandlePlayerStep
+	farcall UpdateObjectGlowPals
 	ld hl, wPlayerStepFlags
 	bit PLAYERSTEP_STOP_F, [hl]
 	ret z
@@ -286,6 +287,8 @@ CheckTileEvent:
 	jr c, .warp_tile
 
 .connections_disabled
+	farcall HandlePaletteSwap
+
 	call CheckCoordEventsEnabled
 	jr z, .coord_events_disabled
 
@@ -350,8 +353,7 @@ RenderCoastSandTracks:
 	ld de, wFootprintQueue
 	ld bc, TILEMAP_WIDTH
 
-	; assume coast sand is tile [wCoastSandTile], initialized by LoadTilesetGFX;
-	; footprint tiles must be in the same VRAM bank
+	; assume the tileset's coast sand tile is in VRAM bank 1, like CoastSandTileGFX
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	jr z, .bicycle
@@ -362,24 +364,20 @@ RenderCoastSandTracks:
 	jr c, .vertical
 ; horizontal
 	add hl, bc
-	ld a, [wCoastSandTile]
-	add 3 ; upper horizontal footprint
+	ld a, COAST_SAND_TILE_FOOT_H1
 	call QueueVolatileTiles
 	inc hl
-	ld a, [wCoastSandTile]
-	add 4 ; lower horizontal footprint
+	ld a, COAST_SAND_TILE_FOOT_H2
 	call QueueVolatileTiles
 	jmp FinishVolatileTiles
 
 .vertical
 	inc hl
-	ld a, [wCoastSandTile]
-	inc a ; upper-right vertical footprint
+	ld a, COAST_SAND_TILE_FOOT_V1
 	call QueueVolatileTiles
 	add hl, bc
 	dec hl
-	ld a, [wCoastSandTile]
-	add 2 ; lower-left vertical footprint
+	ld a, COAST_SAND_TILE_FOOT_V2
 	call QueueVolatileTiles
 	jmp FinishVolatileTiles
 
@@ -390,22 +388,18 @@ RenderCoastSandTracks:
 	jr c, .vertical_bicycle
 ; horizontal
 	add hl, bc
-	ld a, [wCoastSandTile]
-	add 5 ; horizontal bicycle track
+	ld a, COAST_SAND_TILE_BIKE_H
 	call QueueVolatileTiles
 	inc hl
-	ld a, [wCoastSandTile]
-	add 5 ; horizontal bicycle track
+	ld a, COAST_SAND_TILE_BIKE_H
 	call QueueVolatileTiles
 	jmp FinishVolatileTiles
 
 .vertical_bicycle
-	ld a, [wCoastSandTile]
-	add 6 ; vertical bicycle track
+	ld a, COAST_SAND_TILE_BIKE_V
 	call QueueVolatileTiles
 	add hl, bc
-	ld a, [wCoastSandTile]
-	add 6 ; vertical bicycle track
+	ld a, COAST_SAND_TILE_BIKE_V
 	call QueueVolatileTiles
 	jmp FinishVolatileTiles
 
@@ -1315,10 +1309,8 @@ CanUseSweetHoney::
 	cp HI_NYBBLE_CURRENT
 	jr z, .no
 	ld a, [wEnvironment]
-	cp CAVE
-	jr z, .skip_grass_check
-	cp DUNGEON
-	jr z, .skip_grass_check
+	cp FIRST_DIGGABLE_ENV
+	jr nc, .skip_grass_check
 	farcall CheckGrassCollision
 	jr nc, .no
 .skip_grass_check
@@ -1482,8 +1474,6 @@ DoBikeStep::
 	; Queue the call.
 	ld a, SPECIALCALL_BIKESHOP
 	ld [wSpecialPhoneCallID], a
-	xor a
-	ld [wSpecialPhoneCallID + 1], a
 	ld hl, wStatusFlags2
 	res STATUSFLAGS2_BIKE_SHOP_CALL_F, [hl]
 	scf

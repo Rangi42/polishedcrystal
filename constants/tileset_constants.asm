@@ -41,18 +41,19 @@ DEF NO_ROOF_TILESETS EQU const_value
 	const TILESET_UNDERGROUND          ; 26
 	const TILESET_CAVE                 ; 27
 	const TILESET_QUIET_CAVE           ; 28
-	const TILESET_ICE_PATH             ; 29
-	const TILESET_TUNNEL               ; 2a
-	const TILESET_FOREST               ; 2b
-	const TILESET_PARK                 ; 2c
-	const TILESET_SAFARI_ZONE          ; 2d
-	const TILESET_RUINS_OF_ALPH        ; 2e
-	const TILESET_POKEMON_MANSION      ; 2f
-	const TILESET_BATTLE_FACTORY       ; 30
-	const TILESET_HIDDEN_GROTTO        ; 31
-	const TILESET_PEAKS                ; 32
-	const TILESET_HIDEOUT              ; 33
-	const TILESET_KANTO_GYM            ; 34
+	const TILESET_VOLCANO              ; 29
+	const TILESET_ICE_PATH             ; 2a
+	const TILESET_TUNNEL               ; 2b
+	const TILESET_FOREST               ; 2c
+	const TILESET_PARK                 ; 2d
+	const TILESET_SAFARI_ZONE          ; 2e
+	const TILESET_RUINS_OF_ALPH        ; 2f
+	const TILESET_POKEMON_MANSION      ; 30
+	const TILESET_BATTLE_FACTORY       ; 31
+	const TILESET_HIDDEN_GROTTO        ; 32
+	const TILESET_PEAKS                ; 33
+	const TILESET_HIDEOUT              ; 34
+	const TILESET_KANTO_GYM            ; 35
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size
@@ -61,16 +62,27 @@ DEF TILESET_LENGTH EQU 18
 ; MapGroupRoofs values (see data/maps/roofs.asm)
 ; MapGroupRoofGFX indexes (see engine/tilesets/mapgroup_roofs.asm)
 	const_def
-	const ROOF_NEW_BARK  ; 0
-	const ROOF_VIOLET    ; 1
-	const ROOF_AZALEA    ; 2
-	const ROOF_OLIVINE   ; 3
-	const ROOF_GOLDENROD ; 4
-	const ROOF_SINJOH    ; 5
+	const ROOF_NEW_BARK ; 0
+	const ROOF_VIOLET   ; 1
+	const ROOF_AZALEA   ; 2
+	const ROOF_OLIVINE  ; 3
+	const ROOF_PARK     ; 4
+	const ROOF_SINJOH   ; 5
 DEF NUM_ROOFS EQU const_value
 
 ; roof length (see gfx/tilesets/roofs)
 DEF ROOF_LENGTH EQU 9
+
+; coast sand tile IDs in vTiles4
+	const_def $f0
+	const COAST_SAND_TILE         ; $f0
+	const COAST_SAND_TILE_FOOT_V1 ; $f1
+	const COAST_SAND_TILE_FOOT_V2 ; $f2
+	const COAST_SAND_TILE_FOOT_H1 ; $f3
+	const COAST_SAND_TILE_FOOT_H2 ; $f4
+	const COAST_SAND_TILE_BIKE_H  ; $f5
+	const COAST_SAND_TILE_BIKE_V  ; $f6
+DEF NUM_COAST_SAND_TILES EQU const_value - COAST_SAND_TILE
 
 ; bg palette values
 ; TilesetBGPalette indexes (see gfx/tilesets/bg_tiles.pal)

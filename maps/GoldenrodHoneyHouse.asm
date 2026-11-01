@@ -16,21 +16,16 @@ GoldenrodHoneyHouse_MapScriptHeader:
 	pokemon_event  6,  3, BUTTERFREE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, GoldenrodHoneyHouseButterfreeText, -1
 
 GoldenrodHoneyHousePokefanFScript:
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue_jumptextfaceplayer .AfterText
 	checkevent EVENT_GOT_HONEY_FROM_GOLDENROD
 	iftruefwd .SellHoney
 	faceplayer
 	opentext
 	writetext .IntroText
 	promptbutton
-	verbosegiveitem SWEET_HONEY
-	iffalse_endtext
+	verbosegiveitem SWEET_HONEY, iffalse_endtext
 	setevent EVENT_GOT_HONEY_FROM_GOLDENROD
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	jumpthisopenedtext
 
-.AfterText:
 	text "My little brother"
 if DEF(FAITHFUL)
 	line "takes Honey and"
@@ -51,6 +46,10 @@ endc
 
 	para "same level as"
 	line "your own!"
+
+	para "If you like it,"
+	line "I'm happy to sell"
+	cont "you some more."
 	done
 
 .IntroText:
@@ -85,16 +84,14 @@ endc
 .Buy1:
 	checkmoney YOUR_MONEY, 1000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem SWEET_HONEY
-	iffalse_jumpopenedtext .BagFullText
+	giveitem SWEET_HONEY, iffalse_jumpopenedtext .BagFullText
 	takemoney YOUR_MONEY, 1000
 	sjumpfwd .Done
 
 .Buy10:
 	checkmoney YOUR_MONEY, 10000
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem SWEET_HONEY, 10
-	iffalse_jumpopenedtext .BagFullText
+	giveitems SWEET_HONEY, 10, iffalse_jumpopenedtext .BagFullText
 	takemoney YOUR_MONEY, 10000
 
 .Done:

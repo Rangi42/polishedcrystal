@@ -64,8 +64,7 @@ CeladonUniversityClassroom4RaymondScript:
 	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
 	promptbutton
-	verbosegiveitem CHOICE_BAND
-	iffalse_endtext
+	verbosegiveitem CHOICE_BAND, iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
 	jumpopenedtext .FinalText
 
@@ -205,8 +204,7 @@ CeladonUniversityClassroom4Rich_boyScript:
 	iftruefwd .GotItem
 	writetext .Text1
 	promptbutton
-	verbosegiveitem ABILITY_CAP
-	iffalse_endtext
+	verbosegiveitem ABILITY_CAP, iffalse_endtext
 	setevent EVENT_GOT_ABILITY_CAP_IN_UNIVERSITY
 .GotItem:
 	writetext .Text2
@@ -265,8 +263,7 @@ CeladonUniversityClassroom4Bookshelf1:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem X_SP_ATK
-	iffalse_endtext
+	verbosegiveitem X_SP_ATK, iffalse_endtext
 	setevent EVENT_GOT_X_SP_ATK_IN_UNIVERSITY
 	endtext
 

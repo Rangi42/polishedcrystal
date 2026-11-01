@@ -279,6 +279,7 @@ RunScriptCommand:
 	dw Script_nooryes                    ; dc
 	dw Script_digmod                     ; dd
 	dw Script_toggleevent                ; de
+	dw Script_usepaletteswap             ; df
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -535,11 +536,8 @@ Script_pokepic:
 	; While we actually have species+form stored right now if zero, we need to
 	; handle color variation. Thus, notify Pokepic that we want a partymon.
 	ld a, -1
+	call nz, GetScriptByte
 	ld [wCurForm], a
-	jr z, .pokepic
-	call GetScriptByte
-	ld [wCurForm], a
-.pokepic
 	farjp Pokepic
 
 GetCurPartyMonSpeciesIfZero:
@@ -1058,6 +1056,10 @@ Script_variablesprite:
 	add hl, de
 	call GetScriptByte
 	ld [hl], a
+	; Keep battle text intact until the overworld graphics are reloaded.
+	ld a, [wSpriteUpdatesEnabled]
+	and a
+	ret z
 	farjp ReloadSpriteIndex
 
 Script_appear:
@@ -2049,13 +2051,10 @@ Script_checkcellnum:
 Script_specialphonecall:
 	call GetScriptByte
 	ld [wSpecialPhoneCallID], a
-	xor a
-	ld [wSpecialPhoneCallID + 1], a
 	ret
 
 Script_checkphonecall:
 ; returns false if no special phone call is stored
-
 	ld a, [wSpecialPhoneCallID]
 	and a
 	jr z, .ok
@@ -2269,6 +2268,13 @@ Script_usestonetable:
 	ld [wStoneTableAddress+1], a
 	ret
 
+Script_usepaletteswap:
+	call GetScriptByte
+	ld [wPaletteSwapAddress], a
+	call GetScriptByte
+	ld [wPaletteSwapAddress+1], a
+	ret
+
 Script_changemapblocks:
 	call GetScriptByte
 	ld [wMapBlocksBank], a
@@ -2293,6 +2299,7 @@ Script_changeblock:
 
 Script_refreshmap::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call GetMovementPermissions
@@ -2517,6 +2524,11 @@ Script_tmhmnotify:
 	; The tm/hm icon overwrites nine font tiles, including
 	; the "▶" needed by the right cursor arrow.
 	farjp LoadFonts_NoOAMUpdate
+
+GetCurTMHMName:
+	ld a, [wCurTMHM]
+	ld [wNamedObjectIndex], a
+	jmp GetTMHMName
 
 Script_gettmhmname:
 	call GetScriptByte

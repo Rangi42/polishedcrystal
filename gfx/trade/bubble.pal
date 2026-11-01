@@ -1,0 +1,15 @@
+if !DEF(MONOCHROME)
+; mini mask
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+; bubble
+	RGB 31, 31, 31
+	RGB 19, 27, 29
+	RGB 00, 22, 29
+	RGB 09, 13, 30
+else
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+endc

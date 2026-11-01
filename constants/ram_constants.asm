@@ -532,6 +532,7 @@ DEF CAUGHT_BIRDS_MASK  EQU (1 << PLAYER_CAUGHT_ARTICUNO_F) | (1 << PLAYER_CAUGHT
 	const DISABLE_DYN_PAL_F              ; 3
 	const NO_DYN_PAL_APPLY_UNTIL_RESET_F ; 4
 	const MAP_CONNECTION_PAL_F           ; 5
+	const SKIP_MAP_CONNECTION_PAL_FADE_F ; 6
 DEF NO_DYN_PAL_APPLY EQU (1 << NO_DYN_PAL_APPLY_ONCE_F) | (1 << NO_DYN_PAL_APPLY_UNTIL_RESET_F)
 
 ; wMapSetupFlags
@@ -543,3 +544,13 @@ DEF NUM_SRAM_BANKS EQU 4
 
 ; rLCDC::
 DEF LCDC_DEFAULT EQU LCDC_ON | LCDC_WIN_9C00 | LCDC_WIN_ON | LCDC_BLOCK21 | LCDC_BG_9800 | LCDC_OBJ_8 | LCDC_OBJ_ON | LCDC_PRIO_ON
+
+; hBGMapMode::
+	const_def
+	const NO_BG_MAP_TRANSFER   ; 0
+	const TRANSFER_TILEMAP     ; 1: from wTilemap to 0:[hBGMapAddress]
+	const TRANSFER_ATTRMAP     ; 2: from wAttrmap to 1:[hBGMapAddress]
+	const TRANSFER_TILEMAP1    ; 3: from wTilemap to vBGMap1
+	const TRANSFER_ATTRMAP1    ; 4: from wAttrmap to vBGMap3
+	const TRANSFER_TILEMAP_OFS ; 5: like TRANSFER_TILEMAP, but starts on the [hBGMapHalf]th row
+	const TRANSFER_ATTRMAP_OFS ; 6: like TRANSFER_ATTRMAP, but starts on the [hBGMapHalf]th row

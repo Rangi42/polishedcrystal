@@ -473,7 +473,8 @@ wPlayerStepFlags::
 ; bit 4: In midair
 ; bits 0-3: unused
 	db
-wPlayerStepDirection:: db
+
+	ds 1 ; unused
 
 wSpinning:: db
 
@@ -508,13 +509,12 @@ wOptionsMenuDescriptionState:: db
 wOptionsMenuLastSelection:: db
 wOptionsMenuIsInitial:: db
 
-	ds 25 ; unused
+	ds 22 ; unused
 
-wOverworldMapAnchor:: dw
-wMetatileStandingY:: db
-wMetatileStandingX:: db
+wResurrectFossilScriptBank:: db
+wResurrectFossilScript:: dw
 
-	ds 1 ; unused
+	ds 5 ; unused
 
 wMapTileset:: db
 wEnvironment:: db
@@ -827,14 +827,11 @@ wBaseEVYield2:: db
 wBaseTMHM:: flag_array NUM_TM_HM_TUTOR
 wCurBaseDataEnd::
 
-	ds 1 ; unused
+	ds 4 ; unused
 
 wCurDamage:: dw
 
-wMornEncounterRate:: db
-wDayEncounterRate:: db
-wNiteEncounterRate:: db
-wEveEncounterRate:: db
+wGrassEncounterRate:: db
 wWaterEncounterRate:: db
 
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
@@ -1085,9 +1082,9 @@ wEnteredMapFromContinue:: db
 
 wTimeOfDayPal:: db
 
-wFollowInSync:: db
-
-	ds 3 ; unused
+wPaletteSwapAddress:: dw
+wPaletteSwapStates:: db
+wPaletteSwapInits:: db
 
 wTimeOfDayPalFlags:: db
 wTimeOfDayPalset:: db
@@ -1182,7 +1179,7 @@ wTradeFlags:: flag_array PARTY_LENGTH
 
 wMooMooBerries:: db
 
-	ds 1 ; unused
+wFollowInSync:: db
 
 wFarfetchdPosition:: db
 
@@ -1213,7 +1210,7 @@ wEcruteakGymSceneID:: db
 wEcruteakHouseSceneID:: db
 wRocketHideoutB4FSceneID:: db
 wElmsLabSceneID:: db
-wFarawayIslandSceneID:: db
+wFarawayIslandSouthSceneID:: db
 wFastShip1FSceneID:: db
 wFastShipB1FSceneID:: db
 wGiovannisCaveSceneID:: db
@@ -1334,8 +1331,15 @@ wOvercastRandomMaps::
 wNeededMonPalLight:: db ; for SPRITE_MON_ICON two-nybble palettes, stores the light color palette index
 wNeededPalType:: db ; 0 = normal palette, non-zero = mon two-nybble palette
 wLoadedObjPalType:: db ; bitmask: bit N set = slot N is a mon palette, clear = normal palette
+wLoadedObjPalGlows:: ds 8 ; OBJ_GLOW_* for each loaded palette slot
+wLoadedObjPalPrevGlows:: ds 8 ; previous OBJ_GLOW_* for each loaded palette slot
+wNeededObjPalGlow:: db
+wPrevNeededObjPalGlow:: db
+wObjectGlowTypes:: ds NUM_OBJECT_STRUCTS ; OBJ_GLOW_* for each object struct
+wObjectPrevGlowTypes:: ds NUM_OBJECT_STRUCTS ; bit 7 set while fading from this OBJ_GLOW_*
+wObjectGlowFadeActive:: db
 
-	ds 47 ; unused
+	ds 2 ; unused
 
 wCandyAmounts::
 	table_width 1
@@ -1652,8 +1656,8 @@ wPokeAnimParameter:: db
 wPokeAnimBitmaskCurCol:: db
 wPokeAnimBitmaskCurRow:: db
 wPokeAnimBitmaskCurBit:: db
-wPokeAnimBitmaskBuffer:: db
-	ds 8 ; unused
+wPokeAnimBitmaskBuffer:: ds 7
+	ds 2 ; unused
 wPokeAnimStructEnd::
 
 
@@ -1912,7 +1916,12 @@ wPalFadeDelay:: db
 wPalFadeTotalSteps:: db
 wPalFadeStepValue:: db
 
-	ds 97 ; unused
+wPalGlowAdjustments::
+wPalGlowRedAdjustment:: db
+wPalGlowGreenAdjustment:: db
+wPalGlowBlueAdjustment:: db
+
+	ds 94 ; unused
 
 	align 8
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
@@ -1934,7 +1943,7 @@ wAbilityName:: ds 20
 wAbilityFlags:: db
 wAbilityDisplaySpeed:: db ; (Characters - 1) per DelayFrame
 NEXTU
-wWeatherScratch:: ds SCREEN_HEIGHT_PX
+wWeatherScratch:: ds SCREEN_HEIGHT_PX + 2 * TILE_WIDTH
 ENDU
 
 

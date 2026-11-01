@@ -17,13 +17,13 @@ CeladonCity_MapScriptHeader:
 	warp_event 29, 29, CELADON_CHIEF_HOUSE, 1
 	warp_event 35, 29, CELADON_HOTEL_1F, 1
 	warp_event 13,  9, CELADON_HOME_DECOR_STORE_1F, 1
-	warp_event  4, 29, CELADON_UNIVERSITY_1F, 1
+	warp_event  5, 29, CELADON_UNIVERSITY_1F, 1
 	warp_event 29,  9, EUSINES_HOUSE, 1
 	warp_event 33, 19, CELADON_OLD_MAN_SPEECH_HOUSE, 1
 	warp_event 37, 19, CELADON_DEVELOPMENT_SPEECH_HOUSE, 1
 	warp_event  9,  9, CELADON_DEPT_STORE_1F, 2
 	warp_event 23, 19, CELADON_GAME_CORNER, 2
-	warp_event  5, 29, CELADON_UNIVERSITY_1F, 2
+	warp_event  6, 29, CELADON_UNIVERSITY_1F, 2
 
 	def_coord_events
 
@@ -48,7 +48,8 @@ CeladonCity_MapScriptHeader:
 	pokemon_event 31, 11, POLIWRATH, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, CeladonCityPoliwrathText, -1
 	object_event 24, 24, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityTeacher1Text, -1
 	object_event 17, 16, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityGramps1Text, -1
-	object_event 10, 31, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityGramps2Text, -1
+	object_event 10, 32, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << DAY) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityGramps2Text, -1
+	object_event  9, 31, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, (1 << MORN) | (1 << EVE), PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityPicnickerText, -1
 	object_event 22, 13, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityYoungster1Text, -1
 	object_event 27, 32, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityYoungster2Text, -1
 	object_event 12, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityTeacher2Text, -1
@@ -191,6 +192,20 @@ CeladonCityGramps2Text:
 
 	para "girls are allowed"
 	line "here!"
+	done
+
+CeladonCityPicnickerText:
+	text "It's our responsi-"
+	line "bility as Gym"
+
+	para "trainers to tend"
+	line "to these flowers."
+
+	para "The University"
+	line "here also counts"
+
+	para "it as practical"
+	line "gardening credit."
 	done
 
 CeladonCityYoungster1Text:
