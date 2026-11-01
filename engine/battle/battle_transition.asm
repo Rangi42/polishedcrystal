@@ -23,8 +23,6 @@ DoBattleTransition:
 	ld [hli], a
 	ld [hl], a
 
-	call WipeLYOverrides
-
 	ldh a, [rBGP]
 	ld [wBGP], a
 	ldh a, [rOBP0]
@@ -225,10 +223,9 @@ StartTrainerBattle_SetUpForWavyOutro:
 
 	call StartTrainerBattle_NextScene
 
-	ld hl, rIE
-	set B_IE_STAT, [hl]
-	ld a, LOW(rSCX)
-	ldh [hLCDCPointer], a
+	call StartUniformSCXOverrides
+	xor a
+	call FillBackupLYOverrides
 	xor a
 	ldh [hLYOverrideStart], a
 	ld a, $90
@@ -784,28 +781,32 @@ popo
 
 INCLUDE "data/trainers/team_rocket.asm"
 
-WipeLYOverrides:
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-
-	ld hl, wLYOverrides
-	call .wipe
+; Note that this also enables the interrupt, so you should call `StartUniformSCXOverrides` first!
+FillBackupLYOverrides::
 	ld hl, wLYOverridesBackup
-	call .wipe
+	jr FillLYOverridesBuffer
 
-	pop af
-	ldh [rWBK], a
-	ret
-
-.wipe
+FarStartUniformSCXOverrides::
+	ld a, BANK(wLYOverrides)
+	call StackCallInWRAMBankA
+StartUniformSCXOverrides::
 	xor a
+.withCustomX::
+	ld hl, wLYOverrides
+
+FillLYOverridesBuffer:
 	ld c, SCREEN_HEIGHT_PX
 .loop
 	ld [hli], a
 	dec c
 	jr nz, .loop
+
+	; Also enable the interrupt handler.
+	; (Do this *after* filling `wLYOverrides` to avoid a race condition!)
+	ld a, LOW(rSCX)
+	ldh [hLCDCPointer], a
+	ld hl, rIE
+	set B_IE_STAT, [hl]
 	ret
 
 MACRO zoombox

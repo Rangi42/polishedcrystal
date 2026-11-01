@@ -1090,9 +1090,8 @@ CrystalIntroSequence:
 	farcall CrystalIntro
 
 StartTitleScreen:
-	ldh a, [rWBK]
-	push af
-	ld a, $5
+	ld a, BANK(wLYOverrides)
+	assert BANK(wLYOverrides) == BANK(wBGPals2)
 	ldh [rWBK], a
 
 	farcall _TitleScreen
@@ -1104,7 +1103,7 @@ StartTitleScreen:
 	call ClearSprites
 	call ClearBGPalettes
 
-	pop af
+	ld a, 1 ; The rest of the game expects this bank to be loaded by default. :(
 	ldh [rWBK], a
 
 	ld hl, rLCDC
@@ -1172,25 +1171,18 @@ TitleScreenEntrance:
 	sub 4
 	ldh [hSCX], a
 
-; Lay out a base (all lines scrolling together).
-	ld e, a
-	ld hl, wLYOverrides
-	ld bc, 8 * 10 ; logo height
-	rst ByteFill
-
-; Reversed signage for every other line's position.
-; This is responsible for the interlaced effect.
-	ld a, e
+	ld b, a ; Moving rightwards...
 	cpl
-	inc a
-
-	ld b, 8 * 10 / 2 ; logo height / 2
-	ld hl, wLYOverrides + 1
-.loop
+	inc a ; Negated, thus moving leftwards.
+	ld hl, wLYOverrides + 2 * TILE_HEIGHT
+	ld c, 7 * TILE_HEIGHT / 2 ; Pokémon logo height (but two scanlines per loop)
+.updateScrolling
+	ld [hl], b
+	assert LOW(wLYOverrides) == 0 ; The buffer is contained within a "page" of memory...
+	inc l ; ...so we don't need to `inc hl`.
 	ld [hli], a
-	inc hl
-	dec b
-	jr nz, .loop
+	dec c
+	jr nz, .updateScrolling
 
 	farjp AnimateTitleCrystal
 

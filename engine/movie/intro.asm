@@ -1,150 +1,92 @@
+SECTION "Intro movie", ROMX
+
 CrystalIntro:
-	ldh a, [rWBK]
-	push af
-	ld a, 5
+	ld a, BANK(wLYOverrides)
+	assert BANK(wLYOverrides) == BANK(wBGPals1) ; ...and the other palette buffers.
 	ldh [rWBK], a
-	ldh a, [hInMenu]
-	push af
-	ldh a, [hVBlank]
-	push af
-	call .InitRAMAddrs
+	xor a
+	ldh [hVBlank], a
+	ldh [hMapAnims], a
+	ld [wJumptableIndex], a
+	assert NO_BG_MAP_TRANSFER == 0
+	ldh [hBGMapMode], a ; Disable BG map transfers since this movie doesn't use them.
+	inc a ; a := 1
+	ldh [hInMenu], a
+
 .loop
 	call JoyTextDelay
 	ldh a, [hJoyLast]
 	and PAD_BUTTONS
-	jr nz, .ShutOffMusic
-	ld a, [wJumptableIndex]
-	bit 7, a
-	jr nz, .done
-	call IntroSceneJumper
+	ld e, MUSIC_NONE
+	jmp nz, PlayMusic ; If something was pressed, kill the music and exit.
+
+	call .Dispatch
 	farcall PlaySpriteAnimations
 	call DelayFrame
 	jr .loop
 
-.ShutOffMusic:
-	ld e, MUSIC_NONE
-	call PlayMusic
-
-.done
-	call ClearBGPalettes
-	call ClearSprites
-	call ClearTileMap
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
-	pop af
-	ldh [hVBlank], a
-	pop af
-	ldh [hInMenu], a
-	pop af
-	ldh [rWBK], a
-	ret
-
-.InitRAMAddrs:
-	xor a
-	ldh [hVBlank], a
-	ld a, $1
-	ldh [hInMenu], a
-	xor a
-	ldh [hMapAnims], a
-	ld [wJumptableIndex], a
-	ret
-
-IntroSceneJumper:
+.Dispatch:
 	call StandardStackJumpTable
 
 .Jumptable:
-	dw IntroScene1
-	dw IntroScene2
-	dw IntroScene3
-	dw IntroScene4
-	dw IntroScene5
-	dw IntroScene6
-	dw IntroScene7
-	dw IntroScene8
-	dw IntroScene9
-	dw IntroScene10
-	dw IntroScene11
-	dw IntroScene12
-	dw IntroScene13
-	dw IntroScene14
-	dw IntroScene15
-	dw IntroScene16
-	dw IntroScene17
-	dw IntroScene18
-	dw IntroScene19
-	dw IntroScene20
-	dw IntroScene21
-	dw IntroScene22
-	dw IntroScene23
-	dw IntroScene24
-	dw IntroScene25
-	dw IntroScene26
-	dw IntroScene27
-	dw IntroScene28
+	dw Scene_UnownA_Setup
+	dw Scene_UnownA
+	dw Scene_ScrollOutdoors_Setup
+	dw Scene_ScrollOutdoors
+	dw Scene_UnownHI_Setup
+	dw Scene_UnownHI
+	dw Scene_ScrollThenSuicuneZoomingBy_Setup
+	dw Scene_ScrollThenSuicuneZoomingBy
+	dw Scene_GrassRustleThenWooperAndPichu_Setup
+	dw Scene_GrassRustleThenWooperAndPichu
+	dw Scene_Unowns_Setup
+	dw Scene_Unowns
+	dw Scene_SuicuneRunsThenJumps_Setup
+	dw Scene_SuicuneRunsThenJumps
+	dw Scene_SuicuneAppears_Setup
+	dw Scene_SuicuneAppears
+	dw Scene_SuicuneCloseUp_Setup
+	dw Scene_SuicuneCloseUp
+	dw Scene_UnownsAroundSuicune_Setup
+	dw Scene_UnownsAroundSuicune
+	dw Scene_SuicuneFadesAway
+	dw Scene_WaitAndDeinitSprites
+	dw Scene_ResetFrameCounter
+	dw Scene_FadeToWhite
+	dw Scene_Wait
+	dw Scene_SpellOut_Setup
+	dw Scene_SpellOut
+	dw Scene_FinalFadeOut
+	dw Exit
+
+Exit:
+	pop af ; Do not return to the caller, exit `CrystalIntro`, do not receive 2000 Pokédollars...
+	ret
 
 NextIntroScene:
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
 
-IntroScene1:
+Scene_UnownA_Setup:
 ; Setup the next scene.
-	call Intro_ClearBGPals
-	call ClearSprites
-	call ClearTileMap
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, IntroTilemap001
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	xor a
-	ldh [rVBK], a
-	ld hl, IntroUnownsGFX
+	call CutToBlackAndPause
+	ld hl, UnownsGFX
 	ld de, vTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroPulseGFX
+	call DecompressAndLoad128Tiles
+	ld hl, PulseGFX
 	ld de, vTiles0 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap002
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-	ld hl, Palette_365ad
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	rst CopyBytes
-	ld hl, Palette_365ad
-	ld de, wBGPals2
-	ld bc, 16 palettes
-	rst CopyBytes
-	pop af
-	ldh [rWBK], a
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
+	call DecompressAndLoad128Tiles
+	ld hl, IntroBGMaps.UnownA
+	call DecompressAndLoadMap0
+	call ResetScrollingAndFillPalBufWithUnownPal
 	call ClearSpriteAnims
-	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
 	jr NextIntroScene
 
-IntroScene2:
+Scene_UnownA:
 ; First Unown (A) fades in, pulses, then fades out.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -164,94 +106,59 @@ IntroScene2:
 	xor a
 	jmp CrystalIntro_UnownFade
 
-IntroScene3:
+Scene_ScrollOutdoors_Setup:
 ; More setup. Transition to the outdoor scene.
-	call Intro_ClearBGPals
-	call ClearSprites
-	call ClearTileMap
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ld a, $1
+	call CutToBlackAndPause
+	; Load the outdoor map to BG map 1, where it will stay for the next few scenes.
+	ld hl, IntroBGMaps.Outdoors
+	ld de, vBGMap1
+	call DecompressAndLoadMapTo
+	; The above will also have decompressed its tiles; load them to somewhere they won't be overwritten by subsequent scenes.
+	ld a, 1
 	ldh [rVBK], a
-	ld hl, IntroTilemap003
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	xor a
-	ldh [rVBK], a
-	call Intro_SetupCommonScenery
-	call Intro_ResetLYOverrides
-	call Intro_SetCGBPalUpdate
+	debgcoord 0, SCREEN_HEIGHT * 2, wDecompressScratch ; The tiles will be after both maps.
+	ld hl, vTiles5 tile 77
+	ld c, 39 + 3 * 4 ; The base picture, plus the four grass animations.
+	call Request2bppInWRA6
+	call SetupOutdoors
 	xor a
 	ld [wIntroSceneFrameCounter], a
-	jmp NextIntroScene
+	jr NextIntroScene
 
-IntroScene4:
+Scene_ScrollOutdoors:
 ; Scroll the outdoor panorama for a bit.
-	call Intro_PerspectiveScrollBG
+	call PerspectiveScrollBG
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	cp $80
-	jmp z, NextIntroScene
+	jr z, NextIntroScene
 	inc [hl]
 	ret
 
-IntroScene5:
+Scene_UnownHI_Setup:
 ; Go back to the Unown.
-	call Intro_ClearBGPals
-	call ClearSprites
-	call ClearTileMap
+	call CutToBlackAndPause
 	ld hl, rIE
 	res B_IE_STAT, [hl]
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, IntroTilemap005
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	xor a
-	ldh [rVBK], a
-	ld hl, IntroUnownsGFX
-	ld de, vTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroPulseGFX
+	ld hl, IntroBGMaps.UnownHI
+	call DecompressAndLoadMap0
+	ld hl, PulseGFX
 	ld de, vTiles0 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap006
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-	ld hl, Palette_365ad
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	rst CopyBytes
-	ld hl, Palette_365ad
-	ld de, wBGPals2
-	ld bc, 16 palettes
-	rst CopyBytes
-	pop af
-	ldh [rWBK], a
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
+	call DecompressAndLoad128Tiles
+	; Switch back to the 9800 tilemap.
+	ld a, LCDC_DEFAULT
+	ldh [rLCDC], a
+
+	call ResetScrollingAndFillPalBufWithUnownPal
+
 	call ClearSpriteAnims
-	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-IntroScene6:
+Scene_UnownHI:
 ; Two more Unown (I, H) fade in.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -286,118 +193,70 @@ IntroScene6:
 	pop af
 .StopUnown:
 	ld [wIntroSceneTimer], a
-	ld a, $1
+	ld a, 1 palettes
 	jmp CrystalIntro_UnownFade
 
-IntroScene7:
+Scene_ScrollThenSuicuneZoomingBy_Setup:
 ; Back to the outdoor scene.
-	call Intro_ClearBGPals
-	call ClearSprites
-	call ClearTileMap
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
+	call CutToBlackAndPause
 
+	xor a
+	ldh [rVBK], a
+	ld hl, SuicuneRunGFX
+	ld de, vTiles0 tile $00
+	call DecompressAndLoad255Tiles
 	ld a, $1
 	ldh [rVBK], a
-	ld hl, IntroTilemap003
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-
-	ld hl, IntroPichuWooperGFX
+	ld hl, PichuWooperGFX
 	ld de, vTiles0 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
+	call DecompressAndLoad128Tiles
 
-	xor a
-	ldh [rVBK], a
-	ld hl, IntroSuicuneRunGFX
-	ld de, vTiles0 tile $00
-	call Intro_DecompressRequest2bpp_255Tiles
+	call SetupOutdoors
 
-	call Intro_SetupCommonScenery
-
-	call Intro_ResetLYOverrides
 	call ClearSpriteAnims
 	depixel 13, 27, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
 	call InitSpriteAnimStruct
 	ld a, $f0
 	ld [wGlobalAnimXOffset], a
-	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-IntroScene8:
+Scene_ScrollThenSuicuneZoomingBy:
 ; Scroll the scene, then show Suicune running across the screen.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	inc [hl]
 	cp $40
-	jr z, .suicune_sound
-	jr nc, .animate_suicune
-	jmp Intro_PerspectiveScrollBG
+	jmp c, PerspectiveScrollBG
 
-.suicune_sound
 	ld de, SFX_INTRO_SUICUNE_3
-	call PlaySFX
+	call z, PlaySFX
 .animate_suicune
-	ld a, [wGlobalAnimXOffset]
-	and a
-	jr z, .finish
-	sub $8
-	ld [wGlobalAnimXOffset], a
-	ret
+	ld hl, wGlobalAnimXOffset
+	ld a, [hl]
+	sub 8
+	ld [hl], a
+	ret nc
 
-.finish
 	ld de, SFX_INTRO_SUICUNE_2
 	call PlaySFX
 	farcall DeinitializeAllSprites
 	jmp NextIntroScene
 
-IntroScene9:
+Scene_GrassRustleThenWooperAndPichu_Setup:
 ; Set up the next scene (same bg).
-	ld hl, rIE
-	res B_IE_STAT, [hl]
-	xor a
-	ldh [hLCDCPointer], a
-	call ClearSprites
-	hlcoord 0, 0, wAttrmap
-	; first 12 rows have palette 1
-	ld bc, 12 * SCREEN_WIDTH
-	ld a, $1
-	rst ByteFill
-	; middle 3 rows have palette 2
-	ld bc, 3 * SCREEN_WIDTH
-	ld a, $2
-	rst ByteFill
-	; last three rows have palette 3
-	ld bc, 3 * SCREEN_WIDTH
-	ld a, $3
-	rst ByteFill
-	ld a, TRANSFER_ATTRMAP
-	ldh [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
-	ld a, $c
-	ldh [hBGMapAddress], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ldh [hBGMapAddress], a
-	ld [wGlobalAnimXOffset], a
 	xor a
 	ld [wIntroSceneFrameCounter], a
+	ld a, $c
+	ld [wGlobalAnimXOffset], a
 	jmp NextIntroScene
 
-IntroScene10:
+Scene_GrassRustleThenWooperAndPichu:
 ; Wooper and Pichu enter.
-	call Intro_RustleGrass
+	call RustleGrass
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	inc [hl]
@@ -420,59 +279,28 @@ IntroScene10:
 	ld de, SFX_INTRO_PICHU
 	jmp PlaySFX
 
-IntroScene11:
+Scene_Unowns_Setup:
 ; Back to Unown again.
-	call Intro_ClearBGPals
+	call CutToBlackAndPause
 	call ClearSprites
-	call ClearTileMap
 	ld hl, rIE
 	res B_IE_STAT, [hl]
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, IntroTilemap007
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	xor a
-	ldh [rVBK], a
-	ld hl, IntroUnownsGFX
-	ld de, vTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap008
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-	ld hl, Palette_365ad
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	rst CopyBytes
-	ld hl, Palette_365ad
-	ld de, wBGPals2
-	ld bc, 16 palettes
-	rst CopyBytes
-	pop af
-	ldh [rWBK], a
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
+	ld hl, IntroBGMaps.Unowns
+	call DecompressAndLoadMap0
+	; Switch back to the 9800 tilemap.
+	ld a, LCDC_DEFAULT
+	ldh [rLCDC], a
+
+	call ResetScrollingAndFillPalBufWithUnownPal
+
 	call ClearSpriteAnims
-	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-IntroScene12:
+Scene_Unowns:
 ; Even more Unown.
 	call .PlayUnownSound
 	ld hl, wIntroSceneFrameCounter
@@ -480,30 +308,16 @@ IntroScene12:
 	inc [hl]
 	cp $c0
 	jmp nc, NextIntroScene
-	cp $80
-	jr nc, .second_half
-; first half
+	add a ; Double, and check if bit 7 is set.
+	jr nc, .first_half ; Second half plays over the latter 4 palettes at double speed.
+	adc a ; Double the speed, and set bit 0 (carry is set right now).
+.first_half
 	ld c, a
-	and $1f
-	add a
+	and $3e ; Ignore bit 0, it's actually part of the palette index.
 	ld [wIntroSceneTimer], a
-	ld a, c
-	and $e0
-	srl a
-	swap a
-	jmp CrystalIntro_UnownFade
-
-.second_half
-; double speed
-	ld c, a
-	and $f
-	add a
-	add a
-	ld [wIntroSceneTimer], a
-	ld a, c
-	and $70
-	or $40
-	swap a
+	xor c ; `ld a, c :: and $C1`, thus giving us the palette ID * 64 (wrapped around A).
+	swap a ; Contains palette ID * 4...
+	add a ; ...now * 8 = offset within wBGPals1.
 	jmp CrystalIntro_UnownFade
 
 .PlayUnownSound:
@@ -539,25 +353,13 @@ IntroScene12:
 	dbw $b0, SFX_INTRO_UNOWN_2
 	db -1
 
-IntroScene13:
+Scene_SuicuneRunsThenJumps_Setup:
 ; Switch scenes again.
-	call Intro_ClearBGPals
-	call ClearSprites
-	call ClearTileMap
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, IntroTilemap003
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	xor a
-	ldh [rVBK], a
-	ld hl, IntroSuicuneRunGFX
+	call CutToBlackAndPause
+	ld hl, SuicuneRunGFX
 	ld de, vTiles0 tile $00
-	call Intro_DecompressRequest2bpp_255Tiles
-	call Intro_SetupCommonScenery
+	call DecompressAndLoad255Tiles
+	call SetupOutdoors.noScrollingReset
 	call ClearSpriteAnims
 	depixel 13, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
@@ -566,13 +368,12 @@ IntroScene13:
 	call PlayMusic
 	xor a
 	ld [wGlobalAnimXOffset], a
-	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-IntroScene14:
+Scene_SuicuneRunsThenJumps:
 ; Suicune runs then jumps.
 	ldh a, [hSCX]
 	sub 10
@@ -612,59 +413,30 @@ IntroScene14:
 	ld [wGlobalAnimXOffset], a
 	ret
 
-IntroScene15:
+Scene_SuicuneAppears_Setup:
 ; Transition to a new scene.
-	call Intro_ClearBGPals
-	call ClearSprites
-	call ClearTileMap
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, IntroTilemap009
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	xor a
-	ldh [rVBK], a
-	ld hl, IntroSuicuneJumpGFX
+	call CutToBlackAndPause
+	ld hl, SuicuneJumpGFX
 	ld de, vTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroUnownBackGFX
+	call DecompressAndLoad128Tiles
+	ld hl, UnownBackGFX
 	ld de, vTiles0 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld de, IntroGrass4GFX
+	call DecompressAndLoad128Tiles
+	ld de, Grass4GFX
 	ld hl, vTiles1 tile $00
-	lb bc, BANK(IntroGrass4GFX), 1
+	lb bc, BANK(Grass4GFX), 1
 	call Request2bpp
-	ld hl, IntroTilemap010
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	call Intro_LoadTilemap
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-	ld hl, Palette_e77dd
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	rst CopyBytes
-	ld hl, Palette_e77dd
-	ld de, wBGPals2
-	ld bc, 16 palettes
-	rst CopyBytes
-	pop af
-	ldh [rWBK], a
-	xor a
-	ldh [hSCX], a
-	ld a, $90
-	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
+	ld hl, IntroBGMaps.SuicuneJump
+	call DecompressAndLoadMap0
+	; Switch back to the 9800 tilemap.
+	ld a, LCDC_DEFAULT
+	ldh [rLCDC], a
+
+	ld hl, SuicunePalette
+	ld a, 144
+	call SetScrollingAndFillPalBuf
+
 	call ClearSpriteAnims
-	call Intro_SetCGBPalUpdate
 	depixel 8, 5
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN_F
 	call InitSpriteAnimStruct
@@ -676,14 +448,14 @@ IntroScene15:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-IntroScene16:
+Scene_SuicuneAppears:
 ; Suicune shows its face. An Unown appears in front.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	inc [hl]
 	cp $80
 	jmp nc, NextIntroScene
-	call Intro_Scene16_AnimateSuicune
+	call Scene_SuicuneAppears_AnimateSuicune
 	ldh a, [hSCY]
 	and a
 	ret z
@@ -691,56 +463,23 @@ IntroScene16:
 	ldh [hSCY], a
 	ret
 
-IntroScene17:
+Scene_SuicuneCloseUp_Setup:
 ; ...
-	call Intro_ClearBGPals
-	call ClearSprites
-	call ClearTileMap
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, IntroTilemap011
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	xor a
-	ldh [rVBK], a
-	ld hl, IntroSuicuneCloseGFX
+	call CutToBlackAndPause
+	ld hl, SuicuneCloseGFX
 	ld de, vTiles1 tile $00
-	call Intro_DecompressRequest2bpp_255Tiles
-	ld hl, IntroTilemap012
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-	ld hl, Palette_e6d6d
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	rst CopyBytes
-	ld hl, Palette_e6d6d
-	ld de, wBGPals2
-	ld bc, 16 palettes
-	rst CopyBytes
-	pop af
-	ldh [rWBK], a
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
+	call DecompressAndLoad255Tiles
+	ld hl, IntroBGMaps.SuicuneClose
+	call DecompressAndLoadMap0
+	ld hl, SuicuneClosePalette
+	call ResetScrollingAndFillPalBuf
 	call ClearSpriteAnims
-	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-IntroScene18:
+Scene_SuicuneCloseUp:
 ; Suicune close up.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -754,63 +493,29 @@ IntroScene18:
 	ldh [hSCX], a
 	ret
 
-IntroScene19:
+Scene_UnownsAroundSuicune_Setup:
 ; More setup.
-	call Intro_ClearBGPals
-	call ClearSprites
-	call ClearTileMap
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, IntroTilemap013
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	xor a
-	ldh [rVBK], a
-	ld hl, IntroSuicuneBackGFX
+	call CutToBlackAndPause
+	ld hl, SuicuneBackGFX
 	ld de, vTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroUnownsGFX
+	call DecompressAndLoad128Tiles
+	ld hl, UnownsGFX
 	ld de, vTiles1 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld de, IntroGrass4GFX
+	call DecompressAndLoad128Tiles
+	ld de, Grass4GFX
 	ld hl, vTiles1 tile $7f
-	lb bc, BANK(IntroGrass4GFX), 1
+	lb bc, BANK(Grass4GFX), 1
 	call Request2bpp
-	ld hl, IntroTilemap014
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	call Intro_LoadTilemap
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-	ld hl, Palette_e77dd
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	rst CopyBytes
-	ld hl, Palette_e77dd
-	ld de, wBGPals2
-	ld bc, 16 palettes
-	rst CopyBytes
-	pop af
-	ldh [rWBK], a
-	xor a
-	ldh [hSCX], a
-	ld a, $d8
-	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
+	ld hl, IntroBGMaps.SuicuneBack
+	call DecompressAndLoadMap0
+	ld hl, SuicunePalette
+	ld a, $D8
+	call SetScrollingAndFillPalBuf
 	call ClearSpriteAnims
 	ld hl, wSpriteAnimDict
 	xor a
 	ld [hli], a
 	ld [hl], $7f
-	call Intro_SetCGBPalUpdate
 	depixel 12, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE_AWAY
 	call InitSpriteAnimStruct
@@ -819,7 +524,7 @@ IntroScene19:
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-IntroScene20:
+Scene_UnownsAroundSuicune:
 ; Suicune running away. A bunch of Unown appear.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -848,21 +553,18 @@ IntroScene20:
 	srl a
 	srl a
 	ld [wIntroSceneTimer], a
-	jmp Intro_Scene20_AppearUnown
+	jmp Scene_UnownsAroundSuicune_AppearUnown
 
-IntroScene21:
+Scene_SuicuneFadesAway:
 ; Suicune gets more distant and turns black.
-	call Intro_ColoredSuicuneFrameSwap
+	call ColoredSuicuneFrameSwap
 	ld c, 3
 	call DelayFrames
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-IntroScene22:
+Scene_WaitAndDeinitSprites:
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	inc [hl]
@@ -871,12 +573,12 @@ IntroScene22:
 	farcall DeinitializeAllSprites
 	jmp NextIntroScene
 
-IntroScene23:
+Scene_ResetFrameCounter:
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	jmp NextIntroScene
 
-IntroScene24:
+Scene_FadeToWhite:
 ; Fade to white.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
@@ -891,14 +593,14 @@ IntroScene24:
 	ld a, c
 	and $1c
 	add a
-	jmp Intro_Scene24_ApplyPaletteFade
+	jr Scene_FadeToWhite_ApplyPaletteFade
 
 .done
 	ld a, $40
 	ld [wIntroSceneFrameCounter], a
 	jmp NextIntroScene
 
-IntroScene25:
+Scene_Wait:
 ; Wait around a bit.
 	ld a, [wIntroSceneFrameCounter]
 	dec a
@@ -906,56 +608,23 @@ IntroScene25:
 	ld [wIntroSceneFrameCounter], a
 	ret
 
-IntroScene26:
+Scene_SpellOut_Setup:
 ; Load the final scene.
-	call ClearBGPalettes
-	call ClearSprites
-	call ClearTileMap
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ld a, $1
-	ldh [rVBK], a
-	ld hl, IntroTilemap015
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	xor a
-	ldh [rVBK], a
-	ld hl, IntroCrystalUnownsGFX
+	call ClearPalettes
+	ld hl, CrystalUnownsGFX
 	ld de, vTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap017
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-	ld hl, Palette_e679d
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	rst CopyBytes
-	ld hl, Palette_e679d
-	ld de, wBGPals2
-	ld bc, 16 palettes
-	rst CopyBytes
-	pop af
-	ldh [rWBK], a
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	ld a, $7
-	ldh [hWX], a
-	ld a, $90
-	ldh [hWY], a
+	call DecompressAndLoad128Tiles
+	ld hl, IntroBGMaps.CrystalUnowns
+	call DecompressAndLoadMap0
+	ld hl, CrystalUnownsPalette
+	call ResetScrollingAndFillPalBuf
 	call ClearSpriteAnims
-	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
 	jmp NextIntroScene
 
-IntroScene27:
+Scene_SpellOut:
 ; Spell out C R Y S T A L with Unown.
 	ld hl, wIntroSceneTimer
 	inc [hl]
@@ -971,7 +640,7 @@ IntroScene27:
 	ld a, c
 	and $70
 	swap a
-	jmp Intro_FadeUnownWordPals
+	jmp FadeUnownWordPals
 
 .done
 	call NextIntroScene
@@ -979,12 +648,12 @@ IntroScene27:
 	ld [wIntroSceneFrameCounter], a
 	ret
 
-IntroScene28:
+Scene_FinalFadeOut:
 ; Cut out when the music ends, and lead into the title screen.
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	and a
-	jr z, .done
+	jmp z, NextIntroScene
 	dec [hl]
 	cp $30
 	jmp z, ClearBGPalettes
@@ -993,22 +662,13 @@ IntroScene28:
 	ld de, SFX_TITLE_SCREEN_INTRO
 	jmp PlaySFX
 
-.done
-	ld hl, wJumptableIndex
-	set 7, [hl]
-	ret
-
-Intro_Scene24_ApplyPaletteFade:
+Scene_FadeToWhite_ApplyPaletteFade:
 ; load the (a)th palette from .FadePals to all wBGPals2
 	ld hl, .FadePals
 	ld e, a
 	ld d, 0
 	add hl, de
 
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 	ld de, wBGPals2
 	ld b, 8 ; number of BG pals
 .loop1
@@ -1023,11 +683,7 @@ Intro_Scene24_ApplyPaletteFade:
 	pop hl
 	dec b
 	jr nz, .loop1
-	pop af
-	ldh [rWBK], a
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
+	jmp QueueCGBPalUpdate
 
 .FadePals:
 INCLUDE "gfx/intro/fade.pal"
@@ -1072,29 +728,12 @@ CrystalIntro_InitUnownAnim:
 	jmp ReinitSpriteAnimFrame
 
 CrystalIntro_UnownFade:
-	add a
-	add a
-	add a
+	add LOW(wBGPals2) + 2 ; We fade from the second colour of palettes (the first remains black).
 	ld e, a
-	ld d, 0
-	ld hl, wBGPals2 + 2
-	add hl, de
-	ld a, [wIntroSceneTimer]
-	and $3f
-	cp $1f + 1
-	jr c, .okay
-	cpl
-	add $3f + 1 ; a = $3f - a
-.okay
-	ld c, a
-	ld b, $0
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
+	assert HIGH(wBGPals2) == HIGH(wOBPals2 - 1) ; The entire buffer fits within a single page.
+	ld d, HIGH(wBGPals2)
 
-	push hl
-	push bc
+	; Clear all palettes, in case some animation didn't reach step #31.
 	ld hl, wBGPals2
 if !DEF(MONOCHROME)
 	ld bc, 8 palettes
@@ -1110,118 +749,105 @@ else
 	dec b
 	jr nz, .mono_loop
 endc
-	pop bc
-	pop hl
 
-	push hl
-	ld hl, .BWFade
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	pop hl
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
+	; Compute the hue.
+	ld a, [wIntroSceneTimer]
+	and $3f ; The fade wraps around every 64 steps.
+	cp $1f + 1
+	jr c, .gotHue ; ...but the second half is the first one reversed.
+	cpl
+	add $3f + 1 ; a = $3f - a
+.gotHue
 
-	push hl
-	ld hl, .BlackLBlueFade
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	pop hl
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
+	; Write the faded colors.
+	ld l, e
+	ld h, d
 
-	push hl
-	ld hl, .BlackBlueFade
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	pop hl
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-
-	pop af
-	ldh [rWBK], a
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
-.BWFade:
-; Fade between black and white.
 if !DEF(MONOCHROME)
-for hue, 32
-	RGB hue, hue, hue
-endr
+	; Primer on GBC color format: %_bbb bbgg | gggr rrrr. (`_` is ignored by the hardware.)
+	; Red is unshifted, but blue needs to be shifted left twice,
+	; and green rotated three times and distributed across both bytes.
+	ld c, a ; Red (%000r rrrr).
+	rlca
+	rlca
+	ld b, a ; OK, we got blue (%0bbb bb00).
+	swap a
+	rrca ; Believe it or not, this is green (%ggg0 00gg) just wrapped around within a byte.
+	ld d, a
+	; First color:  `RGB hue, hue, hue`   (between black and white).
+	and $e0 ; %ggg0 0000
+	or c    ; %gggr rrrr
+	ld [hli], a
+	ld a, d ; %ggg0 00gg
+	and $03 ; %0000 00gg
+	or b    ; %0bbb bbgg
+	ld [hli], a
+	; Second color: `RGB 0, hue / 2, hue` (between black and light blue).
+	rrc d ; Halve green (%gggg 000g); bit 4 is out of place, but we can just ignore it.
+	ld a, d ; %gggg 000g
+	and $e0 ; %ggg0 0000 (red = 0)
+	ld [hli], a
+	xor a   ; %0000 0000
+	rr d    ; %0ggg g000 | g into carry...
+	adc b   ; %0bbb bb0g
+	ld [hli], a
+	; Third color:  `RGB 0, 0, hue`       (between black and blue).
+	xor a
+	ld [hli], a
+	ld [hl], b
 else
-rept 8
-	RGB_MONOCHROME_BLACK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
-rept 8
-	RGB_MONOCHROME_LIGHT
-endr
-rept 8
-	RGB_MONOCHROME_WHITE
-endr
+	; Monochrome instead has three gradients, quantized to 4 steps:
+	; the first one does the full range,
+	; the second one is capped at PAL_MONOCHROME_LIGHT, and
+	; the third one is capped at PAL_MONOCHROME_DARK.
+	and $30
+	jr z, .all_black ; $00 jumps.
+	ld de, PAL_MONOCHROME_DARK
+	cp $20 ; We have $10, $20, or $30...
+	jr c, .three_identical ; $10 jumps.
+
+	ld bc, .first_color
+	jr nz, .full_gradient ; $30 jumps.
+	inc bc ; Skip the first colour,
+	inc bc ; so that we write LIGHT twice.
+.full_gradient
+	ld a, [bc]
+	ld [hli], a
+	inc bc
+	ld a, [bc]
+	ld [hli], a
+	; Second color is always light.
+	ld a, LOW(PAL_MONOCHROME_LIGHT)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_LIGHT)
+	ld [hli], a
+	; The last color is always dark.
+	ld a, e
+.write_last_color
+	ld [hli], a
+	ld [hl], d
 endc
 
-.BlackLBlueFade:
-; Fade between black and light blue.
-if !DEF(MONOCHROME)
-for hue, 32
-	RGB 0, hue / 2, hue
-endr
-else
-rept 8
-	RGB_MONOCHROME_BLACK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
-rept 8
-	RGB_MONOCHROME_LIGHT
-endr
-rept 8
-	RGB_MONOCHROME_LIGHT
-endr
+	jmp QueueCGBPalUpdate
+
+if def(MONOCHROME) ; Little outlined helpers from above!
+.first_color:
+	dw PAL_MONOCHROME_WHITE, PAL_MONOCHROME_LIGHT
+
+.all_black
+	ld de, PAL_MONOCHROME_BLACK
+.three_identical
+	ld a, e
+REPT 2
+	ld [hli], a
+	ld [hl], d
+	assert HIGH(wBGPals2) == HIGH(wOBPals2 - 1) ; The entire buffer fits within a single page.
+	inc l
+ENDR
+	jr .write_last_color
 endc
 
-.BlackBlueFade:
-; Fade between black and blue.
-if !DEF(MONOCHROME)
-for hue, 32
-	RGB 0, 0, hue
-endr
-else
-rept 8
-	RGB_MONOCHROME_BLACK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
-rept 8
-	RGB_MONOCHROME_DARK
-endr
-endc
-
-Intro_Scene20_AppearUnown:
+Scene_UnownsAroundSuicune_AppearUnown:
 ; Spawn the palette for the nth Unown
 	ld a, [wIntroSceneTimer]
 	and $7
@@ -1231,39 +857,20 @@ Intro_Scene20_AppearUnown:
 	ld c, a
 	ld b, 0
 
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-
-	push bc
 	ld hl, wBGPals2
-	call .copypal
-	pop bc
-
-	ld hl, wBGPals1
-	call .copypal
-
-	pop af
-	ldh [rWBK], a
-
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
-.copypal:
 	add hl, bc
 	ld d, h
 	ld e, l
 	ld hl, .pal
 	ld c, 8 ; b is already 0
 	rst CopyBytes
-	ret
+
+	jmp QueueCGBPalUpdate
 
 .pal
 INCLUDE "gfx/intro/unown.pal"
 
-Intro_FadeUnownWordPals:
+FadeUnownWordPals:
 	add a
 	add a
 	add a
@@ -1276,10 +883,6 @@ Intro_FadeUnownWordPals:
 	ld c, a
 	ld b, $0
 
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
 
 	push hl
 	ld hl, .FastFadePalettes
@@ -1305,11 +908,7 @@ Intro_FadeUnownWordPals:
 	ld a, d
 	ld [hli], a
 
-	pop af
-	ldh [rWBK], a
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
+	jmp QueueCGBPalUpdate
 
 .FastFadePalettes:
 if !DEF(MONOCHROME)
@@ -1346,113 +945,60 @@ rept 8
 endr
 endc
 
-Intro_LoadTilemap:
-	ldh a, [rWBK]
-	push af
-	ld a, $6
-	ldh [rWBK], a
-
-	ld hl, wScratchTileMap
-	decoord 0, 0
-	ld b, SCREEN_HEIGHT
-.row
-	ld c, SCREEN_WIDTH
-.col
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .col
-; "add hl, TILEMAP_WIDTH - SCREEN_WIDTH"
-; 6 bytes, 12 cycles
-	push de
-	ld de, TILEMAP_WIDTH - SCREEN_WIDTH
-	add hl, de
-	pop de
-;; 8 bytes, 8 cycles
-;	ld a, TILEMAP_WIDTH - SCREEN_WIDTH
-;	add l
-;	ld l, a
-;	ld a, 0
-;	adc h
-;	ld h, a
-	dec b
-	jr nz, .row
-
-	pop af
-	ldh [rWBK], a
-	ret
-
-Intro_Scene16_AnimateSuicune:
+Scene_SuicuneAppears_AnimateSuicune:
 	ld a, [wIntroSceneFrameCounter]
-	and $3
-	jr z, Intro_ColoredSuicuneFrameSwap
-	cp $3
+	and 3 ; Animate every 4 frames.
 	ret nz
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ret
 
-Intro_ColoredSuicuneFrameSwap:
-	hlcoord 0, 0
-	ld bc, SCREEN_AREA
+; Iterate throughout the tilemap, and swap the two frames of Suicune.
+ColoredSuicuneFrameSwap:
+	hlbgcoord 0, 0
 .loop
+	ldh a, [rSTAT]
+	and STAT_BUSY
+	jr nz, .loop
 	ld a, [hl]
 	and a
 	jr z, .skip
 	cp $80
 	jr nc, .skip
 	xor $8
-	ld [hl], a
 .skip
-	inc hl
-	dec bc
-	ld a, c
-	or b
+	ld [hli], a
+	ld a, h
+	cp $9A ; Stop when we have scanned all of the screen area, except the last two rows.
 	jr nz, .loop
-	ld a, TRANSFER_TILEMAP
-	ldh [hBGMapMode], a
 	ret
 
-Intro_RustleGrass:
+; Overwrite the grass tiles with the appropriate rustling cel.
+; (This is done on every frame that this scene is active.)
+RustleGrass:
 	ld a, [wIntroSceneFrameCounter]
-	cp 36
+	cp 4 * 9 ; Animate the grass 8 times, but return *before* the beginning of the 9th loop.
 	ret nc
-	and $c
-	srl a
-	ld e, a
-	ld d, $0
-	ld hl, .RustlingGrassPointers
-	add hl, de
-	ld a, [hli]
+
+	; Compute the cel's ID. We want to sway the grass left, middle, right, then middle again.
+	add 4
+	and $c ; Move to the next cel every 4 frames, looping around after the 4th.
+	jr nz, .gotIndex ; `add 4` above turns [0, 4, 8, C] into [4, 8, C, 0]...
+	ld a, 8 ; ...and we correct that last one to the same as the middle.
+.gotIndex
+	; The grass tiles are loaded in chunks of 4, starting at tile ID $74 ($9740).
+	; Conveniently (wink wink), this means we only need to change the low byte of the source address
+	; which we obtain by multiplying A by 16.
+	swap a
 	ldh [hRequestedVTileSource], a
-	ld a, [hli]
+	ld a, $97 ; Note that this assumes where the outdoors tiles are loaded.
 	ldh [hRequestedVTileSource + 1], a
-	ld a, LOW(vTiles2 tile $09)
+	ld a, LOW(vTiles5 tile (77 + 31))
 	ldh [hRequestedVTileDest], a
-	ld a, HIGH(vTiles2 tile $09)
+	ld a, HIGH(vTiles5 tile (77 + 31))
 	ldh [hRequestedVTileDest + 1], a
 	ld a, 4
 	ldh [hRequested2bpp], a
 	ret
 
-.RustlingGrassPointers:
-	dw IntroGrass1GFX
-	dw IntroGrass2GFX
-	dw IntroGrass3GFX
-	dw IntroGrass2GFX
-
-Intro_SetCGBPalUpdate:
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
-Intro_ClearBGPals:
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
+CutToBlackAndPause:
 
 ; Fill wBGPals2 and wOBPals2 with $0000 (black)
 	ld hl, wBGPals2
@@ -1471,67 +1017,19 @@ else
 	jr nz, .mono_loop
 endc
 
-	pop af
-	ldh [rWBK], a
-	ld a, $1
-	ldh [hCGBPalUpdate], a
+	call QueueCGBPalUpdate
 	ld c, 64
 	jmp DelayFrames
 
-Intro_DecompressRequest2bpp_64Tiles:
-	lb bc, 1, 64
-	jr Intro_DecompressRequest2bpp
+DecompressAndLoad128Tiles:
+	lb bc, BANK(@), 128
+	jmp DecompressRequest2bpp
 
-Intro_DecompressRequest2bpp_128Tiles:
-	lb bc, 1, 128
-	jr Intro_DecompressRequest2bpp
+DecompressAndLoad255Tiles:
+	lb bc, BANK(@), 255
+	jmp DecompressRequest2bpp
 
-Intro_DecompressRequest2bpp_255Tiles:
-	lb bc, 1, 255
-Intro_DecompressRequest2bpp:
-	ldh a, [rWBK]
-	push af
-	ld a, $6
-	ldh [rWBK], a
-
-	push bc
-	push de
-	ld de, wDecompressScratch
-	call Decompress
-	pop hl
-	pop bc
-
-	ld de, wDecompressScratch
-	call Request2bpp
-
-	pop af
-	ldh [rWBK], a
-	ret
-
-Intro_ResetLYOverrides:
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-
-	ld hl, wLYOverrides
-	ld bc, wLYOverridesEnd - wLYOverrides
-	xor a
-	rst ByteFill
-
-	pop af
-	ldh [rWBK], a
-	ld hl, rIE
-	set B_IE_STAT, [hl]
-	ld a, LOW(rSCX)
-	ldh [hLCDCPointer], a
-	ret
-
-Intro_PerspectiveScrollBG:
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
+PerspectiveScrollBG:
 	; Scroll the grass every frame.
 	; Scroll the trees every other frame and at half speed.
 	; This creates an illusion of perspective.
@@ -1552,148 +1050,104 @@ Intro_PerspectiveScrollBG:
 	inc a
 	ld bc, $31
 	rst ByteFill
-	ld a, [wLYOverrides + 0]
-	ldh [hSCX], a
-	pop af
-	ldh [rWBK], a
 	ret
 
-IntroSuicuneRunGFX:
+SuicuneRunGFX:
 INCBIN "gfx/intro/suicune_run.2bpp.lzp"
 
-IntroPichuWooperGFX:
+PichuWooperGFX:
 INCBIN "gfx/intro/pichu_wooper.2bpp.lzp"
 
-IntroTilemap003:
-INCBIN "gfx/intro/003.tilemap.lzp"
-
-Intro_SetupCommonScenery:
-	ld hl, IntroBackgroundGFX
-	ld de, vTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-
-	ld hl, IntroTilemap004
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
-
-	ld hl, Palette_e5edd
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	rst CopyBytes
-
-	ld hl, Palette_e5edd
-	ld de, wBGPals2
-	ld bc, 16 palettes
-	rst CopyBytes
-
-	pop af
-	ldh [rWBK], a
-
+ResetScrollingAndFillPalBufWithUnownPal:
+	ld hl, UnownsPalette
+ResetScrollingAndFillPalBuf:
+	xor a
+SetScrollingAndFillPalBuf:
+	ldh [hSCY], a
 	xor a
 	ldh [hSCX], a
-	ldh [hSCY], a
 
-	ld a, $7
-	ldh [hWX], a
+FillPalBuf:
+	ld de, wBGPals2
+	ld bc, 16 palettes ; 8 for BG, 8 for OBJ.
+	rst CopyBytes
+	jmp QueueCGBPalUpdate
 
-	ld a, $90
-	ldh [hWY], a
-	ret
+SetupOutdoors:
+	farcall StartUniformSCXOverrides
+.noScrollingReset:
+	ld a, LCDC_DEFAULT | LCDC_BG_9C00
+	ldh [rLCDC], a
 
-IntroBackgroundGFX:
-INCBIN "gfx/intro/background.2bpp.lzp"
+	ld hl, .palette
+	jr ResetScrollingAndFillPalBuf
+.palette: INCLUDE "gfx/intro/outdoors.pal"
 
-IntroTilemap004:
-INCBIN "gfx/intro/004.tilemap.lzp"
-
-Palette_e5edd:
-INCLUDE "gfx/intro/background.pal"
-
-IntroUnownsGFX:
+UnownsGFX:
 INCBIN "gfx/intro/unowns.2bpp.lzp"
 
-IntroPulseGFX:
+PulseGFX:
 INCBIN "gfx/intro/pulse.2bpp.lzp"
 
-IntroTilemap002:
-INCBIN "gfx/intro/002.tilemap.lzp"
-
-IntroTilemap001:
-INCBIN "gfx/intro/001.tilemap.lzp"
-
-IntroTilemap006:
-INCBIN "gfx/intro/006.tilemap.lzp"
-
-IntroTilemap005:
-INCBIN "gfx/intro/005.tilemap.lzp"
-
-IntroTilemap008:
-INCBIN "gfx/intro/008.tilemap.lzp"
-
-IntroTilemap007:
-INCBIN "gfx/intro/007.tilemap.lzp"
-
-Palette_365ad:
+UnownsPalette:
 INCLUDE "gfx/intro/unowns.pal"
 
-IntroCrystalUnownsGFX:
+CrystalUnownsGFX:
 INCBIN "gfx/intro/crystal_unowns.2bpp.lzp"
 
-IntroTilemap017:
-INCBIN "gfx/intro/017.tilemap.lzp"
-
-IntroTilemap015:
-INCBIN "gfx/intro/015.tilemap.lzp"
-
-Palette_e679d:
+CrystalUnownsPalette:
 INCLUDE "gfx/intro/crystal_unowns.pal"
 
-IntroSuicuneCloseGFX:
+SuicuneCloseGFX:
 INCBIN "gfx/intro/suicune_close.2bpp.lzp"
 
-IntroTilemap012:
-INCBIN "gfx/intro/012.tilemap.lzp"
-
-IntroTilemap011:
-INCBIN "gfx/intro/011.tilemap.lzp"
-
-Palette_e6d6d:
+SuicuneClosePalette:
 INCLUDE "gfx/intro/suicune_close.pal"
 
-IntroSuicuneJumpGFX:
+SuicuneJumpGFX:
 INCBIN "gfx/intro/suicune_jump.2bpp.lzp"
 
-IntroSuicuneBackGFX:
+SuicuneBackGFX:
 INCBIN "gfx/intro/suicune_back.2bpp.lzp"
 
-IntroTilemap010:
-INCBIN "gfx/intro/010.tilemap.lzp"
-
-IntroTilemap009:
-INCBIN "gfx/intro/009.tilemap.lzp"
-
-IntroTilemap014:
-INCBIN "gfx/intro/014.tilemap.lzp"
-
-IntroTilemap013:
-INCBIN "gfx/intro/013.tilemap.lzp"
-
-Palette_e77dd:
+SuicunePalette:
 INCLUDE "gfx/intro/suicune.pal"
 
-IntroUnownBackGFX:
+UnownBackGFX:
 INCBIN "gfx/intro/unown_back.2bpp.lzp"
 
-IntroGrass1GFX:
-INCBIN "gfx/intro/grass1.2bpp"
-IntroGrass2GFX:
-INCBIN "gfx/intro/grass2.2bpp"
-IntroGrass3GFX:
-INCBIN "gfx/intro/grass3.2bpp"
-IntroGrass4GFX:
+Grass4GFX:
 INCBIN "gfx/intro/grass4.2bpp"
+
+; Load the compressed attrmap+tilemap at `hl` to vBGMap0.
+DecompressAndLoadMap0:
+	ld de, vBGMap0
+; Load the compressed attrmap+tilemap at `hl` to the VRAM address `de`.
+DecompressAndLoadMapTo:
+	push de ; Will be reused for the tilemap.
+	ld a, 1 ; Load the attrmap.
+	ldh [rVBK], a
+	lb bc, BANK("Intro BG maps"), TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE
+	call DecompressRequest2bpp
+
+	xor a ; Load the tilemap.
+	ldh [rVBK], a
+	pop hl ; Different calling convention than `DecompressRequest2bpp`!
+	debgcoord 0, SCREEN_HEIGHT, wDecompressScratch
+	ld c, TILEMAP_WIDTH * SCREEN_HEIGHT / TILE_SIZE ; This function ignores B.
+	jmp Request2bppInWRA6
+
+PUSHS "Intro BG maps", ROMX
+
+IntroBGMaps: ; Each of those contains the attrmap followed by the tilemap.
+.UnownA:        INCBIN "gfx/intro/unown_a.bgmaps.lzp"
+; This one also has its tiles bundled, including the grass rustling animation.
+.Outdoors:      INCBIN "gfx/intro/outdoors.bgmaps_tiles_anim.lzp"
+.UnownHI:       INCBIN "gfx/intro/unown_hi.bgmaps.lzp"
+.Unowns:        INCBIN "gfx/intro/unowns.bgmaps.lzp"
+.SuicuneJump:   INCBIN "gfx/intro/suicune_jump.bgmaps.lzp"
+.SuicuneClose:  INCBIN "gfx/intro/suicune_close.bgmaps.lzp"
+.SuicuneBack:   INCBIN "gfx/intro/suicune_back.bgmaps.lzp"
+.CrystalUnowns: INCBIN "gfx/intro/crystal_unowns.bgmaps.lzp"
+
+POPS

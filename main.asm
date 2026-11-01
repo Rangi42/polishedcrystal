@@ -526,12 +526,6 @@ INCLUDE "engine/games/unown_puzzle.asm"
 INCLUDE "engine/gfx/fade.asm"
 
 
-SECTION "bank39", ROMX
-
-INCLUDE "engine/movie/splash.asm"
-INCLUDE "engine/movie/intro.asm"
-
-
 SECTION "Options Menus", ROMX
 
 INCLUDE "engine/menus/options_menu_shared.asm"

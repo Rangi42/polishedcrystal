@@ -2,19 +2,10 @@
 
 PlayBattleAnim:
 	farcall CheckBattleAnimSubstitution
-	ldh a, [rWBK]
-	push af
 
 	ld a, 5
-	ldh [rWBK], a
+	call StackCallInWRAMBankA
 
-	call _PlayBattleAnim
-
-	pop af
-	ldh [rWBK], a
-	ret
-
-_PlayBattleAnim:
 	ld c, 6
 	call DelayFrames
 
@@ -158,15 +149,9 @@ BattleAnimRestoreHUDs:
 	call DelayFrame
 	call WaitTop
 
-	ldh a, [rWBK]
-	push af
-	ld a, $1
-	ldh [rWBK], a
-
+	ld a, BANK(wCurBattleMon)
+	call StackCallInWRAMBankA
 	call UpdateBattleHuds
-
-	pop af
-	ldh [rWBK], a
 
 	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
@@ -825,10 +810,9 @@ BattleAnimCmd_CheckCriticalCapture:
 	ret
 
 BattleAnimCmd_Transform:
-	ldh a, [rWBK]
-	push af
-	ld a, 1
-	ldh [rWBK], a
+	ld a, BANK(wCurPartySpecies)
+	call StackCallInWRAMBankA
+
 	ld a, [wCurPartySpecies]
 	push af
 
@@ -855,8 +839,6 @@ BattleAnimCmd_Transform:
 .done
 	pop af
 	ld [wCurPartySpecies], a
-	pop af
-	ldh [rWBK], a
 	ret
 
 BattleAnimCmd_UpdateActorPic:
@@ -975,13 +957,6 @@ INCLUDE "gfx/battle_anims/custom.pal"
 	assert_table_length NUM_CUSTOM_BATTLE_PALETTES
 
 BattleAnimCmd_RaiseSub:
-	ldh a, [rWBK]
-	push af
-	ld a, 6
-	ldh [rWBK], a
-	xor a
-	call GetSRAMBank
-
 	ld hl, SubstituteBackpic
 	lb bc, BANK(SubstituteBackpic), 6 * 6
 	ld de, vTiles2 tile $31
@@ -995,17 +970,11 @@ BattleAnimCmd_RaiseSub:
 	ld de, vTiles2 tile $00
 
 .done
-	call DecompressRequest2bpp
-	call CloseSRAM
-	pop af
-	ldh [rWBK], a
-	ret
+	jmp DecompressRequest2bpp
 
 BattleAnimCmd_DropSub:
-	ldh a, [rWBK]
-	push af
-	ld a, $1
-	ldh [rWBK], a
+	ld a, BANK(wCurPartySpecies)
+	call StackCallInWRAMBankA
 
 	ld a, [wCurPartySpecies]
 	push af
@@ -1022,15 +991,12 @@ BattleAnimCmd_DropSub:
 .done
 	pop af
 	ld [wCurPartySpecies], a
-	pop af
-	ldh [rWBK], a
 	ret
 
 BattleAnimCmd_BeatUp:
-	ldh a, [rWBK]
-	push af
-	ld a, $1
-	ldh [rWBK], a
+	ld a, BANK(wCurPartySpecies)
+	call StackCallInWRAMBankA
+
 	ld a, [wCurPartySpecies]
 	push af
 
@@ -1057,10 +1023,7 @@ BattleAnimCmd_BeatUp:
 	pop af
 	ld [wCurPartySpecies], a
 	ld a, CGB_BATTLE_COLORS
-	call GetCGBLayout
-	pop af
-	ldh [rWBK], a
-	ret
+	jmp GetCGBLayout
 
 BattleAnimCmd_OAMOn:
 	xor a
@@ -1125,10 +1088,8 @@ rept 4
 	add hl, de
 endr
 
-	ldh a, [rWBK]
-	push af
-	ld a, 1
-	ldh [rWBK], a
+	ld a, BANK(wEnemyMonSpecies)
+	call StackCallInWRAMBankA
 
 	ldh a, [hBattleTurn]
 	and a
@@ -1154,7 +1115,7 @@ endr
 	push hl
 	call LoadCry
 	pop hl
-	jr c, .done
+	ret c
 
 	ld a, [hli]
 	ld c, a
@@ -1189,12 +1150,7 @@ endr
 	ld a, 1
 	ld [wStereoPanningMask], a
 
-	farcall _PlayCry
-
-.done
-	pop af
-	ldh [rWBK], a
-	ret
+	farjp _PlayCry
 
 .CryData:
 ; +pitch, +length
@@ -1277,10 +1233,10 @@ BattleAnim_RevertPals:
 
 BattleAnim_SetBGPals:
 	ldh [rBGP], a
-	ldh a, [rWBK]
-	push af
+
 	ld a, BANK(wBGPals1)
-	ldh [rWBK], a
+	call StackCallInWRAMBankA
+
 	ld hl, wBGPals2
 	ld de, wBGPals1
 	ldh a, [rBGP]
@@ -1290,32 +1246,22 @@ BattleAnim_SetBGPals:
 	ld hl, wOBPals2
 	ld de, wOBPals1
 	ldh a, [rBGP]
+Copy2PalsAndQueueUpdate:
 	ld b, a
 	ld c, 2
 	call CopyPals
-	pop af
-	ldh [rWBK], a
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
-	ret
+	jmp QueueCGBPalUpdate
 
 BattleAnim_SetOBPals:
 	ldh [rOBP0], a
-	ldh a, [rWBK]
-	push af
-	ld a, $5
-	ldh [rWBK], a
+
+	ld a, BANK(wOBPals1)
+	call StackCallInWRAMBankA
+
 	ld hl, wOBPals2 palette PAL_BATTLE_OB_GRAY
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
 	ldh a, [rOBP0]
-	ld b, a
-	ld c, $2
-	call CopyPals
-	pop af
-	ldh [rWBK], a
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
+	jr Copy2PalsAndQueueUpdate
 
 BattleAnim_UpdateOAM_All:
 	xor a

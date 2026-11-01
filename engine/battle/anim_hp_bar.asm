@@ -189,7 +189,45 @@ HPBarAnim_UpdateTiles:
 	ld a, d
 	ld [wCurHPAnimPal], a
 	ld c, d
-	farjp ApplyHPBarPals
+	; fallthrough
+
+ApplyHPBarPals:
+	ld a, [wWhichHPBar]
+	and a
+	jr z, .Enemy
+	dec a
+	jr nz, .PartyMenu
+
+.Player:
+	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP + 2
+	jr .okay
+
+.Enemy:
+	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP + 2
+
+.okay
+	ld a, c
+	add a
+	add a
+	add LOW(HPBarInteriorPals)
+	ld l, a
+	adc HIGH(HPBarInteriorPals)
+	sub l
+	ld h, a
+	ld bc, 4
+	call FarCopyColorWRAM
+	jmp QueueCGBPalUpdate
+
+.PartyMenu:
+	ld e, c
+	inc e
+	hlcoord 11, 1, wAttrmap
+	ld bc, 2 * SCREEN_WIDTH
+	ld a, [wCurPartyMon]
+	rst AddNTimes
+	lb bc, 2, 8
+	ld a, e
+	jmp FillBoxWithByte
 
 HPBarAnim_UpdateHPRemaining:
 	ld a, [wWhichHPBar]

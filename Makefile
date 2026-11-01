@@ -86,6 +86,8 @@ rom_obj := \
 	data/text/common.o \
 	data/tilesets.o \
 	engine/movie/credits.o \
+	engine/movie/intro.o \
+	engine/movie/splash.o \
 	engine/overworld/events.o \
 	gfx/minis_icons.o \
 	gfx/pokemon.o \
@@ -207,6 +209,14 @@ gfx/evo/bubble.2bpp: tools/gfx += --trim-whitespace
 
 gfx/font/%.1bpp: tools/gfx += --trim-whitespace
 gfx/font/space.2bpp: tools/gfx =
+
+gfx/intro/%.bgmaps: gfx/intro/%.attrmap gfx/intro/%.tilemap ; $Qcat $^ > $@
+gfx/intro/%.bgmaps_tiles: gfx/intro/%.bgmaps gfx/intro/%.2bpp ; $Qcat $^ > $@
+gfx/intro/outdoors.2bpp: RGBGFXFLAGS += -m
+gfx/intro/outdoors.bgmaps_tiles_anim: gfx/intro/outdoors.bgmaps_tiles gfx/intro/grass1.2bpp \
+                                                                      gfx/intro/grass2.2bpp \
+                                                                      gfx/intro/grass3.2bpp
+	cat $^ > $@
 
 gfx/mail/dragonite.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/flower_mail_border.1bpp: tools/gfx += --remove-whitespace

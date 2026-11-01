@@ -427,24 +427,24 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  1,  0, $25, $0
 	dsprite -1,  0,  2,  0, $26, $0
 	dsprite -1,  0,  3,  0, $27, $0
-	dsprite  0,  0, -4,  0, $30, $0
-	dsprite  0,  0, -3,  0, $31, $0
-	dsprite  0,  0, -2,  0, $32, $0
-	dsprite  0,  0, -1,  0, $33, $0
-	dsprite  0,  0,  0,  0, $34, $0
-	dsprite  0,  0,  1,  0, $35, $0
-	dsprite  0,  0,  2,  0, $36, $0
-	dsprite  1,  0, -4,  0, $40, $0
-	dsprite  1,  0, -3,  0, $41, $0
-	dsprite  1,  0, -2,  0, $42, $0
-	dsprite  1,  0, -1,  0, $43, $0
-	dsprite  1,  0,  0,  0, $44, $0
-	dsprite  1,  0,  1,  0, $45, $0
-	dsprite  1,  0,  2,  0, $46, $0
-	dsprite  1,  0,  3,  0, $47, $0
-	dsprite  2,  0, -4,  0, $50, $0
-	dsprite  2,  0, -3,  0, $51, $0
-	dsprite  2,  0,  3,  0, $57, $0
+	dsprite  0,  0, -4,  0, $30, OAM_PRIO
+	dsprite  0,  0, -3,  0, $31, OAM_PRIO
+	dsprite  0,  0, -2,  0, $32, OAM_PRIO
+	dsprite  0,  0, -1,  0, $33, OAM_PRIO
+	dsprite  0,  0,  0,  0, $34, OAM_PRIO
+	dsprite  0,  0,  1,  0, $35, OAM_PRIO
+	dsprite  0,  0,  2,  0, $36, OAM_PRIO
+	dsprite  1,  0, -4,  0, $40, OAM_PRIO
+	dsprite  1,  0, -3,  0, $41, OAM_PRIO
+	dsprite  1,  0, -2,  0, $42, OAM_PRIO
+	dsprite  1,  0, -1,  0, $43, OAM_PRIO
+	dsprite  1,  0,  0,  0, $44, OAM_PRIO
+	dsprite  1,  0,  1,  0, $45, OAM_PRIO
+	dsprite  1,  0,  2,  0, $46, OAM_PRIO
+	dsprite  1,  0,  3,  0, $47, OAM_PRIO
+	dsprite  2,  0, -4,  0, $50, OAM_PRIO
+	dsprite  2,  0, -3,  0, $51, OAM_PRIO
+	dsprite  2,  0,  3,  0, $57, OAM_PRIO
 
 .OAMData_IntroSuicune2:
 	db 28
@@ -463,19 +463,19 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $24, $0
 	dsprite -1,  0,  1,  0, $25, $0
 	dsprite -1,  0,  2,  0, $26, $0
-	dsprite  0,  0, -4,  0, $30, $0
-	dsprite  0,  0, -3,  0, $31, $0
-	dsprite  0,  0, -2,  0, $32, $0
-	dsprite  0,  0, -1,  0, $33, $0
-	dsprite  0,  0,  0,  0, $34, $0
-	dsprite  0,  0,  1,  0, $35, $0
-	dsprite  1,  0, -2,  0, $42, $0
-	dsprite  1,  0, -1,  0, $43, $0
-	dsprite  1,  0,  0,  0, $44, $0
-	dsprite  1,  0,  1,  0, $45, $0
-	dsprite  2,  0, -1,  0, $53, $0
-	dsprite  2,  0,  0,  0, $54, $0
-	dsprite  2,  0,  1,  0, $55, $0
+	dsprite  0,  0, -4,  0, $30, OAM_PRIO
+	dsprite  0,  0, -3,  0, $31, OAM_PRIO
+	dsprite  0,  0, -2,  0, $32, OAM_PRIO
+	dsprite  0,  0, -1,  0, $33, OAM_PRIO
+	dsprite  0,  0,  0,  0, $34, OAM_PRIO
+	dsprite  0,  0,  1,  0, $35, OAM_PRIO
+	dsprite  1,  0, -2,  0, $42, OAM_PRIO
+	dsprite  1,  0, -1,  0, $43, OAM_PRIO
+	dsprite  1,  0,  0,  0, $44, OAM_PRIO
+	dsprite  1,  0,  1,  0, $45, OAM_PRIO
+	dsprite  2,  0, -1,  0, $53, OAM_PRIO
+	dsprite  2,  0,  0,  0, $54, OAM_PRIO
+	dsprite  2,  0,  1,  0, $55, OAM_PRIO
 
 .OAMData_IntroSuicune3:
 	db 30
@@ -495,20 +495,20 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $24, $0
 	dsprite -1,  0,  1,  0, $25, $0
 	dsprite -1,  0,  2,  0, $26, $0
-	dsprite  0,  0, -4,  0, $30, $0
-	dsprite  0,  0, -3,  0, $31, $0
-	dsprite  0,  0, -2,  0, $32, $0
-	dsprite  0,  0, -1,  0, $33, $0
-	dsprite  0,  0,  0,  0, $34, $0
-	dsprite  0,  0,  1,  0, $35, $0
-	dsprite  1,  0, -2,  0, $42, $0
-	dsprite  1,  0, -1,  0, $43, $0
-	dsprite  1,  0,  0,  0, $44, $0
-	dsprite  1,  0,  1,  0, $45, $0
-	dsprite  2,  0, -2,  0, $52, $0
-	dsprite  2,  0, -1,  0, $53, $0
-	dsprite  2,  0,  0,  0, $54, $0
-	dsprite  2,  0,  1,  0, $55, $0
+	dsprite  0,  0, -4,  0, $30, OAM_PRIO
+	dsprite  0,  0, -3,  0, $31, OAM_PRIO
+	dsprite  0,  0, -2,  0, $32, OAM_PRIO
+	dsprite  0,  0, -1,  0, $33, OAM_PRIO
+	dsprite  0,  0,  0,  0, $34, OAM_PRIO
+	dsprite  0,  0,  1,  0, $35, OAM_PRIO
+	dsprite  1,  0, -2,  0, $42, OAM_PRIO
+	dsprite  1,  0, -1,  0, $43, OAM_PRIO
+	dsprite  1,  0,  0,  0, $44, OAM_PRIO
+	dsprite  1,  0,  1,  0, $45, OAM_PRIO
+	dsprite  2,  0, -2,  0, $52, OAM_PRIO
+	dsprite  2,  0, -1,  0, $53, OAM_PRIO
+	dsprite  2,  0,  0,  0, $54, OAM_PRIO
+	dsprite  2,  0,  1,  0, $55, OAM_PRIO
 
 .OAMData_IntroSuicune4:
 	db 31
@@ -527,22 +527,22 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  1,  0, $25, $0
 	dsprite -1,  0,  2,  0, $26, $0
 	dsprite -1,  0,  3,  0, $27, $0
-	dsprite  0,  0, -4,  0, $30, $0
-	dsprite  0,  0, -3,  0, $31, $0
-	dsprite  0,  0, -2,  0, $32, $0
-	dsprite  0,  0, -1,  0, $33, $0
-	dsprite  0,  0,  0,  0, $34, $0
-	dsprite  0,  0,  1,  0, $35, $0
-	dsprite  0,  0,  2,  0, $36, $0
-	dsprite  1,  0, -3,  0, $41, $0
-	dsprite  1,  0, -2,  0, $42, $0
-	dsprite  1,  0, -1,  0, $43, $0
-	dsprite  1,  0,  0,  0, $44, $0
-	dsprite  1,  0,  1,  0, $45, $0
-	dsprite  2,  0, -3,  0, $51, $0
-	dsprite  2,  0, -2,  0, $52, $0
-	dsprite  2,  0,  0,  0, $54, $0
-	dsprite  2,  0,  1,  0, $55, $0
+	dsprite  0,  0, -4,  0, $30, OAM_PRIO
+	dsprite  0,  0, -3,  0, $31, OAM_PRIO
+	dsprite  0,  0, -2,  0, $32, OAM_PRIO
+	dsprite  0,  0, -1,  0, $33, OAM_PRIO
+	dsprite  0,  0,  0,  0, $34, OAM_PRIO
+	dsprite  0,  0,  1,  0, $35, OAM_PRIO
+	dsprite  0,  0,  2,  0, $36, OAM_PRIO
+	dsprite  1,  0, -3,  0, $41, OAM_PRIO
+	dsprite  1,  0, -2,  0, $42, OAM_PRIO
+	dsprite  1,  0, -1,  0, $43, OAM_PRIO
+	dsprite  1,  0,  0,  0, $44, OAM_PRIO
+	dsprite  1,  0,  1,  0, $45, OAM_PRIO
+	dsprite  2,  0, -3,  0, $51, OAM_PRIO
+	dsprite  2,  0, -2,  0, $52, OAM_PRIO
+	dsprite  2,  0,  0,  0, $54, OAM_PRIO
+	dsprite  2,  0,  1,  0, $55, OAM_PRIO
 
 .OAMData_IntroPichu:
 	db 25
