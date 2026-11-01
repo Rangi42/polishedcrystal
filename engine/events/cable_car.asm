@@ -413,6 +413,7 @@ ELSE
 	call FadePalettes
 ENDC
 
+	; TODO: sun/moon depending on time of day
 	; TODO: add random chance for Pokémon to fly in the sky?
 	; TODO: allow player to move around in the car with d-pad?
 
