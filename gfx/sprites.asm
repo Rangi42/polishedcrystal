@@ -646,3 +646,6 @@ PagodaSpriteGFX:: INCBIN "gfx/sprites/pagoda.2bpp.lzp"
 
 SECTION "CampfireSpriteGFX", ROMX
 CampfireSpriteGFX:: INCBIN "gfx/sprites/campfire.2bpp.lzp"
+
+SECTION "CableCarSpriteGFX", ROMX
+CableCarSpriteGFX:: INCBIN "gfx/sprites/cable_car.2bpp.lzp"
