@@ -225,10 +225,10 @@ gfx/new_game/shrink2.2bpp: RGBGFXFLAGS += -Z
 # All OBJ tiles are meant for 8x16 mode, thus laid out in columns.
 gfx/overworld/cable_car/cumulus.2bpp: RGBGFXFLAGS += -Z
 gfx/overworld/cable_car/car_window.2bpp: gfx/overworld/cable_car/car.png
-	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 48,16:1,2 -o $@ $<
+	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,0:1,2 -o $@ $<
 gfx/overworld/cable_car/car.2bpp: RGBGFXFLAGS += -Z -L 8,0:2,6
 gfx/overworld/cable_car/car_left.2bpp: gfx/overworld/cable_car/car.png
-	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,8:1,4 -o $@ $<
+	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,16:1,4 -o $@ $<
 # The bit between the car and the cable.
 gfx/overworld/cable_car/handle_side.2bpp: gfx/overworld/cable_car/handle.png
 	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,0:1,2 -o $@ $<
