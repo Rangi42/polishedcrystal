@@ -231,7 +231,7 @@ gfx/overworld/cable_car/car_left.2bpp: gfx/overworld/cable_car/car.png
 	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,8:1,4 -o $@ $<
 # The bit between the car and the cable.
 gfx/overworld/cable_car/handle_side.2bpp: gfx/overworld/cable_car/handle.png
-	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,1:1,2 -o $@ $<
+	$Q$(RGBGFX) -c dmg $(RGBGFXFLAGS) -Z -L 0,0:1,2 -o $@ $<
 gfx/overworld/cable_car/handle.2bpp: RGBGFXFLAGS += -Z -L 8,0:1,2
 # Various remaining pieces of the scene.
 gfx/overworld/cable_car/cable.2bpp: RGBGFXFLAGS += -Z
