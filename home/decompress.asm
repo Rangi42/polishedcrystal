@@ -417,15 +417,13 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 	ld c, a
 	inc c ; TODO: this should be done in the compressor instead!
 	ld a, b ; Command ID: $fc, $fd, or $fe.
-	cp LZ_SPECIAL_PACKHI0
-	jr nz, .special_pack16
+	cp LZ_SPECIAL_PACK16_SHORT
+	jr z, .special_pack16
+	jr nc, .special_packlo0
 
 ;; LZ_SPECIAL_PACKHI0: Read nibbles from the input stream, and output them right-padded (`$x0`).
 
 .special_packhi0
-	; Decode packed literals where each output byte is (nibble << 4).
-	; Payload is ceil(count/2) bytes.
-.packhi0_loop
 	ld a, [de]
 	inc de
 	push af
@@ -438,7 +436,7 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 	swap a
 	ld [hli], a
 	dec c
-	jr nz, .packhi0_loop
+	jr nz, .special_packhi0
 	jr .Main
 
 .pack_done
@@ -448,11 +446,6 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 ;; LZ_SPECIAL_PACK16: Read nibbles from the input stream, and output one of 16 common bytes from that.
 
 .special_pack16
-	cp LZ_SPECIAL_PACKLO0
-	jr z, .special_packlo0
-	; Decode packed literals. Payload is ceil(count/2) bytes.
-	; Uses a small fixed table of 16 bytes.
-.pack_loop
 	ld a, [de]
 	inc de
 	push af
@@ -461,15 +454,12 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 	jr z, .pack_done
 	pop af
 	call .pack_lookup
-	jr nz, .pack_loop
+	jr nz, .special_pack16
 	jr .Main
 
 ;; LZ_SPECIAL_PACKLO0: Read nibbles from the input stream, and output them left-padded (`$0x`).
 
 .special_packlo0
-	; Decode packed literals where each output byte has high nibble 0.
-	; Payload is ceil(count/2) bytes.
-.packlo0_loop
 	ld a, [de]
 	inc de
 	push af
@@ -482,7 +472,7 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 	and $0f
 	ld [hli], a
 	dec c
-	jr nz, .packlo0_loop
+	jr nz, .special_packlo0
 	jmp .Main
 
 ; Output the `a & $0f`th element of `.pack16_table`,
