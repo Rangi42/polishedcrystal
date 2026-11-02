@@ -532,7 +532,7 @@ MACRO Q8pos_and_speed ; <name prefix>, <start pos>, <speed>
 \1_pos_px: db HIGH(\2)
 ENDM
 
-wTickCableCarQ8Pos:
+wTickCableCarQ8Pos::
 	ld a, [hli] ; Speed (subpx) -> pos (subpx).
 	add [hl]
 	ld [hli], a ; Pos (subpx) -> speed (px).
@@ -550,7 +550,7 @@ MACRO parallax_layer ; <name prefix>, <first scanline>, <px modulo>, <speed>
 	; TODO: Y axis
 ENDM
 
-wCableCarSceneParallaxLayers:
+wCableCarSceneParallaxLayers::
 	parallax_layer .nearClouds,  13, 255, SCROLL_SPEED_CLOUDS_NEAR
 	parallax_layer .farClouds0,  30, 255, SCROLL_SPEED_CLOUDS_FAR_0
 	parallax_layer .farClouds1,  40, 255, SCROLL_SPEED_CLOUDS_FAR_1
@@ -583,7 +583,7 @@ MACRO obj_col_relative_pos ; <count>, <x>, <y> (coords are relative to the middl
 	endc
 ENDM
 
-CableCarSceneObjPosOffsets: ; Keep in sync with `CableCarOAMData`!
+wCableCarSceneObjPosOffsets:: ; Keep in sync with `CableCarOAMData`!
 	obj_col_relative_pos  1,   8, 16 ; Right window.
 	obj_col_relative_pos -1, -16, 16 ; Left window.
 
@@ -607,7 +607,7 @@ CableCarSceneObjPosOffsets: ; Keep in sync with `CableCarOAMData`!
 ; this is used to highlight that the instruction and/or its operand(s) are modified
 ; throughout the animation.
 ; (This is possible since this code gets loaded into RAM.)
-wCableCarSceneLCDHandler:
+wCableCarSceneLCDHandler::
 	push hl
 
 ; Multiplex some of the OAM.
@@ -761,7 +761,7 @@ wCableCarSceneLCDHandler:
 	; Move also!
 	cp 4 * 2
 	jr c, .bump ; Down or up.
-	ld hl, CableCarSceneObjPosOffsets.player + 3
+	ld hl, wCableCarSceneObjPosOffsets.player + 3
 	ld a, [hl]
 	jr nz, .right
 	; Left.
@@ -771,7 +771,7 @@ wCableCarSceneLCDHandler:
 .movePlayer
 	ld [hl], a
 	sub TILE_WIDTH
-	ld [CableCarSceneObjPosOffsets.player + 1], a
+	ld [wCableCarSceneObjPosOffsets.player + 1], a
 	jr .doneMoving
 .right
 	inc a
@@ -879,7 +879,7 @@ wCableCarSceneLCDHandler:
 
 ; Draw the cable car in its new position.
 	ld hl, wShadowOAMSprite{02d:OBJ_CAR_END}XCoord - OBJ_SIZE
-	ld de, CableCarSceneObjPosOffsets.End
+	ld de, wCableCarSceneObjPosOffsets.End
 .updateCarObjPos
 	dec e ; (dec de)
 	ld a, [de] ; Offset from cable car's origin.
@@ -892,7 +892,7 @@ wCableCarSceneLCDHandler:
 	dec l ; Attrs -> Tile ID.
 	dec l ; Tile ID -> X pos.
 	ld a, e
-	cp LOW(CableCarSceneObjPosOffsets)
+	cp LOW(wCableCarSceneObjPosOffsets)
 	jr nz, .updateCarObjPos
 
 	pop de
@@ -905,20 +905,20 @@ wCableCarCumulusX:: Q8pos_and_speed wCableCarCumulusX, SCREEN_WIDTH_PX * 1.0q8, 
 def CAR_TARGET_X equ (SCREEN_WIDTH_PX / 2 - ORIGIN_ON_RIGHT_OFS) * 1.0q8 ; Coordinate so that the car is centered on the screen.
 wCableCarX:: Q8pos_and_speed wCableCarX, CAR_TARGET_X - NB_FRAMES_FADES * CAR_X_SPEED, CAR_X_SPEED
 
-wCableCarBumpTimer: db 0
+wCableCarBumpTimer:: db 0
 
 wCableCarCliffX:: Q8pos_and_speed wCableCarCliffX, 0, -SCROLL_SPEED_CLIFF
 
 ; While zero, the car moves and nothing else.
 ; While non-zero, this is inverted.
-wCableCarSequenceTimer: db 0
+wCableCarSequenceTimer:: db 0
 
-wCableCarPlayerMovementTimer: db 0
+wCableCarPlayerMovementTimer:: db 0
 
 
-wCableCarWXOffsets: ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
+wCableCarWXOffsets:: ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
 	db 7, 1, 1, 1, 0, 8, 1, 2, 1, 1, 1, 0
-wCableCarWYTable:
+wCableCarWYTable::
 MACRO initial_wy ; Each arg is “how many blank pixels at the top of this column” (in the non-staggered version).
 	for i, 1, _NARG + 1
 		static_assert \<i> < CLIFF_PATTERN_HEIGHT
@@ -930,7 +930,7 @@ ENDM
 	initial_wy 1, 2, 3
 	initial_wy 5, 5, 5, 5, 5, 5, 5, 5 ; 8-column flat stretch.
 	initial_wy 6, 7, 7, 8, 9, 10
-wCableCarWYTableEnd:
+wCableCarWYTableEnd::
 
 ENDL
 .End:
