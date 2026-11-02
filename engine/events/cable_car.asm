@@ -84,6 +84,7 @@ def OBJ_CABLE         rb 1
 def OBJ_CUMULUS       rb 6
 def OBJ_CUMULUS_END equ _RS
 def OBJ_SUN_MOON      rb 2
+def OBJ_SUN_MOON_LAST equ _RS - 1
 def NB_CABLE_CAR_OBJS equ _RS
 static_assert NB_CABLE_CAR_OBJS <= OAM_COUNT, "{d:NB_CABLE_CAR_OBJS} > {d:OAM_COUNT}"
 
@@ -278,12 +279,14 @@ endr
 	dec c
 	jr nz, .setUpOAM
 
-; Set up static OAM positions.
+; Set up cable OAM position.
 	ld l, LOW(wShadowOAMSprite{02d:OBJ_CABLE}YCoord)
 	ld a, OAM_Y_OFS
 	ld [hli], a
 	ld a, OAM_X_OFS + SCREEN_WIDTH_PX + (TOPMOST_CABLE_Y_POS - 1) * 2 ; It will get moved by an extra 2px each scanline.
 	ld [hli], a
+
+; Setp up cumulus OAM positions.
 	assert OBJ_CABLE + 1 == OBJ_CUMULUS
 	ld a, [wCableCarCumulusX_pos_px]
 	ld c, OBJ_CUMULUS_END - OBJ_CUMULUS
@@ -297,12 +300,41 @@ endr
 	ld [hli], a ; X pos -> tile ID.
 	dec c
 	jr nz, .setUpCumulus
-	assert OBJ_CUMULUS_END == OBJ_SUN_MOON
+
+; Set up sun/moon OAM positions.
+	ld l, LOW(wShadowOAMSprite{02d:OBJ_SUN_MOON}YCoord)
+	ldh a, [hHours]
+	cp 12
+	jr c, .anteMeridiem
+	sub 12
+.anteMeridiem
+	add LOW(CableCarSunMoonYCoords)
+	ld c, a
+	adc HIGH(CableCarSunMoonYCoords)
+	sub c
+	ld b, a
+	ld a, [bc]
+	ld b, a
+	ld [hli], a
+	ld a, 24 + OAM_X_OFS
+	ld [hli], a
 	inc l ; Tile ID -> attrs.
 	inc l ; Attrs -> next Y pos.
+	ld a, b
+	ld [hli], a
+	ld [hl], 32 + OAM_X_OFS
+
+; Set up sun/moon tiles.
 	ld a, [wCableCarTimeOfDay]
 	cp NITE
-	; TODO
+	jr z, .keepMoon
+	ld l, LOW(wShadowOAMSprite{02d:OBJ_SUN_MOON}TileID)
+	ld a, SUN_MOON_BASE_TILE
+	ld [hl], a
+	ld l, LOW(wShadowOAMSprite{02d:OBJ_SUN_MOON_LAST}TileID)
+	ld [hli], a
+	set B_OAM_XFLIP, [hl]
+.keepMoon
 
 ; Write window's tilemap and attrmap.
 	ld hl, wTilemap
@@ -386,9 +418,7 @@ else
 	call FadePalettes
 endc
 
-	; TODO: sun/moon depending on time of day
 	; TODO: add random chance for Pokémon to fly in the sky?
-	; TODO: allow player to move around in the car with d-pad?
 
 ; Play the cutscene out over a fixed duration.
 def FRAME_QUANTUM equ 3
@@ -436,6 +466,14 @@ endc
 	ld a, WX_OFS
 	ldh [hWX], a
 	ret
+
+
+CableCarSunMoonYCoords:
+pusho Q16
+for i, 12
+	db 24 - mul(cos(i * 1.0 / 12), 20.0) / 1.0 + OAM_Y_OFS
+endr
+popo
 
 
 CableCarPalettes:
@@ -921,9 +959,6 @@ wCableCarSequenceTimer:: db 0
 
 wCableCarPlayerMovementTimer:: db 0
 
-wCableCarTimeOfDay:: db 0
-
-
 wCableCarWXOffsets:: ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
 	db 7, 1, 1, 1, 0, 8, 1, 2, 1, 1, 1, 0
 wCableCarWYTable::
@@ -939,6 +974,9 @@ ENDM
 	initial_wy 5, 5, 5, 5, 5, 5, 5, 5 ; 8-column flat stretch.
 	initial_wy 6, 7, 7, 8, 9, 10
 wCableCarWYTableEnd::
+
+; This gets initialized from `wTimeOfDay`, and should not be overwritten when copying this `LOAD` block.
+wCableCarTimeOfDay::
 
 ENDL
 .End:
