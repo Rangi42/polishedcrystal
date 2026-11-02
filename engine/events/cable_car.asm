@@ -38,6 +38,9 @@ def SCROLL_SPEED_CLIFF        equ 1.1q8 ; X scroll speed only; the Y position is
 def CUMULUS_X_SPEED equ 0.4q8 ; px/frame. No subpixels because lazy.
 def CUMULUS_Y_POS equ 1
 
+def MIN_SUN_MOON_Y equ  4 ; at noon/midnight
+def MAX_SUN_MOON_Y equ 44 ; at dawn/dusk
+
 def CAR_X_SPEED equ SCROLL_SPEED_CLIFF
 
 ; Whenever the car's bump timer has all of these bits equal to 0, the car gets bumped up or down by 1 pixel.
@@ -470,8 +473,9 @@ endc
 
 CableCarSunMoonYCoords:
 pusho Q16
+def HALF_SUN_MOON_DY equ div((MAX_SUN_MOON_Y - MIN_SUN_MOON_Y) * 1.0, 2.0)
 for i, 12
-	db 24 - mul(cos(i * 1.0 / 12), 20.0) / 1.0 + OAM_Y_OFS
+	db MAX_SUN_MOON_Y - (mul(cos(i * 1.0 / 12), HALF_SUN_MOON_DY) + HALF_SUN_MOON_DY) / 1.0 + OAM_Y_OFS
 endr
 popo
 
