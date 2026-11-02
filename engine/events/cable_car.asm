@@ -67,6 +67,24 @@ def NB_PALETTES equ const_value + 8
 	; Filled in dynamically depending on player gender. (Thus, must be last.)
 	const OBPAL_PLAYER                ; 4
 
+; Constants for `CableCarOAMData` and `wCableCarSceneObjPosOffsets`.
+; Order matters here! Earlier OBJs have priority over later ones,
+; both in drawing order *and* in "10+ on the scanline" drop order.
+rsreset ; `const_def` would require awkward `const_skip`s.
+def OBJ_CAR_WIN_RIGHT rb 1
+def OBJ_CAR_WIN_LEFT  rb 1
+def OBJ_PLAYER        rb 2
+def OBJ_HANDLE        rb 2
+def OBJ_HANDLE_RIGHT  rb 1
+def OBJ_CAR           rb 2 + 3 + 3
+def OBJ_CAR_RIGHT     rb 3 + 2
+def OBJ_CAR_LAST equ _RS - 1
+def OBJ_CABLE         rb 1
+def OBJ_CUMULUS       rb 6
+def OBJ_CUMULUS_END equ _RS
+def NB_CABLE_CAR_OBJS equ _RS
+static_assert NB_CABLE_CAR_OBJS <= OAM_COUNT, "{d:NB_CABLE_CAR_OBJS} > {d:OAM_COUNT}"
+
 
 SECTION "Cable car asset blob", ROMX
 
@@ -240,61 +258,30 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ld [wCableCarSceneLCDHandler.xScrollInversion], a
 .upLeftToMountMoonSquare
 
-; Set up OAM objects.
-; TODO: check if this does actually save space over a mere `CopyBytes`.
-	; For now, only set up the tile and attributes; all positions will be written later.
-	; Blocks are written backwards, but to keep the source code in OAM order, they are also read backwards.
-	ld de, CableCarOAMData.End
-	ld hl, wShadowOAM + OAM_SIZE ; One past the end of shadow OAM.
-.writeOamBlocks
-	dec de
-	ld a, [de] ; Bitfield %LLLL_LPPP: Length, Palette
-	ld c, a ; The length will ignore the palette bits, so we can leave them there.
-	and 7 ; Keep just the palette bits.
-	ld b, a
-	dec de
-	ld a, [de] ; Bitfield %XTTT_TTTT: X flip, Tile ID (halved)
-	add a ; Double the tile ID, shifting the X flip into carry.
-	jr nc, .noXFlip
-	set B_OAM_XFLIP, b
-.noXFlip
-	push de
-	; OK, we are now ready to write the block to OAM.
-.writeOamBlock
-	assert LOW(wShadowOAM) == 0 ; So that `dec l` cannot underflow.
-	dec l
-	ld [hl], b ; Write the attributes.
-	dec l
-	; Go to the next tile ID.
-	sub 2 ; Unflipped blocks have increasing tile IDs (remember, we're writing backwards).
-	bit B_OAM_XFLIP, b
-	jr z, .increasingTileIDs ; Flipped blocks, however, are the opposite.
-	add 2 + 2 ; Undo the `sub`, and then move in the other direction.
-.increasingTileIDs
-	ld [hld], a ; Write the new tile ID.
-	; Tick the length.
-	ld e, a
-	ld a, c
-	sub 1 << 3 ; This will underflow if we're done writing the block.
-	ld c, a
-	ld a, e ; `pop af` would overwrite carry.
-	; Move the dest ptr from X pos to Y pos.
-	dec l ; Note that this sets Z if OAM has been filled, and preserves carry!
-	jr nc, .writeOamBlock ; Checks carry from the `sub`.
-	pop de
-	jr nz, .writeOamBlocks ; Checks Z from the `dec l`.
+; Clear unused OAM objects.
+	ld hl, wShadowOAMSprite{02d:NB_CABLE_CAR_OBJS}
+	ld bc, (OAM_COUNT - NB_CABLE_CAR_OBJS) * OBJ_SIZE
+	xor a
+	rst ByteFill
 
-; Patch the three middle OBJs' palettes.
-	assert OBPAL_CAR_WHITE == OBPAL_CAR + 1
-	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT + 1))
-	inc [hl] ; Don't write static values! This preserves the X flip bit.
-	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT - 2))
-	inc [hl]
-	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT - 5))
-	inc [hl]
+; Set up OAM objects.
+; For now, only set up the tile and attributes; all positions will be written later.
+	ld hl, wShadowOAM + OAMA_TILEID
+	ld de, CableCarOAMData
+	ld c, NB_CABLE_CAR_OBJS
+.setUpOAM
+rept 2
+	ld a, [de]
+	ld [hli], a
+	inc de
+endr
+	inc hl ; Y pos -> X pos.
+	inc hl ; X pos -> tile ID.
+	dec c
+	jr nz, .setUpOAM
 
 ; Set up static OAM positions.
-	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_SIZE * OBJ_CABLE)
+	ld l, LOW(wShadowOAMSprite{02d:OBJ_CABLE}YCoord)
 	ld a, OAM_Y_OFS
 	ld [hli], a
 	ld a, OAM_X_OFS + SCREEN_WIDTH_PX + (TOPMOST_CABLE_Y_POS - 1) * 2 ; It will get moved by an extra 2px each scanline.
@@ -307,7 +294,8 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	inc l ; Attrs -> next Y pos.
 	ld [hl], CUMULUS_Y_POS + OAM_Y_OFS
 	inc l ; Y pos -> X pos.
-	add TILE_WIDTH ; ...which also happens to be `OAM_X_OFS` :)
+	assert OAM_X_OFS == TILE_WIDTH
+	add TILE_WIDTH
 	ld [hli], a ; X pos -> tile ID.
 	dec c
 	jr nz, .setUpCumulus
@@ -464,7 +452,7 @@ ENDM
 def PLAYER_BASE_TILE equ $00
 def PLAYER_NB_TILES equ 4 * 3 * 2 ; 4 tiles/cel * 3 cels (down, up, left/right) * (standing & walking)
 
-def BASE_TILE equ $A0
+def BASE_TILE equ $a0
 static_assert PLAYER_BASE_TILE + PLAYER_NB_TILES <= BASE_TILE, "Player tiles overflowing into cable car area!"
 
 rsset BASE_TILE
@@ -488,36 +476,45 @@ def CLIFF_BASE_TILE       rb 18
 def NB_TILES equ _RS - BASE_TILE
 
 
-MACRO obj_block ; <name>, <OBJ count>, <base tile>, <palette>, <X flip?>
-	if (\5) == 0
-		db ((\3) / 2 + (\2)) ; Past-the-end tile ID (halved, since 8x16 mode requires alignment)
-	else
-		db (\3) / 2 - 1 | $80 ; Tile ID just before the first one, and X flip flag.
-	endc
-	db ((\2) - 1) << 3 | (\4) ; Length (zero-indexed), and palette.
-	; Use the name as-is to keep them greppable.
-	def \1 rb (\2)
-ENDM
-
-CableCarOAMData:
-	rsreset ; `const_def` would require awkward `const_skip`s.
-	; Order matters here! Earlier OBJs have priority over later ones,
-	; both in drawing order *and* in "10+ on the scanline" drop order.
-	; Also, keep in sync with `obj_col_relative_pos`.
-	obj_block OBJ_CAR_WIN_RIGHT, 1,     CAR_WIN_BASE_TILE, OBPAL_CAR_WHITE,  0
-	obj_block OBJ_CAR_WIN_LEFT,  1,     CAR_WIN_BASE_TILE, OBPAL_CAR_WHITE,  1
-	obj_block OBJ_PLAYER,        2,      PLAYER_BASE_TILE, OBPAL_PLAYER, 0 ; Partially hidden via raster effects.
-	obj_block OBJ_HANDLE,        2, HANDLE_SIDE_BASE_TILE, OBPAL_HANDLE, 0
-	obj_block OBJ_HANDLE_RIGHT,  1, HANDLE_SIDE_BASE_TILE, OBPAL_HANDLE, 1
-	obj_block OBJ_CAR,   2 + 3 + 3,    CAR_LEFT_BASE_TILE, OBPAL_CAR,    0
-	obj_block OBJ_CAR_RIGHT, 3 + 2,    CAR_LEFT_BASE_TILE, OBPAL_CAR,    1
-	def OBJ_CAR_END equ _RS
-	obj_block OBJ_CABLE,         1,       CABLE_BASE_TILE, OBPAL_HANDLE, 0
-	obj_block OBJ_CUMULUS,       6,       CUMULUS_BASE_TILE, OBPAL_CLOUD, 0
-	def OBJ_CUMULUS_END equ _RS
-	obj_block OBJ_UNUSED,       13, 42, 0, 0
-.End:
-	static_assert _RS == OAM_COUNT, "{d:_RS} != {d:OAM_COUNT}"
+CableCarOAMData: ; Keep in sync with `wCableCarSceneObjPosOffsets`!
+	table_width 2
+	; OBJ_CAR_WIN_RIGHT
+	db CAR_WIN_BASE_TILE,       OBPAL_CAR_WHITE
+	; OBJ_CAR_WIN_LEFT
+	db CAR_WIN_BASE_TILE,       OBPAL_CAR_WHITE | OAM_XFLIP
+	; OBJ_PLAYER
+	db PLAYER_BASE_TILE + 0,    OBPAL_PLAYER
+	db PLAYER_BASE_TILE + 2,    OBPAL_PLAYER
+	; OBJ_HANDLE
+	db HANDLE_SIDE_BASE_TILE,   OBPAL_HANDLE
+	db HANDLE_BASE_TILE,        OBPAL_HANDLE
+	; OBJ_HANDLE_RIGHT
+	db HANDLE_SIDE_BASE_TILE,   OBPAL_HANDLE | OAM_XFLIP
+	; OBJ_CAR
+	db CAR_LEFT_BASE_TILE +  0, OBPAL_CAR
+	db CAR_LEFT_BASE_TILE +  2, OBPAL_CAR
+	db CAR_BASE_TILE      +  0, OBPAL_CAR
+	db CAR_BASE_TILE      +  2, OBPAL_CAR_WHITE
+	db CAR_BASE_TILE      +  4, OBPAL_CAR
+	db CAR_BASE_TILE      +  6, OBPAL_CAR
+	db CAR_BASE_TILE      +  8, OBPAL_CAR_WHITE
+	db CAR_BASE_TILE      + 10, OBPAL_CAR
+	; OBJ_CAR_RIGHT
+	db CAR_BASE_TILE      +  4, OBPAL_CAR | OAM_XFLIP
+	db CAR_BASE_TILE      +  2, OBPAL_CAR_WHITE | OAM_XFLIP
+	db CAR_BASE_TILE      +  0, OBPAL_CAR | OAM_XFLIP
+	db CAR_LEFT_BASE_TILE +  2, OBPAL_CAR | OAM_XFLIP
+	db CAR_LEFT_BASE_TILE +  0, OBPAL_CAR | OAM_XFLIP
+	; OBJ_CABLE
+	db CABLE_BASE_TILE,         OBPAL_HANDLE
+	; OBJ_CUMULUS
+	db CUMULUS_BASE_TILE +  0,  OBPAL_CLOUD
+	db CUMULUS_BASE_TILE +  2,  OBPAL_CLOUD
+	db CUMULUS_BASE_TILE +  4,  OBPAL_CLOUD
+	db CUMULUS_BASE_TILE +  6,  OBPAL_CLOUD
+	db CUMULUS_BASE_TILE +  8,  OBPAL_CLOUD
+	db CUMULUS_BASE_TILE + 10,  OBPAL_CLOUD
+	assert_table_length NB_CABLE_CAR_OBJS
 
 
 CableCarRAMBlock: ; FIXME: in principle, we could add this to the asset blob, and copy it to WRAM0...
@@ -878,7 +875,7 @@ wCableCarSceneLCDHandler::
 .noCarBump
 
 ; Draw the cable car in its new position.
-	ld hl, wShadowOAMSprite{02d:OBJ_CAR_END}XCoord - OBJ_SIZE
+	ld hl, wShadowOAMSprite{02d:OBJ_CAR_LAST}XCoord
 	ld de, wCableCarSceneObjPosOffsets.End
 .updateCarObjPos
 	dec e ; (dec de)
