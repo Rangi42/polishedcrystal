@@ -63,9 +63,10 @@ assert const_value == 8, "Not at OBJ pal boundary! (pal #{d:const_value})"
 	const OBPAL_CAR                   ; 1
 	const OBPAL_CAR_WHITE             ; 2
 	const OBPAL_CLOUD                 ; 3
+	const OBPAL_SUN_MOON              ; 4
 def NB_PALETTES equ const_value + 8
 	; Filled in dynamically depending on player gender. (Thus, must be last.)
-	const OBPAL_PLAYER                ; 4
+	const OBPAL_PLAYER                ; 5
 
 ; Constants for `CableCarOAMData` and `wCableCarSceneObjPosOffsets`.
 ; Order matters here! Earlier OBJs have priority over later ones,
@@ -82,6 +83,7 @@ def OBJ_CAR_LAST equ _RS - 1
 def OBJ_CABLE         rb 1
 def OBJ_CUMULUS       rb 6
 def OBJ_CUMULUS_END equ _RS
+def OBJ_SUN_MOON      rb 2
 def NB_CABLE_CAR_OBJS equ _RS
 static_assert NB_CABLE_CAR_OBJS <= OAM_COUNT, "{d:NB_CABLE_CAR_OBJS} > {d:OAM_COUNT}"
 
@@ -186,19 +188,15 @@ Special_CableCar::
 	ld hl, wTimeOfDay
 	call GetFarWRAMByte
 	maskbits NUM_DAYTIMES
-	; bc = a * 32
-	swap a
-	add a
-	ld b, 0
-	ld c, a
-	; hl = CableCarPalettes + bc * 3
-	ld hl, CableCarPalettes
-	add hl, bc
-	add hl, bc
-	add hl, bc
-	assert 32 * 3 == PAL_SIZE * NB_PALETTES
-	ld de, wBGPals1
+	ld [wCableCarTimeOfDay], a
+	ld hl, CableCarPalettes - PAL_SIZE * NB_PALETTES
 	ld bc, NB_PALETTES palettes
+	inc a
+.palLoop
+	add hl, bc
+	dec a
+	jr nz, .palLoop
+	ld de, wBGPals1
 	call FarCopyColorWRAM
 
 ; Write main tilemap and attrmap.
@@ -299,6 +297,12 @@ endr
 	ld [hli], a ; X pos -> tile ID.
 	dec c
 	jr nz, .setUpCumulus
+	assert OBJ_CUMULUS_END == OBJ_SUN_MOON
+	inc l ; Tile ID -> attrs.
+	inc l ; Attrs -> next Y pos.
+	ld a, [wCableCarTimeOfDay]
+	cp NITE
+	; TODO
 
 ; Write window's tilemap and attrmap.
 	ld hl, wTilemap
@@ -452,11 +456,13 @@ ENDM
 def PLAYER_BASE_TILE equ $00
 def PLAYER_NB_TILES equ 4 * 3 * 2 ; 4 tiles/cel * 3 cels (down, up, left/right) * (standing & walking)
 
-def BASE_TILE equ $a0
+def BASE_TILE equ $9a
 static_assert PLAYER_BASE_TILE + PLAYER_NB_TILES <= BASE_TILE, "Player tiles overflowing into cable car area!"
 
 rsset BASE_TILE
 ; Use `rw` to count 8x16px OBJs (2 tiles per OBJ).
+def SUN_MOON_BASE_TILE    rw 3
+	check_2bpp SUN_MOON_BASE_TILE, sun_moon.2bpp
 def CUMULUS_BASE_TILE     rw 6
 	check_2bpp CUMULUS_BASE_TILE, cumulus.2bpp
 def CAR_WIN_BASE_TILE     rw 1
@@ -514,6 +520,9 @@ CableCarOAMData: ; Keep in sync with `wCableCarSceneObjPosOffsets`!
 	db CUMULUS_BASE_TILE +  6,  OBPAL_CLOUD
 	db CUMULUS_BASE_TILE +  8,  OBPAL_CLOUD
 	db CUMULUS_BASE_TILE + 10,  OBPAL_CLOUD
+	; OBJ_SUN_MOON
+	db SUN_MOON_BASE_TILE + 2,  OBPAL_SUN_MOON | OAM_PRIO
+	db SUN_MOON_BASE_TILE + 4,  OBPAL_SUN_MOON | OAM_PRIO
 	assert_table_length NB_CABLE_CAR_OBJS
 
 
@@ -911,6 +920,8 @@ wCableCarCliffX:: Q8pos_and_speed wCableCarCliffX, 0, -SCROLL_SPEED_CLIFF
 wCableCarSequenceTimer:: db 0
 
 wCableCarPlayerMovementTimer:: db 0
+
+wCableCarTimeOfDay:: db 0
 
 
 wCableCarWXOffsets:: ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
