@@ -16,7 +16,8 @@ MountMoonSquareCableCarGate_MapScriptHeader:
 
 	def_object_events
 	object_event  6,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_TEAL, OBJECTTYPE_SCRIPT, 0, MountMoonSquareCableCarGateReceptionistScript, -1
-	object_event 10,  9, SPRITE_HIKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MountMoonSquareCableCarGatePokefanMText, -1
+	object_event 10,  9, SPRITE_HIKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, 0, OBJECTTYPE_SCRIPT, 0, MountMoonSquareCableCarGateHikerScript, -1
+	object_event  3,  8, SPRITE_LADY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_GRAY, OBJECTTYPE_COMMAND, jumptextfaceplayer, MountMoonSquareCableCarGateLadyText, -1
 	object_event  5,  3, SPRITE_CABLE_CAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, end, NULL, -1
 	object_event  6,  3, SPRITE_CABLE_CAR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_COMMAND, end, NULL, -1
 	object_event  7,  3, SPRITE_CABLE_CAR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, end, NULL, -1
@@ -100,13 +101,55 @@ MountMoonSquareCableCarGateReceptionistScript:
 	turn_head_left
 	step_end
 
-MountMoonSquareCableCarGatePokefanMText:
-	text "I remember there"
-	line "was nothing built"
+MountMoonSquareCableCarGateHikerScript:
+	checkevent EVENT_GOT_EJECT_PACK_FROM_MOUNT_MOON_SQUARE
+	iftrue_jumptextfaceplayer .Text2
+	faceplayer
+	opentext
+	writetext .Text1
+	promptbutton
+	verbosegiveitem EJECT_PACK, iffalse_endtext
+	setevent EVENT_GOT_EJECT_PACK_FROM_MOUNT_MOON_SQUARE
+	jumpthisopenedtext
 
-	para "here when I climb-"
-	line "ed the mountain."
+.Text2:
+	text "If your #mon's"
+	line "stats get dropped,"
 
-	para "Things are more"
-	line "convenient now."
+	para "that Eject Pack"
+	line "will zip them back"
+	cont "out of the battle."
+	done
+
+.Text1:
+	text "The first time I"
+	line "climbed Mt.Moon,"
+
+	para "there was nothing"
+	line "at the top but"
+	cont "pure mountain air."
+
+	para "Now the cable car"
+	line "zips me back down."
+
+	para "I won't be needing"
+	line "this Eject Pack"
+	cont "after all."
+	done
+
+MountMoonSquareCableCarGateLadyText:
+	text "Thanks to the"
+	line "cable car, people"
+
+	para "like me can appre-"
+	line "ciate this lovely"
+
+	para "square who could"
+	line "never have hiked"
+
+	para "up Mt.Moon on our"
+	line "own."
+
+	para "Isn't technology"
+	line "useful?"
 	done

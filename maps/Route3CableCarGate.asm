@@ -16,6 +16,7 @@ Route3CableCarGate_MapScriptHeader:
 
 	def_object_events
 	object_event  6,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_TEAL, OBJECTTYPE_SCRIPT, 0, Route3CableCarGateReceptionistScript, -1
+	object_event  3, 10, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route3CableCarGateNurseScript, -1
 	object_event 11, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route3CableCarGatePokefanMText, -1
 	object_event  1,  8, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route3CableCarGateYoungsterText, -1
 	object_event  5,  3, SPRITE_CABLE_CAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, end, NULL, -1
@@ -100,6 +101,53 @@ Route3CableCarGateReceptionistScript:
 	step_left
 	turn_head_right
 	step_end
+
+Route3CableCarGateNurseScript:
+	faceplayer
+	opentext
+	checkevent EVENT_INTRODUCED_CABLE_CAR_GATE_NURSE
+	iftruefwd .SkipIntro
+	writetext .IntroText
+	setevent EVENT_INTRODUCED_CABLE_CAR_GATE_NURSE
+.SkipIntro
+	writetext .HealText
+	waitbutton
+	closetext
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	playmusic MUSIC_HEAL
+	special HealParty
+	pause 60
+	special Special_FadeInQuickly
+	special RestartMapMusic
+	jumpthistext
+
+	text "Your #mon"
+	line "are fully healed."
+	done
+
+.IntroText:
+	text "Hello!"
+	line "Welcome to our"
+	cont "#mon Ce--"
+
+	para "Oops! Sorry,"
+	line "force of habit."
+
+	para "This used to be"
+	line "the #mon Center"
+	cont "where I worked."
+
+	para "It's a cable car"
+	line "station now,"
+	cont "but even so,"
+	prompt
+
+.HealText:
+	text "I can heal your"
+	line "#mon to perfect"
+	cont "health."
+	done
 
 Route3CableCarGatePokefanMText:
 	text "A few years ago"
