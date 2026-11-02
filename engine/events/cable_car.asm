@@ -500,20 +500,20 @@ static_assert PLAYER_BASE_TILE + PLAYER_NB_TILES <= BASE_TILE, "Player tiles ove
 
 rsset BASE_TILE
 ; Use `rw` to count 8x16px OBJs (2 tiles per OBJ).
-def SUN_MOON_BASE_TILE    rw 3
+def SUN_MOON_BASE_TILE rw 3
 	check_2bpp SUN_MOON_BASE_TILE, sun_moon.2bpp
-def CUMULUS_BASE_TILE     rw 6
+def CUMULUS_BASE_TILE  rw 6
 	check_2bpp CUMULUS_BASE_TILE, cumulus.2bpp
-def CAR_WIN_BASE_TILE     rw 1
-def CAR_BASE_TILE         rw 7
-def HANDLE_BASE_TILE      rw 2
-def CABLE_BASE_TILE       rw 1 ; The bottom 14 pixel rows are never shown. Room for something?
+def CAR_WIN_BASE_TILE  rw 1
+def CAR_BASE_TILE      rw 7
+def HANDLE_BASE_TILE   rw 2
+def CABLE_BASE_TILE    rw 1 ; The bottom 14 pixel rows are never shown. Room for something?
 	check_2bpp CAR_WIN_BASE_TILE, cable_car.2bpp
 ; Use `rb` to count 8x8px BG tiles.
-def BG_BASE_TILE          rb 42
+def BG_BASE_TILE       rb 42
 	check_2bpp BG_BASE_TILE, bg.2bpp
-	static_assert BG_BASE_TILE == $C4, "Please re-generate `gfx/overworld/cable_car/bg.tilemap` with `-b {BG_BASE_TILE}` and update this"
-def CLIFF_BASE_TILE       rb 18
+	static_assert BG_BASE_TILE == $c4, "Please re-generate `gfx/overworld/cable_car/bg.tilemap` with `-b {BG_BASE_TILE}` and update this"
+def CLIFF_BASE_TILE    rb 18
 	check_2bpp CLIFF_BASE_TILE, cliff.2bpp
 	static_assert LOW(_RS) == 0, "Cliff tiles must end at 0, not {_RS}!"
 def NB_TILES equ _RS - BASE_TILE
