@@ -333,7 +333,7 @@ endr
 	jr z, .keepMoon
 	ld l, LOW(wShadowOAMSprite{02d:OBJ_SUN_MOON}TileID)
 	ld a, SUN_MOON_BASE_TILE
-	ld [hl], a
+	ld [hl], a ; no-optimize *hl = N (`a` is used again below)
 	ld l, LOW(wShadowOAMSprite{02d:OBJ_SUN_MOON_LAST}TileID)
 	ld [hli], a
 	set B_OAM_XFLIP, [hl]
