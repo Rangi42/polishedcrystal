@@ -409,16 +409,15 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 	cp LZ_SPECIAL_BASE
 	jr c, .long_normal
 	static_assert LZ_END == $ff
-	inc c ; Is it `LZ_END`?
+	inc a ; Is it `LZ_END`?
 	ret z
 
-	push af
-	ld a, [de]
+	ld a, [de] ; All special commands read an 8-bit length.
 	inc de
 	ld c, a
+	ld a, b ; Command ID: $fc, $fd, or $fe.
 	ld b, 0
 	inc bc
-	pop af
 	cp LZ_SPECIAL_PACKHI0
 	jr nz, .special_pack16
 
