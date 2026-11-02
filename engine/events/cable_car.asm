@@ -564,7 +564,7 @@ CableCarOAMData: ; Keep in sync with `wCableCarSceneObjPosOffsets`!
 	assert_table_length NB_CABLE_CAR_OBJS
 
 
-CableCarRAMBlock: ; FIXME: in principle, we could add this to the asset blob, and copy it to WRAM0...
+CableCarRAMBlock:
 LOAD UNION "Misc 1300", WRAM0
 wCableCar:
 
