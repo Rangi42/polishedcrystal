@@ -75,13 +75,10 @@ def NB_PALETTES equ const_value + 8
 ; Order matters here! Earlier OBJs have priority over later ones,
 ; both in drawing order *and* in "10+ on the scanline" drop order.
 rsreset ; `const_def` would require awkward `const_skip`s.
-def OBJ_CAR_WIN_RIGHT rb 1
-def OBJ_CAR_WIN_LEFT  rb 1
+def OBJ_CAR_WIN_SIDES rb 2
 def OBJ_PLAYER        rb 2
-def OBJ_HANDLE        rb 2
-def OBJ_HANDLE_RIGHT  rb 1
-def OBJ_CAR           rb 2 + 3 + 2
-def OBJ_CAR_RIGHT     rb 3 + 2
+def OBJ_HANDLE        rb 3
+def OBJ_CAR           rb 2 + 3 + 2 + 3 + 2
 def OBJ_CAR_LAST equ _RS - 1
 def OBJ_CABLE         rb 1
 def OBJ_CUMULUS       rb 6
@@ -498,7 +495,7 @@ ENDM
 def PLAYER_BASE_TILE equ $00
 def PLAYER_NB_TILES equ 4 * 3 * 2 ; 4 tiles/cel * 3 cels (down, up, left/right) * (standing & walking)
 
-def BASE_TILE equ $9a
+def BASE_TILE equ $9c
 static_assert PLAYER_BASE_TILE + PLAYER_NB_TILES <= BASE_TILE, "Player tiles overflowing into cable car area!"
 
 rsset BASE_TILE
@@ -508,10 +505,8 @@ def SUN_MOON_BASE_TILE    rw 3
 def CUMULUS_BASE_TILE     rw 6
 	check_2bpp CUMULUS_BASE_TILE, cumulus.2bpp
 def CAR_WIN_BASE_TILE     rw 1
-def CAR_LEFT_BASE_TILE    rw 2 ; First column, also mirrored as the fifth.
-def CAR_BASE_TILE         rw 6 ; Second and third column; the fourth mirrors the second.
-def HANDLE_SIDE_BASE_TILE rw 1
-def HANDLE_BASE_TILE      rw 1
+def CAR_BASE_TILE         rw 7
+def HANDLE_BASE_TILE      rw 2
 def CABLE_BASE_TILE       rw 1 ; The bottom 14 pixel rows are never shown. Room for something?
 	check_2bpp CAR_WIN_BASE_TILE, cable_car.2bpp
 ; Use `rb` to count 8x8px BG tiles.
@@ -526,44 +521,41 @@ def NB_TILES equ _RS - BASE_TILE
 
 CableCarOAMData: ; Keep in sync with `wCableCarSceneObjPosOffsets`!
 	table_width 2
-	; OBJ_CAR_WIN_RIGHT
-	db CAR_WIN_BASE_TILE,       OBPAL_CAR_WHITE
-	; OBJ_CAR_WIN_LEFT
-	db CAR_WIN_BASE_TILE,       OBPAL_CAR_WHITE | OAM_XFLIP
+	; OBJ_CAR_WIN_SIDES
+	db CAR_WIN_BASE_TILE,      OBPAL_CAR_WHITE
+	db CAR_WIN_BASE_TILE,      OBPAL_CAR_WHITE | OAM_XFLIP
 	; OBJ_PLAYER
-	db PLAYER_BASE_TILE + 0,    OBPAL_PLAYER
-	db PLAYER_BASE_TILE + 2,    OBPAL_PLAYER
+	db PLAYER_BASE_TILE + 0,   OBPAL_PLAYER
+	db PLAYER_BASE_TILE + 2,   OBPAL_PLAYER
 	; OBJ_HANDLE
-	db HANDLE_SIDE_BASE_TILE,   OBPAL_HANDLE
-	db HANDLE_BASE_TILE,        OBPAL_HANDLE
-	; OBJ_HANDLE_RIGHT
-	db HANDLE_SIDE_BASE_TILE,   OBPAL_HANDLE | OAM_XFLIP
+	db HANDLE_BASE_TILE + 0,   OBPAL_HANDLE
+	db HANDLE_BASE_TILE + 2,   OBPAL_HANDLE
+	db HANDLE_BASE_TILE + 0,   OBPAL_HANDLE | OAM_XFLIP
 	; OBJ_CAR
-	db CAR_LEFT_BASE_TILE +  0, OBPAL_CAR
-	db CAR_LEFT_BASE_TILE +  2, OBPAL_CAR
-	db CAR_BASE_TILE      +  0, OBPAL_CAR
-	db CAR_BASE_TILE      +  2, OBPAL_CAR_WHITE
-	db CAR_BASE_TILE      +  4, OBPAL_CAR
-	db CAR_BASE_TILE      +  8, OBPAL_CAR_WHITE
-	db CAR_BASE_TILE      + 10, OBPAL_CAR
-	; OBJ_CAR_RIGHT
-	db CAR_BASE_TILE      +  4, OBPAL_CAR | OAM_XFLIP
-	db CAR_BASE_TILE      +  2, OBPAL_CAR_WHITE | OAM_XFLIP
-	db CAR_BASE_TILE      +  0, OBPAL_CAR | OAM_XFLIP
-	db CAR_LEFT_BASE_TILE +  2, OBPAL_CAR | OAM_XFLIP
-	db CAR_LEFT_BASE_TILE +  0, OBPAL_CAR | OAM_XFLIP
+	db CAR_BASE_TILE +  0,     OBPAL_CAR
+	db CAR_BASE_TILE +  2,     OBPAL_CAR
+	db CAR_BASE_TILE +  4,     OBPAL_CAR
+	db CAR_BASE_TILE +  6,     OBPAL_CAR_WHITE
+	db CAR_BASE_TILE +  8,     OBPAL_CAR
+	db CAR_BASE_TILE + 10,     OBPAL_CAR_WHITE
+	db CAR_BASE_TILE + 12,     OBPAL_CAR
+	db CAR_BASE_TILE +  8,     OBPAL_CAR | OAM_XFLIP
+	db CAR_BASE_TILE +  6,     OBPAL_CAR_WHITE | OAM_XFLIP
+	db CAR_BASE_TILE +  4,     OBPAL_CAR | OAM_XFLIP
+	db CAR_BASE_TILE +  2,     OBPAL_CAR | OAM_XFLIP
+	db CAR_BASE_TILE +  0,     OBPAL_CAR | OAM_XFLIP
 	; OBJ_CABLE
-	db CABLE_BASE_TILE,         OBPAL_HANDLE
+	db CABLE_BASE_TILE,        OBPAL_HANDLE
 	; OBJ_CUMULUS
-	db CUMULUS_BASE_TILE +  0,  OBPAL_CLOUD
-	db CUMULUS_BASE_TILE +  2,  OBPAL_CLOUD
-	db CUMULUS_BASE_TILE +  4,  OBPAL_CLOUD
-	db CUMULUS_BASE_TILE +  6,  OBPAL_CLOUD
-	db CUMULUS_BASE_TILE +  8,  OBPAL_CLOUD
-	db CUMULUS_BASE_TILE + 10,  OBPAL_CLOUD
+	db CUMULUS_BASE_TILE +  0, OBPAL_CLOUD
+	db CUMULUS_BASE_TILE +  2, OBPAL_CLOUD
+	db CUMULUS_BASE_TILE +  4, OBPAL_CLOUD
+	db CUMULUS_BASE_TILE +  6, OBPAL_CLOUD
+	db CUMULUS_BASE_TILE +  8, OBPAL_CLOUD
+	db CUMULUS_BASE_TILE + 10, OBPAL_CLOUD
 	; OBJ_SUN_MOON
-	db SUN_MOON_BASE_TILE + 2,  OBPAL_SUN_MOON | OAM_PRIO
-	db SUN_MOON_BASE_TILE + 4,  OBPAL_SUN_MOON | OAM_PRIO
+	db SUN_MOON_BASE_TILE + 2, OBPAL_SUN_MOON | OAM_PRIO
+	db SUN_MOON_BASE_TILE + 4, OBPAL_SUN_MOON | OAM_PRIO
 	assert_table_length NB_CABLE_CAR_OBJS
 
 
