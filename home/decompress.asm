@@ -65,23 +65,20 @@ DEF LZ_LONG          EQU 7 << 5
 ; A new control command is read in bits 2-4.
 ; The top two bits of the length are bits 0-1.
 ; Another byte is read containing the bottom 8 bits.
-DEF LZ_LONG_CMD      EQU %00011100
-DEF LZ_LONG_HI       EQU %00000011
+DEF LZ_LONG_CMD       EQU %00011100
+DEF LZ_LONG_EXTRA_LEN EQU %00000011
+; In other words, the structure of the command becomes
+; 111xxx0y yyyyyyyy
+; x: the new control command
+; y: the length
 
 ; Special opcode bytes ($fc-$fe)
 ; These are in the LZ_LONG range and would otherwise decode as an invalid long command.
-DEF LZ_SPECIAL_MASK          EQU %11111100
 DEF LZ_SPECIAL_BASE          EQU $fc
-DEF LZ_SPECIAL_SUBTYPE_MASK  EQU %00000011
 
-DEF LZ_SPECIAL_PACKHI0       EQU 0 ; $fc
-DEF LZ_SPECIAL_PACK16_SHORT  EQU 1 ; $fd (len 1..256)
-DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
-
-; In other words, the structure of the command becomes
-; 111xxxyy yyyyyyyy
-; x: the new control command
-; y: the length
+DEF LZ_SPECIAL_PACKHI0       EQU $fc
+DEF LZ_SPECIAL_PACK16_SHORT  EQU $fd ; (len 1..256)
+DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 
 ; For more information, refer to the code below and in extras/gfx.py.
 
@@ -405,19 +402,16 @@ DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
 ; This is where `LZ_LONG` handling actually begins; a nested `LZ_LONG` is nonsensical,
 ; so it's instead handled as special-purpose commands.
 .long
-	inc b
-	ret z ; LZ_END
 	ld b, c
 
-; Special opcodes: $fc-$fe.
-	; Detect by masking off the low two bits.
+; Special opcodes: $fc-$fe (and $ff for the terminator).
 	ld a, b
-	and LZ_SPECIAL_MASK
 	cp LZ_SPECIAL_BASE
-	jr nz, .long_normal
-	ld a, b
-	and LZ_SPECIAL_SUBTYPE_MASK
-	; subtype in a: LZ_SPECIAL_PACKHI0/LZ_SPECIAL_PACK16_SHORT/LZ_SPECIAL_PACKLO0
+	jr c, .long_normal
+	static_assert LZ_END == $ff
+	inc c ; Is it `LZ_END`?
+	ret z
+
 	push af
 	ld a, [de]
 	inc de
