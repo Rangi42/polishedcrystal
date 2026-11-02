@@ -91,11 +91,11 @@ RandomOvercastMapsKanto:
 	overcast_map INDIGO_PLATEAU
 	overcast_map LAVENDER_TOWN
 	overcast_map LUCKY_ISLAND
-	overcast_map MOUNT_MOON_SQUARE
+	; overcast_map MOUNT_MOON_SQUARE ; excluded since the cable car cutscene can't have weather
 	overcast_map PALLET_TOWN
 	overcast_map PEWTER_CITY
 	overcast_map ROUTE_1
-	overcast_map ROUTE_3
+	; overcast_map ROUTE_3 ; excluded since the cable car cutscene can't have weather
 	overcast_map ROUTE_4
 	overcast_map ROUTE_5
 	overcast_map ROUTE_6
