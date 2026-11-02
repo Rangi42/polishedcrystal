@@ -332,19 +332,17 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 	and LZ_CMD
 	static_assert LZ_DATA == 0
 	jr z, .lz_data ; C already contains the length and nothing else, so go!
-	ld b, c
 	cp LZ_LONG
 	jr nc, .long
 
 	; Extract the bitfields.
-	; b = %cccl llll, a = %ccc0 0000 (from `and` above)
-	xor b ; a = %000l llll
+	; c = %cccl llll, a = %ccc0 0000 (from `and` above)
+	ld b, a ; B = command.
+	xor c ; a = %000l llll
 	ld c, a ; Thus, C = length.
-	xor b ; a = %ccc0 0000
-	ld b, a
 
 .process_cmd
-	; command in a
+	ld a, b ; command in the upper 3 bits
 	; length in bc, upper 7 bits of b ignored
 	rla
 	jr c, .lz_copy
