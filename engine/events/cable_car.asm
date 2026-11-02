@@ -1,25 +1,4 @@
-; I have put a boatload of comments in this file so that its logic and rationale can be followed by
-; others; I am not expecting all of them to stay within the final.
-;
-; (I am also not expecting all of my style to make it either.
-;  I just hope that it can show a different way of doing things,
-;  because I promise that I am not needlessly making things complicated.
-;  Though part of that is that I'd rather have my assumptions checked at build time,
-;  rather than needing to do very thorough play-testing and being paranoid
-;  about whether I've missed some fringe edge case...)
-;
-; Still, enjoy the read! ^w^ ~ISSOtm
-
-
-SECTION "Cable car asset blob", ROMX
-
-CableCarAssets:
-INCBIN "gfx/overworld/cable_car/cable_car.bin.lzp"
-; Some of `cable_car.2bpp.lzp`'s dependency `.2bpp` files get `READFILE()`'d below,
-; as part of length checks; they are ordered after this to be robust to dependency ordering / scanning.
-
-
-;; Tunables.
+;; Tunable constants.
 
 def FADE_NB_STEPS equ 10 ; Number of frames to fade in, *and* then to fade out.
 def FADE_LAG_FACTOR equ 2 ; Turns out the palette fader is SUPER CPU-heavy, and the raster effects make it lag a lot.
@@ -30,14 +9,12 @@ def TOPMOST_CABLE_Y_POS equ 10
 
 def BLANKED_PLAYER_ROWS equ 6
 
-
 ; How much on-screen space the cliff should take.
 def CLIFF_ROWS_TO_SHOW equ 70
 	def CLIFF_BASE_SCANLINE equ SCREEN_HEIGHT * 8 - CLIFF_ROWS_TO_SHOW
 
 def CLIFF_PATTERN_WIDTH equ 24
 	def CLIFF_PATTERN_HEIGHT equ CLIFF_PATTERN_WIDTH / 2
-
 
 ; Each of the layers' speeds are defined individually, and thus they will accumulate imprecision
 ; at different rates and thus not be in perfect lockstep.
@@ -91,6 +68,14 @@ def NB_PALETTES equ const_value + 8
 	const OBPAL_PLAYER                ; 4
 
 
+SECTION "Cable car asset blob", ROMX
+
+CableCarAssets:
+INCBIN "gfx/overworld/cable_car/cable_car.bin.lzp"
+; Some of `cable_car.bin.lzp`'s constituent `.2bpp` files get `READFILE()`'d by `check_2bpp` below.
+; `INCBIN`ning them before those checks makes them robust to dependency ordering / scanning.
+
+
 SECTION "Cable Car", ROMX
 
 Special_CableCar::
@@ -111,8 +96,7 @@ Special_CableCar::
 	ld a, LCDC_ON | LCDC_WIN_9800 | LCDC_WIN_ON | LCDC_BG_9C00 | LCDC_OBJ_16 | LCDC_OBJ_ON | LCDC_PRIO_ON
 	ldh [rLCDC], a
 
-
-.LoadPlayerPalette
+; Load player palette.
 	ld a, BANK(wPlayerGender)
 	ldh [rWBK], a
 	ld a, [wPlayerGender]
@@ -126,11 +110,11 @@ Special_CableCar::
 	rst FarCall
 	dwb FarCopyColorWRAM, BANK(LookupOBPalette) ; Copy from that function's bank, since that's where the palettes are.
 
-.LoadPlayerTiles
+; Load player graphics.
 	farcall GetPlayerIcon ; This reads `wPlayerGender`, and expects its bank to be loaded.
 	ld a, BANK(wDecompressScratch)
 	ldh [rWBK], a
-	; Shuffle each cel from row-first to column-first, for 8x16 OAM friendliness. (Grr.)
+	; Shuffle each cel from row-first to column-first, for 8x16 OAM friendliness.
 	; This "only" requires swapping tiles 1 and 2 of each cel, though!
 	ld hl, wDecompressScratch tile -2
 	ld b, PLAYER_NB_TILES / 4 ; How many cels to process?
@@ -139,7 +123,7 @@ Special_CableCar::
 	add hl, de
 	; Make `de` point at the next tile. (This cannot overflow.)
 	ld a, l
-	add a, 1 tiles
+	add 1 tiles
 	ld e, a
 	ld d, h
 .swapByte
@@ -158,7 +142,7 @@ Special_CableCar::
 	ld e, PLAYER_NB_TILES / 2
 .blankOutTiles
 	ld a, l
-	add a, (16 - BLANKED_PLAYER_ROWS) * 2
+	add (16 - BLANKED_PLAYER_ROWS) * 2
 	ld l, a
 	xor a
 	ld c, BLANKED_PLAYER_ROWS * 2 ; b == 0 right now.
@@ -171,8 +155,7 @@ Special_CableCar::
 	ld c, PLAYER_NB_TILES
 	call Request2bpp.Function ; Screen is on and the right banks are loaded: take a shortcut.
 
-
-.LoadCutsceneAssets
+; Load cutscene assets.
 	ld b, BANK(CableCarAssets)
 	ld hl, CableCarAssets
 	ld de, vTiles0 tile BASE_TILE
@@ -180,7 +163,7 @@ Special_CableCar::
 	assert NB_TILES + 2 * SCREEN_HEIGHT * 2 <= 256, "Too much stuff for the decompression buffer!"
 	call DecompressRequest2bpp
 
-.LoadCutscenePalettes
+; Load cutscene palettes.
 	ld a, BANK(wTimeOfDay)
 	ld hl, wTimeOfDay
 	call GetFarWRAMByte
@@ -190,8 +173,8 @@ Special_CableCar::
 	add a
 	ld b, 0
 	ld c, a
-	; hl = .palettes + bc * 3
-	ld hl, .palettes
+	; hl = CableCarPalettes + bc * 3
+	ld hl, CableCarPalettes
 	add hl, bc
 	add hl, bc
 	add hl, bc
@@ -200,9 +183,9 @@ Special_CableCar::
 	ld bc, NB_PALETTES palettes
 	call FarCopyColorWRAM
 
-.WriteMainMaps
-	; Since they are wider than the WRAM tilemaps, VRAM must be accessed directly;
-	; there is enough room in the decompression buffer to hold them, too!
+; Write main tilemap and attrmap.
+; Since they are wider than the WRAM tilemaps, VRAM must be accessed directly;
+; there is enough room in the decompression buffer to hold them, too!
 def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ld de, wDecompressScratch tile NB_TILES ; The tilemap and attrmap are right after the tile data.
 	ld hl, vBGMap1
@@ -217,23 +200,22 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	xor a
 	ldh [rVBK], a
 
-
 ; Most of the engine assumes that bank 1 is loaded.
 	ld a, 1
 	ldh [rWBK], a
 
 ; Init the cutscene's variables.
-	ld hl, .ramBlock
+	ld hl, CableCarRAMBlock
 	ld de, wCableCar
-	ld bc, wCableCar.end - wCableCar
+	ld bc, CableCarRAMBlock.End - CableCarRAMBlock
 	rst CopyBytes
 
 ; Perform direction-dependent setup.
-	assert GROUP_MOUNT_MOON_SQUARE != GROUP_ROUTE_4
+	assert GROUP_MOUNT_MOON_SQUARE != GROUP_ROUTE_3
 	ld a, [wMapGroup] ; *Current* map, not target map.
 	cp GROUP_MOUNT_MOON_SQUARE
 	jr nz, .upLeftToMountMoonSquare
-;.downRightToRoute4
+; Down and right to Route 3.
 	; Invert the car's speed vector (and one position subpixel, whatevs).
 	; This is not true negation and thus gives a one-subpixel difference in speed between directions,
 	; but that's negligible.
@@ -241,8 +223,8 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	; (replace `ld a, [hl] :: cpl` with `xor a :: sub [hl]`)
 	; but then e.g. `$00AA` gets turned into `$0056` instead of `$FF55`,
 	; which is much further off from the correct `$FF56`.
-	ld hl, wCableCar.cumulus_Xspeed_subpx
-	assert wCableCar.cumulus_Xspeed_subpx + 4 == wCableCar.car_Xspeed_subpx
+	ld hl, wCableCarCumulusX
+	assert wCableCarCumulusX + 4 == wCableCarX
 	ld c, 4 + 3 ; Cumulus X {speed,pos}x{subpx,px} + car X {speed.subpx, pos.subpx, speed.px}
 .negate
 	ld a, [hl]
@@ -253,16 +235,16 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ld [hl], (CAR_TARGET_X - NB_FRAMES_FADES * ~CAR_X_SPEED) / 1.0q8 ; This one cannot be merely complemented.
 	; Also patch some code.
 	ld a, $96 ; Opcode for `sub [hl]`.
-	ld [wCableCar.cliffScrollInversion], a
+	ld [wCableCarSceneLCDHandler.cliffScrollInversion], a
 	ld a, $2F ; Opcode for `cpl`.
-	ld [wCableCar.xScrollInversion], a
+	ld [wCableCarSceneLCDHandler.xScrollInversion], a
 .upLeftToMountMoonSquare
 
-
-.SetUpOamTilesAndAttributes ; TODO: check if this does actually save space over a mere `CopyBytes`.
+; Set up OAM objects.
+; TODO: check if this does actually save space over a mere `CopyBytes`.
 	; For now, only set up the tile and attributes; all positions will be written later.
 	; Blocks are written backwards, but to keep the source code in OAM order, they are also read backwards.
-	ld de, .objTileBlocksEnd
+	ld de, CableCarOAMData.End
 	ld hl, wShadowOAM + OAM_SIZE ; One past the end of shadow OAM.
 .writeOamBlocks
 	dec de
@@ -272,13 +254,14 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	ld b, a
 	dec de
 	ld a, [de] ; Bitfield %XTTT_TTTT: X flip, Tile ID (halved)
-	add a, a ; Double the tile ID, shifting the X flip into carry.
+	add a ; Double the tile ID, shifting the X flip into carry.
 	jr nc, .noXFlip
 	set B_OAM_XFLIP, b
 .noXFlip
 	push de
 	; OK, we are now ready to write the block to OAM.
-.writeOamBlock  assert LOW(wShadowOAM) == 0 ; So that `dec l` cannot underflow.
+.writeOamBlock
+	assert LOW(wShadowOAM) == 0 ; So that `dec l` cannot underflow.
 	dec l
 	ld [hl], b ; Write the attributes.
 	dec l
@@ -301,7 +284,7 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	pop de
 	jr nz, .writeOamBlocks ; Checks Z from the `dec l`.
 
-	; Patch the three middle OBJs' palettes.
+; Patch the three middle OBJs' palettes.
 	assert OBPAL_CAR_WHITE == OBPAL_CAR + 1
 	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT + 1))
 	inc [hl] ; Don't write static values! This preserves the X flip bit.
@@ -309,35 +292,35 @@ def MAP_SIZE_IN_TILES equ SCREEN_HEIGHT * TILEMAP_WIDTH / TILE_SIZE
 	inc [hl]
 	ld l, LOW(wShadowOAMSprite00Attributes + OBJ_SIZE * (OBJ_CAR_RIGHT - 5))
 	inc [hl]
-.SetUpStaticOamPositions
+
+; Set up static OAM positions.
 	ld l, LOW(wShadowOAMSprite00YCoord + OBJ_SIZE * OBJ_CABLE)
 	ld a, OAM_Y_OFS
 	ld [hli], a
 	ld a, OAM_X_OFS + SCREEN_WIDTH_PX + (TOPMOST_CABLE_Y_POS - 1) * 2 ; It will get moved by an extra 2px each scanline.
 	ld [hli], a
 	assert OBJ_CABLE + 1 == OBJ_CUMULUS
-	ld a, [wCableCar.cumulus_Xpos_px]
+	ld a, [wCableCarCumulusX_pos_px]
 	ld c, OBJ_CUMULUS_END - OBJ_CUMULUS
 .setUpCumulus
 	inc l ; Tile ID -> attrs.
 	inc l ; Attrs -> next Y pos.
 	ld [hl], CUMULUS_Y_POS + OAM_Y_OFS
 	inc l ; Y pos -> X pos.
-	add a, TILE_WIDTH ; ...which also happens to be `OAM_X_OFS` :)
+	add TILE_WIDTH ; ...which also happens to be `OAM_X_OFS` :)
 	ld [hli], a ; X pos -> tile ID.
 	dec c
 	jr nz, .setUpCumulus
 
-
-.WriteWindowMaps
+; Write window's tilemap and attrmap.
 	ld hl, wTilemap
 .resetTileId
 	ld a, CLIFF_BASE_TILE
 .writeTilemapRow
-REPT 4 ; The first four tiles of each row are unique...
+rept 4 ; The first four tiles of each row are unique...
 	ld [hli], a
 	inc a
-ENDR
+endr
 	ld c, (SCREEN_WIDTH - 4) / 2
 .writeTilemapPair ; ...and the rest of the line is followed by a repeating pair.
 	ld [hli], a
@@ -362,11 +345,9 @@ ENDR
 	xor a ; Stop further transfers.
 	ldh [hBGMapMode], a
 
-
-.InstallStatIntHandler
+; Install the STAT interrupt handler, so that the OAM starts getting multiplexed before we start fading in.
 ; `ApplyAttrAndTilemapInVBlank` will have waited a few frames,
 ; so we can now be confident that OAM has been applied.
-; Install the STAT handler so that the OAM starts getting multiplexed before we start fading in.
 ; Note however that `Request2bpp` does `di` and that screws up the handler.
 	; Defang the STAT interrupt so it won't be requested during this setup.
 	xor a
@@ -393,9 +374,9 @@ ENDR
 	set B_IE_STAT, [hl] ; Enable the handler.
 	; Since STAT has all its conditions disabled, we know it won't trigger right now.
 	; Thus, non-atomically writing to the handler's trampoline is fine.
-	ld a, LOW(wCableCar.LcdHandler)
+	ld a, LOW(wCableCarSceneLCDHandler)
 	ldh [hLCDInterruptFunctionTargetLo], a
-	ld a, HIGH(wCableCar.LcdHandler)
+	ld a, HIGH(wCableCarSceneLCDHandler)
 	ldh [hLCDInterruptFunctionTargetHi], a
 	; OK, *now* we can enable the handler ^^'
 .waitNotHblank
@@ -405,20 +386,21 @@ ENDR
 	ld a, STAT_MODE_0
 	ldh [rSTAT], a
 
-
-IF FADE_NB_STEPS == 10
+; Fade in the cutscene.
+if FADE_NB_STEPS == 10
 	farcall FadeInPalettes
-ELSE
+else
 	ld c, FADE_NB_STEPS
 	call FadePalettes
-ENDC
+endc
 
 	; TODO: sun/moon depending on time of day
 	; TODO: add random chance for Pokémon to fly in the sky?
 	; TODO: allow player to move around in the car with d-pad?
 
+; Play the cutscene out over a fixed duration.
 def FRAME_QUANTUM equ 3
-	ld hl, wCableCar.sequenceTimer
+	ld hl, wCableCarSequenceTimer
 	ld [hl], NB_FRAMES_MAIN / FRAME_QUANTUM
 .resetQuantum
 	ld c, FRAME_QUANTUM
@@ -438,15 +420,15 @@ def FRAME_QUANTUM equ 3
 .abort
 	ld [hl], 0
 
-IF FADE_NB_STEPS == 10
+; Fade out the cutscene.
+if FADE_NB_STEPS == 10
 	farcall FadeOutPalettes
-ELSE
+else
 	ld c, FADE_NB_STEPS
 	call FadeToWhite
-ENDC
+endc
 
-
-.UninstallStatHandler
+; Uninstall the STAT interrupt handler.
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	ld a, LOW(LCDGeneric)
@@ -454,8 +436,7 @@ ENDC
 	ld a, HIGH(LCDGeneric)
 	ldh [hLCDInterruptFunctionTargetHi], a
 
-
-.RestoreGlobalState ; :(
+; Restore global state.
 	ld a, STAT_MODE_0
 	ldh [rSTAT], a
 	ld a, LCDC_DEFAULT
@@ -465,17 +446,7 @@ ENDC
 	ret
 
 
-; Factored-out utilities.
-
-.FillRowWithNextA:
-	ld bc, SCREEN_WIDTH
-.FillWithNextA:
-	inc a
-	rst ByteFill
-	ret
-
-
-.palettes:
+CableCarPalettes:
 INCLUDE "gfx/overworld/cable_car/cable_car.pal"
 
 
@@ -517,17 +488,19 @@ def CLIFF_BASE_TILE       rb 18
 def NB_TILES equ _RS - BASE_TILE
 
 
-.objTileBlocks: rsreset ; `const_def` would require awkward `const_skip`s.
 MACRO obj_block ; <name>, <OBJ count>, <base tile>, <palette>, <X flip?>
-	IF (\5) == 0
+	if (\5) == 0
 		db ((\3) / 2 + (\2)) ; Past-the-end tile ID (halved, since 8x16 mode requires alignment)
-	ELSE
+	else
 		db (\3) / 2 - 1 | $80 ; Tile ID just before the first one, and X flip flag.
-	ENDC
+	endc
 	db ((\2) - 1) << 3 | (\4) ; Length (zero-indexed), and palette.
 	; Use the name as-is to keep them greppable.
 	def \1 rb (\2)
 ENDM
+
+CableCarOAMData:
+	rsreset ; `const_def` would require awkward `const_skip`s.
 	; Order matters here! Earlier OBJs have priority over later ones,
 	; both in drawing order *and* in "10+ on the scanline" drop order.
 	; Also, keep in sync with `obj_col_relative_pos`.
@@ -538,43 +511,46 @@ ENDM
 	obj_block OBJ_HANDLE_RIGHT,  1, HANDLE_SIDE_BASE_TILE, OBPAL_HANDLE, 1
 	obj_block OBJ_CAR,   2 + 3 + 3,    CAR_LEFT_BASE_TILE, OBPAL_CAR,    0
 	obj_block OBJ_CAR_RIGHT, 3 + 2,    CAR_LEFT_BASE_TILE, OBPAL_CAR,    1
-def OBJ_CAR_END equ _RS
+	def OBJ_CAR_END equ _RS
 	obj_block OBJ_CABLE,         1,       CABLE_BASE_TILE, OBPAL_HANDLE, 0
 	obj_block OBJ_CUMULUS,       6,       CUMULUS_BASE_TILE, OBPAL_CLOUD, 0
-def OBJ_CUMULUS_END equ _RS
+	def OBJ_CUMULUS_END equ _RS
 	obj_block OBJ_UNUSED,       13, 42, 0, 0
-.objTileBlocksEnd: static_assert _RS == OAM_COUNT, "{d:_RS} != {d:OAM_COUNT}"
+.End:
+	static_assert _RS == OAM_COUNT, "{d:_RS} != {d:OAM_COUNT}"
 
 
-.ramBlock ; FIXME: in principle, we could add this to the asset blob, and copy it to WRAM0...
+CableCarRAMBlock: ; FIXME: in principle, we could add this to the asset blob, and copy it to WRAM0...
 LOAD UNION "Misc 1300", WRAM0
 wCableCar:
 
 
 MACRO Q8pos_and_speed ; <name prefix>, <start pos>, <speed>
-	\1speed_subpx: db LOW(\3)
-	  \1pos_subpx: db LOW(\2)
-	\1speed_px: db HIGH(\3)
-	  \1pos_px: db HIGH(\2)
+\1_speed_subpx: db LOW(\3)
+\1_pos_subpx: db LOW(\2)
+\1_speed_px: db HIGH(\3)
+\1_pos_px: db HIGH(\2)
 ENDM
-.tickQ8Pos:
+
+wTickCableCarQ8Pos:
 	ld a, [hli] ; Speed (subpx) -> pos (subpx).
-	add a, [hl]
+	add [hl]
 	ld [hli], a ; Pos (subpx) -> speed (px).
 	ld a, [hli] ; Speed (px) -> pos (px).
-	adc a, [hl]
+	adc [hl]
 	ld [hli], a ; Pos (px) -> one past struct.
 	ret
 
 
 MACRO parallax_layer ; <name prefix>, <first scanline>, <px modulo>, <speed>
-	\1_scanline: db \2 - 1 ; Scrolling must be adjusted on the scanline *before*!
-	; X pos is always incrementing, but gets written to SCX inverted if necessary.
-	\1_XposPxModulo: db \3 ; `_Xpos_px` will remain between 0 and this (exclusive), assuming that the speed is no larger than this.
-	Q8pos_and_speed \1_X, 0, \4
+\1_scanline: db \2 - 1 ; Scrolling must be adjusted on the scanline *before*!
+; X pos is always incrementing, but gets written to SCX inverted if necessary.
+\1_XposPxModulo: db \3 ; `_X_pos_px` will remain between 0 and this (exclusive), assuming that the speed is no larger than this.
+\1:: Q8pos_and_speed \1_X, 0, \4
 	; TODO: Y axis
 ENDM
-.parallaxLayers
+
+wCableCarSceneParallaxLayers:
 	parallax_layer .nearClouds,  13, 255, SCROLL_SPEED_CLOUDS_NEAR
 	parallax_layer .farClouds0,  30, 255, SCROLL_SPEED_CLOUDS_FAR_0
 	parallax_layer .farClouds1,  40, 255, SCROLL_SPEED_CLOUDS_FAR_1
@@ -590,27 +566,28 @@ ENDM
 	parallax_layer .nearTrees0, 112,  16, SCROLL_SPEED_TREES_NEAR_0
 	parallax_layer .nearTrees1, 130,  16, SCROLL_SPEED_TREES_NEAR_1
 	db 0 ; Terminator.
-.parallaxLayers_End
+.End:
 
 
 def ORIGIN_ON_RIGHT_OFS equ -24 ; Ensures that the car's origin wraps around after all of it is off-screen.
 MACRO obj_col_relative_pos ; <count>, <x>, <y> (coords are relative to the middle of the attachment point)
-	IF (\1) >= 0
-		FOR i, (\1)
+	if (\1) >= 0
+		for i, (\1)
 			db OAM_Y_OFS + (\3) + i * 16, OAM_X_OFS + (\2) + ORIGIN_ON_RIGHT_OFS
-		ENDR
+		endr
 
-	ELSE ; Row was flipped, thus its OBJs are upside down.
-		FOR i, -(\1) - 1, -1, -1 ; Iterate through the same positions, but in reverse.
+	else ; Row was flipped, thus its OBJs are upside down.
+		for i, -(\1) - 1, -1, -1 ; Iterate through the same positions, but in reverse.
 			db OAM_Y_OFS + (\3) + i * 16, OAM_X_OFS + (\2) + ORIGIN_ON_RIGHT_OFS
-		ENDR
-	ENDC
+		endr
+	endc
 ENDM
-.carObjPosOfs ; Keep in sync with `obj_block`!
+
+CableCarSceneObjPosOffsets: ; Keep in sync with `CableCarOAMData`!
 	obj_col_relative_pos  1,   8, 16 ; Right window.
 	obj_col_relative_pos -1, -16, 16 ; Left window.
 
-.playerPosOfs ; Player's position relative to the car's attachment point. Modified at runtime.
+.player: ; Player's position relative to the car's attachment point. Modified at runtime.
 	obj_col_relative_pos  1,  -8, 15 + BLANKED_PLAYER_ROWS  ; Player left half.
 	obj_col_relative_pos  1,   0, 15 + BLANKED_PLAYER_ROWS  ; Player left half.
 
@@ -623,14 +600,14 @@ ENDM
 	obj_col_relative_pos  3,  -4, 0  ; Body column #3.
 	obj_col_relative_pos -3,   4, 0  ; Body column #4.
 	obj_col_relative_pos -2,  12, 8  ; Body column #5.
-.carObjPosOfsEnd
+.End:
 
 
 ; Some instructions throughout this handler are on the same line as a label;
 ; this is used to highlight that the instruction and/or its operand(s) are modified
 ; throughout the animation.
 ; (This is possible since this code gets loaded into RAM.)
-.LcdHandler:
+wCableCarSceneLCDHandler:
 	push hl
 
 ; Multiplex some of the OAM.
@@ -650,47 +627,47 @@ ENDM
 ; Split the horizontal scrolling between rows of trees.
 	ldh a, [rLY]
 	ldh [hLY], a ; Use a consistent value throughout the handler, since the HW reg will change after HBlank.
-.parallaxPtr: ld hl, .parallaxLayers
+.parallaxPtr: ld hl, wCableCarSceneParallaxLayers
 	cp [hl]
 	jr nz, .noXSplit
 	ld a, l
-	add a, LOW(.horizon_Xpos_px) - LOW(.horizon_scanline)
+	add LOW(wCableCarSceneParallaxLayers.horizon_X_pos_px) - LOW(wCableCarSceneParallaxLayers.horizon_scanline)
 	ld l, a
 	ld a, [hli]
-	.xScrollInversion: nop ; Patched to `cpl` if scrolling is inverted.
+.xScrollInversion: nop ; Patched to `cpl` if scrolling is inverted.
 	ldh [rSCX], a
-	assert HIGH(.parallaxLayers) == HIGH(.parallaxLayers_End - 1), "Parallax buffer iteration would cost two writes!"
+	assert HIGH(wCableCarSceneParallaxLayers) == HIGH(wCableCarSceneParallaxLayers.End - 1), "Parallax buffer iteration would cost two writes!"
 	ld a, l
 	ld [.parallaxPtr + 1], a
 .noXSplit
 
-; Skip some of the Window's rows near the top of the screen, to scroll it vertically.
+; Skip some of the window's rows near the top of the screen, to scroll it vertically.
 	; WY will have been set to CLIFF_PATTERN_HEIGHT - <nb rows to skip>, so make sure it's not displayed on scanline CLIFF_PATTERN_HEIGHT.
 	ldh a, [hLY]
 	cp CLIFF_PATTERN_HEIGHT - 1
 	jr nz, .notResettingWindow
 	ld hl, rLCDC
 	res B_LCDC_WIN_MAP, [hl] ; Switch it back to the cliff tilemap.
-	.cliffWxInitialOffset: ld a, 42
+.cliffWxInitialOffset: ld a, 42
 	add SCREEN_WIDTH_PX + WX_OFS ; Set the Window just off-screen.
 	ldh [rWX], a
 	jr .noWindowShift ; ...and skip the code below.
 .notResettingWindow
 ; Move the window left every scanline it's active.
 ; This distorts it so that it looks more like a separate layer, without any OBJs!
-	.cliffFirstScanline: cp $FF ; Dummy value, will get overwritten.
+.cliffFirstScanline: cp $FF ; Dummy value, will get overwritten.
 	jr c, .noWindowShift
-.wxOfsPtr: ld hl, .wxOffsets
+.wxOfsPtr: ld hl, wCableCarWXOffsets
 	ldh a, [rWX]
-	sub a, [hl]
+	sub [hl]
 	ldh [rWX], a
 	; Advance the pointer into the table.
-	assert HIGH(.wxOffsets) == HIGH(.wyTable - 1), "Please realign wCableCar.wxOffsets" ; Let me work with only the low byte, please.
+	assert HIGH(wCableCarWXOffsets) == HIGH(wCableCarWYTable - 1), "Please realign wCableCarWXOffsets" ; Let me work with only the low byte, please.
 	ld a, l
 	inc a
-	cp LOW(.wyTable)
+	cp LOW(wCableCarWYTable)
 	jr nz, .noWxOfsWrap
-	ld a, LOW(.wxOffsets)
+	ld a, LOW(wCableCarWXOffsets)
 .noWxOfsWrap
 	ld [.wxOfsPtr + 1], a
 .noWindowShift
@@ -707,7 +684,7 @@ ENDM
 	reti
 
 
-.UpdateScrolling
+.UpdateScrolling:
 	ei ; This process takes more than a scanline, so enable nested interrupts to not delay the next one.
 
 	push bc
@@ -717,14 +694,14 @@ ENDM
 ; This involves a two-step process: the Window must first be on-screen to "skip" some of its lines,
 ; and then begin being properly shown further down the screen.
 ; Do this early, because WY must be written to before scanline 2 begins!
-	ld hl, .sequenceTimer
+	ld hl, wCableCarSequenceTimer
 	ld a, [hld]
-	assert .sequenceTimer - 1 == .cliff_Xpos_px
+	assert wCableCarSequenceTimer - 1 == wCableCarCliffX_pos_px
 	and a
 	jr z, .gotCliffScroll ; Do not move the cliff if in a transition state.
 
-	ld hl, .cliff_Xspeed_subpx
-	call .tickQ8Pos
+	ld hl, wCableCarCliffX
+	call wTickCableCarQ8Pos
 	dec hl ; We're going to read that again.
 	jr c, .gotCliffScroll ; Since we are adding a negative speed, we know we must have underflowed if carry *isn't* set.
 	add CLIFF_PATTERN_WIDTH ; Wrap back into the positives...
@@ -732,15 +709,15 @@ ENDM
 .gotCliffScroll
 
 	ld a, CLIFF_PATTERN_WIDTH - 1
-	.cliffScrollInversion: ld a, [hl] ; Patched to `sub [hl]` if necessary.
+.cliffScrollInversion: ld a, [hl] ; Patched to `sub [hl]` if necessary.
 	ld [.cliffWxInitialOffset + 1], a
 	push af
 	; Set up to skip the appropriate number of lines also.
-	assert .wyTable_End - .wyTable == CLIFF_PATTERN_WIDTH
-	add a, LOW(.wyTable)
+	assert wCableCarWYTableEnd - wCableCarWYTable == CLIFF_PATTERN_WIDTH
+	add LOW(wCableCarWYTable)
 	ld l, a
-	assert HIGH(.wyTable_End - 1) == HIGH(.wyTable), "Cannot index WY table efficiently, pls realign"
-	ld h, HIGH(.wyTable)
+	assert HIGH(wCableCarWYTableEnd - 1) == HIGH(wCableCarWYTable), "Cannot index WY table efficiently, pls realign"
+	ld h, HIGH(wCableCarWYTable)
 	ld a, [hl]
 	ldh [rWY], a
 
@@ -753,20 +730,20 @@ ENDM
 	inc a ; Make the halving round up, for a bit of extra visual variety.
 	srl a ; Unsigned division by 2.
 	cpl ; Subtract that from the base scanline, so that moving further right also moves further *up*.
-	add a, CLIFF_BASE_SCANLINE + 1
+	add CLIFF_BASE_SCANLINE + 1
 	ld [.cliffFirstScanline + 1], a
 	; Also reset this bit of self-modifying code.
-	ld a, LOW(.wxOffsets)
+	ld a, LOW(wCableCarWXOffsets)
 	ld [.wxOfsPtr + 1], a
 
-; Little easter egg!
+; Little easter egg: allow the player to move inside the car!
 	ldh a, [hJoypadDown]
 	and PAD_CTRL_PAD
 	jr z, .makePlayerStandStill
 	ld c, a ; Direction mask.
 	ld a, -4 ; Base tile.
 .seekDir
-	add a, 4
+	add 4
 	sla c
 	jr nc, .seekDir
 	jr nz, .doneMoving ; Do not change direction or move.
@@ -784,7 +761,7 @@ ENDM
 	; Move also!
 	cp 4 * 2
 	jr c, .bump ; Down or up.
-	ld hl, .playerPosOfs + 3
+	ld hl, CableCarSceneObjPosOffsets.player + 3
 	ld a, [hl]
 	jr nz, .right
 	; Left.
@@ -794,7 +771,7 @@ ENDM
 .movePlayer
 	ld [hl], a
 	sub TILE_WIDTH
-	ld [.playerPosOfs + 1], a
+	ld [CableCarSceneObjPosOffsets.player + 1], a
 	jr .doneMoving
 .right
 	inc a
@@ -807,12 +784,12 @@ ENDM
 	call PlaySFX
 .doneMoving
 	; Update the movement timer, and the player's cel accordingly.
-	ld a, [.playerMovementTimer]
+	ld a, [wCableCarPlayerMovementTimer]
 	sub $10 ; Toggles bit 7 every 8 frames.
 .makePlayerStandStill ; a == 0 if jumping to here.
-	ld [.playerMovementTimer], a
-	add a, a ; Carry set iff should be walking.
-	sbc a, a ; a == $FF iff should be walking, otherwise 0.
+	ld [wCableCarPlayerMovementTimer], a
+	add a ; Carry set iff should be walking.
+	sbc a ; a == $FF iff should be walking, otherwise 0.
 	and PLAYER_NB_TILES / 2 ; a == walking offset iff should be walking, otherwise 0.
 	ld b, a
 	; Enforce standing/walking cel.
@@ -822,16 +799,16 @@ ENDM
 	jr nc, .wasWalking
 	ld a, [hl] ; Pretend nothing just happened~
 .wasWalking
-	add a, b ; Add the walking offset iff should be walking.
+	add b ; Add the walking offset iff should be walking.
 	ld [hl], a
 	xor 2 ; Toggle between left and right half.
 	ld [wShadowOAMSprite{02d:OBJ_PLAYER}TileID + OBJ_SIZE], a
 
 ; Update background scrolling.
-	ld hl, .parallaxLayers
+	ld hl, wCableCarSceneParallaxLayers
 	ld a, l
 	ld [.parallaxPtr + 1], a ; Reset that SMC.
-	ld a, [.sequenceTimer]
+	ld a, [wCableCarSequenceTimer]
 	and a
 	jr z, .bgDoesntMove
 
@@ -839,7 +816,7 @@ ENDM
 .tickParallaxLayer
 	ld a, [hli] ; Max X (px) -> X speed (subpx).
 	ld c, a
-	call .tickQ8Pos
+	call wTickCableCarQ8Pos
 	sub c ; Overflowed the wrap-around range?
 	jr c, .noParallaxWrap
 	dec hl ; Woops, undo!
@@ -850,12 +827,13 @@ ENDM
 	jr nz, .tickParallaxLayer
 
 ; Move the cumulus also.
-	ld hl, .cumulus_Xspeed_subpx
-	call .tickQ8Pos
+	ld hl, wCableCarCumulusX
+	call wTickCableCarQ8Pos
 	ld hl, wShadowOAMSprite{02d:OBJ_CUMULUS}XCoord
 	ld c, OBJ_CUMULUS_END - OBJ_CUMULUS
 .moveCumulus
-	add a, TILE_WIDTH ; ...which also happens to be `OAM_X_OFS` :)
+	assert TILE_WIDTH == OAM_X_OFS
+	add TILE_WIDTH
 	ld [hli], a ; X pos -> tile ID.
 	inc l ; Tile ID -> attrs.
 	inc l ; Attrs -> next Y pos.
@@ -864,26 +842,26 @@ ENDM
 	jr nz, .moveCumulus
 
 	inc c ; The previous loop leaves c == 0, so this clears Z.
-	ld a, [.car_Xpos_px] ; Where to draw the car.
+	ld a, [wCableCarX_pos_px] ; Where to draw the car.
 .bgDoesntMove ; This gets jumped to with Z set.
 
 ; Update OAM last, since the other variables may be read for real soon,
 ; whereas shadow OAM will only get read on the next VBlank.
 
 ; Update cable car's position.
-	ld hl, .car_Xspeed_subpx
-	call z, .tickQ8Pos ; Only if BG wasn't moved.
+	ld hl, wCableCarX
+	call z, wTickCableCarQ8Pos ; Only if BG wasn't moved.
 	ld c, a
 	; The car's Y position is derived from its X position.
 	; This is odd / unusual vs. giving the Y axis its own speed and position,
 	; but it ensures that the two axes do not drift apart due to accumulated fixed-point imprecision.
 	cpl ; Invert, since the two axes grow in different directions.
 	srl a ; Unsigned division by 2 (the cable's slope) because there are more than 128 pixels.
-	add a, TOPMOST_CABLE_Y_POS - $24 ; Some offset is necessary to adjust the negation.
+	add TOPMOST_CABLE_Y_POS - $24 ; Some offset is necessary to adjust the negation.
 	ld b, a
 
 ; Occasionally bump the car by one pixel.
-	assert .car_Xpos_px + 1 == .carBumpTimer
+	assert wCableCarX_pos_px + 1 == wCableCarBumpTimer
 	ld a, [hl]
 	add CAR_BUMP_TIMER_INCREMENT
 	ld [hl], a
@@ -901,20 +879,20 @@ ENDM
 
 ; Draw the cable car in its new position.
 	ld hl, wShadowOAMSprite{02d:OBJ_CAR_END}XCoord - OBJ_SIZE
-	ld de, .carObjPosOfsEnd
+	ld de, CableCarSceneObjPosOffsets.End
 .updateCarObjPos
 	dec e ; (dec de)
 	ld a, [de] ; Offset from cable car's origin.
-	add a, c ; Origin's X pos.
+	add c ; Origin's X pos.
 	ld [hld], a
 	dec e ; (dec de)
 	ld a, [de]
-	add a, b ; Origin's Y pos.
+	add b ; Origin's Y pos.
 	ld [hld], a
 	dec l ; Attrs -> Tile ID.
 	dec l ; Tile ID -> X pos.
 	ld a, e
-	cp LOW(.carObjPosOfs)
+	cp LOW(CableCarSceneObjPosOffsets)
 	jr nz, .updateCarObjPos
 
 	pop de
@@ -922,39 +900,37 @@ ENDM
 	ret
 
 
-	Q8pos_and_speed .cumulus_X, SCREEN_WIDTH_PX * 1.0q8, -CUMULUS_X_SPEED ; The direction are inverted compared to SCX!
+wCableCarCumulusX:: Q8pos_and_speed wCableCarCumulusX, SCREEN_WIDTH_PX * 1.0q8, -CUMULUS_X_SPEED ; The direction are inverted compared to SCX!
 
 def CAR_TARGET_X equ (SCREEN_WIDTH_PX / 2 - ORIGIN_ON_RIGHT_OFS) * 1.0q8 ; Coordinate so that the car is centered on the screen.
-	Q8pos_and_speed .car_X, CAR_TARGET_X - NB_FRAMES_FADES * CAR_X_SPEED, CAR_X_SPEED
-	.carBumpTimer: db 0
+wCableCarX:: Q8pos_and_speed wCableCarX, CAR_TARGET_X - NB_FRAMES_FADES * CAR_X_SPEED, CAR_X_SPEED
 
+wCableCarBumpTimer: db 0
 
-	Q8pos_and_speed .cliff_X, 0, -SCROLL_SPEED_CLIFF
+wCableCarCliffX:: Q8pos_and_speed wCableCarCliffX, 0, -SCROLL_SPEED_CLIFF
 
 ; While zero, the car moves and nothing else.
 ; While non-zero, this is inverted.
-.sequenceTimer: db 0
+wCableCarSequenceTimer: db 0
+
+wCableCarPlayerMovementTimer: db 0
 
 
-.playerMovementTimer: db 0
-
-
-.wxOffsets ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
+wCableCarWXOffsets: ; How much to move the Window by *to* render this pixel row. (Because it starts off-screen, the Y counter is not ticked on the first scanline.)
 	db 7, 1, 1, 1, 0, 8, 1, 2, 1, 1, 1, 0
-.wyTable
+wCableCarWYTable:
 MACRO initial_wy ; Each arg is “how many blank pixels at the top of this column” (in the non-staggered version).
-	FOR i, 1, _NARG + 1
+	for i, 1, _NARG + 1
 		static_assert \<i> < CLIFF_PATTERN_HEIGHT
 		; Ranges from 1 to CLIFF_PATTERN_HEIGHT (inclusive).
 		db -\<i> % -CLIFF_PATTERN_HEIGHT + CLIFF_PATTERN_HEIGHT
-	ENDR
+	endr
 ENDM
 	initial_wy 0, 0, 0, 0, 0, 0, 0 ; Sanity check: the first entry in this list should always be zero!
 	initial_wy 1, 2, 3
 	initial_wy 5, 5, 5, 5, 5, 5, 5, 5 ; 8-column flat stretch.
 	initial_wy 6, 7, 7, 8, 9, 10
-.wyTable_End
+wCableCarWYTableEnd:
 
-.end
 ENDL
-.ramBlockEnd
+.End:
