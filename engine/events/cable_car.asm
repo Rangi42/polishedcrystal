@@ -586,7 +586,6 @@ MACRO parallax_layer ; <name prefix>, <first scanline>, <px modulo>, <speed>
 ; X pos is always incrementing, but gets written to SCX inverted if necessary.
 \1_XposPxModulo: db \3 ; `_X_pos_px` will remain between 0 and this (exclusive), assuming that the speed is no larger than this.
 \1:: Q8pos_and_speed \1_X, 0, \4
-	; TODO: Y axis
 ENDM
 
 wCableCarSceneParallaxLayers::

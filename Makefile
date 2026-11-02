@@ -121,7 +121,6 @@ clean: tidy
 	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' -o -name '*.2bpp.vram[012]p' \) -delete
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' \
 		-o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
-	rm -f gfx/overworld/*.bin
 	find data/tilesets -name '*_collision.bin' -delete
 	$(MAKE) clean -C tools/
 
@@ -168,7 +167,7 @@ $(ROM_NAME).patch: $(ROM_NAME)_vc.gbc $(ROM_NAME).$(EXTENSION) vc.patch.template
 $(ROM_NAME).$(EXTENSION): $(crystal_obj) layout.link
 	$Q$(RGBLINK) $(RGBLINKFLAGS) -l layout.link -o $@ $(filter %.o,$^)
 	$Q$(RGBFIX) $(RGBFIXFLAGS) $@
-	$Qhead -n 3 $(ROM_NAME).map >&2
+	$Qtools/bankends -q $(ROM_NAME).map >&2
 
 $(ROM_NAME)_vc.gbc: $(crystal_vc_obj) layout.link
 	$Q$(RGBLINK) $(RGBLINKVCFLAGS) -l layout.link -o $@ $(filter %.o,$^)
