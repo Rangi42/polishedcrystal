@@ -426,21 +426,16 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 .special_packhi0
 	ld a, [de]
 	inc de
-	push af
+	ld b, a
 	and $f0
 	ld [hli], a
 	dec c
-	jr z, .pack_done
-	pop af
-	and $0f
+	jr z, .Main
+	xor b ; `ld a, b :: and $0f` due to A's current value.
 	swap a
 	ld [hli], a
 	dec c
 	jr nz, .special_packhi0
-	jr .Main
-
-.pack_done
-	pop af
 	jr .Main
 
 ;; LZ_SPECIAL_PACK16: Read nibbles from the input stream, and output one of 16 common bytes from that.
@@ -448,11 +443,11 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 .special_pack16
 	ld a, [de]
 	inc de
-	push af
+	ld b, a
 	swap a
 	call .pack_lookup
-	jr z, .pack_done
-	pop af
+	jr z, .Main
+	ld a, b
 	call .pack_lookup
 	jr nz, .special_pack16
 	jr .Main
@@ -462,13 +457,13 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 .special_packlo0
 	ld a, [de]
 	inc de
-	push af
+	ld b, a
 	swap a
 	and $0f
 	ld [hli], a
 	dec c
-	jr z, .pack_done
-	pop af
+	jr z, .Main
+	ld a, b
 	and $0f
 	ld [hli], a
 	dec c
