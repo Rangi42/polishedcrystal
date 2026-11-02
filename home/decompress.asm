@@ -423,10 +423,7 @@ DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
 	inc de
 	ld c, a
 	ld b, 0
-	inc c
-	jr nz, .special_have_len
-	inc b
-.special_have_len
+	inc bc
 	pop af
 	cp LZ_SPECIAL_PACKHI0
 	jr nz, .special_pack16
