@@ -80,7 +80,7 @@ def OBJ_CAR_WIN_LEFT  rb 1
 def OBJ_PLAYER        rb 2
 def OBJ_HANDLE        rb 2
 def OBJ_HANDLE_RIGHT  rb 1
-def OBJ_CAR           rb 2 + 3 + 3
+def OBJ_CAR           rb 2 + 3 + 2
 def OBJ_CAR_RIGHT     rb 3 + 2
 def OBJ_CAR_LAST equ _RS - 1
 def OBJ_CABLE         rb 1
@@ -544,7 +544,6 @@ CableCarOAMData: ; Keep in sync with `wCableCarSceneObjPosOffsets`!
 	db CAR_BASE_TILE      +  0, OBPAL_CAR
 	db CAR_BASE_TILE      +  2, OBPAL_CAR_WHITE
 	db CAR_BASE_TILE      +  4, OBPAL_CAR
-	db CAR_BASE_TILE      +  6, OBPAL_CAR
 	db CAR_BASE_TILE      +  8, OBPAL_CAR_WHITE
 	db CAR_BASE_TILE      + 10, OBPAL_CAR
 	; OBJ_CAR_RIGHT
@@ -636,18 +635,18 @@ wCableCarSceneObjPosOffsets:: ; Keep in sync with `CableCarOAMData`!
 	obj_col_relative_pos -1, -16, 16 ; Left window.
 
 .player: ; Player's position relative to the car's attachment point. Modified at runtime.
-	obj_col_relative_pos  1,  -8, 15 + BLANKED_PLAYER_ROWS  ; Player left half.
-	obj_col_relative_pos  1,   0, 15 + BLANKED_PLAYER_ROWS  ; Player left half.
+	obj_col_relative_pos  1,  -8, 15 + BLANKED_PLAYER_ROWS ; Player left half.
+	obj_col_relative_pos  1,   0, 15 + BLANKED_PLAYER_ROWS ; Player left half.
 
-	obj_col_relative_pos  1, -12, 0  ; Left handle.
-	obj_col_relative_pos  1,  -4,-1  ; Middle handle.
-	obj_col_relative_pos -1,   4, 0  ; Right handle.
+	obj_col_relative_pos  1, -12,  0 ; Left handle.
+	obj_col_relative_pos  1,  -4, -1 ; Middle handle.
+	obj_col_relative_pos -1,   4,  0 ; Right handle.
 
-	obj_col_relative_pos  2, -20, 8  ; Body column #1.
-	obj_col_relative_pos  3, -12, 0  ; Body column #2.
-	obj_col_relative_pos  3,  -4, 0  ; Body column #3.
-	obj_col_relative_pos -3,   4, 0  ; Body column #4.
-	obj_col_relative_pos -2,  12, 8  ; Body column #5.
+	obj_col_relative_pos  2, -20,  8 ; Body column #1.
+	obj_col_relative_pos  3, -12,  0 ; Body column #2.
+	obj_col_relative_pos  2,  -4, 15 ; Body column #3.
+	obj_col_relative_pos -3,   4,  0 ; Body column #4.
+	obj_col_relative_pos -2,  12,  8 ; Body column #5.
 .End:
 
 
