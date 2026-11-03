@@ -181,7 +181,7 @@ Music_CableCarRSE_Ch3:
 	volume_envelope 3, 5
 	note F#, 16
 	sound_ret
-	
+
 Music_CableCarRSE_Ch4:
 	toggle_noise $4
 	drum_speed 6
