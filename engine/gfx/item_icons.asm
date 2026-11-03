@@ -106,13 +106,13 @@ _SetupLoadItemOrKeyItemIcon:
 BlackOutDecompressedItemIconCorners:
 	call RunFunctionInWRA6
 .Function:
-	lb bc, %10000000, %00000001 
+	lb bc, %10000000, %00000001
 	ld hl, wDecompressScratch tile 0
 	ld a, [hl]
-	or b 
+	or b
 	ld [hli], a
 	ld a, [hl]
-	or b 
+	or b
 	ld [hl], a
 	ld hl, wDecompressScratch tile 2
 	ld a, [hl]

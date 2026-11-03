@@ -18,7 +18,7 @@ Cry_Glaceon_Ch5:
 	square_note 1, 9, 0, 1888
 	square_note 1, 10, 0, 1920
 	square_note 2, 12, 4, 1931
-	pitch_sweep 3, -7	
+	pitch_sweep 3, -7
 	square_note 10, 8, 6, 1931
 	pitch_sweep 8, 8
 	sound_ret

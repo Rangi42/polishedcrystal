@@ -1512,12 +1512,7 @@ Music_GymLeaderBattleDPPt_Ch4:
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 4, 4
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty5
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 1
@@ -1525,40 +1520,15 @@ Music_GymLeaderBattleDPPt_Ch4:
 	drum_note 4, 1
 	drum_note 4, 3
 	drum_note 4, 1
-	drum_note 4, 5
-	drum_note 4, 6
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 4
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty3
 	drum_note 4, 6
 	drum_note 4, 6
 	drum_note 4, 6
 	drum_note 4, 6
 	drum_note 4, 4
-	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty7
 	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 4
-	drum_note 4, 1
-	drum_note 4, 5
-	drum_note 4, 6
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 4
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty3
 	drum_note 4, 6
 	drum_note 4, 6
 	drum_note 4, 6
@@ -1569,249 +1539,63 @@ Music_GymLeaderBattleDPPt_Ch4:
 	drum_note 4, 1
 	drum_note 4, 1
 Music_GymLeaderBattleDPPt_Ch4_loop:
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty8
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty4
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty10
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty8
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty4
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 3
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty8
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty8
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty4
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty9
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
 	drum_note 4, 2
 	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty9
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty9
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty5
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 1
@@ -1821,12 +1605,7 @@ Music_GymLeaderBattleDPPt_Ch4_loop:
 	drum_note 4, 4
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 4
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty7
 	drum_note 4, 2
 	drum_note 4, 1
 	drum_note 4, 1
@@ -1835,211 +1614,58 @@ Music_GymLeaderBattleDPPt_Ch4_loop:
 	drum_note 4, 6
 	drum_note 4, 6
 	drum_note 4, 4
-	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty7
 	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 4
-	drum_note 4, 1
-	drum_note 4, 5
-	drum_note 4, 6
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 4
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty3
 	drum_note 4, 6
 	drum_note 4, 6
 	drum_note 4, 6
 	drum_note 4, 6
 	drum_note 4, 4
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty5
 	drum_note 4, 4
 	drum_note 4, 1
-	drum_note 4, 5
-	drum_note 4, 6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty3
 	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 4
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 3
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty10
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty8
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty4
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
 	drum_note 4, 1
 	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty8
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
 	drum_note 4, 1
 	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty8
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty4
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty2
 	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty6
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty8
 	drum_note 4, 2
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty1
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 4, 2
@@ -2052,12 +1678,7 @@ Music_GymLeaderBattleDPPt_Ch4_loop:
 	drum_note 4, 4
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 4
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty7
 	drum_note 4, 2
 	drum_note 4, 1
 	drum_note 4, 1
@@ -2078,12 +1699,7 @@ Music_GymLeaderBattleDPPt_Ch4_loop:
 	drum_note 4, 4
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 4
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty7
 	drum_note 4, 2
 	drum_note 4, 1
 	drum_note 4, 1
@@ -2095,18 +1711,97 @@ Music_GymLeaderBattleDPPt_Ch4_loop:
 	drum_note 4, 2
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty4
+	sound_call Music_GymLeaderBattleDPPt_Ch4_ditty5
 	sound_jump Music_GymLeaderBattleDPPt_Ch4_loop
+
+Music_GymLeaderBattleDPPt_Ch4_ditty1:
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	sound_ret
+
+Music_GymLeaderBattleDPPt_Ch4_ditty2:
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	sound_ret
+
+Music_GymLeaderBattleDPPt_Ch4_ditty3:
+	drum_note 4, 5
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	sound_ret
+
+Music_GymLeaderBattleDPPt_Ch4_ditty4:
+	drum_note 4, 2
+	drum_note 4, 2
+Music_GymLeaderBattleDPPt_Ch4_ditty5:
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	sound_ret
+
+Music_GymLeaderBattleDPPt_Ch4_ditty6:
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	sound_ret
+
+Music_GymLeaderBattleDPPt_Ch4_ditty7:
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	sound_ret
+
+Music_GymLeaderBattleDPPt_Ch4_ditty8:
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	sound_ret
+
+Music_GymLeaderBattleDPPt_Ch4_ditty9:
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	sound_ret
+
+Music_GymLeaderBattleDPPt_Ch4_ditty10:
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 3
+	drum_note 4, 1
+	sound_ret
