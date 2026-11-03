@@ -433,11 +433,7 @@ Music_ZinniaEncounterORAS_Ch4:
 	drum_note 12, 8
 Music_ZinniaEncounterORAS_Ch4_loop_main:
 Music_ZinniaEncounterORAS_Ch4_loop_1:
-	drum_note 1, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 1, 2
-	drum_note 4, 2
+	sound_call Music_ZinniaEncounterORAS_Ch4_ditty1
 	sound_loop 8, Music_ZinniaEncounterORAS_Ch4_loop_1
 	drum_note 12, 2
 	drum_note 2, 1
@@ -445,11 +441,7 @@ Music_ZinniaEncounterORAS_Ch4_loop_1:
 	drum_note 1, 2
 	drum_note 4, 2
 Music_ZinniaEncounterORAS_Ch4_loop_2:
-	drum_note 1, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 1, 2
-	drum_note 4, 2
+	sound_call Music_ZinniaEncounterORAS_Ch4_ditty1
 	sound_loop 7, Music_ZinniaEncounterORAS_Ch4_loop_2
 	drum_note 12, 2
 	drum_note 2, 1
@@ -457,11 +449,7 @@ Music_ZinniaEncounterORAS_Ch4_loop_2:
 	drum_note 1, 2
 	drum_note 4, 2
 Music_ZinniaEncounterORAS_Ch4_loop_3:
-	drum_note 1, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 1, 2
-	drum_note 4, 2
+	sound_call Music_ZinniaEncounterORAS_Ch4_ditty1
 	sound_loop 7, Music_ZinniaEncounterORAS_Ch4_loop_3
 	drum_note 12, 2
 	drum_note 2, 1
@@ -469,22 +457,14 @@ Music_ZinniaEncounterORAS_Ch4_loop_3:
 	drum_note 1, 2
 	drum_note 4, 2
 Music_ZinniaEncounterORAS_Ch4_loop_4:
-	drum_note 1, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 1, 2
-	drum_note 4, 2
+	sound_call Music_ZinniaEncounterORAS_Ch4_ditty1
 	sound_loop 7, Music_ZinniaEncounterORAS_Ch4_loop_4
 	drum_note 12, 2
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 1, 2
 	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 1, 2
-	drum_note 4, 2
+	sound_call Music_ZinniaEncounterORAS_Ch4_ditty1
 	drum_note 1, 2
 	drum_note 2, 1
 	drum_note 1, 2
@@ -495,3 +475,11 @@ Music_ZinniaEncounterORAS_Ch4_loop_4:
 	drum_note 2, 1
 	drum_note 1, 4
 	sound_jump Music_ZinniaEncounterORAS_Ch4_loop_main
+
+Music_ZinniaEncounterORAS_Ch4_ditty1:
+	drum_note 1, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
+	sound_ret

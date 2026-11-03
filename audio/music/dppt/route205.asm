@@ -635,58 +635,10 @@ Music_Route205DPPt_Ch3_loop:
 	rest 3
 	note D_, 1
 	rest 1
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 3
+	sound_call Music_Route205DPPt_Ch3_ditty1
 	note G_, 1
 	note G_, 1
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 3
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 2
-	note G_, 1
-	note A_, 1
-	octave 3
-	note C_, 1
-	octave 2
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 3
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 3
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 3
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 2
-	note G_, 1
-	note A_, 1
-	octave 3
-	note C_, 1
-	octave 2
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 3
+	sound_call Music_Route205DPPt_Ch3_ditty1
 	note F_, 1
 	note F_, 1
 	note C_, 1
@@ -913,55 +865,11 @@ Music_Route205DPPt_Ch4_loop:
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_speed 8
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_Route205DPPt_Ch4_ditty1
 	drum_note 2, 3
 	drum_note 2, 3
 	drum_note 2, 3
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 3
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 3
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 3
-	drum_note 2, 3
-	drum_note 2, 3
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 3
-	drum_note 2, 3
-	drum_note 2, 3
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 3
-	drum_note 2, 3
-	drum_note 2, 3
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 3
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 3
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 3
-	drum_note 2, 3
-	drum_note 2, 3
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_Route205DPPt_Ch4_ditty1
 	drum_note 7, 12
 	drum_note 12, 9
 	drum_speed 12
@@ -1088,3 +996,57 @@ Music_Route205DPPt_Ch4_loop:
 	drum_note 2, 1
 	drum_note 2, 3
 	sound_jump Music_Route205DPPt_Ch4_loop
+
+Music_Route205DPPt_Ch3_ditty1:
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 3
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 3
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 2
+	note G_, 1
+	note A_, 1
+	octave 3
+	note C_, 1
+	octave 2
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 3
+	sound_ret
+
+Music_Route205DPPt_Ch4_ditty1:
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 2, 3
+	drum_note 2, 3
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 2, 3
+	drum_note 2, 3
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	sound_ret

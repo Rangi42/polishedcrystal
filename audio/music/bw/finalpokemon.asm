@@ -30,32 +30,7 @@ Music_FinalPokemonBW_Ch1:
 	note C#, 4
 	volume_envelope 9, 1
 	octave 3
-	note C_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note G_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note G_, 1
-	note A_, 1
-	note B_, 1
-	octave 4
-	note C_, 1
-	note D_, 1
-	note C_, 1
-	octave 3
-	note B_, 1
-	note A_, 1
-	note G_, 1
-	note F#, 1
-	note E_, 1
-	note D_, 1
+	sound_call Music_FinalPokemonBW_Ch1_ditty1
 	note C_, 1
 	octave 2
 	note B_, 1
@@ -66,32 +41,7 @@ Music_FinalPokemonBW_Ch1:
 	octave 3
 	note C_, 1
 	note D_, 1
-	note C_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note G_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note G_, 1
-	note A_, 1
-	note B_, 1
-	octave 4
-	note C_, 1
-	note D_, 1
-	note C_, 1
-	octave 3
-	note B_, 1
-	note A_, 1
-	note G_, 1
-	note F#, 1
-	note E_, 1
-	note D_, 1
+	sound_call Music_FinalPokemonBW_Ch1_ditty1
 	note_type 8, 10, 2
 	note F#, 1
 	octave 4
@@ -433,22 +383,7 @@ Music_FinalPokemonBW_Ch2:
 Music_FinalPokemonBW_Ch2_loop:
 	sound_call Music_FinalPokemonBW_Ch2_branch_2
 	note F_, 6
-	note E_, 1
-	note D#, 1
-	volume_envelope 13, 0
-	note D_, 6
-	volume_envelope 13, 7
-	note D_, 10
-	volume_envelope 10, 7
-	duty_cycle 0
-	octave 3
-	note G_, 6
-	volume_envelope 10, 2
-	note G_, 1
-	note G_, 1
-	note A_, 2
-	note A_, 2
-	note_type 8, 10, 2
+	sound_call Music_FinalPokemonBW_Ch2_ditty1
 	note G_, 1
 	note G_, 1
 	note G_, 1
@@ -475,22 +410,7 @@ Music_FinalPokemonBW_Ch2_loop:
 	sound_call Music_FinalPokemonBW_Ch2_branch_2
 	rest 2
 	note F_, 4
-	note E_, 1
-	note D#, 1
-	volume_envelope 13, 0
-	note D_, 6
-	volume_envelope 13, 7
-	note D_, 10
-	volume_envelope 10, 7
-	duty_cycle 0
-	octave 3
-	note G_, 6
-	volume_envelope 10, 2
-	note G_, 1
-	note G_, 1
-	note A_, 2
-	note A_, 2
-	note_type 8, 10, 2
+	sound_call Music_FinalPokemonBW_Ch2_ditty1
 	octave 4
 	note D#, 1
 	note D#, 1
@@ -911,14 +831,7 @@ Music_FinalPokemonBW_Ch4:
 	drum_note 12, 16
 	rest 12
 	drum_speed 3
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
+	sound_call Music_FinalPokemonBW_Ch4_ditty1
 	sound_call Music_FinalPokemonBW_Ch4_branch_1
 	sound_call Music_FinalPokemonBW_Ch4_branch_1
 	sound_call Music_FinalPokemonBW_Ch4_branch_1
@@ -928,14 +841,7 @@ Music_FinalPokemonBW_Ch4:
 	drum_note 12, 4
 	drum_note 12, 4
 	drum_speed 4
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
+	sound_call Music_FinalPokemonBW_Ch4_ditty1
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
@@ -966,14 +872,7 @@ Music_FinalPokemonBW_Ch4_loop:
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 4
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
+	sound_call Music_FinalPokemonBW_Ch4_ditty1
 	drum_note 12, 10
 	drum_note 3, 2
 	drum_note 3, 2
@@ -1006,14 +905,7 @@ Music_FinalPokemonBW_Ch4_loop:
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
 	drum_note 12, 16
 	drum_note 12, 8
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
+	sound_call Music_FinalPokemonBW_Ch4_ditty1
 	sound_jump Music_FinalPokemonBW_Ch4_loop
 
 Music_FinalPokemonBW_Ch4_branch_1:
@@ -1099,4 +991,63 @@ Music_FinalPokemonBW_Ch4_branch_5:
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
+	sound_ret
+
+Music_FinalPokemonBW_Ch1_ditty1:
+	note C_, 1
+	note D_, 1
+	note C_, 1
+	note D_, 1
+	note G_, 1
+	note D_, 1
+	note C_, 1
+	note D_, 1
+	note C_, 1
+	note D_, 1
+	note C_, 1
+	note D_, 1
+	note G_, 1
+	note A_, 1
+	note B_, 1
+	octave 4
+	note C_, 1
+	note D_, 1
+	note C_, 1
+	octave 3
+	note B_, 1
+	note A_, 1
+	note G_, 1
+	note F#, 1
+	note E_, 1
+	note D_, 1
+	sound_ret
+
+Music_FinalPokemonBW_Ch2_ditty1:
+	note E_, 1
+	note D#, 1
+	volume_envelope 13, 0
+	note D_, 6
+	volume_envelope 13, 7
+	note D_, 10
+	volume_envelope 10, 7
+	duty_cycle 0
+	octave 3
+	note G_, 6
+	volume_envelope 10, 2
+	note G_, 1
+	note G_, 1
+	note A_, 2
+	note A_, 2
+	note_type 8, 10, 2
+	sound_ret
+
+Music_FinalPokemonBW_Ch4_ditty1:
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_ret

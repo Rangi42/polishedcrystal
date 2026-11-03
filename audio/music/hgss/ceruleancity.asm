@@ -383,33 +383,7 @@ Music_CeruleanCityHGSS_Loop3:
 	octave 5
 	note G#, 1
 	rest 3
-	octave 1
-	note E_, 2
-	rest 2
-	octave 5
-	note G#, 1
-	rest 1
-	octave 1
-	note E_, 1
-	rest 1
-	note E_, 2
-	rest 2
-	octave 5
-	note G#, 1
-	rest 1
-	octave 2
-	note E_, 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	octave 5
-	note G#, 1
-	rest 1
-	octave 1
-	note E_, 2
-	note F#, 2
-	rest 2
+	sound_call Music_CeruleanCityHGSS_Ch3_ditty1
 	octave 6
 	note C#, 1
 	rest 3
@@ -446,33 +420,7 @@ Music_CeruleanCityHGSS_Loop3:
 	note E_, 2
 	octave 5
 	note E_, 2
-	octave 1
-	note E_, 2
-	rest 2
-	octave 5
-	note G#, 1
-	rest 1
-	octave 1
-	note E_, 1
-	rest 1
-	note E_, 2
-	rest 2
-	octave 5
-	note G#, 1
-	rest 1
-	octave 2
-	note E_, 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	octave 5
-	note G#, 1
-	rest 1
-	octave 1
-	note E_, 2
-	note F#, 2
-	rest 2
+	sound_call Music_CeruleanCityHGSS_Ch3_ditty1
 	octave 5
 	note E_, 1
 	rest 3
@@ -795,4 +743,34 @@ Music_CeruleanCityHGSS_Ch4_ditty5:
 	drum_note 3, 2
 	drum_note 8, 1
 	drum_note 8, 1
+	sound_ret
+
+Music_CeruleanCityHGSS_Ch3_ditty1:
+	octave 1
+	note E_, 2
+	rest 2
+	octave 5
+	note G#, 1
+	rest 1
+	octave 1
+	note E_, 1
+	rest 1
+	note E_, 2
+	rest 2
+	octave 5
+	note G#, 1
+	rest 1
+	octave 2
+	note E_, 2
+	octave 1
+	note E_, 2
+	octave 2
+	note E_, 2
+	octave 5
+	note G#, 1
+	rest 1
+	octave 1
+	note E_, 2
+	note F#, 2
+	rest 2
 	sound_ret

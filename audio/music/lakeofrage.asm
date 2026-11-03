@@ -243,19 +243,7 @@ Music_LakeOfRage_branch_ee7d0:
 	note E_, 4
 	note C_, 2
 	note E_, 2
-	note C_, 2
-	note G_, 4
-	note C_, 2
-	note G_, 4
-	note C_, 2
-	note G_, 2
-	note C_, 2
-	note F#, 4
-	note D_, 2
-	note F#, 4
-	note D_, 2
-	note F#, 2
-	note D_, 2
+	sound_call Music_LakeOfRage_Ch3_ditty1
 	note A_, 2
 	note D_, 2
 	note F#, 2
@@ -270,19 +258,7 @@ Music_LakeOfRage_branch_ee7d0:
 	note G_, 4
 	note C_, 2
 	note G_, 2
-	note C_, 2
-	note G_, 4
-	note C_, 2
-	note G_, 4
-	note C_, 2
-	note G_, 2
-	note C_, 2
-	note F#, 4
-	note D_, 2
-	note F#, 4
-	note D_, 2
-	note F#, 2
-	note D_, 2
+	sound_call Music_LakeOfRage_Ch3_ditty1
 	note D_, 4
 	octave 2
 	note A_, 2
@@ -321,3 +297,19 @@ Music_LakeOfRage_branch_ee83b:
 	drum_note 3, 1
 	drum_note 3, 1
 	sound_jump Music_LakeOfRage_branch_ee83b
+
+Music_LakeOfRage_Ch3_ditty1:
+	note C_, 2
+	note G_, 4
+	note C_, 2
+	note G_, 4
+	note C_, 2
+	note G_, 2
+	note C_, 2
+	note F#, 4
+	note D_, 2
+	note F#, 4
+	note D_, 2
+	note F#, 2
+	note D_, 2
+	sound_ret

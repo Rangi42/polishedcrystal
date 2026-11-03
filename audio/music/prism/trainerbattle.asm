@@ -481,20 +481,7 @@ Music_TrainerBattlePrism_L3:
 	note E_, 2
 	note G_, 1
 	note B_, 1
-	octave 3
-	note F_, 2
-	octave 2
-	note F_, 2
-	note F_, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note F_, 2
-	note F_, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note F_, 2
+	sound_call Music_TrainerBattlePrism_Ch2_ditty1
 	octave 3
 	note E_, 2
 	octave 2
@@ -523,20 +510,7 @@ Music_TrainerBattlePrism_L3:
 	note G_, 2
 	octave 2
 	note G_, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note F_, 2
-	note F_, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note F_, 2
-	note F_, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note F_, 2
+	sound_call Music_TrainerBattlePrism_Ch2_ditty1
 Music_TrainerBattlePrism_L4:
 	octave 4
 	note C_, 6
@@ -642,83 +616,21 @@ Music_TrainerBattlePrism_L9:
 	sound_call Music_TrainerBattlePrism_P10
 	sound_call Music_TrainerBattlePrism_P10
 	octave 2
-	note A_, 3
-	rest 1
-	note A_, 2
-	octave 3
-	note C_, 3
-	rest 1
-	note C_, 2
-	note C_, 2
-	octave 2
-	note A_, 3
-	rest 1
-	note A_, 2
-	octave 3
-	note C_, 2
-	note C_, 2
+	sound_call Music_TrainerBattlePrism_Ch3_ditty3
 	octave 2
 	note A_, 2
 	note A_, 2
 	octave 3
-	note C_, 2
-	note C_, 2
-	octave 2
-	note A#, 3
-	rest 1
-	note A#, 2
-	octave 3
-	note F_, 3
-	rest 1
-	note F_, 2
-	note F_, 2
-	octave 2
-	note A#, 3
-	rest 1
-	note A#, 2
-	octave 3
-	note F_, 2
-	note F_, 2
+	sound_call Music_TrainerBattlePrism_Ch3_ditty2
 	note D_, 2
 	note D_, 2
 	octave 2
 	note G#, 2
 	note G#, 2
-	note A_, 3
-	rest 1
-	note A_, 2
-	octave 3
-	note C_, 3
-	rest 1
-	note C_, 2
-	note C_, 2
-	octave 2
-	note A_, 3
-	rest 1
-	note A_, 2
-	octave 3
-	note C_, 2
-	note C_, 2
+	sound_call Music_TrainerBattlePrism_Ch3_ditty3
 	note D_, 2
 	note D_, 2
-	note C_, 2
-	note C_, 2
-	octave 2
-	note A#, 3
-	rest 1
-	note A#, 2
-	octave 3
-	note F_, 3
-	rest 1
-	note F_, 2
-	note F_, 2
-	octave 2
-	note A#, 3
-	rest 1
-	note A#, 2
-	octave 3
-	note F_, 2
-	note F_, 2
+	sound_call Music_TrainerBattlePrism_Ch3_ditty2
 	note G_, 2
 	note E_, 2
 	note F_, 2
@@ -747,18 +659,7 @@ Music_TrainerBattlePrism_L14:
 	octave 3
 	note F_, 2
 	sound_loop 4, Music_TrainerBattlePrism_L14
-	note C_, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note C_, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 4
-	note C#, 2
-	octave 3
+	sound_call Music_TrainerBattlePrism_Ch3_ditty1
 	note C_, 2
 	octave 4
 	note C_, 2
@@ -778,32 +679,10 @@ Music_TrainerBattlePrism_L14:
 	octave 4
 	note C#, 2
 	octave 3
-	note C_, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note C_, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 4
-	note C#, 2
-	octave 3
+	sound_call Music_TrainerBattlePrism_Ch3_ditty1
 	note C_, 2
 	note G_, 2
-	note C_, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note C_, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 4
-	note C#, 2
-	octave 3
+	sound_call Music_TrainerBattlePrism_Ch3_ditty1
 	note C#, 2
 	note A#, 2
 	sound_jump Music_TrainerBattlePrism_L6
@@ -946,4 +825,75 @@ Music_TrainerBattlePrism_P12:
 	octave 3
 	note E_, 2
 	sound_loop 4, Music_TrainerBattlePrism_P12
+	sound_ret
+
+Music_TrainerBattlePrism_Ch2_ditty1:
+	octave 3
+	note F_, 2
+	octave 2
+	note F_, 2
+	note F_, 2
+	octave 3
+	note F_, 2
+	octave 2
+	note F_, 2
+	note F_, 2
+	octave 3
+	note F_, 2
+	octave 2
+	note F_, 2
+	sound_ret
+
+Music_TrainerBattlePrism_Ch3_ditty1:
+	note C_, 2
+	octave 4
+	note C_, 2
+	octave 3
+	note C_, 2
+	octave 4
+	note C#, 2
+	octave 3
+	note C#, 2
+	octave 4
+	note C#, 2
+	octave 3
+	sound_ret
+
+Music_TrainerBattlePrism_Ch3_ditty2:
+	note C_, 2
+	note C_, 2
+	octave 2
+	note A#, 3
+	rest 1
+	note A#, 2
+	octave 3
+	note F_, 3
+	rest 1
+	note F_, 2
+	note F_, 2
+	octave 2
+	note A#, 3
+	rest 1
+	note A#, 2
+	octave 3
+	note F_, 2
+	note F_, 2
+	sound_ret
+
+Music_TrainerBattlePrism_Ch3_ditty3:
+	note A_, 3
+	rest 1
+	note A_, 2
+	octave 3
+	note C_, 3
+	rest 1
+	note C_, 2
+	note C_, 2
+	octave 2
+	note A_, 3
+	rest 1
+	note A_, 2
+	octave 3
+	note C_, 2
+	note C_, 2
 	sound_ret

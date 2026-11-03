@@ -122,46 +122,10 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note A_, 2
 	octave 3
 	note D_, 4
-	volume_envelope 7, 4
-	octave 2
-	note E_, 2
-	volume_envelope 5, 7
-	note G_, 2
-	note B_, 2
-	octave 3
-	note E_, 4
-	octave 2
-	note B_, 2
-	octave 3
-	note E_, 4
-	volume_envelope 7, 4
-	octave 2
-	note D_, 2
-	volume_envelope 5, 7
-	note F#, 2
-	note A_, 2
-	octave 3
+	sound_call Music_LugiasSong2000_Ch2_loop_main_ditty1
 	note E_, 4
 	note D_, 6
-	volume_envelope 7, 4
-	octave 2
-	note E_, 2
-	volume_envelope 5, 7
-	note G_, 2
-	note B_, 2
-	octave 3
-	note E_, 4
-	octave 2
-	note B_, 2
-	octave 3
-	note E_, 4
-	volume_envelope 7, 4
-	octave 2
-	note D_, 2
-	volume_envelope 5, 7
-	note F#, 2
-	note A_, 2
-	octave 3
+	sound_call Music_LugiasSong2000_Ch2_loop_main_ditty1
 	note E_, 4
 	octave 2
 	note A_, 2
@@ -243,25 +207,7 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note E_, 2
 	octave 3
 	note C_, 4
-	volume_envelope 7, 4
-	octave 2
-	note E_, 2
-	volume_envelope 5, 7
-	note G_, 2
-	note B_, 2
-	octave 3
-	note E_, 4
-	octave 2
-	note B_, 2
-	octave 3
-	note E_, 4
-	volume_envelope 7, 4
-	octave 2
-	note D_, 2
-	volume_envelope 5, 7
-	note F#, 2
-	note A_, 2
-	octave 3
+	sound_call Music_LugiasSong2000_Ch2_loop_main_ditty1
 	note E_, 2
 	octave 2
 	note D_, 2
@@ -415,4 +361,26 @@ Music_LugiasSong2000_Ch4_loop_1:
 	drum_note 1, 8
 	drum_note 1, 8
 	drum_note 12, 16
+	sound_ret
+
+Music_LugiasSong2000_Ch2_loop_main_ditty1:
+	volume_envelope 7, 4
+	octave 2
+	note E_, 2
+	volume_envelope 5, 7
+	note G_, 2
+	note B_, 2
+	octave 3
+	note E_, 4
+	octave 2
+	note B_, 2
+	octave 3
+	note E_, 4
+	volume_envelope 7, 4
+	octave 2
+	note D_, 2
+	volume_envelope 5, 7
+	note F#, 2
+	note A_, 2
+	octave 3
 	sound_ret

@@ -20,56 +20,12 @@ Music_MountCoronetDPPt_Ch1:
 	octave 4
 	note D_, 2
 Music_MountCoronetDPPt_Ch1_loop:
-	octave 3
-	note G_, 6
-	octave 4
-	note D_, 4
-	octave 3
-	note F_, 6
-	note G_, 4
-	octave 4
-	note D_, 4
-	octave 3
-	note F_, 6
-	octave 4
-	note D_, 2
-	octave 3
-	note F_, 6
-	octave 4
-	note C_, 4
-	octave 3
-	note D#, 6
-	note F_, 4
-	octave 4
-	note C_, 4
-	octave 3
+	sound_call Music_MountCoronetDPPt_Ch1_ditty2
 	note D#, 6
 	octave 4
 	note C_, 2
 	sound_loop 4, Music_MountCoronetDPPt_Ch1_loop
-	octave 3
-	note G_, 6
-	octave 4
-	note D_, 4
-	octave 3
-	note F_, 6
-	note G_, 4
-	octave 4
-	note D_, 4
-	octave 3
-	note F_, 6
-	octave 4
-	note D_, 2
-	octave 3
-	note F_, 6
-	octave 4
-	note C_, 4
-	octave 3
-	note D#, 6
-	note F_, 4
-	octave 4
-	note C_, 4
-	octave 3
+	sound_call Music_MountCoronetDPPt_Ch1_ditty2
 	note D#, 2
 	octave 5
 	note G_, 1
@@ -84,40 +40,7 @@ Music_MountCoronetDPPt_Ch1_loop:
 	note G_, 4
 	octave 3
 	note D_, 4
-	octave 2
-	note F_, 6
-	note G_, 4
-	octave 3
-	note D_, 4
-	octave 2
-	note F_, 6
-	octave 3
-	note D_, 2
-	octave 2
-	note F_, 6
-	octave 3
-	note C_, 4
-	octave 2
-	note D#, 6
-	note F_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note D#, 6
-	octave 3
-	note C_, 2
-	octave 2
-	note G_, 6
-	octave 3
-	note D_, 4
-	octave 2
-	note F_, 6
-	note G_, 4
-	octave 3
-	note D_, 4
-	octave 2
-	note F_, 6
-	octave 3
+	sound_call Music_MountCoronetDPPt_Ch1_ditty1
 	note D_, 2
 	octave 2
 	note F_, 6
@@ -149,40 +72,7 @@ Music_MountCoronetDPPt_Ch1_loop:
 	note F_, 1
 	note G#, 4
 	volume_envelope 8, 7
-	octave 2
-	note F_, 6
-	note G_, 4
-	octave 3
-	note D_, 4
-	octave 2
-	note F_, 6
-	octave 3
-	note D_, 2
-	octave 2
-	note F_, 6
-	octave 3
-	note C_, 4
-	octave 2
-	note D#, 6
-	note F_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note D#, 6
-	octave 3
-	note C_, 2
-	octave 2
-	note G_, 6
-	octave 3
-	note D_, 4
-	octave 2
-	note F_, 6
-	note G_, 4
-	octave 3
-	note D_, 4
-	octave 2
-	note F_, 6
-	octave 3
+	sound_call Music_MountCoronetDPPt_Ch1_ditty1
 	note D_, 4
 	note_type 8, 8, 2
 	duty_cycle 1
@@ -275,21 +165,7 @@ Music_MountCoronetDPPt_Ch1_loop:
 	octave 3
 	note G#, 1
 	note F#, 3
-	octave 4
-	note C#, 1
-	note F_, 3
-	note F#, 1
-	note G_, 1
-	note A#, 1
-	note C#, 1
-	note F_, 1
-	octave 3
-	note A#, 1
-	octave 4
-	note C#, 1
-	octave 3
-	note G_, 1
-	note A#, 1
+	sound_call Music_MountCoronetDPPt_Ch1_ditty3
 	note C_, 1
 	note C#, 1
 	note D#, 1
@@ -314,21 +190,7 @@ Music_MountCoronetDPPt_Ch1_loop:
 	octave 3
 	note F#, 1
 	note A#, 2
-	octave 4
-	note C#, 1
-	note F_, 3
-	note F#, 1
-	note G_, 1
-	note A#, 1
-	note C#, 1
-	note F_, 1
-	octave 3
-	note A#, 1
-	octave 4
-	note C#, 1
-	octave 3
-	note G_, 1
-	note A#, 1
+	sound_call Music_MountCoronetDPPt_Ch1_ditty3
 	note F_, 1
 	note G_, 1
 	note C_, 1
@@ -375,17 +237,7 @@ Music_MountCoronetDPPt_Ch2_loop:
 	octave 4
 	note C_, 6
 	volume_envelope 8, 5
-	note D_, 8
-	volume_envelope 4, 5
-	note C_, 10
-	note C_, 8
-	octave 3
-	note A#, 6
-	octave 4
-	volume_envelope 8, 5
-	note C_, 8
-	octave 3
-	volume_envelope 4, 5
+	sound_call Music_MountCoronetDPPt_Ch2_ditty1
 	note A#, 6
 	octave 5
 	volume_envelope 8, 5
@@ -399,33 +251,13 @@ Music_MountCoronetDPPt_Ch2_loop:
 	octave 5
 	note C_, 10
 	octave 4
-	note D_, 8
-	volume_envelope 4, 5
-	note C_, 10
-	note C_, 8
-	octave 3
-	note A#, 6
-	octave 4
-	volume_envelope 8, 5
-	note C_, 8
-	octave 3
-	volume_envelope 4, 5
+	sound_call Music_MountCoronetDPPt_Ch2_ditty1
 	note A#, 10
 	note A#, 8
 	octave 4
 	note C_, 6
 	volume_envelope 8, 5
-	note D_, 8
-	volume_envelope 4, 5
-	note C_, 10
-	note C_, 8
-	octave 3
-	note A#, 6
-	octave 4
-	volume_envelope 8, 5
-	note C_, 8
-	octave 3
-	volume_envelope 4, 5
+	sound_call Music_MountCoronetDPPt_Ch2_ditty1
 	note A#, 2
 	octave 5
 	volume_envelope 8, 5
@@ -448,33 +280,13 @@ Music_MountCoronetDPPt_Ch2_loop:
 	octave 5
 	note C_, 6
 	octave 4
-	note D_, 8
-	volume_envelope 4, 5
-	note C_, 10
-	note C_, 8
-	octave 3
-	note A#, 6
-	octave 4
-	volume_envelope 8, 5
-	note C_, 8
-	octave 3
-	volume_envelope 4, 5
+	sound_call Music_MountCoronetDPPt_Ch2_ditty1
 	note A#, 10
 	note A#, 8
 	octave 4
 	note C_, 6
 	octave 4
-	note D_, 8
-	volume_envelope 4, 5
-	note C_, 10
-	note C_, 8
-	octave 3
-	note A#, 6
-	octave 4
-	volume_envelope 8, 5
-	note C_, 8
-	octave 3
-	volume_envelope 4, 5
+	sound_call Music_MountCoronetDPPt_Ch2_ditty1
 	note A#, 10
 	note A#, 4
 	volume_envelope 8, 5
@@ -643,21 +455,7 @@ Music_MountCoronetDPPt_Ch2_loop:
 	octave 4
 	note G#, 1
 	note F#, 3
-	octave 5
-	note C#, 1
-	note F_, 3
-	note F#, 1
-	note G_, 1
-	note A#, 1
-	note C#, 1
-	note F_, 1
-	octave 4
-	note A#, 1
-	octave 5
-	note C#, 1
-	octave 4
-	note G_, 1
-	note A#, 1
+	sound_call Music_MountCoronetDPPt_Ch2_ditty2
 	note C_, 1
 	note C#, 1
 	note D#, 1
@@ -682,21 +480,7 @@ Music_MountCoronetDPPt_Ch2_loop:
 	octave 4
 	note F#, 1
 	note A#, 2
-	octave 5
-	note C#, 1
-	note F_, 3
-	note F#, 1
-	note G_, 1
-	note A#, 1
-	note C#, 1
-	note F_, 1
-	octave 4
-	note A#, 1
-	octave 5
-	note C#, 1
-	octave 4
-	note G_, 1
-	note A#, 1
+	sound_call Music_MountCoronetDPPt_Ch2_ditty2
 	note F_, 1
 	note G_, 1
 	note C_, 1
@@ -970,39 +754,141 @@ Music_MountCoronetDPPt_Ch3_branch_0:
 	note D_, 16
 	note D#, 16
 	note E_, 16
-	rest 2
-	octave 2
-	note G#, 1
-	octave 3
-	note C_, 1
-	note F_, 4
-	note F_, 12
-	octave 2
-	note G_, 1
-	octave 3
-	note C_, 1
-	note F_, 1
-	note G_, 1
-	note A#, 4
-	octave 4
-	note C_, 4
-	rest 2
-	octave 2
-	note G#, 1
-	octave 3
-	note C_, 1
-	note F_, 4
-	note F_, 12
-	octave 2
-	note G_, 1
-	octave 3
-	note C_, 1
-	note F_, 1
-	note G_, 1
-	note A#, 4
-	octave 4
-	note C_, 4
+	sound_call Music_MountCoronetDPPt_Ch3_ditty1
+	sound_call Music_MountCoronetDPPt_Ch3_ditty1
 	note C#, 4
 	rest 12
 	rest 16
 	sound_jump Music_MountCoronetDPPt_Ch3_branch_0
+
+Music_MountCoronetDPPt_Ch1_ditty1:
+	octave 2
+	note F_, 6
+	note G_, 4
+	octave 3
+	note D_, 4
+	octave 2
+	note F_, 6
+	octave 3
+	note D_, 2
+	octave 2
+	note F_, 6
+	octave 3
+	note C_, 4
+	octave 2
+	note D#, 6
+	note F_, 4
+	octave 3
+	note C_, 4
+	octave 2
+	note D#, 6
+	octave 3
+	note C_, 2
+	octave 2
+	note G_, 6
+	octave 3
+	note D_, 4
+	octave 2
+	note F_, 6
+	note G_, 4
+	octave 3
+	note D_, 4
+	octave 2
+	note F_, 6
+	octave 3
+	sound_ret
+
+Music_MountCoronetDPPt_Ch1_ditty2:
+	octave 3
+	note G_, 6
+	octave 4
+	note D_, 4
+	octave 3
+	note F_, 6
+	note G_, 4
+	octave 4
+	note D_, 4
+	octave 3
+	note F_, 6
+	octave 4
+	note D_, 2
+	octave 3
+	note F_, 6
+	octave 4
+	note C_, 4
+	octave 3
+	note D#, 6
+	note F_, 4
+	octave 4
+	note C_, 4
+	octave 3
+	sound_ret
+
+Music_MountCoronetDPPt_Ch1_ditty3:
+	octave 4
+	note C#, 1
+	note F_, 3
+	note F#, 1
+	note G_, 1
+	note A#, 1
+	note C#, 1
+	note F_, 1
+	octave 3
+	note A#, 1
+	octave 4
+	note C#, 1
+	octave 3
+	note G_, 1
+	note A#, 1
+	sound_ret
+
+Music_MountCoronetDPPt_Ch2_ditty1:
+	note D_, 8
+	volume_envelope 4, 5
+	note C_, 10
+	note C_, 8
+	octave 3
+	note A#, 6
+	octave 4
+	volume_envelope 8, 5
+	note C_, 8
+	octave 3
+	volume_envelope 4, 5
+	sound_ret
+
+Music_MountCoronetDPPt_Ch2_ditty2:
+	octave 5
+	note C#, 1
+	note F_, 3
+	note F#, 1
+	note G_, 1
+	note A#, 1
+	note C#, 1
+	note F_, 1
+	octave 4
+	note A#, 1
+	octave 5
+	note C#, 1
+	octave 4
+	note G_, 1
+	note A#, 1
+	sound_ret
+
+Music_MountCoronetDPPt_Ch3_ditty1:
+	rest 2
+	octave 2
+	note G#, 1
+	octave 3
+	note C_, 1
+	note F_, 4
+	note F_, 12
+	octave 2
+	note G_, 1
+	octave 3
+	note C_, 1
+	note F_, 1
+	note G_, 1
+	note A#, 4
+	octave 4
+	note C_, 4
+	sound_ret

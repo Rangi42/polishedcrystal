@@ -86,48 +86,9 @@ Music_FrostCavernXY_Ch2:
 	duty_cycle 2
 	octave 3
 	note C_, 2
-	note A#, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note C_, 2
-	octave 4
-	note D#, 2
-	octave 3
-	note C_, 2
-	note A#, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note C_, 2
-	note A#, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note C_, 2
-	octave 4
-	note D#, 2
-	octave 3
-	note C_, 2
-	note A#, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note C_, 2
-	note A#, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note C_, 2
-	octave 4
-	note D#, 2
-	octave 3
-	note C_, 2
-	note A#, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note C_, 2
+	sound_call Music_FrostCavernXY_Ch2_ditty1
+	sound_call Music_FrostCavernXY_Ch2_ditty1
+	sound_call Music_FrostCavernXY_Ch2_ditty1
 	octave 4
 	note F_, 2
 	note F_, 2
@@ -169,3 +130,20 @@ Music_FrostCavernXY_Ch3_loop_1:
 	volume_envelope 2, 0
 	rest 4
 	sound_jump Music_FrostCavernXY_Ch3_loop_main
+
+Music_FrostCavernXY_Ch2_ditty1:
+	note A#, 2
+	octave 4
+	note C_, 2
+	octave 3
+	note C_, 2
+	octave 4
+	note D#, 2
+	octave 3
+	note C_, 2
+	note A#, 2
+	octave 4
+	note C_, 2
+	octave 3
+	note C_, 2
+	sound_ret

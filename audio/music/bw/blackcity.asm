@@ -82,22 +82,8 @@ Music_BlackCityBW_Ch1_loop:
 	note C_, 4
 	octave 3
 	note F_, 4
-	octave 4
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 4
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 4
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 4
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call Music_BlackCityBW_Ch1_ditty1
+	sound_call Music_BlackCityBW_Ch1_ditty1
 	note A#, 4
 	note C_, 4
 	note A#, 4
@@ -122,14 +108,7 @@ Music_BlackCityBW_Ch1_loop:
 	note C_, 4
 	note A#, 4
 	note C_, 4
-	octave 4
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 4
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call Music_BlackCityBW_Ch1_ditty1
 	note G_, 4
 	note C_, 4
 	note G_, 4
@@ -259,26 +238,7 @@ Music_BlackCityBW_Ch2:
 	note_type 6, 10, 7
 	octave 3
 	rest 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note B_, 12
-	octave 4
-	note E_, 12
-	note C_, 8
-	note D#, 12
-	note C_, 12
-	note D_, 4
-	note C#, 2
-	note C_, 2
-	octave 3
-	note B_, 16
-	rest 8
-	note A_, 4
-	note B_, 2
-	octave 4
-	note C_, 2
-	octave 3
+	sound_call Music_BlackCityBW_Ch2_ditty1
 	note B_, 14
 	octave 4
 	duty_cycle 0
@@ -297,26 +257,7 @@ Music_BlackCityBW_Ch2:
 	volume_envelope 10, 7
 	duty_cycle 2
 	octave 3
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note B_, 12
-	octave 4
-	note E_, 12
-	note C_, 8
-	note D#, 12
-	note C_, 12
-	note D_, 4
-	note C#, 2
-	note C_, 2
-	octave 3
-	note B_, 16
-	rest 8
-	note A_, 4
-	note B_, 2
-	octave 4
-	note C_, 2
-	octave 3
+	sound_call Music_BlackCityBW_Ch2_ditty1
 	note B_, 16
 	duty_cycle 0
 	volume_envelope 9, 4
@@ -509,4 +450,38 @@ Music_BlackCityBW_Ch4_branch_1:
 	drum_note 1, 4
 	drum_note 4, 2
 	drum_note 4, 2
+	sound_ret
+
+Music_BlackCityBW_Ch1_ditty1:
+	octave 4
+	note C_, 4
+	octave 3
+	note C_, 4
+	octave 4
+	note C_, 4
+	octave 3
+	note C_, 4
+	sound_ret
+
+Music_BlackCityBW_Ch2_ditty1:
+	note G#, 1
+	note A_, 1
+	note A#, 1
+	note B_, 12
+	octave 4
+	note E_, 12
+	note C_, 8
+	note D#, 12
+	note C_, 12
+	note D_, 4
+	note C#, 2
+	note C_, 2
+	octave 3
+	note B_, 16
+	rest 8
+	note A_, 4
+	note B_, 2
+	octave 4
+	note C_, 2
+	octave 3
 	sound_ret

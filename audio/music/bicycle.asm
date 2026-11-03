@@ -26,21 +26,7 @@ Music_Bicycle_Ch1:
 Music_Bicycle_branch_ee144:
 	stereo_panning FALSE, TRUE
 	volume_envelope 11, 2
-	note G_, 2
-	note G_, 2
-	note E_, 2
-	note E_, 2
-	note F#, 1
-	note E_, 1
-	note D#, 2
-	note D_, 2
-	note D_, 2
-	note E_, 2
-	note E_, 2
-	note C_, 2
-	note C_, 2
-	octave 2
-	note B_, 2
+	sound_call Music_Bicycle_Ch1_ditty1
 	note G_, 2
 	note A_, 2
 	note B_, 2
@@ -61,21 +47,7 @@ Music_Bicycle_branch_ee144:
 	note D_, 2
 	note C#, 2
 	note D_, 2
-	note G_, 2
-	note G_, 2
-	note E_, 2
-	note E_, 2
-	note F#, 1
-	note E_, 1
-	note D#, 2
-	note D_, 2
-	note D_, 2
-	note E_, 2
-	note E_, 2
-	note C_, 2
-	note C_, 2
-	octave 2
-	note B_, 2
+	sound_call Music_Bicycle_Ch1_ditty1
 	note B_, 2
 	note A#, 2
 	note B_, 2
@@ -199,22 +171,7 @@ Music_Bicycle_branch_ee1fd:
 	duty_cycle 2
 	volume_envelope 12, 3
 	octave 3
-	note B_, 4
-	note G_, 4
-	note A_, 4
-	note F#, 4
-	volume_envelope 12, 2
-	note G_, 2
-	note F#, 2
-	note E_, 2
-	note F#, 2
-	volume_envelope 12, 5
-	note D_, 8
-	volume_envelope 12, 4
-	note E_, 4
-	note G_, 4
-	volume_envelope 12, 2
-	note E_, 2
+	sound_call Music_Bicycle_Ch2_ditty1
 	note B_, 2
 	note A_, 2
 	note G_, 2
@@ -225,22 +182,7 @@ Music_Bicycle_branch_ee1fd:
 	volume_envelope 12, 5
 	note F#, 8
 	volume_envelope 12, 3
-	note B_, 4
-	note G_, 4
-	note A_, 4
-	note F#, 4
-	volume_envelope 12, 2
-	note G_, 2
-	note F#, 2
-	note E_, 2
-	note F#, 2
-	volume_envelope 12, 5
-	note D_, 8
-	volume_envelope 12, 4
-	note E_, 4
-	note G_, 4
-	volume_envelope 12, 2
-	note E_, 2
+	sound_call Music_Bicycle_Ch2_ditty1
 	octave 4
 	note E_, 2
 	note D_, 2
@@ -321,31 +263,7 @@ Music_Bicycle_branch_ee27f:
 	note C_, 1
 	rest 1
 	note D_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note F#, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
+	sound_call Music_Bicycle_Ch3_ditty1
 	note F#, 1
 	rest 1
 	note D_, 1
@@ -370,31 +288,7 @@ Music_Bicycle_branch_ee27f:
 	note F#, 1
 	rest 1
 	note F_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note F#, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
+	sound_call Music_Bicycle_Ch3_ditty1
 	octave 4
 	note D_, 1
 	rest 1
@@ -437,31 +331,7 @@ Music_Bicycle_branch_ee2e9:
 	note D_, 1
 	rest 1
 	note A_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note F#, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
+	sound_call Music_Bicycle_Ch3_ditty1
 	note F#, 1
 	rest 1
 	octave 4
@@ -513,3 +383,68 @@ Music_Bicycle_branch_ee34c:
 	drum_note 6, 2
 	drum_note 6, 2
 	sound_jump Music_Bicycle_branch_ee34b
+
+Music_Bicycle_Ch1_ditty1:
+	note G_, 2
+	note G_, 2
+	note E_, 2
+	note E_, 2
+	note F#, 1
+	note E_, 1
+	note D#, 2
+	note D_, 2
+	note D_, 2
+	note E_, 2
+	note E_, 2
+	note C_, 2
+	note C_, 2
+	octave 2
+	note B_, 2
+	sound_ret
+
+Music_Bicycle_Ch2_ditty1:
+	note B_, 4
+	note G_, 4
+	note A_, 4
+	note F#, 4
+	volume_envelope 12, 2
+	note G_, 2
+	note F#, 2
+	note E_, 2
+	note F#, 2
+	volume_envelope 12, 5
+	note D_, 8
+	volume_envelope 12, 4
+	note E_, 4
+	note G_, 4
+	volume_envelope 12, 2
+	note E_, 2
+	sound_ret
+
+Music_Bicycle_Ch3_ditty1:
+	rest 1
+	note E_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note E_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note F#, 1
+	rest 1
+	note A_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	sound_ret

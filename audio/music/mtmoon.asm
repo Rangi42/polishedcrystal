@@ -76,31 +76,13 @@ Music_MtMoon_Ch3:
 Music_MtMoon_branch_edb8a:
 	note_type 12, 2, 8
 Music_MtMoon_branch_edb8d:
-	octave 2
-	note B_, 2
-	octave 3
-	note D#, 2
-	note G_, 2
-	octave 2
-	note B_, 2
-	octave 3
-	note D#, 2
-	note G_, 2
+	sound_call Music_MtMoon_Ch3_ditty1
 	octave 2
 	note B_, 2
 	octave 3
 	note D#, 2
 	sound_loop 3, Music_MtMoon_branch_edb8d
-	octave 2
-	note B_, 2
-	octave 3
-	note D#, 2
-	note G_, 2
-	octave 2
-	note B_, 2
-	octave 3
-	note D#, 2
-	note G_, 2
+	sound_call Music_MtMoon_Ch3_ditty1
 	note D#, 2
 	note E_, 2
 Music_MtMoon_branch_edbab:
@@ -137,3 +119,16 @@ Music_MtMoon_branch_edbc3:
 	stereo_panning TRUE, FALSE
 	drum_note 11, 8
 	sound_jump Music_MtMoon_branch_edbc3
+
+Music_MtMoon_Ch3_ditty1:
+	octave 2
+	note B_, 2
+	octave 3
+	note D#, 2
+	note G_, 2
+	octave 2
+	note B_, 2
+	octave 3
+	note D#, 2
+	note G_, 2
+	sound_ret

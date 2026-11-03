@@ -249,12 +249,7 @@ Music_ChampionBattleB2W2_Ch1_loop_main:
 	note A_, 2
 	rest 2
 	volume_envelope 9, 0
-	note D_, 2
-	volume_envelope 6, 0
-	note D_, 2
-	volume_envelope 3, 0
-	note D_, 2
-	volume_envelope 9, 0
+	sound_call Music_ChampionBattleB2W2_Ch1_ditty1
 	note G_, 4
 	note G#, 2
 	note A_, 4
@@ -513,24 +508,9 @@ Music_ChampionBattleB2W2_Ch1_loop_1:
 	note G_, 8
 	octave 2
 	note D#, 8
-	note D_, 2
-	volume_envelope 6, 0
-	note D_, 2
-	volume_envelope 3, 0
-	note D_, 2
-	volume_envelope 9, 0
-	note D_, 2
-	volume_envelope 6, 0
-	note D_, 2
-	volume_envelope 3, 0
-	note D_, 2
-	volume_envelope 9, 0
-	note D_, 2
-	volume_envelope 6, 0
-	note D_, 2
-	volume_envelope 3, 0
-	note D_, 2
-	volume_envelope 9, 0
+	sound_call Music_ChampionBattleB2W2_Ch1_ditty1
+	sound_call Music_ChampionBattleB2W2_Ch1_ditty1
+	sound_call Music_ChampionBattleB2W2_Ch1_ditty1
 	note G_, 2
 	volume_envelope 6, 0
 	note G_, 2
@@ -744,15 +724,7 @@ Music_ChampionBattleB2W2_Ch2_loop_main:
 	volume_envelope 8, 0
 	note D_, 4
 	octave 4
-	volume_envelope 11, 0
-	note A_, 4
-	volume_envelope 8, 0
-	note A_, 4
-	volume_envelope 11, 0
-	note B_, 4
-	volume_envelope 8, 0
-	note B_, 4
-	volume_envelope 11, 0
+	sound_call Music_ChampionBattleB2W2_Ch2_ditty1
 	note E_, 4
 	volume_envelope 8, 0
 	note E_, 4
@@ -781,15 +753,7 @@ Music_ChampionBattleB2W2_Ch2_loop_main:
 	volume_envelope 8, 0
 	note D_, 4
 	octave 3
-	volume_envelope 11, 0
-	note A_, 4
-	volume_envelope 8, 0
-	note A_, 4
-	volume_envelope 11, 0
-	note B_, 4
-	volume_envelope 8, 0
-	note B_, 4
-	volume_envelope 11, 0
+	sound_call Music_ChampionBattleB2W2_Ch2_ditty1
 	note D_, 4
 	volume_envelope 8, 0
 	note D_, 4
@@ -1418,28 +1382,16 @@ Music_ChampionBattleB2W2_Ch3_loop_5:
 	note D_, 1
 	volume_envelope 3, 9
 	note D_, 1
-	volume_envelope 1, 9
+	sound_call Music_ChampionBattleB2W2_Ch3_ditty1
 	note D_, 2
 	volume_envelope 3, 9
 	note D_, 2
-	volume_envelope 1, 9
-	note D_, 2
-	volume_envelope 3, 9
-	note D_, 2
-	volume_envelope 1, 9
-	note D_, 2
-	volume_envelope 3, 9
-	note D_, 2
-	volume_envelope 1, 9
+	sound_call Music_ChampionBattleB2W2_Ch3_ditty1
 	note G_, 4
 	note D_, 2
 	volume_envelope 3, 9
 	note D_, 2
-	volume_envelope 1, 9
-	note D_, 2
-	volume_envelope 3, 9
-	note D_, 2
-	volume_envelope 1, 9
+	sound_call Music_ChampionBattleB2W2_Ch3_ditty1
 	note C_, 4
 	octave 2
 	note A#, 2
@@ -1452,11 +1404,7 @@ Music_ChampionBattleB2W2_Ch3_loop_5:
 	note B_, 2
 	octave 2
 	note C_, 2
-	volume_envelope 1, 9
-	note D_, 2
-	volume_envelope 3, 9
-	note D_, 2
-	volume_envelope 1, 9
+	sound_call Music_ChampionBattleB2W2_Ch3_ditty1
 	note B_, 2
 	volume_envelope 3, 9
 	note B_, 2
@@ -1493,11 +1441,7 @@ Music_ChampionBattleB2W2_Ch3_loop_5:
 	note G_, 2
 	note A#, 2
 	octave 3
-	volume_envelope 1, 9
-	note D_, 2
-	volume_envelope 3, 9
-	note D_, 2
-	volume_envelope 1, 9
+	sound_call Music_ChampionBattleB2W2_Ch3_ditty1
 	note D_, 2
 	volume_envelope 3, 9
 	note D_, 2
@@ -1550,24 +1494,9 @@ Music_ChampionBattleB2W2_Ch3_loop_5:
 	note G_, 8
 	note C_, 8
 	note G#, 8
-	note G_, 2
-	volume_envelope 2, 9
-	note G_, 2
-	volume_envelope 3, 9
-	note G_, 2
-	volume_envelope 1, 9
-	note G_, 2
-	volume_envelope 2, 9
-	note G_, 2
-	volume_envelope 3, 9
-	note G_, 2
-	volume_envelope 1, 9
-	note G_, 2
-	volume_envelope 2, 9
-	note G_, 2
-	volume_envelope 3, 9
-	note G_, 2
-	volume_envelope 1, 9
+	sound_call Music_ChampionBattleB2W2_Ch3_ditty2
+	sound_call Music_ChampionBattleB2W2_Ch3_ditty2
+	sound_call Music_ChampionBattleB2W2_Ch3_ditty2
 	note B_, 2
 	volume_envelope 2, 9
 	note B_, 2
@@ -1921,4 +1850,42 @@ Music_ChampionBattleB2W2_Ch4_branch_4:
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_speed 12
+	sound_ret
+
+Music_ChampionBattleB2W2_Ch1_ditty1:
+	note D_, 2
+	volume_envelope 6, 0
+	note D_, 2
+	volume_envelope 3, 0
+	note D_, 2
+	volume_envelope 9, 0
+	sound_ret
+
+Music_ChampionBattleB2W2_Ch2_ditty1:
+	volume_envelope 11, 0
+	note A_, 4
+	volume_envelope 8, 0
+	note A_, 4
+	volume_envelope 11, 0
+	note B_, 4
+	volume_envelope 8, 0
+	note B_, 4
+	volume_envelope 11, 0
+	sound_ret
+
+Music_ChampionBattleB2W2_Ch3_ditty1:
+	volume_envelope 1, 9
+	note D_, 2
+	volume_envelope 3, 9
+	note D_, 2
+	volume_envelope 1, 9
+	sound_ret
+
+Music_ChampionBattleB2W2_Ch3_ditty2:
+	note G_, 2
+	volume_envelope 2, 9
+	note G_, 2
+	volume_envelope 3, 9
+	note G_, 2
+	volume_envelope 1, 9
 	sound_ret
