@@ -19,58 +19,16 @@ Music_CableCarRSE_Ch1:
 	note_type 6, 6, 2
 	octave 3
 	note A_, 8
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 2
-	note A_, 2
-	octave 4
-	note C_, 4
-	octave 3
-	volume_envelope 6, 5
-	note A#, 8
-	volume_envelope 6, 2
-	octave 4
-	note C_, 4
+	sound_call Music_CableCarRSE_Ch1_ditty1
 	octave 3
 	note A_, 4
 	note A_, 4
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 2
-	note A_, 2
-	octave 4
-	note C_, 4
-	octave 3
-	volume_envelope 6, 5
-	note A#, 8
-	volume_envelope 6, 2
-	octave 4
-	note C_, 4
+	sound_call Music_CableCarRSE_Ch1_ditty1
 	note C#, 8
-	note C#, 1
-	note C#, 1
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note E_, 4
-	volume_envelope 6, 5
-	note D_, 8
-	volume_envelope 6, 2
-	note E_, 4
+	sound_call Music_CableCarRSE_Ch1_ditty2
 	note C#, 4
 	note C#, 4
-	note C#, 1
-	note C#, 1
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note E_, 4
-	volume_envelope 6, 5
-	note D_, 8
-	volume_envelope 6, 2
-	note E_, 4
+	sound_call Music_CableCarRSE_Ch1_ditty2
 	octave 3
 	volume_envelope 6, 0
 	note A#, 16
@@ -199,4 +157,33 @@ Music_CableCarRSE_Ch4_loop:
 	drum_note 7, 1
 	sound_loop 4, Music_CableCarRSE_Ch4_loop
 	drum_note 12, 16
+	sound_ret
+
+Music_CableCarRSE_Ch1_ditty1:
+	note A_, 1
+	note A_, 1
+	note A_, 2
+	note A_, 2
+	note A_, 2
+	octave 4
+	note C_, 4
+	octave 3
+	volume_envelope 6, 5
+	note A#, 8
+	volume_envelope 6, 2
+	octave 4
+	note C_, 4
+	sound_ret
+
+Music_CableCarRSE_Ch1_ditty2:
+	note C#, 1
+	note C#, 1
+	note C#, 2
+	note C#, 2
+	note C#, 2
+	note E_, 4
+	volume_envelope 6, 5
+	note D_, 8
+	volume_envelope 6, 2
+	note E_, 4
 	sound_ret

@@ -183,55 +183,20 @@ Music_KantoLegendBattleXY_Ch1_L8:
 	note D_, 1
 	sound_loop 2, Music_KantoLegendBattleXY_Ch1_L8
 Music_KantoLegendBattleXY_Ch1_L9:
-	octave 4
-	note E_, 1
-	octave 3
-	note E_, 1
-	octave 5
-	note E_, 1
-	octave 3
-	note E_, 1
-	octave 4
-	note E_, 1
-	octave 3
-	note E_, 1
-	octave 5
-	note E_, 1
-	octave 3
-	note E_, 1
+	sound_call Music_KantoLegendBattleXY_Ch1_ditty1
+	sound_call Music_KantoLegendBattleXY_Ch1_ditty1
 	octave 2
 	note E_, 1
 	octave 3
 	note E_, 1
-	octave 4
-	note E_, 1
-	octave 3
-	note E_, 1
-	octave 5
-	note E_, 1
-	octave 3
-	note E_, 1
+	sound_call Music_KantoLegendBattleXY_Ch1_ditty1
 	octave 5
 	note E_, 1
 	octave 3
 	note E_, 1
 	sound_loop 3, Music_KantoLegendBattleXY_Ch1_L9
-	octave 4
-	note E_, 1
-	octave 3
-	note E_, 1
-	octave 5
-	note E_, 1
-	octave 3
-	note E_, 1
-	octave 4
-	note E_, 1
-	octave 3
-	note E_, 1
-	octave 5
-	note E_, 1
-	octave 3
-	note E_, 1
+	sound_call Music_KantoLegendBattleXY_Ch1_ditty1
+	sound_call Music_KantoLegendBattleXY_Ch1_ditty1
 	volume_envelope 7, 4
 	note A_, 1
 	note B_, 1
@@ -831,69 +796,9 @@ Music_KantoLegendBattleXY_Ch3_L:
 	sound_call Music_KantoLegendBattleXY_Ch3_ditty1
 	sound_call Music_KantoLegendBattleXY_Ch3_ditty2
 	note A_, 1
-	note D_, 1
+	sound_call Music_KantoLegendBattleXY_Ch3_ditty4
 	note D#, 1
-	note E_, 1
-	note D#, 1
-	note D_, 1
-	note C#, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note D#, 1
-	note D_, 1
-	note C#, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note D#, 1
-	note D_, 1
-	note C#, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note D#, 1
-	note D_, 1
-	note C#, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note F_, 1
-	note F#, 1
-	note F_, 1
-	note E_, 1
-	note D#, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note D#, 1
-	note D_, 1
-	note C#, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note D#, 1
-	note D_, 1
-	note C#, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note D#, 1
-	note D_, 1
-	note C#, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note D#, 1
-	note D_, 1
-	note C#, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note F_, 1
-	note F#, 1
-	note F_, 1
-	note E_, 1
+	sound_call Music_KantoLegendBattleXY_Ch3_ditty4
 	sound_call Music_KantoLegendBattleXY_Ch3_ditty1
 	sound_call Music_KantoLegendBattleXY_Ch3_ditty1
 	sound_call Music_KantoLegendBattleXY_Ch3_ditty1
@@ -937,165 +842,15 @@ Music_KantoLegendBattleXY_Ch3_loop_1:
 	rest 12
 	volume_envelope 1, 0
 	octave 4
-	note C_, 1
-	rest 1
-	note F_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	octave 5
-	note C_, 1
-	rest 1
+Music_KantoLegendBattleXY_Ch3_loop_opt1:
+	sound_call Music_KantoLegendBattleXY_Ch3_ditty5
+	sound_loop 4, Music_KantoLegendBattleXY_Ch3_loop_opt1
+	sound_call Music_KantoLegendBattleXY_Ch3_ditty6
 	octave 4
-	note C_, 1
-	rest 1
-	note F_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	octave 5
-	note C_, 1
-	rest 1
-	octave 4
-	note C_, 1
-	rest 1
-	note F_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	octave 5
-	note C_, 1
-	rest 1
-	octave 4
-	note C_, 1
-	rest 1
-	note F_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	octave 5
-	note C_, 1
-	rest 1
-	octave 4
-	note D_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	octave 5
-	note D_, 1
-	rest 1
-	octave 4
-	note D_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	octave 5
-	note D_, 1
-	rest 1
-	octave 4
-	note D_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	octave 5
-	note D_, 1
-	rest 1
-	octave 4
-	note D_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	octave 5
-	note D_, 1
-	rest 1
-	octave 4
-	note E_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 5
-	note E_, 1
-	rest 1
-	octave 4
-	note E_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 5
-	note E_, 1
-	rest 1
-	octave 4
-	note E_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 5
-	note E_, 1
-	rest 1
-	octave 4
-	note E_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 5
-	note E_, 1
-	rest 1
-	octave 4
-	note E_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 5
-	note E_, 1
-	rest 1
-	octave 4
-	note E_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 5
-	note E_, 1
-	rest 1
-	octave 4
-	note E_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 5
-	note E_, 1
-	rest 1
-	octave 4
-	note E_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 5
-	note E_, 1
-	rest 1
+	sound_call Music_KantoLegendBattleXY_Ch3_ditty6
+Music_KantoLegendBattleXY_Ch3_loop_opt2:
+	sound_call Music_KantoLegendBattleXY_Ch3_ditty3
+	sound_loop 4, Music_KantoLegendBattleXY_Ch3_loop_opt2
 	sound_jump Music_KantoLegendBattleXY_Ch3_L
 
 Music_KantoLegendBattleXY_Ch3_P1:
@@ -1297,4 +1052,107 @@ Music_KantoLegendBattleXY_Ch3_ditty2:
 	note F#, 1
 	note G_, 1
 	note G#, 1
+	sound_ret
+
+Music_KantoLegendBattleXY_Ch1_ditty1:
+	octave 4
+	note E_, 1
+	octave 3
+	note E_, 1
+	octave 5
+	note E_, 1
+	octave 3
+	note E_, 1
+	sound_ret
+
+Music_KantoLegendBattleXY_Ch3_ditty3:
+	octave 4
+	note E_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	octave 5
+	note E_, 1
+	rest 1
+	octave 4
+	note E_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	octave 5
+	note E_, 1
+	rest 1
+	sound_ret
+
+Music_KantoLegendBattleXY_Ch3_ditty4:
+	note D_, 1
+	note D#, 1
+	note E_, 1
+	note D#, 1
+	note D_, 1
+	note C#, 1
+	note D_, 1
+	note D#, 1
+	note E_, 1
+	note D#, 1
+	note D_, 1
+	note C#, 1
+	note D_, 1
+	note D#, 1
+	note E_, 1
+	note D#, 1
+	note D_, 1
+	note C#, 1
+	note D_, 1
+	note D#, 1
+	note E_, 1
+	note D#, 1
+	note D_, 1
+	note C#, 1
+	note D_, 1
+	note D#, 1
+	note E_, 1
+	note F_, 1
+	note F#, 1
+	note F_, 1
+	note E_, 1
+	sound_ret
+
+Music_KantoLegendBattleXY_Ch3_ditty5:
+	note C_, 1
+	rest 1
+	note F_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	octave 5
+	note C_, 1
+	rest 1
+	octave 4
+	sound_ret
+
+Music_KantoLegendBattleXY_Ch3_ditty6:
+	note D_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	octave 5
+	note D_, 1
+	rest 1
+	octave 4
+	note D_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	octave 5
+	note D_, 1
+	rest 1
 	sound_ret

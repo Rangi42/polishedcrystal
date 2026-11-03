@@ -221,20 +221,7 @@ Music_CherrygroveCity_branch_f5be4:
 	note G_, 2
 	note F_, 2
 	note E_, 2
-	note D_, 2
-	note F_, 4
-	note A#, 2
-	note F_, 2
-	note A#, 2
-	note A_, 2
-	note G_, 2
-	note F_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 2
-	note F_, 2
-	note E_, 2
-	note D#, 2
+	sound_call Music_CherrygroveCity_Ch3_ditty1
 	note D_, 2
 	note F_, 4
 	note A#, 2
@@ -252,20 +239,7 @@ Music_CherrygroveCity_branch_f5be4:
 	note A_, 2
 	note G_, 2
 	note F_, 2
-	note D_, 2
-	note F_, 4
-	note A#, 2
-	note F_, 2
-	note A#, 2
-	note A_, 2
-	note G_, 2
-	note F_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 2
-	note F_, 2
-	note E_, 2
-	note D#, 2
+	sound_call Music_CherrygroveCity_Ch3_ditty1
 	note C#, 2
 	note F_, 4
 	note A#, 2
@@ -304,3 +278,20 @@ Music_CherrygroveCity_branch_f5c4d:
 	drum_note 2, 2
 	drum_note 8, 2
 	sound_jump Music_CherrygroveCity_branch_f5c4d
+
+Music_CherrygroveCity_Ch3_ditty1:
+	note D_, 2
+	note F_, 4
+	note A#, 2
+	note F_, 2
+	note A#, 2
+	note A_, 2
+	note G_, 2
+	note F_, 2
+	note A_, 4
+	note F_, 2
+	note A_, 2
+	note F_, 2
+	note E_, 2
+	note D#, 2
+	sound_ret

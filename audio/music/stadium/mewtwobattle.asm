@@ -1107,25 +1107,7 @@ Music_MewtwoBattleStadium_Ch2_loop:
 	note A#, 7
 	rest 1
 	octave 3
-	note_type 15, 12, 8
-	note D_, 16
-	note_type 14, 12, 8
-	note C_, 3
-	note_type 6, 12, 8
-	rest 1
-	note_type 8, 12, 8
-	note F_, 4
-	note D#, 4
-	note C_, 4
-	note_type 11, 12, 8
-	note D_, 6
-	note_type 6, 12, 8
-	note E_, 1
-	note F_, 1
-	note_type 13, 12, 8
-	note A_, 12
-	note_type 6, 12, 8
-	rest 1
+	sound_call Music_MewtwoBattleStadium_Ch2_ditty5
 	note G_, 8
 	octave 4
 	note_type 8, 12, 8
@@ -1134,25 +1116,7 @@ Music_MewtwoBattleStadium_Ch2_loop:
 	note A#, 4
 	note G_, 4
 	octave 4
-	note_type 15, 12, 8
-	note D_, 16
-	note_type 14, 12, 8
-	note C_, 3
-	note_type 6, 12, 8
-	rest 1
-	note_type 8, 12, 8
-	note F_, 4
-	note D#, 4
-	note C_, 4
-	note_type 11, 12, 8
-	note D_, 6
-	note_type 6, 12, 8
-	note E_, 1
-	note F_, 1
-	note_type 13, 12, 8
-	note A_, 12
-	note_type 6, 12, 8
-	rest 1
+	sound_call Music_MewtwoBattleStadium_Ch2_ditty5
 	note A_, 7
 	rest 1
 	note_type 8, 12, 8
@@ -2137,4 +2101,26 @@ Music_MewtwoBattleStadium_Ch4_ditty25:
 	drum_note 11, 3
 	toggle_noise
 	toggle_noise 1
+	sound_ret
+
+Music_MewtwoBattleStadium_Ch2_ditty5:
+	note_type 15, 12, 8
+	note D_, 16
+	note_type 14, 12, 8
+	note C_, 3
+	note_type 6, 12, 8
+	rest 1
+	note_type 8, 12, 8
+	note F_, 4
+	note D#, 4
+	note C_, 4
+	note_type 11, 12, 8
+	note D_, 6
+	note_type 6, 12, 8
+	note E_, 1
+	note F_, 1
+	note_type 13, 12, 8
+	note A_, 12
+	note_type 6, 12, 8
+	rest 1
 	sound_ret

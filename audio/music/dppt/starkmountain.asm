@@ -194,38 +194,9 @@ Music_StarkMountainDPPt_Ch1_loop:
 	octave 4
 	note_type 8, 10, 1
 	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
-	note G_, 1
-	note F#, 1
+Music_StarkMountainDPPt_Ch1_loop_opt1:
+	sound_call Music_StarkMountainDPPt_Ch1_ditty1
+	sound_loop 4, Music_StarkMountainDPPt_Ch1_loop_opt1
 	note_type 7, 10, 1
 	note G_, 1
 	rest 16
@@ -361,20 +332,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	rest 1
 	octave 2
 	note_type 6, 11, 5
-	note G_, 1
-	rest 1
-	octave 1
-	note G_, 2
-	octave 2
-	note G_, 1
-	rest 1
-	note D_, 4
-	note C#, 2
-	octave 1
-	note G_, 1
-	rest 3
-	note G_, 2
-	note A#, 2
+	sound_call Music_StarkMountainDPPt_Ch2_ditty4
 	rest 2
 	octave 2
 	note F_, 4
@@ -397,20 +355,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note G_, 4
 	rest 2
 	octave 2
-	note G_, 1
-	rest 1
-	octave 1
-	note G_, 2
-	octave 2
-	note G_, 1
-	rest 1
-	note D_, 4
-	note C#, 2
-	octave 1
-	note G_, 1
-	rest 3
-	note G_, 2
-	note A#, 2
+	sound_call Music_StarkMountainDPPt_Ch2_ditty4
 	octave 2
 	note D_, 2
 	note F_, 4
@@ -584,45 +529,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note G_, 1
 	rest 1
 	note_type 6, 11, 5
-	note G_, 1
-	rest 1
-	note G_, 2
-	rest 2
-	note G#, 2
-	note G_, 2
-	rest 2
-	note G_, 4
-	rest 6
-	note G_, 2
-	rest 4
-	note G_, 2
-	rest 2
-	note G_, 1
-	rest 1
-	note G_, 2
-	note_type 12, 11, 5
-	rest 9
-	note G_, 1
-	rest 2
-	note G_, 1
-	rest 1
-	note_type 6, 11, 5
-	note G_, 1
-	rest 1
-	note G_, 2
-	rest 2
-	note G#, 2
-	note G_, 2
-	rest 2
-	note G_, 4
-	rest 6
-	note G_, 2
-	rest 4
-	note G_, 2
-	rest 2
-	note G_, 1
-	rest 1
-	note G_, 2
+	sound_call Music_StarkMountainDPPt_Ch2_ditty1
 	note G#, 2
 	note G_, 2
 	rest 14
@@ -630,45 +537,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	rest 4
 	note G_, 2
 	rest 2
-	note G_, 1
-	rest 1
-	note G_, 2
-	rest 2
-	note G#, 2
-	note G_, 2
-	rest 2
-	note G_, 4
-	rest 6
-	note G_, 2
-	rest 4
-	note G_, 2
-	rest 2
-	note G_, 1
-	rest 1
-	note G_, 2
-	note_type 12, 11, 5
-	rest 9
-	note G_, 1
-	rest 2
-	note G_, 1
-	rest 1
-	note_type 6, 11, 5
-	note G_, 1
-	rest 1
-	note G_, 2
-	rest 2
-	note G#, 2
-	note G_, 2
-	rest 2
-	note G_, 4
-	rest 6
-	note G_, 2
-	rest 4
-	note G_, 2
-	rest 2
-	note G_, 1
-	rest 1
-	note G_, 2
+	sound_call Music_StarkMountainDPPt_Ch2_ditty1
 	rest 16
 	rest 16
 	rest 16
@@ -683,75 +552,15 @@ Music_StarkMountainDPPt_Ch2_loop:
 	rest 16
 	rest 12
 	duty_cycle 1
-	note F#, 4
+	sound_call Music_StarkMountainDPPt_Ch2_ditty2
 	rest 2
 	octave 2
-	note F#, 1
-	rest 1
+	sound_call Music_StarkMountainDPPt_Ch2_ditty3
 	octave 1
-	note F#, 2
-	octave 2
-	note F#, 1
-	rest 1
-	note C#, 4
-	note C_, 2
-	octave 1
-	note F#, 1
-	rest 3
-	note F#, 2
-	note A_, 2
-	rest 2
-	octave 2
-	note E_, 4
-	note D#, 2
-	rest 4
-	octave 1
-	note A_, 2
-	note F#, 2
-	rest 2
-	note E_, 4
-	note D#, 2
-	rest 2
-	note A_, 4
-	note F#, 2
-	rest 2
-	octave 2
-	note C_, 4
-	octave 1
-	note F#, 4
-	rest 2
-	octave 2
-	note F#, 1
-	rest 1
-	octave 1
-	note F#, 2
-	octave 2
-	note F#, 1
-	rest 1
-	note C#, 4
-	note C_, 2
-	octave 1
-	note F#, 1
-	rest 3
-	note F#, 2
-	note A_, 2
+	sound_call Music_StarkMountainDPPt_Ch2_ditty2
 	octave 2
 	note C#, 2
-	note E_, 4
-	note D#, 2
-	rest 4
-	octave 1
-	note A_, 2
-	note F#, 2
-	rest 2
-	note E_, 4
-	note D#, 2
-	rest 2
-	note A_, 4
-	note F#, 2
-	rest 2
-	octave 2
-	note C_, 4
+	sound_call Music_StarkMountainDPPt_Ch2_ditty3
 	sound_jump Music_StarkMountainDPPt_Ch2_loop
 
 Music_StarkMountainDPPt_Ch3:
@@ -763,22 +572,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	octave 4
 	rest 9
 	note_type 6, 1, 9
-	note C_, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C_, 1
-	rest 1
-	volume_envelope 1, 4
-	octave 3
+	sound_call Music_StarkMountainDPPt_Ch3_ditty1
 	note G_, 2
 	rest 4
 	octave 4
@@ -877,22 +671,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	rest 15
 	octave 4
 	note_type 6, 1, 9
-	note C_, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C_, 1
-	rest 1
-	volume_envelope 1, 4
-	octave 3
+	sound_call Music_StarkMountainDPPt_Ch3_ditty1
 	note G_, 2
 	note C#, 2
 	rest 2
@@ -917,22 +696,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	rest 10
 	volume_envelope 1, 9
 	octave 4
-	note C_, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C_, 1
-	rest 1
-	volume_envelope 1, 4
-	octave 3
+	sound_call Music_StarkMountainDPPt_Ch3_ditty1
 	note D_, 2
 	octave 2
 	note D_, 2
@@ -985,22 +749,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note A#, 1
 	rest 1
 	note_type 6, 1, 6
-	note A#, 1
-	rest 1
-	note A#, 2
-	rest 2
-	note B_, 2
-	note A#, 2
-	rest 2
-	note A#, 4
-	rest 6
-	note A#, 2
-	rest 4
-	note A#, 2
-	rest 2
-	note A#, 1
-	rest 1
-	note A#, 2
+	sound_call Music_StarkMountainDPPt_Ch3_ditty2
 	note B_, 2
 	note A#, 2
 	rest 14
@@ -1008,22 +757,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	rest 4
 	note A#, 2
 	rest 2
-	note A#, 1
-	rest 1
-	note A#, 2
-	rest 2
-	note B_, 2
-	note A#, 2
-	rest 2
-	note A#, 4
-	rest 6
-	note A#, 2
-	rest 4
-	note A#, 2
-	rest 2
-	note A#, 1
-	rest 1
-	note A#, 2
+	sound_call Music_StarkMountainDPPt_Ch3_ditty2
 	note_type 12, 1, 9
 	rest 9
 	octave 4
@@ -1131,21 +865,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note A_, 4
 	rest 4
 	octave 3
-	note E_, 8
-	note D#, 4
-	rest 8
-	octave 2
-	note A_, 4
-	note F#, 4
-	rest 4
-	note E_, 8
-	note D#, 4
-	rest 4
-	note A_, 8
-	note F#, 4
-	rest 4
-	octave 3
-	note C_, 8
+	sound_call Music_StarkMountainDPPt_Ch3_ditty3
 	octave 2
 	note F#, 8
 	rest 4
@@ -1166,21 +886,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note A_, 4
 	octave 3
 	note C#, 4
-	note E_, 8
-	note D#, 4
-	rest 8
-	octave 2
-	note A_, 4
-	note F#, 4
-	rest 4
-	note E_, 8
-	note D#, 4
-	rest 4
-	note A_, 8
-	note F#, 4
-	rest 4
-	octave 3
-	note C_, 8
+	sound_call Music_StarkMountainDPPt_Ch3_ditty3
 	sound_jump Music_StarkMountainDPPt_Ch3_loop
 
 Music_StarkMountainDPPt_Ch4:
@@ -1189,40 +895,14 @@ Music_StarkMountainDPPt_Ch4:
 Music_StarkMountainDPPt_Ch4_loop:
 	drum_note 4, 8
 	drum_note 4, 8
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
+	sound_call Music_StarkMountainDPPt_Ch4_ditty2
 	drum_note 4, 1
 	drum_note 4, 2
 	drum_note 4, 6
 	drum_note 9, 1
 	drum_note 8, 1
 	drum_note 9, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_StarkMountainDPPt_Ch4_ditty1
 	drum_note 8, 1
 	drum_note 4, 1
 	drum_note 4, 2
@@ -1242,37 +922,11 @@ Music_StarkMountainDPPt_Ch4_loop:
 	drum_note 4, 1
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_StarkMountainDPPt_Ch4_ditty1
 	drum_note 8, 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
+	sound_call Music_StarkMountainDPPt_Ch4_ditty2
 	drum_note 4, 2
 	drum_note 4, 1
 	drum_note 8, 1
@@ -1301,80 +955,20 @@ Music_StarkMountainDPPt_Ch4_loop:
 	drum_note 8, 4
 	drum_note 4, 1
 	drum_note 8, 5
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_StarkMountainDPPt_Ch4_ditty1
 	drum_note 8, 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_StarkMountainDPPt_Ch4_ditty1
 	drum_note 8, 1
 	drum_note 4, 1
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_StarkMountainDPPt_Ch4_ditty1
 	drum_note 8, 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_StarkMountainDPPt_Ch4_ditty1
 	drum_note 8, 1
 	drum_note 4, 1
 	drum_note 4, 2
@@ -1416,43 +1010,211 @@ Music_StarkMountainDPPt_Ch4_loop:
 	drum_note 9, 5
 	drum_note 9, 1
 	drum_note 9, 1
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_StarkMountainDPPt_Ch4_ditty1
 	drum_note 8, 2
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 8, 1
-	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_StarkMountainDPPt_Ch4_ditty1
 	drum_note 8, 1
 	drum_note 4, 1
 	drum_note 4, 2
 	drum_note 4, 2
 	sound_jump Music_StarkMountainDPPt_Ch4_loop
+
+Music_StarkMountainDPPt_Ch1_ditty1:
+	note G_, 1
+	note F#, 1
+	note G_, 1
+	note F#, 1
+	note G_, 1
+	note F#, 1
+	note G_, 1
+	note F#, 1
+	sound_ret
+
+Music_StarkMountainDPPt_Ch2_ditty1:
+	note G_, 1
+	rest 1
+	note G_, 2
+	rest 2
+	note G#, 2
+	note G_, 2
+	rest 2
+	note G_, 4
+	rest 6
+	note G_, 2
+	rest 4
+	note G_, 2
+	rest 2
+	note G_, 1
+	rest 1
+	note G_, 2
+	note_type 12, 11, 5
+	rest 9
+	note G_, 1
+	rest 2
+	note G_, 1
+	rest 1
+	note_type 6, 11, 5
+	note G_, 1
+	rest 1
+	note G_, 2
+	rest 2
+	note G#, 2
+	note G_, 2
+	rest 2
+	note G_, 4
+	rest 6
+	note G_, 2
+	rest 4
+	note G_, 2
+	rest 2
+	note G_, 1
+	rest 1
+	note G_, 2
+	sound_ret
+
+Music_StarkMountainDPPt_Ch2_ditty2:
+	note F#, 4
+	rest 2
+	octave 2
+	note F#, 1
+	rest 1
+	octave 1
+	note F#, 2
+	octave 2
+	note F#, 1
+	rest 1
+	note C#, 4
+	note C_, 2
+	octave 1
+	note F#, 1
+	rest 3
+	note F#, 2
+	note A_, 2
+	sound_ret
+
+Music_StarkMountainDPPt_Ch2_ditty3:
+	note E_, 4
+	note D#, 2
+	rest 4
+	octave 1
+	note A_, 2
+	note F#, 2
+	rest 2
+	note E_, 4
+	note D#, 2
+	rest 2
+	note A_, 4
+	note F#, 2
+	rest 2
+	octave 2
+	note C_, 4
+	sound_ret
+
+Music_StarkMountainDPPt_Ch2_ditty4:
+	note G_, 1
+	rest 1
+	octave 1
+	note G_, 2
+	octave 2
+	note G_, 1
+	rest 1
+	note D_, 4
+	note C#, 2
+	octave 1
+	note G_, 1
+	rest 3
+	note G_, 2
+	note A#, 2
+	sound_ret
+
+Music_StarkMountainDPPt_Ch3_ditty1:
+	note C_, 1
+	rest 1
+	note C#, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note D#, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note C#, 1
+	rest 1
+	note C_, 1
+	rest 1
+	volume_envelope 1, 4
+	octave 3
+	sound_ret
+
+Music_StarkMountainDPPt_Ch3_ditty2:
+	note A#, 1
+	rest 1
+	note A#, 2
+	rest 2
+	note B_, 2
+	note A#, 2
+	rest 2
+	note A#, 4
+	rest 6
+	note A#, 2
+	rest 4
+	note A#, 2
+	rest 2
+	note A#, 1
+	rest 1
+	note A#, 2
+	sound_ret
+
+Music_StarkMountainDPPt_Ch3_ditty3:
+	note E_, 8
+	note D#, 4
+	rest 8
+	octave 2
+	note A_, 4
+	note F#, 4
+	rest 4
+	note E_, 8
+	note D#, 4
+	rest 4
+	note A_, 8
+	note F#, 4
+	rest 4
+	octave 3
+	note C_, 8
+	sound_ret
+
+Music_StarkMountainDPPt_Ch4_ditty1:
+	drum_note 4, 2
+	drum_note 8, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 8, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 8, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	sound_ret
+
+Music_StarkMountainDPPt_Ch4_ditty2:
+	drum_note 4, 2
+	drum_note 8, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 8, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 8, 1
+	sound_ret

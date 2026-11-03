@@ -393,32 +393,11 @@ Music_SuicuneBattle_Ch2_loop1:
 	note A_, 6
 	note_type 12, 12, 2
 	octave 2
-	note E_, 8
-	note E_, 8
-	note E_, 8
-	note_type 12, 12, 3
-	octave 4
-	note A#, 4
-	note_type 12, 12, 2
-	note A_, 4
+	sound_call Music_SuicuneBattle_Ch2_ditty7
 	octave 2
-	note E_, 8
-	note E_, 8
-	note E_, 8
-	note_type 12, 12, 3
+	sound_call Music_SuicuneBattle_Ch2_ditty7
 	octave 4
-	note A#, 4
-	note_type 12, 12, 2
-	note A_, 4
-	octave 4
-	note E_, 8
-	note E_, 8
-	note E_, 8
-	note_type 12, 12, 3
-	octave 4
-	note A#, 4
-	note_type 12, 12, 2
-	note A_, 4
+	sound_call Music_SuicuneBattle_Ch2_ditty7
 	octave 4
 	note E_, 8
 	note E_, 8
@@ -1335,4 +1314,15 @@ Music_SuicuneBattle_Ch3_ditty11:
 	octave 2
 	note C_, 2
 	note G_, 2
+	sound_ret
+
+Music_SuicuneBattle_Ch2_ditty7:
+	note E_, 8
+	note E_, 8
+	note E_, 8
+	note_type 12, 12, 3
+	octave 4
+	note A#, 4
+	note_type 12, 12, 2
+	note A_, 4
 	sound_ret

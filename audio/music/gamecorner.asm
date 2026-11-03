@@ -672,25 +672,11 @@ Music_GameCorner_Ch4:
 Music_GameCorner_branch_ee07f:
 	sound_call Music_GameCorner_branch_ee106
 Music_GameCorner_branch_ee082:
-	drum_note 11, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 11, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 7, 2
+	sound_call Music_GameCorner_Ch4_ditty2
 	sound_loop 6, Music_GameCorner_branch_ee082
 	sound_call Music_GameCorner_branch_ee10f
 Music_GameCorner_branch_ee091:
-	drum_note 11, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 11, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 7, 2
+	sound_call Music_GameCorner_Ch4_ditty2
 	sound_loop 3, Music_GameCorner_branch_ee091
 	rest 12
 	drum_note 3, 1
@@ -698,25 +684,11 @@ Music_GameCorner_branch_ee091:
 	drum_note 7, 2
 	sound_call Music_GameCorner_branch_ee106
 Music_GameCorner_branch_ee0a4:
-	drum_note 11, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 11, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 7, 2
+	sound_call Music_GameCorner_Ch4_ditty2
 	sound_loop 6, Music_GameCorner_branch_ee0a4
 	sound_call Music_GameCorner_branch_ee10f
 Music_GameCorner_branch_ee0b3:
-	drum_note 11, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 11, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 7, 2
+	sound_call Music_GameCorner_Ch4_ditty2
 	sound_loop 3, Music_GameCorner_branch_ee0b3
 	drum_note 11, 2
 	drum_note 7, 2
@@ -729,47 +701,14 @@ Music_GameCorner_branch_ee0b3:
 	drum_note 3, 1
 	drum_note 3, 1
 Music_GameCorner_branch_ee0c9:
-	drum_note 11, 2
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 3, 1
-	drum_note 4, 1
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 3, 1
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 3, 2
+	sound_call Music_GameCorner_Ch4_ditty1
 	drum_note 7, 2
 	sound_loop 3, Music_GameCorner_branch_ee0c9
-	drum_note 11, 2
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 3, 1
-	drum_note 4, 1
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 3, 1
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 3, 2
+	sound_call Music_GameCorner_Ch4_ditty1
 	drum_note 3, 1
 	drum_note 3, 1
 Music_GameCorner_branch_ee0e8:
-	drum_note 11, 2
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 3, 1
-	drum_note 4, 1
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 3, 1
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 3, 2
+	sound_call Music_GameCorner_Ch4_ditty1
 	drum_note 7, 2
 	sound_loop 3, Music_GameCorner_branch_ee0e8
 	drum_note 3, 1
@@ -803,5 +742,31 @@ Music_GameCorner_branch_ee10f:
 	drum_note 7, 2
 	drum_note 3, 1
 	drum_note 3, 1
+	drum_note 7, 2
+	sound_ret
+
+Music_GameCorner_Ch4_ditty1:
+	drum_note 11, 2
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	sound_ret
+
+Music_GameCorner_Ch4_ditty2:
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
 	drum_note 7, 2
 	sound_ret

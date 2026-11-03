@@ -1130,30 +1130,12 @@ Music_TrainerBattleDPPt_Ch4:
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 1, 1
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
+	sound_call Music_TrainerBattleDPPt_Ch4_ditty3
 	drum_note 12, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
+	sound_call Music_TrainerBattleDPPt_Ch4_ditty3
 	drum_note 12, 2
 	drum_note 12, 2
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
+	sound_call Music_TrainerBattleDPPt_Ch4_ditty3
 	drum_note 12, 4
 	drum_note 4, 4
 	drum_note 4, 4
@@ -1172,11 +1154,7 @@ Music_TrainerBattleDPPt_Ch4_loop:
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleDPPt_Ch4_ditty4
 	drum_note 8, 2
 	drum_note 1, 2
 	drum_note 1, 2
@@ -1187,11 +1165,7 @@ Music_TrainerBattleDPPt_Ch4_loop:
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleDPPt_Ch4_ditty4
 	drum_note 8, 2
 	drum_note 1, 4
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
@@ -1203,11 +1177,7 @@ Music_TrainerBattleDPPt_Ch4_loop:
 	drum_note 1, 2
 	drum_note 8, 2
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleDPPt_Ch4_ditty4
 	drum_note 4, 2
 	drum_note 1, 2
 	drum_note 8, 2
@@ -1281,11 +1251,7 @@ Music_TrainerBattleDPPt_Ch4_loop_1:
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
 	sound_call Music_TrainerBattleDPPt_Ch4_ditty1
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleDPPt_Ch4_ditty4
 	drum_note 1, 2
 	drum_note 4, 2
 	drum_note 1, 2
@@ -1322,4 +1288,22 @@ Music_TrainerBattleDPPt_Ch4_ditty2:
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 1, 2
+	sound_ret
+
+Music_TrainerBattleDPPt_Ch4_ditty3:
+	drum_note 4, 4
+	drum_note 4, 4
+	drum_note 4, 4
+	drum_note 4, 4
+	drum_note 4, 4
+	drum_note 4, 4
+	drum_note 4, 4
+	sound_ret
+
+Music_TrainerBattleDPPt_Ch4_ditty4:
+	drum_note 4, 2
+	drum_note 8, 2
+	drum_note 1, 2
+	drum_note 8, 2
+	drum_note 4, 2
 	sound_ret

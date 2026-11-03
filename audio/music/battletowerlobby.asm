@@ -123,18 +123,7 @@ Music_BattleTowerLobby_Ch2:
 	stereo_panning FALSE, TRUE
 	note_type 12, 8, 2
 Music_BattleTowerLobby_branch_179544:
-	note_type 12, 8, 2
-	octave 4
-	note E_, 2
-	note E_, 4
-	octave 3
-	note B_, 1
-	octave 4
-	note E_, 1
-	note B_, 4
-	note A_, 2
-	note G#, 2
-	note A_, 3
+	sound_call Music_BattleTowerLobby_Ch2_ditty1
 	note E_, 1
 	octave 3
 	note B_, 4
@@ -142,18 +131,7 @@ Music_BattleTowerLobby_branch_179544:
 	note F#, 4
 	octave 2
 	note B_, 4
-	note_type 12, 8, 2
-	octave 4
-	note E_, 2
-	note E_, 4
-	octave 3
-	note B_, 1
-	octave 4
-	note E_, 1
-	note B_, 4
-	note A_, 2
-	note G#, 2
-	note A_, 3
+	sound_call Music_BattleTowerLobby_Ch2_ditty1
 	note F#, 1
 	note_type 12, 8, 7
 	note G#, 12
@@ -307,3 +285,18 @@ Music_BattleTowerLobby_branch_179612:
 	drum_note 6, 2
 	drum_note 6, 4
 	sound_jump Music_BattleTowerLobby_branch_179612
+
+Music_BattleTowerLobby_Ch2_ditty1:
+	note_type 12, 8, 2
+	octave 4
+	note E_, 2
+	note E_, 4
+	octave 3
+	note B_, 1
+	octave 4
+	note E_, 1
+	note B_, 4
+	note A_, 2
+	note G#, 2
+	note A_, 3
+	sound_ret

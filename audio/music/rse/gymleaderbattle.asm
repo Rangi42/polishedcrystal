@@ -110,96 +110,18 @@ Music_GymLeaderBattleRSE_Ch1:
 Music_GymLeaderBattleRSE_Ch1_loop:
 	duty_cycle 1
 	volume_envelope 12, 7
-	octave 4
-	note C_, 8
-	octave 3
-	note A#, 8
-	octave 4
-	note D_, 6
-	octave 3
-	note G_, 2
-	rest 2
-	note G_, 2
-	note A#, 2
-	octave 4
-	note D_, 2
-	volume_envelope 12, 0
-	note E_, 6
-	volume_envelope 12, 7
-	note E_, 6
-	note D_, 2
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	rest 2
-	note C_, 10
-	note A#, 8
-	note A_, 8
-	note G_, 4
-	note A_, 4
-	note G_, 4
-	note F_, 4
-	volume_envelope 12, 0
-	note E_, 6
-	volume_envelope 12, 7
-	note E_, 6
-	note C_, 4
-	volume_envelope 12, 0
+	sound_call Music_GymLeaderBattleRSE_Ch1_ditty1
 	note G_, 8
 	volume_envelope 12, 7
 	note G_, 8
-	note A#, 8
-	note A_, 8
-	note A#, 4
-	note A_, 4
-	octave 5
-	note D_, 4
-	note F_, 4
-	volume_envelope 12, 0
-	note E_, 6
-	volume_envelope 12, 7
-	note E_, 6
+	sound_call Music_GymLeaderBattleRSE_Ch1_ditty2
 	note D_, 4
 	volume_envelope 12, 0
 	note C_, 8
 	volume_envelope 12, 7
 	note C_, 8
 	vibrato 17, 2, 6
-	octave 4
-	note C_, 8
-	octave 3
-	note A#, 8
-	octave 4
-	note D_, 6
-	octave 3
-	note G_, 2
-	rest 2
-	note G_, 2
-	note A#, 2
-	octave 4
-	note D_, 2
-	volume_envelope 12, 0
-	note E_, 6
-	volume_envelope 12, 7
-	note E_, 6
-	note D_, 2
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	rest 2
-	note C_, 10
-	note A#, 8
-	note A_, 8
-	note G_, 4
-	note A_, 4
-	note G_, 4
-	note F_, 4
-	volume_envelope 12, 0
-	note E_, 6
-	volume_envelope 12, 7
-	note E_, 6
-	note C_, 4
-	volume_envelope 12, 0
+	sound_call Music_GymLeaderBattleRSE_Ch1_ditty1
 	note G_, 4
 	volume_envelope 12, 7
 	note G_, 6
@@ -208,17 +130,7 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note C_, 2
 	rest 2
 	octave 4
-	note A#, 8
-	note A_, 8
-	note A#, 4
-	note A_, 4
-	octave 5
-	note D_, 4
-	note F_, 4
-	volume_envelope 12, 0
-	note E_, 6
-	volume_envelope 12, 7
-	note E_, 6
+	sound_call Music_GymLeaderBattleRSE_Ch1_ditty2
 	note C_, 4
 	volume_envelope 12, 0
 	note G_, 6
@@ -388,76 +300,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note E_, 2
 	note E_, 2
 	volume_envelope 12, 7
-	octave 4
-	note D_, 8
-	note C_, 8
-	octave 3
-	note A#, 4
-	octave 4
-	note C_, 4
-	octave 3
-	note A#, 4
-	note A_, 4
-	volume_envelope 12, 0
-	note G_, 6
-	volume_envelope 12, 7
-	note G_, 6
-	note E_, 4
-	octave 4
-	volume_envelope 12, 0
-	note C_, 4
-	volume_envelope 12, 7
-	note C_, 6
-	volume_envelope 10, 7
-	duty_cycle 0
-	octave 4
-	note E_, 2
-	note C_, 2
-	octave 3
-	note G_, 2
-	note F_, 2
-	note A#, 2
-	octave 4
-	note D_, 2
-	note F_, 2
-	note A_, 2
-	note F_, 2
-	note D_, 2
-	octave 3
-	note A#, 2
-	note F_, 2
-	note A#, 2
-	octave 4
-	note D_, 2
-	note F_, 2
-	note A_, 2
-	note F_, 2
-	note D_, 2
-	octave 3
-	note A#, 2
-	note G_, 2
-	octave 4
-	note C_, 2
-	note E_, 2
-	note G_, 2
-	octave 5
-	note C_, 2
-	octave 4
-	note G_, 2
-	note E_, 2
-	note C_, 2
-	octave 3
-	note G_, 2
-	octave 4
-	note C_, 2
-	note E_, 2
-	note G_, 2
-	octave 5
-	note C_, 2
-	octave 4
-	note G_, 2
-	note E_, 2
-	note C_, 2
+	sound_call Music_GymLeaderBattleRSE_Ch2_ditty1
 	octave 5
 	note C_, 2
 	octave 4
@@ -490,76 +333,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note C_, 10
 	volume_envelope 12, 7
 	duty_cycle 3
-	octave 4
-	note D_, 8
-	note C_, 8
-	octave 3
-	note A#, 4
-	octave 4
-	note C_, 4
-	octave 3
-	note A#, 4
-	note A_, 4
-	volume_envelope 12, 0
-	note G_, 6
-	volume_envelope 12, 7
-	note G_, 6
-	note E_, 4
-	octave 4
-	volume_envelope 12, 0
-	note C_, 4
-	volume_envelope 12, 7
-	note C_, 6
-	volume_envelope 10, 7
-	duty_cycle 0
-	octave 4
-	note E_, 2
-	note C_, 2
-	octave 3
-	note G_, 2
-	note F_, 2
-	note A#, 2
-	octave 4
-	note D_, 2
-	note F_, 2
-	note A_, 2
-	note F_, 2
-	note D_, 2
-	octave 3
-	note A#, 2
-	note F_, 2
-	note A#, 2
-	octave 4
-	note D_, 2
-	note F_, 2
-	note A_, 2
-	note F_, 2
-	note D_, 2
-	octave 3
-	note A#, 2
-	note G_, 2
-	octave 4
-	note C_, 2
-	note E_, 2
-	note G_, 2
-	octave 5
-	note C_, 2
-	octave 4
-	note G_, 2
-	note E_, 2
-	note C_, 2
-	octave 3
-	note G_, 2
-	octave 4
-	note C_, 2
-	note E_, 2
-	note G_, 2
-	octave 5
-	note C_, 2
-	octave 4
-	note G_, 2
-	note E_, 2
-	note C_, 2
+	sound_call Music_GymLeaderBattleRSE_Ch2_ditty1
 	duty_cycle 3
 	volume_envelope 10, 4
 	octave 3
@@ -575,41 +349,11 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note G_, 12
 	volume_envelope 9, 0
 	octave 2
-	note C_, 11
-	note_type 3, 9, 0
-	note C_, 3
-	rest 1
-	note_type 12, 9, 0
-	note C_, 2
-	octave 1
-	note A#, 2
-	octave 2
-	note C#, 16
-	note D#, 16
+	sound_call Music_GymLeaderBattleRSE_Ch2_ditty2
 	note C_, 16
-	note C_, 11
-	note_type 3, 9, 0
-	note C_, 3
-	rest 1
-	note_type 12, 9, 0
-	note C_, 2
-	octave 1
-	note A#, 2
-	octave 2
-	note C#, 16
-	note D#, 16
+	sound_call Music_GymLeaderBattleRSE_Ch2_ditty2
 	note C_, 16
-	note C_, 11
-	note_type 3, 9, 0
-	note C_, 3
-	rest 1
-	note_type 12, 9, 0
-	note C_, 2
-	octave 1
-	note A#, 2
-	octave 2
-	note C#, 16
-	note D#, 16
+	sound_call Music_GymLeaderBattleRSE_Ch2_ditty2
 	octave 1
 	note A#, 16
 	note A#, 16
@@ -942,4 +686,143 @@ Music_GymLeaderBattleRSE_Ch4_branch_3:
 	drum_note 1, 2
 	drum_note 1, 4
 	drum_note 1, 2
+	sound_ret
+
+Music_GymLeaderBattleRSE_Ch1_ditty1:
+	octave 4
+	note C_, 8
+	octave 3
+	note A#, 8
+	octave 4
+	note D_, 6
+	octave 3
+	note G_, 2
+	rest 2
+	note G_, 2
+	note A#, 2
+	octave 4
+	note D_, 2
+	volume_envelope 12, 0
+	note E_, 6
+	volume_envelope 12, 7
+	note E_, 6
+	note D_, 2
+	note E_, 2
+	note F_, 2
+	note E_, 2
+	rest 2
+	note C_, 10
+	note A#, 8
+	note A_, 8
+	note G_, 4
+	note A_, 4
+	note G_, 4
+	note F_, 4
+	volume_envelope 12, 0
+	note E_, 6
+	volume_envelope 12, 7
+	note E_, 6
+	note C_, 4
+	volume_envelope 12, 0
+	sound_ret
+
+Music_GymLeaderBattleRSE_Ch1_ditty2:
+	note A#, 8
+	note A_, 8
+	note A#, 4
+	note A_, 4
+	octave 5
+	note D_, 4
+	note F_, 4
+	volume_envelope 12, 0
+	note E_, 6
+	volume_envelope 12, 7
+	note E_, 6
+	sound_ret
+
+Music_GymLeaderBattleRSE_Ch2_ditty1:
+	octave 4
+	note D_, 8
+	note C_, 8
+	octave 3
+	note A#, 4
+	octave 4
+	note C_, 4
+	octave 3
+	note A#, 4
+	note A_, 4
+	volume_envelope 12, 0
+	note G_, 6
+	volume_envelope 12, 7
+	note G_, 6
+	note E_, 4
+	octave 4
+	volume_envelope 12, 0
+	note C_, 4
+	volume_envelope 12, 7
+	note C_, 6
+	volume_envelope 10, 7
+	duty_cycle 0
+	octave 4
+	note E_, 2
+	note C_, 2
+	octave 3
+	note G_, 2
+	note F_, 2
+	note A#, 2
+	octave 4
+	note D_, 2
+	note F_, 2
+	note A_, 2
+	note F_, 2
+	note D_, 2
+	octave 3
+	note A#, 2
+	note F_, 2
+	note A#, 2
+	octave 4
+	note D_, 2
+	note F_, 2
+	note A_, 2
+	note F_, 2
+	note D_, 2
+	octave 3
+	note A#, 2
+	note G_, 2
+	octave 4
+	note C_, 2
+	note E_, 2
+	note G_, 2
+	octave 5
+	note C_, 2
+	octave 4
+	note G_, 2
+	note E_, 2
+	note C_, 2
+	octave 3
+	note G_, 2
+	octave 4
+	note C_, 2
+	note E_, 2
+	note G_, 2
+	octave 5
+	note C_, 2
+	octave 4
+	note G_, 2
+	note E_, 2
+	note C_, 2
+	sound_ret
+
+Music_GymLeaderBattleRSE_Ch2_ditty2:
+	note C_, 11
+	note_type 3, 9, 0
+	note C_, 3
+	rest 1
+	note_type 12, 9, 0
+	note C_, 2
+	octave 1
+	note A#, 2
+	octave 2
+	note C#, 16
+	note D#, 16
 	sound_ret

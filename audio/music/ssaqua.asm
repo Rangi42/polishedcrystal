@@ -44,30 +44,8 @@ Music_SSAqua_branch_eadbc:
 	duty_cycle 1
 	volume_envelope 6, 1
 	sound_call Music_SSAqua_branch_eaff5
-	octave 5
-	note G_, 1
-	octave 4
-	note B_, 1
-	note A_, 1
-	note G_, 1
-	octave 5
-	note G_, 1
-	octave 4
-	note B_, 1
-	note A_, 1
-	note G_, 1
-	octave 5
-	note G_, 1
-	octave 4
-	note B_, 1
-	note A_, 1
-	note G_, 1
-	octave 5
-	note G_, 1
-	octave 4
-	note B_, 1
-	note A_, 1
-	note G_, 1
+	sound_call Music_SSAqua_Ch1_ditty1
+	sound_call Music_SSAqua_Ch1_ditty1
 	sound_call Music_SSAqua_branch_eaff5
 	sound_call Music_SSAqua_branch_eb03e
 	rest 16
@@ -710,40 +688,8 @@ Music_SSAqua_branch_eb08d:
 	rest 2
 	octave 4
 	note C_, 1
-	rest 3
-	octave 2
-	note A_, 2
-	rest 2
-	octave 4
-	note C#, 1
-	rest 3
-	octave 2
-	note A_, 2
-	rest 2
-	octave 4
-	note C#, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note G_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note G_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note F#, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
+	sound_call Music_SSAqua_Ch3_ditty2
+	sound_call Music_SSAqua_Ch3_ditty1
 	octave 4
 	note F#, 1
 	rest 3
@@ -759,18 +705,7 @@ Music_SSAqua_branch_eb08d:
 	rest 2
 	octave 4
 	note D#, 1
-	rest 3
-	octave 2
-	note A_, 2
-	rest 2
-	octave 4
-	note C#, 1
-	rest 3
-	octave 2
-	note A_, 2
-	rest 2
-	octave 4
-	note C#, 1
+	sound_call Music_SSAqua_Ch3_ditty2
 	rest 3
 	octave 3
 	note C_, 2
@@ -795,28 +730,7 @@ Music_SSAqua_branch_eb08d:
 	rest 2
 	octave 4
 	note G_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note G_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note G_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note F#, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
+	sound_call Music_SSAqua_Ch3_ditty1
 	octave 2
 	note G_, 1
 	rest 1
@@ -1169,4 +1083,59 @@ Music_SSAqua_branch_eb2c7:
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 1, 2
+	sound_ret
+
+Music_SSAqua_Ch1_ditty1:
+	octave 5
+	note G_, 1
+	octave 4
+	note B_, 1
+	note A_, 1
+	note G_, 1
+	octave 5
+	note G_, 1
+	octave 4
+	note B_, 1
+	note A_, 1
+	note G_, 1
+	sound_ret
+
+Music_SSAqua_Ch3_ditty1:
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note G_, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note G_, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note F#, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	sound_ret
+
+Music_SSAqua_Ch3_ditty2:
+	rest 3
+	octave 2
+	note A_, 2
+	rest 2
+	octave 4
+	note C#, 1
+	rest 3
+	octave 2
+	note A_, 2
+	rest 2
+	octave 4
+	note C#, 1
 	sound_ret

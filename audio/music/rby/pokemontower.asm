@@ -332,39 +332,11 @@ Music_PokemonTowerRBY_branch_7f1a2:
 	octave 4
 	note B_, 1
 	rest 5
-	note B_, 1
-	rest 7
-	note B_, 1
-	rest 7
-	note B_, 1
-	rest 7
-	octave 5
-	note C_, 1
-	rest 7
-	note C_, 1
-	rest 7
-	note C_, 1
-	rest 7
-	note C_, 1
-	rest 7
+	sound_call Music_PokemonTowerRBY_Ch3_ditty1
 	octave 4
 	note B_, 1
 	rest 7
-	note B_, 1
-	rest 7
-	note B_, 1
-	rest 7
-	note B_, 1
-	rest 7
-	octave 5
-	note C_, 1
-	rest 7
-	note C_, 1
-	rest 7
-	note C_, 1
-	rest 7
-	note C_, 1
-	rest 7
+	sound_call Music_PokemonTowerRBY_Ch3_ditty1
 	note E_, 1
 	rest 7
 	note E_, 1
@@ -463,3 +435,21 @@ Music_PokemonTowerRBY_branch_7f1a2:
 	note D#, 1
 	rest 1
 	sound_jump Music_PokemonTowerRBY_branch_7f1a2
+
+Music_PokemonTowerRBY_Ch3_ditty1:
+	note B_, 1
+	rest 7
+	note B_, 1
+	rest 7
+	note B_, 1
+	rest 7
+	octave 5
+	note C_, 1
+	rest 7
+	note C_, 1
+	rest 7
+	note C_, 1
+	rest 7
+	note C_, 1
+	rest 7
+	sound_ret

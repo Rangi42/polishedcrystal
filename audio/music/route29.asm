@@ -203,25 +203,7 @@ Music_Route29_branch_f0458:
 	octave 4
 	note C_, 8
 	octave 3
-	note A_, 2
-	note A_, 2
-	octave 4
-	note C_, 2
-	note C_, 2
-	note F_, 2
-	note A_, 2
-	note G_, 2
-	note F_, 2
-	octave 3
-	note G_, 2
-	note G_, 2
-	octave 4
-	note C_, 2
-	note C_, 2
-	note E_, 2
-	note G_, 2
-	note F_, 2
-	note E_, 2
+	sound_call Music_Route29_Ch2_ditty1
 	octave 3
 	note F_, 2
 	note F_, 2
@@ -241,25 +223,7 @@ Music_Route29_branch_f0458:
 	note A#, 2
 	note A_, 2
 	note G_, 2
-	note A_, 2
-	note A_, 2
-	octave 4
-	note C_, 2
-	note C_, 2
-	note F_, 2
-	note A_, 2
-	note G_, 2
-	note F_, 2
-	octave 3
-	note G_, 2
-	note G_, 2
-	octave 4
-	note C_, 2
-	note C_, 2
-	note E_, 2
-	note G_, 2
-	note F_, 2
-	note E_, 2
+	sound_call Music_Route29_Ch2_ditty1
 	note F_, 2
 	note E_, 2
 	note D_, 2
@@ -268,29 +232,11 @@ Music_Route29_branch_f0458:
 	note E_, 4
 	note D_, 4
 	volume_envelope 12, 4
-	note C_, 2
-	octave 3
-	note G_, 2
+	sound_call Music_Route29_Ch2_ditty2
 	octave 4
-	note E_, 2
-	octave 3
-	note G_, 2
+	sound_call Music_Route29_Ch2_ditty2
 	octave 4
-	note C_, 2
-	octave 3
-	note G_, 2
-	octave 4
-	note E_, 2
-	octave 3
-	note G_, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note G_, 2
-	octave 4
-	note E_, 2
-	octave 3
-	note G_, 2
+	sound_call Music_Route29_Ch2_ditty2
 	volume_envelope 12, 2
 	octave 4
 	note C_, 2
@@ -519,3 +465,35 @@ Music_Route29_branch_f05b0:
 	drum_note 6, 2
 	drum_note 6, 4
 	sound_jump Music_Route29_branch_f05b0
+
+Music_Route29_Ch2_ditty1:
+	note A_, 2
+	note A_, 2
+	octave 4
+	note C_, 2
+	note C_, 2
+	note F_, 2
+	note A_, 2
+	note G_, 2
+	note F_, 2
+	octave 3
+	note G_, 2
+	note G_, 2
+	octave 4
+	note C_, 2
+	note C_, 2
+	note E_, 2
+	note G_, 2
+	note F_, 2
+	note E_, 2
+	sound_ret
+
+Music_Route29_Ch2_ditty2:
+	note C_, 2
+	octave 3
+	note G_, 2
+	octave 4
+	note E_, 2
+	octave 3
+	note G_, 2
+	sound_ret

@@ -460,33 +460,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 1
 	volume_envelope 1, 0
 	note G_, 2
-	octave 2
-	volume_envelope 2, 0
-	note B_, 2
-	octave 3
-	note C#, 2
-	note D#, 4
-	rest 6
-	octave 1
-	volume_envelope 1, 0
-	note D#, 2
-	octave 2
-	volume_envelope 2, 0
-	note B_, 2
-	octave 3
-	note C#, 2
-	note D#, 4
-	rest 6
-	octave 1
-	volume_envelope 1, 0
-	note E_, 2
-	octave 2
-	volume_envelope 2, 0
-	note B_, 2
-	octave 3
-	note D#, 2
-	note F_, 4
-	rest 6
+	sound_call Music_CelestialTowerBW_NoIntro_Ch3_ditty1
 	octave 1
 	volume_envelope 1, 0
 	note G_, 2
@@ -500,33 +474,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 1
 	volume_envelope 1, 0
 	note C_, 2
-	octave 2
-	volume_envelope 2, 0
-	note B_, 2
-	octave 3
-	note C#, 2
-	note D#, 4
-	rest 6
-	octave 1
-	volume_envelope 1, 0
-	note D#, 2
-	octave 2
-	volume_envelope 2, 0
-	note B_, 2
-	octave 3
-	note C#, 2
-	note D#, 4
-	rest 6
-	octave 1
-	volume_envelope 1, 0
-	note E_, 2
-	octave 2
-	volume_envelope 2, 0
-	note B_, 2
-	octave 3
-	note D#, 2
-	note F_, 4
-	rest 6
+	sound_call Music_CelestialTowerBW_NoIntro_Ch3_ditty1
 	volume_envelope 1, 0
 	octave 2
 	note D_, 16
@@ -607,4 +555,34 @@ Music_CelestialTowerBW_NoIntro_Ch4_branch_2:
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 1
+	sound_ret
+
+Music_CelestialTowerBW_NoIntro_Ch3_ditty1:
+	octave 2
+	volume_envelope 2, 0
+	note B_, 2
+	octave 3
+	note C#, 2
+	note D#, 4
+	rest 6
+	octave 1
+	volume_envelope 1, 0
+	note D#, 2
+	octave 2
+	volume_envelope 2, 0
+	note B_, 2
+	octave 3
+	note C#, 2
+	note D#, 4
+	rest 6
+	octave 1
+	volume_envelope 1, 0
+	note E_, 2
+	octave 2
+	volume_envelope 2, 0
+	note B_, 2
+	octave 3
+	note D#, 2
+	note F_, 4
+	rest 6
 	sound_ret
