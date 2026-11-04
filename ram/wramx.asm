@@ -1640,7 +1640,7 @@ wPokeAnimFrontpicHeight:: db
 wPokeAnimIdleFlag:: db
 wPokeAnimSpeed:: db
 wPokeAnimPointerBank:: db
-wPokeAnimPointerAddr:: dw
+	ds 2 ; unused
 wPokeAnimFramesBank:: db
 wPokeAnimFramesAddr:: dw
 wPokeAnimBitmaskBank:: db
@@ -1658,7 +1658,9 @@ wPokeAnimBitmaskCurRow:: db
 wPokeAnimBitmaskCurBit:: db
 wPokeAnimBitmaskBuffer:: ds 7
 	ds 2 ; unused
+wPokeAnimDecompressed:: ds MAX_PIC_ANIM_LENGTH * 2
 wPokeAnimStructEnd::
+
 
 
 SECTION "Used Storage", WRAMX
