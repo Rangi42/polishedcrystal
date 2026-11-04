@@ -1,6 +1,6 @@
 CheckTrainerBattle::
 ; Check if any trainer on the map sees the player and wants to battle.
-	ldh a, [hROMBank]
+	ld a, [CurROMBank]
 	push af
 
 	call SwitchToMapScriptsBank

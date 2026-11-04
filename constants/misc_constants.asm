@@ -1,3 +1,7 @@
+; Each ROM bank self-reports its own bank ID at this address.
+; See engine/rom_bank_self_report.asm.
+DEF CurROMBank equ $7FFF
+
 ; Boolean checks
 DEF FALSE EQU 0
 DEF TRUE  EQU 1
