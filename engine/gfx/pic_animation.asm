@@ -334,19 +334,19 @@ PokeAnim_StopWaitAnim:
 	ret
 
 PokeAnim_ReadAnimCmd:
-	ld a, [wPokeAnimFrame]
+	ld hl, wPokeAnimFrame
+	ld a, [hl]
+	inc [hl]
 	add a
-	add LOW(wPokeAnimDecompressed)
+	add LOW(wPokeAnimDecompressed + 1)
 	ld l, a
-	adc HIGH(wPokeAnimDecompressed)
+	adc HIGH(wPokeAnimDecompressed + 1)
 	sub l
 	ld h, a
-	ld a, [hli]
-	ld [wPokeAnimCommand], a
-	ld a, [hl]
+	ld a, [hld]
 	ld [wPokeAnimParameter], a
-	ld hl, wPokeAnimFrame
-	inc [hl]
+	ld a, [hl]
+	ld [wPokeAnimCommand], a
 	ret
 
 PokeAnim_GetBitmaskIndex:

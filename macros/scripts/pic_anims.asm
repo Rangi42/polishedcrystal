@@ -3,18 +3,18 @@ DEF pic_anim_len = 0
 
 MACRO frame
 	DEF pic_anim_len += 1
-	DEF x = \1 ; index
-	DEF y = \2 ; duration
-	assert x <= PIC_ANIM_PARAM_MASK, "frame index is too large: {d:x}"
-	assert y <= LOW(~PIC_ANIM_END_MASK), "frame duration is too large: {d:y}"
+	DEF idx = \1
+	DEF duration = \2
+	assert idx <= PIC_ANIM_PARAM_MASK, "frame index is too large: {d:idx}"
+	assert duration <= LOW(~PIC_ANIM_END_MASK), "frame duration is too large: {d:duration}"
 	if pending_anim_byte
 		db pending_anim_byte
 	endc
-	if y == IMPLICIT_FRAME_DURATION
-		DEF pending_anim_byte = PIC_ANIM_IMPLICITFRAME_CMD | y
+	if duration == IMPLICIT_FRAME_DURATION
+		DEF pending_anim_byte = PIC_ANIM_IMPLICITFRAME_CMD | idx
 	else
-		db PIC_ANIM_FRAME_CMD | x
-		DEF pending_anim_byte = y
+		db PIC_ANIM_FRAME_CMD | idx
+		DEF pending_anim_byte = duration
 	endc
 ENDM
 
@@ -32,21 +32,21 @@ ENDM
 	const setrepeat_command ; $fe
 MACRO setrepeat
 	DEF pic_anim_len += 1
-	DEF x = \1 ; amount of times to repeat
-	assert x <= PIC_ANIM_PARAM_MASK, "setrepeat amount is too large: {d:x}"
+	DEF n = \1 ; amount of times to repeat
+	assert n <= PIC_ANIM_PARAM_MASK, "setrepeat amount is too large: {d:n}"
 	if pending_anim_byte
 		db pending_anim_byte
 	endc
-	DEF pending_anim_byte = PIC_ANIM_SETREPEAT_CMD | x
+	DEF pending_anim_byte = PIC_ANIM_SETREPEAT_CMD | n
 ENDM
 
 	const dorepeat_command ; $fd
 MACRO dorepeat
 	DEF pic_anim_len += 1
-	DEF x = \1 ; command offset to jump to
-	assert x <= PIC_ANIM_PARAM_MASK, "dorepeat offset is too large: {d:x}"
+	DEF n = \1 ; command offset to jump to
+	assert n <= PIC_ANIM_PARAM_MASK, "dorepeat offset is too large: {d:n}"
 	if pending_anim_byte
 		db pending_anim_byte
 	endc
-	DEF pending_anim_byte = PIC_ANIM_DOREPEAT_CMD | x
+	DEF pending_anim_byte = PIC_ANIM_DOREPEAT_CMD | n
 ENDM
