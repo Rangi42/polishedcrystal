@@ -1633,14 +1633,12 @@ wPokeAnimSceneIndex:: db
 wPokeAnimPointer:: dw
 wPokeAnimSpecies:: db
 wPokeAnimVariant:: db
-	ds 1 ; unused
 wPokeAnimGraphicStartTile:: db
 wPokeAnimCoord:: dw
 wPokeAnimFrontpicHeight:: db
 wPokeAnimIdleFlag:: db
 wPokeAnimSpeed:: db
 wPokeAnimPointerBank:: db
-wPokeAnimPointerAddr:: dw
 wPokeAnimFramesBank:: db
 wPokeAnimFramesAddr:: dw
 wPokeAnimBitmaskBank:: db
@@ -1652,12 +1650,11 @@ wPokeAnimCurBitmask:: db
 wPokeAnimWaitCounter:: db
 wPokeAnimCommand:: db
 wPokeAnimParameter:: db
-	ds 1 ; unused
 wPokeAnimBitmaskCurCol:: db
 wPokeAnimBitmaskCurRow:: db
 wPokeAnimBitmaskCurBit:: db
 wPokeAnimBitmaskBuffer:: ds 7
-	ds 2 ; unused
+wPokeAnimDecompressed:: ds MAX_PIC_ANIM_LENGTH * 2
 wPokeAnimStructEnd::
 
 
