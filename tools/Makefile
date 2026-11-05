@@ -1,7 +1,7 @@
 .PHONY: all clean
+.SUFFIXES:
 
-CC := gcc
-CFLAGS = -O3 -flto -std=c17 -Wall -Wextra -pedantic \
+WARNFLAGS := -Wall -Wextra -pedantic \
          -Walloc-zero \
          -Wcast-align \
          -Wcast-qual \
@@ -13,24 +13,24 @@ CFLAGS = -O3 -flto -std=c17 -Wall -Wextra -pedantic \
          -Wformat-truncation=1 \
          -Winline \
          -Wlogical-op \
-         -Wnested-externs \
-         -Wno-sign-compare \
          -Wnull-dereference \
-         -Wold-style-definition \
          -Wshadow \
          -Wshift-overflow=2 \
          -Wstrict-overflow=2 \
-         -Wstrict-prototypes \
          -Wstringop-overflow=4 \
          -Wundef \
          -Wuninitialized \
          -Wunused \
          -Wwrite-strings
 
+COMMON_FLAGS := ${WARNFLAGS} -O3 -flto
 # debugging sanitizers:
-#CFLAGS += -ggdb3 -Og -D_GLIBCXX_ASSERTIONS \
-#          -fno-omit-frame-pointer -fno-optimize-sibling-calls \
-#          -fsanitize=address -fsanitize=undefined -fsanitize=float-divide-by-zero
+#COMMON_FLAGS += -ggdb3 -Og -D_GLIBCXX_ASSERTIONS \
+#                -fno-omit-frame-pointer -fno-optimize-sibling-calls \
+#                -fsanitize=address,undefined,float-divide-by-zero
+
+CFLAGS := ${COMMON_FLAGS} -std=c17 -Wnested-externs -Wold-style-definition -Wstrict-prototypes
+CXXFLAGS := ${COMMON_FLAGS} -std=c++17
 
 tools := \
 	bankends \
@@ -63,8 +63,6 @@ vwf: common.h
 bpp2png: bpp2png.c lodepng/lodepng.c common.h lodepng/lodepng.h
 	$(CC) $(CFLAGS) -o $@ bpp2png.c lodepng/lodepng.c
 
-lzpcompress: CFLAGS += -Wno-strict-overflow -Wno-sign-compare
-
 bspcomp: bsp/bspcomp.c
 	$(CC) $(CFLAGS) -o $@ $^
 
@@ -76,3 +74,6 @@ parsemap.o: parsemap.c parsemap.h
 
 %: %.c
 	$(CC) $(CFLAGS) -o $@ $<
+
+%: %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $<
