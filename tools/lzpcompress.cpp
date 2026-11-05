@@ -405,7 +405,7 @@ struct LzRepeat final : public LzCmd {
 	 */
 	void serialize(uint8_t const *bytes, FILE *file, bool textual,
 	               char const *filename) const override {
-		assert(Span{bytes, this->len}.is_uniform());
+		assert((Span{bytes, this->len}).is_uniform());
 
 		if (textual) {
 			fprintf(file, "\tlzrepeat %" PRIu16 ", $%02" PRIx8 "\n", this->len, bytes[0]);
@@ -497,7 +497,7 @@ struct LzZero final : public LzCmd {
 	void serialize(uint8_t const *bytes, FILE *file, bool textual,
 	               char const *filename) const override {
 		assert(bytes[0] == 0);
-		assert(Span{bytes, this->len}.is_uniform());
+		assert((Span{bytes, this->len}).is_uniform());
 
 		if (textual) {
 			fprintf(file, "\tlzzero %" PRIu16 "\n", this->len);
