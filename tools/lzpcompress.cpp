@@ -550,6 +550,7 @@ struct LzCopyCmd : public LzCmd {
 		} else {
 			this->serialize_header(file, cmd_id, filename);
 			if (this->start_ofs < 0) {
+				// FIXME: dumping `start_ofs` as-is should be faster, actually
 				xputc((127 - this->start_ofs) & 0xff, file, filename);
 			} else {
 				// MSB first, since its bit 7 is what selects between the two.
