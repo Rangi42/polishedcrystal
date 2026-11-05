@@ -267,35 +267,13 @@ Music_LavenderTown_Ch2:
 Music_LavenderTown_branch_ef8a0:
 	note_type 12, 10, 3
 	octave 5
-	note C_, 2
-	volume_envelope 6, 3
-	note C_, 2
-	volume_envelope 10, 3
-	note G_, 2
-	volume_envelope 6, 3
-	note G_, 2
-	volume_envelope 10, 3
-	note B_, 2
-	volume_envelope 6, 3
-	note B_, 2
-	volume_envelope 10, 3
+	sound_call Music_LavenderTown_Ch2_ditty1
 	note F#, 2
 	volume_envelope 6, 3
 	note F#, 2
 	sound_loop 3, Music_LavenderTown_branch_ef8a0
 	volume_envelope 10, 3
-	note C_, 2
-	volume_envelope 6, 3
-	note C_, 2
-	volume_envelope 10, 3
-	note G_, 2
-	volume_envelope 6, 3
-	note G_, 2
-	volume_envelope 10, 3
-	note B_, 2
-	volume_envelope 6, 3
-	note B_, 2
-	volume_envelope 10, 3
+	sound_call Music_LavenderTown_Ch2_ditty1
 	octave 6
 	note D_, 2
 	volume_envelope 6, 3
@@ -399,27 +377,7 @@ Music_LavenderTown_Ch3:
 Music_LavenderTown_branch_ef941:
 	volume_envelope 1, 2
 	octave 5
-	note G_, 4
-	rest 4
-	note G_, 4
-	rest 4
-	note E_, 4
-	rest 4
-	note E_, 4
-	note F_, 4
-	note G_, 4
-	note F_, 4
-	note E_, 4
-	note B_, 4
-	note C#, 8
-	rest 2
-	note C#, 2
-	note D_, 2
-	note E_, 2
-	note F_, 10
-	note G_, 2
-	note F_, 2
-	note E_, 2
+	sound_call Music_LavenderTown_Ch3_ditty1
 	note D_, 8
 	octave 4
 	note A_, 4
@@ -431,27 +389,7 @@ Music_LavenderTown_branch_ef941:
 	note D_, 12
 	note E_, 2
 	note F_, 2
-	note G_, 4
-	rest 4
-	note G_, 4
-	rest 4
-	note E_, 4
-	rest 4
-	note E_, 4
-	note F_, 4
-	note G_, 4
-	note F_, 4
-	note E_, 4
-	note B_, 4
-	note C#, 8
-	rest 2
-	note C#, 2
-	note D_, 2
-	note E_, 2
-	note F_, 10
-	note G_, 2
-	note F_, 2
-	note E_, 2
+	sound_call Music_LavenderTown_Ch3_ditty1
 	note D_, 12
 	note C_, 2
 	note D_, 2
@@ -459,26 +397,12 @@ Music_LavenderTown_branch_ef941:
 	note C_, 12
 	rest 4
 	volume_envelope 2, 4
-	note A_, 2
-	note G_, 2
-	note A_, 2
-	note B_, 2
-	octave 6
-	note C_, 4
-	octave 5
-	note G_, 4
+	sound_call Music_LavenderTown_Ch3_ditty2
 	note F_, 4
 	note E_, 4
 	note D_, 4
 	note C_, 4
-	note A_, 2
-	note G_, 2
-	note A_, 2
-	note B_, 2
-	octave 6
-	note C_, 4
-	octave 5
-	note G_, 4
+	sound_call Music_LavenderTown_Ch3_ditty2
 	octave 6
 	note F_, 4
 	note_type 8, 2, 4
@@ -489,14 +413,7 @@ Music_LavenderTown_branch_ef941:
 	note D_, 4
 	note C_, 4
 	octave 5
-	note A_, 2
-	note G_, 2
-	note A_, 2
-	note B_, 2
-	octave 6
-	note C_, 4
-	octave 5
-	note G_, 4
+	sound_call Music_LavenderTown_Ch3_ditty2
 	note A_, 2
 	note G_, 2
 	note A_, 2
@@ -511,3 +428,53 @@ Music_LavenderTown_branch_ef941:
 	note E_, 2
 	note F_, 2
 	sound_jump Music_LavenderTown_branch_ef941
+
+Music_LavenderTown_Ch2_ditty1:
+	note C_, 2
+	volume_envelope 6, 3
+	note C_, 2
+	volume_envelope 10, 3
+	note G_, 2
+	volume_envelope 6, 3
+	note G_, 2
+	volume_envelope 10, 3
+	note B_, 2
+	volume_envelope 6, 3
+	note B_, 2
+	volume_envelope 10, 3
+	sound_ret
+
+Music_LavenderTown_Ch3_ditty1:
+	note G_, 4
+	rest 4
+	note G_, 4
+	rest 4
+	note E_, 4
+	rest 4
+	note E_, 4
+	note F_, 4
+	note G_, 4
+	note F_, 4
+	note E_, 4
+	note B_, 4
+	note C#, 8
+	rest 2
+	note C#, 2
+	note D_, 2
+	note E_, 2
+	note F_, 10
+	note G_, 2
+	note F_, 2
+	note E_, 2
+	sound_ret
+
+Music_LavenderTown_Ch3_ditty2:
+	note A_, 2
+	note G_, 2
+	note A_, 2
+	note B_, 2
+	octave 6
+	note C_, 4
+	octave 5
+	note G_, 4
+	sound_ret

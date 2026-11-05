@@ -557,15 +557,7 @@ Music_MarineTubeB2W2_Ch2:
 	note A#, 12
 	volume_envelope 10, 7
 	note A#, 12
-	note D_, 2
-	note D#, 2
-	volume_envelope 10, 0
-	note A#, 16
-	volume_envelope 10, 7
-	note A#, 16
-	note_type 8, 10, 7
-	note A#, 4
-	note G#, 4
+	sound_call Music_MarineTubeB2W2_Ch2_ditty2
 	note G_, 2
 	note G#, 2
 	note_type 12, 10, 0
@@ -596,15 +588,7 @@ Music_MarineTubeB2W2_Ch2:
 	note A#, 10
 	volume_envelope 10, 7
 	note A#, 10
-	note D_, 2
-	note D#, 2
-	volume_envelope 10, 0
-	note A#, 16
-	volume_envelope 10, 7
-	note A#, 16
-	note_type 8, 10, 7
-	note A#, 4
-	note G#, 4
+	sound_call Music_MarineTubeB2W2_Ch2_ditty2
 	volume_envelope 10, 2
 	note G_, 2
 	note G#, 2
@@ -635,38 +619,11 @@ Music_MarineTubeB2W2_Ch2:
 	rest 12
 	duty_cycle 0
 	volume_envelope 2, 0
-	octave 1
-	note A#, 2
-	octave 2
-	note A#, 2
-	rest 2
-	octave 1
-	note A#, 2
-	octave 2
-	note A#, 2
-	rest 2
+	sound_call Music_MarineTubeB2W2_Ch2_ditty1
 	volume_envelope 3, 0
-	octave 1
-	note A#, 2
-	octave 2
-	note A#, 2
-	rest 2
-	octave 1
-	note A#, 2
-	octave 2
-	note A#, 2
-	rest 2
+	sound_call Music_MarineTubeB2W2_Ch2_ditty1
 	volume_envelope 4, 0
-	octave 1
-	note A#, 2
-	octave 2
-	note A#, 2
-	rest 2
-	octave 1
-	note A#, 2
-	octave 2
-	note A#, 2
-	rest 2
+	sound_call Music_MarineTubeB2W2_Ch2_ditty1
 	sound_jump Music_MarineTubeB2W2_Ch2
 
 Music_MarineTubeB2W2_Ch3:
@@ -1064,4 +1021,29 @@ Music_MarineTubeB2W2_Ch4_branch_1:
 	drum_note 4, 2
 	drum_note 8, 2
 	drum_note 4, 2
+	sound_ret
+
+Music_MarineTubeB2W2_Ch2_ditty1:
+	octave 1
+	note A#, 2
+	octave 2
+	note A#, 2
+	rest 2
+	octave 1
+	note A#, 2
+	octave 2
+	note A#, 2
+	rest 2
+	sound_ret
+
+Music_MarineTubeB2W2_Ch2_ditty2:
+	note D_, 2
+	note D#, 2
+	volume_envelope 10, 0
+	note A#, 16
+	volume_envelope 10, 7
+	note A#, 16
+	note_type 8, 10, 7
+	note A#, 4
+	note G#, 4
 	sound_ret

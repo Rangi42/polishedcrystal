@@ -125,22 +125,22 @@ SpriteAnimFrameData:
 
 .Frameset_TextEntryCursor:
 	oamframe SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR,  1
-	dorepeat  1
+	oamwait 1
 	oamrestart
 
 .Frameset_TextEntryCursorBig:
 	oamframe SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BIG,  1
-	dorepeat  1
+	oamwait 1
 	oamrestart
 
 .Frameset_TextEntryCursorBlue:
 	oamframe SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BLUE,  1
-	dorepeat  1
+	oamwait 1
 	oamrestart
 
 .Frameset_TextEntryCursorBlueBig:
 	oamframe SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BLUE_BIG,  1
-	dorepeat  1
+	oamwait 1
 	oamrestart
 
 .Frameset_GameFreakLogo:
@@ -246,9 +246,9 @@ SpriteAnimFrameData:
 .Frameset_CutTree:
 	oamframe SPRITE_ANIM_OAMSET_TREE_1,  2
 	oamframe SPRITE_ANIM_OAMSET_CUT_TREE_2, 16
-	dorepeat  1
+	oamwait 1
 	oamframe SPRITE_ANIM_OAMSET_CUT_TREE_3,  1
-	dorepeat  1
+	oamwait 1
 	oamframe SPRITE_ANIM_OAMSET_CUT_TREE_4,  1
 	oamdelete
 
@@ -338,7 +338,7 @@ SpriteAnimFrameData:
 	oamend
 
 .Frameset_IntroUnownF:
-	dorepeat 0
+	oamwait 0
 	oamend
 
 .Frameset_CelebiLeft:

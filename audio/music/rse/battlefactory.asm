@@ -1021,18 +1021,7 @@ Music_BattleFactoryRSE_Ch3:
 	stereo_panning TRUE, TRUE
 	note_type 6, 2, 5
 	octave 2
-	note E_, 2
-	rest 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	rest 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	rest 2
+	sound_call Music_BattleFactoryRSE_Ch3_ditty1
 	octave 1
 	note E_, 2
 	octave 2
@@ -1044,18 +1033,7 @@ Music_BattleFactoryRSE_Ch3:
 	note E_, 1
 	rest 1
 	octave 2
-	note E_, 2
-	rest 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	rest 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	rest 2
+	sound_call Music_BattleFactoryRSE_Ch3_ditty1
 	octave 1
 	note E_, 2
 	octave 2
@@ -1073,18 +1051,7 @@ Music_BattleFactoryRSE_Ch3:
 Music_BattleFactoryRSE_Ch3_loop:
 	octave 2
 	note G_, 2
-	note E_, 2
-	rest 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	rest 2
-	octave 1
-	note E_, 2
-	octave 2
-	note E_, 2
-	rest 2
+	sound_call Music_BattleFactoryRSE_Ch3_ditty1
 	octave 3
 	note E_, 2
 	octave 2
@@ -1262,4 +1229,19 @@ Music_BattleFactoryRSE_Ch4_branch_1:
 	drum_note 4, 4
 	drum_note 7, 4
 	sound_loop 6, Music_BattleFactoryRSE_Ch4_branch_1
+	sound_ret
+
+Music_BattleFactoryRSE_Ch3_ditty1:
+	note E_, 2
+	rest 2
+	octave 1
+	note E_, 2
+	octave 2
+	note E_, 2
+	rest 2
+	octave 1
+	note E_, 2
+	octave 2
+	note E_, 2
+	rest 2
 	sound_ret

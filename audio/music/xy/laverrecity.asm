@@ -81,32 +81,10 @@ Music_LaverreCityXY_branch_ef2e5:
 	note_type 12, 6, 7
 	note B_, 12
 	volume_envelope 8, 0
-	note F#, 12
-	volume_envelope 8, 7
-	note F#, 12
-	volume_envelope 8, 0
-	note G_, 12
-	volume_envelope 8, 7
-	note G_, 12
-	volume_envelope 8, 0
-	note F#, 12
-	volume_envelope 8, 7
-	note F#, 12
-	volume_envelope 8, 0
+	sound_call Music_LaverreCityXY_Ch1_ditty1
 	note A#, 12
 	note G#, 12
-	note F#, 12
-	volume_envelope 8, 7
-	note F#, 12
-	volume_envelope 8, 0
-	note G_, 12
-	volume_envelope 8, 7
-	note G_, 12
-	volume_envelope 8, 0
-	note F#, 12
-	volume_envelope 8, 7
-	note F#, 12
-	volume_envelope 8, 0
+	sound_call Music_LaverreCityXY_Ch1_ditty1
 	note F#, 12
 	note_type 8, 8, 7
 	duty_cycle 1
@@ -230,44 +208,12 @@ Music_LaverreCityXY_branch_ef3f2:
 	octave 1
 	note B_, 12
 	volume_envelope 5, 0
-	note D#, 12
-	volume_envelope 5, 7
-	note D#, 12
-	volume_envelope 5, 0
+	sound_call Music_LaverreCityXY_Ch2_ditty1
 	note E_, 12
-	volume_envelope 5, 7
-	note E_, 12
-	volume_envelope 5, 0
-	note F#, 12
-	volume_envelope 5, 7
-	note F#, 12
-	volume_envelope 5, 0
-	note F#, 12
-	note E_, 12
-	note D#, 12
-	volume_envelope 5, 7
-	note D#, 12
-	volume_envelope 5, 0
-	note E_, 12
-	volume_envelope 5, 7
-	note E_, 12
-	volume_envelope 5, 0
-	note F#, 12
-	volume_envelope 5, 7
-	note F#, 12
-	volume_envelope 5, 0
-	note F#, 12
+	sound_call Music_LaverreCityXY_Ch2_ditty1
 	note D#, 12
 	volume_envelope 10, 7
-	note G#, 8
-	note G#, 2
-	rest 2
-	note E_, 8
-	note E_, 2
-	rest 2
-	note F#, 8
-	note F#, 2
-	rest 2
+	sound_call Music_LaverreCityXY_Ch2_ditty2
 	note D#, 8
 	note D#, 2
 	rest 2
@@ -283,15 +229,7 @@ Music_LaverreCityXY_branch_ef3f2:
 	note E_, 8
 	note E_, 2
 	rest 2
-	note G#, 8
-	note G#, 2
-	rest 2
-	note E_, 8
-	note E_, 2
-	rest 2
-	note F#, 8
-	note F#, 2
-	rest 2
+	sound_call Music_LaverreCityXY_Ch2_ditty2
 	note D#, 8
 	note D#, 2
 	rest 2
@@ -309,27 +247,11 @@ Music_LaverreCityXY_branch_ef3f2:
 	note F#, 1
 	rest 11
 	volume_envelope 10, 7
-	note G#, 8
-	note G#, 2
-	rest 2
-	note E_, 8
-	note E_, 2
-	rest 2
-	note F#, 8
-	note F#, 2
-	rest 2
+	sound_call Music_LaverreCityXY_Ch2_ditty2
 	note B_, 8
 	note A#, 2
 	rest 2
-	note G#, 8
-	note G#, 2
-	rest 2
-	note E_, 8
-	note E_, 2
-	rest 2
-	note F#, 8
-	note F#, 2
-	rest 2
+	sound_call Music_LaverreCityXY_Ch2_ditty2
 	note G#, 8
 	note G#, 2
 	rest 2
@@ -346,29 +268,7 @@ Music_LaverreCityXY_branch_ef4e3:
 	note F#, 2
 	note G#, 2
 	rest 6
-	note F#, 2
-	rest 2
-	note A_, 2
-	rest 6
-	note E_, 2
-	rest 2
-	note G#, 2
-	rest 6
-	note D_, 2
-	rest 2
-	note F#, 2
-	rest 6
-	note E_, 2
-	note F#, 2
-	note G#, 2
-	rest 6
-	note E_, 2
-	rest 2
-	note D_, 2
-	rest 6
-	note E_, 2
-	rest 2
-	note G#, 2
+	sound_call Music_LaverreCityXY_Ch3_ditty1
 	rest 2
 	note_type 12, 1, 3
 	octave 5
@@ -390,29 +290,7 @@ Music_LaverreCityXY_branch_ef4e3:
 	rest 6
 	note_type 12, 2, 5
 	octave 3
-	note F#, 2
-	rest 2
-	note A_, 2
-	rest 6
-	note E_, 2
-	rest 2
-	note G#, 2
-	rest 6
-	note D_, 2
-	rest 2
-	note F#, 2
-	rest 6
-	note E_, 2
-	note F#, 2
-	note G#, 2
-	rest 6
-	note E_, 2
-	rest 2
-	note D_, 2
-	rest 6
-	note E_, 2
-	rest 2
-	note G#, 2
+	sound_call Music_LaverreCityXY_Ch3_ditty1
 	rest 6
 	note E_, 2
 	rest 2
@@ -621,4 +499,73 @@ Music_LaverreCityXY_Ch4_branch_2:
 	drum_speed 12
 	rest 12
 	rest 12
+	sound_ret
+
+Music_LaverreCityXY_Ch1_ditty1:
+	note F#, 12
+	volume_envelope 8, 7
+	note F#, 12
+	volume_envelope 8, 0
+	note G_, 12
+	volume_envelope 8, 7
+	note G_, 12
+	volume_envelope 8, 0
+	note F#, 12
+	volume_envelope 8, 7
+	note F#, 12
+	volume_envelope 8, 0
+	sound_ret
+
+Music_LaverreCityXY_Ch2_ditty1:
+	note D#, 12
+	volume_envelope 5, 7
+	note D#, 12
+	volume_envelope 5, 0
+	note E_, 12
+	volume_envelope 5, 7
+	note E_, 12
+	volume_envelope 5, 0
+	note F#, 12
+	volume_envelope 5, 7
+	note F#, 12
+	volume_envelope 5, 0
+	note F#, 12
+	sound_ret
+
+Music_LaverreCityXY_Ch2_ditty2:
+	note G#, 8
+	note G#, 2
+	rest 2
+	note E_, 8
+	note E_, 2
+	rest 2
+	note F#, 8
+	note F#, 2
+	rest 2
+	sound_ret
+
+Music_LaverreCityXY_Ch3_ditty1:
+	note F#, 2
+	rest 2
+	note A_, 2
+	rest 6
+	note E_, 2
+	rest 2
+	note G#, 2
+	rest 6
+	note D_, 2
+	rest 2
+	note F#, 2
+	rest 6
+	note E_, 2
+	note F#, 2
+	note G#, 2
+	rest 6
+	note E_, 2
+	rest 2
+	note D_, 2
+	rest 6
+	note E_, 2
+	rest 2
+	note G#, 2
 	sound_ret

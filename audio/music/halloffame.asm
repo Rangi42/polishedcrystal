@@ -82,33 +82,9 @@ Music_HallOfFame_branch_f062e:
 	note_type 12, 2, 8
 Music_HallOfFame_branch_f0631:
 	octave 3
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	octave 3
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	octave 3
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	octave 3
+	sound_call Music_HallOfFame_Ch3_ditty1
+	sound_call Music_HallOfFame_Ch3_ditty1
+	sound_call Music_HallOfFame_Ch3_ditty1
 	note C_, 2
 	note F_, 2
 	note C_, 2
@@ -171,3 +147,15 @@ Music_HallOfFame_branch_f0677:
 	drum_note 11, 1
 	drum_note 11, 1
 	sound_jump Music_HallOfFame_branch_f0677
+
+Music_HallOfFame_Ch3_ditty1:
+	note D_, 2
+	note G_, 2
+	note D_, 2
+	note G_, 2
+	note D_, 2
+	note G_, 2
+	note D_, 2
+	note G_, 2
+	octave 3
+	sound_ret

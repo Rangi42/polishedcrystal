@@ -62,22 +62,7 @@ Music_TitleScreen_Ch1:
 	note C_, 4
 	note D_, 6
 	volume_envelope 11, 7
-	note D#, 1
-	note E_, 1
-	note F_, 6
-	note E_, 1
-	note D#, 1
-	note D_, 8
-	note_type 8, 10, 7
-	note C_, 4
-	octave 2
-	note B_, 4
-	octave 3
-	note C_, 4
-	note D_, 9
-	octave 2
-	note B_, 3
-	octave 3
+	sound_call Music_TitleScreen_Ch1_ditty1
 	note D_, 6
 	octave 2
 	note B_, 6
@@ -122,22 +107,7 @@ Music_TitleScreen_Ch1:
 	note C_, 6
 	note D_, 9
 	note_type 12, 11, 7
-	note D#, 1
-	note E_, 1
-	note F_, 6
-	note E_, 1
-	note D#, 1
-	note D_, 8
-	note_type 8, 10, 7
-	note C_, 4
-	octave 2
-	note B_, 4
-	octave 3
-	note C_, 4
-	note D_, 9
-	octave 2
-	note B_, 3
-	octave 3
+	sound_call Music_TitleScreen_Ch1_ditty1
 	note D_, 9
 	note_type 8, 11, 7
 	note G_, 3
@@ -324,25 +294,10 @@ Music_TitleScreen_Ch2:
 	note F#, 2
 	note E_, 1
 	note F#, 1
-	octave 3
-	note G_, 6
-	note B_, 2
-	octave 4
-	note D_, 8
-	stereo_panning TRUE, FALSE
-	volume_envelope 9, 7
-	octave 2
+	sound_call Music_TitleScreen_Ch2_ditty1
 	note A_, 4
 	note F_, 4
-	stereo_panning TRUE, TRUE
-	volume_envelope 12, 7
-	octave 4
-	note F_, 6
-	note E_, 1
-	note D#, 1
-	note D_, 8
-	stereo_panning TRUE, FALSE
-	volume_envelope 9, 7
+	sound_call Music_TitleScreen_Ch2_ditty2
 	octave 2
 	note A_, 6
 	octave 3
@@ -358,14 +313,7 @@ Music_TitleScreen_Ch2:
 	note B_, 4
 	stereo_panning TRUE, TRUE
 	volume_envelope 12, 7
-	octave 3
-	note G_, 6
-	note B_, 2
-	octave 4
-	note D_, 8
-	stereo_panning TRUE, FALSE
-	volume_envelope 9, 7
-	octave 2
+	sound_call Music_TitleScreen_Ch2_ditty1
 	note A_, 2
 	note F_, 4
 	note A_, 2
@@ -394,25 +342,10 @@ Music_TitleScreen_Ch2:
 	note A_, 4
 	stereo_panning TRUE, TRUE
 	note_type 12, 12, 7
-	octave 3
-	note G_, 6
-	note B_, 2
-	octave 4
-	note D_, 8
-	stereo_panning TRUE, FALSE
-	volume_envelope 9, 7
-	octave 2
+	sound_call Music_TitleScreen_Ch2_ditty1
 	note A_, 2
 	note F_, 6
-	stereo_panning TRUE, TRUE
-	volume_envelope 12, 7
-	octave 4
-	note F_, 6
-	note E_, 1
-	note D#, 1
-	note D_, 8
-	stereo_panning TRUE, FALSE
-	volume_envelope 9, 7
+	sound_call Music_TitleScreen_Ch2_ditty2
 	octave 3
 	note C_, 2
 	octave 2
@@ -632,24 +565,7 @@ Music_TitleScreen_Ch3:
 	octave 3
 	note C_, 2
 	octave 2
-	note G_, 4
-	note D_, 2
-	note G_, 4
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 2
-	octave 3
-	note C_, 2
-	octave 2
-	note B_, 4
-	note G_, 2
-	note B_, 4
-	note G_, 2
+	sound_call Music_TitleScreen_Ch3_ditty1
 	note B_, 2
 	note G_, 2
 	note G_, 4
@@ -659,24 +575,7 @@ Music_TitleScreen_Ch3:
 	octave 3
 	note C_, 4
 	octave 2
-	note G_, 4
-	note D_, 2
-	note G_, 4
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 2
-	octave 3
-	note C_, 2
-	octave 2
-	note B_, 4
-	note G_, 2
-	note B_, 4
-	note G_, 2
+	sound_call Music_TitleScreen_Ch3_ditty1
 	note B_, 2
 	octave 3
 	note C_, 2
@@ -688,24 +587,7 @@ Music_TitleScreen_Ch3:
 	octave 3
 	note D_, 4
 	octave 2
-	note G_, 4
-	note D_, 2
-	note G_, 4
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 2
-	octave 3
-	note C_, 2
-	octave 2
-	note B_, 4
-	note G_, 2
-	note B_, 4
-	note G_, 2
+	sound_call Music_TitleScreen_Ch3_ditty1
 	note B_, 2
 	note G_, 2
 	octave 3
@@ -720,24 +602,7 @@ Music_TitleScreen_Ch3:
 	note D_, 2
 	octave 2
 	note A_, 2
-	note G_, 4
-	note D_, 2
-	note G_, 4
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 4
-	note F_, 2
-	note A_, 2
-	octave 3
-	note C_, 2
-	octave 2
-	note B_, 4
-	note G_, 2
-	note B_, 4
-	note G_, 2
+	sound_call Music_TitleScreen_Ch3_ditty1
 	octave 3
 	note D_, 2
 	octave 2
@@ -849,31 +714,10 @@ Music_TitleScreen_Ch3:
 	note D_, 1
 	note E_, 1
 	note F_, 16
-	note G_, 1
-	rest 3
-	note G_, 1
-	rest 5
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	rest 3
-	note G_, 1
-	rest 3
-	note G_, 1
-	rest 5
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	rest 3
+	sound_call Music_TitleScreen_Ch3_ditty2
+	sound_call Music_TitleScreen_Ch3_ditty2
 	octave 2
-	note G_, 1
-	rest 3
-	note G_, 1
-	rest 5
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	rest 3
+	sound_call Music_TitleScreen_Ch3_ditty2
 	note G_, 1
 	rest 3
 	note G_, 1
@@ -898,51 +742,20 @@ Music_TitleScreen_Ch4:
 	stereo_panning TRUE, FALSE
 	drum_speed 12
 	rest 4
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 1
+	sound_call Music_TitleScreen_Ch4_ditty1
 	drum_note 1, 6
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 1
+	sound_call Music_TitleScreen_Ch4_ditty1
 	drum_note 1, 3
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 1, 1
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 1
+	sound_call Music_TitleScreen_Ch4_ditty1
 	drum_note 1, 4
 	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 1
+	sound_call Music_TitleScreen_Ch4_ditty1
 	drum_note 1, 2
 	drum_speed 6
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_TitleScreen_Ch4_ditty3
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 1, 1
@@ -951,14 +764,7 @@ Music_TitleScreen_Ch4:
 	sound_call Music_TitleScreen_branch_ebd77
 	sound_call Music_TitleScreen_branch_ebd81
 	sound_call Music_TitleScreen_branch_ebd81
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
+	sound_call Music_TitleScreen_Ch4_ditty2
 	drum_speed 6
 	drum_note 2, 1
 	drum_note 2, 1
@@ -966,37 +772,16 @@ Music_TitleScreen_Ch4:
 	drum_note 1, 1
 	drum_speed 12
 	sound_call Music_TitleScreen_branch_ebd77
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 6, 2
-	drum_note 4, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
+	sound_call Music_TitleScreen_Ch4_ditty4
 	drum_note 1, 2
 	sound_call Music_TitleScreen_branch_ebd81
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
+	sound_call Music_TitleScreen_Ch4_ditty2
 	drum_note 1, 1
 	drum_note 1, 1
 	sound_call Music_TitleScreen_branch_ebd77
 	sound_call Music_TitleScreen_branch_ebd81
 	sound_call Music_TitleScreen_branch_ebd81
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
+	sound_call Music_TitleScreen_Ch4_ditty2
 	drum_speed 6
 	drum_note 2, 1
 	drum_note 3, 1
@@ -1005,29 +790,12 @@ Music_TitleScreen_Ch4:
 	drum_speed 12
 	sound_call Music_TitleScreen_branch_ebd77
 	sound_call Music_TitleScreen_branch_ebd81
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 6, 2
-	drum_note 4, 2
+	sound_call Music_TitleScreen_Ch4_ditty4
 	drum_note 1, 1
 	drum_note 1, 1
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 1, 2
+	sound_call Music_TitleScreen_Ch4_ditty2
 	drum_speed 6
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_TitleScreen_Ch4_ditty3
 	drum_speed 12
 	drum_note 10, 2
 	drum_note 4, 4
@@ -1048,10 +816,7 @@ Music_TitleScreen_Ch4:
 	drum_note 10, 4
 	drum_note 10, 4
 	drum_note 10, 2
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_TitleScreen_Ch4_ditty3
 	drum_note 1, 1
 	drum_note 1, 1
 	sound_call Music_TitleScreen_branch_ebd8b
@@ -1063,10 +828,7 @@ Music_TitleScreen_Ch4:
 	drum_speed 12
 	sound_call Music_TitleScreen_branch_ebd8b
 	sound_call Music_TitleScreen_branch_ebd93
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_TitleScreen_Ch4_ditty3
 	drum_speed 12
 	sound_call Music_TitleScreen_branch_ebd8b
 	sound_call Music_TitleScreen_branch_ebd93
@@ -1114,10 +876,7 @@ Music_TitleScreen_branch_ebd40:
 	drum_speed 6
 	drum_note 2, 1
 	drum_note 2, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_TitleScreen_Ch4_ditty3
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_speed 12
@@ -1166,4 +925,118 @@ Music_TitleScreen_branch_ebd93:
 	drum_speed 8
 	drum_note 1, 4
 	drum_note 1, 4
+	sound_ret
+
+Music_TitleScreen_Ch1_ditty1:
+	note D#, 1
+	note E_, 1
+	note F_, 6
+	note E_, 1
+	note D#, 1
+	note D_, 8
+	note_type 8, 10, 7
+	note C_, 4
+	octave 2
+	note B_, 4
+	octave 3
+	note C_, 4
+	note D_, 9
+	octave 2
+	note B_, 3
+	octave 3
+	sound_ret
+
+Music_TitleScreen_Ch2_ditty1:
+	octave 3
+	note G_, 6
+	note B_, 2
+	octave 4
+	note D_, 8
+	stereo_panning TRUE, FALSE
+	volume_envelope 9, 7
+	octave 2
+	sound_ret
+
+Music_TitleScreen_Ch2_ditty2:
+	stereo_panning TRUE, TRUE
+	volume_envelope 12, 7
+	octave 4
+	note F_, 6
+	note E_, 1
+	note D#, 1
+	note D_, 8
+	stereo_panning TRUE, FALSE
+	volume_envelope 9, 7
+	sound_ret
+
+Music_TitleScreen_Ch3_ditty1:
+	note G_, 4
+	note D_, 2
+	note G_, 4
+	note D_, 2
+	note G_, 2
+	note D_, 2
+	note A_, 4
+	note F_, 2
+	note A_, 4
+	note F_, 2
+	note A_, 2
+	octave 3
+	note C_, 2
+	octave 2
+	note B_, 4
+	note G_, 2
+	note B_, 4
+	note G_, 2
+	sound_ret
+
+Music_TitleScreen_Ch3_ditty2:
+	note G_, 1
+	rest 3
+	note G_, 1
+	rest 5
+	note G_, 1
+	note G_, 1
+	note G_, 1
+	rest 3
+	sound_ret
+
+Music_TitleScreen_Ch4_ditty1:
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	sound_ret
+
+Music_TitleScreen_Ch4_ditty2:
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 2
+	sound_ret
+
+Music_TitleScreen_Ch4_ditty3:
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	sound_ret
+
+Music_TitleScreen_Ch4_ditty4:
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 6, 2
+	drum_note 4, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 2
 	sound_ret

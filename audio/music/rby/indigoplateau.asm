@@ -173,37 +173,11 @@ Music_IndigoPlateauRBY_branch_a6c6:
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
+	sound_call Music_IndigoPlateauRBY_Ch3_ditty1
 	note F#, 4
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	sound_call Music_IndigoPlateauRBY_branch_a6fe
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
+	sound_call Music_IndigoPlateauRBY_Ch3_ditty1
 	note A#, 1
 	rest 1
 	note A#, 1
@@ -327,4 +301,21 @@ Music_IndigoPlateauRBY_branch_a7a8:
 	drum_note 11, 1
 	drum_note 11, 1
 	drum_note 11, 1
+	sound_ret
+
+Music_IndigoPlateauRBY_Ch3_ditty1:
+	note D_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	note D_, 2
+	rest 2
 	sound_ret

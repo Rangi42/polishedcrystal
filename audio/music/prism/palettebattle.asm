@@ -208,34 +208,8 @@ Music_PaletteBattlePrism_branch_1edc47:
 	note G#, 2
 	note C#, 2
 	octave 3
-	note D#, 2
-	note D#, 2
-	octave 2
-	note G#, 2
-	octave 3
-	note D#, 2
-	note D#, 2
-	octave 2
-	note G#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note G#, 2
-	octave 3
-	note D#, 2
-	note D#, 2
-	octave 2
-	note G#, 2
-	octave 3
-	note D#, 2
-	note D#, 2
-	octave 2
-	note G#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note G#, 2
-	octave 3
+	sound_call Music_PaletteBattlePrism_Ch1_ditty1
+	sound_call Music_PaletteBattlePrism_Ch1_ditty1
 	note F_, 2
 	note F_, 2
 	octave 2
@@ -427,19 +401,7 @@ Music_PaletteBattlePrism_branch_1edb37:
 Music_PaletteBattlePrism_branch_1edb87:
 	octave 4
 	volume_envelope 12, 2
-	note C#, 2
-	note C#, 2
-	octave 3
-	note G#, 2
-	octave 4
-	note C#, 2
-	note C#, 2
-	octave 3
-	note G#, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note G#, 2
+	sound_call Music_PaletteBattlePrism_Ch2_ditty1
 	sound_loop 2, Music_PaletteBattlePrism_branch_1edb87
 
 Music_PaletteBattlePrism_branch_1edb99:
@@ -455,19 +417,7 @@ Music_PaletteBattlePrism_branch_1edb99:
 
 Music_PaletteBattlePrism_branch_1edba5:
 	octave 4
-	note C#, 2
-	note C#, 2
-	octave 3
-	note G#, 2
-	octave 4
-	note C#, 2
-	note C#, 2
-	octave 3
-	note G#, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note G#, 2
+	sound_call Music_PaletteBattlePrism_Ch2_ditty1
 	sound_loop 2, Music_PaletteBattlePrism_branch_1edba5
 
 Music_PaletteBattlePrism_branch_1edbb7:
@@ -497,19 +447,7 @@ Music_PaletteBattlePrism_branch_1edbb7:
 	note B_, 2
 	note F#, 2
 	octave 4
-	note C#, 2
-	note C#, 2
-	octave 3
-	note G#, 2
-	octave 4
-	note C#, 2
-	note C#, 2
-	octave 3
-	note G#, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note G#, 2
+	sound_call Music_PaletteBattlePrism_Ch2_ditty1
 	octave 4
 	note D#, 2
 	note D#, 2
@@ -667,3 +605,36 @@ Music_PaletteBattlePrism_branch_1edea9:
 	note D_, 2
 	sound_loop 8, Music_PaletteBattlePrism_branch_1edea9
 	sound_jump Music_PaletteBattlePrism_branch_1ede24
+
+Music_PaletteBattlePrism_Ch1_ditty1:
+	note D#, 2
+	note D#, 2
+	octave 2
+	note G#, 2
+	octave 3
+	note D#, 2
+	note D#, 2
+	octave 2
+	note G#, 2
+	octave 3
+	note D#, 2
+	octave 2
+	note G#, 2
+	octave 3
+	sound_ret
+
+Music_PaletteBattlePrism_Ch2_ditty1:
+	note C#, 2
+	note C#, 2
+	octave 3
+	note G#, 2
+	octave 4
+	note C#, 2
+	note C#, 2
+	octave 3
+	note G#, 2
+	octave 4
+	note C#, 2
+	octave 3
+	note G#, 2
+	sound_ret

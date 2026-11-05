@@ -43,41 +43,13 @@ Music_LookJessieJames_branch_83187:
 	octave 3
 	note A#, 2
 	note A_, 4
-	note D_, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	note D#, 2
-	note D_, 2
-	note D#, 2
-	note F_, 2
-	note D_, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	octave 2
+	sound_call Music_LookJessieJames_Ch1_ditty1
 	note A#, 4
 	note_type 12, 11, 4
 	octave 3
 	note B_, 4
 	note_type 12, 11, 2
-	note D_, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	note D#, 2
-	note D_, 2
-	note D#, 2
-	note F_, 2
-	note D_, 1
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	octave 2
+	sound_call Music_LookJessieJames_Ch1_ditty1
 	note A#, 2
 	octave 3
 	note B_, 2
@@ -107,19 +79,7 @@ Music_LookJessieJames_branch_831df:
 	note_type 12, 12, 2
 	octave 3
 	note C#, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note C#, 2
-	note D_, 2
-	note C#, 2
-	note D_, 2
-	note E_, 2
-	note C#, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note C#, 2
+	sound_call Music_LookJessieJames_Ch2_ditty1
 	octave 2
 	note A_, 4
 	note_type 12, 12, 5
@@ -128,19 +88,7 @@ Music_LookJessieJames_branch_831df:
 	note_type 12, 12, 2
 	note D_, 1
 	octave 3
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note C#, 2
-	note D_, 2
-	note C#, 2
-	note D_, 2
-	note E_, 2
-	note C#, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note C#, 2
+	sound_call Music_LookJessieJames_Ch2_ditty1
 	note_type 12, 12, 6
 	octave 4
 	note D_, 8
@@ -182,131 +130,107 @@ Music_LookJessieJames_Ch3:
 Music_LookJessieJames_branch_83235:
 	note D_, 1
 	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
+	sound_call Music_LookJessieJames_Ch3_ditty2
+	sound_call Music_LookJessieJames_Ch3_ditty2
 	note A#, 2
 	note A_, 2
 	note D#, 2
 	note D_, 1
 	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note D_, 1
-	rest 1
+	sound_call Music_LookJessieJames_Ch3_ditty2
+	sound_call Music_LookJessieJames_Ch3_ditty2
 	octave 3
 	note A_, 2
 	octave 4
 	note C_, 2
 	note D_, 2
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	octave 3
-	note A#, 1
-	rest 1
-	octave 4
-	note C#, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note D#, 1
-	rest 1
-	octave 3
-	note A#, 1
-	rest 1
-	octave 4
-	note C#, 1
-	rest 1
-	note E_, 1
-	rest 1
+	sound_call Music_LookJessieJames_Ch3_ditty1
+	sound_call Music_LookJessieJames_Ch3_ditty1
 	sound_jump Music_LookJessieJames_branch_83235
+	sound_ret
+
+Music_LookJessieJames_Ch1_ditty1:
+	note D_, 1
+	note D#, 1
+	note D#, 2
+	note D#, 2
+	note D_, 2
+	note D#, 2
+	note D_, 2
+	note D#, 2
+	note F_, 2
+	note D_, 1
+	note D#, 1
+	note D#, 2
+	note D#, 2
+	note D_, 2
+	octave 2
+	sound_ret
+
+Music_LookJessieJames_Ch2_ditty1:
+	note D_, 1
+	note D_, 2
+	note D_, 2
+	note C#, 2
+	note D_, 2
+	note C#, 2
+	note D_, 2
+	note E_, 2
+	note C#, 1
+	note D_, 1
+	note D_, 2
+	note D_, 2
+	note C#, 2
+	sound_ret
+
+Music_LookJessieJames_Ch3_ditty1:
+	note D#, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note D#, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note D#, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note D#, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note D#, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note D#, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note D#, 1
+	rest 1
+	octave 3
+	note A#, 1
+	rest 1
+	octave 4
+	note C#, 1
+	rest 1
+	note E_, 1
+	rest 1
+	sound_ret
+
+Music_LookJessieJames_Ch3_ditty2:
+	note A_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	note D_, 1
+	rest 1
 	sound_ret

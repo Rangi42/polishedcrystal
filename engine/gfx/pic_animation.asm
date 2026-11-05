@@ -267,10 +267,13 @@ PokeAnim_DoAnimScript:
 
 .RunAnim:
 	call PokeAnim_ReadAnimCmd
+	assert endanim_command == -1
 	inc a ; $ff endanim
 	jr z, PokeAnim_End
+	assert setrepeat_command == -2
 	inc a ; $fe setrepeat
 	jr z, .SetRepeat
+	assert dorepeat_command == -3
 	inc a ; $fd dorepeat
 	jr z, .DoRepeat
 	call PokeAnim_GetFrame
@@ -331,23 +334,19 @@ PokeAnim_StopWaitAnim:
 	ret
 
 PokeAnim_ReadAnimCmd:
-	ld a, [wPokeAnimFrame]
-	ld e, a
-	ld d, $0
-	ld hl, wPokeAnimPointerAddr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	add hl, de
-	add hl, de
-	ld a, [wPokeAnimPointerBank]
-	call GetFarWord
-	ld a, h
-	ld [wPokeAnimParameter], a
-	ld a, l
-	ld [wPokeAnimCommand], a
 	ld hl, wPokeAnimFrame
+	ld a, [hl]
 	inc [hl]
+	add a
+	add LOW(wPokeAnimDecompressed + 1)
+	ld l, a
+	adc HIGH(wPokeAnimDecompressed + 1)
+	sub l
+	ld h, a
+	ld a, [hld]
+	ld [wPokeAnimParameter], a
+	ld a, [hl]
+	ld [wPokeAnimCommand], a
 	ret
 
 PokeAnim_GetBitmaskIndex:
@@ -738,10 +737,66 @@ GetMonAnimPointer:
 	add hl, bc
 	ld [wPokeAnimPointerBank], a
 	call GetFarWord
-	ld a, l
-	ld [wPokeAnimPointerAddr], a
-	ld a, h
-	ld [wPokeAnimPointerAddr + 1], a
+	ld de, wPokeAnimDecompressed
+
+.loop
+	ld a, [wPokeAnimPointerBank]
+	call GetFarByte
+	inc hl
+	ld b, a ; the compressed byte
+	assert PIC_ANIM_CMD_MASK == %01100000
+rept 3
+	rlca
+endr
+	and (PIC_ANIM_CMD_MASK << 3) >> 8 ; %11
+	jr z, .decode_frame
+	dec a
+	jr z, .decode_setrepeat
+	dec a
+	jr z, .decode_dorepeat
+
+; frame with implicit duration
+	ld a, b
+	and PIC_ANIM_PARAM_MASK
+	ld [de], a
+	inc de
+	ld a, IMPLICIT_FRAME_DURATION
+	jr .check_end
+
+.decode_setrepeat
+	ld a, setrepeat_command
+	jr .decode_repeat
+
+.decode_dorepeat
+	ld a, dorepeat_command
+.decode_repeat
+	ld [de], a
+	inc de
+	ld a, b
+	and PIC_ANIM_PARAM_MASK
+	jr .check_end
+
+.decode_frame
+	ld a, b
+	assert PIC_ANIM_END_MASK == 1 << 7
+	bit 7, b
+	jr nz, .end_anim
+	and PIC_ANIM_PARAM_MASK
+	ld [de], a
+	inc de
+	ld a, [wPokeAnimPointerBank]
+	call GetFarByte
+	inc hl
+	ld b, a
+	and ~PIC_ANIM_END_MASK
+.check_end
+	ld [de], a
+	inc de
+	bit 7, b
+	jr z, .loop
+.end_anim
+	ld a, endanim_command
+	ld [de], a
 	ret
 
 GetMonFramesPointer:

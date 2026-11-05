@@ -1257,9 +1257,9 @@ wRuinsOfAlphKabutoChamberSceneID:: db
 wRuinsOfAlphOmanyteChamberSceneID:: db
 wRuinsOfAlphOutsideSceneID:: db
 wRuinsOfAlphResearchCenterSceneID:: db
-wSeagallopFerryNavelGateSceneID:: db
-wSeagallopFerryShamoutiGateSceneID:: db
-wSeagallopFerryVermilionGateSceneID:: db
+wSeagallopFerryGatesSceneID:: db
+wCableCarGatesSceneID:: db
+	ds 1 ; unused
 wShamoutiHotelRestaurantSceneID:: db
 wSproutTower3FSceneID:: db
 wTeamRocketBaseB2FSceneID:: db
@@ -1633,14 +1633,12 @@ wPokeAnimSceneIndex:: db
 wPokeAnimPointer:: dw
 wPokeAnimSpecies:: db
 wPokeAnimVariant:: db
-	ds 1 ; unused
 wPokeAnimGraphicStartTile:: db
 wPokeAnimCoord:: dw
 wPokeAnimFrontpicHeight:: db
 wPokeAnimIdleFlag:: db
 wPokeAnimSpeed:: db
 wPokeAnimPointerBank:: db
-wPokeAnimPointerAddr:: dw
 wPokeAnimFramesBank:: db
 wPokeAnimFramesAddr:: dw
 wPokeAnimBitmaskBank:: db
@@ -1652,12 +1650,11 @@ wPokeAnimCurBitmask:: db
 wPokeAnimWaitCounter:: db
 wPokeAnimCommand:: db
 wPokeAnimParameter:: db
-	ds 1 ; unused
 wPokeAnimBitmaskCurCol:: db
 wPokeAnimBitmaskCurRow:: db
 wPokeAnimBitmaskCurBit:: db
 wPokeAnimBitmaskBuffer:: ds 7
-	ds 2 ; unused
+wPokeAnimDecompressed:: ds MAX_PIC_ANIM_LENGTH * 2
 wPokeAnimStructEnd::
 
 
@@ -1928,7 +1925,7 @@ wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::
 
 
-SECTION "Scratch RAM", WRAMX
+SECTION "Scratch RAM", WRAMX, ALIGN[12]
 
 UNION
 wDecompressScratch:: ds $100 tiles

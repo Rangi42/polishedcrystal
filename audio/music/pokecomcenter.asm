@@ -22,27 +22,7 @@ Music_PokeComCenter_Ch1:
 	note B_, 4
 Music_PokeComCenter_branch_179642:
 	octave 3
-	note E_, 2
-	note C_, 2
-	note E_, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note G_, 2
-	note B_, 2
-	note A_, 2
-	note G_, 2
-	note A_, 2
-	note G_, 2
-	note F_, 2
-	note E_, 2
-	note D_, 2
-	note E_, 2
-	note F_, 2
-	note G_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
+	sound_call Music_PokeComCenter_Ch1_ditty1
 	note B_, 2
 	note G_, 2
 	note A_, 2
@@ -58,27 +38,7 @@ Music_PokeComCenter_branch_179642:
 	note B_, 2
 	note A_, 2
 	note G_, 2
-	note E_, 2
-	note C_, 2
-	note E_, 2
-	octave 4
-	note C_, 2
-	octave 3
-	note G_, 2
-	note B_, 2
-	note A_, 2
-	note G_, 2
-	note A_, 2
-	note G_, 2
-	note F_, 2
-	note E_, 2
-	note D_, 2
-	note E_, 2
-	note F_, 2
-	note G_, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
+	sound_call Music_PokeComCenter_Ch1_ditty1
 	note B_, 4
 	note A_, 2
 	note G_, 2
@@ -167,38 +127,7 @@ Music_PokeComCenter_Ch2:
 	note B_, 2
 Music_PokeComCenter_branch_1796d6:
 	octave 2
-	note C_, 2
-	note E_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note E_, 2
-	note C_, 2
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	note D_, 2
-	note G_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note F_, 2
-	note G_, 2
+	sound_call Music_PokeComCenter_Ch2_ditty2
 	note E_, 2
 	note G_, 2
 	note E_, 2
@@ -209,38 +138,7 @@ Music_PokeComCenter_branch_1796d6:
 	note G_, 2
 	octave 2
 	note G_, 2
-	note C_, 2
-	note E_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note E_, 2
-	note C_, 2
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	note D_, 2
-	note G_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
-	note F_, 2
-	note G_, 2
+	sound_call Music_PokeComCenter_Ch2_ditty2
 	note C_, 2
 	note E_, 2
 	octave 1
@@ -251,75 +149,11 @@ Music_PokeComCenter_branch_1796d6:
 	note A_, 2
 	note G_, 2
 	note F_, 2
-	note E_, 2
+	sound_call Music_PokeComCenter_Ch2_ditty1
 	note G_, 2
 	note C_, 2
 	note G_, 2
-	note E_, 2
-	note G_, 2
-	note C_, 2
-	note G_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note D_, 2
-	note F_, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F_, 2
-	note D_, 2
-	note F_, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F_, 2
-	note E_, 2
-	note G_, 2
-	note C_, 2
-	note G_, 2
-	note E_, 2
-	note G_, 2
-	note C_, 2
-	note G_, 2
-	note E_, 2
-	note G_, 2
-	note C_, 2
-	note G_, 2
-	note E_, 2
-	note G_, 2
-	note C_, 2
-	note G_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note D_, 2
-	note F_, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F_, 2
-	note D_, 2
-	note F_, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F_, 2
-	note E_, 2
-	note G_, 2
-	note C_, 2
-	note G_, 2
-	note E_, 2
+	sound_call Music_PokeComCenter_Ch2_ditty1
 	note F_, 2
 	note E_, 2
 	note D_, 2
@@ -338,37 +172,7 @@ Music_PokeComCenter_Ch3:
 	note D_, 4
 	note_type 12, 2, 5
 Music_PokeComCenter_branch_179788:
-	note C_, 2
-	octave 4
-	note G_, 2
-	octave 5
-	note C_, 2
-	note G_, 4
-	note F_, 4
-	note E_, 2
-	note D_, 2
-	octave 4
-	note B_, 6
-	note_type 12, 1, 0
-	octave 6
-	note G_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	octave 7
-	note D_, 1
-	rest 3
-	note_type 12, 2, 5
-	octave 4
-	note B_, 2
-	note G_, 2
-	note B_, 2
-	octave 5
-	note E_, 4
-	note D_, 4
-	octave 4
-	note B_, 2
-	octave 5
+	sound_call Music_PokeComCenter_Ch3_ditty1
 	note C_, 2
 	note E_, 6
 	octave 4
@@ -377,37 +181,7 @@ Music_PokeComCenter_branch_179788:
 	note D_, 2
 	note E_, 2
 	octave 5
-	note C_, 2
-	octave 4
-	note G_, 2
-	octave 5
-	note C_, 2
-	note G_, 4
-	note F_, 4
-	note E_, 2
-	note D_, 2
-	octave 4
-	note B_, 6
-	note_type 12, 1, 0
-	octave 6
-	note G_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	octave 7
-	note D_, 1
-	rest 3
-	note_type 12, 2, 5
-	octave 4
-	note B_, 2
-	note G_, 2
-	note B_, 2
-	octave 5
-	note E_, 4
-	note D_, 4
-	octave 4
-	note B_, 2
-	octave 5
+	sound_call Music_PokeComCenter_Ch3_ditty1
 	note C_, 8
 	octave 4
 	note G_, 2
@@ -482,3 +256,132 @@ Music_PokeComCenter_branch_179813:
 	drum_note 2, 1
 	drum_note 2, 1
 	sound_jump Music_PokeComCenter_branch_179813
+
+Music_PokeComCenter_Ch1_ditty1:
+	note E_, 2
+	note C_, 2
+	note E_, 2
+	octave 4
+	note C_, 2
+	octave 3
+	note G_, 2
+	note B_, 2
+	note A_, 2
+	note G_, 2
+	note A_, 2
+	note G_, 2
+	note F_, 2
+	note E_, 2
+	note D_, 2
+	note E_, 2
+	note F_, 2
+	note G_, 2
+	note G_, 2
+	note D_, 2
+	note G_, 2
+	sound_ret
+
+Music_PokeComCenter_Ch2_ditty1:
+	note E_, 2
+	note G_, 2
+	note C_, 2
+	note G_, 2
+	note E_, 2
+	note G_, 2
+	note C_, 2
+	note G_, 2
+	note F_, 2
+	note A_, 2
+	note C_, 2
+	note A_, 2
+	note F_, 2
+	note A_, 2
+	note C_, 2
+	note A_, 2
+	note D_, 2
+	note F_, 2
+	octave 1
+	note B_, 2
+	octave 2
+	note F_, 2
+	note D_, 2
+	note F_, 2
+	octave 1
+	note B_, 2
+	octave 2
+	note F_, 2
+	note E_, 2
+	note G_, 2
+	note C_, 2
+	note G_, 2
+	note E_, 2
+	sound_ret
+
+Music_PokeComCenter_Ch2_ditty2:
+	note C_, 2
+	note E_, 2
+	octave 1
+	note G_, 2
+	octave 2
+	note E_, 2
+	note C_, 2
+	note E_, 2
+	note F_, 2
+	note E_, 2
+	note D_, 2
+	note G_, 2
+	octave 1
+	note G_, 2
+	octave 2
+	note G_, 2
+	note D_, 2
+	note G_, 2
+	octave 1
+	note G_, 2
+	octave 2
+	note G_, 2
+	note D_, 2
+	note G_, 2
+	octave 1
+	note G_, 2
+	octave 2
+	note G_, 2
+	note D_, 2
+	note G_, 2
+	note F_, 2
+	note G_, 2
+	sound_ret
+
+Music_PokeComCenter_Ch3_ditty1:
+	note C_, 2
+	octave 4
+	note G_, 2
+	octave 5
+	note C_, 2
+	note G_, 4
+	note F_, 4
+	note E_, 2
+	note D_, 2
+	octave 4
+	note B_, 6
+	note_type 12, 1, 0
+	octave 6
+	note G_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	octave 7
+	note D_, 1
+	rest 3
+	note_type 12, 2, 5
+	octave 4
+	note B_, 2
+	note G_, 2
+	note B_, 2
+	octave 5
+	note E_, 4
+	note D_, 4
+	octave 4
+	note B_, 2
+	octave 5
+	sound_ret

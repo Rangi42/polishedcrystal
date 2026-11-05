@@ -143,21 +143,9 @@ Music_SproutTower_Ch3:
 	vibrato 20, 14, 8
 	note_type 12, 1, 4
 	octave 3
-	note F_, 2
-	rest 2
-	note C_, 2
-	note F_, 2
+	sound_call Music_SproutTower_Ch3_ditty1
 	note F#, 2
-	note D#, 2
-	rest 2
-	note F#, 2
-	note F_, 2
-	rest 2
-	note C_, 2
-	note F_, 2
-	note F#, 2
-	note D#, 2
-	rest 2
+	sound_call Music_SproutTower_Ch3_ditty1
 	note F#, 2
 	stereo_panning TRUE, FALSE
 Music_SproutTower_branch_f6a3e:
@@ -168,13 +156,7 @@ Music_SproutTower_branch_f6a3e:
 	note D#, 2
 	rest 2
 	note F#, 2
-	note F_, 2
-	rest 2
-	note C_, 2
-	note F_, 2
-	note F#, 2
-	note D#, 2
-	rest 2
+	sound_call Music_SproutTower_Ch3_ditty1
 	note F_, 2
 	note D#, 2
 	rest 2
@@ -186,13 +168,7 @@ Music_SproutTower_branch_f6a3e:
 	note D#, 2
 	rest 2
 	note F#, 2
-	note F_, 2
-	rest 2
-	note C_, 2
-	note F_, 2
-	note F#, 2
-	note D#, 2
-	rest 2
+	sound_call Music_SproutTower_Ch3_ditty1
 	note F#, 2
 	note F_, 8
 	note F#, 4
@@ -201,21 +177,9 @@ Music_SproutTower_branch_f6a3e:
 	note F_, 4
 	note F#, 4
 	note F_, 16
+	sound_call Music_SproutTower_Ch3_ditty1
 	note F_, 2
-	rest 2
-	note C_, 2
-	note F_, 2
-	note F#, 2
-	note D#, 2
-	rest 2
-	note F_, 2
-	note F_, 2
-	rest 2
-	note C_, 2
-	note F_, 2
-	note F#, 2
-	note D#, 2
-	rest 2
+	sound_call Music_SproutTower_Ch3_ditty1
 	note F_, 2
 	sound_jump Music_SproutTower_branch_f6a3e
 
@@ -241,3 +205,13 @@ Music_SproutTower_branch_f6a7f:
 	stereo_panning TRUE, TRUE
 	drum_note 7, 4
 	sound_jump Music_SproutTower_branch_f6a7f
+
+Music_SproutTower_Ch3_ditty1:
+	note F_, 2
+	rest 2
+	note C_, 2
+	note F_, 2
+	note F#, 2
+	note D#, 2
+	rest 2
+	sound_ret
