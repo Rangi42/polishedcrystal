@@ -245,7 +245,7 @@ def grayscale_colormap(x: float) -> Color:
 	"""
 	return rgb(x, x, x)
 
-@register_colormap("binvis", (0x00, 0x00, 0x00), ((0x0d, 0x08, 0x87), (0xf0, 0xf9, 0x21)))
+@register_colormap("binvis", (0x00, 0x40, 0x00), ((0x00, 0x00, 0x00), (0xff, 0x00, 0xff)))
 def binvis_colormap(x: float) -> Color:
 	"""
 	Binvis colormap. Adapted from binvis.io <https://binvis.io/>.
