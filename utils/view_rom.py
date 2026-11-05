@@ -164,10 +164,10 @@ def calculate_colors(
 	"""
 	Calculate the RGB color for each byte of the ROM.
 	"""
-	colormapper, free_color, binary_colors = colormaps[colormap_name]
+	colormapper, free_color = colormaps[colormap_name]
 	# If there are no ROM contents, just color pixels binarily as free or used
 	if contents is None:
-		return [binary_colors[flag] for flag in used_space]
+		return [colormapper(float(flag)) for flag in used_space]
 	# Derive values from the ROM contents for each pixel to be mapped to colors
 	if entropy_win_len is not None:
 		values = calculate_entropy(contents, entropy_win_len)
@@ -221,6 +221,8 @@ def write_png(filename: str, pixels: list[list[Color]]) -> None:
 
 ############################## Colormap functions ##############################
 
+ColorStops: TypeAlias = tuple[tuple[float, Color], ...]
+
 ColorMapper: TypeAlias = Callable[[float], Color]
 
 colormaps: dict[str, tuple[ColorMapper, Color, tuple[Color, Color]]] = {}
@@ -228,74 +230,145 @@ colormaps: dict[str, tuple[ColorMapper, Color, tuple[Color, Color]]] = {}
 def register_colormap(
 	name: str,
 	free_color: Color,
-	binary_colors: tuple[Color, Color]
 ) -> Callable[[ColorMapper], ColorMapper]:
 	"""
-	Register a colormap function along with its associated free and binary colors.
+	Register a colormap function along with its associated free space color.
 	"""
 	def decorator(colormapper: ColorMapper) -> ColorMapper:
-		colormaps[name] = (colormapper, free_color, binary_colors)
+		colormaps[name] = (colormapper, free_color)
 		return colormapper
 	return decorator
 
-@register_colormap("grayscale", (0x12, 0x34, 0x56), ((0xff, 0xff, 0xff), (0x00, 0x00, 0x00)))
+@register_colormap("grayscale", (0x12, 0x34, 0x56))
 def grayscale_colormap(x: float) -> Color:
 	"""
 	Grayscale colormap.
 	"""
 	return rgb(x, x, x)
 
-@register_colormap("binvis", (0x00, 0x40, 0x00), ((0x00, 0x00, 0x00), (0xff, 0x00, 0xff)))
+@register_colormap("binvis", (0x00, 0x40, 0x00))
 def binvis_colormap(x: float) -> Color:
 	"""
 	Binvis colormap. Adapted from binvis.io <https://binvis.io/>.
 	"""
 	return rgb((2 * x - 1)**4 * (2 * x - 3)**4 if x > 0.5 else 0, 0, x**2)
 
-@register_colormap("viridis", (0x00, 0x00, 0x00), ((0x44, 0x01, 0x53), (0xfd, 0xe7, 0x24)))
+@register_colormap("viridis", (0x00, 0x00, 0x00))
 def viridis_colormap(x: float) -> Color:
 	"""
 	Viridis colormap. Adapted from Matplotlib.
 	"""
-	xp = [0.0,   0.15,  0.3,   0.5,   0.7,   0.85,  1.0  ]
-	rp = [0.267, 0.282, 0.255, 0.129, 0.220, 0.553, 0.993]
-	gp = [0.005, 0.125, 0.264, 0.402, 0.607, 0.745, 0.906]
-	bp = [0.329, 0.384, 0.430, 0.431, 0.354, 0.230, 0.144]
-	r = interp(x, xp, rp)
-	g = interp(x, xp, gp)
-	b = interp(x, xp, bp)
-	return rgb(r, g, b)
+	return interpolate_color(x, viridis_stops)
 
-@register_colormap("plasma", (0x00, 0x00, 0x00), ((0x0d, 0x08, 0x87), (0xf0, 0xf9, 0x21)))
+viridis_stops: ColorStops = (
+	(  0 / 255, (0x44, 0x01, 0x54)),
+	( 29 / 255, (0x48, 0x29, 0x79)),
+	( 57 / 255, (0x3e, 0x4a, 0x89)),
+	( 91 / 255, (0x2e, 0x6e, 0x8e)),
+	(129 / 255, (0x20, 0x92, 0x8c)),
+	(143 / 255, (0x1f, 0x9f, 0x88)),
+	(154 / 255, (0x23, 0xa9, 0x83)),
+	(170 / 255, (0x35, 0xb7, 0x79)),
+	(188 / 255, (0x56, 0xc6, 0x67)),
+	(208 / 255, (0x84, 0xd4, 0x4b)),
+	(238 / 255, (0xd2, 0xe2, 0x1b)),
+	(246 / 255, (0xe7, 0xe4, 0x19)),
+	(255 / 255, (0xfd, 0xe7, 0x25)),
+)
+
+@register_colormap("plasma", (0x00, 0x00, 0x00))
 def plasma_colormap(x: float) -> Color:
 	"""
 	Plasma colormap. Adapted from Matplotlib.
 	"""
-	xp = [0.0,      0.5,      0.75,     0.9,      1.0     ]
-	rp = [0.050383, 0.417431, 0.688944, 0.894105, 0.940041]
-	gp = [0.029803, 0.000564, 0.188128, 0.443743, 0.975228]
-	bp = [0.527975, 0.658397, 0.579130, 0.364408, 0.131259]
-	r = interp(x, xp, rp)
-	g = interp(x, xp, gp)
-	b = interp(x, xp, bp)
-	return rgb(r, g, b)
+	return interpolate_color(x, plasma_stops)
 
-@register_colormap("coolwarm", (0x00, 0x00, 0x00), ((0x3a, 0x4c, 0xc0), (0xb3, 0x03, 0x26)))
+plasma_stops: ColorStops = (
+	(  0 / 255, (0x0d, 0x08, 0x87)),
+	( 11 / 255, (0x28, 0x05, 0x92)),
+	( 32 / 255, (0x4c, 0x02, 0xa1)),
+	( 63 / 255, (0x7d, 0x03, 0xa8)),
+	( 88 / 255, (0xa0, 0x1a, 0x9c)),
+	(134 / 255, (0xd1, 0x4e, 0x72)),
+	(171 / 255, (0xed, 0x7a, 0x52)),
+	(202 / 255, (0xfc, 0xa3, 0x38)),
+	(227 / 255, (0xfd, 0xca, 0x26)),
+	(250 / 255, (0xf3, 0xf0, 0x27)),
+	(255 / 255, (0xf0, 0xf9, 0x21)),
+)
+
+@register_colormap("coolwarm", (0x00, 0x00, 0x00))
 def coolwarm_colormap(x: float) -> Color:
 	"""
 	Coolwarm colormap. Adapted from Matplotlib.
 	"""
-	#    [blue,   gray,   red   ]
-	xp = [0.0,    0.5,    1.0   ]
-	rp = [0.2298, 0.8674, 0.7057]
-	gp = [0.2987, 0.8644, 0.0156]
-	bp = [0.7537, 0.8626, 0.1502]
-	r = interp(x, xp, rp)
-	g = interp(x, xp, gp)
-	b = interp(x, xp, bp)
-	return rgb(r, g, b)
+	return interpolate_color(x, coolwarm_stops)
 
-@register_colormap("cubehelix", (0x10, 0x10, 0x18), ((0xff, 0xff, 0xff), (0x00, 0x00, 0x00)))
+coolwarm_stops: ColorStops = (
+	(  0 / 255, (0x3b, 0x4c, 0xc0)),
+	( 32 / 255, (0x62, 0x82, 0xea)),
+	( 48 / 255, (0x77, 0x9a, 0xf7)),
+	( 64 / 255, (0x8d, 0xb0, 0xfe)),
+	( 80 / 255, (0xa3, 0xc2, 0xfe)),
+	( 96 / 255, (0xb9, 0xd0, 0xf9)),
+	(128 / 255, (0xdd, 0xdc, 0xdc)),
+	(159 / 255, (0xf4, 0xc5, 0xad)),
+	(191 / 255, (0xf4, 0x9a, 0x7b)),
+	(215 / 255, (0xe5, 0x70, 0x58)),
+	(239 / 255, (0xcb, 0x3e, 0x38)),
+	(247 / 255, (0xc0, 0x28, 0x2f)),
+	(255 / 255, (0xb4, 0x04, 0x26)),
+)
+
+@register_colormap("spectral", (0x00, 0x00, 0x00))
+def spectral_colormap(x: float) -> Color:
+	"""
+	Spectral colormap. Adapted from Matplotlib.
+	"""
+	return interpolate_color(x, spectral_stops)
+
+spectral_stops: ColorStops = (
+	(0.0, (0x9e, 0x01, 0x42)),
+	(0.1, (0xd5, 0x3e, 0x4f)),
+	(0.2, (0xf4, 0x6d, 0x43)),
+	(0.3, (0xfd, 0xae, 0x61)),
+	(0.4, (0xfe, 0xe0, 0x8b)),
+	(0.5, (0xff, 0xff, 0xbf)),
+	(0.6, (0xe6, 0xf5, 0x98)),
+	(0.7, (0xab, 0xdd, 0xa4)),
+	(0.8, (0x66, 0xc2, 0xa5)),
+	(0.9, (0x32, 0x88, 0xbd)),
+	(1.0, (0x5e, 0x4f, 0xa2)),
+)
+
+@register_colormap("managua", (0x00, 0x00, 0x00))
+def managua_colormap(x: float) -> Color:
+	"""
+	Managua colormap. Adapted from "Scientific colour maps" (Fabio Crameri, 2023).
+	"""
+	return interpolate_color(x, managua_stops)
+
+managua_stops: ColorStops = (
+	(  0 / 255, (0xff, 0xcf, 0x67)),
+	( 16 / 255, (0xeb, 0xb0, 0x5d)),
+	( 32 / 255, (0xd8, 0x93, 0x53)),
+	( 48 / 255, (0xc5, 0x79, 0x4a)),
+	( 64 / 255, (0xb1, 0x62, 0x43)),
+	( 80 / 255, (0x9a, 0x4c, 0x3d)),
+	( 96 / 255, (0x81, 0x39, 0x39)),
+	(112 / 255, (0x69, 0x2b, 0x3c)),
+	(128 / 255, (0x58, 0x29, 0x49)),
+	(143 / 255, (0x4e, 0x32, 0x60)),
+	(159 / 255, (0x4c, 0x45, 0x7f)),
+	(175 / 255, (0x50, 0x5d, 0x9c)),
+	(191 / 255, (0x57, 0x75, 0xb3)),
+	(207 / 255, (0x60, 0x8e, 0xc7)),
+	(223 / 255, (0x6b, 0xaa, 0xda)),
+	(239 / 255, (0x76, 0xc7, 0xec)),
+	(255 / 255, (0x81, 0xe7, 0xff)),
+)
+
+@register_colormap("cubehelix", (0x10, 0x10, 0x18))
 def cubehelix_colormap(x: float) -> Color:
 	"""
 	Cubehelix colormap. Adapted from
@@ -311,7 +384,7 @@ def cubehelix_colormap(x: float) -> Color:
 	b = x + amp * ( 1.97294 * c)
 	return rgb(r, g, b)
 
-@register_colormap("turbo", (0x00, 0x00, 0x00), ((0xff, 0xff, 0xff), (0x30, 0x12, 0x1b)))
+@register_colormap("turbo", (0x00, 0x00, 0x00))
 def turbo_colormap(x: float) -> Color:
 	"""
 	Turbo colormap. Adapted from Anton Mikhailov
@@ -404,22 +477,29 @@ def zcurve_sort(i: int, width: int) -> Coord:
 
 ############################### Utility functions ##############################
 
-def interp(x: float, xp: list[float], fp: list[float]) -> float:
+def interpolate_color(x: float, stops: ColorStops) -> Color:
 	"""
-	Piecewise interpolate a value between control points.
+	Piecewise interpolate a value into a color between a sequence of control points.
 	"""
-	if x < xp[0]:
-		return fp[0]
-	if x >= xp[-1]:
-		return fp[-1]
-	for i in range(1, len(xp)):
-		if x == xp[i]:
-			return fp[i]
-		if x < xp[i]:
-			break
-	x1, x2 = xp[i - 1], xp[i]
-	y1, y2 = fp[i - 1], fp[i]
-	return y1 + ((x - x1) / (x2 - x1)) * (y2 - y1)
+	if x <= stops[0][0]:
+		return stops[0][1]
+	if x >= stops[-1][0]:
+		return stops[-1][1]
+	lo = 0
+	hi = len(stops) - 1
+	while lo + 1 < hi:
+		mid = (lo + hi) // 2
+		if x < stops[mid][0]:
+			hi = mid
+		else:
+			lo = mid
+	x0, c0 = stops[lo]
+	x1, c1 = stops[hi]
+	t = (x - x0) / (x1 - x0)
+	r = round(c0[0] + (c1[0] - c0[0]) * t)
+	g = round(c0[1] + (c1[1] - c0[1]) * t)
+	b = round(c0[2] + (c1[2] - c0[2]) * t)
+	return (r, g, b)
 
 def clamp(x: float) -> float:
 	"""
