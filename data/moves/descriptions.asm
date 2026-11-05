@@ -527,8 +527,8 @@ WillOWispDescription:
 	done
 
 ThunderWaveDescription:
-	db   "A move that"
-	next "paralyzes the foe.@"
+	text "A move that"
+	next "paralyzes the foe."
 	done
 
 StunSporeDescription:
