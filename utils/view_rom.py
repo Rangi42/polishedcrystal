@@ -243,7 +243,7 @@ def grayscale_colormap(x: float) -> Color:
 	"""
 	Grayscale colormap.
 	"""
-	return (int(x * 255),) * 3
+	return rgb(x, x, x)
 
 @register_colormap("viridis", (0x00, 0x00, 0x00), ((0x44, 0x01, 0x53), (0xfd, 0xe7, 0x24)))
 def viridis_colormap(x: float) -> Color:
@@ -257,7 +257,7 @@ def viridis_colormap(x: float) -> Color:
 	r = interp(x, xp, rp)
 	g = interp(x, xp, gp)
 	b = interp(x, xp, bp)
-	return (int(r * 255), int(g * 255), int(b * 255))
+	return rgb(r, g, b)
 
 @register_colormap("plasma", (0x00, 0x00, 0x00), ((0x0d, 0x08, 0x87), (0xf0, 0xf9, 0x21)))
 def plasma_colormap(x: float) -> Color:
@@ -271,7 +271,7 @@ def plasma_colormap(x: float) -> Color:
 	r = interp(x, xp, rp)
 	g = interp(x, xp, gp)
 	b = interp(x, xp, bp)
-	return (int(r * 255), int(g * 255), int(b * 255))
+	return rgb(r, g, b)
 
 @register_colormap("coolwarm", (0x00, 0x00, 0x00), ((0x3a, 0x4c, 0xc0), (0xb3, 0x03, 0x26)))
 def coolwarm_colormap(x: float) -> Color:
@@ -286,7 +286,37 @@ def coolwarm_colormap(x: float) -> Color:
 	r = interp(x, xp, rp)
 	g = interp(x, xp, gp)
 	b = interp(x, xp, bp)
-	return (int(r * 255), int(g * 255), int(b * 255))
+	return rgb(r, g, b)
+
+@register_colormap("cubehelix", (0x10, 0x10, 0x18), ((0xff, 0xff, 0xff), (0x00, 0x00, 0x00)))
+def cubehelix_colormap(x: float) -> Color:
+	"""
+	Cubehelix colormap. Adapted from
+	"A colour scheme for the display of astronomical intensity images" (Dave Green, 2011).
+	"""
+	x = max(0.0, min(1.0, x))
+	angle = math.tau * (0.5 / 3 - 1.5 * x)
+	amp = x * (1 - x) / 2
+	c = math.cos(angle)
+	s = math.sin(angle)
+	r = x + amp * (-0.14861 * c + 1.78277 * s)
+	g = x + amp * (-0.29227 * c - 0.90649 * s)
+	b = x + amp * ( 1.97294 * c)
+	return rgb(r, g, b)
+
+@register_colormap("turbo", (0x00, 0x00, 0x00), ((0xff, 0xff, 0xff), (0x30, 0x12, 0x1b)))
+def turbo_colormap(x: float) -> Color:
+	"""
+	Turbo colormap. Adapted from Anton Mikhailov
+	<https://research.google/blog/turbo-an-improved-rainbow-colormap-for-visualization/>.
+	"""
+	r = 0.13572138 + x * (4.615392600 + x * (-42.66032258 +
+		x * (132.13108234 + x * (-152.94239396 + x * 59.28637943))))
+	g = 0.09140261 + x * (2.194188390 + x * (  4.84296658 +
+		x * (-14.18503333 + x * (   4.27729857 + x *  2.82956604))))
+	b = 0.10667330 + x * (12.64194608 + x * (-60.58204836 +
+		x * (110.36276771 + x * ( -89.90310912 + x * 27.34824973))))
+	return rgb(r, g, b)
 
 
 ############################### Sorter functions ###############################
@@ -384,9 +414,22 @@ def interp(x: float, xp: list[float], fp: list[float]) -> float:
 	y1, y2 = fp[i - 1], fp[i]
 	return y1 + ((x - x1) / (x2 - x1)) * (y2 - y1)
 
+def channel(c: float) -> int:
+	"""
+	Map [0.0, 1.0] to [0, 255] for color channels.
+	"""
+	return round(max(0.0, min(1.0, c)) * 255)
+
+def rgb(r: float, g: float, b: float) -> Color:
+	"""
+	Map three RGB color channels to a Color tuple.
+	"""
+	return (channel(r), channel(g), channel(b))
+
 def calculate_entropy(contents: bytes, win_len: int) -> list[float]:
 	"""
 	Estimate the Shannon entropy around each ROM byte.
+	Inspired by binvis.io <https://binvis.io/>.
 	"""
 	length = len(contents)
 	# Use the entire input if it is shorter than the requested window
