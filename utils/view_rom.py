@@ -95,6 +95,8 @@ def parse_args() -> argparse.Namespace:
 			parser.error("at least one input file is required: -r/--rom or -m/--map")
 		elif args.entropy is not None:
 			parser.error("a -r/--rom input file is required with -e/--entropy")
+	if args.entropy is not None and args.entropy < 1:
+		parser.error(f"argument -e/--entropy: invalid value: {args.entropy}")
 	return args
 
 def read_rom(filename: str) -> bytes:
@@ -225,7 +227,7 @@ ColorStops: TypeAlias = tuple[tuple[float, Color], ...]
 
 ColorMapper: TypeAlias = Callable[[float], Color]
 
-colormaps: dict[str, tuple[ColorMapper, Color, tuple[Color, Color]]] = {}
+colormaps: dict[str, tuple[ColorMapper, Color]] = {}
 
 def register_colormap(
 	name: str,
@@ -533,10 +535,10 @@ def calculate_entropy(contents: bytes, win_len: int) -> list[float]:
 	for byte in contents[:win_len]:
 		histogram[byte] += 1
 	# Precalculate n * log2(n), defining 0 * log2(0) as zero.
-	n_log_n = [0] + [n * math.log2(n) for n in range(1, win_len + 1)]
+	n_log_n = [0.0] + [n * math.log2(n) for n in range(1, win_len + 1)]
 	total = sum(n_log_n[n] for n in histogram)
 	log_win = math.log2(win_len)
-	entropy = [0] * length
+	entropy = [0.0] * length
 	last = length - right - 1
 	# Calculate entropy around each byte over a sliding window
 	for start in range(length - win_len + 1):
