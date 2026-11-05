@@ -245,6 +245,13 @@ def grayscale_colormap(x: float) -> Color:
 	"""
 	return rgb(x, x, x)
 
+@register_colormap("binvis", (0x00, 0x00, 0x00), ((0x0d, 0x08, 0x87), (0xf0, 0xf9, 0x21)))
+def binvis_colormap(x: float) -> Color:
+	"""
+	Binvis colormap. Adapted from binvis.io <https://binvis.io/>.
+	"""
+	return rgb((2 * x - 1)**4 * (2 * x - 3)**4 if x > 0.5 else 0, 0, x**2)
+
 @register_colormap("viridis", (0x00, 0x00, 0x00), ((0x44, 0x01, 0x53), (0xfd, 0xe7, 0x24)))
 def viridis_colormap(x: float) -> Color:
 	"""
@@ -294,7 +301,7 @@ def cubehelix_colormap(x: float) -> Color:
 	Cubehelix colormap. Adapted from
 	"A colour scheme for the display of astronomical intensity images" (Dave Green, 2011).
 	"""
-	x = max(0.0, min(1.0, x))
+	x = clamp(x)
 	angle = math.tau * (0.5 / 3 - 1.5 * x)
 	amp = x * (1 - x) / 2
 	c = math.cos(angle)
@@ -414,11 +421,17 @@ def interp(x: float, xp: list[float], fp: list[float]) -> float:
 	y1, y2 = fp[i - 1], fp[i]
 	return y1 + ((x - x1) / (x2 - x1)) * (y2 - y1)
 
+def clamp(x: float) -> float:
+	"""
+	Clamp x between 0 and 1.
+	"""
+	return max(0, min(1, x))
+
 def channel(c: float) -> int:
 	"""
-	Map [0.0, 1.0] to [0, 255] for color channels.
+	Map [0, 1] to [0, 255] for color channels.
 	"""
-	return round(max(0.0, min(1.0, c)) * 255)
+	return round(clamp(c) * 255)
 
 def rgb(r: float, g: float, b: float) -> Color:
 	"""
@@ -429,7 +442,6 @@ def rgb(r: float, g: float, b: float) -> Color:
 def calculate_entropy(contents: bytes, win_len: int) -> list[float]:
 	"""
 	Estimate the Shannon entropy around each ROM byte.
-	Inspired by binvis.io <https://binvis.io/>.
 	"""
 	length = len(contents)
 	# Use the entire input if it is shorter than the requested window
@@ -441,16 +453,16 @@ def calculate_entropy(contents: bytes, win_len: int) -> list[float]:
 	for byte in contents[:win_len]:
 		histogram[byte] += 1
 	# Precalculate n * log2(n), defining 0 * log2(0) as zero.
-	n_log_n = [0.0] + [n * math.log2(n) for n in range(1, win_len + 1)]
+	n_log_n = [0] + [n * math.log2(n) for n in range(1, win_len + 1)]
 	total = sum(n_log_n[n] for n in histogram)
 	log_win = math.log2(win_len)
-	entropy = [0.0] * length
+	entropy = [0] * length
 	last = length - right - 1
 	# Calculate entropy around each byte over a sliding window
 	for start in range(length - win_len + 1):
 		center = start + left
 		value = (log_win - total / win_len) / 8
-		entropy[center] = max(0.0, min(1.0, value))
+		entropy[center] = clamp(value)
 		if start + win_len < length:
 			outgoing = contents[start]
 			count = histogram[outgoing]
