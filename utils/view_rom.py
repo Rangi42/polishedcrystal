@@ -5,8 +5,9 @@
 View a Game Boy ROM as a PNG image.
 
 Usage: view_rom.py -o|--out <out.png> [-r|--rom <in.gbc>] [-m|--map <in.map>]
-                   [-c|--color <colormap>] [-s|--sort <order>]
-                   [-v|--vertical] [-n|--narrow] [-e|--entropy [<win_len>=256]]
+                   [-c|--color <colormap>] [-e|--entropy [<win_len>]]
+                   [-s|--sort <order>] [-b|--banked]
+                   [-v|--vertical] [-n|--narrow]
 """
 
 import argparse
@@ -21,6 +22,13 @@ import png
 
 BANK_SIZE = 0x4000
 
+DEFAULT_ENTROPY_WIN_LEN = 256
+
+DEFAULT_BANK_WIDTH = 1024
+NARROW_BANK_WIDTH = 512
+assert BANK_SIZE % DEFAULT_BANK_WIDTH == 0
+assert BANK_SIZE % NARROW_BANK_WIDTH == 0
+
 
 ############################## Top-level functions #############################
 
@@ -33,7 +41,7 @@ def main() -> None:
 	used_space = read_map(args.map) if args.map else None
 	used_space = pad_space(used_space, contents)
 	colors = calculate_colors(args.color, args.entropy, used_space, contents)
-	pixels = sort_pixels(colors, args.sort, args.vertical, args.narrow)
+	pixels = sort_pixels(colors, args.sort, args.banked, args.vertical, args.narrow)
 	write_png(args.out, pixels)
 
 def parse_args() -> argparse.Namespace:
@@ -64,10 +72,24 @@ def parse_args() -> argparse.Namespace:
 		help="the color scheme"
 	)
 	parser.add_argument(
+		"-e", "--entropy",
+		metavar="win_len",
+		nargs="?",
+		type=int,
+		const=DEFAULT_ENTROPY_WIN_LEN,
+		default=None,
+		help="color pixels by Shannon entropy instead of byte value"
+	)
+	parser.add_argument(
 		"-s", "--sort",
 		choices=list(sorters.keys()),
 		default=list(sorters.keys())[0],
-		help="how to order the pixels in each ROM bank"
+		help="how to order the pixels in the image"
+	)
+	parser.add_argument(
+		"-b", "--banked",
+		action="store_true",
+		help="order the pixels independently within each ROM bank"
 	)
 	parser.add_argument(
 		"-v", "--vertical",
@@ -77,16 +99,8 @@ def parse_args() -> argparse.Namespace:
 	parser.add_argument(
 		"-n", "--narrow",
 		action="store_true",
-		help="render banks as 16x1024 instead of 32x512"
-	)
-	parser.add_argument(
-		"-e", "--entropy",
-		metavar="win_len",
-		nargs="?",
-		type=int,
-		const=256,
-		default=None,
-		help="color pixels by Shannon entropy instead of byte value"
+		help=f"render banks as {NARROW_BANK_WIDTH}x{BANK_SIZE // NARROW_BANK_WIDTH} " +
+			f"instead of {DEFAULT_BANK_WIDTH}x{BANK_SIZE // DEFAULT_BANK_WIDTH}"
 	)
 	# Parse, check, and return the arguments
 	args = parser.parse_args()
@@ -97,6 +111,8 @@ def parse_args() -> argparse.Namespace:
 			parser.error("a -r/--rom input file is required with -e/--entropy")
 	if args.entropy is not None and args.entropy < 1:
 		parser.error(f"argument -e/--entropy: invalid value: {args.entropy}")
+	if args.sort in ["hilbert", "zcurve"] and not args.banked:
+		parser.error(f"-s/--sort {args.sort} requires -b/--banked ordering")
 	return args
 
 def read_rom(filename: str) -> bytes:
@@ -185,18 +201,19 @@ def calculate_colors(
 def sort_pixels(
 	colors: list[Color],
 	sorter_name: str,
+	banked: bool,
 	vertical: bool,
 	narrow: bool
 ) -> list[list[Color]]:
 	"""
 	Sort the image pixels into rows.
 	"""
-	width = 512 if narrow else 1024
-	# Sort from a 1D list of colors to a 2D list of rows of colors.
+	width = NARROW_BANK_WIDTH if narrow else DEFAULT_BANK_WIDTH
+	# Sort from a 1D list of colors to a 2D list of rows of colors
 	pixels = [[colors[0]] * width for _ in range(len(colors) // width)]
 	sorter = sorters[sorter_name]
 	for (i, color) in enumerate(colors):
-		y, x = sorter(i, width)
+		y, x = sorter(i, width, banked)
 		pixels[y][x] = color
 	# Transpose the pixels from vertical to horizontal
 	if not vertical:
@@ -260,9 +277,9 @@ def viridis_colormap(x: float) -> Color:
 	"""
 	Viridis colormap. Adapted from Matplotlib.
 	"""
-	return interpolate_color(x, viridis_stops)
+	return interpolate_color(x, VIRIDIS_STOPS)
 
-viridis_stops: ColorStops = (
+VIRIDIS_STOPS: ColorStops = (
 	(  0 / 255, (0x44, 0x01, 0x54)),
 	( 29 / 255, (0x48, 0x29, 0x79)),
 	( 57 / 255, (0x3e, 0x4a, 0x89)),
@@ -283,9 +300,9 @@ def plasma_colormap(x: float) -> Color:
 	"""
 	Plasma colormap. Adapted from Matplotlib.
 	"""
-	return interpolate_color(x, plasma_stops)
+	return interpolate_color(x, PLASMA_STOPS)
 
-plasma_stops: ColorStops = (
+PLASMA_STOPS: ColorStops = (
 	(  0 / 255, (0x0d, 0x08, 0x87)),
 	( 11 / 255, (0x28, 0x05, 0x92)),
 	( 32 / 255, (0x4c, 0x02, 0xa1)),
@@ -304,9 +321,9 @@ def coolwarm_colormap(x: float) -> Color:
 	"""
 	Coolwarm colormap. Adapted from Matplotlib.
 	"""
-	return interpolate_color(x, coolwarm_stops)
+	return interpolate_color(x, COOLWARM_STOPS)
 
-coolwarm_stops: ColorStops = (
+COOLWARM_STOPS: ColorStops = (
 	(  0 / 255, (0x3b, 0x4c, 0xc0)),
 	( 32 / 255, (0x62, 0x82, 0xea)),
 	( 48 / 255, (0x77, 0x9a, 0xf7)),
@@ -327,9 +344,9 @@ def spectral_colormap(x: float) -> Color:
 	"""
 	Spectral colormap. Adapted from Matplotlib.
 	"""
-	return interpolate_color(x, spectral_stops)
+	return interpolate_color(x, SPECTRAL_STOPS)
 
-spectral_stops: ColorStops = (
+SPECTRAL_STOPS: ColorStops = (
 	(0.0, (0x9e, 0x01, 0x42)),
 	(0.1, (0xd5, 0x3e, 0x4f)),
 	(0.2, (0xf4, 0x6d, 0x43)),
@@ -348,9 +365,9 @@ def managua_colormap(x: float) -> Color:
 	"""
 	Managua colormap. Adapted from "Scientific colour maps" (Fabio Crameri, 2023).
 	"""
-	return interpolate_color(x, managua_stops)
+	return interpolate_color(x, MANAGUA_STOPS)
 
-managua_stops: ColorStops = (
+MANAGUA_STOPS: ColorStops = (
 	(  0 / 255, (0xff, 0xcf, 0x67)),
 	( 16 / 255, (0xeb, 0xb0, 0x5d)),
 	( 32 / 255, (0xd8, 0x93, 0x53)),
@@ -404,7 +421,7 @@ def turbo_colormap(x: float) -> Color:
 ############################### Sorter functions ###############################
 
 Coord: TypeAlias = tuple[int, int] # (Y, X)
-Sorter: TypeAlias = Callable[[int, int], Coord]
+Sorter: TypeAlias = Callable[[int, int, bool], Coord]
 
 sorters: dict[str, Sorter] = {}
 
@@ -418,63 +435,61 @@ def register_sorter(name: str) -> Callable[[Sorter], Sorter]:
 	return decorator
 
 @register_sorter("linear")
-def linear_sort(i: int, width: int) -> Coord:
+def linear_sort(i: int, width: int, banked: bool) -> Coord:
 	"""
 	Sort pixels linearly, top to bottom, left to right.
 	"""
-	return divmod(i, width)
+	if banked:
+		bank, j = divmod(i, BANK_SIZE)
+		bank_height = BANK_SIZE // width
+		bx, by = divmod(j, bank_height)
+		return (bank * bank_height + by, bx)
+	else:
+		return divmod(i, width)
 
 @register_sorter("zigzag")
-def zigzag_sort(i: int, width: int) -> Coord:
+def zigzag_sort(i: int, width: int, banked: bool) -> Coord:
 	"""
 	Sort pixels in a back-and-forth zigzag (boustrophedon order).
 	"""
-	y, x = divmod(i, width)
-	return (y, x if y % 2 == 0 else width - x - 1)
-
-@register_sorter("sideways")
-def sideways_sort(i: int, width: int) -> Coord:
-	"""
-	Sort pixels linearly within each bank, sideways versus how the banks are stacked.
-	"""
-	bank, j = divmod(i, BANK_SIZE)
-	bank_height = BANK_SIZE // width
-	bx, by = divmod(j, bank_height)
-	return (bank * bank_height + by, bx)
-
-@register_sorter("sidezig")
-def sidezig_sort(i: int, width: int) -> Coord:
-	"""
-	Sort pixels zigzag within each bank, sideways versus how the banks are stacked.
-	"""
-	bank, j = divmod(i, BANK_SIZE)
-	bank_height = BANK_SIZE // width
-	bx, by = divmod(j, bank_height)
-	y = bank * bank_height + (by if bx % 2 == 0 else bank_height - by - 1)
-	return (y, bx)
+	if banked:
+		bank, j = divmod(i, BANK_SIZE)
+		bank_height = BANK_SIZE // width
+		bx, by = divmod(j, bank_height)
+		y = bank * bank_height + (by if bx % 2 == 0 else bank_height - by - 1)
+		return (y, bx)
+	else:
+		y, x = divmod(i, width)
+		return (y, x if y % 2 == 0 else width - x - 1)
 
 @register_sorter("hilbert")
-def hilbert_sort(i: int, width: int) -> Coord:
+def hilbert_sort(i: int, width: int, banked: bool) -> Coord:
 	"""
 	Sort pixels in a space-filling Hilbert curve within each bank.
 	"""
-	bank, j = divmod(i, BANK_SIZE)
-	bank_height = BANK_SIZE // width
-	square, h = divmod(j, bank_height**2)
-	hy, hx = hilbert_index2coord(bank_height, h)
-	return (bank * bank_height + hy, square * bank_height + hx)
+	if banked:
+		bank, j = divmod(i, BANK_SIZE)
+		bank_height = BANK_SIZE // width
+		square, h = divmod(j, bank_height**2)
+		hy, hx = hilbert_index2coord(bank_height, h)
+		return (bank * bank_height + hy, square * bank_height + hx)
+	else:
+		raise NotImplementedError
 
 @register_sorter("zcurve")
-def zcurve_sort(i: int, width: int) -> Coord:
+def zcurve_sort(i: int, width: int, banked: bool) -> Coord:
 	"""
 	Sort pixels in a space-filling Z-order (aka Lebesgue or Morton) curve within each bank.
 	"""
-	bank, j = divmod(i, BANK_SIZE)
-	bank_height = BANK_SIZE // width
-	square, z = divmod(j, bank_height**2)
-	zy, zx = zcurve_index2coord(z)
-	y = bank * bank_height + (zy if square % 2 == 0 else bank_height - zy - 1) 
-	return (y, square * bank_height + zx)
+	if banked:
+		bank, j = divmod(i, BANK_SIZE)
+		bank_height = BANK_SIZE // width
+		square, z = divmod(j, bank_height**2)
+		zy, zx = zcurve_index2coord(z)
+		y = bank * bank_height + (zy if square % 2 == 0 else bank_height - zy - 1) 
+		return (y, square * bank_height + zx)
+	else:
+		raise NotImplementedError
 
 
 ############################### Utility functions ##############################
@@ -528,19 +543,16 @@ def calculate_entropy(contents: bytes, win_len: int) -> list[float]:
 	length = len(contents)
 	# Use the entire input if it is shorter than the requested window
 	win_len = min(win_len, length)
-	left = win_len // 2
-	right = win_len - left - 1
 	# Build the initial histogram
 	histogram = [0] * 256
 	for byte in contents[:win_len]:
 		histogram[byte] += 1
-	# Precalculate n * log2(n), defining 0 * log2(0) as zero.
 	n_log_n = [0.0] + [n * math.log2(n) for n in range(1, win_len + 1)]
 	total = sum(n_log_n[n] for n in histogram)
-	log_win = math.log2(win_len)
-	entropy = [0.0] * length
-	last = length - right - 1
 	# Calculate entropy around each byte over a sliding window
+	entropy = [0.0] * length
+	left = win_len // 2
+	log_win = math.log2(win_len)
 	for start in range(length - win_len + 1):
 		center = start + left
 		value = (log_win - total / win_len) / 8
@@ -556,6 +568,8 @@ def calculate_entropy(contents: bytes, win_len: int) -> list[float]:
 			total += n_log_n[count + 1] - n_log_n[count]
 	# Patch up the corners
 	entropy[:left] = [entropy[left]] * left
+	right = win_len - left - 1
+	last = length - right - 1
 	entropy[last + 1:] = [entropy[last]] * right
 	return entropy
 
