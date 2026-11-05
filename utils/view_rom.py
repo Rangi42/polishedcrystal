@@ -6,16 +6,15 @@ View a Game Boy ROM as a PNG image.
 
 Usage: view_rom.py -o|--out <out.png> [-r|--rom <in.gbc>] [-m|--map <in.map>]
                    [-c|--color <colormap>] [-s|--sort <order>]
-                   [-v|--vertical] [-n|--narrow] [-e|--entropy]
+                   [-v|--vertical] [-n|--narrow] [-e|--entropy [<win_len>=256]]
 """
 
 import argparse
 import math
 import re
-import sys
 
 from collections.abc import Callable
-from functools import wraps
+from functools import cache
 from typing import TypeAlias
 
 import png
@@ -82,25 +81,28 @@ def parse_args() -> argparse.Namespace:
 	)
 	parser.add_argument(
 		"-e", "--entropy",
-		action="store_true",
+		metavar="win_len",
+		nargs="?",
+		type=int,
+		const=256,
+		default=None,
 		help="color pixels by Shannon entropy instead of byte value"
 	)
 	# Parse, check, and return the arguments
 	args = parser.parse_args()
 	if args.rom is None:
 		if args.map is None:
-			parser.error(f"at least one input file is required: -r/--rom or -m/--map")
-		elif args.entropy:
-			parser.error(f"a -r/--rom input file is required with -e/--entropy")
+			parser.error("at least one input file is required: -r/--rom or -m/--map")
+		elif args.entropy is not None:
+			parser.error("a -r/--rom input file is required with -e/--entropy")
 	return args
 
-def read_rom(filename: str) -> list[int]:
+def read_rom(filename: str) -> bytes:
 	"""
 	Read the input .gbc ROM file and return its byte contents.
 	"""
 	with open(filename, "rb") as file:
-		contents = list(file.read())
-	return contents
+		return file.read()
 
 def read_map(filename: str) -> list[bool]:
 	"""
@@ -118,8 +120,11 @@ def read_map(filename: str) -> list[bool]:
 			elif (m := re.match(section_rx, line)) and cur_bank is not None:
 				start_addr = int(m.group(1), 16)
 				end_addr = int(m.group(2), 16)
-				start_offset = cur_bank * BANK_SIZE + (start_addr & (BANK_SIZE - 1))
-				end_offset = start_offset + end_addr - start_addr
+				if cur_bank > 0:
+					start_offset = cur_bank * BANK_SIZE + (start_addr & (BANK_SIZE - 1))
+				else:
+					start_offset = start_addr
+				end_offset = start_offset + end_addr - start_addr + 1
 				used_spans.append((start_offset, end_offset))
 	# Round the number of used banks up to the nearest power of 2, like rgbfix does
 	max_offset = max(span[1] for span in used_spans)
@@ -127,14 +132,13 @@ def read_map(filename: str) -> list[bool]:
 	num_banks = 1 << (num_banks - 1).bit_length()
 	# Return a list of Booleans for whether each byte in the ROM has been used
 	used_space = [False] * (num_banks * BANK_SIZE)
-	for span in used_spans:
-		for i in range(span[0], span[1] + 1):
-			used_space[i] = True
+	for (start, end) in used_spans:
+		used_space[start:end] = [True] * (end - start)
 	return used_space
 
 def pad_space(
 	used_space: list[bool] | None,
-	contents: list[int] | None
+	contents: bytes | None
 ) -> list[bool]:
 	"""
 	Pad the list of used space to match the length of the ROM contents.
@@ -153,9 +157,9 @@ Color: TypeAlias = tuple[int, int, int]
 
 def calculate_colors(
 	colormap_name: str,
-	by_entropy: bool,
+	entropy_win_len: int | None,
 	used_space: list[bool],
-	contents: list[int] | None
+	contents: bytes | None
 ) -> list[Color]:
 	"""
 	Calculate the RGB color for each byte of the ROM.
@@ -165,15 +169,15 @@ def calculate_colors(
 	if contents is None:
 		return [binary_colors[flag] for flag in used_space]
 	# Derive values from the ROM contents for each pixel to be mapped to colors
-	if by_entropy:
-		values = calculate_entropy(contents)
+	if entropy_win_len is not None:
+		values = calculate_entropy(contents, entropy_win_len)
 	else:
 		values = [byte / 255 for byte in contents]
 	# Return a list of colors for every byte in the ROM
 	colors = [free_color] * len(used_space)
-	for i in range(len(values)):
+	for (i, value) in enumerate(values):
 		if used_space[i]:
-			colors[i] = colormapper(values[i])
+			colors[i] = colormapper(value)
 	return colors
 
 def sort_pixels(
@@ -189,11 +193,9 @@ def sort_pixels(
 	# Sort from a 1D list of colors to a 2D list of rows of colors.
 	pixels = [[colors[0]] * width for _ in range(len(colors) // width)]
 	sorter = sorters[sorter_name]
-	for i in range(len(colors)):
+	for (i, color) in enumerate(colors):
 		y, x = sorter(i, width)
-		pixels[y][x] = colors[i]
-	# The sorter should have mapped every index one-to-one onto the coordinates
-	assert all(None not in row for row in pixels)
+		pixels[y][x] = color
 	# Transpose the pixels from vertical to horizontal
 	if not vertical:
 		pixels = [[row[i] for row in pixels] for i in range(width)]
@@ -382,33 +384,45 @@ def interp(x: float, xp: list[float], fp: list[float]) -> float:
 	y1, y2 = fp[i - 1], fp[i]
 	return y1 + ((x - x1) / (x2 - x1)) * (y2 - y1)
 
-def calculate_entropy(contents: list[int]) -> list[float]:
+def calculate_entropy(contents: bytes, win_len: int) -> list[float]:
 	"""
 	Estimate the Shannon entropy around each ROM byte.
-	Adapted from binvis.io. <https://github.com/binvis/binvis.io/blob/master/src/js/entropy.js>
 	"""
+	length = len(contents)
+	# Use the entire input if it is shorter than the requested window
+	win_len = min(win_len, length)
+	left = win_len // 2
+	right = win_len - left - 1
+	# Build the initial histogram
 	histogram = [0] * 256
-	win_len = 256
-	for i in range(win_len):
-		histogram[contents[i]] += 1
-	entropy = [0.0] * len(contents)
-	win = win_len // 2
-	for i in range(win, len(contents) - win):
-		wstart = i - win
-		histogram[contents[wstart]] -= 1
-		histogram[contents[wstart + win_len - 1]] += 1
-		entropy[i] = 0.0
-		for n in histogram:
-			if n > 0:
-				p = n / 256
-				entropy[i] -= p * math.log(p, 256)
+	for byte in contents[:win_len]:
+		histogram[byte] += 1
+	# Precalculate n * log2(n), defining 0 * log2(0) as zero.
+	n_log_n = [0.0] + [n * math.log2(n) for n in range(1, win_len + 1)]
+	total = sum(n_log_n[n] for n in histogram)
+	log_win = math.log2(win_len)
+	entropy = [0.0] * length
+	last = length - right - 1
+	# Calculate entropy around each byte over a sliding window
+	for start in range(length - win_len + 1):
+		center = start + left
+		value = (log_win - total / win_len) / 8
+		entropy[center] = max(0.0, min(1.0, value))
+		if start + win_len < length:
+			outgoing = contents[start]
+			count = histogram[outgoing]
+			histogram[outgoing] -= 1
+			total += n_log_n[count - 1] - n_log_n[count]
+			incoming = contents[start + win_len]
+			count = histogram[incoming]
+			histogram[incoming] += 1
+			total += n_log_n[count + 1] - n_log_n[count]
 	# Patch up the corners
-	for x in range(win):
-		entropy[x] = entropy[win]
-	for x in range(len(contents) - win, len(contents)):
-		entropy[x] = entropy[len(contents) - win]
+	entropy[:left] = [entropy[left]] * left
+	entropy[last + 1:] = [entropy[last]] * right
 	return entropy
 
+@cache
 def hilbert_index2coord(n: int, d: int) -> Coord:
 	"""
 	Map a 1D index onto a 2D coordinate along a Hilbert curve.
@@ -431,6 +445,7 @@ def hilbert_index2coord(n: int, d: int) -> Coord:
 		s *= 2
 	return (y, x)
 
+@cache
 def zcurve_index2coord(z: int) -> Coord:
 	"""
 	Map a 1D index onto a 2D coordinate along a Z-order curve.
