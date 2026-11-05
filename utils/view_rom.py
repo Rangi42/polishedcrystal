@@ -1,0 +1,452 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+View a Game Boy ROM as a PNG image.
+
+Usage: view_rom.py -o|--out <out.png> [-r|--rom <in.gbc>] [-m|--map <in.map>]
+                   [-c|--color <colormap>] [-s|--sort <order>]
+                   [-v|--vertical] [-n|--narrow] [-e|--entropy]
+"""
+
+import argparse
+import math
+import re
+import sys
+
+from collections.abc import Callable
+from functools import wraps
+from typing import TypeAlias
+
+import png
+
+BANK_SIZE = 0x4000
+
+
+############################## Top-level functions #############################
+
+def main() -> None:
+	"""
+	Parse the command line arguments, read the input file(s), and write the output PNG.
+	"""
+	args = parse_args()
+	contents = read_rom(args.rom) if args.rom else None
+	used_space = read_map(args.map) if args.map else None
+	used_space = pad_space(used_space, contents)
+	colors = calculate_colors(args.color, args.entropy, used_space, contents)
+	pixels = sort_pixels(colors, args.sort, args.vertical, args.narrow)
+	write_png(args.out, pixels)
+
+def parse_args() -> argparse.Namespace:
+	"""
+	Parse the command line arguments.
+	"""
+	# Set up the argument parser
+	parser = argparse.ArgumentParser(
+		description="View a Game Boy ROM as a PNG image."
+	)
+	parser.add_argument(
+		"-o", "--out", metavar="out.png",
+		required=True,
+		help="the output .png file"
+	)
+	parser.add_argument(
+		"-r", "--rom", metavar="in.gbc",
+		help="the input .gbc ROM file"
+	)
+	parser.add_argument(
+		"-m", "--map", metavar="in.map",
+		help="the input .map file"
+	)
+	parser.add_argument(
+		"-c", "--color",
+		choices=list(colormaps.keys()),
+		default=list(colormaps.keys())[0],
+		help="the color scheme"
+	)
+	parser.add_argument(
+		"-s", "--sort",
+		choices=list(sorters.keys()),
+		default=list(sorters.keys())[0],
+		help="how to order the pixels in each ROM bank"
+	)
+	parser.add_argument(
+		"-v", "--vertical",
+		action="store_true",
+		help="stack banks downwards instead of rightwards"
+	)
+	parser.add_argument(
+		"-n", "--narrow",
+		action="store_true",
+		help="render banks as 16x1024 instead of 32x512"
+	)
+	parser.add_argument(
+		"-e", "--entropy",
+		action="store_true",
+		help="color pixels by Shannon entropy instead of byte value"
+	)
+	# Parse, check, and return the arguments
+	args = parser.parse_args()
+	if args.rom is None:
+		if args.map is None:
+			parser.error(f"at least one input file is required: -r/--rom or -m/--map")
+		elif args.entropy:
+			parser.error(f"a -r/--rom input file is required with -e/--entropy")
+	return args
+
+def read_rom(filename: str) -> list[int]:
+	"""
+	Read the input .gbc ROM file and return its byte contents.
+	"""
+	with open(filename, "rb") as file:
+		contents = list(file.read())
+	return contents
+
+def read_map(filename: str) -> list[bool]:
+	"""
+	Read the input .map file and return whether each byte in the ROM has been used.
+	"""
+	# Gather a list of (start, end) offsets covering all used ROM space
+	used_spans = []
+	with open(filename, "r", encoding="utf-8") as file:
+		bank_rx = re.compile(r"(\w+) bank #(\d+)", re.IGNORECASE)
+		section_rx = re.compile(r"[ \t]+SECTION: \$([0-9a-f]{4})-\$([0-9a-f]{4})\b", re.IGNORECASE)
+		cur_bank = None
+		for line in file:
+			if (m := re.match(bank_rx, line)):
+				cur_bank = int(m.group(2)) if re.match(r"ROM[0X]?", m.group(1)) else None
+			elif (m := re.match(section_rx, line)) and cur_bank is not None:
+				start_addr = int(m.group(1), 16)
+				end_addr = int(m.group(2), 16)
+				start_offset = cur_bank * BANK_SIZE + (start_addr & (BANK_SIZE - 1))
+				end_offset = start_offset + end_addr - start_addr
+				used_spans.append((start_offset, end_offset))
+	# Round the number of used banks up to the nearest power of 2, like rgbfix does
+	max_offset = max(span[1] for span in used_spans)
+	num_banks = (max_offset + BANK_SIZE - 1) // BANK_SIZE
+	num_banks = 1 << (num_banks - 1).bit_length()
+	# Return a list of Booleans for whether each byte in the ROM has been used
+	used_space = [False] * (num_banks * BANK_SIZE)
+	for span in used_spans:
+		for i in range(span[0], span[1] + 1):
+			used_space[i] = True
+	return used_space
+
+def pad_space(
+	used_space: list[bool] | None,
+	contents: list[int] | None
+) -> list[bool]:
+	"""
+	Pad the list of used space to match the length of the ROM contents.
+	"""
+	if contents is not None:
+		if used_space is None:
+			used_space = [True] * len(contents)
+		elif len(contents) > len(used_space):
+			used_space.extend([False] * (len(contents) - len(used_space)))
+	# We previously exited if both `used_space` and `contents` were None, so here if
+	# `used_space` was None, `contents` was not, and `used_space` has been initialized
+	assert used_space is not None
+	return used_space
+
+Color: TypeAlias = tuple[int, int, int]
+
+def calculate_colors(
+	colormap_name: str,
+	by_entropy: bool,
+	used_space: list[bool],
+	contents: list[int] | None
+) -> list[Color]:
+	"""
+	Calculate the RGB color for each byte of the ROM.
+	"""
+	colormapper, free_color, binary_colors = colormaps[colormap_name]
+	# If there are no ROM contents, just color pixels binarily as free or used
+	if contents is None:
+		return [binary_colors[flag] for flag in used_space]
+	# Derive values from the ROM contents for each pixel to be mapped to colors
+	if by_entropy:
+		values = calculate_entropy(contents)
+	else:
+		values = [byte / 255 for byte in contents]
+	# Return a list of colors for every byte in the ROM
+	colors = [free_color] * len(used_space)
+	for i in range(len(values)):
+		if used_space[i]:
+			colors[i] = colormapper(values[i])
+	return colors
+
+def sort_pixels(
+	colors: list[Color],
+	sorter_name: str,
+	vertical: bool,
+	narrow: bool
+) -> list[list[Color]]:
+	"""
+	Sort the image pixels into rows.
+	"""
+	width = 512 if narrow else 1024
+	# Sort from a 1D list of colors to a 2D list of rows of colors.
+	pixels = [[colors[0]] * width for _ in range(len(colors) // width)]
+	sorter = sorters[sorter_name]
+	for i in range(len(colors)):
+		y, x = sorter(i, width)
+		pixels[y][x] = colors[i]
+	# The sorter should have mapped every index one-to-one onto the coordinates
+	assert all(None not in row for row in pixels)
+	# Transpose the pixels from vertical to horizontal
+	if not vertical:
+		pixels = [[row[i] for row in pixels] for i in range(width)]
+	return pixels
+
+def write_png(filename: str, pixels: list[list[Color]]) -> None:
+	"""
+	Write the output PNG image.
+	"""
+	# Flatten the rows of (R, G, B) channels for PyPNG compatibility
+	width = len(pixels[0])
+	height = len(pixels)
+	grayscale = all(px[0] == px[1] == px[2] for row in pixels for px in row)
+	if grayscale:
+		channels = [[px[0] for px in row] for row in pixels]
+	else:
+		channels = [[c for px in row for c in px] for row in pixels]
+	# Write the PNG file
+	writer = png.Writer(width, height, greyscale=grayscale, bitdepth=8, compression=9)
+	with open(filename, "wb") as file:
+		writer.write(file, channels)
+
+
+############################## Colormap functions ##############################
+
+ColorMapper: TypeAlias = Callable[[float], Color]
+
+colormaps: dict[str, tuple[ColorMapper, Color, tuple[Color, Color]]] = {}
+
+def register_colormap(
+	name: str,
+	free_color: Color,
+	binary_colors: tuple[Color, Color]
+) -> Callable[[ColorMapper], ColorMapper]:
+	"""
+	Register a colormap function along with its associated free and binary colors.
+	"""
+	def decorator(colormapper: ColorMapper) -> ColorMapper:
+		colormaps[name] = (colormapper, free_color, binary_colors)
+		return colormapper
+	return decorator
+
+@register_colormap("grayscale", (0x12, 0x34, 0x56), ((0xff, 0xff, 0xff), (0x00, 0x00, 0x00)))
+def grayscale_colormap(x: float) -> Color:
+	"""
+	Grayscale colormap.
+	"""
+	return (int(x * 255),) * 3
+
+@register_colormap("viridis", (0x00, 0x00, 0x00), ((0x44, 0x01, 0x53), (0xfd, 0xe7, 0x24)))
+def viridis_colormap(x: float) -> Color:
+	"""
+	Viridis colormap. Adapted from Matplotlib.
+	"""
+	xp = [0.0,   0.15,  0.3,   0.5,   0.7,   0.85,  1.0  ]
+	rp = [0.267, 0.282, 0.255, 0.129, 0.220, 0.553, 0.993]
+	gp = [0.005, 0.125, 0.264, 0.402, 0.607, 0.745, 0.906]
+	bp = [0.329, 0.384, 0.430, 0.431, 0.354, 0.230, 0.144]
+	r = interp(x, xp, rp)
+	g = interp(x, xp, gp)
+	b = interp(x, xp, bp)
+	return (int(r * 255), int(g * 255), int(b * 255))
+
+@register_colormap("plasma", (0x00, 0x00, 0x00), ((0x0d, 0x08, 0x87), (0xf0, 0xf9, 0x21)))
+def plasma_colormap(x: float) -> Color:
+	"""
+	Plasma colormap. Adapted from Matplotlib.
+	"""
+	xp = [0.0,      0.5,      0.75,     0.9,      1.0     ]
+	rp = [0.050383, 0.417431, 0.688944, 0.894105, 0.940041]
+	gp = [0.029803, 0.000564, 0.188128, 0.443743, 0.975228]
+	bp = [0.527975, 0.658397, 0.579130, 0.364408, 0.131259]
+	r = interp(x, xp, rp)
+	g = interp(x, xp, gp)
+	b = interp(x, xp, bp)
+	return (int(r * 255), int(g * 255), int(b * 255))
+
+@register_colormap("coolwarm", (0x00, 0x00, 0x00), ((0x3a, 0x4c, 0xc0), (0xb3, 0x03, 0x26)))
+def coolwarm_colormap(x: float) -> Color:
+	"""
+	Coolwarm colormap. Adapted from Matplotlib.
+	"""
+	#    [blue,   gray,   red   ]
+	xp = [0.0,    0.5,    1.0   ]
+	rp = [0.2298, 0.8674, 0.7057]
+	gp = [0.2987, 0.8644, 0.0156]
+	bp = [0.7537, 0.8626, 0.1502]
+	r = interp(x, xp, rp)
+	g = interp(x, xp, gp)
+	b = interp(x, xp, bp)
+	return (int(r * 255), int(g * 255), int(b * 255))
+
+
+############################### Sorter functions ###############################
+
+Coord: TypeAlias = tuple[int, int] # (Y, X)
+Sorter: TypeAlias = Callable[[int, int], Coord]
+
+sorters: dict[str, Sorter] = {}
+
+def register_sorter(name: str) -> Callable[[Sorter], Sorter]:
+	"""
+	Register a sorter function.
+	"""
+	def decorator(sorter: Sorter) -> Sorter:
+		sorters[name] = sorter
+		return sorter
+	return decorator
+
+@register_sorter("linear")
+def linear_sort(i: int, width: int) -> Coord:
+	"""
+	Sort pixels linearly, top to bottom, left to right.
+	"""
+	return divmod(i, width)
+
+@register_sorter("zigzag")
+def zigzag_sort(i: int, width: int) -> Coord:
+	"""
+	Sort pixels in a back-and-forth zigzag (boustrophedon order).
+	"""
+	y, x = divmod(i, width)
+	return (y, x if y % 2 == 0 else width - x - 1)
+
+@register_sorter("sideways")
+def sideways_sort(i: int, width: int) -> Coord:
+	"""
+	Sort pixels linearly within each bank, sideways versus how the banks are stacked.
+	"""
+	bank, j = divmod(i, BANK_SIZE)
+	bank_height = BANK_SIZE // width
+	bx, by = divmod(j, bank_height)
+	return (bank * bank_height + by, bx)
+
+@register_sorter("sidezig")
+def sidezig_sort(i: int, width: int) -> Coord:
+	"""
+	Sort pixels zigzag within each bank, sideways versus how the banks are stacked.
+	"""
+	bank, j = divmod(i, BANK_SIZE)
+	bank_height = BANK_SIZE // width
+	bx, by = divmod(j, bank_height)
+	y = bank * bank_height + (by if bx % 2 == 0 else bank_height - by - 1)
+	return (y, bx)
+
+@register_sorter("hilbert")
+def hilbert_sort(i: int, width: int) -> Coord:
+	"""
+	Sort pixels in a space-filling Hilbert curve within each bank.
+	"""
+	bank, j = divmod(i, BANK_SIZE)
+	bank_height = BANK_SIZE // width
+	square, h = divmod(j, bank_height**2)
+	hy, hx = hilbert_index2coord(bank_height, h)
+	return (bank * bank_height + hy, square * bank_height + hx)
+
+@register_sorter("zcurve")
+def zcurve_sort(i: int, width: int) -> Coord:
+	"""
+	Sort pixels in a space-filling Z-order (aka Lebesgue or Morton) curve within each bank.
+	"""
+	bank, j = divmod(i, BANK_SIZE)
+	bank_height = BANK_SIZE // width
+	square, z = divmod(j, bank_height**2)
+	zy, zx = zcurve_index2coord(z)
+	y = bank * bank_height + (zy if square % 2 == 0 else bank_height - zy - 1) 
+	return (y, square * bank_height + zx)
+
+
+############################### Utility functions ##############################
+
+def interp(x: float, xp: list[float], fp: list[float]) -> float:
+	"""
+	Piecewise interpolate a value between control points.
+	"""
+	if x < xp[0]:
+		return fp[0]
+	if x >= xp[-1]:
+		return fp[-1]
+	for i in range(1, len(xp)):
+		if x == xp[i]:
+			return fp[i]
+		if x < xp[i]:
+			break
+	x1, x2 = xp[i - 1], xp[i]
+	y1, y2 = fp[i - 1], fp[i]
+	return y1 + ((x - x1) / (x2 - x1)) * (y2 - y1)
+
+def calculate_entropy(contents: list[int]) -> list[float]:
+	"""
+	Estimate the Shannon entropy around each ROM byte.
+	Adapted from binvis.io. <https://github.com/binvis/binvis.io/blob/master/src/js/entropy.js>
+	"""
+	histogram = [0] * 256
+	win_len = 256
+	for i in range(win_len):
+		histogram[contents[i]] += 1
+	entropy = [0.0] * len(contents)
+	win = win_len // 2
+	for i in range(win, len(contents) - win):
+		wstart = i - win
+		histogram[contents[wstart]] -= 1
+		histogram[contents[wstart + win_len - 1]] += 1
+		entropy[i] = 0.0
+		for n in histogram:
+			if n > 0:
+				p = n / 256
+				entropy[i] -= p * math.log(p, 256)
+	# Patch up the corners
+	for x in range(win):
+		entropy[x] = entropy[win]
+	for x in range(len(contents) - win, len(contents)):
+		entropy[x] = entropy[len(contents) - win]
+	return entropy
+
+def hilbert_index2coord(n: int, d: int) -> Coord:
+	"""
+	Map a 1D index onto a 2D coordinate along a Hilbert curve.
+	Adapted from "Programming the Hilbert curve" (John Skilling, 2004).
+	"""
+	y = x = 0
+	t = d
+	s = 1
+	while s < n:
+		rx = (t // 2) % 2
+		ry = (t ^ rx) % 2
+		if ry == 0:
+			if rx == 1:
+				x = s - 1 - x
+				y = s - 1 - y
+			x, y = y, x
+		x += s * rx
+		y += s * ry
+		t //= 4
+		s *= 2
+	return (y, x)
+
+def zcurve_index2coord(z: int) -> Coord:
+	"""
+	Map a 1D index onto a 2D coordinate along a Z-order curve.
+	"""
+	y = x = 0
+	bit = 0
+	while z > 0:
+		x |= (z & 1) << bit
+		z >>= 1
+		y |= (z & 1) << bit
+		z >>= 1
+		bit += 1
+	return (y, x)
+
+
+###################################### Main ####################################
+
+if __name__ == "__main__":
+	main()
