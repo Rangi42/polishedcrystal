@@ -20,24 +20,6 @@ FillBoxWithByte::
 	jr nz, .row
 	ret
 
-ClearScreen::
-	ld a, PAL_BG_TEXT
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_AREA
-	rst ByteFill
-ClearTileMap::
-; Fill wTilemap with blank tiles.
-	ld a, ' '
-FillTileMap::
-	hlcoord 0, 0
-	ld bc, wTilemapEnd - wTilemap
-	rst ByteFill
-	; Update the BG Map.
-	ldh a, [rLCDC]
-	bit B_LCDC_ENABLE, a
-	ret z
-	jr ApplyTilemapInVBlank
-
 BlackOutScreen::
 	xor a
 	assert NO_BG_MAP_TRANSFER == 0

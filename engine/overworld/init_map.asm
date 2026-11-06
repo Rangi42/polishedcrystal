@@ -104,5 +104,5 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ldh [hOAMUpdate], a
 	ld hl, wStateFlags
 	set TEXT_STATE_F, [hl]
-	ld b, 0
+	ld b, MAPS_COPY_SKIP_PALS
 	jmp SafeCopyTilemapAtOnce

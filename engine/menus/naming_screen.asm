@@ -53,7 +53,9 @@ NamingScreen:
 	ldh [rLCDC], a
 	call .GetNamingScreenSetup
 	call ApplyTilemapInVBlank
-	call WaitTop
+	xor a
+	assert NO_BG_MAP_TRANSFER == 0
+	ldh [hBGMapMode], a
 	call SetDefaultBGPAndOBP
 	jmp NamingScreen_InitNameEntry
 
@@ -198,7 +200,7 @@ INCLUDE "data/player/sprite_anims.asm"
 	db "Box name?@"
 
 NamingScreen_InitText:
-	call WaitTop
+	call EndBGMapUpdate
 	call NamingScreen_DrawBorders
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
@@ -846,7 +848,9 @@ _ComposeMailMessage:
 	ld a, CGB_WRITE_MAIL
 	call GetCGBLayout
 	call ApplyTilemapInVBlank
-	call WaitTop
+	xor a
+	assert NO_BG_MAP_TRANSFER == 0
+	ldh [hBGMapMode], a
 	call SetDefaultBGPAndOBP
 	call NamingScreen_InitNameEntry
 	ld hl, wNamingScreenDestinationPointer
@@ -867,7 +871,7 @@ INCBIN "gfx/naming_screen/mail.2bpp.lzp"
 	ret
 
 .InitCharset:
-	call WaitTop
+	call EndBGMapUpdate
 	call NamingScreen_DrawBorders
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a

@@ -552,5 +552,3 @@ DEF LCDC_DEFAULT EQU LCDC_ON | LCDC_WIN_9C00 | LCDC_WIN_ON | LCDC_BLOCK21 | LCDC
 	const TRANSFER_ATTRMAP     ; 2: from wAttrmap to 1:[hBGMapAddress]
 	const TRANSFER_TILEMAP1    ; 3: from wTilemap to vBGMap1
 	const TRANSFER_ATTRMAP1    ; 4: from wAttrmap to vBGMap3
-	const TRANSFER_TILEMAP_OFS ; 5: like TRANSFER_TILEMAP, but starts on the [hBGMapHalf]th row
-	const TRANSFER_ATTRMAP_OFS ; 6: like TRANSFER_ATTRMAP, but starts on the [hBGMapHalf]th row

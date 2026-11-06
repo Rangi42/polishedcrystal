@@ -1,20 +1,3 @@
-ClearBGPalettes::
-	call ClearPalettes
-	jr ApplyTilemapInVBlank
-
-ApplyAttrmapInVBlank::
-; Tell VBlank to update Attr Map
-	ld a, TRANSFER_ATTRMAP
-	jr _ApplyAttrOrTilemapInVBlank
-
-ApplyAttrAndTilemapInVBlank::
-	call ApplyAttrmapInVBlank
-
-ApplyTilemapInVBlank::
-	ld a, TRANSFER_TILEMAP
-_ApplyAttrOrTilemapInVBlank:
-	ldh [hBGMapMode], a
-
 ; TODO: Update the audio engine so we can remove the calls to SFXDelay* routines,
 ; without causing odd button sounds when the artifical delays are gone.
 

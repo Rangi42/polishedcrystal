@@ -21,10 +21,10 @@ PrintLetterDelay::
 	and TEXT_DELAY_MASK
 	cp INST_TEXT
 	ret z
-	ld a, $1
-	ldh [hBGMapHalf], a
 .forceFastScroll
 	push hl
+	ld hl, hBGMapMode
+	set 7, [hl] ; Transfer bottom half.
 	push de
 	push bc
 ; force fast scroll?

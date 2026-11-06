@@ -232,9 +232,8 @@ endr
 	dec b
 	jr nz, .bgrows
 
-	ld a, TRANSFER_TILEMAP
+	ld a, TRANSFER_TILEMAP | $80 ; Transfer bottom half first.
 	ldh [hBGMapMode], a
-	ldh [hBGMapHalf], a
 	ret
 
 DrawTitleGraphic:

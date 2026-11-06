@@ -172,7 +172,7 @@ else
 	ld [hli], a
 	ld [hl], HIGH(PAL_MONOCHROME_WHITE)
 endc
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	call SafeCopyTilemapAtOnce
 	pop de
 	pop bc
