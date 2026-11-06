@@ -14,7 +14,7 @@ Music_CableCarRSE_Ch1:
 	tempo 172
 	volume 7, 7
 	duty_cycle 0
-	pitch_offset $0002
+	pitch_offset 2
 	vibrato 8, 1, 5
 	note_type 6, 6, 2
 	octave 3
@@ -39,7 +39,7 @@ Music_CableCarRSE_Ch1:
 Music_CableCarRSE_Ch2:
 	duty_cycle 3
 	vibrato 18, 2, 5
-	pitch_offset $0001
+	pitch_offset 1
 	note_type 8, 9, 3
 	octave 3
 	note D_, 4
@@ -141,7 +141,7 @@ Music_CableCarRSE_Ch3:
 	sound_ret
 
 Music_CableCarRSE_Ch4:
-	toggle_noise $4
+	toggle_noise 4
 	drum_speed 6
 Music_CableCarRSE_Ch4_loop:
 	drum_note 7, 8

@@ -1517,17 +1517,26 @@ Music_SlidePitchTo:
 
 Music_Tone:
 ; tone
-; params: 1 (dw)
+; params: 1 (db or dw)
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	set SOUND_PITCH_OFFSET, [hl]
 	ld hl, wChannel1PitchOffset - wChannel1
 	add hl, bc
-	call GetMusicWord
-	ld a, e
+	call GetMusicByte
+	bit 7, a
+	jr nz, .big_pitch_offset
+	ld d, 0
+.got_pitch_offset
 	ld [hli], a
 	ld [hl], d
 	ret
+
+.big_pitch_offset
+	and $7f
+	ld d, a
+	call GetMusicByte
+	jr .got_pitch_offset
 
 Music_SoundDuty:
 ; sequence of 4 duty cycles to be looped

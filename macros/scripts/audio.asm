@@ -181,7 +181,12 @@ ENDM
 	const pitch_offset_cmd ; $e7
 MACRO pitch_offset
 	db pitch_offset_cmd
-	dw \1 ; pitch offset
+	if (\1) < $100
+		db \1
+	else
+		assert (\1) < $8000, "'pitch_offset \1' is out of range"
+		bigdw (\1) | $8000
+	endc
 ENDM
 
 	const tempo_relative_cmd ; $e8
