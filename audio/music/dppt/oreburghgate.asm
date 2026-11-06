@@ -579,21 +579,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	octave 5
 	note F#, 1
 	sound_call Music_OreburghGateDPPt_Ch3_ditty6
-	octave 4
-	note A#, 1
-	volume_envelope 1, 2
-	octave 5
-	note A#, 1
-	volume_envelope 2, 2
-	note C#, 1
-	volume_envelope 1, 2
-	note G_, 1
-	volume_envelope 2, 2
-	note F#, 1
-	volume_envelope 1, 2
-	note F#, 1
-	volume_envelope 2, 2
-	note C#, 1
+	sound_call Music_OreburghGateDPPt_Ch3_extract1
 	sound_call Music_OreburghGateDPPt_Ch3_ditty3
 	note A#, 1
 	volume_envelope 2, 2
@@ -614,57 +600,14 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	volume_envelope 1, 2
 	note C#, 1
 	sound_call Music_OreburghGateDPPt_Ch3_ditty1
-	octave 4
-	note F#, 1
-	volume_envelope 2, 2
-	note A#, 1
-	octave 3
-	volume_envelope 1, 2
-	note F#, 1
-	volume_envelope 2, 2
-	octave 4
-	note F#, 1
-	volume_envelope 1, 2
-	octave 3
-	note A#, 1
-	volume_envelope 2, 2
-	octave 4
-	note A#, 1
-	volume_envelope 1, 2
-	note E_, 1
-	volume_envelope 2, 2
-	octave 5
-	note D#, 1
+	sound_call Music_OreburghGateDPPt_Ch3_extract2
 	sound_call Music_OreburghGateDPPt_Ch3_ditty5
 	note A#, 1
 	volume_envelope 2, 2
 	octave 5
 	note D#, 1
 	sound_call Music_OreburghGateDPPt_Ch3_ditty3
-	octave 5
-	note E_, 1
-	volume_envelope 2, 2
-	octave 4
-	note F#, 1
-	volume_envelope 1, 2
-	octave 5
-	note F#, 1
-	volume_envelope 2, 2
-	octave 4
-	note A#, 1
-	volume_envelope 1, 2
-	octave 5
-	note A#, 1
-	volume_envelope 2, 2
-	note D#, 1
-	volume_envelope 1, 2
-	note F#, 1
-	volume_envelope 2, 2
-	note E_, 1
-	volume_envelope 1, 2
-	note E_, 1
-	volume_envelope 2, 2
-	note D#, 1
+	sound_call Music_OreburghGateDPPt_Ch3_extract3
 	sound_call Music_OreburghGateDPPt_Ch3_ditty3
 	note F#, 1
 	volume_envelope 2, 2
@@ -679,59 +622,9 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	octave 5
 	note C_, 1
 	sound_call Music_OreburghGateDPPt_Ch3_ditty5
-	note A#, 1
-	volume_envelope 2, 2
-	octave 5
-	note C_, 1
-	volume_envelope 1, 2
-	note C_, 1
-	volume_envelope 2, 2
-	octave 4
-	note A_, 1
-	volume_envelope 1, 2
-	octave 3
-	note F#, 1
-	volume_envelope 2, 2
-	octave 4
-	note F#, 1
-	volume_envelope 1, 2
-	note C_, 1
-	volume_envelope 2, 2
-	note A_, 1
-	volume_envelope 1, 2
-	note E_, 1
-	volume_envelope 2, 2
-	octave 5
-	note C_, 1
+	sound_call Music_OreburghGateDPPt_Ch3_extract4
 	sound_call Music_OreburghGateDPPt_Ch3_ditty5
-	note A_, 1
-	volume_envelope 2, 2
-	octave 5
-	note C_, 1
-	volume_envelope 1, 2
-	octave 4
-	note F#, 1
-	volume_envelope 2, 2
-	note A_, 1
-	octave 3
-	volume_envelope 1, 2
-	note E_, 1
-	octave 4
-	volume_envelope 2, 2
-	note E_, 1
-	volume_envelope 1, 2
-	octave 3
-	note B_, 1
-	volume_envelope 2, 2
-	octave 4
-	note G_, 1
-	octave 4
-	volume_envelope 1, 2
-	note D#, 1
-	volume_envelope 2, 2
-	note B_, 1
-	volume_envelope 1, 2
-	note E_, 1
+	sound_call Music_OreburghGateDPPt_Ch3_extract5
 	sound_call Music_OreburghGateDPPt_Ch3_ditty7
 	note B_, 1
 	volume_envelope 1, 2
@@ -748,32 +641,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	octave 5
 	note E_, 1
 	sound_call Music_OreburghGateDPPt_Ch3_ditty6
-	octave 5
-	note B_, 1
-	volume_envelope 1, 2
-	octave 5
-	note E_, 1
-	volume_envelope 2, 2
-	note D#, 1
-	volume_envelope 1, 2
-	note D#, 1
-	volume_envelope 2, 2
-	octave 4
-	note B_, 1
-	volume_envelope 1, 2
-	note B_, 1
-	volume_envelope 2, 2
-	note G_, 1
-	volume_envelope 1, 2
-	note G_, 1
-	volume_envelope 2, 2
-	note E_, 1
-	volume_envelope 1, 2
-	note E_, 1
-	volume_envelope 2, 2
-	note G_, 1
-	volume_envelope 1, 2
-	note D#, 1
+	sound_call Music_OreburghGateDPPt_Ch3_extract6
 	sound_call Music_OreburghGateDPPt_Ch3_ditty2
 	sound_call Music_OreburghGateDPPt_Ch3_ditty4
 	note D#, 1
@@ -783,25 +651,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	octave 4
 	note E_, 1
 	sound_call Music_OreburghGateDPPt_Ch3_ditty7
-	note B_, 1
-	volume_envelope 1, 2
-	note E_, 1
-	volume_envelope 2, 2
-	note G_, 1
-	octave 3
-	volume_envelope 1, 2
-	note D#, 1
-	volume_envelope 2, 2
-	octave 4
-	note D#, 1
-	volume_envelope 1, 2
-	octave 3
-	note A#, 1
-	volume_envelope 2, 2
-	octave 4
-	note G_, 1
-	volume_envelope 1, 2
-	note C#, 1
+	sound_call Music_OreburghGateDPPt_Ch3_extract7
 	sound_call Music_OreburghGateDPPt_Ch3_ditty2
 	octave 5
 	volume_envelope 1, 2
@@ -821,23 +671,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	volume_envelope 2, 2
 	note E_, 1
 	sound_call Music_OreburghGateDPPt_Ch3_ditty3
-	note A#, 1
-	volume_envelope 2, 2
-	note G_, 1
-	volume_envelope 1, 2
-	note G_, 1
-	volume_envelope 2, 2
-	note D#, 1
-	volume_envelope 1, 2
-	note D#, 1
-	volume_envelope 2, 2
-	note G_, 1
-	volume_envelope 1, 2
-	note C#, 1
-	volume_envelope 2, 2
-	note A#, 1
-	volume_envelope 1, 2
-	note D#, 1
+	sound_call Music_OreburghGateDPPt_Ch3_extract8
 	sound_call Music_OreburghGateDPPt_Ch3_ditty7
 	note A#, 1
 	octave 5
@@ -986,6 +820,204 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	rest 12
 	rest 12
 	sound_jump Music_OreburghGateDPPt_Ch3_branch_1
+
+Music_OreburghGateDPPt_Ch3_extract1:
+	octave 4
+	note A#, 1
+	volume_envelope 1, 2
+	octave 5
+	note A#, 1
+	volume_envelope 2, 2
+	note C#, 1
+	volume_envelope 1, 2
+	note G_, 1
+	volume_envelope 2, 2
+	note F#, 1
+	volume_envelope 1, 2
+	note F#, 1
+	volume_envelope 2, 2
+	note C#, 1
+	sound_ret
+
+Music_OreburghGateDPPt_Ch3_extract2:
+	octave 4
+	note F#, 1
+	volume_envelope 2, 2
+	note A#, 1
+	octave 3
+	volume_envelope 1, 2
+	note F#, 1
+	volume_envelope 2, 2
+	octave 4
+	note F#, 1
+	volume_envelope 1, 2
+	octave 3
+	note A#, 1
+	volume_envelope 2, 2
+	octave 4
+	note A#, 1
+	volume_envelope 1, 2
+	note E_, 1
+	volume_envelope 2, 2
+	octave 5
+	note D#, 1
+	sound_ret
+
+Music_OreburghGateDPPt_Ch3_extract3:
+	octave 5
+	note E_, 1
+	volume_envelope 2, 2
+	octave 4
+	note F#, 1
+	volume_envelope 1, 2
+	octave 5
+	note F#, 1
+	volume_envelope 2, 2
+	octave 4
+	note A#, 1
+	volume_envelope 1, 2
+	octave 5
+	note A#, 1
+	volume_envelope 2, 2
+	note D#, 1
+	volume_envelope 1, 2
+	note F#, 1
+	volume_envelope 2, 2
+	note E_, 1
+	volume_envelope 1, 2
+	note E_, 1
+	volume_envelope 2, 2
+	note D#, 1
+	sound_ret
+
+Music_OreburghGateDPPt_Ch3_extract4:
+	note A#, 1
+	volume_envelope 2, 2
+	octave 5
+	note C_, 1
+	volume_envelope 1, 2
+	note C_, 1
+	volume_envelope 2, 2
+	octave 4
+	note A_, 1
+	volume_envelope 1, 2
+	octave 3
+	note F#, 1
+	volume_envelope 2, 2
+	octave 4
+	note F#, 1
+	volume_envelope 1, 2
+	note C_, 1
+	volume_envelope 2, 2
+	note A_, 1
+	volume_envelope 1, 2
+	note E_, 1
+	volume_envelope 2, 2
+	octave 5
+	note C_, 1
+	sound_ret
+
+Music_OreburghGateDPPt_Ch3_extract5:
+	note A_, 1
+	volume_envelope 2, 2
+	octave 5
+	note C_, 1
+	volume_envelope 1, 2
+	octave 4
+	note F#, 1
+	volume_envelope 2, 2
+	note A_, 1
+	octave 3
+	volume_envelope 1, 2
+	note E_, 1
+	octave 4
+	volume_envelope 2, 2
+	note E_, 1
+	volume_envelope 1, 2
+	octave 3
+	note B_, 1
+	volume_envelope 2, 2
+	octave 4
+	note G_, 1
+	octave 4
+	volume_envelope 1, 2
+	note D#, 1
+	volume_envelope 2, 2
+	note B_, 1
+	volume_envelope 1, 2
+	note E_, 1
+	sound_ret
+
+Music_OreburghGateDPPt_Ch3_extract6:
+	octave 5
+	note B_, 1
+	volume_envelope 1, 2
+	octave 5
+	note E_, 1
+	volume_envelope 2, 2
+	note D#, 1
+	volume_envelope 1, 2
+	note D#, 1
+	volume_envelope 2, 2
+	octave 4
+	note B_, 1
+	volume_envelope 1, 2
+	note B_, 1
+	volume_envelope 2, 2
+	note G_, 1
+	volume_envelope 1, 2
+	note G_, 1
+	volume_envelope 2, 2
+	note E_, 1
+	volume_envelope 1, 2
+	note E_, 1
+	volume_envelope 2, 2
+	note G_, 1
+	volume_envelope 1, 2
+	note D#, 1
+	sound_ret
+
+Music_OreburghGateDPPt_Ch3_extract7:
+	note B_, 1
+	volume_envelope 1, 2
+	note E_, 1
+	volume_envelope 2, 2
+	note G_, 1
+	octave 3
+	volume_envelope 1, 2
+	note D#, 1
+	volume_envelope 2, 2
+	octave 4
+	note D#, 1
+	volume_envelope 1, 2
+	octave 3
+	note A#, 1
+	volume_envelope 2, 2
+	octave 4
+	note G_, 1
+	volume_envelope 1, 2
+	note C#, 1
+	sound_ret
+
+Music_OreburghGateDPPt_Ch3_extract8:
+	note A#, 1
+	volume_envelope 2, 2
+	note G_, 1
+	volume_envelope 1, 2
+	note G_, 1
+	volume_envelope 2, 2
+	note D#, 1
+	volume_envelope 1, 2
+	note D#, 1
+	volume_envelope 2, 2
+	note G_, 1
+	volume_envelope 1, 2
+	note C#, 1
+	volume_envelope 2, 2
+	note A#, 1
+	volume_envelope 1, 2
+	note D#, 1
+	sound_ret
 
 Music_OreburghGateDPPt_Ch1_ditty1:
 	volume_envelope 4, 0

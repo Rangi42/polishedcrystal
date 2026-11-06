@@ -255,7 +255,10 @@ MACRO sound_loop
 	assert (\1) != 0, "'sound_loop 0' can be 'sound_jump'"
 	assert (\1) != 1, "'sound_loop 1' is pointless"
 	db \1 ; count
-	dw \2 ; address
+	DEF _soundloop_distance = @ - (\2) + 1
+	assert _soundloop_distance > 0, "sound_loop cannot go forwards"
+	assert _soundloop_distance < $100, "sound_loop cannot go that far ({_soundloop_distance})"
+	db _soundloop_distance ; relative address
 ENDM
 
 	const sound_call_cmd ; $fe
