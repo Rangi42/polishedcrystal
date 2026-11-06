@@ -348,17 +348,6 @@ BattleAnimCmd_Call:
 	set 1, [hl]
 	ret
 
-BattleAnimCmd_Jump:
-	call GetBattleAnimByte
-	ld e, a
-	call GetBattleAnimByte
-	ld d, a
-	ld hl, wBattleAnimAddress
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ret
-
 BattleAnimCmd_StatLoop:
 	ld a, [wChangedStat]
 	swap a
@@ -389,6 +378,25 @@ DoBattleAnimLoop:
 	res 2, [hl]
 	jr _BattleAnimCmd_DontJump
 
+BattleAnimCmd_Jump:
+	ld hl, wBattleAnimAddress
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	call GetBattleAnimByte
+	cp $80
+	ld h, 0
+	jr c, .positive
+	dec h ; negative
+.positive
+	ld l, a
+	add hl, de
+	ld a, l
+	ld [wBattleAnimAddress], a
+	ld a, h
+	ld [wBattleAnimAddress+1], a
+	ret
+
 BattleAnimCmd_JumpUntil:
 	ld hl, wBattleAnimParam
 	ld a, [hl]
@@ -412,7 +420,6 @@ _BattleAnimCmd_DontJump:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	inc de
 	inc de
 	ld a, d
 	ld [hld], a

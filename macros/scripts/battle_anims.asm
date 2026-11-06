@@ -10,7 +10,8 @@ ENDM
 	const anim_statloop_command ; cf
 MACRO anim_statloop
 	db anim_statloop_command
-	dw \1 ; address
+	assert -128 <= (\1) - @ && (\1) - @ < 128, "\1 is too far"
+	dr \1 ; address
 ENDM
 
 	const anim_obj_command ; d0
@@ -199,13 +200,15 @@ ENDM
 MACRO anim_jumpand
 	db anim_jumpand_command
 	db \1 ; value
-	dw \2 ; address
+	assert -128 <= (\2) - @ && (\2) - @ < 128, "\2 is too far"
+	dr \2 ; address
 ENDM
 
 	const anim_jumpuntil_command ; ef
 MACRO anim_jumpuntil
 	db anim_jumpuntil_command
-	dw \1 ; address
+	assert -128 <= (\1) - @ && (\1) - @ < 128, "\1 is too far"
+	dr \1 ; address
 ENDM
 
 	const anim_bgeffect_command ; f0
@@ -250,7 +253,8 @@ ENDM
 MACRO anim_jumpif
 	db anim_jumpif_command
 	db \1 ; value
-	dw \2 ; address
+	assert -128 <= (\2) - @ && (\2) - @ < 128, "\2 is too far"
+	dr \2 ; address
 ENDM
 
 	const anim_setvar_command ; f9
@@ -268,20 +272,23 @@ ENDM
 MACRO anim_jumpvar
 	db anim_jumpvar_command
 	db \1 ; value
-	dw \2 ; address
+	assert -128 <= (\2) - @ && (\2) - @ < 128, "\2 is too far"
+	dr \2 ; address
 ENDM
 
 	const anim_jump_command ; fc
 MACRO anim_jump
 	db anim_jump_command
-	dw \1 ; address
+	assert -128 <= (\1) - @ && (\1) - @ < 128, "\1 is too far"
+	dr \1 ; address
 ENDM
 
 	const anim_loop_command ; fd
 MACRO anim_loop
 	db anim_loop_command
 	db \1 ; count
-	dw \2 ; address
+	assert -128 <= (\2) - @ && (\2) - @ < 128, "\2 is too far"
+	dr \2 ; address
 ENDM
 
 	const anim_call_command ; fe
