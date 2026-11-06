@@ -1331,10 +1331,10 @@ Music_JumpChannel:
 Music_LoopChannel:
 ; loops xx - 1 times
 ; 	00: infinite
-; params: 3
-;	xx ll hh
+; params: 2
+;	xx rr
 ;		xx : loop count
-;   	ll hh : pointer
+;   	rr : relative pointer
 
 	; get loop count
 	call GetMusicByte
@@ -1343,7 +1343,7 @@ Music_LoopChannel:
 	bit SOUND_LOOPING, [hl] ; has the loop been initiated?
 	jr nz, .checkloop
 	and a ; loop counter 0 = infinite
-	jr z, Music_JumpChannel
+	jr z, .doloop
 	; initiate loop
 	dec a
 	set SOUND_LOOPING, [hl] ; set loop flag
@@ -1357,7 +1357,21 @@ Music_LoopChannel:
 	and a ; are we done?
 	jr z, .endloop
 	dec [hl]
-	jr Music_JumpChannel
+.doloop
+	ld hl, wChannel1MusicAddress - wChannel1
+	add hl, bc
+	; get the relative offset in d
+	call GetMusicByte
+	ld d, a
+	; subtract d from the current address
+	ld a, [hli]
+	sub d
+	jr nc, .nocarry
+	dec [hl]
+.nocarry
+	dec hl
+	ld [hl], a
+	ret
 
 .endloop
 	; reset loop flag
@@ -1370,8 +1384,7 @@ Music_LoopChannel:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	inc de ; skip
-	inc de ; pointer
+	inc de ; skip relative pointer
 	ld a, d
 	ld [hld], a
 	ld [hl], e
