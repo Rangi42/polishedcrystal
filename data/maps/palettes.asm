@@ -56,7 +56,7 @@ SpecialBGPalettes:
 	special_bg_pal map,      MAGNET_TUNNEL_INSIDE,             SINGLE,      RED,    4, MagnetTunnelPalette
 	special_bg_pal map,      OAKS_LAB,                         SINGLE,      GREEN,  1, OaksLabPalette
 	special_bg_pal map,      TIN_TOWER_ROOF,                   TIMEWEATHER, RED,    6, TinTowerRoofPalette
-	special_bg_pal map,      INDIGO_PLATEAU,                   TIMEWEATHER, WATER,  1, IndigoPlateauPalette
+	special_bg_pal map,      INDIGO_PLATEAU,                   TIMEWEATHER, RED,    3, IndigoPlateauPalette
 	special_bg_pal map,      WILLS_ROOM,                       SINGLE,      GREEN,  1, WillsRoomPalette
 	special_bg_pal map,      KOGAS_ROOM,                       SINGLE,      GREEN,  1, KogasRoomPalette
 	special_bg_pal map,      BRUNOS_ROOM,                      SINGLE,      GRAY,   7, BrunosRoomPalette
