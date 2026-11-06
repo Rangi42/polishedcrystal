@@ -93,7 +93,9 @@ ENDM
 	const tempo_cmd ; $de
 MACRO tempo
 	db tempo_cmd
-	dw \1 ; tempo
+	DEF _adjusted_tempo = (\1) - TEMPO_OFFSET
+	assert _adjusted_tempo == LOW(_adjusted_tempo), "'tempo \1' is out of range"
+	db _adjusted_tempo
 ENDM
 
 	const volume_envelope_cmd ; $df
