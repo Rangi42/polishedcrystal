@@ -1641,7 +1641,14 @@ Music_Tempo:
 ; global tempo
 ; params: 2
 ;	de: tempo
-	call GetMusicWord
+	call GetMusicByte
+	; de = a + TEMPO_OFFSET
+	assert 0 < TEMPO_OFFSET && TEMPO_OFFSET < 256
+	sub LOW(-TEMPO_OFFSET)
+	ld e, a
+	sbc a
+	inc a
+	ld d, a
 	ld a, [wCurChannel]
 	cp CHAN5
 	jmp nc, SetGlobalTempo
