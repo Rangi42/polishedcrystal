@@ -68,7 +68,6 @@ Route7Snorlax:
 	reloadmapafterbattle
 	end
 
-
 .AwakeText:
 	text "The #gear was"
 	line "placed near the"
