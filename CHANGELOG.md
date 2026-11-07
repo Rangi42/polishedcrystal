@@ -8,6 +8,113 @@
 
 ***Note: The following changelog may contain spoilers.***
 
+## v3.3.0
+
+Changes since v3.2.3, with an extensive visual refresh, new places to explore, more convenient menus, and battle improvements.
+
+### Compatibility
+
+- The save format has changed from version 10 to 11. Back up your save before updating; v3.2.3 saves are not directly compatible and need a version-appropriate save upgrade.
+- The link protocol has changed to version 5. Trading and link battles require both games to use the new protocol; older releases are not compatible.
+
+### Additions
+
+- A fourth player character, Krys, based on the prototype Kris design, with matching overworld sprites, Bag, and Pokégear graphics.
+- Daily overcast skies, rain, and thunderstorms in more areas of Johto and Kanto after the Slowpokes return to Azalea Town, plus drifting cherry blossoms in Cherrygrove.
+- A zoo and aquarium in Fuchsia City, including an Eject Button gift.
+- Fossil revival at the Ruins of Alph Research Center after catching all the Unown.
+- More trainers and a campfire on Rugged Road, with a Punching Glove reward for bringing a Brick Piece.
+- A Fly destination at the Pokémon League Gate. Fly and Teleport also work on the peaks of Mt. Silver and Navel Rock.
+- A traversable railway path between Routes 30 and 32, and additional hidden items in Cerulean City, Vermilion City, and Route 13.
+- Nickname settings: Ask, Always, or Never when receiving new Pokémon.
+- Quantity selection when selling items to the Gourmet, Ore, and Fossil Maniacs.
+- A "Keep fishing?" prompt after getting no bite, to try again with the same rod.
+- Party selection when checking happiness in Goldenrod, with more precise feedback for evolution, Return, and affection thresholds.
+- Distinct party-menu icons for held Berries and items without an applicable held effect. Hidden Power's actual type is shown in the summary and battle move information.
+
+### Changes
+
+#### World and presentation
+
+- Refresh towns, routes, caves, buildings, and Gym interiors throughout Johto and Kanto, with more varied roofs, taller Kanto trees, clearer shorelines, and improved map connections and scenery.
+- Redesign the Ruins of Alph and Sinjoh Ruins, Mt. Silver and Navel Rock peaks, Hidden Grottoes, Team Rocket's hideouts, Silph Co., the Trainer House, and the Battle Factory. Faraway Island more closely resembles its Emerald appearance.
+- Add the HGSS-style platform puzzle to Azalea Gym, waterfall layout to Cianwood Gym, and switch puzzle to Goldenrod Underground.
+- Add glowing lamps, cave entrances, aquarium tanks, and lava; animated water, waterfalls, buoys, fires, turbines, signs, and other scenery; and footprints and bicycle tracks in shallow coastal sand.
+- Improve overworld performance, sprite visibility, and palette transitions, including weather and lighting effects.
+- Refresh Pokémon front and back sprites, animations, shiny colors, party icons, and overworld sprites. Ho-Oh and Lugia have larger overworld sprites, and Orange Islands Arbok has a distinct hood pattern.
+- Add running poses for the player and more varied trainer and NPC palettes.
+- Refresh the title screen with hovering Unown and a more detailed crystal; add a spotlight to evolution animations.
+- Replace the trade animation with one inspired by Japanese Crystal's mobile trades, showing the Pokémon's actual Poké Ball.
+- Add new cries for later-generation Pokémon, including custom cries for Wynaut, Leafeon, Glaceon, Sylveon, and Porygon-Z.
+- Animate the music player's keyboard and correct its song information. Remove the Megalovania bonus track and the Pokédex Show radio channel.
+- Make both initial and in-game options scrollable, with descriptions. Refresh the Judge Machine to match the summary screen and show a star when modern EVs are maxed out.
+- Improve item icons, shiny and gender indicators, HM lettering, HP-bar colors, and monochrome contrast.
+- Shorten the Magnet Train arrival wait and remove unnecessary button prompts for battle status messages.
+- Show Goldenrod Museum paintings without first battling the corresponding legendary Pokémon. Expand the Pokécom Center developer office, restore the Celadon Dept. Store rooftop square, and remove the unused Pokéathlon construction site.
+- Clarify NPC dialogue, signs, Professor Elm's Togepi and Pokérus explanations, Sweet Honey purchases, and the FAQ's gameplay and emulator guidance.
+
+#### Pokémon, battles, and items
+
+- Revise many boss teams with better moves, abilities, held items, and EVs; adjust trainer item use and add Bloodmoon Ursaluna sets to the battle facilities.
+- Replace Katy's cameo with Larry. Bugsy leads with his U-turn Scyther, Petrel uses an Imposter Ditto, and Anabel consistently uses her rematch team on the Battle Tower's second floor.
+- Revise wild encounters in Silver Cave. Fishing no longer depends on time of day: coastal Corsola are available all day, and Staryu can be fished on Route 41 with the Good or Super Rod. Remove nonexistent Route 17 grass encounters from the encounter data.
+- Add automatic hail on Mt. Silver's peak, and overcast skies on Routes 9 and 10 until Zapdos is caught.
+- Rework Mold Breaker interactions with switching, entry hazards, item-triggered stat changes, and Future Sight.
+- Give Meganium the hidden ability Mega Sol, which treats relevant move effects as if sunlight were active, and Kantonian Raichu the hidden ability No Guard. Sirfetch'd can have Inner Focus in Faithful.
+- Make Growth Grass-type, Crabhammer 95% accurate in Faithful as well as non-Faithful, Iron Head's flinch chance 20%, and Moonblast's Special Attack reduction chance 10%.
+- Count Dragon Claw, Shadow Claw, and Metal Claw as slicing moves for Sharpness.
+- Replace the Chikorita line's level-up Dazzling Gleam with Growth, and Pichu's level-up Sing with Heal Bell. Galarian Weezing can learn Hyper Beam from its TM.
+- Correct Galarian Meowth's Defense, Alolan Raichu's Faithful Special Defense, and Kleavor's Attack and Special Defense.
+- Let Run Away bypass trapping when switching in Faithful too.
+- Replace Pink Bow with Fairy Feather, retaining its Fairy-type damage boost. Zap Cannon tutoring at the Power Plant no longer costs a Silver Leaf.
+- Allow releasing Eggs once the Mystery Egg has hatched.
+- Enforce the badge checks on Route 23, and let objects such as Strength boulders block trainers' line of sight.
+
+#### Non-Faithful balance
+
+- Revise many base stat distributions, drawing on Blaze Black 2/Volt White 2 Redux, including changes to early-game Pokémon, starters, and evolved Pokémon. Nidoking's Attack and Nidoqueen's Special Attack are increased.
+- Make Kantonian Growlithe and Arcanine Fire/Normal, Goldeen and Seaking Water/Normal, and Kantonian Rapidash pure Fire.
+- Give Mareep and Flaaffy Fluffy; Drowzee and Hypno Bad Dreams; and Hoppip, Skiploom, and Jumpluff Wind Rider.
+- Give both Sandshrew forms and Kantonian Sandslash Sharpness, Alolan Sandslash Iron Barbs, Kantonian Persian Super Luck, and Dudunsparce the hidden ability Sand Stream.
+- Give X-Scissor a high critical-hit ratio and increase Iron Tail's accuracy to 80%.
+
+### Fixes
+
+#### Battles
+
+- Replace the v3.2.3 Flare Blitz hotfix with a general fix for called-move execution, including Metronome, Sleep Talk, and Power Herb. Correct Solar Beam's charging and Power Herb use in sunlight.
+- Fix Mold Breaker remaining active after its user faints, and its interactions with U-turn and similar moves. Fix Neutralizing Gas crashes, suppression, and Intimidate interactions.
+- Fix Infiltrator and sound moves failing to damage through Substitute, Cursed Body activating through Substitute, and False Swipe and endurance effects incorrectly affecting substitutes.
+- Fix Endure, Focus Sash, Focus Band, and affection survival interactions and messages. Show an item activation animation for Focus Sash and Focus Band.
+- Fix burned Pokémon's Facade damage, Counter after taking zero damage, and Counter/Mirror Coat failure messages.
+- Fix Encore's duration and Mental Herb ending Encore without releasing the forced move.
+- Fix Lum Berry failing to cure confusion, Effect Spore-induced sleep failing to stop multi-hit moves, powder moves against Sap Sipper, and Moody failing to trigger Eject Pack.
+- Fix hail and sandstorm both damaging a Pokémon on the same turn. Binding Band's residual damage now depends on whether it was held when the trapping move landed, and Substitute no longer prevents ongoing trapping damage.
+- Fix Moon Ball bonuses, shiny-locked encounters, and the overworld effects of Pressure, Hustle, and Vital Spirit.
+- Fix move copying interactions involving Sketch and Mimic, and prevent reusing a TM or HM on an already-known move from restoring PP.
+- Show the abilities affected by Trace and Skill Swap, improve Wind Rider and Mega Sol activation messages, and avoid announcing Early Bird in Faithful when it has no visible effect.
+- Correct roaming legendary battle music, Pokémaniac Larry's battle, and Firebreather Dick's encounter music.
+
+#### Menus, events, and graphics
+
+- Fix link-party corruption caused by certain trainer ID bytes, and correct the Poké Ball shown for Wonder Trade's special Pichu.
+- Fix an Egg summary animation crash, a freeze when selecting Fly destinations, and a crash when resetting the clock in the Trainer House basement.
+- Fix items disappearing when the Bag is full, including retry handling for Piers' Throat Spray and Lorelei's Icy Rock.
+- Fix the shiny Ditto gift's form and move PP initialization, and clear stale PP data for the Odd Egg.
+- Fix the summary screen's experience bar, Hyper Training indicators, and Toxic/fainted status icons; hide ability-slot indicators when abilities are disabled.
+- Refresh PC previews after depositing or withdrawing Pokémon, fix invisible characters when renaming boxes, and keep Pokégear phone scrolling within the contact list.
+- Fix shiny and other Pokémon palettes in the Pokédex list, Name Rater, Day-Care, Hidden Grottoes, and dolls, as well as fossil display colors in Pewter Museum.
+- Fix corrupted fonts and map graphics after clock resets, map connections, and Fuchsia Gym defeats or forfeits; fix post-capture Pokédex sprite flicker and the credits' wave effect.
+- Fix weather sprites persisting after weather ends, palette allocation for hidden objects, and graphical glitches during Fly and map transitions.
+- Fix Strength boulders, Cut grass and Whirlpool tiles, shoreline and furniture collisions, rainy maps, and other map tile and connection errors, including Routes 45/46.
+- Fix Copycat and Valerie's book scripts, the fourth player's Lyra event, and the Route 32 guard's dialogue when Togepi has already hatched.
+- Fix the Trainer Card's money display near the money cap, incorrect move descriptions, and assorted text and animation errors.
+
+### Building from source
+
+- Update the required RGBDS version to 1.0.4. Improve graphics and text compression, build-tool portability, and compatibility with Crystal Tracker's audio data format.
+
+
 ## v3.2.3
 
 Critical hotfix release.
