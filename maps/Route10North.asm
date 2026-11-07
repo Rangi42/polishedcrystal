@@ -6,6 +6,7 @@ Route10North_MapScriptHeader:
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
 	callback MAPCALLBACK_OBJECTS, Route10NorthZapdosCallback
+	callback MAPCALLBACK_CMDQUEUE, Route10NorthSetUpPaletteSwap
 
 	def_warp_events
 	warp_event 11, 35, ROUTE_10_POKECENTER_1F, 1
@@ -57,6 +58,14 @@ Route10NorthZapdosCallback:
 .Appear:
 	appear ROUTE10_ZAPDOS
 	endcallback
+
+Route10NorthSetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 0, 255, 41, 255, PAL_BG_RED, OverworldRedPalettes, PowerPlantRoofPalettes
+	db -1 ; end
 
 Route10NorthLawrenceScene:
 	sdefer .Script

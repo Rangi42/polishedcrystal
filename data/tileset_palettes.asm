@@ -15,6 +15,9 @@ INCLUDE "gfx/tilesets/roofs_overcast.pal"
 
 ; The palettes below are used by `paletteswap` callbacks.
 
+OverworldRedPalettes::
+INCLUDE "gfx/tilesets/palette-swap/bg-red.pal"
+
 OverworldGreenPalettes::
 INCLUDE "gfx/tilesets/palette-swap/bg-green.pal"
 
@@ -47,6 +50,9 @@ INCLUDE "gfx/tilesets/palette-swap/doll-vendor.pal"
 
 SilphCoRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/silph-co.pal"
+
+PowerPlantRoofPalettes:
+INCLUDE "gfx/tilesets/palette-swap/power-plant.pal"
 
 FuchsiaCityRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/fuchsia-roof.pal"
