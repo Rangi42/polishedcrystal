@@ -176,6 +176,7 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_AQUARIUM_BOTTOM      ; 36
 	const SPRITEMOVEDATA_PAGODA_LEFT          ; 37
 	const SPRITEMOVEDATA_PAGODA_RIGHT         ; 38
+	const SPRITEMOVEDATA_RADIO_DISH           ; 39
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
