@@ -1,0 +1,9 @@
+ColumnLimit: 100
+UseTab: AlignWithSpaces
+IndentWidth: 4
+TabWidth: 4
+
+QualifierAlignment: Right
+
+BreakBeforeBraces: Attach
+InsertBraces: true

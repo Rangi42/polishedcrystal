@@ -262,7 +262,7 @@ DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
 	push de
 	push hl
 	cpl
-	sub $80
+	add 127 + 1
 	ld e, a
 	ld d, $ff
 
