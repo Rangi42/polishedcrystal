@@ -22,11 +22,13 @@ WARNFLAGS := -Wall -Wextra -pedantic \
          -Wuninitialized \
          -Wunused \
          -Wwrite-strings
+
 COMMON_FLAGS := ${WARNFLAGS} -O3 -flto
 # debugging sanitizers:
 #COMMON_FLAGS += -ggdb3 -Og -D_GLIBCXX_ASSERTIONS \
 #                -fno-omit-frame-pointer -fno-optimize-sibling-calls \
 #                -fsanitize=address,undefined,float-divide-by-zero
+
 CFLAGS := ${COMMON_FLAGS} -std=c17 -Wnested-externs -Wold-style-definition -Wstrict-prototypes
 CXXFLAGS := ${COMMON_FLAGS} -std=c++17
 
