@@ -193,3 +193,9 @@
 	tilecoll WATER, WATER, BUOY, BUOY ; c0
 	tilecoll WATER, BUOY, WATER, BUOY ; c1
 	tilecoll WALL, WALL, WALL, WALL ; c2
+	tilecoll WALL, WALL, WALL, WALL ; c3
+	tilecoll WALL, WALL, WALL, WALL ; c4
+	tilecoll WALL, WALL, DOOR, WALL ; c5
+	tilecoll WALL, WALL, WALL, WALL ; c6
+	tilecoll WALL, WALL, WALL, WALL ; c7
+	tilecoll WALL, WALL, WALL, WALL ; c8

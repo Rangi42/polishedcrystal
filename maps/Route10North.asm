@@ -10,7 +10,7 @@ Route10North_MapScriptHeader:
 
 	def_warp_events
 	warp_event 11, 35, ROUTE_10_POKECENTER_1F, 1
-	warp_event  3, 51, POWER_PLANT, 1
+	warp_event  4, 51, POWER_PLANT, 1
 	warp_event  4, 43, ROCK_TUNNEL_2F, 1
 	warp_event  8, 33, ROCK_TUNNEL_1F, 1
 	warp_event 10,  1, DIM_CAVE_5F, 1
@@ -18,12 +18,12 @@ Route10North_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5, 53, BGEVENT_JUMPTEXT, PowerPlantSignText
+	bg_event  3, 53, BGEVENT_JUMPTEXT, PowerPlantSignText
 	bg_event  7, 35, BGEVENT_JUMPTEXT, RockTunnelSignText
 
 	def_object_events
 	object_event 13, 44, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ZAPDOS, -1, PAL_MON_YELLOW_BROWN, OBJECTTYPE_SCRIPT, PLAIN_FORM, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
-	object_event  6, 52, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
+	object_event  7, 52, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
 	object_event 14, 52, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ZAPDOS, -1, PAL_MON_YELLOW_BROWN, OBJECTTYPE_SCRIPT, PLAIN_FORM, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
 	object_event 12, 52, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
 	object_event 12, 52, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
@@ -359,7 +359,6 @@ Route10NorthMovementData_LawrenceApproach1:
 	step_end
 
 Route10NorthMovementData_LawrenceShowZapdos:
-	step_right
 	step_right
 	step_right
 	step_right
