@@ -18,6 +18,7 @@ WARNFLAGS := -Wall -Wextra -pedantic \
          -Wshift-overflow=2 \
          -Wstrict-overflow=2 \
          -Wstringop-overflow=4 \
+         -Wtrampolines \
          -Wundef \
          -Wuninitialized \
          -Wunused \
@@ -30,7 +31,7 @@ COMMON_FLAGS := ${WARNFLAGS} -O3 -flto
 #                -fsanitize=address,undefined,float-divide-by-zero
 
 CFLAGS := ${COMMON_FLAGS} -std=c17 -Wnested-externs -Wold-style-definition -Wstrict-prototypes
-CXXFLAGS := ${COMMON_FLAGS} -std=c++17
+CXXFLAGS := ${COMMON_FLAGS} -std=c++17 -Wold-style-cast
 
 tools := \
 	bankends \
