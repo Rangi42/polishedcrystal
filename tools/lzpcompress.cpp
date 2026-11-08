@@ -1156,7 +1156,7 @@ deserialize(std::vector<uint8_t> const &compressed) {
 		Command cmd = [&payload_start, &first_byte, &compressed, &byte_idx,
 		               &require_bytes]() -> Command {
 			if ((first_byte & 0b111'111'00) == 0b111'111'00) { // Special commands.
-				uint8_t len = require_bytes(1)[0] + LzSpecialCmd::MIN_LENGTH;
+				uint16_t len = require_bytes(1)[0] + LzSpecialCmd::MIN_LENGTH;
 				payload_start = compressed.data() + byte_idx;
 				require_bytes((len + 1) / 2); // Halved, rounding up.
 				switch (first_byte) {
