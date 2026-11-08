@@ -66,10 +66,10 @@
 #include <array>
 #include <assert.h>
 #include <charconv>
-#include <cstdint>
 #include <forward_list>
 #include <inttypes.h>
 #include <iterator>
+#include <optional>
 #include <stdarg.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -676,17 +676,18 @@ struct LzCopyReversed final : public LzCopyCmd {
 };
 template <typename Func>
 void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
-	auto copy_start_ofs = [&emitted_bytes](Span const &dest, uint8_t const *first_src_byte_ptr) {
-		assert(first_src_byte_ptr - emitted_bytes.start >= 0);
+	auto copy_start_ofs = [&emitted_bytes](Span const &dest, uint8_t const *first_src_byte_ptr)
+	                      -> std::optional<int16_t> {
 		assert(dest.start - first_src_byte_ptr > 0);
+		assert(first_src_byte_ptr - emitted_bytes.start >= 0);
 
-		if (size_t relative_ofs = dest.start - first_src_byte_ptr; relative_ofs <= 128) {
-			return -relative_ofs;
-		} else {
-			size_t absolute_ofs = first_src_byte_ptr - emitted_bytes.start;
-			assert(absolute_ofs <= INT16_MAX);
-			return absolute_ofs;
+		ptrdiff_t relative_ofs = dest.start - first_src_byte_ptr;
+		ptrdiff_t absolute_ofs = relative_ofs <= 128 ? -relative_ofs
+		                                             : first_src_byte_ptr - emitted_bytes.start;
+		if (absolute_ofs < INT16_MIN || absolute_ofs > INT16_MAX) {
+			return std::nullopt;
 		}
+		return static_cast<int16_t>(absolute_ofs);
 	};
 
 	uint8_t last_byte = emitted_bytes[-1], last_byte_flipped = reverse_bits(last_byte);
@@ -709,7 +710,8 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 			     src.resize_left(1), dest.resize_left(1)) {
 				assert(src.len == dest.len);
 
-				if (!func(LzCopyNormal(src.len, copy_start_ofs(dest, src.start)))) {
+				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, src.start);
+				    !start_ofs.has_value() || !func(LzCopyNormal(src.len, *start_ofs))) {
 					break;
 				}
 				// If the copy would start at the beginning of the decompressed stream, stop
@@ -728,7 +730,8 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 			     src.len += 1, dest.resize_left(1)) {
 				assert(src.len == dest.len);
 
-				if (!func(LzCopyReversed(src.len, copy_start_ofs(dest, &src[-1])))) {
+				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, &src[-1]);
+				    !start_ofs.has_value() || !func(LzCopyReversed(src.len, *start_ofs))) {
 					break;
 				}
 				// Unlike a forward copy, `src` and `dest` must NOT overlap!
@@ -747,7 +750,8 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 			     src.len < LzCopyFlipped::MIN_LENGTH + MAX_LONG_LENGTH &&
 			     emitted_bytes[-dest.len] == reverse_bits(src[0]);
 			     src.resize_left(1), dest.resize_left(1)) {
-				if (!func(LzCopyFlipped(src.len, copy_start_ofs(dest, src.start)))) {
+				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, src.start);
+				    !start_ofs.has_value() || !func(LzCopyFlipped(src.len, *start_ofs))) {
 					break;
 				}
 				// If the copy would start at the beginning of the decompressed stream, stop
