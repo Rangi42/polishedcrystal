@@ -69,6 +69,9 @@ INCLUDE "gfx/tilesets/palette-swap/mr-pokemon-roof.pal"
 MrPsychicsHouseRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/mr-psychic-roof.pal"
 
+SteelWingHouseRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/steel-wing-roof.pal"
+
 NuggetBridgePalettes::
 RuggedRoadSouthFlowerPalettes::
 INCLUDE "gfx/tilesets/palette-swap/nugget-bridge.pal"
