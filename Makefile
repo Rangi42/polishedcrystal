@@ -122,6 +122,7 @@ clean: tidy
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' \
 		-o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
 	find data/tilesets -name '*_collision.bin' -delete
+	$(RM) gfx/overworld/cable_car/bg.tilemap gfx/overworld/cable_car/cable_car.bin
 	$(MAKE) clean -C tools/
 
 tidy:
