@@ -593,12 +593,24 @@ struct LzCopyCmd : public LzCmd {
 			}
 		}
 	}
-	uint8_t const *copy_src_start(std::vector<uint8_t> const &dest, uint8_t const *payload) const {
+	uint8_t const *copy_src_start(std::vector<uint8_t> const &dest, uint8_t const *payload,
+		                          bool reversed) const {
 		if (this->start_ofs < 0) {
+			if (ptrdiff_t(dest.size()) + this->start_ofs < 0 ||
+			    (reversed ? ptrdiff_t(dest.size()) + this->start_ofs - this->len < 0
+			              : dest.size() + this->start_ofs + this->len >= dest.size())) {
+				error_exit(EXIT_DATA_ERR,
+				           "corrupted input (encountered out-of-bounds copy command)\n");
+			}
 			assert((127 - payload[0]) == this->start_ofs);
 			assert(this->start_ofs >= -128);
 			return &dest[dest.size() + this->start_ofs];
 		} else {
+			if (reversed ? this->start_ofs - this->len < 0
+			             : size_t(this->start_ofs + this->len) >= dest.size()) {
+				error_exit(EXIT_DATA_ERR,
+				           "corrupted input (encountered out-of-bounds copy command)\n");
+			}
 			assert((payload[0] << 8 | payload[1]) == this->start_ofs);
 			assert(size_t(this->start_ofs) < dest.size());
 			return &dest[this->start_ofs];
@@ -621,7 +633,7 @@ struct LzCopyNormal final : public LzCopyCmd {
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		dest.reserve(dest.size() +
 		             this->len); // Required for the next pointer to remain stable during insertion.
-		uint8_t const *src = this->copy_src_start(dest, payload);
+		uint8_t const *src = this->copy_src_start(dest, payload, false);
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(*src);
 			++src;
@@ -644,7 +656,7 @@ struct LzCopyFlipped final : public LzCopyCmd {
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		dest.reserve(dest.size() +
 		             this->len); // Required for the next pointer to remain stable during insertion.
-		uint8_t const *src = this->copy_src_start(dest, payload);
+		uint8_t const *src = this->copy_src_start(dest, payload, false);
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(reverse_bits(*src));
 			++src;
@@ -667,7 +679,7 @@ struct LzCopyReversed final : public LzCopyCmd {
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		dest.reserve(dest.size() +
 		             this->len); // Required for the next pointer to remain stable during insertion.
-		uint8_t const *src = this->copy_src_start(dest, payload);
+		uint8_t const *src = this->copy_src_start(dest, payload, true);
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(*src);
 			--src;
