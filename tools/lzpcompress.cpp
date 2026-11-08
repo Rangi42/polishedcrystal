@@ -1290,11 +1290,13 @@ struct Options {
 				}
 
 			} else if (arg[1] == '-') { // Long option.
-				char const *name_start = &arg[2];
-				char const *name_end = strchrnul(name_start, '='); // `--opt=arg`
-				std::string_view name(name_start, name_end - name_start);
+				std::string_view name(&arg[2]);
+				char const *option_arg = nullptr;
+				if (auto eq_pos = name.find('='); eq_pos != name.npos) { // `--opt=arg`
+					option_arg = &name[eq_pos + 1];
+					name = name.substr(0, eq_pos);
+				}
 
-				char const *option_arg = *name_end == '=' ? &name_end[1] : nullptr;
 				auto ensure_no_arg = [&option_arg, &name] {
 					if (option_arg != nullptr) {
 						error_exit(EXIT_BAD_USAGE, "--%.*s does not take an argument\n",
