@@ -65,7 +65,6 @@
 #include <algorithm>
 #include <array>
 #include <assert.h>
-#include <charconv>
 #include <forward_list>
 #include <inttypes.h>
 #include <iterator>
@@ -1257,39 +1256,21 @@ deserialize(std::vector<uint8_t> const &compressed) {
 	        "    -d, --dump        Process a compressed file and dump the command stream as\n"
 	        "                      text (as if compressing with the --text option).\n"
 	        "    -h, --help        Print this help text and exit.\n"
-	        "Compression options:\n"
-	        "    -a<number>, --align <number>   Pad the compressed output with zeros until\n"
-	        "                                   the size has the specified number of low bits\n"
-	        "                                   cleared (default: 0).\n"
+	        "\n"
 	        "The source and output filenames can be given as - (or omitted) to use standard\n"
 	        "input and output. Use -- to indicate that subsequent arguments are file names.\n",
 	        program_name);
 	exit(retcode);
 }
 
-template <typename Val>
-std::from_chars_result parse_num_arg(char const *arg, Val &value, Val limit) {
-	std::from_chars_result result = std::from_chars(arg, &arg[strlen(arg)], value, 10);
-	if (result.ec == std::errc{}) {
-		if (*result.ptr != '\0') {
-			result.ec = std::errc::invalid_argument;
-		} else if (value > limit) {
-			result.ec = std::errc::result_out_of_range;
-		}
-	}
-	return result;
-}
-
 struct Options {
 	char const *input;
 	char const *output;
 	enum { MODE_COMPRESS_BIN, MODE_COMPRESS_TEXT, MODE_DECOMPRESS, MODE_DUMP } mode;
-	uint8_t alignment_nb_bits; // TODO: not hooked up to anything
-	static constexpr uint8_t max_alignment = 12;
 
 	/// Parse from CLI args.
 	Options(int argc, char *argv[])
-		: input(nullptr), output(nullptr), mode(MODE_COMPRESS_BIN), alignment_nb_bits(0) {
+		: input(nullptr), output(nullptr), mode(MODE_COMPRESS_BIN) {
 		char const *program_name = argv[0] ? argv[0] : "lzpcompress";
 		bool accepting_options = true;
 		for (size_t arg_idx = 1; arg_idx < size_t(argc); ++arg_idx) {
@@ -1307,63 +1288,19 @@ struct Options {
 
 			} else if (arg[1] == '-') { // Long option.
 				std::string_view name(&arg[2]);
-				char const *option_arg = nullptr;
-				if (auto eq_pos = name.find('='); eq_pos != name.npos) { // `--opt=arg`
-					option_arg = &name[eq_pos + 1];
-					name = name.substr(0, eq_pos);
-				}
-
-				auto ensure_no_arg = [&option_arg, &name] {
-					if (option_arg != nullptr) {
-						error_exit(EXIT_BAD_USAGE, "--%.*s does not take an argument\n",
-						           int(name.size()), name.data());
-					}
-				};
-				auto require_arg = [&argv, &arg_idx, &name](char const *&opt_arg) {
-					if (opt_arg == nullptr) {
-						opt_arg = argv[++arg_idx]; // This is fine, since `argv` is NULL-terminated.
-						if (opt_arg == nullptr) {
-							error_exit(EXIT_BAD_USAGE, "missing argument to --%.*s\n",
-							           int(name.size()), name.data());
-						}
-					}
-				};
 
 				if (arg[2] == '\0') {
 					accepting_options = false;
 				} else if (name == "help"sv) {
 					usage(EXIT_SUCCESS, program_name);
 				} else if (name == "binary"sv) {
-					ensure_no_arg();
 					this->mode = MODE_COMPRESS_BIN;
 				} else if (name == "text"sv) {
-					ensure_no_arg();
 					this->mode = MODE_COMPRESS_TEXT;
 				} else if (name == "uncompress"sv || name == "decompress"sv) {
-					ensure_no_arg();
 					this->mode = MODE_DECOMPRESS;
 				} else if (name == "dump"sv) {
-					ensure_no_arg();
 					this->mode = MODE_DUMP;
-				} else if (name == "align"sv) {
-					require_arg(option_arg);
-					std::from_chars_result result =
-						parse_num_arg(option_arg, this->alignment_nb_bits, max_alignment);
-					switch (result.ec) {
-					case std::errc::invalid_argument:
-						error_exit(EXIT_BAD_USAGE, "argument to --%.*s must be a number\n",
-						           int(name.size()), name.data());
-					case std::errc::result_out_of_range:
-						error_exit(EXIT_BAD_USAGE,
-						           "argument to --%.*s must be at most %" PRIu8 "\n",
-						           int(name.size()), name.data(), max_alignment);
-					default:
-						// Checking for this in the `switch` triggers a warning that this value is
-						// not in the enum. Ugh.
-						if (result.ec != std::errc{}) {
-							unreachable();
-						}
-					}
 				} else {
 					error_exit(EXIT_BAD_USAGE, "unknown option --%.*s\n", int(name.size()),
 					           name.data());
@@ -1371,22 +1308,8 @@ struct Options {
 
 			} else { // Short option.
 				// Since short options can be packed into a single arg, parse it char by char.
-				// However, `-a10`, for example, is equivalent to `-a 10`!
 				for (size_t i = 1; arg[i] != '\0'; ++i) {
-					auto require_arg = [&arg, &i, &argv, &arg_idx] {
-						if (arg[i + 1] != '\0') {
-							return &arg[i + 1];
-						} else if (char const *next_arg = argv[++arg_idx]; next_arg != nullptr) {
-							return next_arg;
-						} else {
-							error_exit(EXIT_BAD_USAGE, "missing argument to -%c\n", arg[i]);
-						}
-					};
-
 					switch (arg[i]) {
-						char const *option_arg;
-						std::from_chars_result result;
-
 					case '?':
 					case 'h':
 						usage(EXIT_SUCCESS, program_name);
@@ -1403,31 +1326,11 @@ struct Options {
 					case 'd':
 						this->mode = MODE_DUMP;
 						break;
-					case 'a':
-						option_arg = require_arg();
-						result = parse_num_arg(option_arg, this->alignment_nb_bits, max_alignment);
-						switch (result.ec) {
-						case std::errc::invalid_argument:
-							error_exit(EXIT_BAD_USAGE, "argument to -%c must be a number\n",
-							           arg[i]);
-						case std::errc::result_out_of_range:
-							error_exit(EXIT_BAD_USAGE,
-							           "argument to -%c must be at most %" PRIu8 "\n", arg[i],
-							           max_alignment);
-						default:
-							// Checking for this in the `switch` triggers a warning that this value
-							// is not in the enum. Ugh.
-							if (result.ec != std::errc{}) {
-								unreachable();
-							}
-						}
-						goto consumed_arg;
 
 					default:
 						error_exit(EXIT_BAD_USAGE, "unknown option -%c\n", arg[i]);
 					}
 				}
-			consumed_arg:;
 			}
 		}
 	}
