@@ -1439,7 +1439,8 @@ int main(int argc, char *argv[]) {
 		std::vector<std::pair<Command, uint8_t const *>> commands = deserialize(input_bytes);
 		std::vector<uint8_t> decompressed = decompress(commands);
 
-		FILE *output = open_output_file(options.output, true);
+		bool textual_output = options.mode == Options::MODE_DUMP;
+		FILE *output = open_output_file(options.output, textual_output);
 		if (options.mode == Options::MODE_DECOMPRESS) {
 			xfwrite(decompressed.data(), decompressed.size(), output, options.output);
 		} else {
