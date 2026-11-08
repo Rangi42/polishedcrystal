@@ -65,6 +65,7 @@
 #include <algorithm>
 #include <array>
 #include <assert.h>
+#include <errno.h>
 #include <forward_list>
 #include <inttypes.h>
 #include <iterator>
@@ -119,7 +120,7 @@ static void error_exit(int error_code, char const *error, ...) {
 #endif
 }
 
-static std::pair<std::vector<uint8_t>, char const *> read_input(char const *path) {
+static std::vector<uint8_t> read_input(char const *path) {
 	FILE *input;
 	char const *filename = path;
 	if (path == nullptr || strcmp(path, "-") == 0) {
@@ -132,12 +133,12 @@ static std::pair<std::vector<uint8_t>, char const *> read_input(char const *path
 		}
 #endif
 		input = stdin;
-		filename = "<standard input>";
+		filename = "<stdin>";
 	} else {
 		errno = 0;
 		input = fopen(path, "rb");
 		if (input == nullptr) {
-			error_exit(EXIT_MISSING_INPUT, "cannot open input file \"%s\": %s\n", path,
+			error_exit(EXIT_MISSING_INPUT, "cannot open input file \"%s\": %s\n", filename,
 			           strerror(errno));
 		}
 	}
@@ -150,7 +151,7 @@ static std::pair<std::vector<uint8_t>, char const *> read_input(char const *path
 		size_t ret = fread(data.data() + cur_size, sizeof(uint8_t), BUFSIZ, input);
 		if (ret < BUFSIZ) { // This only occurs at EOF or on error.
 			if (ferror(input)) {
-				error_exit(EXIT_IO_ERR, "error reading \"%s\": %s\n", path, strerror(errno));
+				error_exit(EXIT_IO_ERR, "error reading \"%s\": %s\n", filename, strerror(errno));
 			}
 			assert(feof(input));
 			data.resize(cur_size + ret);
@@ -161,11 +162,12 @@ static std::pair<std::vector<uint8_t>, char const *> read_input(char const *path
 	if (input != stdin) {
 		fclose(input);
 	}
-	return {data, filename};
+	return data;
 }
 
-static FILE *open_output_file(char const *path, bool textual) {
+static std::pair<FILE *, char const *> open_output_file(char const *path, bool textual) {
 	FILE *output;
+	char const *filename = path;
 	if (path == nullptr || strcmp(path, "-") == 0) {
 #if defined(_MSC_VER) || defined(__MINGW32__)
 		errno = 0;
@@ -176,6 +178,7 @@ static FILE *open_output_file(char const *path, bool textual) {
 		}
 #endif
 		output = stdout;
+		filename = "<stdout>";
 	} else {
 		errno = 0;
 		output = fopen(path, textual ? "wt" : "wb");
@@ -184,7 +187,7 @@ static FILE *open_output_file(char const *path, bool textual) {
 			           strerror(errno));
 		}
 	}
-	return output;
+	return {output, filename};
 }
 
 static void close_output_file(FILE *file) {
@@ -196,18 +199,20 @@ static void close_output_file(FILE *file) {
 void xfwrite(uint8_t const *data, size_t size, FILE *file, char const *filename) {
 	errno = 0;
 	if (fwrite(data, sizeof(*data), size, file) != size) {
+		int errnum = errno;
 		close_output_file(file);
 		error_exit(EXIT_IO_ERR, "could not write to output file \"%s\": %s\n", filename,
-		           strerror(errno));
+		           strerror(errnum));
 	}
 }
 
 void xputc(uint8_t ch, FILE *file, char const *filename) {
 	errno = 0;
 	if (putc(ch, file) == EOF) {
+		int errnum = errno;
 		close_output_file(file);
 		error_exit(EXIT_IO_ERR, "could not write to output file \"%s\": %s\n", filename,
-		           strerror(errno));
+		           strerror(errnum));
 	}
 }
 
@@ -424,7 +429,7 @@ struct LzRepeat final : public LzCmd {
 			fprintf(file, "\tlzrepeat %" PRIu16 ", $%02" PRIx8 "\n", this->len, bytes[0]);
 		} else {
 			this->serialize_header(file, LZ_REPEAT, filename);
-			putc(bytes[0], file);
+			xputc(bytes[0], file, filename);
 		}
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
@@ -1340,7 +1345,7 @@ struct Options {
 
 int main(int argc, char *argv[]) {
 	Options options(argc, argv);
-	auto [input_bytes, input_filename] = read_input(options.input);
+	std::vector<uint8_t> input_bytes = read_input(options.input);
 
 	switch (options.mode) {
 	case Options::MODE_COMPRESS_BIN:
@@ -1348,8 +1353,8 @@ int main(int argc, char *argv[]) {
 		std::forward_list<Command> commands = compress(input_bytes);
 
 		bool textual_output = options.mode == Options::MODE_COMPRESS_TEXT;
-		FILE *output = open_output_file(options.output, textual_output);
-		serialize(commands, input_bytes, output, textual_output, options.input);
+		auto [output, output_filename] = open_output_file(options.output, textual_output);
+		serialize(commands, input_bytes, output, textual_output, output_filename);
 		close_output_file(output);
 	} break;
 
@@ -1359,11 +1364,11 @@ int main(int argc, char *argv[]) {
 		std::vector<uint8_t> decompressed = decompress(commands);
 
 		bool textual_output = options.mode == Options::MODE_DUMP;
-		FILE *output = open_output_file(options.output, textual_output);
+		auto [output, output_filename] = open_output_file(options.output, textual_output);
 		if (options.mode == Options::MODE_DECOMPRESS) {
-			xfwrite(decompressed.data(), decompressed.size(), output, options.output);
+			xfwrite(decompressed.data(), decompressed.size(), output, output_filename);
 		} else {
-			serialize(commands, decompressed, output, true, options.input);
+			serialize(commands, decompressed, output, true, output_filename);
 		}
 		close_output_file(output);
 	} break;
