@@ -34,6 +34,18 @@ DEF SPRITEOAM_SKIP_PAL_APPLY_XFLIP EQU -2 ; Same as above, but with X-flip attri
 	const ANIM_MON_EGG1
 	const ANIM_MON_EGG2
 
+DEF PIC_ANIM_END_MASK   EQU %10000000
+DEF PIC_ANIM_CMD_MASK   EQU %01100000
+DEF PIC_ANIM_PARAM_MASK EQU %00011111
+
+DEF PIC_ANIM_FRAME_CMD         EQU %00000000
+DEF PIC_ANIM_SETREPEAT_CMD     EQU %00100000
+DEF PIC_ANIM_DOREPEAT_CMD      EQU %01000000
+DEF PIC_ANIM_IMPLICITFRAME_CMD EQU %01100000
+
+DEF MAX_PIC_ANIM_LENGTH EQU 32
+DEF IMPLICIT_FRAME_DURATION EQU 6 ; measured as the most common `frame` duration value
+
 DEF OAM_YCOORD_HIDDEN EQU 160 ; hides an OAM offscreen
 
 ; VWF flags (see engine/gfx/vwf.asm)
@@ -62,6 +74,27 @@ DEF DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
 
 DEF NUM_FLYFROM_ANIM_OAMS EQU 4 + 9 ; 4 for flymon, 9 for leaves
 DEF NUM_FLYTO_ANIM_OAMS   EQU 4 + 8 ; 4 for flymon, 8 for leaves
+
+; Dynamic overworld object palette glow types (see data/collision/glow_adjustments.asm)
+	const_def
+	const OBJ_GLOW_NONE
+	const OBJ_GLOW_AQUARIUM
+	const OBJ_GLOW_LANTERN
+	const OBJ_GLOW_DRAGON_SHRINE
+	const OBJ_GLOW_LAVA
+DEF NUM_OBJ_GLOW_TYPES EQU const_value - 1
+	; subsequent glow types have no adjustments, since they use time-of-day palettes
+	const OBJ_GLOW_DAY
+	const OBJ_GLOW_NITE
+
+; Temporary flags used in wObjectPrevGlowTypes/wNeededObjPalGlow.
+DEF OBJ_GLOW_TRANSITION_F EQU 7
+DEF OBJ_GLOW_TRANSITION   EQU 1 << OBJ_GLOW_TRANSITION_F
+
+; Temporary flags used while processing one palette swap entry.
+DEF PALETTE_SWAP_INSIDE_F  EQU 0
+DEF PALETTE_SWAP_CHANGED_F EQU 7
+DEF PALETTE_SWAP_INSIDE    EQU 1 << PALETTE_SWAP_INSIDE_F
 
 ; wPalState types (see engine/gfx/sprite_palettes.asm)
 	const_def

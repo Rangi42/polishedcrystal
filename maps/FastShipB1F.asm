@@ -14,6 +14,7 @@ FastShipB1F_MapScriptHeader:
 	coord_event 27,  5, SCENE_FASTSHIPB1F_SAILOR_BLOCKS, FastShipB1FSailorBlocksRight
 
 	def_bg_events
+	bg_event 23,  7, BGEVENT_IFNOTSET, FastShipB1FJugglerFritzSeasickTrashScript
 
 	def_object_events
 	object_event 26,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, FastShipB1FSailorScript, EVENT_FAST_SHIP_B1F_SAILOR_LEFT
@@ -22,7 +23,7 @@ FastShipB1F_MapScriptHeader:
 	object_event  2,  2, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPicnickerDebra, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event 22,  7, SPRITE_JUGGLER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerJugglerFritz, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event 10, 11, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBakerSharyn, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	object_event 13,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSailorGarrett, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	object_event 13,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_DARK_BLUE, OBJECTTYPE_TRAINER, 4, TrainerSailorGarrett, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event 21,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerFisherJonah, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event 11,  9, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBlackbeltWai, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event 19,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSailorKenneth, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
@@ -41,6 +42,7 @@ FastShipB1FSailorBlocksLeft:
 	moveobject FASTSHIPB1F_SAILOR1, 26, 4
 	appear FASTSHIPB1F_SAILOR1
 	pause 5
+	callasm UpdateSprites
 	disappear FASTSHIPB1F_SAILOR2
 	end
 
@@ -51,6 +53,7 @@ FastShipB1FSailorBlocksRight:
 	moveobject FASTSHIPB1F_SAILOR2, 27, 4
 	appear FASTSHIPB1F_SAILOR2
 	pause 5
+	callasm UpdateSprites
 	disappear FASTSHIPB1F_SAILOR1
 FastShipB1FAlreadyBlocked:
 	end
@@ -135,8 +138,12 @@ GenericTrainerBakerSharyn:
 	line "my baking."
 	done
 
-GenericTrainerSailorGarrett:
-	generictrainer SAILOR, GARRETT, EVENT_BEAT_SAILOR_GARRETT, SailorGarrettSeenText, SailorGarrettBeatenText
+TrainerSailorGarrett:
+	trainer SAILOR, GARRETT, EVENT_BEAT_SAILOR_GARRETT, SailorGarrettSeenText, SailorGarrettBeatenText, 0, .Script, TRAINERPAL_DARK_SAILOR
+
+.Script:
+	endifjustbattled
+	jumpthistextfaceplayer
 
 	text "We get different"
 	line "passengers from"
@@ -218,6 +225,13 @@ FastShipB1FSailorBlocksLeftMovement:
 	turn_head_down
 	step_end
 
+FastShipB1FJugglerFritzSeasickTrashScript:
+	dw EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	jumpthistext
+
+	text "Yuck! Shouldn't"
+	line "have looked!"
+	done
 
 FastShipB1FOnDutySailorRefusedText:
 	text "Oh, gee…"
@@ -233,7 +247,6 @@ FastShipB1FOnDutySailorThanksText:
 	para "good so he'll quit"
 	line "slacking off!"
 	done
-
 
 FastShipB1FOnDutySailorDirectionsText:
 	text "The dining room is"
@@ -363,4 +376,3 @@ SchoolboyRickySeenText:
 SchoolboyRickyBeatenText:
 	text "I was done in!"
 	done
-

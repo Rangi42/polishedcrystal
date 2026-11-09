@@ -363,34 +363,8 @@ Music_DewfordTownRSE_Ch2_b0:
 	note_type 12, 12, 7
 	duty_cycle 0
 	octave 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 1
-	note A#, 2
-	octave 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 1
-	note A#, 2
-	octave 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 1
-	note A#, 2
-	octave 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 1
-	note A#, 2
-	octave 2
+	sound_call Music_DewfordTownRSE_Ch2_ditty1
+	sound_call Music_DewfordTownRSE_Ch2_ditty1
 	note G#, 2
 	rest 2
 	note G#, 2
@@ -411,34 +385,8 @@ Music_DewfordTownRSE_Ch2_b0:
 	note A#, 2
 	rest 4
 	note F_, 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 1
-	note A#, 2
-	octave 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 1
-	note A#, 2
-	octave 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 1
-	note A#, 2
-	octave 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 1
-	note A#, 2
-	octave 2
+	sound_call Music_DewfordTownRSE_Ch2_ditty1
+	sound_call Music_DewfordTownRSE_Ch2_ditty1
 	note G#, 2
 	rest 2
 	note G#, 2
@@ -532,196 +480,24 @@ Music_DewfordTownRSE_Ch3_b0:
 	note A#, 1
 	note F_, 1
 	note_type 12, 1, 2
-	octave 3
-	note D#, 2
+	sound_call Music_DewfordTownRSE_Ch3_ditty3
 	rest 2
 	note D#, 2
-	rest 2
-	note D#, 2
-	octave 2
-	note A#, 2
-	octave 3
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 2
-	note A#, 2
-	octave 3
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	octave 2
-	note A#, 2
-	octave 3
-	note D#, 2
-	rest 2
-	note D#, 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	note C_, 2
+	sound_call Music_DewfordTownRSE_Ch3_ditty2
 	rest 2
 	note C_, 2
-	rest 2
-	note C_, 2
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 4
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	rest 2
-	note C_, 2
-	octave 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	note D#, 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	rest 4
-	note D#, 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	note D#, 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	rest 4
-	note D#, 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	note F_, 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 4
-	note F_, 2
+	sound_call Music_DewfordTownRSE_Ch3_ditty1
 	note A#, 2
 
 	rest 16
 	rest 6
-	octave 3
+	sound_call Music_DewfordTownRSE_Ch3_ditty3
 	note D#, 2
 	rest 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	octave 2
-	note A#, 2
-	octave 3
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 4
-	octave 2
-	note A#, 2
-	octave 3
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	octave 2
-	note A#, 2
-	octave 3
-	note D#, 2
-	note D#, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
+	sound_call Music_DewfordTownRSE_Ch3_ditty2
 	note C_, 2
 	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 4
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	octave 2
-	note G_, 2
-	octave 3
-	note C_, 2
-	note C_, 2
-	rest 2
-	octave 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	note D#, 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	rest 4
-	note D#, 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	note D#, 2
-	note G#, 2
-	rest 2
-	note G#, 2
-	rest 4
-	note D#, 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	note F_, 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 4
-	note F_, 2
+	sound_call Music_DewfordTownRSE_Ch3_ditty1
 	note A#, 1
 
 	rest 16
@@ -745,19 +521,7 @@ Music_DewfordTownRSE_Ch3_b0:
 	note F_, 4
 	note D#, 2
 	rest 4
-	octave 5
-	note A#, 1
-	octave 6
-	note D_, 1
-	note F_, 4
-	note D#, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D#, 1
-	rest 1
-	octave 5
-	note A#, 1
+	sound_call Music_DewfordTownRSE_Ch3_ditty4
 	note_type 6, 1, 0
 	rest 1
 	note G#, 1
@@ -802,19 +566,7 @@ Music_DewfordTownRSE_Ch3_b0:
 	rest 2
 	note D#, 1
 	rest 1
-	octave 5
-	note A#, 1
-	octave 6
-	note D_, 1
-	note F_, 4
-	note D#, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D#, 1
-	rest 1
-	octave 5
-	note A#, 1
+	sound_call Music_DewfordTownRSE_Ch3_ditty4
 	rest 1
 	octave 6
 	note G_, 2
@@ -911,3 +663,134 @@ Music_DewfordTownRSE_Ch4_b5:
 	drum_note 1, 4
 	drum_note 1, 2
 	sound_jump Music_DewfordTownRSE_Ch4_b0
+
+Music_DewfordTownRSE_Ch2_ditty1:
+	note D#, 2
+	rest 2
+	note D#, 2
+	rest 4
+	octave 1
+	note A#, 2
+	octave 2
+	note D#, 2
+	rest 2
+	note D#, 2
+	rest 4
+	octave 1
+	note A#, 2
+	octave 2
+	sound_ret
+
+Music_DewfordTownRSE_Ch3_ditty1:
+	octave 2
+	note A#, 2
+	rest 2
+	note A#, 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	note D#, 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	rest 4
+	note D#, 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	note D#, 2
+	note G#, 2
+	rest 2
+	note G#, 2
+	rest 4
+	note D#, 2
+	note A#, 2
+	rest 2
+	note A#, 2
+	rest 2
+	note A#, 2
+	note F_, 2
+	note A#, 2
+	rest 2
+	note A#, 2
+	rest 4
+	note F_, 2
+	sound_ret
+
+Music_DewfordTownRSE_Ch3_ditty2:
+	note D_, 2
+	rest 2
+	note D_, 2
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note C_, 2
+	octave 2
+	note G_, 2
+	octave 3
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 4
+	octave 2
+	note G_, 2
+	octave 3
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note C_, 2
+	octave 2
+	note G_, 2
+	octave 3
+	note C_, 2
+	sound_ret
+
+Music_DewfordTownRSE_Ch3_ditty3:
+	octave 3
+	note D#, 2
+	rest 2
+	note D#, 2
+	rest 2
+	note D#, 2
+	octave 2
+	note A#, 2
+	octave 3
+	note D#, 2
+	rest 2
+	note D#, 2
+	rest 4
+	octave 2
+	note A#, 2
+	octave 3
+	note D#, 2
+	rest 2
+	note D#, 2
+	rest 2
+	note D#, 2
+	octave 2
+	note A#, 2
+	octave 3
+	note D#, 2
+	sound_ret
+
+Music_DewfordTownRSE_Ch3_ditty4:
+	octave 5
+	note A#, 1
+	octave 6
+	note D_, 1
+	note F_, 4
+	note D#, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note D#, 1
+	rest 1
+	octave 5
+	note A#, 1
+	sound_ret

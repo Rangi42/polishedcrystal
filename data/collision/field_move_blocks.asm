@@ -2,9 +2,12 @@ CutGrassBlockPointers:
 ; Which tileset are we in?
 	dbw TILESET_JOHTO_TRADITIONAL, .johto_traditional
 	dbw TILESET_JOHTO_MODERN, .johto_modern
+	dbw TILESET_JOHTO_COAST, .johto_coast
 	dbw TILESET_JOHTO_OUTLANDS, .johto_outlands
 	dbw TILESET_JOHTO_ANCIENT, .johto_ancient
 	dbw TILESET_KANTO, .kanto
+	dbw TILESET_KANTO_NORTH, .kanto_north
+	dbw TILESET_KANTO_URBAN, .kanto_urban
 	dbw TILESET_INDIGO_PLATEAU, .indigo_plateau
 	dbw TILESET_SHAMOUTI_ISLAND, .shamouti_island
 	dbw TILESET_VALENCIA_ISLAND, .valencia_island
@@ -17,8 +20,9 @@ CutGrassBlockPointers:
 ; Which meta tile are we facing, and which should we replace it with?
 
 .johto_traditional
-	db $f9, $02
+	db $c1, $02
 .johto_modern
+.johto_coast
 .johto_ancient
 .valencia_island
 	db $03, $02
@@ -33,14 +37,22 @@ CutGrassBlockPointers:
 	db -1
 
 .kanto
-	db $0b, $0a
 	db $87, $94
+.kanto_north
+	db $0b, $0a
+	db -1
+
+.kanto_urban
+	db $05, $0a
+	db $0b, $0a
 	db -1
 
 .indigo_plateau
 	db $0b, $0a
-	db $a2, $f9
+	db $a2, $79
 	db $a3, $14
+	db $ba, $ce
+	db $bb, $4c
 	db $bc, $0a
 	db $bd, $0a
 	db $be, $0a
@@ -52,12 +64,10 @@ CutGrassBlockPointers:
 	db $c8, $0a
 	db $c9, $0a
 	db $cd, $4c
-	db $d0, $ce
-	db $d1, $4c
 	db $d2, $6f
 	db $e5, $e8
 	db $ea, $c2
-	db $ed, $fa
+	db $ed, $7b
 	db -1
 
 .shamouti_island
@@ -112,15 +122,12 @@ CutGrassBlockPointers:
 
 WhirlpoolBlockPointers:
 	dbw TILESET_JOHTO_TRADITIONAL, .johto_traditional
-	dbw TILESET_JOHTO_MODERN, .johto_modern
+	dbw TILESET_JOHTO_COAST, .johto_coast
 	dbw TILESET_JOHTO_OUTLANDS, .johto_outlands
 	db -1
 
 .johto_traditional
+.johto_coast
 .johto_outlands
 	db $07, $07
-	db -1
-
-.johto_modern
-	db $83, $83
 	db -1

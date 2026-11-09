@@ -101,4 +101,3 @@ ScientistCarlBeatenText:
 	text "My studies don't"
 	line "apply to battles!"
 	done
-

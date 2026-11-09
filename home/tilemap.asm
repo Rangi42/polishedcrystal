@@ -32,19 +32,22 @@ endc
 	ret
 
 SetHPPal::
-; Set palette for hp bar pixel length e at hl.
+; Set palette at hl for the big-endian HP and max HP at bc.
+	push hl
+	ld h, b
+	ld l, c
 	call GetHPPal
+	pop hl
 	ld [hl], d
 	ret
 
 GetHPPal::
-; Get palette for hp bar pixel length e in d.
-	ld d, HP_GREEN
-	ld a, e
-	cp 25
-	ret nc
-	inc d ; HP_YELLOW
-	cp 10
-	ret nc
-	inc d ; HP_RED
-	ret
+; Get palette in d for the big-endian HP and max HP at hl.
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+	farjp GetHPPalFromHP

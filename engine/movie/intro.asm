@@ -98,6 +98,7 @@ IntroScene1:
 	call ClearSprites
 	call ClearTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
@@ -169,6 +170,7 @@ IntroScene3:
 	call ClearSprites
 	call ClearTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
@@ -202,6 +204,7 @@ IntroScene5:
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
 	ld a, $1
@@ -292,6 +295,7 @@ IntroScene7:
 	call ClearSprites
 	call ClearTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	ld a, $1
@@ -372,7 +376,7 @@ IntroScene9:
 	ld bc, 3 * SCREEN_WIDTH
 	ld a, $3
 	rst ByteFill
-	ld a, $2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
 	call DelayFrame
 	call DelayFrame
@@ -383,6 +387,7 @@ IntroScene9:
 	call DelayFrame
 	call DelayFrame
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hBGMapAddress], a
 	ld [wGlobalAnimXOffset], a
@@ -423,6 +428,7 @@ IntroScene11:
 	ld hl, rIE
 	res B_IE_STAT, [hl]
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hLCDCPointer], a
 	ld a, $1
@@ -539,6 +545,7 @@ IntroScene13:
 	call ClearSprites
 	call ClearTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
@@ -611,6 +618,7 @@ IntroScene15:
 	call ClearSprites
 	call ClearTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
@@ -689,6 +697,7 @@ IntroScene17:
 	call ClearSprites
 	call ClearTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
@@ -751,6 +760,7 @@ IntroScene19:
 	call ClearSprites
 	call ClearTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
@@ -846,6 +856,7 @@ IntroScene21:
 	ld c, 3
 	call DelayFrames
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -901,6 +912,7 @@ IntroScene26:
 	call ClearSprites
 	call ClearTileMap
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, $1
 	ldh [rVBK], a
@@ -1378,6 +1390,7 @@ Intro_Scene16_AnimateSuicune:
 	cp $3
 	ret nz
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ret
 
@@ -1398,7 +1411,7 @@ Intro_ColoredSuicuneFrameSwap:
 	ld a, c
 	or b
 	jr nz, .loop
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 

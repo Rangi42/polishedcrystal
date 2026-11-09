@@ -27,7 +27,7 @@ IvysLab_MapScriptHeader:
 
 	def_object_events
 	object_event  4,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfIvyScript, -1
-	object_event  5,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, NIDORINO, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, NO_FORM, IvysLabNidorinoScript, -1
+	object_event  5,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, NIDORINO, -1, PAL_MON_PURPLE, OBJECTTYPE_SCRIPT, NO_FORM, IvysLabNidorinoScript, -1
 	object_event  2,  9, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, IvysLabHopeScript, -1
 
 	object_const_def
@@ -60,11 +60,7 @@ ProfIvyScript:
 	pause 60
 	special RestartMapMusic
 	pause 15
-	opentext
-	writetext IvysLabNidorinoText
-	cry NIDORINO
-	waitsfx
-	closetext
+	showcrytext IvysLabNidorinoText, NIDORINO
 	showemote EMOTE_HAPPY, IVYSLAB_NIDORINO, 15
 	setevent EVENT_HEALED_NIDORINO
 	setlasttalked IVYSLAB_IVY
@@ -75,8 +71,7 @@ ProfIvyScript:
 	iftruefwd .GotItem
 	writetext .ThanksText
 	promptbutton
-	verbosegiveitem MOON_STONE
-	iffalse_endtext
+	verbosegiveitem MOON_STONE, iffalse_endtext
 	setevent EVENT_GOT_MOON_STONE_FROM_IVY
 .GotItem:
 	checkevent EVENT_BEAT_PROF_IVY
@@ -96,9 +91,11 @@ ProfIvyScript:
 	jumptext .AfterText
 
 .Return2:
-	giveitem LIECHI_BERRY
+	; Refund a berry just removed from the Bag.
+	giveitem_unsafe LIECHI_BERRY
 .Return1:
-	giveitem LIECHI_BERRY
+	; Refund a berry just removed from the Bag.
+	giveitem_unsafe LIECHI_BERRY
 	jumpthisopenedtext
 
 .NoBerryText:

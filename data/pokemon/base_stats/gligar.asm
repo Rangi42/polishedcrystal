@@ -1,5 +1,5 @@
-	db  65,  75, 105,  85,  35,  65 ; 430 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 430,  65,  75, 105,  35,  65,  85
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db GROUND, FLYING ; type
 	db 60 ; catch rate

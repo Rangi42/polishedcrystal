@@ -5,7 +5,7 @@ CeladonDeptStore1F_MapScriptHeader:
 
 	def_warp_events
 	warp_event  7,  7, CELADON_CITY, 1
-	warp_event  8,  7, CELADON_CITY, 1
+	warp_event  8,  7, CELADON_CITY, 17
 	warp_event 15,  0, CELADON_DEPT_STORE_2F, 2
 	warp_event  2,  0, CELADON_DEPT_STORE_ELEVATOR, 1
 
@@ -64,5 +64,5 @@ CeladonDeptStore1FDirectoryText:
 	para "5F: Drug Store"
 
 	para "6F: Rooftop"
-	line "    Atrium"
+	line "    Square"
 	done

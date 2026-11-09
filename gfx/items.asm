@@ -362,8 +362,8 @@ DragonFangIcon:: INCBIN "gfx/items/dragon_fang.2bpp.lzp"
 SECTION "BlackGlassesIcon", ROMX
 BlackGlassesIcon:: INCBIN "gfx/items/blackglasses.2bpp.lzp"
 
-SECTION "PinkBowIcon", ROMX
-PinkBowIcon:: INCBIN "gfx/items/pink_bow.2bpp.lzp"
+SECTION "FairyFeatherIcon", ROMX
+FairyFeatherIcon:: INCBIN "gfx/items/fairyfeather.2bpp.lzp"
 
 SECTION "ScopeLensIcon", ROMX
 ScopeLensIcon:: INCBIN "gfx/items/scope_lens.2bpp.lzp"

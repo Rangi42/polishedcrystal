@@ -226,4 +226,3 @@ CeladonMansion3FAreYouSureText:
 	text "Are you sure?"
 	line "It could crash!"
 	done
-

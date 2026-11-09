@@ -41,7 +41,7 @@ cd polishedcrystal
 mkdir rgbds
 ```
 
-Then download [**rgbds 1.0.1**](https://rgbds.gbdev.io/install/windows). (If you're building an older release of Polished Crystal, you may need an older version of RGBDS.) Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
+Then download [**rgbds 1.0.4**](https://rgbds.gbdev.io/). (If you're building an older release of Polished Crystal, you may need an older version of RGBDS.) Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
 
 Now you're ready to [build **polishedcrystal**](#build-polishedcrystal).
 

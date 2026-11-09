@@ -18,10 +18,10 @@ NewBarkTown_MapScriptHeader:
 	coord_event  1,  8, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouTrigger1
 	coord_event  1,  9, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouTrigger2
 	coord_event  6,  4, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_LyraIntroTrigger
-	coord_event 17,  6, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger1
-	coord_event 17,  7, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger2
-	coord_event 17,  8, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger3
-	coord_event 17,  9, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger4
+	coord_event 19,  6, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger1
+	coord_event 19,  7, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger2
+	coord_event 19,  8, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger3
+	coord_event 19,  9, SCENE_NEWBARKTOWN_LYRA_FINAL, NewBarkTown_LyraFinalTrigger4
 
 	def_bg_events
 	bg_event  8,  8, BGEVENT_JUMPTEXT, NewBarkTownSignText
@@ -100,19 +100,19 @@ NewBarkTown_LyraIntroTrigger:
 	end
 
 NewBarkTown_LyraFinalTrigger1:
-	moveobject NEWBARKTOWN_LYRA, 14, 11
+	moveobject NEWBARKTOWN_LYRA, 16, 11
 	sjumpfwd NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger2:
-	moveobject NEWBARKTOWN_LYRA, 14, 12
+	moveobject NEWBARKTOWN_LYRA, 16, 12
 	sjumpfwd NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger3:
-	moveobject NEWBARKTOWN_LYRA, 14, 13
+	moveobject NEWBARKTOWN_LYRA, 16, 13
 	sjumpfwd NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger4:
-	moveobject NEWBARKTOWN_LYRA, 14, 14
+	moveobject NEWBARKTOWN_LYRA, 16, 14
 NewBarkTown_LyraFinalTrigger:
 	appear NEWBARKTOWN_LYRA
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye1_NBT
@@ -227,14 +227,16 @@ Movement_LyraSaysGoodbye1_NBT:
 	step_end
 
 Movement_LyraSaysGoodbye2_NBT:
+	step_up
+	step_up
+	step_up
 	step_right
-	step_up
-	step_up
-	step_up
 	step_right
 	step_end
 
 Movement_LyraSaysGoodbye3_NBT:
+	step_left
+	step_left
 	step_left
 	step_down
 	step_down

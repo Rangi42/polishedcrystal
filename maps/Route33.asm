@@ -14,7 +14,7 @@ Route33_MapScriptHeader:
 
 	def_object_events
 	object_event  6, 13, SPRITE_HIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerHikerAnthony, -1
-	object_event 12, 17, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSchoolgirlImogen, -1
+	object_event 12, 17, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_DARK_RED, OBJECTTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
 	fruittree_event 14, 16, FRUITTREE_ROUTE_33, PECHA_BERRY, PAL_NPC_PINK
 
 Route33RainScript:
@@ -126,8 +126,12 @@ TrainerHikerAnthony:
 .PhoneFull:
 	jumpstd phonefullm
 
-GenericTrainerSchoolgirlImogen:
-	generictrainer SCHOOLGIRL, IMOGEN, EVENT_BEAT_SCHOOLGIRL_IMOGEN, SchoolgirlImogenSeenText, SchoolgirlImogenBeatenText
+TrainerSchoolgirlImogen:
+	trainer SCHOOLGIRL, IMOGEN, EVENT_BEAT_SCHOOLGIRL_IMOGEN, SchoolgirlImogenSeenText, SchoolgirlImogenBeatenText, 0, .Script, TRAINERPAL_DARK_SCHOOLGIRL
+
+.Script:
+	endifjustbattled
+	jumpthistextfaceplayer
 
 	text "I'm trying hard so"
 	line "I can be the star"

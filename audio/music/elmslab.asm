@@ -357,36 +357,12 @@ Music_ElmsLab_Ch3:
 	rest 14
 	octave 3
 	note C_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
+	sound_call Music_ElmsLab_Ch3_ditty1
 	note C_, 2
 	note D_, 2
 	note E_, 2
 Music_ElmsLab_branch_ea216:
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
+	sound_call Music_ElmsLab_Ch3_ditty1
 	note A_, 2
 	note E_, 2
 	octave 4
@@ -453,20 +429,7 @@ Music_ElmsLab_branch_ea216:
 	octave 3
 	note A#, 4
 	note G_, 4
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note G_, 2
-	note A#, 2
-	note D_, 2
-	note A#, 2
-	note G_, 2
-	note A#, 2
+	sound_call Music_ElmsLab_Ch3_ditty2
 	note D_, 2
 	note A_, 2
 	note E_, 2
@@ -485,20 +448,7 @@ Music_ElmsLab_branch_ea216:
 	note A_, 2
 	note G_, 2
 	note E_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note G_, 2
-	note A#, 2
-	note D_, 2
-	note A#, 2
-	note G_, 2
-	note A#, 2
+	sound_call Music_ElmsLab_Ch3_ditty2
 	note A_, 2
 	note G_, 2
 	note C_, 4
@@ -509,19 +459,7 @@ Music_ElmsLab_branch_ea216:
 	note F_, 4
 	note F#, 4
 	note G_, 4
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
-	note A_, 2
-	note C_, 2
-	note A_, 2
-	note F_, 2
+	sound_call Music_ElmsLab_Ch3_ditty1
 	note C_, 2
 	note F_, 2
 	note A_, 2
@@ -536,3 +474,36 @@ Music_ElmsLab_Ch4:
 Music_ElmsLab_branch_ea2b9:
 	drum_note 8, 4
 	sound_jump Music_ElmsLab_branch_ea2b9
+
+Music_ElmsLab_Ch3_ditty1:
+	note F_, 2
+	note A_, 2
+	note C_, 2
+	note A_, 2
+	note F_, 2
+	note A_, 2
+	note C_, 2
+	note A_, 2
+	note F_, 2
+	note A_, 2
+	note C_, 2
+	note A_, 2
+	note F_, 2
+	sound_ret
+
+Music_ElmsLab_Ch3_ditty2:
+	note F_, 2
+	note A_, 2
+	note C_, 2
+	note A_, 2
+	note F_, 2
+	note A_, 2
+	note C_, 2
+	note A_, 2
+	note G_, 2
+	note A#, 2
+	note D_, 2
+	note A#, 2
+	note G_, 2
+	note A#, 2
+	sound_ret

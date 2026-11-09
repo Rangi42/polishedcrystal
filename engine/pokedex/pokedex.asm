@@ -778,7 +778,7 @@ endc
 	and CAUGHT_MASK ; z = is not caught
 	push af
 	push hl
-	xor a
+	ld a, [wPokedex_Shiny]
 	farcall GetMonPalInBCDE
 	pop hl
 	pop af
@@ -1673,7 +1673,7 @@ Pokedex_Bio:
 	hlcoord 12, 9
 	ld [hl], $7d
 .all_f
-	ld de, .AllString
+	ld de, .100PercentString
 	jr .print
 
 .unknown
@@ -1845,7 +1845,7 @@ Pokedex_Bio:
 	ld e, l
 	ret
 
-.AllString:
+.100PercentString:
 	db "100%@"
 
 INCLUDE "data/pokedex_bio.asm"
@@ -3382,7 +3382,7 @@ endc
 	ld a, BANK(FootprintPointers)
 	call GetFarWord
 .got_footprint
-	ld a, BANK(Footprints)
+	ld a, BANK("Pokédex Footprints")
 	ld de, wDexMonFootprintTiles
 	call FarDecompressToDE
 	; Expand 1bpp to 2bpp
@@ -3514,9 +3514,32 @@ Pokedex_CopyTypeIconPals:
 	pop hl
 	ret
 
+FastPrintNum:
+; Prints 3 digits of 16bit number in hl with leading zeros + terminator.
+; Assumes hl is between 000-999.
+	ld bc, -100
+	ld a, '0' - 1
+.printloop1
+	inc a
+	add hl, bc
+	jr c, .printloop1
+	ld [de], a
+	inc de
+	ld bc, 10
+	ld a, '9' + 1
+.printloop2
+	dec a
+	add hl, bc
+	jr nc, .printloop2
+	ld [de], a
+	inc de
+	ld a, '0'
+	add l
+	ld [de], a
+	ret
+
 INCLUDE "data/pokemon/dex_order_alpha.asm"
 INCLUDE "data/pokemon/dex_order_new.asm"
-
 
 NewPokedexEntry:
 	; Disable H-blank as invoked in battles.

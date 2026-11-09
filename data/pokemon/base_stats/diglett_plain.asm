@@ -1,5 +1,5 @@
-	db  10,  55,  25,  95,  35,  45 ; 265 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 265,  10,  55,  25,  35,  45,  95
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db GROUND, GROUND ; type
 	db 255 ; catch rate

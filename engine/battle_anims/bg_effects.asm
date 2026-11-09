@@ -318,12 +318,13 @@ BattleBGEffect_HideMon:
 	pop bc
 	xor a
 	ldh [hBGMapHalf], a
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
 .four
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	jmp EndBattleBGEffect
 
@@ -409,13 +410,14 @@ BattleBGEffect_BattlerObj_1Row:
 	lb bc, 1, 6
 .okay2
 	call ClearBox
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	pop bc
 	ret
 
 .five
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	jmp EndBattleBGEffect
 
@@ -476,13 +478,14 @@ BattleBGEffect_BattlerObj_2Row:
 	lb bc, 2, 6
 .okay2
 	call ClearBox
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	pop bc
 	ret
 
 .five
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	jmp EndBattleBGEffect
 
@@ -562,7 +565,7 @@ BattleBGEffect_RemoveMon:
 .okay2
 	xor a
 	ldh [hBGMapHalf], a
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call BattleBGEffects_IncrementJumptable
 	ld hl, BG_EFFECT_STRUCT_PARAM
@@ -572,6 +575,7 @@ BattleBGEffect_RemoveMon:
 
 .four
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
@@ -672,7 +676,7 @@ BattleBGEffect_RunPicResizeScript:
 	cp -3
 	call nz, .PlaceGraphic
 	call BattleBGEffects_IncrementJumptable
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -682,6 +686,7 @@ BattleBGEffect_RunPicResizeScript:
 
 .restart
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
@@ -690,6 +695,7 @@ BattleBGEffect_RunPicResizeScript:
 
 .end
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	jmp EndBattleBGEffect
 
@@ -2492,7 +2498,7 @@ BattleBGEffect_SineWave:
 	; If ability slideouts are up, don't sinewave them.
 	ld a, [wInAbility]
 	ld d, a
-	bit 6, d
+	bit ABIL_PLAYER_VISIBLE, d
 	jr z, .no_player_slideout
 	ld a, c
 	cp $3f
@@ -2501,7 +2507,7 @@ BattleBGEffect_SineWave:
 	jr c, .next
 
 .no_player_slideout
-	bit 7, d
+	bit ABIL_ENEMY_VISIBLE, d
 	jr z, .no_enemy_slideout
 	ld a, c
 	cp $17

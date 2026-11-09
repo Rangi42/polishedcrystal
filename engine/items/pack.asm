@@ -1,3 +1,5 @@
+DEF POCKET_MENU_DATA_SIZE EQU 24
+
 ; Pack.Jumptable and BattlePack.Jumptable indexes
 	const_def
 	const PACKSTATE_INITGFX
@@ -68,6 +70,7 @@ Pack:
 	ld [wOptions1], a
 .declined
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -143,8 +146,7 @@ PackJumptable_SortMenu:
 	push hl
 	ld a, [wMenuData_ScrollingMenuSpacing]
 	push af
-	ld a, [wCurPocket]
-	cp TM_HM - 1
+	call Pack_IsTMHMPocket
 	ld hl, MenuDataHeader_SortTMs
 	ld de, Jumptable_SortTMs
 	jr z, .got_sort_menu
@@ -190,14 +192,15 @@ UseKeyItem:
 	jmp Pack_PrintTextNoScroll
 
 .Current:
-	predef_jump DoKeyItemEffect
+	farjp DoKeyItemEffect
 
 .Party:
 	ld a, [wPartyCount]
 	and a
 	jr z, .NoPokemon
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -208,7 +211,7 @@ UseKeyItem:
 	jmp Pack_PrintTextNoScroll
 
 .Field:
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	ld a, [wItemEffectSucceeded]
 	and a
 	jr z, .Oak
@@ -388,6 +391,7 @@ UseItem:
 	jr z, .NoPokemon
 	call DoItemEffect
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -490,7 +494,7 @@ GiveItem:
 	push af
 	res NO_TEXT_SCROLL, a
 	ld [wOptions1], a
-	ld a, $8
+	ld a, PARTYMENUACTION_GIVE_ITEM
 	ld [wPartyMenuActionText], a
 	call ClearBGPalettes
 	farcall LoadPartyMenuGFX
@@ -527,6 +531,7 @@ GiveItem:
 	pop af
 	ld [wOptions1], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -537,9 +542,7 @@ GiveItem:
 	jmp Pack_PrintTextNoScroll
 .Egg:
 	; An EGG can't hold an item.
-	text_far Text_AnEGGCantHoldAnItem
-	text_end
-
+	text_farend Text_AnEGGCantHoldAnItem
 BattlePack:
 	ld hl, wOptions1
 	set NO_TEXT_SCROLL, [hl]
@@ -578,6 +581,7 @@ BattlePack:
 
 PackJumptable_InitGFX:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call Pack_InitColors
@@ -592,17 +596,17 @@ Pack_SetPocketMenuJump:
 	ret
 
 Pack_RegularPocketMenu:
-	ld bc, ItemsPocketMenuDataHeader
+	ld bc, PocketMenuDataHeaders
 	call Pack_PocketMenu
 	jmp Pack_InterpretJoypad
 
 Pack_TutorialPocketMenu:
-	ld bc, Tutorial_ItemsPocketMenuDataHeader
+	ld bc, Tutorial_PocketMenuDataHeaders
 	jr Pack_TempPocketMenu
 
 Pack_DepositSellPocketMenu:
 	; Menu input is handled elsewhere.
-	ld bc, PC_Mart_ItemsPocketMenuDataHeader
+	ld bc, PC_Mart_PocketMenuDataHeaders
 	; fallthrough
 Pack_TempPocketMenu:
 	ld hl, wTempPocketCursor
@@ -623,7 +627,7 @@ Pack_PocketMenu:
 	push hl
 	ld h, b
 	ld l, c
-	ld bc, MedicinePocketMenuDataHeader - ItemsPocketMenuDataHeader
+	ld bc, POCKET_MENU_DATA_SIZE
 	push af
 	rst AddNTimes
 	call CopyMenuHeader
@@ -699,6 +703,7 @@ ItemSubmenu:
 	and a
 	jr nz, .quit_run_script
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
@@ -762,22 +767,23 @@ KeyItemSubmenu:
 	jmp Pack_PrintTextNoScroll
 
 .Current:
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	jr .didnt_use_item
 
 .BattleField:
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	ld a, [wItemEffectSucceeded]
 	and a
 	jr nz, .quit_run_script
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
 	jmp Pack_InitColors
 
 .BattleOnly:
-	predef DoKeyItemEffect
+	farcall DoKeyItemEffect
 	ld a, [wItemEffectSucceeded]
 	and a
 	jr z, .Oak
@@ -812,6 +818,7 @@ InitPackBuffers:
 
 DepositSellInitPackBuffers:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld [wCurPocket], a ; ITEM_POCKET
 	ld [wPackUsedItem], a
@@ -1157,7 +1164,10 @@ Pack_InitColors:
 	call GetCGBLayout
 	jmp SetDefaultBGPAndOBP
 
-; Note that the game assumes strict order of menu data headers!
+PocketMenuDataHeaders:
+; entries correspond to pocket constants, skipping TM_HM
+	table_width POCKET_MENU_DATA_SIZE
+
 ItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
 	menu_coords 7, 1, 19, 11
@@ -1232,6 +1242,12 @@ KeyItemsPocketMenuDataHeader:
 	dba PlaceMenuKeyItemName
 	dba DoNothing
 	dba UpdateKeyItemIconAndDescription
+
+	assert_table_length NUM_POCKETS - 1 ; skip TM_HM
+
+PC_Mart_PocketMenuDataHeaders:
+; entries correspond to pocket constants, skipping TM_HM
+	table_width POCKET_MENU_DATA_SIZE
 
 PC_Mart_ItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
@@ -1308,6 +1324,12 @@ PC_Mart_KeyItemsPocketMenuDataHeader:
 	dba DoNothing
 	dba UpdateKeyItemIconAndDescription
 
+	assert_table_length NUM_POCKETS - 1 ; skip TM_HM
+
+Tutorial_PocketMenuDataHeaders:
+; entries correspond to first three pocket constants
+	table_width POCKET_MENU_DATA_SIZE
+
 Tutorial_ItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
 	menu_coords 7, 1, 19, 11
@@ -1353,6 +1375,8 @@ Tutorial_BallsPocketMenuDataHeader:
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
 
+	assert_table_length 3 ; just ITEM, MEDICINE, and BALL pockets
+
 Text_SortItemsHow:
 	text "How do you want"
 	line "to sort items?"
@@ -1368,48 +1392,30 @@ Text_NoEmptySlot:
 
 Text_ThrowAwayHowMany:
 	; Throw away how many?
-	text_far _AskThrowAwayText
-	text_end
-
+	text_farend _AskThrowAwayText
 Text_ConfirmThrowAway:
 	; Throw away @ @ (S)?
-	text_far _AskQuantityThrowAwayText
-	text_end
-
+	text_farend _AskQuantityThrowAwayText
 Text_ThrewAway:
 	; Threw away @ (S).
-	text_far _ThrewAwayText
-	text_end
-
+	text_farend _ThrewAwayText
 Text_ThisIsntTheTime:
 	; OAK:  ! This isn't the time to use that!
-	text_far _OakThisIsntTheTimeText
-	text_end
-
+	text_farend _OakThisIsntTheTimeText
 TextJump_YouDontHaveAPkmn:
 	; You don't have a #MON!
-	text_far Text_YouDontHaveAPkmn
-	text_end
-
+	text_farend Text_YouDontHaveAPkmn
 Text_RegisteredItem:
 	; Registered the @ .
-	text_far _RegisteredItemText
-	text_end
-
+	text_farend _RegisteredItemText
 Text_UnregisteredItem:
-	text_far UnregisteredItemText
-	text_end
-
+	text_farend UnregisteredItemText
 Text_CantRegister:
 	; You can't register that item.
-	text_far _CantRegisterText
-	text_end
-
+	text_farend _CantRegisterText
 Text_MoveItemWhere:
 	; Where should this be moved to?
-	text_far _AskItemMoveText
-	text_end
-
+	text_farend _AskItemMoveText
 PackInterfaceGFX:
 INCBIN "gfx/pack/pack_top_left.2bpp.lzp"
 
@@ -1443,5 +1449,4 @@ Special_ChooseItem::
 	jr .loop
 
 .ItemCantBeSelectedText:
-	text_far ItemCantBeSelectedText
-	text_end
+	text_farend ItemCantBeSelectedText

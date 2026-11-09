@@ -1,11 +1,5 @@
 ; Functions dealing with palettes.
 
-UpdateCGBPalsLYTimed:
-; checks if there is time to run UpdateCGBPals.
-	ldh a, [rLY]
-	cp 150
-	ret nc
-	; fallthrough
 UpdateCGBPals::
 ; any pals to update?
 	ldh a, [hCGBPalUpdate]

@@ -1,6 +1,7 @@
 MACRO mon_cry
 ; index, pitch, length
-	dw \1, \2, \3
+	db \1
+	dw \2, \3
 ENDM
 
 PokemonCries::
@@ -257,44 +258,44 @@ PokemonCries::
 	mon_cry CRY_TYPHLOSION,  $000,  $100 ; Lugia
 	mon_cry CRY_TYROGUE,     $000,  $180 ; HoOh
 	mon_cry CRY_ENTEI,       $14a,  $111 ; Celebi
-	mon_cry CRY_MARILL,      $11b,  $120 ; Azurill
-	mon_cry CRY_AMPHAROS,    $27b,  $144 ; Wynaut
-	mon_cry CRY_TYROGUE,    -$051,  $0e8 ; Ambipom
+	mon_cry CRY_AZURILL,        0,   256 ; Azurill
+	mon_cry CRY_WYNAUT,         0,   228 ; Wynaut
+	mon_cry CRY_AMBIPOM,        8,   256 ; Ambipom
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg
 	mon_cry CRY_NIDORAN_M,      0,     0 ; $100
-	mon_cry CRY_HOOTHOOT,    $130,  $0e8 ; Mismagius
-	mon_cry CRY_MARILL,     -$01f,  $180 ; Honchkrow
-	mon_cry CRY_BELLOSSOM,   $f40,  $180 ; Bonsly
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mime Jr.
-	mon_cry CRY_PIDGEOTTO,   $00a,  $140 ; Happiny
-	mon_cry CRY_GRIMER,      $055,  $081 ; Munchlax
-	mon_cry CRY_MANTINE,    -$0be,  $0f0 ; Mantyke
-	mon_cry CRY_WOOPER,      $053,  $0af ; Weavile
-	mon_cry CRY_METAPOD,     $020,  $140 ; Magnezone
-	mon_cry CRY_SEEL,        $000,  $100 ; Lickilicky
-	mon_cry CRY_RHYDON,      $000,  $100 ; Rhyperior
-	mon_cry CRY_GOLEM,       $000,  $100 ; Tangrowth
-	mon_cry CRY_VOLTORB,     $08f,  $17f ; Electivire
-	mon_cry CRY_CHARMANDER,  $0ff,  $0b0 ; Magmortar
-	mon_cry CRY_TOGETIC,     $03b,  $038 ; Togekiss
-	mon_cry CRY_TOTODILE,    $031,  $0c8 ; Yanmega
-	mon_cry CRY_VENONAT,     $03d,  $160 ; Leafeon
-	mon_cry CRY_VENONAT,     $0b0,  $16f ; Glaceon
-	mon_cry CRY_GLIGAR,     -$102,  $100 ; Gliscor
-	mon_cry CRY_MAGCARGO,   -$109,  $100 ; Mamoswine
-	mon_cry CRY_GIRAFARIG,   $073,  $240 ; PorygonZ
-	mon_cry CRY_VENONAT,     $0b0,  $16f ; Sylveon
-	mon_cry CRY_CLEFAIRY,    $077,  $090 ; Perrserker
-	mon_cry CRY_MAGCARGO,    $0a1,  $0e8 ; Cursola
-	mon_cry CRY_FARFETCH_D,  $0dd,  $081 ; SirfetchD
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mr.Rime
-	mon_cry CRY_TYROGUE,    -$160,  $180 ; Wyrdeer
-	mon_cry CRY_CATERPIE,    $000,  $100 ; Kleavor
-	mon_cry CRY_TEDDIURSA,   $640,  $0d8 ; Ursaluna
-	mon_cry CRY_WOOPER,      $053,  $0af ; Sneasler
-	mon_cry CRY_SLOWKING,    $160,  $0e0 ; Overqwil
-	mon_cry CRY_DUNSPARCE,   $1c4,  $100 ; Dudunsparce
-	mon_cry CRY_GIRAFARIG,   $041,  $200 ; Farigiraf
-	mon_cry CRY_WOOPER,     -$0c6,  $140 ; Clodsire
-	mon_cry CRY_NIDOQUEEN,   $0af,  $0c0 ; Annihilape
+	mon_cry CRY_MISMAGIUS,      0,   256 ; Mismagius
+	mon_cry CRY_HONCHKROW,      0,   256 ; Honchkrow
+	mon_cry CRY_BONSLY,        -8,   256 ; Bonsly
+	mon_cry CRY_MIME_JR_,       4,   256 ; Mime Jr.
+	mon_cry CRY_HAPPINY,      -16,   256 ; Happiny
+	mon_cry CRY_MUNCHLAX,       0,   256 ; Munchlax
+	mon_cry CRY_MANTYKE,        0,   256 ; Mantyke (needs improvement)
+	mon_cry CRY_WEAVILE,        2,   256 ; Weavile
+	mon_cry CRY_MAGNEZONE,    -16,   256 ; Magnezone
+	mon_cry CRY_LICKILICKY,     0,   256 ; Lickilicky
+	mon_cry CRY_RHYPERIOR,      0,   256 ; Rhyperior
+	mon_cry CRY_TANGROWTH,      0,   256 ; Tangrowth
+	mon_cry CRY_ELECTIVIRE,     0,   256 ; Electivire
+	mon_cry CRY_MAGMORTAR,      0,   256 ; Magmortar
+	mon_cry CRY_TOGEKISS,       0,   256 ; Togekiss
+	mon_cry CRY_YANMEGA,        0,   256 ; Yanmega
+	mon_cry CRY_LEAFEON,       56,   524 ; Leafeon
+	mon_cry CRY_GLACEON,       56,   588 ; Glaceon
+	mon_cry CRY_GLISCOR,        0,   256 ; Gliscor
+	mon_cry CRY_MAMOSWINE,      0,   256 ; Mamoswine
+	mon_cry CRY_PORYGON_Z,      0,   384 ; PorygonZ
+	mon_cry CRY_SYLVEON,        0,   664 ; Sylveon
+	mon_cry CRY_PERRSERKER,     0,   256 ; Perrserker (really needs improvement)
+	mon_cry CRY_CURSOLA,        0,   256 ; Cursola (needs improvement)
+	mon_cry CRY_SIRFETCH_D,     0,   256 ; Sirfetch'd
+	mon_cry CRY_MR__RIME,       0,   256 ; Mr.Rime
+	mon_cry CRY_WYRDEER,        0,   284 ; Wyrdeer (needs improvement)
+	mon_cry CRY_KLEAVOR,        0,   256 ; Kleavor (needs improvement)
+	mon_cry CRY_URSALUNA,       0,   256 ; Ursaluna (needs improvement)
+	mon_cry CRY_SNEASLER,       0,   256 ; Sneasler (needs improvement)
+	mon_cry CRY_OVERQWIL,       0,   256 ; Overqwil (needs improvement)
+	mon_cry CRY_DUDUNSPARCE,  -16,   256 ; Dudunsparce
+	mon_cry CRY_FARIGIRAF,      0,   256 ; Farigiraf (needs improvement)
+	mon_cry CRY_CLODSIRE,      16,   256 ; Clodsire (needs improvement)
+	mon_cry CRY_ANNIHILAPE,     0,   256 ; Annihilape (needs improvement)
 	assert_table_length NUM_SPECIES

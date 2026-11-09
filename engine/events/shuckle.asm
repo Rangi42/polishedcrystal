@@ -45,7 +45,7 @@ ReturnShuckie:
 	cp 150
 	ld a, $3
 	jr nc, .HappyToStayWithYou
-	predef RemoveMonFromParty
+	farcall RemoveMonFromParty
 	ld a, $2
 .HappyToStayWithYou:
 	ldh [hScriptVar], a

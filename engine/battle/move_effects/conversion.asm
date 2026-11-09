@@ -144,7 +144,7 @@ BattleCommand_conversion:
 .battle_tower_skip
 	lb bc, CHECK_FLAG, AI_SMART
 	ld d, BANK(TrainerClassAttributes)
-	predef FlagPredef
+	farcall SmallFlagAction
 	jr z, .not_smart
 	farcall AI_Conversion
 	jr .validate_choice

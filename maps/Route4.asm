@@ -5,14 +5,12 @@ Route4_MapScriptHeader:
 
 	def_warp_events
 	warp_event  4,  7, MOUNT_MOON_B1F, 8
-	warp_event 19,  5, MOUNT_MOON_SQUARE, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event  7,  9, BGEVENT_JUMPTEXT, MtMoonSignText
-	bg_event 17,  9, BGEVENT_JUMPTEXT, CableCarSignText
-	bg_event 15,  4, BGEVENT_ITEM + ULTRA_BALL, EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
+	bg_event 20,  5, BGEVENT_ITEM + ULTRA_BALL, EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
 
 	def_object_events
 	object_event 51,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerYoungsterOliver, -1
@@ -22,8 +20,6 @@ Route4_MapScriptHeader:
 	object_event 35,  8, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerPicnickerSharon, -1
 	object_event 26, 13, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
 	object_event 29, 13, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
-	object_event 19,  7, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, Route4EngineerScript, EVENT_MT_MOON_RIVAL
-	object_event 17,  5, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
 	itemball_event 42,  5, HP_UP, 1, EVENT_ROUTE_4_HP_UP
 	object_event 68,  6, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE
 
@@ -157,12 +153,6 @@ Route4TutorAquaTailScript:
 	cont "Aqua Tail!"
 	done
 
-Route4EngineerScript:
-	showtext Route4EngineerText1
-	showtextfaceplayer Route4EngineerText2
-	turnobject LAST_TALKED, UP
-	end
-
 YoungsterOliverSeenText:
 	text "Hi! What's your"
 	line "name? Where are"
@@ -272,31 +262,6 @@ Text_Route4Tutor2Question:
 	cont "Aqua Tail?"
 	done
 
-
-
-
-
-Route4EngineerText1:
-	text "Get those bolts"
-	line "tighter!"
-	done
-
-Route4EngineerText2:
-	text "The cable car's"
-	line "out right now."
-
-	para "Until we're done"
-	line "fixing it,"
-
-	para "Mt.Moon Square"
-	line "is closed."
-	done
-
 MtMoonSignText:
 	text "Mt.Moon Tunnel"
-	done
-
-CableCarSignText:
-	text "Cable Car to"
-	line "Mt.Moon Square"
 	done

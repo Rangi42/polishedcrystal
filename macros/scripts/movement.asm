@@ -361,168 +361,173 @@ MACRO step_end
 	db movement_step_end ; $47
 ENDM
 
-	const movement_step_resume
-MACRO step_resume
-	db movement_step_resume ; $48
-ENDM
-
 	const movement_remove_object
 MACRO remove_object
-	db movement_remove_object ; $49
-ENDM
-
-	const movement_step_loop
-MACRO step_loop
-	db movement_step_loop ; $4a
-ENDM
-
-	const movement_step_4b
-MACRO step_4b
-	db movement_step_4b ; $4b
+	db movement_remove_object ; $48
 ENDM
 
 	const movement_teleport_from
 MACRO teleport_from
-	db movement_teleport_from ; $4c
+	db movement_teleport_from ; $49
 ENDM
 
 	const movement_teleport_to
 MACRO teleport_to
-	db movement_teleport_to ; $4d
+	db movement_teleport_to ; $4a
 ENDM
 
 	const movement_skyfall
 MACRO skyfall
-	db movement_skyfall ; $4e
+	db movement_skyfall ; $4b
 ENDM
 
 	const movement_step_dig
 MACRO step_dig
-	db movement_step_dig ; $4f
+	db movement_step_dig ; $4c
 	db \1
 ENDM
 
 	const movement_step_bump
 MACRO step_bump
-	db movement_step_bump ; $50
+	db movement_step_bump ; $4d
 ENDM
 
 	const movement_fish_got_bite
 MACRO fish_got_bite
-	db movement_fish_got_bite ; $51
+	db movement_fish_got_bite ; $4e
 ENDM
 
 	const movement_fish_cast_rod
 MACRO fish_cast_rod
-	db movement_fish_cast_rod ; $52
+	db movement_fish_cast_rod ; $4f
 ENDM
 
 	const movement_hide_emote
 MACRO hide_emote
-	db movement_hide_emote ; $53
+	db movement_hide_emote ; $50
 ENDM
 
 	const movement_show_emote
 MACRO show_emote
-	db movement_show_emote ; $54
+	db movement_show_emote ; $51
 ENDM
 
 	const movement_step_shake
 MACRO step_shake
-	db movement_step_shake ; $55
+	db movement_step_shake ; $52
 	db \1 ; displacement
 ENDM
 
 	const movement_tree_shake
 MACRO tree_shake
-	db movement_tree_shake
+	db movement_tree_shake ; $53
 ENDM
 
 	const movement_rock_smash
 MACRO rock_smash
-	db movement_rock_smash ; $57
+	db movement_rock_smash ; $54
 	db \1
 ENDM
 
 	const movement_return_dig
 MACRO return_dig
-	db movement_return_dig ; $58
+	db movement_return_dig ; $55
 	db \1
 ENDM
 
 	const movement_skyfall_top
 MACRO skyfall_top
-	db movement_skyfall_top ; $59
+	db movement_skyfall_top ; $56
 ENDM
 
 	const movement_run_step_down
 MACRO run_step_down
-	db movement_run_step_down ; $5a
+	db movement_run_step_down ; $57
 ENDM
 
 	const movement_run_step_up
 MACRO run_step_up
-	db movement_run_step_up ; $5b
+	db movement_run_step_up ; $58
 ENDM
 
 	const movement_run_step_left
 MACRO run_step_left
-	db movement_run_step_left ; $5c
+	db movement_run_step_left ; $59
 ENDM
 
 	const movement_run_step_right
 MACRO run_step_right
-	db movement_run_step_right ; $5d
+	db movement_run_step_right ; $5a
 ENDM
 
 	const movement_fast_step_down
 MACRO fast_step_down
-	db movement_fast_step_down ; $5e
+	db movement_fast_step_down ; $5b
 ENDM
 
 	const movement_fast_step_up
 MACRO fast_step_up
-	db movement_fast_step_up ; $5f
+	db movement_fast_step_up ; $5c
 ENDM
 
 	const movement_fast_step_left
 MACRO fast_step_left
-	db movement_fast_step_left ; $60
+	db movement_fast_step_left ; $5d
 ENDM
 
 	const movement_fast_step_right
 MACRO fast_step_right
-	db movement_fast_step_right ; $61
+	db movement_fast_step_right ; $5e
 ENDM
 
 	const movement_stairs_step_down
 MACRO stairs_step_down
-	db movement_stairs_step_down ; $62
+	db movement_stairs_step_down ; $5f
 ENDM
 
 	const movement_stairs_step_up
 MACRO stairs_step_up
-	db movement_stairs_step_up ; $63
+	db movement_stairs_step_up ; $60
 ENDM
 
 	const movement_stairs_step_left
 MACRO stairs_step_left
-	db movement_stairs_step_left ; $64
+	db movement_stairs_step_left ; $61
 ENDM
 
 	const movement_stairs_step_right
 MACRO stairs_step_right
-	db movement_stairs_step_right ; $65
+	db movement_stairs_step_right ; $62
 ENDM
 
 	const movement_exeggutor_shake
 MACRO exeggutor_shake
-	db movement_exeggutor_shake ; $66
+	db movement_exeggutor_shake ; $63
 ENDM
 
 	const movement_paired_step_right
 MACRO paired_step_right
-	db movement_paired_step_right ; $67
+	db movement_paired_step_right ; $64
+ENDM
+
+	const movement_half_step_down
+MACRO half_step_down
+	db movement_half_step_down ; $65
+ENDM
+
+	const movement_half_step_up
+MACRO half_step_up
+	db movement_half_step_up ; $66
+ENDM
+
+	const movement_half_step_left
+MACRO half_step_left
+	db movement_half_step_left ; $67
+ENDM
+
+	const movement_half_step_right
+MACRO half_step_right
+	db movement_half_step_right ; $68
 ENDM
 
 DEF NUM_MOVEMENT_CMDS EQU const_value

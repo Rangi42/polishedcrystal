@@ -113,6 +113,7 @@ Music:
 	dba Music_Route210DPPt
 	dba Music_Route225DPPt
 	dba Music_WildBattleGo
+	dba Music_MarineTubeB2W2
 	dba Music_DiglettsCaveRBY
 	dba Music_ViridianForest
 	dba Music_LookHiker
@@ -121,6 +122,7 @@ Music:
 	dba Music_LookOfficer
 	dba Music_MtMoon
 	dba Music_MtMoonSquare
+	dba Music_CableCarRSE
 	dba Music_Route1
 	dba Music_PalletTown
 	dba Music_ProfOak
@@ -188,11 +190,9 @@ Music:
 	dba Music_Printer
 	dba Music_TitleScreenXY
 	dba Music_DewfordTownRSE
-	dba Music_MarineTubeB2W2
 	dba Music_LegendaryBattleXY
 	dba Music_WildBattlePrism
 	dba Music_TrainerBattlePrism
 	dba Music_GymLeaderBattlePrism
 	dba Music_PaletteBattlePrism
-	dba Music_Megalovania
 	assert_table_length NUM_MUSIC_SONGS

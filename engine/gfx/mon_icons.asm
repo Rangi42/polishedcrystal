@@ -113,8 +113,9 @@ SetFlyMonColor:
 	push bc
 	push af
 	call _GetFlyMonColor
+	; Decode PAL_MON_*_* value into dark/light palette indices
+	call DecodeMonIconPal
 	ld de, wOBPals1 + 3 palettes
-	ld [wNeededPalIndex], a
 	ld hl, wPalFlags
 	push hl
 	set USE_DAYTIME_PAL_F, [hl]
@@ -130,7 +131,9 @@ SetOWFlyMonColor:
 	push bc
 	push af
 	call _GetFlyMonColor
-	ld [wNeededPalIndex], a
+	; Decode PAL_MON_*_* value into dark/light palette indices
+	call DecodeMonIconPal
+	; a = dark color index (wNeededPalIndex already set)
 	ld b, a
 	push bc
 	ld b, 0
@@ -240,7 +243,9 @@ endr
 GetOverworldMonIconPalette::
 	ld a, [wCurIcon]
 	ld hl, wCurIconShiny
-	jr _GetMonIconPalette
+	call _GetMonIconPalette
+	dec a ; remove +1 encoding so OBJECT_PAL_INDEX gets the raw nybble pair
+	ret
 
 GetMonIconPalette:
 	ld a, [wCurPartySpecies]
@@ -261,16 +266,40 @@ _GetMonIconPalette:
 
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
+	; bc *= 2 for 2-byte table
+	sla c
+	rl b
 	ld hl, OverworldMonIconColors
 	add hl, bc
-	ld c, [hl]
 
 	pop af
-	jr nz, .shiny
-	swap c
-.shiny
-	ld a, c
+	jr z, .not_shiny
+	inc hl
+.not_shiny
+	ld a, [hl]
+	ret
+
+; Decode a PAL_MON_*_* value into wNeededPalIndex and wNeededMonPalLight.
+; Input: a = PAL_MON_*_* value
+; Output: a = dark color (PAL_OW_*), wNeededPalIndex = dark, wNeededMonPalLight = light (or NO_PAL_LOADED if same)
+DecodeMonIconPal:
+	dec a ; remove +1 encoding offset
+	ld c, a
 	and $f
+	ld [wNeededPalIndex], a ; low nybble = dark color
+	ld b, a ; save dark color
+	ld a, c
+	swap a
+	and $f ; high nybble = light color
+	cp b
+	jr nz, .two_colors
+	; Same nybbles: single-color palette
+	ld a, NO_PAL_LOADED
+; fallthrough
+.two_colors
+	ld [wNeededMonPalLight], a
+.return_dark
+	ld a, b
 	ret
 
 LoadPartyMenuMonMini:
@@ -366,7 +395,17 @@ _LoadMonMini:
 
 	; for move menu, mon minis use palette 1
 	ld de, wOBPals1 palette 1 + 2
+
+	ld a, [wMonType]
+	cp TEMPMON
+	jr z, .use_temp
+	; not temp -> use party palette
+	farcall LoadPartyMonPalette
+	jr .palette_done
+.use_temp
 	farcall LoadTempMonPalette
+
+.palette_done
 	ld a, 1
 	ld hl, wShadowOAMSprite00Attributes
 	ld de, OBJ_SIZE
@@ -448,8 +487,8 @@ SetPartyMonMiniAnimSpeed:
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
 	ldh a, [hObjectStructIndexBuffer]
-	ld b, a
-	farcall PlacePartymonHPBar
+	ld hl, wPartyMon1HP
+	call GetPartyLocation
 	call GetHPPal
 .gotindex
 	ld e, d
@@ -510,13 +549,51 @@ endr
 	pop hl
 	ret
 
-LoadTradeAnimationMonMini:
+LoadTradeAnimationMonMiniAndMask:
 	call SetTradeMiniIconColor
 	ld a, [wTempIconSpecies]
 	ld [wCurIcon], a
-	ld a, $62
-	ld [wCurIconTile], a
-	; fallthrough
+	ld a, [wCurIconSpecies]
+	ld c, a
+	ld a, [wCurIconForm]
+	ld b, a
+	call GetCosmeticSpeciesAndFormIndex
+
+	ldh a, [rWBK]
+	push af
+	ld a, BANK(wDecompressScratch)
+	ldh [rWBK], a
+
+	ld hl, MiniIconPointers
+rept 7
+	add hl, bc
+endr
+	ld a, [hli]
+	ld b, a
+	ld de, vTiles0 tile $62
+	ld a, [hli]
+	push hl
+	push bc
+	ld h, [hl]
+	ld l, a
+	ld c, 8
+	call DecompressRequest2bpp
+	pop bc
+	pop hl
+	inc hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call FarDecompressInB
+	ld hl, vTiles0 tile $6a
+	ld de, wDecompressScratch
+	lb bc, BANK(wDecompressScratch), 8
+	call Request1bpp
+
+	pop af
+	ldh [rWBK], a
+	ret
+
 GetMemMiniGFX:
 	ld a, [wCurIconTile]
 	; fallthrough

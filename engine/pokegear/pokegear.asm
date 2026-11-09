@@ -198,6 +198,7 @@ TownMap_InitCursorAndPlayerIconPositions:
 
 InitPokegearTilemap:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
@@ -256,7 +257,7 @@ InitPokegearTilemap:
 	ret
 
 .UpdateBGMap:
-	ld a, $2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
 	ld c, 3
 	call DelayFrames
@@ -443,9 +444,10 @@ PokegearClock_Joypad:
 
 .UpdateClock:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call Pokegear_UpdateClock
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -480,9 +482,7 @@ Pokegear_UpdateClock:
 	jmp PlaceWholeStringInBoxAtOnce
 
 .DayText:
-	text_far _GearTodayText
-	text_end
-
+	text_farend _GearTodayText
 PokegearMap_CheckRegion:
 	ld a, [wPokegearMapPlayerIconLandmark]
 	cp SHAMOUTI_LANDMARK
@@ -866,19 +866,13 @@ Pokegear_LoadTilemapRLE:
 
 PokegearText_WhomToCall:
 	; Whom do you want to call?
-	text_far _PokegearAskWhoCallText
-	text_end
-
+	text_farend _PokegearAskWhoCallText
 PokegearText_PressAnyButtonToExit:
 	; Press any button to exit.
-	text_far _PokegearPressButtonText
-	text_end
-
+	text_farend _PokegearPressButtonText
 PokegearText_DeleteStoredNumber:
 	; Delete this stored phone number?
-	text_far _PokegearAskDeleteText
-	text_end
-
+	text_farend _PokegearAskDeleteText
 PokegearSpritesGFX:
 INCBIN "gfx/pokegear/pokegear_sprites.2bpp.lzp"
 
@@ -952,10 +946,11 @@ UpdateRadioStation:
 	and a
 	ret z
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 2, 9
 	rst PlaceString
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -963,7 +958,7 @@ RadioChannels:
 ; frequencies and the shows that play on them.
 
 ; frequency value given here = 4 × ingame_frequency − 2
-	dbw 16, .PkmnTalkAndPokedexShow
+	dbw 16, .PkmnTalk
 	dbw 28, .PokemonMusic
 	dbw 32, .LuckyChannel
 	dbw 40, .BuenasPassword
@@ -974,15 +969,9 @@ RadioChannels:
 	dbw 80, .EvolutionRadio
 	db -1
 
-.PkmnTalkAndPokedexShow:
-; Pokédex Show in the morning
-
-; Oak's Pokémon Talk in the afternoon and evening
+.PkmnTalk:
 	call .InJohto
 	jr nc, NoRadioStation
-	ld a, [wTimeOfDay]
-	and a
-	jmp z, LoadStation_PokedexShow
 	jmp LoadStation_OaksPokemonTalk
 
 .PokemonMusic:
@@ -1065,7 +1054,7 @@ NoRadioStation:
 	ld [wPokegearRadioChannelBank], a
 	ld [wPokegearRadioChannelAddr], a
 	ld [wPokegearRadioChannelAddr + 1], a
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -1084,11 +1073,6 @@ LoadRadioStation:
 	ld a, HIGH(PlayRadioShow)
 	ld [hli], a
 	ret
-
-LoadStation_PokedexShow:
-	ld a, POKEDEX_SHOW
-	ld de, PokedexShowName
-	jr LoadRadioStation
 
 LoadStation_PokemonMusic:
 	ld a, POKEMON_MUSIC
@@ -1172,6 +1156,7 @@ NoRadioMusic:
 
 NoRadioName:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 1, 8
 	lb bc, 3, 18
@@ -1181,11 +1166,9 @@ NoRadioName:
 	jmp Textbox
 
 OaksPkmnTalkName:     db "Oak's <PK><MN> Talk@"
-PokedexShowName:      db "#dex Show@"
 PokemonMusicName:     db "#mon Music@"
 LuckyChannelName:     db "Lucky Channel@"
 UnknownStationName:   db "?????@"
-
 PlacesAndPeopleName:  db "Places & People@"
 LetsAllSingName:      db "Let's All Sing!@"
 PokeFluteStationName: db "# Flute@"
@@ -1221,6 +1204,7 @@ _TownMap:
 	ld [wTownMapPlayerIconLandmark], a
 	ld [wTownMapCursorLandmark], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call .InitTilemap
 	call ApplyAttrAndTilemapInVBlank
@@ -1379,18 +1363,18 @@ AnimateTownMapFly:
 	jr z, .done
 	dec a
 	cp b
-	jr nz, .skip
+	jr z, .found
+	inc hl
+	jr .loop
+
+.found
 	ld a, [hli]
 	ld c, a
 	ld [wPokegearMapCursorSpawnpoint], a
 	call HasVisitedSpawn
 	and a
-	jr z, .loop
-	ld a, 144
-	jr .done
-.skip
-	inc hl
-	jr .loop
+	jr z, .done
+	ld a, SCREEN_HEIGHT_PX
 .done
 	pop bc
 	ld hl, SPRITEANIMSTRUCT_YCOORD
@@ -1457,7 +1441,6 @@ PlayRadioStationPointers:
 	table_width 2
 	dw LoadStation_PokemonChannel
 	dw LoadStation_OaksPokemonTalk
-	dw LoadStation_PokedexShow
 	dw LoadStation_PokemonMusic
 	dw LoadStation_LuckyChannel
 	dw LoadStation_UnownRadio
@@ -1469,15 +1452,8 @@ PlayRadioStationPointers:
 LoadStation_PokemonChannel:
 	call GetCurrentLandmark
 	cp KANTO_LANDMARK
-	jr nc, .kanto_or_orange
-	call UpdateTime
-	ld a, [wTimeOfDay]
-	and a
-	jmp z, LoadStation_PokedexShow
+	jmp nc, LoadStation_PlacesAndPeople
 	jmp LoadStation_OaksPokemonTalk
-
-.kanto_or_orange:
-	jmp LoadStation_PlacesAndPeople
 
 PokegearMap:
 	call LoadTownMapGFX
@@ -1497,6 +1473,7 @@ _FlyMap:
 	push af
 	ld [hl], $1
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call ClearSpriteAnims
 	call LoadTownMapGFX
@@ -1590,6 +1567,7 @@ FlyMapScroll:
 	call TownMapBubble
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ret
 
@@ -1646,12 +1624,20 @@ TownMapBubble:
 	add hl, hl ; two bytes per flypoint
 	ld de, Flypoints
 	add hl, de
+	ld a, [hl]
+	cp POKEMON_LEAGUE
+	ld de, .PokemonLeagueFlyName ; special case to fit in 16 chars
+	jr z, .PlaceName
 	ld e, [hl]
 	farcall GetLandmarkName
-	hlcoord 2, 1
 	ld de, wStringBuffer1
+.PlaceName:
+	hlcoord 2, 1
 	rst PlaceString
 	ret
+
+.PokemonLeagueFlyName:
+	rawchar "Pokémon League@"
 
 GetMapCursorCoordinates:
 	ld a, [wTownMapPlayerIconLandmark]
@@ -1696,7 +1682,7 @@ HasVisitedSpawn:
 	ld hl, wVisitedSpawns
 	ld b, CHECK_FLAG
 	ld d, 0
-	predef FlagPredef
+	farcall SmallFlagAction
 	ld a, c
 	ret
 
@@ -1753,24 +1739,38 @@ FlyMap:
 ; the flypoint selection has a default starting point that
 ; can be flown to even if none are enabled
 ; To prevent both of these things from happening when the player
-; enters Kanto, fly access is restricted until Indigo Plateau is
-; visited and its flypoint enabled
+; enters Kanto, fly access is restricted until at least one Kanto
+; flypoint has been visited
 	push af
 	ld c, SPAWN_INDIGO
 	call HasVisitedSpawn
 	and a
+	jr nz, .LoadKantoMap
+	ld c, SPAWN_POKEMON_LEAGUE
+	call HasVisitedSpawn
+	and a
 	jr z, .NoKanto
-; Kanto's map is only loaded if we've visited Indigo Plateau
+
+.LoadKantoMap:
+; Kanto's map is only loaded if we've visited Indigo Plateau or
+; Pokémon League Gate
 
 ; Flypoints begin at Pallet Town...
 	ld a, FLY_PALLET
 	ld [wStartFlypoint], a
-; ...and end at Indigo Plateau
-	ld a, FLY_INDIGO
+; ...and end at Pokémon League Gate
+	ld a, FLY_POKEMON_LEAGUE
 	ld [wEndFlypoint], a
-; Because Indigo Plateau is the first flypoint the player
 
-; visits, it's made the default flypoint
+; If Indigo Plateau has been visited, keep it as the default.
+; Otherwise use Pokémon League Gate.
+	ld c, SPAWN_INDIGO
+	call HasVisitedSpawn
+	ld a, FLY_POKEMON_LEAGUE
+	jr z, .SetKantoDefault
+	assert FLY_POKEMON_LEAGUE - 1 == FLY_INDIGO
+	dec a
+.SetKantoDefault:
 	ld [wTownMapPlayerIconLandmark], a
 ; Fill out the map
 	call FillKantoMap
@@ -1815,17 +1815,14 @@ TownMapBGUpdate:
 	ldh [hBGMapAddress], a
 	ld a, h
 	ldh [hBGMapAddress + 1], a
-; BG Map mode 2 (palettes)
-	ld a, 2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
-; The BG Map is updated in thirds, so we wait
-; 3 frames to update the whole screen's palettes.
+	; wait to update the whole screen's palettes.
 	ld c, 3
 	call DelayFrames
-; Update BG Map tiles
 	call ApplyTilemapInVBlank
-; Turn off BG Map update
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ret
 
@@ -2039,12 +2036,7 @@ InitializePokegearPlayerIcon:
 	ret
 
 .PlayerSpriteAnims:
-	table_width 1
-	db SPRITE_ANIM_INDEX_RED_WALK    ; PLAYER_MALE
-	db SPRITE_ANIM_INDEX_BLUE_WALK   ; PLAYER_FEMALE
-	db SPRITE_ANIM_INDEX_GREEN_WALK  ; PLAYER_ENBY
-	db SPRITE_ANIM_INDEX_PURPLE_WALK ; PLAYER_BETA
-	assert_table_length NUM_PLAYER_GENDERS
+INCLUDE "data/player/sprite_anims.asm"
 
 LoadTownMapGFX:
 	ld de, vTiles2

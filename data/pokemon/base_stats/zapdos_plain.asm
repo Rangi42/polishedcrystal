@@ -1,5 +1,5 @@
-	db  90,  90,  85, 100, 125,  90 ; 580 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 580,  90,  90,  85, 125,  90, 100
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db ELECTRIC, FLYING ; type
 	db 3 ; catch rate

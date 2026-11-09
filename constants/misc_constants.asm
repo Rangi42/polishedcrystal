@@ -17,7 +17,7 @@ DEF SAVE_CHECK_VALUE_2     EQU 127
 DEF SAVE_CHECK_VALUE_1_OLD EQU 99 ; check digit before save version 7
 
 ; save file version
-DEF SAVE_VERSION EQU 10
+DEF SAVE_VERSION EQU 11
 
 ; time of day boundaries
 DEF MORN_HOUR EQU  5 ; 5 AM - 9 AM (4 hours)
@@ -55,6 +55,7 @@ DEF JOYP_SGB_MLT_REQ EQU %00000011
 ; crash error codes
 	const_def
 	const ERR_RST_0
+	const ERR_RST_38
 	const ERR_DIV_ZERO
 	const ERR_EGG_SPECIES
 	const ERR_EXECUTING_RAM

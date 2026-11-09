@@ -63,4 +63,3 @@ GenericTrainerRuin_maniacPetry:
 	text "What is the secret"
 	line "of your power?"
 	done
-

@@ -3308,7 +3308,7 @@ endc
 	learnset 20, DISARM_VOICE ; Magical Leaf → new move
 	learnset 23, ENERGY_BALL ; Natural Gift → tutor move
 	learnset 28, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
-	learnset 31, DAZZLINGLEAM ; Light Screen → TM move
+	learnset 31, GROWTH ; Light Screen → new move
 	learnset 34, BODY_SLAM
 	learnset 39, SAFEGUARD
 	learnset 42, PLAY_ROUGH ; Aromatherapy → new move
@@ -3329,7 +3329,7 @@ endc
 	learnset 22, DISARM_VOICE ; Magical Leaf → new move
 	learnset 26, ENERGY_BALL ; Natural Gift → tutor move
 	learnset 32, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
-	learnset 36, DAZZLINGLEAM ; Light Screen → TM move
+	learnset 36, GROWTH ; Light Screen → new move
 	learnset 40, BODY_SLAM
 	learnset 43, SAFEGUARD
 	learnset 47, PLAY_ROUGH ; Aromatherapy → new move
@@ -3350,7 +3350,7 @@ endc
 	learnset 22, DISARM_VOICE ; Magical Leaf → new move
 	learnset 26, ENERGY_BALL ; Natural Gift → tutor move
 	learnset 34, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
-	learnset 40, DAZZLINGLEAM ; Light Screen → TM move
+	learnset 40, GROWTH ; Light Screen → new move
 	learnset 46, BODY_SLAM
 	learnset 50, SAFEGUARD
 	learnset 56, PLAY_ROUGH ; Aromatherapy → new move
@@ -3714,7 +3714,7 @@ endc
 	learnset 13, NASTY_PLOT
 	learnset 18, THUNDER_WAVE
 	learnset 23, SCARY_FACE ; event move
-	learnset 28, SING ; event move
+	learnset 28, HEAL_BELL ; new move (replaces previous event move Sing)
 	learnset 38, PETAL_DANCE ; event move
 
 	evos_attacks Cleffa
@@ -5940,4 +5940,3 @@ endc
 	EggEvosAttacks:
 	db -1 ; no more evolutions
 	db -1 ; no more level-up moves
-

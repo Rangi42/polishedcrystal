@@ -38,4 +38,3 @@ VeteranmRemyBeatenText:
 	text "No!"
 	line "Inconceivable!"
 	done
-

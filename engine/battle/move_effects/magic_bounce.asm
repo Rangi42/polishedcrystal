@@ -45,8 +45,7 @@ BattleCommand_bounceback:
 	push af
 
 	push bc
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 	pop bc
 	ld a, b
 	ld [wNamedObjectIndex], a

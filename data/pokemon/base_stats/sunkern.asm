@@ -1,5 +1,10 @@
-	db  30,  30,  30,  30,  30,  30 ; 180 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 180,  30,  30,  30,  30,  30,  30
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 240,  50,  30,  50,  30,  50,  30
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db GRASS, GRASS ; type
 	db 235 ; catch rate

@@ -33,4 +33,3 @@ VeteranmMattSeenText:
 VeteranmMattBeatenText:
 	text "I had a chance…"
 	done
-

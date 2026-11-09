@@ -115,11 +115,11 @@ INCLUDE "gfx/stats/green_page.pal"
 	hlbgcoord 0, 0, wSummaryScreenWindowBuffer
 	ld a, TILEMAP_WIDTH * 2
 	ld [wListMovesLineSpacing], a
-	predef ListMoves
+	farcall ListMoves
 	hlbgcoord 4, 1, wSummaryScreenWindowBuffer
 	ld a, TILEMAP_WIDTH * 2
 	ld [wListMovesLineSpacing], a
-	predef ListMovePP
+	farcall ListMovePP
 
 for n, NUM_MOVES
 	ld a, [wTempMonMoves + n]
@@ -239,7 +239,7 @@ endr
 
 .description
 	hlcoord 1, 15
-	predef_jump PrintMoveDesc
+	farjp PrintMoveDesc
 
 .String_na:
 	db "---@"
@@ -325,8 +325,7 @@ SummaryScreen_MoveInfoJoypad:
 	call SummaryScreen_GreenPage.PlaceItemText
 	call SummaryScreen_GreenPage.PlaceAInfo
 	call SummaryScreen_UpdateGFX
-	inc sp
-	inc sp
+	add sp, 2 ; exit SummaryScreen_MoveInfoLoop, return to SummaryScreenLoop
 	ret
 .d_up
 	dec c

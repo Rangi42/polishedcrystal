@@ -31,7 +31,7 @@ For the authoritative, per-species rules and the complete list of included Poké
 
 ## Battle Mechanics
 
-* The Fairy type is implemented. Type-enhancing held items are present: Pink Bow boosts Fairy-type moves (HELD_TYPE_BOOST -> FAIRY), and Silk Scarf boosts Normal-type moves (HELD_TYPE_BOOST -> NORMAL).
+* The Fairy type is implemented. Type-enhancing held items are present: Fairy Feather boosts Fairy-type moves (HELD_TYPE_BOOST -> FAIRY), and Silk Scarf boosts Normal-type moves (HELD_TYPE_BOOST -> NORMAL).
 * Type chart, base stats, and move attributes all updated to Gen VI.
 * Physical/Special/Status split.
 * Natures (determined from DVs since personality values don't exist in Gen II) thanks to FredrIQ.

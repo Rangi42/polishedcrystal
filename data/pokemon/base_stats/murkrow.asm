@@ -1,5 +1,5 @@
-	db  60,  85,  42,  91,  85,  42 ; 405 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 405,  60,  85,  42,  85,  42,  91
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db DARK, FLYING ; type
 	db 30 ; catch rate

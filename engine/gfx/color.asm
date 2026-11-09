@@ -78,41 +78,28 @@ ApplyHPBarPals:
 	jmp FillBoxWithByte
 
 LoadSummaryStatusIconPalette:
-	xor a
 	ld de, wTempMonStatus
-	farcall GetStatusConditionIndex
-	ld hl, StatusIconPals
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld de, wOBPals1 palette 5 color 2
-	ld bc, 1 colors
-	jmp FarCopyColorWRAM
+	ld hl, wOBPals1 palette 5 color 2
+	jr _LoadStatusIconPalette
 
 LoadPlayerStatusIconPalette:
-	ld a, [wPlayerSubStatus2]
 	ld de, wBattleMonStatus
-	farcall GetStatusConditionIndex
-	ld hl, StatusIconPals
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld de, wBGPals1 palette PAL_BATTLE_BG_STATUS + 2
-	ld bc, 2
-	jmp FarCopyColorWRAM
+	ld hl, wBGPals1 palette PAL_BATTLE_BG_STATUS + 2
+	jr _LoadStatusIconPalette
 
 LoadEnemyStatusIconPalette:
-	ld a, [wEnemySubStatus2]
 	ld de, wEnemyMonStatus
-	farcall GetStatusConditionIndex
+	ld hl, wBGPals1 palette PAL_BATTLE_BG_STATUS + 4
+	; fallthrough
+_LoadStatusIconPalette:
+	push hl
+	farcall GetStatusConditionOrFaintIndex
+	pop de
 	ld hl, StatusIconPals
 	ld c, a
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld de, wBGPals1 palette PAL_BATTLE_BG_STATUS + 4
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
@@ -459,7 +446,7 @@ ApplyAttrMap:
 ApplyAttrMapVBank0::
 	ldh a, [hBGMapMode]
 	push af
-	ld a, 2
+	ld a, TRANSFER_ATTRMAP
 	ldh [hBGMapMode], a
 	call Delay2
 	pop af
@@ -621,8 +608,9 @@ GetFrontpicPalettePointer:
 	jr nz, GetMonNormalOrShinyPalettePointer
 	ld a, [wTrainerPal]
 	and a
-	jr nz, GetTrainerPalettePointer
+	jr nz, GetCustomTrainerPalettePointer
 	ld a, [wTrainerClass]
+	; fallthrough
 
 GetTrainerPalettePointer:
 	ld l, a
@@ -630,6 +618,15 @@ GetTrainerPalettePointer:
 	add hl, hl
 	add hl, hl
 	ld bc, TrainerPalettes - 2 colors
+	add hl, bc
+	ret
+
+GetCustomTrainerPalettePointer:
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	ld bc, CustomTrainerPalettes - 2 colors
 	add hl, bc
 	ret
 
@@ -767,15 +764,16 @@ LoadTrainerPalette:
 	ld a, [wTrainerPal]
 	and a
 	jr nz, .use_custom_pal
-	; a = class
 	ld a, [wTrainerClass]
-.use_custom_pal
-	; hl = palette
 	call GetTrainerPalettePointer
-	; load palette in BG 7
+.got_pal
 	ld de, wBGPals1 palette PAL_BG_TEXT + 2
 	ld bc, 4
 	jmp FarCopyColorWRAM
+
+.use_custom_pal
+	call GetCustomTrainerPalettePointer
+	jr .got_pal
 
 LoadPaintingPalette:
 	; a = class
@@ -919,9 +917,6 @@ endc
 	ret
 
 LoadMapPals:
-	farcall LoadSpecialMapPalette
-	jr c, .got_pals
-
 	; Which palette group is based on whether we're outside or inside
 	ld a, [wEnvironment]
 	and 7
@@ -981,7 +976,9 @@ LoadMapPals:
 	pop af
 	ldh [rWBK], a
 
-.got_pals
+	; special map palettes may overwrite only a subset of the default ones
+	farcall LoadSpecialMapPalette
+
 	ld hl, wPalFlags
 	bit MAP_CONNECTION_PAL_F, [hl]
 	res MAP_CONNECTION_PAL_F, [hl]
@@ -989,31 +986,27 @@ LoadMapPals:
 	farcall ClearSavedObjPals
 .skip_clearing_obj_pals
 
+	; only non-indoor environments load roof palettes
+	ld a, [wEnvironment]
+	cp FIRST_INDOOR_ENV
+	jr nc, .finish
+	; some exceptions to the usual rules which do not load roof palettes
 	ld a, [wMapTileset]
-	cp TILESET_SNOWTOP_MOUNTAIN
-	ret z
+	cp TILESET_SNOWTOP_MOUNTAIN ; covers map_id SNOWTOP_MOUNTAIN_OUTSIDE
+	jr z, .finish
+	cp TILESET_FOREST ; covers map_id YELLOW_FOREST
+	jr z, .finish
+	cp TILESET_FARAWAY_ISLAND ; covers map_id FARAWAY_ISLAND_SOUTH
+	jr z, .finish
 
-	; overcast maps have their own roof color table
+	; load a roof palette based on map group and overcast weather
 	farcall GetOvercastIndex
 	and a
-	jr z, .not_overcast
-	; Use map group to select an overcast roof palette (full table per group)
-	ld a, [wMapGroup]
-	ld hl, OvercastRoofPals
-	jr .get_roof_color
-
-.not_overcast
-	ld a, [wEnvironment]
-	cp TOWN
-	jr z, .outside
-	cp ROUTE
-	jr z, .outside
-	cp ISOLATED
-	ret nz
-.outside
-	ld a, [wMapGroup]
 	ld hl, RoofPals
-.get_roof_color
+	jr z, .not_overcast
+	ld hl, OvercastRoofPals
+.not_overcast
+	ld a, [wMapGroup]
 	add a
 	add a
 	ld e, a
@@ -1034,24 +1027,143 @@ LoadMapPals:
 .morn_day
 	ld de, wBGPals1 palette PAL_BG_ROOF + 2
 	ld bc, 4
+	call FarCopyColorWRAM
+
+.finish
+	jmp InitializeSwappedPalette
+
+; input: `de` = palette table (in this bank), `b` = BG palette ID (0-7)
+; palette table order: regular morn, day, nite, eve, overcast morn, day, nite, eve
+SwapColorPalette::
+	; Do not swap if the palette table is NULL.
+	; This allows maps to specify multiple `palette_swap`s for the same palette.
+	ld a, d
+	or e
+	ret z
+
+	; Set `hl` to the selected state's time-of-day palette in the table at `de`.
+	ld a, PALSTATE_TIME_OF_DAY
+	farcall GetPalState
+	and 3
+	add a
+	add a
+	add a
+	ld l, a
+	ld h, 0
+	add hl, de
+
+	; Previous-state palettes become active; current-state palettes are the target.
+	; d = [wPalState] == PREV_PALSTATE ? LOW(wBGPals2) : LOW(wBGPals1)
+	ld a, [wPalState]
+	assert PREV_PALSTATE == 0
+	and a
+	ld d, LOW(wBGPals2)
+	jr z, .got_target
+	ld d, LOW(wBGPals1)
+.got_target
+	; Set `de` to the `b`th palette of `wBGPals1` or `wBGPals2`.
+	ld a, b
+	add a
+	add a
+	add a
+	add d ; LOW(wBGPals1) or LOW(wBGPals2)
+	ld e, a
+	assert HIGH(wBGPals1) == HIGH(wBGPals2)
+	adc HIGH(wBGPals1)
+	sub e
+	ld d, a
+
+	; Skip past the regular palettes to the overcast ones if applicable.
+	ld a, PALSTATE_OVERCAST_INDEX
+	farcall GetPalState
+	and a
+	jr z, .not_overcast
+	ld bc, 4 palettes
+	add hl, bc
+.not_overcast
+
+	; Apply the swapped palette.
+	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
 
+UpdatePaletteSwapState::
+; wPaletteSwapStates stores the current state of each entry.
+; wPaletteSwapInits records which entries have been initialized.
+; Input: `c` PALETTE_SWAP_INSIDE_F set inside the rectangle,
+;        `e` = this entry's state bit.
+; Output: `c` PALETTE_SWAP_CHANGED_F set on first check or a state change.
+	ld a, [wPaletteSwapStates]
+	ld d, a
+	; Build this entry's new state in `a`.
+	bit PALETTE_SWAP_INSIDE_F, c
+	jr nz, .inside
+	ld a, e
+	cpl
+	and d
+	jr .compare
+.inside
+	or e
+
+	; Store only on first check or if the current state changed.
+.compare
+	cp d
+	jr nz, .changed
+	ld a, [wPaletteSwapInits]
+	and e
+	ret nz
+	jr .finish
+.changed
+	ld [wPaletteSwapStates], a
+.finish
+	ld a, [wPaletteSwapInits]
+	or e
+	ld [wPaletteSwapInits], a
+	set PALETTE_SWAP_CHANGED_F, c
+	ret
+
+CatchUpPaletteSwapFade::
+; Rebuild BG palette `b` from palette list `de` under the fade's previous and
+; current conditions, then catch its active palette up to the current step.
+	push bc
+	push de
+	ld a, [wPalWhiteState]
+	and a
+	jr z, .swap_previous
+
+	; de = wBGPals2 palette b
+	ld a, b
+	add a
+	add a
+	add a
+	add LOW(wBGPals2)
+	ld e, a
+	adc HIGH(wBGPals2)
+	sub e
+	ld d, a
+
+	farcall CopyWhitePal
+	jr .got_previous
+
+.swap_previous
+	xor a
+	assert PREV_PALSTATE == 0
+	ld [wPalState], a
+	push bc
+	call SwapColorPalette
+	pop bc
+
+.got_previous
+	pop de
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	call SwapColorPalette
+	pop bc
+	ld a, b
+	farjp CatchUpBGPaletteFade
+
+INCLUDE "data/tileset_palettes.asm"
+
 INCLUDE "data/maps/environment_colors.asm"
-
-TilesetBGPalette::
-	table_width 1 palettes
-INCLUDE "gfx/tilesets/bg_tiles.pal"
-	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
-
-RoofPals:
-	table_width COLOR_SIZE * 2 * 3
-INCLUDE "gfx/tilesets/roofs.pal"
-	assert_table_length NUM_MAP_GROUPS + 1
-
-OvercastRoofPals:
-	table_width COLOR_SIZE * 2 * 3
-INCLUDE "gfx/tilesets/roofs_overcast.pal"
-	assert_table_length NUM_MAP_GROUPS + 1
 
 INCLUDE "data/pokemon/palettes.asm"
 

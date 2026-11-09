@@ -31,10 +31,10 @@ BellchimeTrailStepDownScene:
 	end
 
 .Script:
-	readvar VAR_YCOORD
-	ifnotequal $9, .Done
 	readvar VAR_XCOORD
-	ifnotequal $15, .Done
+	ifnotequal 21, .Done
+	readvar VAR_YCOORD
+	ifnotequal 9, .Done
 	applyonemovement PLAYER, step_down
 .Done
 	setscene SCENE_BELLCHIMETRAIL_NOOP

@@ -1,5 +1,10 @@
-	db  80,  82, 100,  80,  83, 100 ; 525 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 525,  80,  82, 100,  83, 100,  80
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 535,  80,  82, 100,  93, 100,  80
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 if DEF(FAITHFUL)
 	db GRASS, GRASS ; type
@@ -12,9 +17,9 @@ endc
 	dn GENDER_F12_5, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 if DEF(FAITHFUL)
-	abilities_for MEGANIUM, OVERGROW, OVERGROW, LEAF_GUARD
+	abilities_for MEGANIUM, OVERGROW, LEAF_GUARD, MEGA_SOL
 else
-	abilities_for MEGANIUM, OVERGROW, NATURAL_CURE, LEAF_GUARD
+	abilities_for MEGANIUM, OVERGROW, NATURAL_CURE, MEGA_SOL
 endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_PLANT ; egg groups

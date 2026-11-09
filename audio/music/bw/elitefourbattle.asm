@@ -30,40 +30,8 @@ Music_EliteFourBattleBW_Ch1_loop_1:
 	sound_loop 31, Music_EliteFourBattleBW_Ch1_loop_1
 Music_EliteFourBattleBW_Ch1_loop_main:
 	note_type 6, 10, 0
-	pitch_sweep 6, 7
-	octave 3
-	note D#, 2
-	pitch_sweep 0, 0
-	note F#, 4
-	octave 4
-	note C#, 6
-	octave 3
-	note A#, 4
-	octave 4
-	note C_, 6
-	pitch_sweep 6, 7
-	note D#, 2
-	pitch_sweep 0, 0
-	note F#, 4
-	volume_envelope 10, 4
-	note F#, 4
-	volume_envelope 10, 0
-	octave 3
-	note F#, 6
-	pitch_sweep 6, 7
-	note A#, 2
-	octave 4
-	pitch_sweep 0, 0
-	note C#, 4
-	octave 3
-	note A#, 4
-	note A_, 6
-	pitch_sweep 6, -7
-	note A_, 2
-	pitch_sweep 0, 0
-	note F#, 4
-	volume_envelope 10, 4
-	note F#, 4
+	sound_call Music_EliteFourBattleBW_Ch1_ditty1
+	sound_call Music_EliteFourBattleBW_Ch1_ditty4
 
 	volume_envelope 10, 0
 	pitch_sweep 6, 7
@@ -93,46 +61,10 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note C#, 5
 	octave 4
 	note A#, 4
-	note A_, 6
-	pitch_sweep 6, -7
-	note A_, 2
-	pitch_sweep 0, 0
-	note F#, 4
-	volume_envelope 10, 4
-	note F#, 4
+	sound_call Music_EliteFourBattleBW_Ch1_ditty4
 	duty_cycle 0
-	volume_envelope 11, 2
-	note F#, 2
-	note F#, 4
-	volume_envelope 11, 5
-	note G_, 4
-	note A_, 2
-	note G#, 2
-	note G_, 2
-	volume_envelope 11, 2
-	note F#, 2
-	note F#, 4
-	volume_envelope 11, 5
-	note G_, 4
-	note B_, 2
-	note A_, 2
-	note G_, 2
-	volume_envelope 11, 2
-	note F#, 2
-	note F#, 4
-	volume_envelope 11, 5
-	note G_, 4
-	note A_, 2
-	note G#, 2
-	note G_, 2
-	volume_envelope 11, 2
-	note F#, 2
-	note F#, 4
-	volume_envelope 11, 5
-	note G_, 4
-	note B_, 2
-	note A_, 2
-	note G_, 2
+	sound_call Music_EliteFourBattleBW_Ch1_ditty2
+	sound_call Music_EliteFourBattleBW_Ch1_ditty2
 	duty_cycle 2
 	volume_envelope 10, 0
 	pitch_sweep 6, 7
@@ -162,41 +94,9 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note C#, 4
 	octave 2
 	note A#, 4
-	note A_, 6
-	pitch_sweep 6, -7
-	note A_, 2
-	pitch_sweep 0, 0
-	note F#, 4
-	volume_envelope 10, 4
-	note F#, 4
+	sound_call Music_EliteFourBattleBW_Ch1_ditty4
 	volume_envelope 10, 0
-	pitch_sweep 6, 7
-	octave 3
-	note D#, 2
-	pitch_sweep 0, 0
-	note F#, 4
-	octave 4
-	note C#, 6
-	octave 3
-	note A#, 4
-	octave 4
-	note C_, 6
-	pitch_sweep 6, 7
-	note D#, 2
-	pitch_sweep 0, 0
-	note F#, 4
-	volume_envelope 10, 4
-	note F#, 4
-	volume_envelope 10, 0
-	octave 3
-	note F#, 6
-	pitch_sweep 6, 7
-	note A#, 2
-	octave 4
-	pitch_sweep 0, 0
-	note C#, 4
-	octave 3
-	note A#, 4
+	sound_call Music_EliteFourBattleBW_Ch1_ditty1
 	volume_envelope 10, 7
 	note A_, 6
 	volume_envelope 10, 0
@@ -233,36 +133,10 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note G_, 2
 	note A_, 2
 	note G_, 2
-	volume_envelope 11, 2
-	note B_, 2
-	volume_envelope 11, 5
-	octave 4
-	note C_, 2
-	note D_, 2
+	sound_call Music_EliteFourBattleBW_Ch1_ditty3
 	note C_, 2
 	octave 3
-	volume_envelope 11, 2
-	note B_, 2
-	volume_envelope 11, 5
-	octave 4
-	note C_, 2
-	note D_, 2
-	note C_, 2
-	octave 3
-	volume_envelope 11, 2
-	note B_, 2
-	volume_envelope 11, 5
-	octave 4
-	note C_, 2
-	note D_, 2
-	note C_, 2
-	octave 3
-	volume_envelope 11, 2
-	note B_, 2
-	volume_envelope 11, 5
-	octave 4
-	note C_, 2
-	note D_, 2
+	sound_call Music_EliteFourBattleBW_Ch1_ditty3
 	note E_, 2
 	rest 16
 	rest 16
@@ -467,21 +341,7 @@ Music_EliteFourBattleBW_Ch2:
 	rest 16
 	rest 16
 Music_EliteFourBattleBW_Ch2_loop_main:
-	volume_envelope 8, 0
-	octave 3
-	note C#, 3
-	note F#, 3
-	note D#, 2
-	note F_, 3
-	octave 4
-	note C_, 3
-	volume_envelope 8, 4
-	note C_, 2
-	volume_envelope 8, 0
-	octave 3
-	note C#, 3
-	note F#, 3
-	note D#, 2
+	sound_call Music_EliteFourBattleBW_Ch2_ditty1
 	note D_, 3
 	note C_, 3
 	volume_envelope 8, 4
@@ -539,40 +399,12 @@ Music_EliteFourBattleBW_Ch2_loop_main:
 	note F#, 1
 	note E_, 1
 	note D_, 1
-	volume_envelope 8, 0
-	octave 3
-	note C#, 3
-	note F#, 3
-	note D#, 2
-	note F_, 3
-	octave 4
-	note C_, 3
-	volume_envelope 8, 4
-	note C_, 2
-	volume_envelope 8, 0
-	octave 3
-	note C#, 3
-	note F#, 3
-	note D#, 2
+	sound_call Music_EliteFourBattleBW_Ch2_ditty1
 	note D_, 3
 	note C_, 3
 	volume_envelope 8, 4
 	note C_, 2
-	volume_envelope 8, 0
-	octave 3
-	note C#, 3
-	note F#, 3
-	note D#, 2
-	note F_, 3
-	octave 4
-	note C_, 3
-	volume_envelope 8, 4
-	note C_, 2
-	volume_envelope 8, 0
-	octave 3
-	note C#, 3
-	note F#, 3
-	note D#, 2
+	sound_call Music_EliteFourBattleBW_Ch2_ditty1
 	volume_envelope 8, 7
 	note D_, 3
 	note D_, 5
@@ -606,35 +438,11 @@ Music_EliteFourBattleBW_Ch2_loop_main:
 	note G_, 2
 	note F#, 2
 	note E_, 2
-	volume_envelope 10, 2
-	note F#, 4
-	volume_envelope 10, 5
-	note G_, 4
-	note A_, 4
-	note G_, 4
-	note B_, 2
-	note A_, 2
-	note G_, 2
-	note A_, 2
-	note B_, 2
-	octave 4
-	note C_, 2
+	sound_call Music_EliteFourBattleBW_Ch2_ditty3
 	octave 3
 	note B_, 2
 	note A_, 2
-	volume_envelope 10, 2
-	note F#, 4
-	volume_envelope 10, 5
-	note G_, 4
-	note A_, 4
-	note G_, 4
-	note B_, 2
-	note A_, 2
-	note G_, 2
-	note A_, 2
-	note B_, 2
-	octave 4
-	note C_, 2
+	sound_call Music_EliteFourBattleBW_Ch2_ditty3
 	note D_, 2
 	note E_, 2
 	volume_envelope 7, 1
@@ -693,19 +501,7 @@ Music_EliteFourBattleBW_Ch2_loop_1:
 	note_type 12, 10, 0
 	note F#, 3
 	octave 4
-	note C#, 3
-	note F#, 2
-	note G_, 2
-	volume_envelope 10, 7
-	note G_, 4
-	volume_envelope 10, 2
-	note F#, 2
-	volume_envelope 10, 7
-	note E_, 2
-	volume_envelope 10, 2
-	note D_, 2
-	volume_envelope 10, 7
-	note C#, 2
+	sound_call Music_EliteFourBattleBW_Ch2_ditty2
 	octave 3
 	volume_envelope 10, 2
 	note B_, 2
@@ -727,19 +523,7 @@ Music_EliteFourBattleBW_Ch2_loop_1:
 	volume_envelope 10, 0
 	note F#, 3
 	octave 5
-	note C#, 3
-	note F#, 2
-	note G_, 2
-	volume_envelope 10, 7
-	note G_, 4
-	volume_envelope 10, 2
-	note F#, 2
-	volume_envelope 10, 7
-	note E_, 2
-	volume_envelope 10, 2
-	note D_, 2
-	volume_envelope 10, 7
-	note C#, 2
+	sound_call Music_EliteFourBattleBW_Ch2_ditty2
 	octave 4
 	volume_envelope 10, 2
 	note B_, 2
@@ -846,58 +630,13 @@ Music_EliteFourBattleBW_Ch3_loop_2:
 	note B_, 2
 	note A_, 2
 	note G_, 2
-	note F#, 1
-	rest 1
-	note F#, 2
-	rest 2
-	note G_, 4
-	note A_, 2
-	note G#, 2
-	note G_, 2
-	note F#, 1
-	rest 1
-	note F#, 2
-	rest 2
-	note G_, 4
-	note B_, 2
-	note A_, 2
-	note G_, 2
+	sound_call Music_EliteFourBattleBW_Ch3_ditty1
 Music_EliteFourBattleBW_Ch3_loop_3:
 	sound_call Music_EliteFourBattleBW_Ch3_branch_1
 	sound_loop 8, Music_EliteFourBattleBW_Ch3_loop_3
 	octave 2
-	note F#, 1
-	rest 1
-	note F#, 2
-	rest 2
-	note G_, 4
-	note A_, 2
-	note G#, 2
-	note G_, 2
-	note F#, 1
-	rest 1
-	note F#, 2
-	rest 2
-	note G_, 4
-	note B_, 2
-	note A_, 2
-	note G_, 2
-	note F#, 1
-	rest 1
-	note F#, 2
-	rest 2
-	note G_, 4
-	note A_, 2
-	note G#, 2
-	note G_, 2
-	note F#, 1
-	rest 1
-	note F#, 2
-	rest 2
-	note G_, 4
-	note B_, 2
-	note A_, 2
-	note G_, 2
+	sound_call Music_EliteFourBattleBW_Ch3_ditty1
+	sound_call Music_EliteFourBattleBW_Ch3_ditty1
 Music_EliteFourBattleBW_Ch3_loop_4:
 	sound_call Music_EliteFourBattleBW_Ch3_branch_1
 	sound_loop 2, Music_EliteFourBattleBW_Ch3_loop_4
@@ -1178,40 +917,10 @@ Music_EliteFourBattleBW_Ch4_loop_main:
 Music_EliteFourBattleBW_Ch4_loop_4:
 	sound_call Music_EliteFourBattleBW_Ch4_branch_1
 	sound_loop 4, Music_EliteFourBattleBW_Ch4_loop_4
-	drum_note 1, 2
-	drum_note 1, 2
-	drum_note 9, 1
-	drum_note 9, 1
-	drum_note 4, 2
+	sound_call Music_EliteFourBattleBW_Ch4_ditty1
 	drum_note 1, 2
 	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 1, 2
-	drum_note 9, 1
-	drum_note 9, 1
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 1, 2
-	drum_note 9, 1
-	drum_note 9, 1
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 1, 2
-	drum_note 9, 1
-	drum_note 9, 1
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
+	sound_call Music_EliteFourBattleBW_Ch4_ditty1
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 1, 1
@@ -1279,4 +988,168 @@ Music_EliteFourBattleBW_Ch4_branch_1:
 	drum_note 3, 1
 	drum_note 1, 2
 	drum_note 1, 2
+	sound_ret
+
+Music_EliteFourBattleBW_Ch1_ditty1:
+	pitch_sweep 6, 7
+	octave 3
+	note D#, 2
+	pitch_sweep 0, 0
+	note F#, 4
+	octave 4
+	note C#, 6
+	octave 3
+	note A#, 4
+	octave 4
+	note C_, 6
+	pitch_sweep 6, 7
+	note D#, 2
+	pitch_sweep 0, 0
+	note F#, 4
+	volume_envelope 10, 4
+	note F#, 4
+	volume_envelope 10, 0
+	octave 3
+	note F#, 6
+	pitch_sweep 6, 7
+	note A#, 2
+	octave 4
+	pitch_sweep 0, 0
+	note C#, 4
+	octave 3
+	note A#, 4
+	sound_ret
+
+Music_EliteFourBattleBW_Ch1_ditty2:
+	volume_envelope 11, 2
+	note F#, 2
+	note F#, 4
+	volume_envelope 11, 5
+	note G_, 4
+	note A_, 2
+	note G#, 2
+	note G_, 2
+	volume_envelope 11, 2
+	note F#, 2
+	note F#, 4
+	volume_envelope 11, 5
+	note G_, 4
+	note B_, 2
+	note A_, 2
+	note G_, 2
+	sound_ret
+
+Music_EliteFourBattleBW_Ch1_ditty3:
+	volume_envelope 11, 2
+	note B_, 2
+	volume_envelope 11, 5
+	octave 4
+	note C_, 2
+	note D_, 2
+	note C_, 2
+	octave 3
+	volume_envelope 11, 2
+	note B_, 2
+	volume_envelope 11, 5
+	octave 4
+	note C_, 2
+	note D_, 2
+	sound_ret
+
+Music_EliteFourBattleBW_Ch1_ditty4:
+	note A_, 6
+	pitch_sweep 6, -7
+	note A_, 2
+	pitch_sweep 0, 0
+	note F#, 4
+	volume_envelope 10, 4
+	note F#, 4
+	sound_ret
+
+Music_EliteFourBattleBW_Ch2_ditty1:
+	volume_envelope 8, 0
+	octave 3
+	note C#, 3
+	note F#, 3
+	note D#, 2
+	note F_, 3
+	octave 4
+	note C_, 3
+	volume_envelope 8, 4
+	note C_, 2
+	volume_envelope 8, 0
+	octave 3
+	note C#, 3
+	note F#, 3
+	note D#, 2
+	sound_ret
+
+Music_EliteFourBattleBW_Ch2_ditty2:
+	note C#, 3
+	note F#, 2
+	note G_, 2
+	volume_envelope 10, 7
+	note G_, 4
+	volume_envelope 10, 2
+	note F#, 2
+	volume_envelope 10, 7
+	note E_, 2
+	volume_envelope 10, 2
+	note D_, 2
+	volume_envelope 10, 7
+	note C#, 2
+	sound_ret
+
+Music_EliteFourBattleBW_Ch2_ditty3:
+	volume_envelope 10, 2
+	note F#, 4
+	volume_envelope 10, 5
+	note G_, 4
+	note A_, 4
+	note G_, 4
+	note B_, 2
+	note A_, 2
+	note G_, 2
+	note A_, 2
+	note B_, 2
+	octave 4
+	note C_, 2
+	sound_ret
+
+Music_EliteFourBattleBW_Ch3_ditty1:
+	note F#, 1
+	rest 1
+	note F#, 2
+	rest 2
+	note G_, 4
+	note A_, 2
+	note G#, 2
+	note G_, 2
+	note F#, 1
+	rest 1
+	note F#, 2
+	rest 2
+	note G_, 4
+	note B_, 2
+	note A_, 2
+	note G_, 2
+	sound_ret
+
+Music_EliteFourBattleBW_Ch4_ditty1:
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_ret

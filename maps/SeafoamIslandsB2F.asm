@@ -78,4 +78,3 @@ BoarderBryceBeatenText:
 	text "I lost all the"
 	line "way out here…"
 	done
-

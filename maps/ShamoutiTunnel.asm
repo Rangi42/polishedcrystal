@@ -195,4 +195,3 @@ GenericTrainerSightseermChester:
 	text "What a great"
 	line "experience!"
 	done
-

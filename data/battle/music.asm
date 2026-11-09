@@ -46,9 +46,9 @@ BattleMusic_Trainers:
 	db MAYLENE,          MUSIC_GYM_LEADER_BATTLE_DPPT
 	db MARLON,           MUSIC_GYM_LEADER_BATTLE_BW
 	db VALERIE,          MUSIC_GYM_LEADER_BATTLE_XY
-	db KUKUI,            MUSIC_TRAINER_BATTLE_SM
+	db KUKUI,            MUSIC_TRAINER_BATTLE_SM ; TODO: demix SuMo boss battle music
 	db PIERS,            MUSIC_GYM_LEADER_BATTLE_SWSH
-	db KATY,             MUSIC_GYM_LEADER_BATTLE_SWSH
+	db LARRY,            MUSIC_GYM_LEADER_BATTLE_SWSH ; TODO: demix SV gym leader battle music
 	db WALKER,           MUSIC_JOHTO_GYM_LEADER_BATTLE
 	db LAWRENCE,         MUSIC_ZINNIA_BATTLE_ORAS
 	db -1

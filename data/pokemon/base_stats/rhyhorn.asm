@@ -1,5 +1,5 @@
-	db  80,  85,  95,  25,  30,  30 ; 345 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 345,  80,  85,  95,  30,  30,  25
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db GROUND, ROCK ; type
 	db 120 ; catch rate

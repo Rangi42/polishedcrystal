@@ -3,19 +3,24 @@ SECTION "Tileset Headers", ROMX
 MACRO tileset
 	dbas \1Meta, \1Coll, \1Attr
 	dba \1GFX0, \1GFX1, \1GFX2
-	dw \1Anim ; BANK(_AnimateTileset)
+	fardw \1Anim
 ENDM
 
 Tilesets::
 ; entries correspond to TILESET_* constants (see constants/tileset_constants.asm)
 	table_width TILESET_LENGTH
+	farbank _AnimateTileset
 	tileset TilesetJohtoTraditional
 	tileset TilesetJohtoModern
+	tileset TilesetJohtoCoast
 	tileset TilesetJohtoOutlands
 	tileset TilesetJohtoAncient
+	tileset TilesetJohtoSacred
 	tileset TilesetBattleTowerOutside
-	tileset TilesetEcruteakShrine
+	tileset TilesetSnowtopMountain
 	tileset TilesetKanto
+	tileset TilesetKantoNorth
+	tileset TilesetKantoUrban
 	tileset TilesetIndigoPlateau
 	tileset TilesetShamoutiIsland
 	tileset TilesetValenciaIsland
@@ -45,6 +50,7 @@ Tilesets::
 	tileset TilesetUnderground
 	tileset TilesetCave
 	tileset TilesetQuietCave
+	tileset TilesetVolcano
 	tileset TilesetIcePath
 	tileset TilesetTunnel
 	tileset TilesetForest
@@ -53,7 +59,6 @@ Tilesets::
 	tileset TilesetRuinsOfAlph
 	tileset TilesetPokemonMansion
 	tileset TilesetBattleFactory
-	tileset TilesetSnowtopMountain
 	tileset TilesetHiddenGrotto
 	tileset TilesetPeaks
 	tileset TilesetHideout
@@ -65,22 +70,23 @@ SECTION "Tileset Graphics - johto common vram0", ROMX
 
 TilesetJohtoTraditionalGFX0::
 TilesetJohtoModernGFX0::
+TilesetJohtoCoastGFX0::
 TilesetJohtoOutlandsGFX0::
 TilesetJohtoAncientGFX0::
-TilesetBattleTowerOutsideGFX0::
-TilesetEcruteakShrineGFX0:: INCBIN "gfx/tilesets/johto_common.2bpp.lzp"
+TilesetJohtoSacredGFX0::
+TilesetBattleTowerOutsideGFX0:: INCBIN "gfx/tilesets/johto_common.2bpp.lzp"
 
 
 SECTION "Tileset Graphics - johto traditional vram1", ROMX
 
 TilesetJohtoTraditionalGFX1::
-TilesetEcruteakShrineGFX1:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram0.lzp"
+TilesetJohtoSacredGFX1:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram0.lzp"
 
 
 SECTION "Tileset Graphics - johto traditional vram2", ROMX
 
 TilesetJohtoTraditionalGFX2::
-TilesetEcruteakShrineGFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lzp"
+TilesetJohtoSacredGFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lzp"
 
 
 SECTION "Tileset Data - johto traditional", ROMX
@@ -92,12 +98,14 @@ TilesetJohtoTraditionalColl:: INCBIN "data/tilesets/johto_traditional_collision.
 
 SECTION "Tileset Graphics - johto modern vram1", ROMX
 
-TilesetJohtoModernGFX1:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram0.lzp"
+TilesetJohtoModernGFX1::
+TilesetJohtoCoastGFX1:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram0.lzp"
 
 
 SECTION "Tileset Graphics - johto modern vram2", ROMX
 
-TilesetJohtoModernGFX2:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram1.lzp"
+TilesetJohtoModernGFX2::
+TilesetJohtoCoastGFX2:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram1.lzp"
 
 
 SECTION "Tileset Data - johto modern", ROMX
@@ -107,9 +115,21 @@ TilesetJohtoModernAttr:: INCBIN "data/tilesets/johto_modern_attributes.bin.lzp"
 TilesetJohtoModernColl:: INCBIN "data/tilesets/johto_modern_collision.bin.lzp"
 
 
+SECTION "Tileset Data - johto coast", ROMX
+
+TilesetJohtoCoastMeta:: INCBIN "data/tilesets/johto_coast_metatiles.bin.lzp"
+TilesetJohtoCoastAttr:: INCBIN "data/tilesets/johto_coast_attributes.bin.lzp"
+TilesetJohtoCoastColl:: INCBIN "data/tilesets/johto_coast_collision.bin.lzp"
+
+
 SECTION "Tileset Graphics - johto outlands vram1", ROMX
 
 TilesetJohtoOutlandsGFX1:: INCBIN "gfx/tilesets/johto_outlands.johto_common.2bpp.vram0.lzp"
+
+
+SECTION "Tileset Graphics - johto outlands vram2", ROMX
+
+TilesetJohtoOutlandsGFX2:: INCBIN "gfx/tilesets/johto_outlands.johto_common.2bpp.vram1.lzp"
 
 
 SECTION "Tileset Data - johto outlands", ROMX
@@ -131,6 +151,13 @@ TilesetJohtoAncientAttr:: INCBIN "data/tilesets/johto_ancient_attributes.bin.lzp
 TilesetJohtoAncientColl:: INCBIN "data/tilesets/johto_ancient_collision.bin.lzp"
 
 
+SECTION "Tileset Data - johto sacred", ROMX
+
+TilesetJohtoSacredMeta:: INCBIN "data/tilesets/johto_sacred_metatiles.bin.lzp"
+TilesetJohtoSacredAttr:: INCBIN "data/tilesets/johto_sacred_attributes.bin.lzp"
+TilesetJohtoSacredColl:: INCBIN "data/tilesets/johto_sacred_collision.bin.lzp"
+
+
 SECTION "Tileset Graphics - battle tower outside vram1", ROMX
 
 TilesetBattleTowerOutsideGFX1:: INCBIN "gfx/tilesets/battle_tower_outside.johto_common.2bpp.lzp"
@@ -143,16 +170,11 @@ TilesetBattleTowerOutsideAttr:: INCBIN "data/tilesets/battle_tower_outside_attri
 TilesetBattleTowerOutsideColl:: INCBIN "data/tilesets/battle_tower_outside_collision.bin.lzp"
 
 
-SECTION "Tileset Data - ecruteak shrine", ROMX
-
-TilesetEcruteakShrineMeta:: INCBIN "data/tilesets/ecruteak_shrine_metatiles.bin.lzp"
-TilesetEcruteakShrineAttr:: INCBIN "data/tilesets/ecruteak_shrine_attributes.bin.lzp"
-TilesetEcruteakShrineColl:: INCBIN "data/tilesets/ecruteak_shrine_collision.bin.lzp"
-
-
 SECTION "Tileset Graphics - kanto common vram0", ROMX
 
 TilesetKantoGFX0::
+TilesetKantoNorthGFX0::
+TilesetKantoUrbanGFX0::
 TilesetIndigoPlateauGFX0:: INCBIN "gfx/tilesets/kanto_common.2bpp.lzp"
 
 
@@ -166,6 +188,30 @@ SECTION "Tileset Data - kanto", ROMX
 TilesetKantoMeta:: INCBIN "data/tilesets/kanto_metatiles.bin.lzp"
 TilesetKantoAttr:: INCBIN "data/tilesets/kanto_attributes.bin.lzp"
 TilesetKantoColl:: INCBIN "data/tilesets/kanto_collision.bin.lzp"
+
+
+SECTION "Tileset Graphics - kanto north vram1", ROMX
+
+TilesetKantoNorthGFX1:: INCBIN "gfx/tilesets/kanto_north.kanto_common.2bpp.lzp"
+
+
+SECTION "Tileset Data - kanto north", ROMX
+
+TilesetKantoNorthMeta:: INCBIN "data/tilesets/kanto_north_metatiles.bin.lzp"
+TilesetKantoNorthAttr:: INCBIN "data/tilesets/kanto_north_attributes.bin.lzp"
+TilesetKantoNorthColl:: INCBIN "data/tilesets/kanto_north_collision.bin.lzp"
+
+
+SECTION "Tileset Graphics - kanto urban vram1", ROMX
+
+TilesetKantoUrbanGFX1:: INCBIN "gfx/tilesets/kanto_urban.kanto_common.2bpp.lzp"
+
+
+SECTION "Tileset Data - kanto urban", ROMX
+
+TilesetKantoUrbanMeta:: INCBIN "data/tilesets/kanto_urban_metatiles.bin.lzp"
+TilesetKantoUrbanAttr:: INCBIN "data/tilesets/kanto_urban_attributes.bin.lzp"
+TilesetKantoUrbanColl:: INCBIN "data/tilesets/kanto_urban_collision.bin.lzp"
 
 
 SECTION "Tileset Graphics - indigo plateau vram1", ROMX
@@ -360,6 +406,11 @@ SECTION "Tileset Graphics - gym vram1", ROMX
 TilesetGymGFX1:: INCBIN "gfx/tilesets/gym.2bpp.vram1.lzp"
 
 
+SECTION "Tileset Graphics - gym vram2", ROMX
+
+TilesetGymGFX2:: INCBIN "gfx/tilesets/gym.2bpp.vram2.lzp"
+
+
 SECTION "Tileset Data - gym", ROMX
 
 TilesetGymMeta:: INCBIN "data/tilesets/gym_metatiles.bin.lzp"
@@ -513,6 +564,11 @@ SECTION "Tileset Graphics - museum vram1", ROMX
 TilesetMuseumGFX1:: INCBIN "gfx/tilesets/museum.2bpp.vram1.lzp"
 
 
+SECTION "Tileset Graphics - museum vram2", ROMX
+
+TilesetMuseumGFX2:: INCBIN "gfx/tilesets/museum.2bpp.vram2.lzp"
+
+
 SECTION "Tileset Data - museum", ROMX
 
 TilesetMuseumMeta:: INCBIN "data/tilesets/museum_metatiles.bin.lzp"
@@ -624,12 +680,14 @@ TilesetUndergroundColl:: INCBIN "data/tilesets/underground_collision.bin.lzp"
 
 SECTION "Tileset Graphics - cave vram0", ROMX
 
-TilesetCaveGFX0:: INCBIN "gfx/tilesets/cave.2bpp.vram0.lzp"
+TilesetCaveGFX0::
+TilesetVolcanoGFX0:: INCBIN "gfx/tilesets/cave.2bpp.vram0.lzp"
 
 
 SECTION "Tileset Graphics - cave vram1", ROMX
 
-TilesetCaveGFX1:: INCBIN "gfx/tilesets/cave.2bpp.vram1.lzp"
+TilesetCaveGFX1::
+TilesetVolcanoGFX1:: INCBIN "gfx/tilesets/cave.2bpp.vram1.lzp"
 
 
 SECTION "Tileset Data - cave", ROMX
@@ -654,6 +712,13 @@ SECTION "Tileset Data - quiet cave", ROMX
 TilesetQuietCaveMeta:: INCBIN "data/tilesets/quiet_cave_metatiles.bin.lzp"
 TilesetQuietCaveAttr:: INCBIN "data/tilesets/quiet_cave_attributes.bin.lzp"
 TilesetQuietCaveColl:: INCBIN "data/tilesets/quiet_cave_collision.bin.lzp"
+
+
+SECTION "Tileset Data - volcano", ROMX
+
+TilesetVolcanoMeta:: INCBIN "data/tilesets/volcano_metatiles.bin.lzp"
+TilesetVolcanoAttr:: INCBIN "data/tilesets/volcano_attributes.bin.lzp"
+TilesetVolcanoColl:: INCBIN "data/tilesets/volcano_collision.bin.lzp"
 
 
 SECTION "Tileset Graphics - ice path vram0", ROMX
@@ -879,10 +944,11 @@ TilesetKantoGymColl:: INCBIN "data/tilesets/kanto_gym_collision.bin.lzp"
 
 SECTION "Tileset Graphics - Terminator vram2", ROMX
 
-TilesetJohtoOutlandsGFX2::
 TilesetJohtoAncientGFX2::
 TilesetBattleTowerOutsideGFX2::
 TilesetKantoGFX2::
+TilesetKantoNorthGFX2::
+TilesetKantoUrbanGFX2::
 TilesetIndigoPlateauGFX2::
 TilesetShamoutiIslandGFX2::
 TilesetValenciaIslandGFX2::
@@ -894,7 +960,6 @@ TilesetPokeCenterGFX2::
 TilesetPokeComCenterGFX2::
 TilesetMartGFX2::
 TilesetGateGFX2::
-TilesetGymGFX2::
 TilesetMagnetTrainGFX2::
 TilesetChampionsRoomGFX2::
 TilesetPortGFX2::
@@ -903,7 +968,6 @@ TilesetFacilityGFX2::
 TilesetMansionGFX2::
 TilesetGameCornerGFX2::
 TilesetDecorGFX2::
-TilesetMuseumGFX2::
 TilesetHotelGFX2::
 TilesetTowerGFX2::
 TilesetBattleTowerInsideGFX2::
@@ -912,6 +976,7 @@ TilesetLighthouseGFX2::
 TilesetUndergroundGFX2::
 TilesetCaveGFX2::
 TilesetQuietCaveGFX2::
+TilesetVolcanoGFX2::
 TilesetIcePathGFX2::
 TilesetTunnelGFX2::
 TilesetForestGFX2::

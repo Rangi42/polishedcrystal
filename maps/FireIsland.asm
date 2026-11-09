@@ -25,4 +25,3 @@ FireIsland_MapScriptHeader:
 
 	def_object_events
 	itemball_event  2, 19, HEAT_ROCK, 1, EVENT_FIRE_ISLAND_HEAT_ROCK
-

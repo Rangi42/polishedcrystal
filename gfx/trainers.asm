@@ -419,8 +419,8 @@ KukuiPic: INCBIN "gfx/trainers/kukui.2bpp.lzp"
 SECTION "PiersPic", ROMX
 PiersPic: INCBIN "gfx/trainers/piers.2bpp.lzp"
 
-SECTION "KatyPic", ROMX
-KatyPic: INCBIN "gfx/trainers/katy.2bpp.lzp"
+SECTION "LarryPic", ROMX
+LarryPic: INCBIN "gfx/trainers/larry.2bpp.lzp"
 
 SECTION "VictorPic", ROMX
 VictorPic: INCBIN "gfx/trainers/victor.2bpp.lzp"
@@ -442,6 +442,9 @@ LawrencePic: INCBIN "gfx/trainers/lawrence.2bpp.lzp"
 
 SECTION "ReiPic", ROMX
 ReiPic: INCBIN "gfx/trainers/rei.2bpp.lzp"
+
+SECTION "FirebreatherAshesPic", ROMX
+FirebreatherAshesPic: INCBIN "gfx/trainers/firebreather_ashes.2bpp.lzp"
 
 SECTION "OmastarFossilPic", ROMX
 OmastarFossilPic: INCBIN "gfx/trainers/omastar_fossil.2bpp.lzp"

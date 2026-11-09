@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  60,  95,  80,  30,  60,  80 ; 405 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 405,  60,  95,  80,  60,  80,  30
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  60, 115, 100,  30,  60,  80 ; 445 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 450,  60, 115, 100,  55,  90,  30
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db BUG, GRASS ; type

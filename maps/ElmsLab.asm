@@ -1,12 +1,12 @@
 ElmsLab_MapScriptHeader:
 	def_scene_scripts
 	scene_script ElmsLabMeetElmScene, SCENE_ELMSLAB_MEET_ELM
-	scene_script ElmsLabCantLeaveScene, SCENE_ELMSLAB_CANT_LEAVE
-	scene_script ElmsLabNoopScene, SCENE_ELMSLAB_NOOP
-	scene_script ElmsLabMeetOfficerScene, SCENE_ELMSLAB_MEET_OFFICER
-	scene_script ElmsLabUnusedScene, SCENE_ELMSLAB_UNUSED
-	scene_script ElmsLabAideGivesPotionScene, SCENE_ELMSLAB_AIDE_GIVES_POTION
-	scene_script ElmsLabLyraBattleScene, SCENE_ELMSLAB_LYRA_BATTLE
+	scene_script DoNothingScript, SCENE_ELMSLAB_CANT_LEAVE
+	scene_script DoNothingScript, SCENE_ELMSLAB_NOOP
+	scene_script DoNothingScript, SCENE_ELMSLAB_MEET_OFFICER
+	scene_script DoNothingScript, SCENE_ELMSLAB_UNUSED
+	scene_script DoNothingScript, SCENE_ELMSLAB_AIDE_GIVES_POTION
+	scene_script DoNothingScript, SCENE_ELMSLAB_LYRA_BATTLE
 	scene_script ElmsLabAideGivesPokeBallsScene, SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
 
 	def_callbacks
@@ -46,9 +46,9 @@ ElmsLab_MapScriptHeader:
 	def_object_events
 	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfElmScript, -1
 	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
-	object_event  6,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	object_event  7,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_DECO_ITEM, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	object_event  8,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	object_event  6,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_RED, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+	object_event  7,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_BLUE, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	object_event  8,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_GREEN, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
 	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
 	object_event  5, 11, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB
 
@@ -61,20 +61,6 @@ ElmsLab_MapScriptHeader:
 	const ELMSLAB_OFFICER
 	const ELMSLAB_LYRA
 
-ElmsLabMeetElmScene:
-	sdefer ElmsLab_AutowalkUpToElm
-ElmsLabCantLeaveScene:
-ElmsLabNoopScene:
-ElmsLabMeetOfficerScene:
-ElmsLabUnusedScene:
-ElmsLabAideGivesPotionScene:
-ElmsLabLyraBattleScene:
-	end
-
-ElmsLabAideGivesPokeBallsScene:
-	sdefer ElmsLab_AutoAideSpeech
-	end
-
 ElmsLabCallback_MoveElm:
 	checkscene
 	iftruefwd .Skip
@@ -82,7 +68,11 @@ ElmsLabCallback_MoveElm:
 .Skip:
 	endcallback
 
-ElmsLab_AutowalkUpToElm:
+ElmsLabMeetElmScene:
+	sdefer .Script
+	end
+
+.Script:
 	follow PLAYER, ELMSLAB_LYRA
 	applymovement PLAYER, ElmsLab_WalkUpToElmMovement
 	stopfollow
@@ -90,11 +80,11 @@ ElmsLab_AutowalkUpToElm:
 	turnobject ELMSLAB_ELM, RIGHT
 	opentext
 	writetext ElmText_Intro
-ElmsLab_RefuseLoop:
+.Loop:
 	yesorno
 	iftruefwd ElmsLab_ElmGetsEmail
 	writetext ElmText_Refused
-	sjump ElmsLab_RefuseLoop
+	sjump .Loop
 
 ElmsLab_ElmGetsEmail:
 if !DEF(DEBUG)
@@ -122,7 +112,11 @@ endc
 	setscene SCENE_ELMSLAB_CANT_LEAVE
 	end
 
-ElmsLab_AutoAideSpeech:
+ElmsLabAideGivesPokeBallsScene:
+	sdefer .Script
+	end
+
+.Script:
 	turnobject ELMSLAB_ELMS_AIDE, DOWN
 	showemote EMOTE_SHOCK, ELMSLAB_ELMS_AIDE, 15
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksDownMovement
@@ -136,15 +130,15 @@ ProfElmScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
-	iftruefwd ElmCheckMasterBall
+	iftruefwd .CheckMasterBall
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue ElmGiveTicketScript
-ElmCheckMasterBall:
+.CheckMasterBall:
 	checkevent EVENT_GOT_MASTER_BALL_FROM_ELM
-	iftruefwd ElmCheckOddSouvenir
+	iftruefwd .CheckOddSouvenir
 	checkflag ENGINE_RISINGBADGE
 	iftrue ElmGiveMasterBallScript
-ElmCheckOddSouvenir:
+.CheckOddSouvenir:
 	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_ELM
 	iftrue ElmCheckBattleScript
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
@@ -153,17 +147,7 @@ ElmCheckOddSouvenir:
 	iftrue ElmAskBattleScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
 	iffalsefwd ElmCheckTogepiEgg
-	scall ElmEggHatchedScript
-	; need to reopen text boxes since ElmCheckGotEggAgain's
-	; jumpopenedtext will close them.
-	jumpthistext
-
-	text "<PLAYER>? I thought"
-	line "the Egg hatched."
-
-	para "Where is the"
-	line "#mon?"
-	done
+	; fallthrough
 
 ElmEggHatchedScript:
 	setmonval TOGEPI
@@ -175,7 +159,16 @@ ElmEggHatchedScript:
 	setmonval TOGEKISS
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	sjumpfwd ElmCheckGotEggAgain
+	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
+	iffalsefwd ElmCheckGotEggAgain
+	jumpthisopenedtext
+
+	text "<PLAYER>? I thought"
+	line "the Egg hatched."
+
+	para "Where is the"
+	line "#mon?"
+	done
 
 ElmCheckTogepiEgg:
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
@@ -415,8 +408,7 @@ ShowElmTogepiScript:
 ElmGiveOddSouvenirScript:
 	writetext ElmGiveOddSouvenirText1
 	promptbutton
-	verbosegiveitem ODD_SOUVENIR
-	iffalse_endtext
+	verbosegiveitem ODD_SOUVENIR, iffalse_endtext
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_ELM
 	writetext ElmGiveOddSouvenirText2
 	waitbutton
@@ -427,8 +419,7 @@ ElmGiveOddSouvenirScript:
 ElmGiveMasterBallScript:
 	writetext ElmGiveMasterBallText1
 	promptbutton
-	verbosegiveitem MASTER_BALL
-	iffalse_endtext
+	verbosegiveitem MASTER_BALL, iffalse_endtext
 	setevent EVENT_GOT_MASTER_BALL_FROM_ELM
 	writetext ElmGiveMasterBallText2
 	waitbutton
@@ -677,7 +668,8 @@ AideScript_GivePotions:
 	opentext
 	writetext AideText_GiveYouPotions
 	promptbutton
-	verbosegiveitem POTION
+	; Finish the introductory scene even if the Bag cannot fit the Potion.
+	verbosegiveitem_unsafe POTION
 	setscene SCENE_ELMSLAB_NOOP
 	jumpopenedtext AideText_AlwaysBusy
 
@@ -1791,4 +1783,3 @@ ElmsLabTrashcanText:
 	line "the snack Prof.Elm"
 	cont "ate is in there…"
 	done
-

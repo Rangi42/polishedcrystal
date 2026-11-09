@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db 100, 125,  52,  71, 105,  52 ; 505 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 505, 100, 125,  52, 105,  52,  71
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db 105, 125,  52,  71, 105,  52 ; 510 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 510, 105, 125,  52, 105,  52,  71
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db DARK, FLYING ; type

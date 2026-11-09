@@ -75,7 +75,7 @@ SummaryScreenInit:
 	rst ByteFill
 	; Set up for HBlank
 
-	ld hl, hFunctionTarget
+	ld hl, hLCDInterruptFunctionTarget
 	ld b, [hl]
 	ld a, LOW(LCDSummaryScreenHideWindow)
 	ld [hli], a
@@ -120,7 +120,7 @@ SummaryScreenInit:
 	ldh [rIE], a
 
 	pop bc
-	ld hl, hFunctionTarget
+	ld hl, hLCDInterruptFunctionTarget
 	ld a, b
 	ld [hli], a
 	ld [hl], c
@@ -142,7 +142,7 @@ INCLUDE "gfx/stats/summary_sprites.pal"
 SummaryScreen_InitTiles:
 	ld hl, GFX_Summary
 	ld de, vTiles2 tile SUMMARY_TILE_START
-	lb bc, BANK(GFX_Summary), 18
+	lb bc, BANK(GFX_Summary), 16
 	call DecompressRequest2bpp
 
 	farcall LoadBoldPDoubled
@@ -255,21 +255,20 @@ SummaryScreenLoop:
 
 SummaryScreen_DoAnim:
 	ld hl, wSummaryScreenFlags
-	bit 6, [hl]
+	bit SUMMARY_FLAGS_DO_ANIM_F, [hl]
 	jr nz, .try_anim
-	bit 5, [hl]
+	bit SUMMARY_FLAGS_FINISH_ANIM_F, [hl]
 	jr nz, .finish
 	jmp DelayFrame
 
 .try_anim
-	farcall SetUpPokeAnim
-	jr nc, .finish
+	farcall TickFrontpicAnim
 	ld hl, wSummaryScreenFlags
+	jr nc, .finish
 	res SUMMARY_FLAGS_DO_ANIM_F, [hl]
 .finish
-	ld hl, wSummaryScreenFlags
 	res SUMMARY_FLAGS_FINISH_ANIM_F, [hl]
-	farjp HDMATransferTileMapToWRAMBank3
+	ret
 
 SummaryScreen_InitMon:
 	ld hl, wSummaryScreenFlags
@@ -356,7 +355,9 @@ SummaryScreen_InitMon:
 	farcall LoadSummaryStatusIcon
 	ld a, [wTempMonItem]
 	farcall LoadItemIconForSummaryScreen
-	farcall _CGB_StatsScreenHPPals
+
+	farcall SummaryScreen_ApplyHPPals
+
 	ld hl, wSummaryScreenFlags
 	set SUMMARY_FLAGS_PLACE_FRONTPIC_F, [hl]
 	ret
@@ -456,22 +457,13 @@ SummaryScreen_InitLayout:
 
 	call .ApplySummaryPalettes
 
-	hlcoord 19 - NUM_SUMMARY_PAGES * 2, 0
-	ld [hl], SUMMARY_TILE_LEFT_ARROW
-	hlcoord 19, 0
-	ld [hl], SUMMARY_TILE_RIGHT_ARROW
+	ld a, SUMMARY_TILE_ARROW
+	ldcoord_a 19 - NUM_SUMMARY_PAGES * 2, 0
+	ldcoord_a 19, 0
 	ret
 
 .PlaceHPBar:
-	ld hl, wTempMonHP
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, wTempMonMaxHP
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	farcall ComputeHPBarPixels
+	ld bc, wTempMonHP
 	ld hl, wCurHPPal
 	call SetHPPal
 	jmp DelayFrame
@@ -528,59 +520,12 @@ SummaryScreen_InitLayout:
 	db 108, 36, SUMMARY_TILE_OAM_TITLES + 2, $0
 	db 108, 44, SUMMARY_TILE_OAM_TITLES + 3, $0
 
-SummaryScreen_InitAttrmap:
-	farcall WipeAttrMap
-
-	hlcoord 0, 0, wAttrmap
-	lb bc, 12, 8
-	ld a, SUMMARY_PAL_POKEMON
-	call FillBoxWithByte
-
-	hlcoord 8, 0, wAttrmap
-	lb bc, 1, 14
-	; a == SUMMARY_PAL_POKEMON
-	call FillBoxWithByte
-
-	hlcoord 0, 12, wAttrmap
-	lb bc, 1, 20
-	ld a, SUMMARY_PAL_SIDE_WINDOW
-	call FillBoxWithByte
-
-	hlcoord 2, 12, wAttrmap
-	lb bc, 1, 3
-	xor a
-	assert SUMMARY_PAL_LOWER_WINDOW == 0
-	call FillBoxWithByte
-
-	hlcoord 1, 11, wAttrmap
-	ld a, SUMMARY_PAL_SIDE_WINDOW
-	ld [hli], a
-	ld a, OAM_YFLIP | SUMMARY_PAL_LOWER_WINDOW
-	ld bc, 3
-	rst ByteFill
-	ld a, OAM_XFLIP | SUMMARY_PAL_SIDE_WINDOW ; no-optimize *hl = N (N gets reused)
-	ld [hl], a
-	hlcoord 5, 12, wAttrmap
-	ld [hl], a
-
-	hlcoord 7, 1, wAttrmap
-	lb bc, 11, 13
-	ld a, SUMMARY_PAL_SIDE_WINDOW
-	call FillBoxWithByte
-
-	hlcoord 5, 9, wAttrmap
-	ld [hl], SUMMARY_PAL_GENDER_MARKER
-
-	hlcoord 2, 8, wAttrmap
-	lb bc, 3, 3
-	ld a, SUMMARY_PAL_ITEM
-	jmp FillBoxWithByte
-
 SummaryScreen_LoadPage:
 	ld a, [wCurPartySpecies]
 	ld [wTempSpecies], a
 	ld [wCurSpecies], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hOAMUpdate], a
 	ldh [hCGBPalUpdate], a
@@ -786,9 +731,9 @@ SummaryScreen_SwitchPage:
 	ld a, 2
 	ld [wSummaryScreenStep], a
 	ld a, LOW(LCDSummaryScreenShowWindow)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDSummaryScreenShowWindow)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	ldh a, [rLCDC]
 	set B_LCDC_WINDOW, a
@@ -970,15 +915,14 @@ SummaryScreen_PlaceFrontpic:
 	ld a, TRUE
 .got_align
 	ld [wBoxAlignment], a
-	ld a, [wCurPartySpecies]
-	call IsAPokemon
+	call IsCurPartySpeciesAPokemon
 	ret c
 	call SummaryScreen_LoadTextboxSpaceGFX
 	ld de, vTiles2 tile $00
-	predef FrontpicPredef
+	farcall PrepareAnimatedFrontpic
 	hlcoord 0, 1
 	lb de, $0, $2
-	predef LoadMonAnimation
+	farcall LoadFrontpicAnim
 	ld hl, wSummaryScreenFlags
 	set SUMMARY_FLAGS_DO_ANIM_F, [hl]
 	ret

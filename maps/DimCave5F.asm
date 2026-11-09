@@ -2,7 +2,7 @@ DimCave5F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_STONETABLE, DimCave5FSetUpStoneTable
+	callback MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
 
 	def_warp_events
 	warp_event 13, 31, ROUTE_10_NORTH, 5
@@ -70,8 +70,7 @@ DimCave5FRileyScript:
 	opentext
 	writetext .ItemText
 	promptbutton
-	verbosegiveitem POWER_BRACER
-	iffalse_endtext
+	verbosegiveitem POWER_BRACER, iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -232,4 +231,3 @@ GenericTrainerSuper_nerdDave:
 	text "But not"
 	line "battling…"
 	done
-

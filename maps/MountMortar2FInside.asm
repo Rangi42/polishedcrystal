@@ -42,4 +42,3 @@ SupernerdHughSeenText:
 SupernerdHughBeatenText:
 	text "Sorry, my mistake."
 	done
-

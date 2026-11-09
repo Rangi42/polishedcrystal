@@ -1,5 +1,5 @@
-	db 106,  90, 130, 110,  90, 154 ; 680 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 680, 106,  90, 130,  90, 154, 110
+	;   bst   hp  atk  def  sat  sdf  spe
 
 if DEF(FAITHFUL)
 	db PSYCHIC, FLYING ; type

@@ -3,7 +3,7 @@ DimCave4F_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, DimCave4FBouldersLand
-	callback MAPCALLBACK_STONETABLE, DimCave4FSetUpStoneTable
+	callback MAPCALLBACK_CMDQUEUE, DimCave4FSetUpStoneTable
 
 	def_warp_events
 	warp_event  2, 16, DIM_CAVE_5F, 2
@@ -21,7 +21,7 @@ DimCave4F_MapScriptHeader:
 
 	def_object_events
 	strengthboulder_event 14, 15, EVENT_BOULDER_IN_DIM_CAVE_4F
-	object_event 27, 25, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
+	object_event 27, 25, SPRITE_BOULDER_ROCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
 	object_event  5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerScientistJoseph, -1
 	object_event 12,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerScientistNigel, -1
 	object_event 22, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1

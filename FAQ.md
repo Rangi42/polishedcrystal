@@ -85,7 +85,7 @@ If you have a preferred emulator that isn't listed above, using it should be fin
 
 ### Are there cheat codes?
 
-Cheat codes are *not* officially supported: new updates may change or break old codes, which can lead to irreversible save corruption. There is instead [**Polished Editor**](https://www.polishededitor.vercel.app/), an **unofficial** online save editor for *Pokémon Polished Crystal*, created and maintained by [Rev3lation (@rev3lation)](https://github.com/KohKaiSern).  
+Cheat codes are *not* officially supported: new updates may change or break old codes, which can lead to irreversible save corruption. There is instead [**Polished Editor**](https://www.polishededitor.vercel.app/), an **unofficial** online save editor for *Pokémon Polished Crystal*, created and maintained by [Rev3lation (@rev3lation)](https://github.com/KohKaiSern).
 
 If you decide to use cheat codes anyway, note that cheat codes are easily misused - as such, **please disable cheats before complaining that there's a bug in the game, and don't ask for pre-made cheat codes**. Should you wish to create your own cheats, you may refer to the .sym files. The .sym files are created when you build Polished Crystal. They list the memory address of every label in the source code. These can be useful for [discovering GameShark cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes). You can compare the addresses for Polished Crystal with the same labels for [pokecrystal](https://github.com/pret/pokecrystal/tree/symbols) to find the equivalents of old Crystal cheats.
 

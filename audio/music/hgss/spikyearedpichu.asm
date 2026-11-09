@@ -290,34 +290,7 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	note C_, 1
 	note D_, 1
 	note_type 12, 1, 0
-	note E_, 1
-	volume_envelope 3, 0
-	note E_, 1
-	volume_envelope 1, 0
-	note D_, 1
-	volume_envelope 3, 0
-	note D_, 1
-	volume_envelope 1, 0
-	note C_, 1
-	volume_envelope 3, 0
-	note C_, 1
-	volume_envelope 1, 0
-	octave 5
-	note A#, 1
-	volume_envelope 3, 0
-	note A#, 1
-	volume_envelope 1, 0
-	note A_, 1
-	volume_envelope 3, 0
-	note A_, 1
-	volume_envelope 1, 0
-	octave 6
-	note C_, 1
-	volume_envelope 3, 0
-	note C_, 1
-	volume_envelope 1, 0
-	octave 5
-	note E_, 4
+	sound_call Music_SpikyEaredPichuHGSS_Ch3_ditty1
 	octave 6
 	note C_, 1
 	volume_envelope 3, 0
@@ -409,34 +382,7 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	volume_envelope 3, 0
 	note D_, 1
 	volume_envelope 1, 0
-	note E_, 1
-	volume_envelope 3, 0
-	note E_, 1
-	volume_envelope 1, 0
-	note D_, 1
-	volume_envelope 3, 0
-	note D_, 1
-	volume_envelope 1, 0
-	note C_, 1
-	volume_envelope 3, 0
-	note C_, 1
-	volume_envelope 1, 0
-	octave 5
-	note A#, 1
-	volume_envelope 3, 0
-	note A#, 1
-	volume_envelope 1, 0
-	note A_, 1
-	volume_envelope 3, 0
-	note A_, 1
-	volume_envelope 1, 0
-	octave 6
-	note C_, 1
-	volume_envelope 3, 0
-	note C_, 1
-	volume_envelope 1, 0
-	octave 5
-	note E_, 4
+	sound_call Music_SpikyEaredPichuHGSS_Ch3_ditty1
 	rest 8
 	note A_, 1
 	note A#, 1
@@ -558,3 +504,34 @@ Music_SpikyEaredPichuHGSS_Ch4_loop_1:
 	drum_note 12, 4
 	drum_note 4, 4
 	sound_jump Music_SpikyEaredPichuHGSS_Ch4_loop_main
+
+Music_SpikyEaredPichuHGSS_Ch3_ditty1:
+	note E_, 1
+	volume_envelope 3, 0
+	note E_, 1
+	volume_envelope 1, 0
+	note D_, 1
+	volume_envelope 3, 0
+	note D_, 1
+	volume_envelope 1, 0
+	note C_, 1
+	volume_envelope 3, 0
+	note C_, 1
+	volume_envelope 1, 0
+	octave 5
+	note A#, 1
+	volume_envelope 3, 0
+	note A#, 1
+	volume_envelope 1, 0
+	note A_, 1
+	volume_envelope 3, 0
+	note A_, 1
+	volume_envelope 1, 0
+	octave 6
+	note C_, 1
+	volume_envelope 3, 0
+	note C_, 1
+	volume_envelope 1, 0
+	octave 5
+	note E_, 4
+	sound_ret

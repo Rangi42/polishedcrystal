@@ -21,8 +21,7 @@ SlowpokeWellB2FGymGuideScript:
 	opentext
 	writetext SlowpokeWellB2FGymGuideText
 	promptbutton
-	verbosegiveitem KINGS_ROCK
-	iffalse_endtext
+	verbosegiveitem KINGS_ROCK, iffalse_endtext
 	setevent EVENT_GOT_KINGS_ROCK_IN_SLOWPOKE_WELL
 	endtext
 

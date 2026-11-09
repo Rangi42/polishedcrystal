@@ -117,7 +117,7 @@ INCLUDE "gfx/stats/blue_hp_bars.pal"
 	db "HP@"
 
 .AbilityTiles:
-	db SUMMARY_TILE_HIDDEN_H, "1", "2", SUMMARY_TILE_HIDDEN_H
+	db '<BOLDH>', '1', '2', '<BOLDH>'
 
 SummaryScreen_ColorNatures:
 	ld c, STAT_ATK
@@ -192,7 +192,7 @@ SummaryScreen_DrawPlayerHP:
 	ld c, e
 
 .not_boxmon
-	predef ComputeHPBarPixels
+	farcall ComputeHPBarPixels
 	ld a, 6
 	ld d, a
 	ld c, a

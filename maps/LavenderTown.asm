@@ -5,6 +5,7 @@ LavenderTown_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, LavenderTownFlyPoint
+	callback MAPCALLBACK_CMDQUEUE, LavenderTownSetUpPaletteSwap
 
 	def_warp_events
 	warp_event  5,  7, LAVENDER_POKECENTER_1F, 1
@@ -36,6 +37,9 @@ LavenderTown_MapScriptHeader:
 	object_event  8, 18, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownSuperNerdText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
 	object_event  9, 19, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownCooltrainerFText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
 	object_event 11, 17, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownRockerText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
+	object_event 14,  1, SPRITE_CABLE_CAR, SPRITEMOVEDATA_RADIO_DISH, 0, 0, -1, PAL_NPC_COPY_BG_GRAY, OBJECTTYPE_COMMAND, end, NULL, -1
+	object_event 15,  1, SPRITE_CABLE_CAR, SPRITEMOVEDATA_RADIO_DISH, 0, 0, -1, PAL_NPC_COPY_BG_GRAY, OBJECTTYPE_COMMAND, end, NULL, -1
+
 
 	object_const_def
 	const LAVENDERTOWN_YOUNGSTER1
@@ -46,6 +50,14 @@ LavenderTownFlyPoint:
 	clearevent EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	setflag ENGINE_FLYPOINT_LAVENDER
 	endcallback
+
+LavenderTownSetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 6, 255, 0, 9, PAL_BG_GREEN, OverworldGreenPalettes, LavenderRadioTowerRoofPalettes
+	db -1 ; end
 
 LavenderTownExpositionTrigger1:
 	moveobject LAVENDERTOWN_YOUNGSTER1, 14, 8

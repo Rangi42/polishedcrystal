@@ -38,10 +38,12 @@ CloseText::
 .CloseText:
 	call ClearWindowData
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call BGMapAnchorTopLeft
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call SafeUpdateSprites
 	farcall RefreshSprites
@@ -49,6 +51,7 @@ CloseText::
 	ldh [hWY], a
 	call UpdatePlayerSprite
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	farjp InitMapNameSign
@@ -121,8 +124,9 @@ SafeUpdateSprites::
 	ldh a, [hBGMapMode]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
-	ld a, $1
+	ld a, 1
 	ldh [hOAMUpdate], a
 	call UpdateSprites
 	xor a

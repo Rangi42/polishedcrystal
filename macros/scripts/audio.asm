@@ -93,7 +93,9 @@ ENDM
 	const tempo_cmd ; $de
 MACRO tempo
 	db tempo_cmd
-	dw \1 ; tempo
+	DEF _adjusted_tempo = (\1) - TEMPO_OFFSET
+	assert _adjusted_tempo == LOW(_adjusted_tempo), "'tempo \1' is out of range"
+	db _adjusted_tempo
 ENDM
 
 	const volume_envelope_cmd ; $df
@@ -179,7 +181,12 @@ ENDM
 	const pitch_offset_cmd ; $e7
 MACRO pitch_offset
 	db pitch_offset_cmd
-	dw \1 ; pitch offset
+	if (\1) < $100
+		db \1
+	else
+		assert (\1) < $8000, "'pitch_offset \1' is out of range"
+		bigdw (\1) | $8000
+	endc
 ENDM
 
 	const tempo_relative_cmd ; $e8
@@ -255,7 +262,10 @@ MACRO sound_loop
 	assert (\1) != 0, "'sound_loop 0' can be 'sound_jump'"
 	assert (\1) != 1, "'sound_loop 1' is pointless"
 	db \1 ; count
-	dw \2 ; address
+	DEF _soundloop_distance = @ - (\2) + 1
+	assert _soundloop_distance > 0, "sound_loop cannot go forwards"
+	assert _soundloop_distance < $100, "sound_loop cannot go that far ({_soundloop_distance})"
+	db _soundloop_distance ; relative address
 ENDM
 
 	const sound_call_cmd ; $fe

@@ -35,15 +35,77 @@ EvolutionAnimation:
 
 	call ClearSpriteAnims
 
-	ld de, .GFX
+	ld de, EvoBubbleGFX
 	ld hl, vTiles0
-	lb bc, BANK(.GFX), 8
+	lb bc, BANK(EvoBubbleGFX), 8
 	call Request2bpp
+
+	ld hl, EvoSpotlightGFX
+	ld de, vTiles2 tile $62
+	lb bc, BANK(EvoSpotlightGFX), 12
+	call DecompressRequest2bpp
+
+	hlcoord 0, 0
+	lb bc, 12, 20
+	ld a, '<BLACK>'
+	call FillBoxWithByte
+	hlcoord 7, 0
+	lb bc, 9, 7
+	ld a, ' '
+	ldcoord_a 6, 6
+	ldcoord_a 14, 6
+	ldcoord_a 6, 7
+	ldcoord_a 14, 7
+	call FillBoxWithByte
+	ld a, $62
+	ldcoord_a 6, 2
+	ldcoord_a 14, 2
+	ldcoord_a 5, 6
+	ldcoord_a 15, 6
+	inc a ; $63
+	ldcoord_a 6, 3
+	ldcoord_a 14, 3
+	ldcoord_a 5, 7
+	ldcoord_a 15, 7
+	inc a ; $64
+	ldcoord_a 7, 0
+	ldcoord_a 13, 0
+	ldcoord_a 6, 4
+	ldcoord_a 14, 4
+	inc a ; $65
+	ldcoord_a 7, 1
+	ldcoord_a 13, 1
+	ldcoord_a 6, 5
+	ldcoord_a 14, 5
+	inc a ; $66
+	ldcoord_a 5, 8
+	ldcoord_a 15, 8
+	inc a ; $67
+	ldcoord_a 6, 8
+	ldcoord_a 14, 8
+	inc a ; $68
+	ldcoord_a 5, 9
+	ldcoord_a 15, 9
+	inc a ; $69
+	ldcoord_a 6, 9
+	ldcoord_a 14, 9
+	inc a ; $6a
+	ldcoord_a 7, 9
+	ldcoord_a 13, 9
+	inc a ; $6b
+	ldcoord_a 8, 9
+	ldcoord_a 12, 9
+	inc a ; $6c
+	ldcoord_a 9, 9
+	ldcoord_a 11, 9
+	inc a ; $6d
+	ldcoord_a 10, 9
 
 	xor a
 	ld [wLowHealthAlarm], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wEvolutionOldSpecies]
 	ld [wPlayerHPPal], a
@@ -61,7 +123,7 @@ EvolutionAnimation:
 	ld bc, 7 * 7
 	call Request2bpp
 
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call .check_statused
 	jr c, .skip_cry
@@ -157,7 +219,7 @@ EvolutionAnimation:
 	ld [wCurPartySpecies], a
 	hlcoord 7, 2
 	lb de, $0, ANIM_MON_EVOLVE
-	predef AnimateFrontpic
+	farcall AnimateFrontpic
 
 	pop af
 	ld [wCurForm], a
@@ -199,7 +261,7 @@ EvolutionAnimation:
 	ld a, $1
 	ld [wBoxAlignment], a
 	ld de, vTiles2
-	predef FrontpicPredef
+	farcall PrepareAnimatedFrontpic
 	xor a
 	ld [wBoxAlignment], a
 	ret
@@ -240,6 +302,7 @@ EvolutionAnimation:
 .ReplaceFrontpic:
 	push bc
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 7, 2
 	lb bc, 7, 7
@@ -256,7 +319,7 @@ EvolutionAnimation:
 	add hl, de
 	dec b
 	jr nz, .loop1
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call ApplyTilemapInVBlank
 	pop bc
@@ -336,7 +399,3 @@ EvolutionAnimation:
 	jr nz, .loop6
 	pop bc
 	jmp DelayFrame
-
-.GFX:
-INCBIN "gfx/evo/bubble_large.2bpp"
-INCBIN "gfx/evo/bubble.2bpp"

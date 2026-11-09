@@ -58,9 +58,10 @@ else
 endc
 
 ; this game's link version
-DEF LINK_VERSION EQU 4
+DEF LINK_VERSION EQU 5
 ; This is the minimum link version allowed for trading
-DEF LINK_MIN_TRADE_VERSION EQU 3
+; Older versions use a different party patch-list origin.
+DEF LINK_MIN_TRADE_VERSION EQU 5
 
 ; PerformLinkChecks error codes
 	const_def

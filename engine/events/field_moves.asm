@@ -79,6 +79,7 @@ ShakeHeadbuttTree:
 	call LoadMapPart
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	; shift all sprites right in OAM by 4 slots
@@ -121,6 +122,7 @@ ShakeHeadbuttTree:
 
 HideHeadbuttTree:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wPlayerDirection]
 	and %00001100
@@ -142,6 +144,7 @@ HideHeadbuttTree:
 	ld [hld], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ret
 
@@ -271,7 +274,7 @@ Cut_SpawnAnimateLeaves:
 	ret
 
 Cut_StartWaiting:
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 ; Cut_WaitAnimSFX
 	ld hl, wJumptableIndex
@@ -310,12 +313,12 @@ Cut_SpawnLeaf:
 
 Cut_GetLeafSpawnCoords:
 	ld de, 0
-	ld a, [wMetatileStandingX]
+	ldh a, [hMetatileStandingX]
 	bit 0, a
 	jr z, .left_side
 	set 0, e
 .left_side
-	ld a, [wMetatileStandingY]
+	ldh a, [hMetatileStandingY]
 	bit 0, a
 	jr z, .top_side
 	set 1, e
@@ -477,17 +480,12 @@ FlyToAnim:
 	pop af
 	ld [wStateFlags], a
 
-	ld a, [wCurSpriteOAMAddr]
-	sub NUM_FLYTO_ANIM_OAMS * OBJ_SIZE
-	cpl
-	add LOW(wShadowOAMEnd) + 1
-	ld b, a
 	ld h, HIGH(wShadowOAM)
 	ld a, [wCurSpriteOAMAddr]
 	sub NUM_FLYTO_ANIM_OAMS * OBJ_SIZE
 	ld l, a
+	ld b, NUM_FLYTO_ANIM_OAMS
 	call HideSpritesInRange
-
 
 	ld hl, wShadowOAMSprite36TileID
 	xor a
@@ -544,6 +542,7 @@ FlyFunction_FrameTimer:
 	ld e, 0
 	ld a, SPRITE_ANIM_INDEX_FLY_LEAF ; fly land
 	call InitSpriteAnimStruct
+	ret c ; no more anim structs available for leaves
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $70

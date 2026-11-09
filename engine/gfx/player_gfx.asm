@@ -26,18 +26,24 @@ _GetPlayerIcon:
 
 GetCardPic:
 	ld a, [wPlayerGender]
-	add a
+	ld b, a
+	add a ; * 2
+	add b ; * 3
 	add LOW(PlayerCardPicPointers)
 	ld l, a
 	adc HIGH(PlayerCardPicPointers)
 	sub l
 	ld h, a
 	ld a, [hli]
+	ld b, a
+	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, vTiles2 tile $00
-	lb bc, BANK("Trainer Card Pics"), 5 * 7
-	jmp DecompressRequest2bpp
+	call FarDecompressWRA6InB
+	ld hl, vTiles2 tile $00
+	ld de, wDecompressScratch tile $07
+	ld c, 5 * 7
+	jmp Request2bppInWRA6
 
 GetPlayerBackpic:
 	ld a, [wPlayerGender]
@@ -57,6 +63,7 @@ GetPlayerBackpic:
 HOF_LoadTrainerFrontpic:
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wPlayerGender]
 	assert PLAYER_MALE + 1 == CHRIS
@@ -67,7 +74,7 @@ HOF_LoadTrainerFrontpic:
 	ld [wTrainerClass], a
 	call GetCardPic
 	call ApplyTilemapInVBlank
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 

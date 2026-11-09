@@ -1,5 +1,5 @@
-	db  90,  30,  15,  15,  40,  20 ; 210 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 210,  90,  30,  15,  40,  20,  15
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db NORMAL, FAIRY ; type
 	db 150 ; catch rate

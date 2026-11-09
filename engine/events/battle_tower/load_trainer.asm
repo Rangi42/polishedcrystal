@@ -6,17 +6,17 @@ INCLUDE "data/battle_tower/tiers.asm"
 WriteBattleTowerTrainerName:
 ; Returns trainer class in a
 	ld hl, BattleTowerTrainers
-	ld a, NAME_LENGTH
+	ld a, NAME_LENGTH - 1
 	rst AddNTimes
 	ld de, wOTPlayerName
-	ld bc, NAME_LENGTH - 1
+	ld bc, NAME_LENGTH - 2
 	rst CopyBytes
 
 	; Add terminator
 	ld a, '@'
 	ld [de], a
 
-	; The 11th byte is actually trainer class, not a terminator.
+	; The 10th byte is actually trainer class, not a terminator.
 	ld a, [hl]
 	ld [wOtherTrainerClass], a
 	ret
@@ -391,7 +391,7 @@ BT_AppendOTMon:
 	ld d, h
 	ld e, l
 	pop hl
-	predef FillPP
+	farcall FillPP
 	pop de
 	pop hl
 
@@ -827,7 +827,7 @@ BT_SetLevel:
 	inc a
 	ld b, a
 	push de
-	predef CalcPkmnStats
+	farcall CalcPkmnStats
 	pop hl
 	push hl
 	ld bc, wOTPartyMon1HP - wOTPartyMon1MaxHP

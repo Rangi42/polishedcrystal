@@ -1,5 +1,5 @@
-	db  65,  65,  45,  95,  75,  45 ; 390 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 390,  65,  65,  45,  75,  45,  95
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db BUG, FLYING ; type
 	db 75 ; catch rate

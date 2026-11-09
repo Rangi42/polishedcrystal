@@ -1,5 +1,10 @@
-	db  90,  92,  87,  76,  75,  85 ; 505 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 505,  90,  92,  87,  75,  85,  76
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 515,  90,  82,  87,  95,  85,  76
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db POISON, GROUND ; type
 	db 45 ; catch rate

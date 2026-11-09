@@ -16,7 +16,7 @@ BattleCommand_getmagnitude:
 	push de
 	inc hl
 	ld a, [hl]
-	ld [wTypeMatchup], a
+	ld [wTextDecimalByte], a
 	call BattleCommand_movedelay
 	ld hl, MagnitudeText
 	call StdBattleTextbox

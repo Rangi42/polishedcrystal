@@ -1,5 +1,5 @@
-	db  50,  75,  85,  40,  20,  30 ; 300 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 300,  50,  75,  85,  20,  30,  40
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db GROUND, GROUND ; type
 	db 255 ; catch rate
@@ -7,7 +7,11 @@
 	db NO_ITEM, QUICK_CLAW ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
+if DEF(FAITHFUL)
 	abilities_for SANDSHREW, SAND_VEIL, SAND_VEIL, SAND_RUSH
+else
+	abilities_for SANDSHREW, SAND_VEIL, SHARPNESS, SAND_RUSH
+endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

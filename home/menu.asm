@@ -244,6 +244,7 @@ MenuTextboxDataHeader:
 
 VerticalMenu::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call MenuBox
 	call UpdateSprites
@@ -377,11 +378,13 @@ YesNoMenuDataHeader::
 	dw .MenuData2
 	db 1 ; default option
 
-.MenuData2
-	db $c0 ; flags
+.MenuData2:
+	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
 	db 2
+YesString::
 	db "Yes@"
-	db "No@"
+NoString::
+	db "No @"
 
 NoYesMenuDataHeader::
 	db MENU_BACKUP_TILES
@@ -389,8 +392,8 @@ NoYesMenuDataHeader::
 	dw .MenuData2
 	db 1 ; default option
 
-.MenuData2
-	db $c0 ; flags
+.MenuData2:
+	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
 	db 2
 	db "No@"
 	db "Yes@"
@@ -438,6 +441,7 @@ SetUpVariableDataMenu:
 
 MenuWriteText::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call GetMenuIndexSet ; sort out the text
 	call RunMenuItemPrintingFunction ; actually write it
@@ -632,6 +636,9 @@ GetMenuDataPointerTableEntry::
 	ret
 
 ClearWindowData::
+	; Text and menus may overwrite a rectangle's selected map palette.
+	ld a, TRUE
+	ld [wPaletteSwapNeedsReload], a
 	ld hl, wMenuMetadata
 	call .bytefill
 	ld hl, wMenuHeader
@@ -697,28 +704,6 @@ _2DMenu::
 	ld [wMenuData_2DMenuItemStringsBank], a
 	farcall _2DMenu_
 	ld a, [wMenuCursorBuffer]
-	ret
-
-SetMenuAttributes::
-	push hl
-	push bc
-	ld hl, w2DMenuCursorInitY
-	ld b, $8
-.loop
-	ld a, [de]
-	inc de
-	ld [hli], a
-	dec b
-	jr nz, .loop
-	ld a, $1
-	ld [hli], a
-	ld [hli], a
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-	pop bc
-	pop hl
 	ret
 
 DoMenuJoypadLoop::

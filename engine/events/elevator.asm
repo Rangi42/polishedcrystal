@@ -134,9 +134,7 @@ Elevator_AskWhichFloor:
 
 Elevator_WhichFloorText:
 	; Which floor?
-	text_far _AskFloorElevatorText
-	text_end
-
+	text_farend _AskFloorElevatorText
 Elevator_GetCurrentFloorText:
 	ld hl, wOptions1
 	ld a, [hl]

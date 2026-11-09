@@ -1,5 +1,5 @@
-	db  95, 105,  85,  45, 125,  75 ; 530 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 530,  95, 105,  85, 125,  75,  45
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db GRASS, DRAGON ; type
 	db 45 ; catch rate

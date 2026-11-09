@@ -27,7 +27,7 @@ HandleRoomService:
 	call SwitchTurn
 
 .do_it
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_ROOM_SERVICE
 	ret nz

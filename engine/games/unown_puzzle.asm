@@ -11,16 +11,17 @@ UnownPuzzle:
 	call ClearTileMap
 	call ClearSprites
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call DisableLCD
 	ld hl, wUnownPuzzle
 	ld bc, wUnownPuzzleEnd - wUnownPuzzle
 	xor a
 	rst ByteFill
-	ld hl, UnownPuzzleCursorGFX
-	ld de, vTiles1 tile $60
-	ld bc, 4 tiles
-	rst CopyBytes
+	ld hl, vTiles1 tile $60
+	ld de, UnownPuzzleCursorGFX
+	lb bc, BANK(UnownPuzzleCursorGFX), 4
+	call Copy1bpp
 	ld hl, UnownPuzzleStartCancelLZ
 	ld de, vTiles1 tile $6d
 	call Decompress
@@ -707,19 +708,17 @@ UnownPuzzle_AddPuzzlePieceBorders:
 	ld a, 8
 .loop
 	push af
-	push hl
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
 	ld d, a
 	ld a, [hli]
+	push hl
 	ld h, [hl]
 	ld l, a
 	call .LoadGFX
 	pop hl
-rept 4
 	inc hl
-endr
 	pop af
 	dec a
 	jr nz, .loop
@@ -734,11 +733,13 @@ endr
 	push de
 	push hl
 
-	ld b, 1 tiles
+	ld b, TILE_1BPP_SIZE
 .loop3
+rept 2
 	ld a, [de]
 	or [hl]
 	ld [hli], a
+endr
 	inc de
 	dec b
 	jr nz, .loop3
@@ -758,17 +759,17 @@ endr
 	ret
 
 GFXHeaders:
-	dw .TileBordersGFX + 0 tiles, vTiles0 tile $00
-	dw .TileBordersGFX + 1 tiles, vTiles0 tile $01
-	dw .TileBordersGFX + 2 tiles, vTiles0 tile $02
-	dw .TileBordersGFX + 3 tiles, vTiles0 tile $0c
-	dw .TileBordersGFX + 4 tiles, vTiles0 tile $0e
-	dw .TileBordersGFX + 5 tiles, vTiles0 tile $18
-	dw .TileBordersGFX + 6 tiles, vTiles0 tile $19
-	dw .TileBordersGFX + 7 tiles, vTiles0 tile $1a
+	dw .TileBordersGFX + 0 * TILE_1BPP_SIZE, vTiles0 tile $00
+	dw .TileBordersGFX + 1 * TILE_1BPP_SIZE, vTiles0 tile $01
+	dw .TileBordersGFX + 2 * TILE_1BPP_SIZE, vTiles0 tile $02
+	dw .TileBordersGFX + 3 * TILE_1BPP_SIZE, vTiles0 tile $0c
+	dw .TileBordersGFX + 4 * TILE_1BPP_SIZE, vTiles0 tile $0e
+	dw .TileBordersGFX + 5 * TILE_1BPP_SIZE, vTiles0 tile $18
+	dw .TileBordersGFX + 6 * TILE_1BPP_SIZE, vTiles0 tile $19
+	dw .TileBordersGFX + 7 * TILE_1BPP_SIZE, vTiles0 tile $1a
 
 .TileBordersGFX:
-INCBIN "gfx/unown_puzzle/tile_borders.2bpp"
+INCBIN "gfx/unown_puzzle/tile_borders.1bpp"
 
 LoadUnownPuzzlePiecesGFX:
 	ldh a, [hScriptVar]
@@ -792,7 +793,7 @@ LoadUnownPuzzlePiecesGFX:
 	dw HoOhPuzzleLZ
 
 UnownPuzzleCursorGFX:
-INCBIN "gfx/unown_puzzle/cursor.2bpp"
+INCBIN "gfx/unown_puzzle/cursor.1bpp"
 
 UnownPuzzleStartCancelLZ:
 INCBIN "gfx/unown_puzzle/start_cancel.2bpp.lzp"

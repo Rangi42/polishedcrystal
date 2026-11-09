@@ -12,6 +12,7 @@ TMHMPocket:
 
 TMHM_PocketLoop:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call TMHM_DisplayPocketItems
 	ld a, 2
@@ -58,6 +59,7 @@ TMHM_JoypadLoop:
 	ld [hl], a
 	pop hl
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [w2DMenuFlags2]
 	bit 7, a
@@ -81,7 +83,7 @@ TMHM_ShowTMMoveDescription:
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .Cancel
 	ld [wTempTMHM], a
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	farcall LoadTMHMIconPalette
 	call SetDefaultBGPAndOBP
 	ld a, [wTempTMHM]
@@ -205,7 +207,7 @@ TMHM_DisplayPocketItems:
 	push af
 	sub NUM_TMS
 	ld [wTempTMHM], a
-	ld a, 'H'
+	ld a, '<BOLDH>'
 	ld [hli], a
 	ld de, wTextDecimalByte
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
@@ -213,7 +215,7 @@ TMHM_DisplayPocketItems:
 	pop af
 	ld [wTempTMHM], a
 .okay
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
@@ -338,18 +340,29 @@ InnerCheckTMHM:
 
 PrintMoveDesc:
 	push hl
-	ld hl, MoveDescriptions
 	ld a, [wCurSpecies]
+	call GetMoveDesc
+	ld d, h
+	ld e, l
+	pop hl
+	rst PlaceString
+	ret
+
+; input: a = move ID
+PrintMoveDescInBattle:
+	call GetMoveDesc
+	jmp BattleTextbox
+
+GetMoveDesc:
 	dec a
 	ld c, a
 	ld b, 0
+	ld hl, MoveDescriptions
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	pop hl
-	rst PlaceString
+	ld h, [hl]
+	ld l, a
 	ret
 
 AskTeachTMHM:
@@ -357,23 +370,18 @@ AskTeachTMHM:
 	ld a, [hl]
 	push af
 	res NO_TEXT_SCROLL, [hl]
-	ld hl, wForgettingMove
-	set LEARNING_TM_F, [hl]
 	ld a, [wCurTMHM]
 	ld [wTempTMHM], a
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 	call CopyName1
 	ld hl, Text_BootedTM ; Booted up a TM
 	ld a, [wCurTMHM]
-	cp HM01 + 1 ; off by one error?
+	cp HM01 + 1
 	jr c, .TM
 
-	; allow full PP restore for HMs
-	ld hl, wForgettingMove
-	res LEARNING_TM_F, [hl]
 	ld hl, Text_BootedHM ; Booted up an HM
 .TM:
 	call PrintText
@@ -386,8 +394,6 @@ AskTeachTMHM:
 	pop bc
 	ld a, b
 	ld [wOptions1], a
-	ld hl, wForgettingMove
-	res LEARNING_TM_F, [hl]
 	ret
 
 ChooseMonToLearnTMHM:
@@ -448,7 +454,7 @@ TeachTMHM:
 	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
-	predef CanLearnTMHMMove
+	farcall CanLearnTMHMMove
 
 	push bc
 	ld a, [wCurPartyMon]
@@ -471,7 +477,12 @@ TeachTMHM:
 	call KnowsMove
 	jr c, .nope
 
-	predef LearnMove
+; Keep the TM flag set while learning either a TM or HM.
+	ld hl, wForgettingMove
+	set LEARNING_TM_F, [hl]
+	farcall LearnMove
+	ld hl, wForgettingMove
+	res LEARNING_TM_F, [hl]
 	ld a, b
 	and a
 	jr z, .nope
@@ -481,7 +492,7 @@ TeachTMHM:
 	ret c
 
 	ld c, HAPPINESS_LEARNMOVE
-	predef ChangeHappiness
+	farcall ChangeHappiness
 	jr .learned_move
 
 .nope
@@ -604,27 +615,17 @@ KnowsMove:
 
 .Text_knows:
 	; knows @ .
-	text_far _KnowsMoveText
-	text_end
-
+	text_farend _KnowsMoveText
 Text_BootedTM:
 	; Booted up a TM.
-	text_far _BootedTMText
-	text_end
-
+	text_farend _BootedTMText
 Text_BootedHM:
 	; Booted up an HM.
-	text_far _BootedHMText
-	text_end
-
+	text_farend _BootedHMText
 Text_ItContained:
 	; It contained @ . Teach @ to a #MON?
-	text_far _ContainedMoveText
-	text_end
-
+	text_farend _ContainedMoveText
 Text_TMHMNotCompatible:
 	; is not compatible with @ . It can't learn @ .
-	text_far _TMHMNotCompatibleText
-	text_end
-
+	text_farend _TMHMNotCompatibleText
 INCLUDE "data/moves/tmhm_order.asm"

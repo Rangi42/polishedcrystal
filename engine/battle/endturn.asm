@@ -63,7 +63,7 @@ HandleBetweenTurnEffects:
 	; gravity
 	; terrain (dissipating, grass terrain recovery is elsewhere)
 	call HandleEndturnBlockB
-	call CheckFaint
+	call CheckFaint ; handle Moody -> Eject Pack -> switch -> hazard faint
 	ret c
 	; Things below do not exist in 7gen -- it's here to avoid some quirks
 	call HandleLeppaBerry
@@ -268,7 +268,7 @@ HandleWeather:
 .do_it
 	call HasUserFainted
 	ret z
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_SAFETY_GOGGLES
 	jr z, .run_weather_abilities
@@ -325,7 +325,7 @@ HandleWeather:
 	ld hl, SandstormHitsText
 	call StdBattleTextbox
 	call GetSixteenthMaxHP
-	predef_jump SubtractHPFromUser
+	farjp SubtractHPFromUser
 
 .HandleHail
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -364,7 +364,7 @@ endc
 	ld hl, HailHitsText
 	call StdBattleTextbox
 	call GetSixteenthMaxHP
-	predef_jump SubtractHPFromUser
+	farjp SubtractHPFromUser
 
 WeatherEndedMessages:
 	farbank BattleText
@@ -483,7 +483,7 @@ HandleLeftovers:
 
 	; damage instead
 	call GetEighthMaxHP
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, BattleText_UserHurtByItem
 	jr .print
 .leftovers
@@ -529,13 +529,13 @@ HandleLeechSeed:
 
 	call GetEighthMaxHP
 	push bc
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, LeechSeedSapsText
 	call StdBattleTextbox
 	pop bc
 	call SwitchTurn
 	farcall GetHPAbsorption
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call GetOpponentIgnorableAbility
 	cp LIQUID_OOZE
@@ -543,9 +543,8 @@ HandleLeechSeed:
 	farcall RestoreHP
 	jr .done
 .hurt
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
-	predef SubtractHPFromUser
+	farcall BeginAndShowOpponentAbility
+	farcall SubtractHPFromUser
 	ld hl, SuckedUpOozeText
 	call StdBattleTextbox
 	farcall EndAbility
@@ -574,8 +573,7 @@ HandlePoison:
 	; check if we are at full HP
 	farcall CheckFullHP
 	ret z
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 	ld hl, RegainedHealthText
 	call DoPoisonBurnDamageAnim
 	farcall RestoreHP
@@ -619,7 +617,7 @@ DoPoisonBurnDamage:
 	ld b, h
 	ld c, l
 .did_toxic
-	predef_jump SubtractHPFromUser
+	farjp SubtractHPFromUser
 
 IncrementToxic:
 ; Returns nz if we are badly poisoned, and sets hl to the current toxic counter.
@@ -668,7 +666,7 @@ HandleCurse:
 	ld de, ANIM_UNDER_CURSE
 	farcall PlayBattleAnimDE_OnlyIfVisible
 	call GetQuarterMaxHP
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, HurtByCurseText
 	jmp StdBattleTextbox
 
@@ -694,40 +692,46 @@ HandleWrap:
 	and a
 	ret z
 
-	ld a, BATTLE_VARS_SUBSTATUS4
-	call GetBattleVar
-	bit SUBSTATUS_SUBSTITUTE, a
-	ret nz
-
 	push de
 	ld a, [de]
 	ld [wFXAnimIDLo], a
 	dec [hl]
+	ld a, [hl]
+	and %111
+	jr nz, .still_wrapped
+
+	ld [hl], a
 	ld hl, BattleText_UserWasReleasedFromStringBuffer1
 	jr z, .print_text
 
+.still_wrapped
+	push hl
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jr nz, .skip_anim
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVar
+	bit SUBSTATUS_SUBSTITUTE, a
+	jr nz, .skip_anim
+
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
-	predef PlayBattleAnim
+	farcall PlayBattleAnim
 	call SwitchTurn
 
 .skip_anim
-	farcall GetOpponentItemAfterUnnerve
-	ld a, b
-	cp HELD_BINDING_BAND
-	jr nz, .no_binding_band
+	pop hl
+	bit 3, [hl]
+	jr z, .no_binding_band
 	call GetSixthMaxHP
 	jr .subtract_hp
 .no_binding_band
 	call GetEighthMaxHP
 .subtract_hp
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
 
 .print_text
@@ -804,20 +808,28 @@ EndturnEncoreDisable_End:
 	ld l, e
 	jmp StdBattleTextbox
 
-TickDisableAfterMove:
-; If we have 5 turns left of Disable, tick it down. This makes it so that
-; Disable covers 4 move uses.
+TickDisableAndEncoreAfterMove:
+; If we have 5 turns left of Disable or 4 turns left of Encore, tick it down.
+; This makes it so that Disable covers 4 move uses and Encore 3.
 	call HasUserFainted
 	ret z
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerDisableCount
-	jr z, .got_disable_count
+	ld de, wPlayerEncoreCount
+	jr z, .got_count
 	ld hl, wEnemyDisableCount
-.got_disable_count
-	ld a, [hl]
+	ld de, wEnemyEncoreCount
+.got_count
+	ld a, 5
+	call .MaybeDecrement
+	ld a, 4
+	ld h, d
+	ld l, e
+
+.MaybeDecrement:
+	sub [hl]
 	and $f
-	cp 5
 	ret nz
 	dec [hl]
 	ret
@@ -868,7 +880,7 @@ HandlePerishSong:
 	ret nz
 
 	call GetMaxHP
-	predef_jump SubtractHPFromUser
+	farjp SubtractHPFromUser
 
 HandleTrickRoom:
 	ld hl, wTrickRoom
@@ -888,7 +900,7 @@ HandleLeppaBerry:
 .do_it
 	call HasUserFainted
 	ret z
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_RESTORE_PP
 	ret nz

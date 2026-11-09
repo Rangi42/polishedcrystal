@@ -116,5 +116,3 @@ PhotoStudioRefusedText:
 	para "would be a great"
 	line "memento…"
 	done
-
-

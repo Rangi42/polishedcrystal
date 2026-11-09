@@ -271,16 +271,7 @@ Music_PokemonMarch_branch_f6f56:
 	note G#, 2
 Music_PokemonMarch_branch_f6f7b:
 	octave 3
-	note A#, 2
-	rest 2
-	octave 4
-	note F_, 2
-	octave 3
-	note F_, 2
-	rest 2
-	octave 4
-	note F_, 2
-	octave 3
+	sound_call Music_PokemonMarch_Ch3_ditty1
 	note G_, 2
 	rest 2
 	octave 4
@@ -293,16 +284,7 @@ Music_PokemonMarch_branch_f6f7b:
 	rest 1
 	sound_loop 3, Music_PokemonMarch_branch_f6f7b
 	octave 3
-	note A#, 2
-	rest 2
-	octave 4
-	note F_, 2
-	octave 3
-	note F_, 2
-	rest 2
-	octave 4
-	note F_, 2
-	octave 3
+	sound_call Music_PokemonMarch_Ch3_ditty1
 	note A#, 2
 	rest 2
 	octave 4
@@ -311,16 +293,7 @@ Music_PokemonMarch_branch_f6f7b:
 	note C_, 2
 	octave 3
 	note B_, 2
-	note A#, 2
-	rest 2
-	octave 4
-	note F_, 2
-	octave 3
-	note F_, 2
-	rest 2
-	octave 4
-	note F_, 2
-	octave 3
+	sound_call Music_PokemonMarch_Ch3_ditty1
 	note G_, 2
 	rest 2
 	octave 4
@@ -457,4 +430,17 @@ Music_PokemonMarch_branch_f704c:
 	drum_note 2, 2
 	drum_note 3, 2
 	drum_note 2, 2
+	sound_ret
+
+Music_PokemonMarch_Ch3_ditty1:
+	note A#, 2
+	rest 2
+	octave 4
+	note F_, 2
+	octave 3
+	note F_, 2
+	rest 2
+	octave 4
+	note F_, 2
+	octave 3
 	sound_ret

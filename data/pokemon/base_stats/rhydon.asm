@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db 105, 130, 120,  40,  45,  45 ; 485 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 485, 105, 130, 120,  45,  45,  40
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db 110, 130, 120,  40,  45,  50 ; 495 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 495, 110, 130, 120,  45,  50,  40
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db GROUND, ROCK ; type

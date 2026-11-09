@@ -1,5 +1,5 @@
-	db 100, 100, 125,  50, 110,  50 ; 535 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 535, 100, 100, 125, 110,  50,  50
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db GRASS, GRASS ; type
 	db 30 ; catch rate

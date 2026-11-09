@@ -4,7 +4,7 @@ PhoneFlagAction:
 	dec c
 	ld d, 0
 	ld hl, wPhoneList
-	predef FlagPredef
+	farcall SmallFlagAction
 	pop bc
 	ret
 
@@ -166,7 +166,7 @@ CheckSpecialPhoneCall::
 	ld c, a
 	ld b, 0
 	ld hl, SpecialPhoneCallList
-	ld a, 6
+	ld a, SPECIALCALL_SIZE
 	rst AddNTimes
 	ld a, [hli]
 	ld h, [hl]
@@ -210,16 +210,14 @@ CheckSpecialPhoneCall::
 	ld c, a
 	ld b, 0
 	ld hl, SpecialPhoneCallList
-	ld a, 6
+	ld a, SPECIALCALL_SIZE
 	rst AddNTimes
 	ret
 
 SpecialCallOnlyWhenOutside:
 	ld a, [wEnvironment]
-	cp TOWN
-	jr z, SpecialCallWhereverYouAre
-	cp ROUTE
-	jr z, SpecialCallWhereverYouAre
+	cp LAST_OUTDOOR_ENV + 1
+	ret c ; same result as SpecialCallWhereverYouAre
 	xor a
 	ret
 
@@ -453,13 +451,9 @@ Phone_Wait20Frames:
 	jmp ApplyTilemap
 
 PhoneClickText:
-	text_far _PhoneClickText
-	text_end
-
+	text_farend _PhoneClickText
 PhoneEllipseText:
-	text_far _PhoneEllipseText
-	text_end
-
+	text_farend _PhoneEllipseText
 Phone_StartRinging:
 	call WaitSFX
 	ld de, SFX_CALL

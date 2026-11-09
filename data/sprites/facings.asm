@@ -35,7 +35,6 @@ Facings:
 	dw FacingGrass2           ; FACING_GRASS_2
 	dw FacingSplash1          ; FACING_SPLASH_1
 	dw FacingSplash2          ; FACING_SPLASH_2
-	dw FacingCutTree          ; FACING_CUT_TREE
 	dw FacingApricorn         ; FACING_APRICORN
 	dw FacingBerry            ; FACING_BERRY
 	dw FacingPickedFruit      ; FACING_PICKED_FRUIT
@@ -43,7 +42,6 @@ Facings:
 	dw FacingBigGyarados2     ; FACING_BIG_GYARADOS_2
 	dw FacingStepDownFlip     ; FACING_STEP_DOWN_FLIP
 	dw FacingStepUpFlip       ; FACING_STEP_UP_FLIP
-	dw FacingPokecomNews      ; FACING_POKECOM_NEWS
 	dw FacingMuseumDrillDown  ; FACING_MUSEUM_DRILL_DOWN
 	dw FacingMuseumDrillUp    ; FACING_MUSEUM_DRILL_UP
 	dw FacingArchTreeLeft     ; FACING_ARCH_TREE_LEFT
@@ -61,7 +59,6 @@ Facings:
 	dw FacingTinyWindows4     ; FACING_TINY_WINDOWS_4
 	dw FacingTinyWindows5     ; FACING_TINY_WINDOWS_5
 	dw FacingTinyWindows6     ; FACING_TINY_WINDOWS_6
-	dw FacingMicrophone       ; FACING_MICROPHONE
 	dw FacingBigHoOh1         ; FACING_BIG_HO_OH_1
 	dw FacingBigHoOh2         ; FACING_BIG_HO_OH_2
 	dw FacingBigLugia1        ; FACING_BIG_LUGIA_1
@@ -280,13 +277,6 @@ FacingSplash2:
 	db  9, -1, ABSOLUTE_TILE_ID, $6f
 	db  9,  9, ABSOLUTE_TILE_ID | OAM_XFLIP, $6f
 
-FacingCutTree:
-	db 4 ; #
-	db  4,  0, 0, $04
-	db  4,  8, 0, $05
-	db 12,  0, RELATIVE_ATTRIBUTES, $06
-	db 12,  8, RELATIVE_ATTRIBUTES, $07
-
 FacingApricorn:
 	db 1 ; #
 	db  0,  4, 0, $05
@@ -351,33 +341,25 @@ FacingStepUpFlip:
 	db  8,  0, RELATIVE_ATTRIBUTES | OAM_XFLIP, $07
 	db  8,  8, RELATIVE_ATTRIBUTES | OAM_XFLIP, $06
 
-FacingPokecomNews:
-FacingMicrophone:
-	db 4 ; #
-	db  4,  0, 0, $08
-	db  4,  8, 0, $09
-	db 12,  0, 0, $0a
-	db 12,  8, 0, $0b
-
 FacingMuseumDrillDown:
 	db 2 ; #
-	db 12, 0, 0, $08
-	db 12, 8, 0, $0b
+	db  8, 0, 0, $08
+	db  8, 8, 0, $0b
 
 FacingMuseumDrillUp:
 	db 2 ; #
-	db 12, 0, 0, $0a
-	db 12, 8, 0, $09
+	db  8, 0, 0, $0a
+	db  8, 8, 0, $09
 
 FacingArchTreeLeft:
 	db 2 ; #
-	db  4,  0, 0, $08
-	db 12,  0, 0, $0a
+	db  0,  0, 0, $08
+	db  8,  0, 0, $0a
 
 FacingArchTreeRight:
 	db 2 ; #
-	db  4,  8, 0, $09
-	db 12,  8, 0, $0b
+	db  0,  8, 0, $09
+	db  8,  8, 0, $0b
 
 FacingSailboatTop:
 	db 8 ; #
@@ -434,51 +416,53 @@ FacingAlolanExeggutor3:
 
 FacingTinyWindows0:
 	db 2 ; #
-	db 12,  8, 0, $85
-	db  4, 20, 0, $84
+	db  8,  8, 0, $85
+	db  0, 20, 0, $84
 
 FacingTinyWindows1:
-	db 3 ; #
-	db 12, -12, 0, $84
-	db 12,   4, 0, $84
-	db 12,  20, 0, $84
+	db 2 ; #
+	db  8,   0, 0, $84
+	db  8,   8, 0, $84
 
 FacingTinyWindows2:
 	db 2 ; #
-	db  8,  4, 0, $84
-	db  8, 20, 0, $84
+	db  4,  4, 0, $84
+	db  4, 20, 0, $84
 
 FacingTinyWindows3:
 	db 2 ; #
-	db 20,  4, 0, $84
-	db 20, 20, 0, $84
+	db 16,  4, 0, $84
+	db 16, 20, 0, $84
 
 FacingTinyWindows4:
 	db 6 ; #
-	db  4, -16, 0, $86
-	db  4,   8, OAM_XFLIP, $86
-	db 12, -16, 0, $88
-	db 12,  -8, 0, $87
-	db 12,   0, OAM_XFLIP, $87
-	db 12,   8, OAM_XFLIP, $88
+	db  0, -16, 0, $86
+	db  0,   8, OAM_XFLIP, $86
+	db  8, -16, 0, $88
+	db  8,  -8, 0, $87
+	db  8,   0, OAM_XFLIP, $87
+	db  8,   8, OAM_XFLIP, $88
 
 FacingTinyWindows5:
 	db 6 ; #
+	db  0, -12, 0, $84
+	db  0,  -4, 0, $84
+	db  0,   4, 0, $84
 	db  8, -12, 0, $84
 	db  8,  -4, 0, $84
 	db  8,   4, 0, $84
-	db 24, -12, 0, $84
-	db 24,  -4, 0, $84
-	db 24,   4, 0, $84
 
 FacingTinyWindows6:
-	db 6 ; #
+	db 9 ; #
+	db  0, -12, 0, $84
+	db  0,  -4, 0, $84
+	db  0,   4, 0, $84
 	db  8, -12, 0, $84
 	db  8,  -4, 0, $84
 	db  8,   4, 0, $84
-	db 20, -12, 0, $84
-	db 20,  -4, 0, $84
-	db 20,   4, 0, $84
+	db 16, -12, 0, $84
+	db 16,  -4, 0, $84
+	db 16,   4, 0, $84
 
 FacingBigHoOh1:
 	db 16 ; #

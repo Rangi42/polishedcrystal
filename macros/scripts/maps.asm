@@ -104,7 +104,7 @@ MACRO object_event
 	db \2 + 4 ; y
 	db \1 + 4 ; x
 	db \4 ; movement function
-	if \3 == SPRITE_MON_ICON
+	if \3 == SPRITE_MON_ICON || \3 == SPRITE_AQUARIUM_MON
 		dn \5, LOW(\6) ; mon index
 	else
 		dn \5, \6 ; radius: y, x
@@ -114,7 +114,7 @@ MACRO object_event
 	db \9 ; type
 	if \9 == OBJECTTYPE_COMMAND
 		db \<10>_command ; command id
-	elif \3 == SPRITE_MON_ICON
+	elif \3 == SPRITE_MON_ICON || \3 == SPRITE_AQUARIUM_MON
 		db (HIGH(\6) << MON_EXTSPECIES_F) | \<10> ; extspecies | form
 	else
 		db \<10> ; sight_range
@@ -131,17 +131,17 @@ MACRO object_event
 ENDM
 
 MACRO itemball_event
-	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_ITEMBALL, PLAYEREVENT_ITEMBALL, \3, \4, \5
+	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_RED, OBJECTTYPE_ITEMBALL, PLAYEREVENT_ITEMBALL, \3, \4, \5
 ENDM
 
 MACRO keyitemball_event
 	assert _NARG == 4, "No quantity needed for keyitemball_event"
-	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_KEY_ITEM, OBJECTTYPE_ITEMBALL, PLAYEREVENT_KEYITEMBALL, \3, \4
+	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_GREEN, OBJECTTYPE_ITEMBALL, PLAYEREVENT_KEYITEMBALL, \3, \4
 ENDM
 
 MACRO tmhmball_event
 	assert _NARG == 4, "No quantity needed for tmhmball_event"
-	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_YELLOW, OBJECTTYPE_ITEMBALL, PLAYEREVENT_TMHMBALL, \3, \4
+	object_event \1, \2, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_YELLOW, OBJECTTYPE_ITEMBALL, PLAYEREVENT_TMHMBALL, \3, \4
 ENDM
 
 MACRO cuttree_event
@@ -158,17 +158,17 @@ ENDM
 
 MACRO strengthboulder_event
 	if _NARG == 2
-		object_event \1, \2, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, -1
+		object_event \1, \2, SPRITE_BOULDER_ROCK, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, -1
 	else
-		object_event \1, \2, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, \3
+		object_event \1, \2, SPRITE_BOULDER_ROCK, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, \3
 	endc
 ENDM
 
 MACRO smashrock_event
 	if _NARG == 2
-		object_event \1, \2, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, smashrock, 0, -1
+		object_event \1, \2, SPRITE_BOULDER_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, smashrock, 0, -1
 	else
-		object_event \1, \2, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, smashrock, 0, \3
+		object_event \1, \2, SPRITE_BOULDER_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumpstd, smashrock, 0, \3
 	endc
 ENDM
 
@@ -190,33 +190,55 @@ ENDM
 
 
 MACRO trainer
-	; flag, group, id, seen text, win text, lost text, after script
-	dw \3
-	db \1, \2
-	dw \4, \5, \6, \7
+	dw \3 ; event flag
+	db \1 ; trainer class
+	db \2 ; trainer id
+	dw \4 ; seen text
+	dw \5 ; win text
+	dw \6 ; loss text
+	dw \7 ; after script
 	if _NARG == 8
-		db \8
+		db \8 ; trainer palette
 	else
 		db 0
 	endc
 ENDM
 
 MACRO generictrainer
-	; flag, group, id, seen text, win text
-	dw \3
-	db \1, \2
-	dw \4, \5
+	dw \3 ; event flag
+	db \1 ; trainer class
+	db \2 ; trainer id
+	dw \4 ; seen text
+	dw \5 ; win text
 ENDM
 
 
 MACRO elevfloor
-	db \1, \2
-	map_id \3
+	db \1 ; destination floor
+	db \2 ; destination warp id
+	map_id \3 ; destination map
 ENDM
 
 MACRO stonetable
-	db \1, \2
-	dw \3
+	db \1 ; warp id
+	db \2 ; object event id
+	dw \3 ; script pointer
+ENDM
+
+MACRO paletteswap
+	db \1, \2 ; X range
+	db \3, \4 ; Y range
+	db \5 ; palette ID
+	dw \6 ; out-of-range palette list
+	dw \7 ; in-range palette list
+	assert BANK(\6) == BANK(SwapColorPalette) || BANK(\6) == 0, \
+		"\6 is not accessible in the color ROMX bank!"
+	assert BANK(\7) == BANK(SwapColorPalette) || BANK(\6) == 0, \
+		"\7 is not accessible in the color ROMX bank!"
+	; wPaletteSwapStates and wPaletteSwapInits use one bit per entry,
+	; so max 8 paletteswaps for the 8 bits.
+	assert _NUM_PALETTE_SWAPS < 8, "A palette swap list may have at most 8 entries"
+	redef _NUM_PALETTE_SWAPS += 1
 ENDM
 
 ; Connections go in order: north, south, west, east
@@ -236,6 +258,10 @@ MACRO connection
 	endc
 
 	if "\1" === "north"
+		if MAP_CONNECTIONS_{CURRENT_MAP_ID} != -1 && MAP_CONNECTIONS_{CURRENT_MAP_ID} & (NORTH | SOUTH | WEST | EAST)
+			fail "Invalid order for 'connection' (must be north, south, west, east)"
+		endc
+		DEF MAP_CONNECTIONS_{CURRENT_MAP_ID} |= NORTH
 		DEF _blk = \3_WIDTH * (\3_HEIGHT - 3) + _src
 		DEF _map = _tgt
 		DEF _win = (\3_WIDTH + 6) * \3_HEIGHT + 1
@@ -247,6 +273,10 @@ MACRO connection
 		endc
 
 	elif "\1" === "south"
+		if MAP_CONNECTIONS_{CURRENT_MAP_ID} != -1 && MAP_CONNECTIONS_{CURRENT_MAP_ID} & (SOUTH | WEST | EAST)
+			fail "Invalid order for 'connection' (must be north, south, west, east)"
+		endc
+		DEF MAP_CONNECTIONS_{CURRENT_MAP_ID} |= SOUTH
 		DEF _blk = _src
 		DEF _map = (CURRENT_MAP_WIDTH + 6) * (CURRENT_MAP_HEIGHT + 3) + _tgt
 		DEF _win = \3_WIDTH + 7
@@ -258,6 +288,10 @@ MACRO connection
 		endc
 
 	elif "\1" === "west"
+		if MAP_CONNECTIONS_{CURRENT_MAP_ID} != -1 && MAP_CONNECTIONS_{CURRENT_MAP_ID} & (WEST | EAST)
+			fail "Invalid order for 'connection' (must be north, south, west, east)"
+		endc
+		DEF MAP_CONNECTIONS_{CURRENT_MAP_ID} |= WEST
 		DEF _blk = (\3_WIDTH * _src) + \3_WIDTH - 3
 		DEF _map = (CURRENT_MAP_WIDTH + 6) * _tgt
 		DEF _win = (\3_WIDTH + 6) * 2 - 6
@@ -269,6 +303,10 @@ MACRO connection
 		endc
 
 	elif "\1" === "east"
+		if MAP_CONNECTIONS_{CURRENT_MAP_ID} != -1 && MAP_CONNECTIONS_{CURRENT_MAP_ID} & EAST
+			fail "Invalid order for 'connection' (must be north, south, west, east)"
+		endc
+		DEF MAP_CONNECTIONS_{CURRENT_MAP_ID} |= EAST
 		DEF _blk = (\3_WIDTH * _src)
 		DEF _map = (CURRENT_MAP_WIDTH + 6) * _tgt + CURRENT_MAP_WIDTH + 3
 		DEF _win = \3_WIDTH + 7

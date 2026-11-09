@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  60,  90,  55, 110,  90,  80 ; 485 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 485,  60,  90,  55,  90,  80, 110
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  60, 100,  55, 121, 100,  80 ; 516 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 515,  60, 100,  55, 100,  80, 120
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db ELECTRIC, ELECTRIC ; type
@@ -16,7 +16,7 @@ endc
 	db ORAN_BERRY, LIGHT_BALL ; held items
 	dn GENDER_F50, HATCH_FASTER ; gender ratio, step cycles to hatch
 
-	abilities_for RAICHU, STATIC, STATIC, LIGHTNING_ROD
+	abilities_for RAICHU, STATIC, LIGHTNING_ROD, NO_GUARD
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_FAIRY ; egg groups
 

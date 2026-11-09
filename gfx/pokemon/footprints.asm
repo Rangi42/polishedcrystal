@@ -1,5 +1,3 @@
-Footprints:: ; needed for BANK(Footprints)
-
 VenomothFootprint::
 KabutoFootprint::
 SpinarakFootprint:: INCBIN "gfx/footprints/circle_small.1bpp.lzp"

@@ -17,6 +17,7 @@ GetItemManiacPrice:
 	ld a, [hli]
 	inc a
 	ret z
+	dec a
 	cp b
 	jr z, .found
 	inc hl
@@ -52,7 +53,7 @@ ItemManiac_SelectQuantity:
 	call MenuBox
 	call ApplyTilemap
 .loop
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call MenuBox
 	call .PlaceItemName
@@ -118,9 +119,7 @@ ItemManiac_PrintTextHowMany:
 
 .Text:
 	; How many do you want to sell?
-	text_far _HowManyDoYouWantToSellText
-	text_end
-
+	text_farend _HowManyDoYouWantToSellText
 GetItemQuantity:
 ; Get the quantity of the item in wCurItem.
 ; Returns the quantity in wItemQuantityChangeBuffer.

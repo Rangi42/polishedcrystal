@@ -1,5 +1,10 @@
-	db 115,  45,  20,  20,  45,  25 ; 270 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 270, 115,  45,  20,  45,  25,  20
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 270, 115,  35,  20,  55,  25,  20
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db NORMAL, FAIRY ; type
 	db 170 ; catch rate

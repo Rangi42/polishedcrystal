@@ -21,106 +21,14 @@ Music_GameCornerDPPt_Ch1:
 	rest 16
 	rest 16
 	rest 16
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	octave 3
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note G_, 1
-	note G_, 1
-	note G_, 2
-	note G_, 1
-	note G_, 1
-	note G_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note B_, 1
-	note B_, 1
+	sound_call Music_GameCornerDPPt_Ch1_ditty5
+	sound_call Music_GameCornerDPPt_Ch1_ditty3
 	note B_, 1
 	note B_, 1
 	octave 4
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	octave 3
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
+	sound_call Music_GameCornerDPPt_Ch1_ditty5
 Music_GameCornerDPPt_Ch1_loop:
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note G_, 1
-	note G_, 1
-	note G_, 2
-	note G_, 1
-	note G_, 1
-	note G_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note B_, 1
-	note B_, 1
-	note B_, 2
-	note B_, 1
-	note B_, 1
+	sound_call Music_GameCornerDPPt_Ch1_ditty3
 	note B_, 2
 	volume_envelope 5, -1
 	note A_, 1
@@ -138,61 +46,7 @@ Music_GameCornerDPPt_Ch1_loop:
 	note A_, 1
 	note A_, 2
 	volume_envelope 5, -1
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note G#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note E_, 2
-	volume_envelope 3, -1
-	note D_, 1
-	volume_envelope 10, 2
-	note D_, 1
-	note D_, 2
-	volume_envelope 3, -1
-	note D_, 1
-	volume_envelope 10, 2
-	note D_, 1
-	note D_, 2
-	volume_envelope 3, -1
-	note D_, 1
-	volume_envelope 10, 2
-	note D_, 1
-	note D_, 2
-	volume_envelope 3, -1
-	note D_, 1
-	volume_envelope 10, 2
-	note D_, 1
-	note E_, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
+	sound_call Music_GameCornerDPPt_Ch1_ditty1
 	note F#, 1
 	volume_envelope 10, 2
 	note F#, 1
@@ -203,76 +57,13 @@ Music_GameCornerDPPt_Ch1_loop:
 	note F#, 1
 	note G#, 2
 	volume_envelope 3, -1
+	sound_call Music_GameCornerDPPt_Ch1_ditty4
 	note A_, 1
 	volume_envelope 10, 2
 	note A_, 1
 	note A_, 2
 	volume_envelope 3, -1
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note A_, 2
-	volume_envelope 3, -1
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note A_, 2
-	volume_envelope 3, -1
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note G#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note E_, 2
-	volume_envelope 3, -1
-	note D_, 1
-	volume_envelope 10, 2
-	note D_, 1
-	note D_, 2
-	volume_envelope 3, -1
-	note D_, 1
-	volume_envelope 10, 2
-	note D_, 1
-	note D_, 2
-	volume_envelope 3, -1
-	note D_, 1
-	volume_envelope 10, 2
-	note D_, 1
-	note D_, 2
-	volume_envelope 3, -1
-	note D_, 1
-	volume_envelope 10, 2
-	note D_, 1
-	note E_, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
-	note F#, 1
-	volume_envelope 10, 2
-	note F#, 1
-	note F#, 2
-	volume_envelope 3, -1
+	sound_call Music_GameCornerDPPt_Ch1_ditty1
 	note E_, 1
 	volume_envelope 10, 2
 	note E_, 1
@@ -282,98 +73,8 @@ Music_GameCornerDPPt_Ch1_loop:
 	volume_envelope 10, 2
 	note F#, 1
 	note G#, 2
-	note B_, 2
-	note B_, 2
-	note B_, 2
-	note B_, 2
-	note G#, 1
-	note G#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note A#, 2
-	note A#, 2
-	note A#, 2
-	note A#, 2
-	note F#, 1
-	note F#, 2
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note B_, 2
-	note B_, 2
-	note B_, 2
-	note B_, 2
-	note G#, 1
-	note G#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note A#, 2
-	note A#, 2
-	note A#, 2
-	note A#, 2
-	note F#, 1
-	note F#, 2
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
+	sound_call Music_GameCornerDPPt_Ch1_ditty2
+	sound_call Music_GameCornerDPPt_Ch1_ditty2
 	note A#, 1
 	note A#, 1
 	note A#, 2
@@ -485,31 +186,9 @@ Music_GameCornerDPPt_Ch1_loop:
 
 	duty_cycle 0
 	volume_envelope 12, 4
-	octave 1
-	note D#, 2
-	note A#, 2
-	octave 2
-	note D#, 2
-	octave 1
-	note A#, 2
-	note F_, 2
-	octave 2
-	note D_, 2
-	note F_, 2
-	note D_, 2
+	sound_call Music_GameCornerDPPt_Ch1_ditty7
 
-	octave 1
-	note D#, 2
-	note A#, 2
-	octave 2
-	note D#, 2
-	octave 1
-	note A#, 2
-	note F_, 2
-	octave 2
-	note D_, 2
-	note F_, 2
-	note D_, 2
+	sound_call Music_GameCornerDPPt_Ch1_ditty7
 
 	rest 16
 	rest 16
@@ -529,24 +208,8 @@ Music_GameCornerDPPt_Ch1_loop:
 	note C_, 2
 	volume_envelope 3, -1
 	octave 3
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note A_, 2
-	volume_envelope 3, -1
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note A_, 2
-	volume_envelope 3, -1
-	note B_, 1
-	volume_envelope 10, 2
-	note B_, 1
-	note B_, 2
-	volume_envelope 3, -1
-	note B_, 1
-	volume_envelope 10, 2
-	note B_, 1
+	sound_call Music_GameCornerDPPt_Ch1_ditty4
+	sound_call Music_GameCornerDPPt_Ch1_ditty6
 	note B_, 2
 	volume_envelope 3, -1
 	note G_, 1
@@ -559,60 +222,16 @@ Music_GameCornerDPPt_Ch1_loop:
 	note G_, 1
 	note G_, 2
 	volume_envelope 3, -1
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note A_, 2
-	volume_envelope 3, -1
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note A_, 2
-	volume_envelope 3, -1
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note A_, 2
-	volume_envelope 3, -1
-	note A_, 1
-	volume_envelope 10, 2
-	note A_, 1
-	note A_, 2
-	volume_envelope 3, -1
-	note B_, 1
-	volume_envelope 10, 2
-	note B_, 1
+	sound_call Music_GameCornerDPPt_Ch1_ditty4
+	sound_call Music_GameCornerDPPt_Ch1_ditty4
+	sound_call Music_GameCornerDPPt_Ch1_ditty6
 	note B_, 2
 	volume_envelope 3, -1
-	note B_, 1
-	volume_envelope 10, 2
-	note B_, 1
-	note B_, 2
-	volume_envelope 3, -1
-	note B_, 1
-	volume_envelope 10, 2
-	note B_, 1
-	note B_, 2
-	volume_envelope 3, -1
-	note B_, 1
-	volume_envelope 10, 2
-	note B_, 1
+	sound_call Music_GameCornerDPPt_Ch1_ditty6
 	note B_, 1
 	note B_, 1
 	octave 4
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	octave 3
-	note A_, 1
-	note A_, 1
-	note A_, 2
-	note A_, 1
-	note A_, 1
-	note A_, 2
+	sound_call Music_GameCornerDPPt_Ch1_ditty5
 	sound_jump Music_GameCornerDPPt_Ch1_loop
 
 Music_GameCornerDPPt_Ch2:
@@ -620,105 +239,19 @@ Music_GameCornerDPPt_Ch2:
 	duty_cycle 0
 	pitch_offset 2
 	stereo_panning TRUE, TRUE
-	octave 1
-	note A_, 2
-	octave 2
-	note E_, 2
-	note A_, 2
-	note E_, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note C_, 2
-	note F_, 2
-	note C_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	octave 1
-	note E_, 2
-	note B_, 2
-	octave 2
-	note E_, 2
-	octave 1
-	note B_, 2
-	note F_, 2
-	octave 2
-	note C_, 2
-	note F_, 2
+	sound_call Music_GameCornerDPPt_Ch2_ditty1
 	note C_, 2
 	octave 1
 	note D_, 2
-	note A_, 2
-	octave 2
-	note D_, 2
-	octave 1
-	note A_, 2
-	note G_, 2
-	octave 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	octave 1
-	note G#, 2
-	octave 2
-	note E_, 2
-	note G#, 2
-	note E_, 2
-	octave 1
-	note A_, 2
-	octave 2
-	note E_, 2
-	note A_, 2
-	note E_, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note C_, 2
-	note F_, 2
-	note C_, 2
-	octave 1
-	note G_, 2
-	octave 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	octave 1
-	note E_, 2
-	note B_, 2
-	octave 2
-	note E_, 2
-	octave 1
-	note B_, 2
-	note F_, 2
-	octave 2
-	note C_, 2
-	note F_, 2
+	sound_call Music_GameCornerDPPt_Ch2_ditty2
+	sound_call Music_GameCornerDPPt_Ch2_ditty1
 	note_type 15, 12, 7
 	note C_, 2
 	note_type 9, 12, 7
 	octave 1
 	note D_, 2
 	note_type 12, 12, 7
-	note A_, 2
-	octave 2
-	note D_, 2
-	octave 1
-	note A_, 2
-	note G_, 2
-	octave 2
-	note D_, 2
-	note G_, 2
-	note D_, 2
-	octave 1
-	note G#, 2
-	octave 2
-	note E_, 2
-	note G#, 2
-	note E_, 2
+	sound_call Music_GameCornerDPPt_Ch2_ditty2
 	volume_envelope 0, 0
 	octave 4
 	note A_, 8
@@ -726,14 +259,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note_type 8, 12, 8
 	duty_cycle 2
 	octave 1
-	note E_, 1
-	note F_, 1
-	note F#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note B_, 1
+	sound_call Music_GameCornerDPPt_Ch2_ditty5
 	octave 2
 	note C_, 1
 	note C#, 1
@@ -744,14 +270,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note E_, 8
 	note_type 8, 12, 8
 	octave 3
-	note E_, 1
-	note F_, 1
-	note F#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note B_, 1
+	sound_call Music_GameCornerDPPt_Ch2_ditty5
 	octave 4
 	note C_, 1
 	note C#, 1
@@ -761,14 +280,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note E_, 8
 	note_type 8, 12, 8
 	octave 5
-	note E_, 1
-	note F_, 1
-	note F#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note B_, 1
+	sound_call Music_GameCornerDPPt_Ch2_ditty5
 	octave 6
 	note C_, 1
 	note C#, 1
@@ -830,16 +342,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note B_, 2
 	volume_envelope 12, 4
 	note D_, 2
-	volume_envelope 5, -1
-	note B_, 1
-	volume_envelope 12, 4
-	note E_, 1
-	note A#, 1
-	note B_, 1
-	volume_envelope 5, -1
-	note A_, 1
-	volume_envelope 12, 4
-	note F#, 1
+	sound_call Music_GameCornerDPPt_Ch2_ditty4
 	note B_, 2
 
 	volume_envelope 5, -1
@@ -910,16 +413,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note B_, 2
 	volume_envelope 12, 4
 	note F#, 2
-	volume_envelope 5, -1
-	note B_, 1
-	volume_envelope 12, 4
-	note E_, 1
-	note A#, 1
-	note B_, 1
-	volume_envelope 5, -1
-	note A_, 1
-	volume_envelope 12, 4
-	note F#, 1
+	sound_call Music_GameCornerDPPt_Ch2_ditty4
 	octave 3
 	note C#, 2
 	volume_envelope 5, -1
@@ -1195,33 +689,13 @@ Music_GameCornerDPPt_Ch2_loop:
 	octave 4
 	note C_, 2
 	note D_, 2
-	volume_envelope 5, -1
-	note E_, 2
-	volume_envelope 12, 4
-	note E_, 2
-	note D_, 2
-	octave 3
-	note A_, 2
-	volume_envelope 5, -1
-	octave 4
-	note C_, 2
-	volume_envelope 12, 4
+	sound_call Music_GameCornerDPPt_Ch2_ditty3
 	octave 3
 	note A_, 2
 	octave 4
 	note E_, 2
 	note G_, 2
-	volume_envelope 5, -1
-	note E_, 2
-	volume_envelope 12, 4
-	note E_, 2
-	note D_, 2
-	octave 3
-	note A_, 2
-	volume_envelope 5, -1
-	octave 4
-	note C_, 2
-	volume_envelope 12, 4
+	sound_call Music_GameCornerDPPt_Ch2_ditty3
 	note E_, 2
 	note A_, 2
 	note D_, 2
@@ -1294,618 +768,28 @@ Music_GameCornerDPPt_Ch3:
 	rest 16
 	rest 16
 	note_type 6, 1, 5
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note E_, 4
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note E_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	octave 3
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	octave 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
+	sound_call Music_GameCornerDPPt_Ch3_ditty4
+	sound_call Music_GameCornerDPPt_Ch3_ditty1
 	note D_, 2
 	note D_, 2
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note E_, 4
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note E_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
+	sound_call Music_GameCornerDPPt_Ch3_ditty4
 Music_GameCornerDPPt_Ch3_loop:
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
+	sound_call Music_GameCornerDPPt_Ch3_ditty1
 	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	octave 3
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	octave 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	octave 3
-	note F#, 2
-	rest 2
-	octave 4
-	note F#, 1
-	rest 3
-	octave 3
-	note F#, 2
-	rest 2
-	octave 4
-	note F#, 1
-	rest 3
-	octave 3
-	note F#, 2
-	rest 2
-	octave 4
-	note F#, 1
-	rest 3
-	octave 3
-	note F#, 2
-	rest 2
-	octave 4
-	note E_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note C#, 1
-	rest 3
-	octave 2
-	note B_, 2
-	rest 2
-	octave 3
-	note B_, 1
-	rest 3
-	octave 2
-	note B_, 2
-	rest 2
-	octave 3
-	note B_, 1
-	rest 3
-	octave 2
-	note B_, 2
-	rest 2
-	octave 3
-	note B_, 1
-	rest 3
-	octave 2
-	note B_, 2
-	rest 2
-	octave 4
-	note C#, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note E_, 1
-	rest 3
-	octave 3
-	note F#, 2
-	rest 2
-	octave 4
-	note F#, 1
-	rest 3
-	octave 3
-	note F#, 2
-	rest 2
-	octave 4
-	note F#, 1
-	rest 3
-	octave 3
-	note F#, 2
-	rest 2
-	octave 4
-	note F#, 1
-	rest 3
-	octave 3
-	note F#, 2
-	rest 2
-	octave 4
-	note E_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note C#, 1
-	rest 3
-	octave 2
-	note B_, 2
-	rest 2
-	octave 3
-	note B_, 1
-	rest 3
-	octave 2
-	note B_, 2
-	rest 2
-	octave 3
-	note B_, 1
-	rest 3
-	octave 2
-	note B_, 2
-	rest 2
-	octave 3
-	note B_, 1
-	rest 3
-	octave 2
-	note B_, 2
-	rest 2
-	octave 4
-	note C#, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note D_, 1
-	rest 3
-	octave 3
-	note D_, 2
-	rest 2
-	octave 4
-	note E_, 1
-	rest 3
-	note D#, 1
-	rest 3
-	note D#, 1
-	rest 3
-	note D#, 1
-	rest 3
-	note D#, 1
-	rest 3
-	octave 3
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 3
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 4
-	note C#, 1
-	rest 3
-	note C#, 1
-	rest 3
-	note C#, 1
-	rest 3
-	note C#, 1
-	rest 3
-	octave 3
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 3
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note A#, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	octave 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C#, 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C#, 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C#, 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 1
+	sound_call Music_GameCornerDPPt_Ch3_ditty2
+	sound_call Music_GameCornerDPPt_Ch3_ditty2
+	sound_call Music_GameCornerDPPt_Ch3_ditty3
 	note C#, 2
 	note C#, 2
-	note D#, 1
-	rest 3
-	note D#, 1
-	rest 3
-	note D#, 1
-	rest 3
-	note D#, 1
-	rest 3
-	octave 3
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 3
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 4
-	note C#, 1
-	rest 3
-	note C#, 1
-	rest 3
-	note C#, 1
-	rest 3
-	note C#, 1
-	rest 3
-	octave 3
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 3
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note A#, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	octave 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C#, 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C#, 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 1
-	note C#, 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 1
+	sound_call Music_GameCornerDPPt_Ch3_ditty3
 	note D#, 4
-	octave 3
-	note D#, 2
-	rest 2
-	octave 4
-	note D#, 1
-	rest 3
-	octave 3
-	note D#, 2
-	rest 2
-	octave 4
-	note D#, 1
-	rest 3
-	octave 3
-	note D#, 2
-	rest 2
-	octave 4
-	note D#, 1
-	rest 3
-	octave 3
-	note D#, 2
-	rest 2
-	octave 4
-	note D#, 1
-	rest 3
-	octave 3
-	note D#, 2
-	rest 2
-	octave 4
-	note D#, 1
-	rest 3
-	octave 3
-	note D#, 2
-	rest 2
-	octave 4
-	note D#, 1
-	rest 3
-	octave 3
-	note D#, 2
-	rest 2
-	octave 4
-	note D#, 1
-	rest 3
-	octave 3
-	note D#, 2
-	rest 2
-	octave 4
-	note D#, 1
-	rest 3
+Music_GameCornerDPPt_Ch3_loop_opt1:
+	sound_call Music_GameCornerDPPt_Ch3_ditty5
+	sound_loop 4, Music_GameCornerDPPt_Ch3_loop_opt1
 	octave 2
-	note G#, 2
-	rest 2
-	octave 3
-	note G#, 1
-	rest 3
-	octave 2
-	note G#, 2
-	rest 2
-	octave 3
-	note G#, 1
-	rest 3
-	octave 2
-	note G#, 2
-	rest 2
-	octave 3
-	note G#, 1
-	rest 3
-	octave 2
-	note G#, 2
-	rest 2
-	octave 3
-	note G#, 1
-	rest 3
-	octave 2
-	note G_, 2
-	rest 2
-	octave 3
-	note G_, 1
-	rest 3
-	octave 2
-	note G_, 2
-	rest 2
-	octave 3
-	note G_, 1
+	sound_call Music_GameCornerDPPt_Ch3_ditty6
+	sound_call Music_GameCornerDPPt_Ch3_ditty6
+	sound_call Music_GameCornerDPPt_Ch3_ditty8
 	rest 3
 	note C_, 2
 	rest 2
@@ -1929,29 +813,7 @@ Music_GameCornerDPPt_Ch3_loop:
 	rest 3
 	octave 2
 	note F_, 2
-	rest 2
-	octave 3
-	note G_, 1
-	rest 3
-	octave 2
-	note F_, 2
-	rest 2
-	octave 3
-	note F_, 1
-	rest 3
-	octave 2
-	note D#, 2
-	rest 2
-	octave 3
-	note D#, 1
-	rest 3
-	octave 2
-	note D#, 2
-	rest 2
-	octave 3
-	note D#, 1
-	rest 3
-	octave 2
+	sound_call Music_GameCornerDPPt_Ch3_ditty7
 	note E_, 2
 	rest 2
 	octave 3
@@ -1964,18 +826,7 @@ Music_GameCornerDPPt_Ch3_loop:
 	note E_, 1
 	rest 3
 	octave 2
-	note G#, 2
-	rest 2
-	octave 3
-	note G#, 1
-	rest 3
-	octave 2
-	note G#, 2
-	rest 2
-	octave 3
-	note G#, 1
-	rest 3
-	octave 2
+	sound_call Music_GameCornerDPPt_Ch3_ditty6
 	note D_, 2
 	rest 2
 	octave 3
@@ -1988,16 +839,7 @@ Music_GameCornerDPPt_Ch3_loop:
 	note D_, 1
 	rest 3
 	octave 2
-	note G_, 2
-	rest 2
-	octave 3
-	note G_, 1
-	rest 3
-	octave 2
-	note G_, 2
-	rest 2
-	octave 3
-	note G_, 1
+	sound_call Music_GameCornerDPPt_Ch3_ditty8
 	rest 3
 	octave 2
 	note C_, 2
@@ -2021,17 +863,8 @@ Music_GameCornerDPPt_Ch3_loop:
 	rest 3
 	octave 2
 	note A#, 2
-	rest 2
-	octave 3
-	note G_, 1
-	rest 3
-	octave 2
-	note F_, 2
-	rest 2
-	octave 3
-	note F_, 1
-	rest 3
-	octave 2
+	sound_call Music_GameCornerDPPt_Ch3_ditty7
+	sound_call Music_GameCornerDPPt_Ch3_ditty6
 	note D#, 2
 	rest 2
 	octave 3
@@ -2044,40 +877,7 @@ Music_GameCornerDPPt_Ch3_loop:
 	note D#, 1
 	rest 3
 	octave 2
-	note G#, 2
-	rest 2
-	octave 3
-	note G#, 1
-	rest 3
-	octave 2
-	note G#, 2
-	rest 2
-	octave 3
-	note G#, 1
-	rest 3
-	octave 2
-	note D#, 2
-	rest 2
-	octave 3
-	note D#, 1
-	rest 3
-	octave 2
-	note D#, 2
-	rest 2
-	octave 3
-	note D#, 1
-	rest 3
-	octave 2
-	note G_, 2
-	rest 2
-	octave 3
-	note G_, 1
-	rest 3
-	octave 2
-	note G_, 2
-	rest 2
-	octave 3
-	note G_, 1
+	sound_call Music_GameCornerDPPt_Ch3_ditty8
 	rest 16
 	rest 16
 	rest 16
@@ -2088,109 +888,11 @@ Music_GameCornerDPPt_Ch3_loop:
 	rest 16
 	rest 3
 	octave 4
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note E_, 4
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note E_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	octave 3
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note B_, 4
-	octave 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note D_, 4
-	note D_, 1
-	rest 1
-	note D_, 1
-	rest 1
+	sound_call Music_GameCornerDPPt_Ch3_ditty4
+	sound_call Music_GameCornerDPPt_Ch3_ditty1
 	note D_, 2
 	note D_, 2
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note E_, 4
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note E_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
-	note C_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note C_, 4
+	sound_call Music_GameCornerDPPt_Ch3_ditty4
 	sound_jump Music_GameCornerDPPt_Ch3_loop
 
 Music_GameCornerDPPt_Ch4:
@@ -2244,123 +946,24 @@ Music_GameCornerDPPt_Ch4_loop:
 	stereo_panning FALSE, TRUE
 	drum_note 12, 8
 	stereo_panning TRUE, TRUE
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_GameCornerDPPt_Ch4_ditty3
+	sound_call Music_GameCornerDPPt_Ch4_ditty3
+	sound_call Music_GameCornerDPPt_Ch4_ditty3
 	drum_speed 6
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 12, 16
-	rest 16
-	rest 16
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 12, 16
-	rest 16
-	rest 16
+	sound_call Music_GameCornerDPPt_Ch4_ditty3
+	sound_call Music_GameCornerDPPt_Ch4_ditty3
+Music_GameCornerDPPt_Ch4_loop_opt1:
+	sound_call Music_GameCornerDPPt_Ch4_ditty1
+	sound_loop 4, Music_GameCornerDPPt_Ch4_loop_opt1
+	sound_call Music_GameCornerDPPt_Ch4_ditty4
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_note 2, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 12, 16
-	rest 16
-	rest 16
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 7, 4
-	drum_note 12, 16
-	rest 16
-	rest 16
+	sound_call Music_GameCornerDPPt_Ch4_ditty3
+	sound_call Music_GameCornerDPPt_Ch4_ditty4
 	rest 12
 	drum_note 11, 2
 	drum_note 11, 2
@@ -2375,53 +978,18 @@ Music_GameCornerDPPt_Ch4_loop:
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_note 2, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_GameCornerDPPt_Ch4_ditty3
 	drum_note 11, 8
 	drum_note 11, 8
 	drum_note 11, 8
 	drum_note 11, 8
 	drum_note 11, 8
 	drum_note 11, 8
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 11, 4
+	sound_call Music_GameCornerDPPt_Ch4_ditty2
 	drum_note 11, 8
 	drum_note 11, 8
 	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 4
-	drum_note 11, 4
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 11, 4
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 4
-	drum_note 11, 4
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
+	sound_call Music_GameCornerDPPt_Ch4_ditty2
 	drum_note 11, 4
 	drum_note 11, 4
 	stereo_panning TRUE, FALSE
@@ -2437,23 +1005,7 @@ Music_GameCornerDPPt_Ch4_loop:
 	stereo_panning FALSE, TRUE
 	drum_note 11, 8
 	stereo_panning TRUE, TRUE
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 11, 2
-	drum_note 11, 4
-	drum_note 11, 4
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 4
-	drum_note 11, 4
-	drum_note 11, 8
-	drum_note 11, 8
-	drum_note 11, 8
+	sound_call Music_GameCornerDPPt_Ch4_ditty2
 	drum_note 11, 8
 	drum_note 11, 8
 	drum_note 11, 8
@@ -2463,3 +1015,694 @@ Music_GameCornerDPPt_Ch4_loop:
 	rest 16
 	rest 4
 	sound_jump Music_GameCornerDPPt_Ch4_loop
+
+Music_GameCornerDPPt_Ch1_ditty1:
+	note A_, 1
+	volume_envelope 10, 2
+	note A_, 1
+	note G#, 2
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
+	note F#, 1
+	note F#, 2
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
+	note F#, 1
+	note F#, 2
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
+	note F#, 1
+	note F#, 2
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
+	note F#, 1
+	note E_, 2
+	volume_envelope 3, -1
+	note D_, 1
+	volume_envelope 10, 2
+	note D_, 1
+	note D_, 2
+	volume_envelope 3, -1
+	note D_, 1
+	volume_envelope 10, 2
+	note D_, 1
+	note D_, 2
+	volume_envelope 3, -1
+	note D_, 1
+	volume_envelope 10, 2
+	note D_, 1
+	note D_, 2
+	volume_envelope 3, -1
+	note D_, 1
+	volume_envelope 10, 2
+	note D_, 1
+	note E_, 2
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
+	note F#, 1
+	note F#, 2
+	volume_envelope 3, -1
+	note F#, 1
+	volume_envelope 10, 2
+	note F#, 1
+	note F#, 2
+	volume_envelope 3, -1
+	sound_ret
+
+Music_GameCornerDPPt_Ch1_ditty2:
+	note B_, 2
+	note B_, 2
+	note B_, 2
+	note B_, 2
+	note G#, 1
+	note G#, 2
+	note G#, 1
+	note G#, 1
+	note G#, 1
+	note G#, 1
+	note G#, 1
+	note A#, 2
+	note A#, 2
+	note A#, 2
+	note A#, 2
+	note F#, 1
+	note F#, 2
+	note F#, 1
+	note F#, 1
+	note F#, 1
+	note F#, 2
+	note G#, 1
+	note G#, 1
+	note G#, 2
+	note G#, 1
+	note G#, 1
+	note G#, 2
+	note G#, 1
+	note G#, 1
+	note G#, 2
+	note G#, 1
+	note G#, 1
+	note G#, 2
+	note A#, 1
+	note A#, 1
+	note A#, 2
+	note A#, 1
+	note A#, 1
+	note A#, 2
+	note A#, 1
+	note A#, 1
+	note A#, 2
+	note A#, 1
+	note A#, 1
+	note A#, 1
+	note A#, 1
+	sound_ret
+
+Music_GameCornerDPPt_Ch1_ditty3:
+	note B_, 1
+	note B_, 1
+	note B_, 2
+	note B_, 1
+	note B_, 1
+	note B_, 2
+	note G_, 1
+	note G_, 1
+	note G_, 2
+	note G_, 1
+	note G_, 1
+	note G_, 2
+	note A_, 1
+	note A_, 1
+	note A_, 2
+	note A_, 1
+	note A_, 1
+	note A_, 2
+	note A_, 1
+	note A_, 1
+	note A_, 2
+	note A_, 1
+	note A_, 1
+	note A_, 2
+	note B_, 1
+	note B_, 1
+	note B_, 2
+	note B_, 1
+	note B_, 1
+	note B_, 2
+	note B_, 1
+	note B_, 1
+	note B_, 2
+	note B_, 1
+	note B_, 1
+	sound_ret
+
+Music_GameCornerDPPt_Ch1_ditty4:
+	note A_, 1
+	volume_envelope 10, 2
+	note A_, 1
+	note A_, 2
+	volume_envelope 3, -1
+	note A_, 1
+	volume_envelope 10, 2
+	note A_, 1
+	note A_, 2
+	volume_envelope 3, -1
+	sound_ret
+
+Music_GameCornerDPPt_Ch1_ditty5:
+	note C_, 1
+	note C_, 1
+	note C_, 2
+	note C_, 1
+	note C_, 1
+	note C_, 2
+	octave 3
+	note A_, 1
+	note A_, 1
+	note A_, 2
+	note A_, 1
+	note A_, 1
+	note A_, 2
+	sound_ret
+
+Music_GameCornerDPPt_Ch1_ditty6:
+	note B_, 1
+	volume_envelope 10, 2
+	note B_, 1
+	note B_, 2
+	volume_envelope 3, -1
+	note B_, 1
+	volume_envelope 10, 2
+	note B_, 1
+	sound_ret
+
+Music_GameCornerDPPt_Ch1_ditty7:
+	octave 1
+	note D#, 2
+	note A#, 2
+	octave 2
+	note D#, 2
+	octave 1
+	note A#, 2
+	note F_, 2
+	octave 2
+	note D_, 2
+	note F_, 2
+	note D_, 2
+	sound_ret
+
+Music_GameCornerDPPt_Ch2_ditty1:
+	octave 1
+	note A_, 2
+	octave 2
+	note E_, 2
+	note A_, 2
+	note E_, 2
+	octave 1
+	note F_, 2
+	octave 2
+	note C_, 2
+	note F_, 2
+	note C_, 2
+	octave 1
+	note G_, 2
+	octave 2
+	note D_, 2
+	note G_, 2
+	note D_, 2
+	octave 1
+	note E_, 2
+	note B_, 2
+	octave 2
+	note E_, 2
+	octave 1
+	note B_, 2
+	note F_, 2
+	octave 2
+	note C_, 2
+	note F_, 2
+	sound_ret
+
+Music_GameCornerDPPt_Ch2_ditty2:
+	note A_, 2
+	octave 2
+	note D_, 2
+	octave 1
+	note A_, 2
+	note G_, 2
+	octave 2
+	note D_, 2
+	note G_, 2
+	note D_, 2
+	octave 1
+	note G#, 2
+	octave 2
+	note E_, 2
+	note G#, 2
+	note E_, 2
+	sound_ret
+
+Music_GameCornerDPPt_Ch2_ditty3:
+	volume_envelope 5, -1
+	note E_, 2
+	volume_envelope 12, 4
+	note E_, 2
+	note D_, 2
+	octave 3
+	note A_, 2
+	volume_envelope 5, -1
+	octave 4
+	note C_, 2
+	volume_envelope 12, 4
+	sound_ret
+
+Music_GameCornerDPPt_Ch2_ditty4:
+	volume_envelope 5, -1
+	note B_, 1
+	volume_envelope 12, 4
+	note E_, 1
+	note A#, 1
+	note B_, 1
+	volume_envelope 5, -1
+	note A_, 1
+	volume_envelope 12, 4
+	note F#, 1
+	sound_ret
+
+Music_GameCornerDPPt_Ch2_ditty5:
+	note E_, 1
+	note F_, 1
+	note F#, 1
+	note G_, 1
+	note G#, 1
+	note A_, 1
+	note A#, 1
+	note B_, 1
+	sound_ret
+
+Music_GameCornerDPPt_Ch3_ditty1:
+	note D_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note D_, 4
+	note D_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note D_, 4
+	octave 3
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note B_, 4
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note B_, 4
+	octave 4
+	note C_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note C_, 4
+	note C_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note C_, 4
+	note C_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note C_, 4
+	note C_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note C_, 4
+	note D_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note D_, 4
+	note D_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note D_, 4
+	note D_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note D_, 4
+	note D_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	sound_ret
+
+Music_GameCornerDPPt_Ch3_ditty2:
+	octave 3
+	note F#, 2
+	rest 2
+	octave 4
+	note F#, 1
+	rest 3
+	octave 3
+	note F#, 2
+	rest 2
+	octave 4
+	note F#, 1
+	rest 3
+	octave 3
+	note F#, 2
+	rest 2
+	octave 4
+	note F#, 1
+	rest 3
+	octave 3
+	note F#, 2
+	rest 2
+	octave 4
+	note E_, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note D_, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note D_, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note D_, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note C#, 1
+	rest 3
+	octave 2
+	note B_, 2
+	rest 2
+	octave 3
+	note B_, 1
+	rest 3
+	octave 2
+	note B_, 2
+	rest 2
+	octave 3
+	note B_, 1
+	rest 3
+	octave 2
+	note B_, 2
+	rest 2
+	octave 3
+	note B_, 1
+	rest 3
+	octave 2
+	note B_, 2
+	rest 2
+	octave 4
+	note C#, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note D_, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note D_, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note D_, 1
+	rest 3
+	octave 3
+	note D_, 2
+	rest 2
+	octave 4
+	note E_, 1
+	rest 3
+	sound_ret
+
+Music_GameCornerDPPt_Ch3_ditty3:
+	note D#, 1
+	rest 3
+	note D#, 1
+	rest 3
+	note D#, 1
+	rest 3
+	note D#, 1
+	rest 3
+	octave 3
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 3
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	octave 4
+	note C#, 1
+	rest 3
+	note C#, 1
+	rest 3
+	note C#, 1
+	rest 3
+	note C#, 1
+	rest 3
+	octave 3
+	note A#, 1
+	rest 1
+	note A#, 1
+	rest 3
+	note A#, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note A#, 4
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note B_, 4
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note B_, 4
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note B_, 4
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note B_, 4
+	octave 4
+	note C#, 1
+	rest 1
+	note C#, 1
+	rest 1
+	note C#, 4
+	note C#, 1
+	rest 1
+	note C#, 1
+	rest 1
+	note C#, 4
+	note C#, 1
+	rest 1
+	note C#, 1
+	rest 1
+	note C#, 4
+	note C#, 1
+	rest 1
+	note C#, 1
+	rest 1
+	sound_ret
+
+Music_GameCornerDPPt_Ch3_ditty4:
+	note E_, 1
+	rest 1
+	note E_, 1
+	rest 1
+	note E_, 4
+	note E_, 1
+	rest 1
+	note E_, 1
+	rest 1
+	note E_, 4
+	note C_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note C_, 4
+	note C_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note C_, 4
+	sound_ret
+
+Music_GameCornerDPPt_Ch3_ditty5:
+	octave 3
+	note D#, 2
+	rest 2
+	octave 4
+	note D#, 1
+	rest 3
+	octave 3
+	note D#, 2
+	rest 2
+	octave 4
+	note D#, 1
+	rest 3
+	sound_ret
+
+Music_GameCornerDPPt_Ch3_ditty6:
+	note G#, 2
+	rest 2
+	octave 3
+	note G#, 1
+	rest 3
+	octave 2
+	note G#, 2
+	rest 2
+	octave 3
+	note G#, 1
+	rest 3
+	octave 2
+	sound_ret
+
+Music_GameCornerDPPt_Ch3_ditty7:
+	rest 2
+	octave 3
+	note G_, 1
+	rest 3
+	octave 2
+	note F_, 2
+	rest 2
+	octave 3
+	note F_, 1
+	rest 3
+	octave 2
+	note D#, 2
+	rest 2
+	octave 3
+	note D#, 1
+	rest 3
+	octave 2
+	note D#, 2
+	rest 2
+	octave 3
+	note D#, 1
+	rest 3
+	octave 2
+	sound_ret
+
+Music_GameCornerDPPt_Ch3_ditty8:
+	note G_, 2
+	rest 2
+	octave 3
+	note G_, 1
+	rest 3
+	octave 2
+	note G_, 2
+	rest 2
+	octave 3
+	note G_, 1
+	sound_ret
+
+Music_GameCornerDPPt_Ch4_ditty1:
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	sound_ret
+
+Music_GameCornerDPPt_Ch4_ditty2:
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 8
+	drum_note 11, 8
+	sound_ret
+
+Music_GameCornerDPPt_Ch4_ditty3:
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	sound_ret
+
+Music_GameCornerDPPt_Ch4_ditty4:
+	drum_note 12, 16
+	rest 16
+	rest 16
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 12, 16
+	rest 16
+	rest 16
+	sound_ret

@@ -1,5 +1,5 @@
-	db  62, 135,  95,  65,  68,  82 ; 507 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 507,  62, 135,  95,  68,  82,  65
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db FIGHTING, FIGHTING ; type
 	db 45 ; catch rate
@@ -7,7 +7,11 @@
 	db NO_ITEM, LEEK ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
+if DEF(FAITHFUL)
+	abilities_for SIRFETCH_D, STEADFAST, INNER_FOCUS, SCRAPPY
+else
 	abilities_for SIRFETCH_D, STEADFAST, STEADFAST, SCRAPPY
+endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_FLYING, EGG_GROUND ; egg groups
 

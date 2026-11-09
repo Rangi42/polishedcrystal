@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db 130,  75,  60,  20,  45, 100 ; 430 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 430, 130,  75,  60,  45, 100,  20
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db 130,  85,  70,  20,  45, 100 ; 450 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 450, 130,  85,  70,  45, 100,  20
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db POISON, GROUND ; type

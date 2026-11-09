@@ -259,6 +259,11 @@ BattleText_ItemRaisedCrit:
 	cont "to get pumped!"
 	prompt
 
+BattleText_MegaSolCharged:
+	text "<USER>"
+	line "was charged up!"
+	prompt
+
 BattleText_UserChargedWithItem:
 	text "<USER>"
 	line "became charged"
@@ -821,6 +826,11 @@ RegainedHealthText:
 IsHurtText:
 	text "<USER>"
 	line "is hurt!"
+	prompt
+
+IsTormentedText:
+	text "<USER>"
+	line "is tormented!"
 	prompt
 
 AttackMissedText:
@@ -2081,10 +2091,12 @@ PiersFinalPkmnText:
 	cont "Not #mon!"
 	prompt
 
-KatyFinalPkmnText:
-	text "Oh? How should I"
-	line "roll things out"
-	cont "from here?"
+LarryFinalPkmnText:
+	text "I always output"
+	line "my best results"
+
+	para "when it's crunch"
+	line "time."
 	prompt
 
 BillFinalPkmnText:

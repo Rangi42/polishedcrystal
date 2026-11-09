@@ -1,8 +1,10 @@
-DefaultOptions3:
-; wOptions3
-	db 0
-
 DefaultOptions:
+; wOptions3
+if DEF(DEBUG)
+	db 1 << NICKNAMES_NEVER
+else
+	db 0
+endc
 ; wOptions1
 	db (1 << BATTLE_EFFECTS) | (1 << STEREO) | FAST_TEXT
 ; wSaveFileExists

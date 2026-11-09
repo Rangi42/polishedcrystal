@@ -31,7 +31,7 @@ CherrygroveCity_MapScriptHeader:
 	object_event 25, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CherrygroveTeacherText_HaveMapCard, -1
 	object_event 23,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
 	object_event  7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, MysticWaterGuy, -1
-	pokemon_event 26, 13, PIDGEY, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BROWN, CherrygrovePidgeyText, -1
+	pokemon_event 26, 13, PIDGEY, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BROWN, CherrygrovePidgeyText, -1
 
 	object_const_def
 	const CHERRYGROVECITY_GRAMPS
@@ -169,8 +169,7 @@ MysticWaterGuy:
 	opentext
 	writetext MysticWaterGuyTextBefore
 	promptbutton
-	verbosegiveitem MYSTIC_WATER
-	iffalse_endtext
+	verbosegiveitem MYSTIC_WATER, iffalse_endtext
 	setevent EVENT_GOT_MYSTIC_WATER_IN_CHERRYGROVE
 	jumpthisopenedtext
 
@@ -209,19 +208,13 @@ GuideGentMovement3_5:
 	step_end
 
 GuideGentMovement4:
-	step_left
-	step_left
-	step_left
+	step_down
 	step_down
 	step_down
 	turn_head_left
 	step_end
 
 GuideGentMovement5:
-	step_down
-	step_right
-	step_right
-	step_right
 	step_right
 	step_right
 	step_right

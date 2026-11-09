@@ -2,7 +2,8 @@ BattleCommand_thunderaccuracy:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVarAddr
 	inc hl
-	call GetWeatherAfterOpponentUmbrella
+	call GetSolarizedWeather
+	call nz, GetWeatherAfterOpponentUmbrella
 	cp WEATHER_RAIN
 	jr z, .rain
 	cp WEATHER_SUN

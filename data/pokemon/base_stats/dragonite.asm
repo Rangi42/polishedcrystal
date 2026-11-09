@@ -1,5 +1,5 @@
-	db  91, 134,  95,  80, 100, 100 ; 600 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 600,  91, 134,  95, 100, 100,  80
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db DRAGON, FLYING ; type
 	db 45 ; catch rate

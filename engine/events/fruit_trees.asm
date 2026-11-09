@@ -17,9 +17,7 @@ FruitTreeScript::
 	callasm FertilizedFruitTree
 	jumpthisopenedtext
 
-	text_far _UsedMulchText
-	text_end
-
+	text_farend _UsedMulchText
 PickBerryScript:
 	readmem wCurFruit
 	ifless NUM_APRICORNS+1, PickApricornScript
@@ -31,24 +29,21 @@ PickBerryScript:
 	ifequalfwd $1, .try_one
 	ifequalfwd $2, .try_two
 	readmem wCurFruit
-	giveitem ITEM_FROM_MEM, 3
-	iffalsefwd .try_two
+	giveitems ITEM_FROM_MEM, 3, iffalsefwd .try_two
 	promptbutton
 	farwritetext _ObtainedThreeFruitText
 	callasm .ShowBerryIcon
 	sjumpfwd .continue
 .try_two
 	readmem wCurFruit
-	giveitem ITEM_FROM_MEM, 2
-	iffalsefwd .try_one
+	giveitems ITEM_FROM_MEM, 2, iffalsefwd .try_one
 	promptbutton
 	farwritetext _ObtainedTwoFruitText
 	callasm .ShowBerryIcon
 	sjumpfwd .continue
 .try_one
 	readmem wCurFruit
-	giveitem ITEM_FROM_MEM
-	iffalsefwd .packisfull
+	giveitem ITEM_FROM_MEM, iffalsefwd .packisfull
 	promptbutton
 	farwritetext _ObtainedOneFruitText
 	callasm .ShowBerryIcon
@@ -63,9 +58,7 @@ PickBerryScript:
 	promptbutton
 	jumpthisopenedtext
 
-	text_far _FruitPackIsFullText
-	text_end
-
+	text_farend _FruitPackIsFullText
 .ShowBerryIcon:
 	ld a, [wCurFruit]
 	push af
@@ -110,16 +103,12 @@ PickApricornScript:
 	specialsound
 	jumpthisopenedtext
 
-	text_far _PutAwayTheApricornText
-	text_end
-
+	text_farend _PutAwayTheApricornText
 .packisfull
 	promptbutton
 	jumpthisopenedtext
 
-	text_far _ApricornBoxIsFullText
-	text_end
-
+	text_farend _ApricornBoxIsFullText
 .GetApricornName:
 	ldh a, [hScriptVar]
 	ld [wNamedObjectIndex], a
@@ -171,5 +160,4 @@ GetFruitTreeCount:
 	ret
 
 NoApricornBoxText:
-	text_far _NoApricornBoxText
-	text_end
+	text_farend _NoApricornBoxText

@@ -69,8 +69,7 @@ OlivineLighthouse3FBattleGirlEmy:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem PROTECT_PADS
-	iffalse_endtext
+	verbosegiveitem PROTECT_PADS, iffalse_endtext
 	setevent EVENT_GOT_PROTECT_PADS_FROM_LIGHTHOUSE_LEADER
 	jumpthisopenedtext
 
@@ -229,4 +228,3 @@ GentlemanPrestonBeatenText:
 	text "…sigh… I must"
 	line "train some more…"
 	done
-

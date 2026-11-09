@@ -183,7 +183,7 @@ DEF NUM_STONES EQU const_value - FIRST_STONE
 	const NEVERMELTICE ; 87
 	const DRAGON_FANG  ; 88
 	const BLACKGLASSES ; 89
-	const PINK_BOW     ; 8a
+	const FAIRYFEATHER ; 8a
 
 	const BERSERK_GENE ; 8b
 	const BRIGHTPOWDER ; 8c
@@ -399,6 +399,7 @@ endc
 	const NAM_EVIOLITE
 	const NAM_EXP_SHARE
 	const NAM_EXPERT_BELT
+	const NAM_FAIRYFEATHER
 	const NAM_FAST_BALL
 	const NAM_FIGY_BERRY
 	const NAM_FIRE_STONE
@@ -501,7 +502,6 @@ endc
 	const NAM_PERSIM_BERRY
 	const NAM_PETAYA_BERRY
 	const NAM_PEWTERCRUNCH
-	const NAM_PINK_BOW
 	const NAM_POISON_BARB
 	const NAM_POKE_BALL
 	const NAM_POKE_DOLL

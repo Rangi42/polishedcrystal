@@ -195,19 +195,7 @@ Music_Route4BW_Ch2:
 	volume_envelope 12, 7
 	note B_, 8
 	rest 2
-	note F#, 2
-	octave 4
-	note F#, 2
-	note E_, 2
-	note D#, 2
-	note C#, 2
-	octave 3
-	note B_, 2
-	note F#, 2
-	volume_envelope 12, 0
-	note A_, 8
-	volume_envelope 12, 7
-	note A_, 8
+	sound_call Music_Route4BW_Ch2_ditty1
 	rest 2
 	note F#, 2
 	note A_, 2
@@ -223,19 +211,7 @@ Music_Route4BW_Ch2:
 	note D#, 8
 	rest 2
 	octave 3
-	note F#, 2
-	octave 4
-	note F#, 2
-	note E_, 2
-	note D#, 2
-	note C#, 2
-	octave 3
-	note B_, 2
-	note F#, 2
-	volume_envelope 12, 0
-	note A_, 8
-	volume_envelope 12, 7
-	note A_, 8
+	sound_call Music_Route4BW_Ch2_ditty1
 	rest 4
 	note A_, 2
 	note B_, 2
@@ -368,38 +344,7 @@ Music_Route4BW_Ch3:
 	note C#, 2
 	note D_, 2
 	note D#, 2
-	volume_envelope 1, 0
-	octave 5
-	note F#, 2
-	octave 6
-	note F#, 2
-	note E_, 2
-	note D#, 2
-	note C#, 2
-	octave 5
-	note B_, 2
-	note F#, 2
-	note_type 6, 1, 0
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	volume_envelope 2, 0
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note_type 12, 2, 0
-	note A_, 1
-	note B_, 1
+	sound_call Music_Route4BW_Ch3_ditty1
 	volume_envelope 1, 4
 	octave 3
 	note C#, 2
@@ -444,38 +389,7 @@ Music_Route4BW_Ch3:
 	note A_, 2
 	note A#, 2
 	note B_, 2
-	volume_envelope 1, 0
-	octave 5
-	note F#, 2
-	octave 6
-	note F#, 2
-	note E_, 2
-	note D#, 2
-	note C#, 2
-	octave 5
-	note B_, 2
-	note F#, 2
-	note_type 6, 1, 0
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	volume_envelope 2, 0
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note A_, 1
-	note B_, 1
-	note_type 12, 2, 0
-	note A_, 1
-	note B_, 1
+	sound_call Music_Route4BW_Ch3_ditty1
 	octave 6
 	note C#, 1
 	note D#, 1
@@ -595,4 +509,55 @@ Music_Route4BW_Ch4_branch_3:
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
+	sound_ret
+
+Music_Route4BW_Ch2_ditty1:
+	note F#, 2
+	octave 4
+	note F#, 2
+	note E_, 2
+	note D#, 2
+	note C#, 2
+	octave 3
+	note B_, 2
+	note F#, 2
+	volume_envelope 12, 0
+	note A_, 8
+	volume_envelope 12, 7
+	note A_, 8
+	sound_ret
+
+Music_Route4BW_Ch3_ditty1:
+	volume_envelope 1, 0
+	octave 5
+	note F#, 2
+	octave 6
+	note F#, 2
+	note E_, 2
+	note D#, 2
+	note C#, 2
+	octave 5
+	note B_, 2
+	note F#, 2
+	note_type 6, 1, 0
+	note A_, 1
+	note B_, 1
+	note A_, 1
+	note B_, 1
+	note A_, 1
+	note B_, 1
+	note A_, 1
+	note B_, 1
+	volume_envelope 2, 0
+	note A_, 1
+	note B_, 1
+	note A_, 1
+	note B_, 1
+	note A_, 1
+	note B_, 1
+	note A_, 1
+	note B_, 1
+	note_type 12, 2, 0
+	note A_, 1
+	note B_, 1
 	sound_ret

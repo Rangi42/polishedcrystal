@@ -91,6 +91,7 @@ StartMenu::
 .GetInput:
 ; Return carry on exit, and no-carry on selection.
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call SetUpMenu
 	ld a, $ff
@@ -317,9 +318,7 @@ StartMenu_Quit:
 	ret
 
 .EndTheContestText:
-	text_far _StartMenuContestEndText
-	text_end
-
+	text_farend _StartMenuContestEndText
 StartMenu_Save:
 	call ClearSprites
 	call BufferScreen
@@ -391,8 +390,8 @@ StartMenu_Pokemon:
 	jr z, .return
 	call FadeToMenu
 .choosemenu
-	xor a
-	ld [wPartyMenuActionText], a ; Choose a POKéMON.
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
+	ld [wPartyMenuActionText], a
 	call ClearBGPalettes
 .menu
 	farcall LoadPartyMenuGFX

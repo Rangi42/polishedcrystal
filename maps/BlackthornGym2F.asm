@@ -2,7 +2,7 @@ BlackthornGym2F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_STONETABLE, BlackthornGym2FBoulders
+	callback MAPCALLBACK_CMDQUEUE, BlackthornGym2FBoulders
 
 	def_warp_events
 	warp_event  1,  7, BLACKTHORN_GYM_1F, 3

@@ -116,6 +116,7 @@ VBABSODMessage:
 BSODErrorStrings:
 	table_width 1
 	dr .Rst0             ; ERR_RST_0
+	dr .Rst38            ; ERR_RST_38
 	dr .DivZero          ; ERR_DIV_ZERO
 	dr .EggSpecies       ; ERR_EGG_SPECIES
 	dr .ExecutingRAM     ; ERR_EXECUTING_RAM
@@ -133,7 +134,8 @@ BSODErrorStrings:
 	dr .UnknownError     ; unknown
 	assert_table_length NUM_ERR_CODES + 1
 
-.Rst0:             text "rst 0@"
+.Rst0:             text "rst 00h@"
+.Rst38:            text "rst 38h@"
 .DivZero:          text "Division by zero@"
 .EggSpecies:       text "<PK><MN> species is Egg@"
 .ExecutingRAM:     text "Executing RAM@"
@@ -149,3 +151,20 @@ BSODErrorStrings:
 .SRAMMismatch:     text "SRAM/WRAM mismatch@"
 .PEBKAC:           text "PEBKAC@"
 .UnknownError:     text "Unknown@"
+
+CheckVBA:
+	xor a
+	ldh [rSC], a ; no-optimize redundant loads (VBA loads this wrong)
+	ldh a, [rSC]
+	or ~%01111100
+	inc a
+	ret z
+	assert STARTOF(WRAM0) <= wEchoRAMTest && wEchoRAMTest < STARTOF(WRAM0) + SIZEOF(WRAM0), \
+		"wEchoRAMTest is not in WRAM0"
+	ld hl, wEchoRAMTest
+	ld [hl], %11100100
+	ld hl, wEchoRAMTest + $2000 ; echo RAM
+	ld [hl], %00100111
+	ld a, [wEchoRAMTest]
+	cp %00100111
+	ret

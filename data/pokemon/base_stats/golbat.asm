@@ -1,5 +1,5 @@
-	db  75,  80,  70,  90,  65,  75 ; 455 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 455,  75,  80,  70,  65,  75,  90
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db POISON, FLYING ; type
 	db 90 ; catch rate

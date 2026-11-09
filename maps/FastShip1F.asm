@@ -1,6 +1,6 @@
 FastShip1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script FastShip1FNoopScene, SCENE_FASTSHIP1F_NOOP
+	scene_script DoNothingScript, SCENE_FASTSHIP1F_NOOP
 	scene_script FastShip1FEnterShipScene, SCENE_FASTSHIP1F_ENTER_SHIP
 	scene_const SCENE_FASTSHIP1F_MEET_GRANDPA
 
@@ -37,11 +37,10 @@ FastShip1F_MapScriptHeader:
 	const FASTSHIP1F_GENTLEMAN
 
 FastShip1FEnterShipScene:
-	sdefer FastShip1FEnterFastShipScript
-FastShip1FNoopScene:
+	sdefer .Script
 	end
 
-FastShip1FEnterFastShipScript:
+.Script:
 	applymovement FASTSHIP1F_SAILOR1, FastShip1F_SailorStepAsideMovement
 	applymovement PLAYER, FastShip1F_PlayerEntersShipMovement
 	applymovement FASTSHIP1F_SAILOR1, FastShip1F_SailorBlocksDoorMovement

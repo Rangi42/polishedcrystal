@@ -26,6 +26,6 @@ SongArtists:
 	li "GRonnoc"
 	li "Cat333Pokemon"
 	li "NotFroggestSpirit"
-	li "Toby Fox"
 	li "ShinkoNetCavy,      ShockSlayer"
+	li "Cosmic Angel"
 	assert_list_length NUM_SONG_ARTISTS

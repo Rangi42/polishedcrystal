@@ -1,6 +1,6 @@
 if !DEF(MONOCHROME)
-	RGB 31, 12, 06 ; red
-	RGB 04, 17, 31 ; blue
+	RGB 31, 12, 06 ; female icon (red)
+	RGB 04, 17, 31 ; male icon, or exp bar (blue)
 else
 	MONOCHROME_RGB_TWO
 endc

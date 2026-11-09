@@ -168,6 +168,21 @@ DoEggStep::
 	and a
 	ret z
 
+	; Most parties have no eggs. Avoid loading every member's ability and
+	; looking up the Oval Charm when there is no hatch counter to update.
+	ld e, a
+	ld hl, wPartyMon1IsEgg
+.find_egg
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .has_egg
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	dec e
+	jr nz, .find_egg
+	ret ; z: nothing is ready to hatch
+.has_egg
+	ld a, [wPartyCount]
+
 	; Check if Flame Body/Magma Armor applies
 	ld e, a
 	ld hl, wPartyMon1IsEgg
@@ -193,7 +208,9 @@ DoEggStep::
 	cp MAGMA_ARMOR
 	jr z, .got_decrement
 .next_ability
-	call .NextPartyMon
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	dec e
 	jr nz, .loop
 	ld c, 1
 .got_decrement
@@ -231,15 +248,11 @@ DoEggStep::
 	or 1
 	push af
 .next_egg
-	call .NextPartyMon
-	jr nz, .egg_loop
-	pop af
-	ret
-
-.NextPartyMon:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
 	dec e
+	jr nz, .egg_loop
+	pop af
 	ret
 
 OverworldHatchEgg::
@@ -319,7 +332,7 @@ HatchEggs:
 	; Write to wTempMon, wCurPartySpecies and wCurForm. Also gets base data.
 	xor a
 	ld [wMonType], a
-	predef CopyPkmnToTempMon
+	farcall CopyPkmnToTempMon
 
 	; Mark the mon as caught.
 	ld a, [wTempMonSpecies]
@@ -429,19 +442,13 @@ HatchEggs:
 
 .ClearTextbox:
 	;
-	text_far ClearText
-	text_end
-
+	text_farend ClearText
 .CameOutOfItsEgg:
 	; came out of its EGG!@ @
-	text_far _BreedEggHatchText
-	text_end
-
+	text_farend _BreedEggHatchText
 .Text_NicknameHatchling:
 	; Give a nickname to @ ?
-	text_far _BreedAskNicknameText
-	text_end
-
+	text_farend _BreedAskNicknameText
 GetMotherAddr:
 	ld a, [wBreedMotherOrNonDitto]
 	and a
@@ -479,7 +486,7 @@ InitEggMoves:
 	ld a, [wTempMonForm]
 	and SPECIESFORM_MASK
 	ld b, a
-	predef FillMoves
+	farcall FillMoves
 
 	; Inherited level up moves
 	ld de, wBreedMon1Moves
@@ -530,7 +537,7 @@ InitEggMoves:
 	; Done, fill PP
 	ld hl, wTempMonMoves
 	ld de, wTempMonPP
-	predef_jump FillPP
+	farjp FillPP
 
 .GetEggMoves:
 	ld b, NUM_MOVES
@@ -558,7 +565,7 @@ InheritLevelMove:
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	predef GetEvosAttacksPointer
+	farcall GetEvosAttacksPointer
 .loop
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -641,7 +648,7 @@ GetEggFrontpic:
 	ld [wCurSpecies], a
 	call GetBaseData
 	pop de
-	predef_jump GetFrontpic
+	farjp GetFrontpic
 
 GetHatchlingFrontpic:
 	push de
@@ -652,7 +659,7 @@ GetHatchlingFrontpic:
 	ld [wCurSpecies], a
 	call GetBaseData
 	pop de
-	predef_jump FrontpicPredef
+	farjp PrepareAnimatedFrontpic
 
 Hatch_UpdateFrontpicBGMapCenter:
 	push af
@@ -670,7 +677,7 @@ Hatch_UpdateFrontpicBGMapCenter:
 	ld a, c
 	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	pop af
 	call Hatch_LoadFrontpicPal
 	call SetDefaultBGPAndOBP
@@ -772,14 +779,14 @@ EggHatch_AnimationSequence:
 	ld [wCurPartySpecies], a
 	hlcoord 6, 3
 	lb de, $0, ANIM_MON_HATCH
-	predef AnimateFrontpic
+	farcall AnimateFrontpic
 	pop af
 	ld [wCurSpecies], a
 	ret
 
 Hatch_LoadFrontpicPal:
 	ld [wPlayerHPPal], a
-	ld c, FALSE
+	ld c, 2
 	ld a, CGB_EVOLUTION
 	jmp GetCGBLayout
 
@@ -803,9 +810,6 @@ EggHatch_CrackShell:
 	ld [hl], $0
 	ld de, SFX_EGG_CRACK
 	jmp PlaySFX
-
-EggHatchGFX:
-INCBIN "gfx/evo/egg_hatch.2bpp"
 
 Hatch_InitShellFragments:
 	call ClearSpriteAnims
@@ -908,14 +912,10 @@ DayCareMonCursor:
 
 DayCareMon2Text:
 	; It's @ that was left with the DAY-CARE LADY.
-	text_far _LeftWithDayCareLadyText
-	text_end
-
+	text_farend _LeftWithDayCareLadyText
 DayCareMon1Text:
 	; It's @ that was left with the DAY-CARE MAN.
-	text_far _LeftWithDayCareManText
-	text_end
-
+	text_farend _LeftWithDayCareManText
 DayCareMonCompatibilityText:
 	push bc
 	ld de, wStringBuffer1
@@ -942,20 +942,13 @@ DayCareMonCompatibilityText:
 
 .Incompatible:
 	; It has no interest in @ .
-	text_far _BreedNoInterestText
-	text_end
-
+	text_farend _BreedNoInterestText
 .HighCompatibility:
 	; It appears to care for @ .
-	text_far _BreedAppearsToCareForText
-	text_end
-
+	text_farend _BreedAppearsToCareForText
 .ModerateCompatibility:
 	; It's friendly with @ .
-	text_far _BreedFriendlyText
-	text_end
-
+	text_farend _BreedFriendlyText
 .SlightCompatibility:
 	; It shows interest in @ .
-	text_far _BreedShowsInterestText
-	text_end
+	text_farend _BreedShowsInterestText

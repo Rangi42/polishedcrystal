@@ -4,18 +4,14 @@ Kurt_PrintTextWhichApricorn:
 
 .Text:
 	; Which APRICORN should I use?
-	text_far _WhichApricornText
-	text_end
-
+	text_farend _WhichApricornText
 Kurt_PrintTextHowMany:
 	ld hl, .Text
 	jmp PrintText
 
 .Text:
 	; How many should I make?
-	text_far _HowManyShouldIMakeText
-	text_end
-
+	text_farend _HowManyShouldIMakeText
 Special_SelectApricornForKurt:
 	call LoadStandardMenuHeader
 	ld c, $1
@@ -56,6 +52,7 @@ Kurt_SelectApricorn:
 	ld a, [wMenuSelection]
 	ld [wMenuCursorBuffer], a
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call InitScrollingMenu
 	call UpdateSprites
@@ -125,7 +122,7 @@ Kurt_SelectQuantity:
 	call MenuBox
 	call ApplyTilemap
 .loop
-	ld a, 1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call MenuBox
 	call .PlaceApricornName

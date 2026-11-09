@@ -1,4 +1,4 @@
-FlagPredef:
+SmallFlagAction:
 ; Perform action b on flag c in flag array hl.
 ; If checking a flag, check flag array d:hl unless d is 0.
 

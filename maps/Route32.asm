@@ -56,7 +56,7 @@ Route32_MapScriptHeader:
 	itemball_event  6, 32, REPEL, 1, EVENT_ROUTE_32_REPEL
 	cuttree_event 10, 19, EVENT_ROUTE_32_CUT_TREE
 	cuttree_event -1, 29, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
-	cuttree_event 19, 32, EVENT_CHERRYGROVE_BAY_CUT_TREE
+	cuttree_event 19, 32, EVENT_CHERRYGROVE_BAY_CUT_TREE_1
 
 	object_const_def
 	const ROUTE32_COOLTRAINER_M
@@ -122,8 +122,7 @@ Route32CooltrainerMTrigger:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem MIRACLE_SEED
-	iffalse_endtext
+	verbosegiveitem MIRACLE_SEED, iffalse_endtext
 	setevent EVENT_GOT_MIRACLE_SEED_FROM_ROUTE_32_LEADER
 .GotMiracleSeed:
 	jumpthisopenedtext
@@ -283,9 +282,14 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 	opentext
 	writetext .GreetingText
 	promptbutton
+	checkevent EVENT_TOGEPI_HATCHED
+	iftruefwd .HatchedEgg
 	checkegg
 	iftruefwd .HaveEgg
 	writetext .NoEggText
+	sjumpfwd .Continue
+.HatchedEgg
+	writetext .HatchedEggText
 	sjumpfwd .Continue
 .HaveEgg
 	writetext .HaveEggText
@@ -303,30 +307,44 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 .GreetingText:
 	text "<PLAYER>!"
 	line "Hi there!"
+
+	para "Prof.Elm said his"
+	line "aide was deliver-"
+	cont "ing an Egg to you."
 	done
 
 .NoEggText:
-	text "Prof.Elm said his"
-	line "aide was deliver-"
-	cont "ing an Egg to you."
-
-	para "Be sure to carry"
-	line "it. I'm curious"
-
-	para "what #mon it"
-	line "could be!"
-	done
-
-.HaveEggText:
-	text "Oh good! You're"
-	line "carrying that Egg"
-
-	para "just like Prof."
-	line "Elm asked."
+	text "Be sure to carry"
+	line "it with you."
 
 	para "I'm so curious"
 	line "what #mon it"
 	cont "could be!"
+	done
+
+.HaveEggText:
+	text "Oh good! You're"
+	line "carrying it just"
+	cont "like he wanted."
+
+	para "I'm so curious"
+	line "what #mon it"
+	cont "could be!"
+	done
+
+.HatchedEggText:
+	text "…What? You already"
+	line "hatched it?"
+
+	para "Oh my gosh! So it"
+	line "was a Togepi!"
+	cont "They're so rare!"
+
+	para "You should show"
+	line "it to Prof.Elm"
+
+	para "while you're not"
+	line "too far from home!"
 	done
 
 .QuestionText:
@@ -731,8 +749,7 @@ FriedaScript:
 .MetFrieda:
 	writetext FriedaGivesGiftText
 	promptbutton
-	verbosegiveitem POISON_BARB
-	iffalse_endtext
+	verbosegiveitem POISON_BARB, iffalse_endtext
 	setevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
 	jumpthisopenedtext
 

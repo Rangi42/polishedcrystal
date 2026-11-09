@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  65,  80, 140,  70,  40,  70 ; 465 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 465,  65,  80, 140,  40,  70,  70
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  85,  80, 140,  70,  40,  70 ; 485 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 485,  85,  80, 140,  40,  70,  70
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db STEEL, FLYING ; type

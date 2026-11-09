@@ -75,23 +75,7 @@ Music_TitleScreenXY_Ch1_b3:
 	sound_call Music_TitleScreenXY_Ch1_b5
 	octave 4
 	note F#, 8 ; measure 11.3
-	note F_, 2
-	note E_, 2
-	note_type 12, 11, 7
-	note D#, 16
-	note_type 8, 11, 7
-	octave 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	octave 1
-	note B_, 4
-	rest 2
-	octave 2
-	note C#, 4
-	rest 2
-	note D_, 4
-	rest 2
+	sound_call Music_TitleScreenXY_Ch1_ditty1
 	octave 3
 	note G#, 9
 	octave 4
@@ -120,23 +104,7 @@ Music_TitleScreenXY_Ch1_b3:
 	note C_, 1
 	note_type 8, 11, 7
 	note F#, 8
-	note F_, 2
-	note E_, 2
-	note_type 12, 11, 7
-	note D#, 16
-	note_type 8, 11, 7
-	octave 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	octave 1
-	note B_, 4
-	rest 2
-	octave 2
-	note C#, 4
-	rest 2
-	note D_, 4
-	rest 2
+	sound_call Music_TitleScreenXY_Ch1_ditty1
 	sound_call Music_TitleScreenXY_Ch1_b5
 	note F#, 8
 	note F_, 2
@@ -321,22 +289,7 @@ Music_TitleScreenXY_Ch2_b3:
 	note G_, 2
 	sound_loop 2, Music_TitleScreenXY_Ch2_b3
 	octave 2
-	note G#, 2
-	rest 4
-	note G#, 2
-	rest 4
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	note G#, 2
-	rest 4
-	note G#, 2
-	rest 4
-	note G#, 2
-	rest 4
+	sound_call Music_TitleScreenXY_Ch2_ditty1
 	octave 3
 	note F#, 1
 	rest 1
@@ -495,22 +448,7 @@ Music_TitleScreenXY_Ch2_b3:
 	octave 4
 	note C#, 6
 	note C_, 6
-	note G#, 2
-	rest 4
-	note G#, 2
-	rest 4
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	note G#, 2
-	rest 4
-	note G#, 2
-	rest 4
-	note G#, 2
-	rest 4
+	sound_call Music_TitleScreenXY_Ch2_ditty1
 Music_TitleScreenXY_Ch2_b4:
 	note F#, 1
 	rest 1
@@ -716,17 +654,7 @@ Music_TitleScreenXY_Ch3_b1:
 	note D_, 2
 	octave 3
 	note_type 12, 1, 4
-	note D#, 2
-	rest 2
-	octave 2
-	note A#, 2
-	rest 2
-	octave 3
-	note D#, 2
-	rest 2
-	octave 2
-	note A#, 2
-	rest 2
+	sound_call Music_TitleScreenXY_Ch3_ditty1
 	octave 3
 	note C#, 2
 	rest 2
@@ -740,29 +668,9 @@ Music_TitleScreenXY_Ch3_b1:
 	note G#, 2
 	rest 2
 	octave 3
-	note D#, 2
-	rest 2
-	octave 2
-	note A#, 2
-	rest 2
+	sound_call Music_TitleScreenXY_Ch3_ditty1
 	octave 3
-	note D#, 2
-	rest 2
-	octave 2
-	note A#, 2
-	rest 2
-	octave 3
-	note D#, 2
-	rest 2
-	octave 2
-	note A#, 2
-	rest 2
-	octave 3
-	note D#, 2
-	rest 2
-	octave 2
-	note A#, 2
-	rest 2
+	sound_call Music_TitleScreenXY_Ch3_ditty1
 	note_type 8, 1, 2 ; measure 34
 	octave 3
 	note G#, 2
@@ -882,19 +790,7 @@ Music_TitleScreenXY_Ch4_b0:
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 4
-	drum_note 3, 4
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 4
-	drum_note 3, 4
+	sound_call Music_TitleScreenXY_Ch4_ditty1
 	drum_note 3, 4
 	drum_note 3, 4
 	drum_note 3, 4
@@ -929,19 +825,7 @@ Music_TitleScreenXY_Ch4_b1:
 	drum_note 3, 4
 	drum_note 3, 8
 	drum_note 3, 4
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 4
-	drum_note 3, 4
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 4
-	drum_note 3, 4
+	sound_call Music_TitleScreenXY_Ch4_ditty1
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 4
@@ -967,5 +851,74 @@ Music_TitleScreenXY_Ch4_b2:
 	drum_note 3, 4
 	drum_note 3, 4
 	drum_note 3, 8
+	drum_note 3, 4
+	sound_ret
+
+Music_TitleScreenXY_Ch1_ditty1:
+	note F_, 2
+	note E_, 2
+	note_type 12, 11, 7
+	note D#, 16
+	note_type 8, 11, 7
+	octave 2
+	note D#, 2
+	rest 2
+	note D#, 2
+	octave 1
+	note B_, 4
+	rest 2
+	octave 2
+	note C#, 4
+	rest 2
+	note D_, 4
+	rest 2
+	sound_ret
+
+Music_TitleScreenXY_Ch2_ditty1:
+	note G#, 2
+	rest 4
+	note G#, 2
+	rest 4
+	note G#, 1
+	rest 1
+	note G#, 1
+	rest 1
+	note G#, 1
+	rest 1
+	note G#, 2
+	rest 4
+	note G#, 2
+	rest 4
+	note G#, 2
+	rest 4
+	sound_ret
+
+Music_TitleScreenXY_Ch3_ditty1:
+	note D#, 2
+	rest 2
+	octave 2
+	note A#, 2
+	rest 2
+	octave 3
+	note D#, 2
+	rest 2
+	octave 2
+	note A#, 2
+	rest 2
+	sound_ret
+
+Music_TitleScreenXY_Ch4_ditty1:
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 4
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
 	drum_note 3, 4
 	sound_ret

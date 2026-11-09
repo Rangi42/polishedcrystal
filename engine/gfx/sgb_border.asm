@@ -1,5 +1,13 @@
-SGBBorderMap:
-INCBIN "gfx/sgb/sgb_border.bin"
+; The tilemap (32 * 28 * 2 = $700 bytes) is decompressed to wTilemap,
+; and the palettes (32 colors = $40 bytes) are copied to wTilemap + $80 tiles.
+; The tilemap spans the sections "Tilemap and Attrmap", "Misc 404", and part of
+; "Misc 1300", and the palettes span more of "Misc 1300".
+; This is harmless because WRAM0 was cleared before and after the SGB border is
+; initialized, and any emulator which calls this will reset the game in CGB mode
+; anyway. We only have to avoid writing to important WRAM -- sections "Stack",
+; "ROM Checksum", and anything else that `_Init` uses before this.
+; We could also leave the tilemap uncompressed in ROM, but it would spend
+; 1480 more bytes.
 
 InitSGBBorder::
 	ldh a, [hCGB]
@@ -9,6 +17,16 @@ InitSGBBorder::
 	ld hl, SGBBorderGFX
 	ld a, BANK(SGBBorderGFX)
 	call FarDecompress
+
+	ld hl, SGBBorderMap
+	ld a, BANK(SGBBorderMap)
+	ld de, wTilemap
+	call FarDecompressToDE
+
+	ld hl, SGBBorderPals
+	ld de, wTilemap + $80 tiles
+	ld bc, 32 colors
+	rst CopyBytes
 
 	di
 	ld hl, MaskEnFreezePacket
@@ -20,7 +38,7 @@ InitSGBBorder::
 	call CopyGfxToSuperNintendoVRAM
 
 	ld de, PctTrnPacket
-	ld hl, SGBBorderMap
+	ld hl, wTilemap
 	call CopyGfxToSuperNintendoVRAM
 
 	ld hl, vTiles0
@@ -29,7 +47,13 @@ InitSGBBorder::
 	rst ByteFill
 
 	ld hl, MaskEnCancelPacket
-	; fallthrough
+	call SendSGBPacket
+
+	xor a
+	ld hl, wTilemap
+	ld bc, 32 * 28 * 2
+	rst ByteFill
+	ret
 
 SendSGBPacket:
 	ld a, [hl]
@@ -135,9 +159,5 @@ ChrTrnPacket:
 PctTrnPacket:
 	db $a1, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
-	ds 9
-
 SGBBorderPals:
 INCLUDE "gfx/sgb/sgb_border.pal"
-
-	assert SGBBorderMap + $80 tiles == SGBBorderPals

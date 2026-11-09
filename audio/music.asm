@@ -327,6 +327,9 @@ INCLUDE "audio/music/rse/bicycle.asm"
 SECTION "Song - rse/abandonedship", ROMX
 INCLUDE "audio/music/rse/abandonedship.asm"
 
+SECTION "Song - rse/cablecar", ROMX
+INCLUDE "audio/music/rse/cablecar.asm"
+
 SECTION "Song - rse/championbattle", ROMX
 INCLUDE "audio/music/rse/championbattle.asm"
 
@@ -561,8 +564,5 @@ INCLUDE "audio/music/stadium/mewtwobattle.asm"
 
 SECTION "Song - m02/lugiassong", ROMX
 INCLUDE "audio/music/m02/lugiassong.asm"
-
-SECTION "Song - undertale/megalovania", ROMX
-INCLUDE "audio/music/undertale/megalovania.asm"
 
 ENDSECTION

@@ -1,5 +1,10 @@
-	db  75, 100,  95, 110,  40,  70 ; 490 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 490,  75, 100,  95,  40,  70, 110
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 500,  75, 110,  95,  40,  70, 110
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db NORMAL, NORMAL ; type
 	db 45 ; catch rate

@@ -1,5 +1,5 @@
-	db  50,  75,  90,  40,  10,  35 ; 300 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 300,  50,  75,  90,  10,  35,  40
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db ICE, STEEL ; type
 	db 255 ; catch rate
@@ -7,7 +7,11 @@
 	db NO_ITEM, GRIP_CLAW ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
+if DEF(FAITHFUL)
 	abilities_for SANDSHREW_ALOLAN, SNOW_CLOAK, SNOW_CLOAK, SLUSH_RUSH
+else
+	abilities_for SANDSHREW_ALOLAN, SNOW_CLOAK, SHARPNESS, SLUSH_RUSH
+endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

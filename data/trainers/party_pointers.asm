@@ -143,7 +143,7 @@ TrainerGroups:
 	dba ValerieGroup
 	dba KukuiGroup
 	dba PiersGroup
-	dba KatyGroup
+	dba LarryGroup
 	dba VictorGroup
 	dba BillGroup
 	dba YellowGroup
@@ -151,4 +151,5 @@ TrainerGroups:
 	dba ImakuniGroup
 	dba LawrenceGroup
 	dba ReiGroup
+	dba FirebreatherGroup
 	assert_table_length NUM_TRAINER_CLASSES

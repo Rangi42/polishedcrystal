@@ -1,5 +1,5 @@
-	db  52,  95,  55,  55,  58,  62 ; 377 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 377,  52,  95,  55,  58,  62,  55
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db FIGHTING, FIGHTING ; type
 	db 45 ; catch rate

@@ -80,7 +80,7 @@ CheckHowToEvolve:
 	push hl
 	xor a
 	ld [wMonType], a
-	predef CopyPkmnToTempMon
+	farcall CopyPkmnToTempMon
 	pop hl
 
 .loop
@@ -401,12 +401,13 @@ TryToEvolve:
 	call DelayFrames
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	lb bc, 12, 20
 	call ClearBox
 
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call ClearSprites
 
@@ -443,7 +444,8 @@ TryToEvolve:
 	ld c, 40
 	call DelayFrames
 
-	call ClearTileMap
+	call ClearScreen
+	call ApplyAttrAndTilemapInVBlank
 	call UpdateSpeciesNameIfNotNicknamed
 	call GetBaseData
 
@@ -452,7 +454,7 @@ TryToEvolve:
 	farcall GetHyperTraining
 	inc a ; factor in EVs
 	ld b, a
-	predef CalcPkmnStats
+	farcall CalcPkmnStats
 
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMons
@@ -552,24 +554,16 @@ IsMonHoldingEverstone:
 
 Text_CongratulationsYourPokemon:
 	; Congratulations! Your @ @
-	text_far _CongratulationsYourPokemonText
-	text_end
-
+	text_farend _CongratulationsYourPokemonText
 Text_EvolvedIntoPKMN:
 	; evolved into @ !
-	text_far _EvolvedIntoText
-	text_end
-
+	text_farend _EvolvedIntoText
 Text_StoppedEvolving:
 	; Huh? @ stopped evolving!
-	text_far _StoppedEvolvingText
-	text_end
-
+	text_farend _StoppedEvolvingText
 Text_WhatEvolving:
 	; What? @ is evolving!
-	text_far _EvolvingText
-	text_end
-
+	text_farend _EvolvingText
 LearnEvolutionMove:
 	; c = species
 	ld a, [wTempSpecies]
@@ -627,7 +621,7 @@ LearnEvolutionMove:
 	call CopyName1
 	ld a, [wCurPartySpecies]
 	push af
-	predef LearnMove
+	farcall LearnMove
 	pop af
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
@@ -684,7 +678,7 @@ LearnLevelMoves:
 	call CopyName1
 	ld a, [wCurPartySpecies]
 	push af
-	predef LearnMove
+	farcall LearnMove
 	pop af
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
@@ -798,7 +792,7 @@ ShiftMoves:
 EvoFlagAction:
 	push de
 	ld d, $0
-	predef FlagPredef
+	farcall SmallFlagAction
 	pop de
 	ret
 

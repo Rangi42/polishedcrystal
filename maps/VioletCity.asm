@@ -14,14 +14,14 @@ VioletCity_MapScriptHeader:
 	warp_event 23,  1, SPROUT_TOWER_1F, 1
 	warp_event 39, 24, ROUTE_31_VIOLET_GATE, 1
 	warp_event 39, 25, ROUTE_31_VIOLET_GATE, 2
-	warp_event  2,  8, ROUTE_36_VIOLET_GATE, 3
-	warp_event  2,  9, ROUTE_36_VIOLET_GATE, 4
+	warp_event  0,  8, ROUTE_36_VIOLET_GATE, 3
+	warp_event  0,  9, ROUTE_36_VIOLET_GATE, 4
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 24, 20, BGEVENT_JUMPTEXT, VioletCitySignText
-	bg_event 15, 17, BGEVENT_JUMPTEXT, VioletGymSignText
+	bg_event 19, 17, BGEVENT_JUMPTEXT, VioletGymSignText
 	bg_event 25,  3, BGEVENT_JUMPTEXT, SproutTowerSignText
 	bg_event 27, 17, BGEVENT_JUMPTEXT, EarlsPokemonAcademySignText
 	bg_event 37, 14, BGEVENT_ITEM + HYPER_POTION, EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION

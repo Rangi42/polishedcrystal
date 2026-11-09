@@ -484,7 +484,7 @@ GetStorageBoxPointer:
 	dec c
 	ld d, 1 ; will cause a useless bankswitch in flag checking, but that's OK
 	ld b, CHECK_FLAG
-	predef FlagPredef
+	farcall SmallFlagAction
 	pop bc
 	jr z, .got_bank
 	inc d
@@ -579,7 +579,7 @@ SetStorageBoxPointer:
 	jr z, .got_flag_action
 	ld b, SET_FLAG
 .got_flag_action
-	predef FlagPredef
+	farcall SmallFlagAction
 	jr .done
 
 .party
@@ -997,7 +997,7 @@ SetTempPartyMonData:
 	ld de, wTempMonMaxHP
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
-	predef CalcPkmnStats
+	farcall CalcPkmnStats
 
 	; Reset status condition
 	xor a
@@ -1412,7 +1412,7 @@ StorageFlagAction:
 	ld c, e
 	dec c
 	ld d, 0
-	predef_jump FlagPredef
+	farjp SmallFlagAction
 
 Special_CurBoxFullCheck:
 ; Returns [hScriptVar] = zero if wTempMonBox == wCurBox

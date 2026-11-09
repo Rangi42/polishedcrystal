@@ -1,7 +1,7 @@
 .PHONY: all clean
+.SUFFIXES:
 
-CC := gcc
-CFLAGS = -O3 -flto -std=c17 -Wall -Wextra -pedantic \
+WARNFLAGS := -Wall -Wextra -pedantic \
          -Walloc-zero \
          -Wcast-align \
          -Wcast-qual \
@@ -13,26 +13,33 @@ CFLAGS = -O3 -flto -std=c17 -Wall -Wextra -pedantic \
          -Wformat-truncation=1 \
          -Winline \
          -Wlogical-op \
-         -Wnested-externs \
-         -Wno-sign-compare \
          -Wnull-dereference \
-         -Wold-style-definition \
          -Wshadow \
          -Wshift-overflow=2 \
          -Wstrict-overflow=2 \
-         -Wstrict-prototypes \
          -Wstringop-overflow=4 \
+         -Wtrampolines \
          -Wundef \
          -Wuninitialized \
          -Wunused \
          -Wwrite-strings
 
+COMMON_FLAGS := ${WARNFLAGS} -O3 -flto
+# debugging sanitizers:
+#COMMON_FLAGS += -ggdb3 -Og -D_GLIBCXX_ASSERTIONS \
+#                -fno-omit-frame-pointer -fno-optimize-sibling-calls \
+#                -fsanitize=address,undefined,float-divide-by-zero
+
+CFLAGS := ${COMMON_FLAGS} -std=c17 -Wnested-externs -Wold-style-definition -Wstrict-prototypes
+CXXFLAGS := ${COMMON_FLAGS} -std=c++17 -Wold-style-cast
+
 tools := \
 	bankends \
 	bpp2png \
 	bspcomp \
+	fine_print \
 	gfx \
-	lzcomp \
+	lzpcompress \
 	make_patch \
 	png_dimensions \
 	pokemon_animation \
@@ -46,6 +53,7 @@ all: $(tools)
 clean:
 	$(RM) $(tools) *.o *.h.gch *.pyc
 
+fine_print: common.h
 gfx: common.h
 png_dimensions: common.h
 pokemon_animation: common.h
@@ -55,10 +63,6 @@ vwf: common.h
 
 bpp2png: bpp2png.c lodepng/lodepng.c common.h lodepng/lodepng.h
 	$(CC) $(CFLAGS) -o $@ bpp2png.c lodepng/lodepng.c
-
-lzcomp: CFLAGS += -Wno-strict-overflow -Wno-sign-compare
-lzcomp: $(wildcard lz/*.c) $(wildcard lz/*.h)
-	$(CC) $(CFLAGS) -o $@ lz/*.c
 
 bspcomp: bsp/bspcomp.c
 	$(CC) $(CFLAGS) -o $@ $^
@@ -71,3 +75,6 @@ parsemap.o: parsemap.c parsemap.h
 
 %: %.c
 	$(CC) $(CFLAGS) -o $@ $<
+
+%: %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $<

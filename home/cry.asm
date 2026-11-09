@@ -53,14 +53,13 @@ LoadCry::
 
 _LoadCry:
 	ld hl, PokemonCries
-rept 6
+rept MON_CRY_LENGTH
 	add hl, bc
 endr
 
 	ld a, [hli]
 	ld e, a
-	ld a, [hli]
-	ld d, a
+	ld d, 0
 	ld a, [hli]
 	ld [wCryPitch], a
 	ld a, [hli]

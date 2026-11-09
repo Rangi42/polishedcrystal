@@ -1,3 +1,10 @@
+MACRO? bst
+; total, hp, atk, def, spe, sat, sdf
+	def n = \2 + \3 + \4 + \5 + \6 + \7
+	assert \1 == n, "Should BST be \1 or {d:n}?"
+	db \2, \3, \4, \7, \5, \6
+ENDM
+
 MACRO ev_yield
 	def_evs \#
 	db (VV_HP << 6) | (VV_ATK << 4) | (VV_DEF << 2) | VV_SPE

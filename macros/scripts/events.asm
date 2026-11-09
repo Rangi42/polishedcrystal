@@ -149,7 +149,7 @@ ENDM
 
 MACRO setmonval ; pseudo-command for loading mons into hScriptVar
 	db setval16_command
-	dp \1 ; mon value
+	dp \# ; mon value
 ENDM
 
 	const addval_command
@@ -218,15 +218,39 @@ MACRO loadvar
 	db \2 ; value
 ENDM
 
+; Item-giving macros require a failure command, e.g.:
+;   giveitem POTION, iffalsefwd .BagFull
+;   verbosegiveitems POKE_BALL, 5, iffalse_endtext
+;   verbosegiveitemvar LEVEL_BALL, VAR_KURT_APRICORNS, iffalse_endtext
+; Singular macros give one item; plural macros require a quantity.
+; Use an _unsafe macro only when failure is handled later or deliberately
+; allowed, and explain why at the call site.
+
 	const giveitem_command
 MACRO giveitem
+	assert _NARG >= 2, "`giveitem` requires a fail-safe handler for when the Bag is full"
+	giveitem_unsafe \1
+	shift
+	assert STRLEN("\#"), "`giveitem` fail-safe handler is empty"
+	\#
+ENDM
+
+MACRO giveitems
+	assert _NARG >= 3, "`giveitems` requires a fail-safe handler for when the Bag is full"
+	giveitems_unsafe \1, \2
+	shift 2
+	assert STRLEN("\#"), "`giveitems` fail-safe handler is empty"
+	\#
+ENDM
+
+MACRO giveitem_unsafe
+	giveitems_unsafe \1, 1
+ENDM
+
+MACRO giveitems_unsafe
 	db giveitem_command
 	db \1 ; item
-	if _NARG == 2
-		db \2 ; quantity
-	else
-		db 1
-	endc
+	db \2 ; quantity
 ENDM
 
 	const takeitem_command
@@ -312,7 +336,7 @@ ENDM
 	const checkpoke_command
 MACRO checkpoke
 	db checkpoke_command
-	dp \1 ; pkmn
+	dp \# ; pkmn
 ENDM
 
 	const givepoke_command
@@ -1004,20 +1028,40 @@ ENDM
 
 	const verbosegiveitem_command
 MACRO verbosegiveitem
+	assert _NARG >= 2, "`verbosegiveitem` requires a fail-safe handler for when the Bag is full"
+	verbosegiveitem_unsafe \1
+	shift
+	assert STRLEN("\#"), "`verbosegiveitem` fail-safe handler is empty"
+	\#
+ENDM
+
+MACRO verbosegiveitems
+	assert _NARG >= 3, "`verbosegiveitems` requires a fail-safe handler for when the Bag is full"
+	verbosegiveitems_unsafe \1, \2
+	shift 2
+	assert STRLEN("\#"), "`verbosegiveitems` fail-safe handler is empty"
+	\#
+ENDM
+
+MACRO verbosegiveitem_unsafe
+	verbosegiveitems_unsafe \1, 1
+ENDM
+
+MACRO verbosegiveitems_unsafe
 	db verbosegiveitem_command
 	db \1 ; item
-	if _NARG == 2
-		db \2 ; quantity
-	else
-		db 1
-	endc
+	db \2 ; quantity
 ENDM
 
 	const verbosegiveitemvar_command
 MACRO verbosegiveitemvar
+	assert _NARG >= 3, "`verbosegiveitemvar` requires a fail-safe handler for when the Bag is full"
 	db verbosegiveitemvar_command
 	db \1 ; item
 	db \2 ; var
+	shift 2
+	assert STRLEN("\#"), "`verbosegiveitemvar` fail-safe handler is empty"
+	\#
 ENDM
 
 	const swarm_command
@@ -1417,6 +1461,19 @@ MACRO digmod
 	db digmod_command
 	db \1 ; warp_id
 	map_id \2 ; map
+ENDM
+
+	const toggleevent_command
+MACRO toggleevent
+	db toggleevent_command
+	dw \1 ; event_flag
+ENDM
+
+	const usepaletteswap_command
+MACRO usepaletteswap
+	def _NUM_PALETTE_SWAPS = 0
+	db usepaletteswap_command
+	dw \1 ; paletteswap_pointer
 ENDM
 
 DEF NUM_EVENT_COMMANDS EQU const_value

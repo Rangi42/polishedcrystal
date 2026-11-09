@@ -53,27 +53,19 @@ TossItemFromPC:
 
 .TossHowMany:
 	; Toss out how many @ (S)?
-	text_far _ItemsTossOutHowManyText
-	text_end
-
+	text_farend _ItemsTossOutHowManyText
 .ConfirmToss:
 	; Throw away @ @ (S)?
-	text_far _AskQuantityThrowAwayText
-	text_end
-
+	text_farend _AskQuantityThrowAwayText
 .TossedThisMany:
 	; Discarded @ (S).
-	text_far _ItemsDiscardedText
-	text_end
-
+	text_farend _ItemsDiscardedText
 CantUseItem:
 	ld hl, CantUseItemText
 	jmp MenuTextboxWaitButton
 
 CantUseItemText:
-	text_far _ItemsOakWarningText
-	text_end
-
+	text_farend _ItemsOakWarningText
 PartyMonItemName:
 	ld a, [wCurItem]
 	ld [wNamedObjectIndex], a
@@ -131,7 +123,7 @@ SwitchPartyMons:
 	cp 2
 	jr c, .DontSwitch
 
-	ld a, 4
+	ld a, PARTYMENUACTION_MOVE
 	ld [wPartyMenuActionText], a
 
 	farcall InitPartySwap
@@ -147,7 +139,7 @@ SwitchPartyMons:
 
 	farcall _SwitchPartyMons
 
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 
 	farcall LoadPartyMenuGFX
@@ -159,7 +151,7 @@ SwitchPartyMons:
 	ret
 
 .DontSwitch:
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	jmp CancelPokemonAction
 
@@ -381,7 +373,7 @@ SwapPartyItem:
 	ld [wSwitchMon], a
 	farcall HoldSwitchmonIcon
 	farcall InitPartyMenuNoCancel
-	ld a, 4
+	ld a, PARTYMENUACTION_MOVE
 	ld [wPartyMenuActionText], a
 	farcall WritePartyMenuTilemap
 	farcall PlacePartyMenuText
@@ -454,12 +446,8 @@ SwapPartyItem:
 	pop hl
 	ld [wCurPartySpecies], a ; load pkmn2 species
 	call UpdateMewtwoForm
-	xor a
-	ld [wPartyMenuActionText], a
-	jmp CancelPokemonAction
-
 .DontSwap
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	jmp CancelPokemonAction
 
@@ -535,37 +523,21 @@ GiveTakeItemMenuData:
 	db "Swap@"
 
 TookAndMadeHoldText:
-	text_far _PokemonSwapItemText
-	text_end
-
+	text_farend _PokemonSwapItemText
 MadeHoldText:
-	text_far _PokemonHoldItemText
-	text_end
-
+	text_farend _PokemonHoldItemText
 PleaseRemoveMailText:
-	text_far _PokemonRemoveMailText
-	text_end
-
+	text_farend _PokemonRemoveMailText
 IsntHoldingAnythingText:
-	text_far _PokemonNotHoldingText
-	text_end
-
+	text_farend _PokemonNotHoldingText
 ItemStorageIsFullText:
-	text_far _ItemStorageFullText
-	text_end
-
+	text_farend _ItemStorageFullText
 TookFromText:
-	text_far _PokemonTookItemText
-	text_end
-
+	text_farend _PokemonTookItemText
 SwitchAlreadyHoldingText:
-	text_far _PokemonAskSwapItemText
-	text_end
-
+	text_farend _PokemonAskSwapItemText
 CantBeHeldText:
-	text_far _ItemCantHeldText
-	text_end
-
+	text_farend _ItemCantHeldText
 CantPlaceMailInStorageText:
 	text "Can't place Mail in"
 	line "storage."
@@ -712,34 +684,22 @@ TakeMail:
 
 .mailwilllosemessagetext
 ; The MAIL will lose its message. OK?
-	text_far _MailLoseMessageText
-	text_end
-
+	text_farend _MailLoseMessageText
 .tookmailfrommontext
 ; MAIL detached from <POKEMON>.
-	text_far _MailDetachedText
-	text_end
-
+	text_farend _MailDetachedText
 .bagfulltext
 ; There's no space for removing MAIL.
-	text_far _MailNoSpaceText
-	text_end
-
+	text_farend _MailNoSpaceText
 .sendmailtopctext
 ; Send the removed MAIL to your PC?
-	text_far _MailAskSendToPCText
-	text_end
-
+	text_farend _MailAskSendToPCText
 .mailboxfulltext
 ; Your PC's MAILBOX is full.
-	text_far _MailboxFullText
-	text_end
-
+	text_farend _MailboxFullText
 .sentmailtopctext
 ; The MAIL was sent to your PC.
-	text_far _MailSentToPCText
-	text_end
-
+	text_farend _MailSentToPCText
 OpenPartySummary:
 	call OpenTempmonSummary
 	jmp ReturnToMapFromSubmenu
@@ -755,7 +715,7 @@ _OpenTempmonSummary:
 	call LowVolume
 	ld a, TEMPMON
 	ld [wMonType], a
-	predef SummaryScreenInit
+	farcall SummaryScreenInit
 	; check if the cry is still playing
 	call CheckSFX
 	ld a, MAX_VOLUME
@@ -841,16 +801,14 @@ MonMenu_FreshSnack:
 	call PrintText
 
 .finish
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	ld a, $3
 	ret
 
 .Text_NotEnoughHP:
 	; Not enough HP!
-	text_far _PokemonNotEnoughHPText
-	text_end
-
+	text_farend _PokemonNotEnoughHPText
 .CheckMonHasEnoughHP:
 ; Need to have at least (MaxHP / 5) HP left.
 	ld a, MON_MAXHP
@@ -1404,7 +1362,7 @@ GetForgottenMoves::
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	predef GetEvosAttacksPointer
+	farcall GetEvosAttacksPointer
 .skip_evos
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -1481,6 +1439,7 @@ SetUpMoveScreenBG:
 	call ClearTileMap
 	call ClearSprites
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
@@ -1518,6 +1477,7 @@ MoveScreen_ListMoves:
 	lb bc, 14, 18
 	call ClearBox
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, wMoveScreenMoves
 	ld b, a
@@ -1530,7 +1490,7 @@ MoveScreen_ListMoves:
 	ld a, SCREEN_WIDTH * 2 ; move list spacing
 	ld [wListMovesLineSpacing], a
 	hlcoord 2, 3
-	predef ListMoves
+	farcall ListMoves
 
 	; Get PP -- either current PP, or default PP for the move
 	ld a, [wMoveScreenMode]
@@ -1584,7 +1544,7 @@ MoveScreen_ListMoves:
 .got_pp
 	; Now we have things set up correctly
 	hlcoord 10, 4
-	predef ListMovePP
+	farcall ListMovePP
 	hlcoord 1, 12, wAttrmap
 	ld bc, 6
 	xor a
@@ -1647,12 +1607,13 @@ MoveScreen_ListMovesFast:
 	hlcoord 1, 14
 	ld de, String_MoveSwap
 	rst PlaceString
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
 .not_swapping
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 
 	hlcoord 10, 12
@@ -1733,8 +1694,8 @@ MoveScreen_ListMovesFast:
 
 .description
 	hlcoord 1, 14
-	predef PrintMoveDesc
-	ld a, $1
+	farcall PrintMoveDesc
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -1745,5 +1706,4 @@ String_PowAcc:
 	db "   <BOLDP>/   %@"
 
 Text_CantForgetHM:
-	text_far _MoveCantForgetHMText
-	text_end
+	text_farend _MoveCantForgetHMText

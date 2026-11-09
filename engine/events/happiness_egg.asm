@@ -19,9 +19,18 @@ GetFirstPokemonHappiness:
 	ld bc, MON_HAPPINESS - MON_IS_EGG
 	add hl, bc
 	ld a, [hl]
-	ldh [hScriptVar], a
-	call GetPokemonName
-	jmp CopyPokemonName_Buffer1_Buffer3
+	jr _FinishSelectedMonCheck
+
+GetSelectedPokemonHappiness:
+	ld a, [wCurPartySpecies]
+	ld [wNamedObjectIndex], a
+	ld a, [wCurForm]
+	ld [wNamedObjectIndex+1], a
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Happiness
+	call GetPartyLocation
+	ld a, [hl]
+	jr _FinishSelectedMonCheck
 
 CheckFirstMonIsEgg:
 	ld a, [wPartyMon1Species]
@@ -31,9 +40,11 @@ CheckFirstMonIsEgg:
 	ld [wNamedObjectIndex+1], a
 	bit MON_IS_EGG_F, a
 	ld a, TRUE
-	jr nz, .egg
+	jr nz, _FinishSelectedMonCheck
 	xor a
-.egg
+	; fallthrough
+
+_FinishSelectedMonCheck:
 	ldh [hScriptVar], a
 	call GetPokemonName
 	jmp CopyPokemonName_Buffer1_Buffer3
@@ -64,7 +75,6 @@ ChangeHappiness:
 	cp HAPPINESS_THRESHOLD_2
 	jr c, .ok
 	inc e
-
 .ok
 	ld b, 0
 	ld hl, HappinessChanges
@@ -158,7 +168,7 @@ StepHappiness::
 	dec a
 	ld [wCurPartyMon], a
 	ld c, HAPPINESS_STEP
-	predef ChangeHappiness
+	call ChangeHappiness
 	ld a, [wCurPartyMon]
 	jr .loop
 

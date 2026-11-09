@@ -6,14 +6,22 @@ if !DEF(MONOCHROME)
 	RGB 31,31,31, 31,31,31, 31,00,00, 00,00,00 ; emote red
 	RGB 31,31,31, 31,31,31, 31,16,01, 00,00,00 ; emote orange
 	RGB 31,31,31, 31,31,31, 00,00,31, 00,00,00 ; emote blue
+	RGB 30,28,26, 31,23,31, 31,14,31, 09,09,31 ; aqua red
+	RGB 30,28,26, 31,23,31, 16,16,31, 09,09,31 ; aqua blue
+	RGB 30,28,26, 31,23,31, 20,16,31, 09,09,31 ; aqua brown
+	RGB 30,28,26, 31,23,31, 22,12,31, 09,09,31 ; aqua purple
 	RGB 27,31,27, 31,31,30, 19,24,31, 05,10,27 ; electric fence
 	RGB 15,14,24, 31,31,31, 31,27,01, 31,16,01 ; lightning crystal
 	RGB 15,14,24, 31,30,31, 24,18,31, 12,08,18 ; rock crystal
 	RGB 27,31,27, 30,28,02, 08,14,24, 07,07,07 ; n64
 	RGB 27,31,27, 30,28,26, 11,13,31, 07,07,07 ; pokecom sign
 	RGB 27,31,27, 31,19,10, 07,17,21, 00,00,00 ; rangi
+	RGB 27,31,27, 31,19,10, 24,11,24, 00,00,00 ; emi
+	RGB 28,31,16, 31,22,10, 31,07,01, 00,00,00 ; moltres
 	RGB 27,31,27, 30,28,26, 13,13,13, 07,07,07 ; drill
 	RGB 27,31,27, 31,28,28, 22,27,26, 09,10,10 ; pearl
+	RGB 31,31,31, 31,16,01, 31,01,00, 31,31,07 ; campfire
+	RGB 31,31,31, 17,22,22, 12,17,17, 07,07,07 ; cable car
 	RGB 30,30,11, 30,30,11, 16,14,10, 00,00,00 ; tiny window
 else
 	MONOCHROME_RGB_FOUR_EMOTE ; emote gray
@@ -23,13 +31,21 @@ else
 	MONOCHROME_RGB_FOUR_EMOTE ; emote red
 	MONOCHROME_RGB_FOUR_EMOTE ; emote orange
 	MONOCHROME_RGB_FOUR_EMOTE ; emote blue
+	MONOCHROME_RGB_FOUR_OW ; aqua red
+	MONOCHROME_RGB_FOUR_OW ; aqua blue
+	MONOCHROME_RGB_FOUR_OW ; aqua brown
+	MONOCHROME_RGB_FOUR_OW ; aqua purple
 	MONOCHROME_RGB_FOUR_OW ; electric fence
 	MONOCHROME_RGB_FOUR_OW ; lightning crystal
 	MONOCHROME_RGB_FOUR_OW ; rock crystal
 	MONOCHROME_RGB_FOUR_OW ; n64
 	MONOCHROME_RGB_FOUR_OW ; pokecom sign
 	MONOCHROME_RGB_FOUR_OW ; rangi
+	MONOCHROME_RGB_FOUR_OW ; emi
+	MONOCHROME_RGB_FOUR_OW ; moltres
 	MONOCHROME_RGB_FOUR_OW ; drill
 	MONOCHROME_RGB_FOUR_OW ; pearl
+	MONOCHROME_RGB_FOUR_OW ; campfire
+	MONOCHROME_RGB_FOUR_EMOTE ; cable car
 	MONOCHROME_RGB_FOUR_OW ; tiny window
 endc

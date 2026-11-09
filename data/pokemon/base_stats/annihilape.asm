@@ -1,5 +1,5 @@
-	db 110, 115,  80,  90,  50,  90 ; 535 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 535, 110, 115,  80,  50,  90,  90
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db FIGHTING, GHOST ; type
 	db 45 ; catch rate

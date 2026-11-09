@@ -1,5 +1,10 @@
-	db  65,  60, 110,  65, 130,  95 ; 525 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 525,  65,  60, 110, 130,  95,  65
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 525,  65,  60, 110, 130,  65,  95
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db ICE, ICE ; type
 	db 45 ; catch rate

@@ -10,7 +10,7 @@ on:
 env:
   # PC_VERSION should match VERSION in Makefile
   PC_VERSION: "3.2.3"
-  RGBDS_VERSION: "v1.0.1"
+  RGBDS_VERSION: "v1.0.4"
 
 jobs:
   build-ubuntu:
@@ -28,12 +28,12 @@ jobs:
         name: "Install build dependencies"
         run: |
           sudo apt-get update
-          sudo apt-get install bison gcc git make libpng-dev -y;
+          sudo apt-get install bison gcc g++ git make libpng-dev -y;
 
       # CHECKOUT RGBDS
       - id: checkout-rgbds
         name: "Checkout gbdev/rgbds"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: rgbds
           ref: ${{ env.RGBDS_VERSION }}
@@ -49,9 +49,13 @@ jobs:
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # BUILD ROMS
+      - name: "Build tools"
+        run: |
+          make -j$(nproc) -C tools
+
       - id: build-polishedcrystal
         name: "Build polishedcrystal"
         run: |
@@ -127,7 +131,7 @@ jobs:
       - id: upload-polishedcrystal
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal artifacts"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "polishedcrystal"
           retention-days: 1
@@ -137,7 +141,7 @@ jobs:
       - id: upload-polishedcrystal-faithful
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polishedcrystal-faithful artifacts"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "polishedcrystal-faithful"
           retention-days: 1
@@ -147,7 +151,7 @@ jobs:
       - id: upload-polisheddebug
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug artifacts"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "polisheddebug"
           retention-days: 1
@@ -157,7 +161,7 @@ jobs:
       - id: upload-polisheddebug-faithful
         if: ${{ github.repository_owner == 'Rangi42' }}
         name: "Upload polisheddebug-faithful artifacts"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "polisheddebug-faithful"
           retention-days: 1

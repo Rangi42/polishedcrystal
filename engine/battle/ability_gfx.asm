@@ -6,34 +6,7 @@ DEF SLIDEOUT_START_TILE EQU $d4
 PerformAbilityGFX:
 	call RunFunctionInWRA6
 .Function:
-	; Get ability name
-	ld de, wAbilityName
-	farcall _BufferAbility
-
-	; Blank existing nickname
-	ld hl, wAbilityPkmn
-	ld bc, MON_NAME_LENGTH
-	ld a, '@'
-	rst ByteFill
-
-	; Get user nickname (post-processed with n-grams)
-	ldh a, [hBattleTurn]
-	and a
-	ld de, wBattleMonNickname
-	jr z, .got_pkmn_name
-	ld de, wEnemyMonNickname
-.got_pkmn_name
-	ld hl, wAbilityPkmn
-	rst PlaceString
-
-	; Append 's
-	ld hl, wAbilityPkmn
-.name_loop
-	ld a, [hli]
-	cp '@'
-	jr nz, .name_loop
-	ld [hld], a
-	ld [hl], '\'s'
+	call GetAbilityNameAndPkmn
 
 	; Copy tile data to temporary WRAM
 	call .CopyTilesToWRAM
@@ -159,7 +132,7 @@ PerformAbilityGFX:
 	ld bc, wAttrmap - wTilemap - SLIDEOUT_WIDTH - SCREEN_WIDTH
 	add hl, bc
 	ld b, -1 ; keep current palette
-	jr SetAbilityOverlayAttributes
+	jmp SetAbilityOverlayAttributes
 
 .CopyTilesToWRAM:
 	ldh a, [hBattleTurn]
@@ -209,6 +182,37 @@ PerformAbilityGFX:
 	pop hl
 	dec b
 	jr nz, .outer_loop
+	ret
+
+GetAbilityNameAndPkmn:
+	; Get ability name
+	ld de, wAbilityName
+	farcall _BufferAbility
+
+	; Blank existing nickname
+	ld hl, wAbilityPkmn
+	ld bc, MON_NAME_LENGTH
+	ld a, '@'
+	rst ByteFill
+
+	; Get user nickname (post-processed with n-grams)
+	ldh a, [hBattleTurn]
+	and a
+	ld de, wBattleMonNickname
+	jr z, .got_pkmn_name
+	ld de, wEnemyMonNickname
+.got_pkmn_name
+	ld hl, wAbilityPkmn
+	rst PlaceString
+
+	; Append 's
+	ld hl, wAbilityPkmn
+.name_loop
+	ld a, [hli]
+	cp '@'
+	jr nz, .name_loop
+	ld [hld], a
+	ld [hl], '\'s'
 	ret
 
 ResetAbilityTilemap:
@@ -281,6 +285,13 @@ SetAbilityOverlayAttributes:
 	ret
 
 ApplyAbilityTiles:
+	ld b, 0
+	jr _ApplyAbilityTiles
+
+GetAbilityTiles:
+	ld b, 1
+	; fallthrough
+_ApplyAbilityTiles:
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .ApplyEnemyTiles
@@ -295,6 +306,8 @@ ApplyAbilityTiles:
 	ldh [rVBK], a
 	ld c, SLIDEOUT_WIDTH * 2
 	ld de, wAbilityTiles
+	dec b
+	call z, SwapHLDE
 	call Get2bpp
 	xor a
 	ldh [rVBK], a
@@ -359,7 +372,38 @@ DismissAbilityOverlays:
 	jr nz, .attr_loop
 	ret
 
+PerformAbilityReplacementGFX:
+; Replace user's existing ability graphics from ability b to ability c.
+	call RunFunctionInWRA6
+.Function:
+	; Retrieve existing gfx, in case wAbilityTiles contains data for
+	; the opponent's ability rather than the user's.
+	push bc
+	ld de, SFX_SWEET_KISS
+	call PlaySFX
+	call GetAbilityTiles
+	pop bc
+	ld a, $11
+	ld [wAbilityDisplaySpeed], a
+
+	; Hide the existing graphics.
+	push bc
+	ld a, VWF_SINGLE | VWF_OPAQUE
+	call .update_gfx
+	pop bc
+	ld b, c
+	ld a, VWF_SINGLE | VWF_INVERT | VWF_OPAQUE
+.update_gfx
+	ld [wAbilityFlags], a
+	call GetAbilityNameAndPkmn
+	jr _AbilityVWF
+
 AbilityVWF:
+	ld a, VWF_SINGLE | VWF_INVERT | VWF_OPAQUE
+	ld [wAbilityFlags], a
+	xor a
+	ld [wAbilityDisplaySpeed], a
+_AbilityVWF:
 ; Write variable-width names into ability graphics
 	; First, try to center the combined string with some overlap.
 	ld de, wAbilityPkmn
@@ -407,7 +451,8 @@ AbilityVWF:
 	ld hl, wAbilityTiles
 	push bc
 	ld c, b
-	ld b, VWF_SINGLE | VWF_INVERT | VWF_OPAQUE
+	ld a, [wAbilityFlags]
+	ld b, a
 	call PlaceAbilityVWFString
 	ld de, wAbilityName
 	call GetVWFLength
@@ -417,7 +462,8 @@ AbilityVWF:
 	ld a, c
 	sub h
 	ld c, a
-	ld b, VWF_SINGLE | VWF_INVERT | VWF_OPAQUE
+	ld a, [wAbilityFlags]
+	ld b, a
 	ld hl, wAbilityTiles + SLIDEOUT_WIDTH tiles
 	; fallthrough
 
@@ -426,12 +472,23 @@ PlaceAbilityVWFString:
 	call PlaceVWFString
 	ret z
 
-	push hl
 	push de
 	push bc
+	push hl
 	call ApplyAbilityTiles
+	ld hl, wAbilityDisplaySpeed
+	ld a, [hl]
+	sub $10
+	ld [hl], a
+	jr nc, .no_overflow
+
+	; $fx & $xf = $xx, x = characters until DelayFrame.
+	swap a
+	and [hl]
+	ld [hl], a
 	call DelayFrame
+.no_overflow
+	pop hl
 	pop bc
 	pop de
-	pop hl
 	jr PlaceAbilityVWFString

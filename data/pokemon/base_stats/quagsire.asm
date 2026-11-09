@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  95,  85,  85,  35,  65,  65 ; 430 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 430,  95,  85,  85,  65,  65,  35
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  95,  95,  95,  35,  65,  65 ; 450 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 450,  95,  95,  95,  65,  65,  35
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db WATER, GROUND ; type

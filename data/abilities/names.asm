@@ -105,6 +105,7 @@ AbilityNames:
 	dw HoneyGather
 	dw Frisk
 	dw Reckless
+	dw BadDreams
 	dw Pickpocket
 	dw SheerForce
 	dw Contrary
@@ -132,6 +133,7 @@ AbilityNames:
 	dw SapSipper
 	dw Prankster
 	dw SandForce
+	dw IronBarbs
 	dw FurCoat
 	dw Bulletproof
 	dw Competitive
@@ -157,6 +159,7 @@ AbilityNames:
 	dw Sharpness
 	dw ArmorTail
 	dw MindsEye
+	dw MegaSol
 	assert_table_length NUM_ABILITIES
 
 NoAbility:       rawchar "---@"
@@ -264,6 +267,7 @@ SnowWarning:     rawchar "Snow Warning@"
 HoneyGather:     rawchar "Honey Gather@"
 Frisk:           rawchar "Frisk@"
 Reckless:        rawchar "Reckless@"
+BadDreams:       rawchar "Bad Dreams@"
 Pickpocket:      rawchar "Pickpocket@"
 SheerForce:      rawchar "Sheer Force@"
 Contrary:        rawchar "Contrary@"
@@ -291,6 +295,7 @@ MagicBounce:     rawchar "Magic Bounce@"
 SapSipper:       rawchar "Sap Sipper@"
 Prankster:       rawchar "Prankster@"
 SandForce:       rawchar "Sand Force@"
+IronBarbs:       rawchar "Iron Barbs@"
 FurCoat:         rawchar "Fur Coat@"
 Bulletproof:     rawchar "Bulletproof@"
 Competitive:     rawchar "Competitive@"
@@ -316,3 +321,4 @@ CudChew:         rawchar "Cud Chew@"
 Sharpness:       rawchar "Sharpness@"
 ArmorTail:       rawchar "Armor Tail@"
 MindsEye:        rawchar "Mind's Eye@"
+MegaSol:         rawchar "Mega Sol@"

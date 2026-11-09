@@ -2,11 +2,11 @@ SnowtopPokeCenter1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, SnowtopPokeCenter1FStairsCallback
 
 	def_warp_events
 	warp_event  5,  7, SNOWTOP_MOUNTAIN_OUTSIDE, 2
 	warp_event  6,  7, SNOWTOP_MOUNTAIN_OUTSIDE, 2
-	warp_event  0,  7, POKECENTER_2F, 1
 
 	def_coord_events
 
@@ -15,6 +15,14 @@ SnowtopPokeCenter1F_MapScriptHeader:
 
 	def_object_events
 	pc_nurse_event  5, 1
+
+SnowtopPokeCenter1FStairsCallback:
+	; no second floor
+	changeblock 0, 6, $49
+	; wooden table
+	changeblock 8, 4, $4a
+	changeblock 8, 6, $4b
+	endcallback
 
 PokemonJournalProfWillowScript:
 	setflag ENGINE_READ_PROF_WILLOW_JOURNAL

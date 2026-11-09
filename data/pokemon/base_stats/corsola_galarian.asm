@@ -1,5 +1,5 @@
-	db  60,  55, 100,  30,  65, 100 ; 410 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 410,  60,  55, 100,  65, 100,  30
+	;   bst   hp  atk  def  sat  sdf  spe
 
 if DEF(FAITHFUL)
 	db GHOST, GHOST ; type

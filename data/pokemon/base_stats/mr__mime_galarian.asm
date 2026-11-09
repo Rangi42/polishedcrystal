@@ -1,11 +1,16 @@
-	db  50,  65,  65, 100,  90,  90 ; 460 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 460,  50,  65,  65,  90,  90, 100
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 465,  50,  70,  65,  90,  90, 100
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db ICE, PSYCHIC ; type
 	db 45 ; catch rate
 	db 136 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 4; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 
 	abilities_for MR__MIME_GALARIAN, VITAL_SPIRIT, SCREEN_CLEANER, ICE_BODY
 	db GROWTH_MEDIUM_FAST ; growth rate

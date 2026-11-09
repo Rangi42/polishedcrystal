@@ -138,7 +138,7 @@ ItemIconPointers:
 	dba NeverMeltIceIcon
 	dba DragonFangIcon
 	dba BlackGlassesIcon
-	dba PinkBowIcon
+	dba FairyFeatherIcon
 	dba BerserkGeneIcon
 	dba BrightPowderIcon
 	dba QuickClawIcon

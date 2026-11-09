@@ -71,4 +71,3 @@ Bird_keeperDenisSeenText:
 Bird_keeperDenisBeatenText:
 	text "Oops…They crashed…"
 	done
-

@@ -19,12 +19,13 @@ Pokepic::
 .got_palette
 	call UpdateTimePals
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetBaseData
 	ld de, vTiles1
-	predef GetFrontpic
+	farcall GetFrontpic
 _Displaypic:
 	ld a, [wMenuBorderTopCoord]
 	inc a
@@ -36,7 +37,7 @@ _Displaypic:
 	ld a, $80
 	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld b, 1
 	jmp SafeCopyTilemapAtOnce
 
@@ -86,9 +87,12 @@ Trainerpic::
 	call MenuBox
 	call UpdateSprites
 	call SafeCopyTilemapAtOnce
+	xor a
+	ld [wTrainerPal], a
 	farcall LoadTrainerPalette
 	call UpdateTimePals
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wTrainerClass]
 	ld de, vTiles1
@@ -114,6 +118,7 @@ Paintingpic::
 	ld [hl], a
 	call UpdateSprites
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wTrainerClass]
 	ld de, vTiles1
@@ -126,6 +131,7 @@ ClosePokepic::
 	call ClearMenuBoxInterior
 	call GetMemCGBLayout
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call RestoreSprites

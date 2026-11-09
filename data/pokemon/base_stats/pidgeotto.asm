@@ -1,5 +1,10 @@
-	db  63,  60,  55,  71,  50,  50 ; 349 BST
-	;   hp  atk  def  spe  sat  sdf
+if DEF(FAITHFUL)
+	bst 349,  63,  60,  55,  50,  50,  71
+	;   bst   hp  atk  def  sat  sdf  spe
+else
+	bst 349,  63,  50,  50,  65,  50,  71
+	;   bst   hp  atk  def  sat  sdf  spe
+endc
 
 	db NORMAL, FLYING ; type
 	db 120 ; catch rate

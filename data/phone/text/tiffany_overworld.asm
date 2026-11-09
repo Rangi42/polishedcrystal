@@ -53,7 +53,8 @@ TiffanyGiftText:
 	line "time. See this?"
 
 	para "Isn't it cute?"
-	line "It's a Pink Bow."
+	line "It's my Clefairy's"
+	cont "FairyFeather."
 	done
 
 TiffanyPackFullText:

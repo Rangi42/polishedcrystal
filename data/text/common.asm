@@ -657,12 +657,6 @@ _OPT_PokemonChannelText::
 	text "#mon"
 	done
 
-SECTION "_PokedexShowText", ROMX
-_PokedexShowText::
-	line ""
-	text_ram wStringBuffer1
-	done
-
 ; Pokémon Music Channel / Pokémusic
 
 SECTION "_BenIntroText1", ROMX
@@ -2137,7 +2131,9 @@ _RodBiteText::
 SECTION "_RodNothingText", ROMX
 _RodNothingText::
 	text "Not even a nibble!"
-	prompt
+
+	para "Keep fishing?"
+	done
 
 SECTION "_CantGetOffBikeText", ROMX
 _CantGetOffBikeText::
@@ -2983,16 +2979,6 @@ SECTION "_OakPCText4", ROMX
 _OakPCText4::
 	text "The link to Prof."
 	line "Oak's PC closed."
-	done
-
-SECTION "_MemoryGameYeahText", ROMX
-_MemoryGameYeahText::
-	text " , yeah!"
-	done
-
-SECTION "_MemoryGameDarnText", ROMX
-_MemoryGameDarnText::
-	text "Darn…"
 	done
 
 SECTION "_StartMenuContestEndText", ROMX

@@ -19,7 +19,7 @@ BlackthornCity_MapScriptHeader:
 
 	def_bg_events
 	bg_event 34, 24, BGEVENT_JUMPTEXT, BlackthornCitySignText
-	bg_event 17, 13, BGEVENT_JUMPTEXT, BlackthornGymSignText
+	bg_event 19, 11, BGEVENT_JUMPTEXT, BlackthornGymSignText
 	bg_event  7, 29, BGEVENT_JUMPTEXT, MoveDeletersHouseSignText
 	bg_event 21,  3, BGEVENT_JUMPTEXT, DragonDensSignText
 	bg_event  9, 19, BGEVENT_JUMPTEXT, BlackthornCityTrainerTipsText
@@ -107,8 +107,7 @@ SantosScript:
 .MetSantos:
 	writetext .GivesGiftText
 	promptbutton
-	verbosegiveitem SPELL_TAG
-	iffalse_endtext
+	verbosegiveitem SPELL_TAG, iffalse_endtext
 	setevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
 	jumpthisopenedtext
 

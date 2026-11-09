@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  95,  75,  80,  30, 100, 110 ; 490 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 490,  95,  75,  80, 100, 110,  30
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  95,  75,  80,  30, 100, 120 ; 500 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 500,  95,  75,  80, 100, 120,  30
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db WATER, PSYCHIC ; type

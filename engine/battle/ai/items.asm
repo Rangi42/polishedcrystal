@@ -462,7 +462,7 @@ AI_Items:
 AIUpdateHUD:
 	call UpdateEnemyMonInParty
 	farcall UpdateEnemyHUD
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld hl, wEnemyItemState
 	dec [hl]
@@ -701,9 +701,6 @@ PrintText_CopyItemName:
 	ret
 
 TextJump_EnemyUsed:
-	text_far Text_EnemyUsed
-	text_end
-
+	text_farend Text_EnemyUsed
 TextJump_EnemyUsedOn:
-	text_far Text_EnemyUsedOn
-	text_end
+	text_farend Text_EnemyUsedOn

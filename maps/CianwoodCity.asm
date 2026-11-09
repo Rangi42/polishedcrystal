@@ -21,25 +21,25 @@ CianwoodCity_MapScriptHeader:
 
 	def_bg_events
 	bg_event 20, 34, BGEVENT_JUMPTEXT, CianwoodCitySignText
-	bg_event  6, 44, BGEVENT_JUMPTEXT, CianwoodGymSignText
-	bg_event 19, 47, BGEVENT_JUMPTEXT, CianwoodPharmacySignText
-	bg_event  8, 32, BGEVENT_JUMPTEXT, CianwoodPhotoStudioSignText
+	bg_event  9, 43, BGEVENT_JUMPTEXT, CianwoodGymSignText
+	bg_event 18, 47, BGEVENT_JUMPTEXT, CianwoodPharmacySignText
+	bg_event 12, 31, BGEVENT_JUMPTEXT, CianwoodPhotoStudioSignText
 	bg_event  6, 26, BGEVENT_JUMPTEXT, CianwoodCliffEdgeGateSignText
-	bg_event  8, 22, BGEVENT_JUMPTEXT, CianwoodMoveManiacSignText
-	bg_event 16, 31, BGEVENT_JUMPTEXT, CianwoodAdvancedTipsSignText
+	bg_event  7, 21, BGEVENT_JUMPTEXT, CianwoodMoveManiacSignText
+	bg_event 11, 37, BGEVENT_JUMPTEXT, CianwoodAdvancedTipsSignText
 	bg_event  4, 19, BGEVENT_ITEM + REVIVE, EVENT_CIANWOOD_CITY_HIDDEN_REVIVE
 	bg_event  5, 29, BGEVENT_ITEM + MAX_ETHER, EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER
 
 	def_object_events
 	object_event 11, 21, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
-	pokemon_event 10, 14, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, ClearText, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
+	pokemon_event 10, 14, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_AZURE, ClearText, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	object_event 21, 37, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityYoungsterText, -1
 	object_event 16, 33, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityPokefanMText, -1
 	object_event 14, 42, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityLassText, -1
 	smashrock_event  8, 16
 	smashrock_event  9, 17
 	smashrock_event  6, 24
-	smashrock_event  4, 29
+	smashrock_event  5, 29
 	smashrock_event 10, 27
 	smashrock_event  4, 19
 	object_event 10, 46, SPRITE_MATRON, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CianwoodCityChucksWife, -1
@@ -133,7 +133,7 @@ CianwoodCitySuicuneApproachMovement:
 CianwoodCitySuicuneDepartMovement:
 	fix_facing
 	fast_jump_step_right
-	fast_jump_step_up
+	fast_jump_step_down
 	fast_jump_step_right
 	fast_jump_step_right
 	step_end

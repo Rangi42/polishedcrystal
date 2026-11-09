@@ -172,7 +172,7 @@ CheckPokeItem::
 	jr c, .close_sram_return
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromParty
+	farcall RemoveMonFromParty
 	ld a, TRUE ; right mail
 
 .close_sram_return
@@ -283,9 +283,7 @@ _PlayerMailBoxMenu:
 	jmp MenuTextboxBackup
 
 .EmptyMailboxText:
-	text_far _EmptyMailboxText
-	text_end
-
+	text_farend _EmptyMailboxText
 InitMail:
 ; initialize wMailboxCount and beyond with incrementing values, one per mail
 ; set z if no mail
@@ -349,6 +347,7 @@ MailboxPC:
 	ld hl, .TopMenuDataHeader
 	call CopyMenuHeader
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call InitScrollingMenu
 	call UpdateSprites
@@ -423,17 +422,11 @@ MailboxPC:
 	jmp MenuTextboxBackup
 
 .PutAwayText:
-	text_far ClearedMailPutAwayText
-	text_end
-
+	text_farend ClearedMailPutAwayText
 .PackFullText:
-	text_far MailPackFullText
-	text_end
-
+	text_farend MailPackFullText
 .MessageLostText:
-	text_far MailMessageLostText
-	text_end
-
+	text_farend MailMessageLostText
 .GetMailType:
 	push af
 	ld a, BANK(sMailboxCount)
@@ -448,7 +441,7 @@ MailboxPC:
 
 .AttachMail:
 	call FadeToMenu
-	xor a
+	xor a ; PARTYMENUACTION_CHOOSE_POKEMON
 	ld [wPartyMenuActionText], a
 	call ClearBGPalettes
 .try_again
@@ -493,17 +486,11 @@ MailboxPC:
 	jmp CloseSubmenu
 
 .HoldingMailText:
-	text_far MailAlreadyHoldingItemText
-	text_end
-
+	text_farend MailAlreadyHoldingItemText
 .EggText:
-	text_far MailEggText
-	text_end
-
+	text_farend MailEggText
 .MailMovedText:
-	text_far MailMovedFromBoxText
-	text_end
-
+	text_farend MailMovedFromBoxText
 .TopMenuDataHeader:
 	db MENU_BACKUP_TILES
 	menu_coords 8, 1, 18, 10

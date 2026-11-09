@@ -323,4 +323,3 @@ AceDuoElanandida2BeatenText:
 	text "Ida: Wow. You're"
 	line "really something."
 	done
-

@@ -105,6 +105,7 @@ AbilityDescriptions:
 	dw HoneyGatherDescription
 	dw FriskDescription
 	dw RecklessDescription
+	dw BadDreamsDescription
 	dw PickpocketDescription
 	dw SheerForceDescription
 	dw ContraryDescription
@@ -132,6 +133,7 @@ AbilityDescriptions:
 	dw SapSipperDescription
 	dw PranksterDescription
 	dw SandForceDescription
+	dw IronBarbsDescription
 	dw FurCoatDescription
 	dw BulletproofDescription
 	dw CompetitiveDescription
@@ -157,6 +159,7 @@ AbilityDescriptions:
 	dw SharpnessDescription
 	dw ArmorTailDescription
 	dw MindsEyeDescription
+	dw MegaSolDescription
 	assert_table_length NUM_ABILITIES
 
 NoAbilityDescription:
@@ -673,6 +676,11 @@ RecklessDescription:
 	next "that recoil."
 	done
 
+BadDreamsDescription:
+	text "Reduces a sleeping"
+	next "foe's HP."
+	done
+
 PickpocketDescription:
 	text "Steals foe's item"
 	next "when contacted."
@@ -804,8 +812,13 @@ PranksterDescription:
 	done
 
 SandForceDescription:
-	text "Boosts some moves"
-	next "in a sandstorm."
+	text "Ups Rock, Ground,"
+	next "and Steel in sand."
+	done
+
+IronBarbsDescription:
+	text "Hurts foes who"
+	next "make contact."
 	done
 
 FurCoatDescription:
@@ -926,4 +939,9 @@ ArmorTailDescription:
 MindsEyeDescription:
 	text "Bypass evasion and"
 	next "Ghost immunity."
+	done
+
+MegaSolDescription:
+	text "Uses moves as if"
+	next "harsh sun is up."
 	done

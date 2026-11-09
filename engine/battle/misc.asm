@@ -1,6 +1,6 @@
 _CheckContactMove::
 ; Check if user's move made contact. Returns nc if it is
-	predef GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_PROTECTIVE_PADS
 	jr z, .protective_pads
@@ -36,6 +36,7 @@ INCLUDE "data/moves/abnormal_contact_moves.asm"
 
 DisappearUser::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh a, [hBattleTurn]
 	and a
@@ -57,6 +58,7 @@ _AppearUserLowerSub:
 
 AppearUser:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh a, [hBattleTurn]
 	and a
@@ -69,9 +71,9 @@ AppearUser:
 	ld a, $31
 .okay
 	ldh [hGraphicStartTile], a
-	predef PlaceGraphic
+	farcall PlaceGraphic
 FinishAppearDisappearUser:
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 
@@ -88,7 +90,8 @@ GetPlayerBackpicCoords:
 DoWeatherModifiers:
 ; checks attacking move type in b with current weather for a x1.5 boost or x0.5 penalty to
 ; apply for wTypeMatchup for later damage calc adjustment (alongside STAB and type matchup)
-	call GetWeatherAfterOpponentUmbrella
+	call GetSolarizedWeather
+	call nz, GetWeatherAfterOpponentUmbrella
 	cp WEATHER_SUN
 	jr z, .sun
 	cp WEATHER_RAIN

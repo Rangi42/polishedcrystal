@@ -140,7 +140,7 @@ TrainerClassNames::
 	li "Designer"         ; VALERIE
 	li "<PK><MN> Trainer" ; KUKUI
 	li "Vocalist"         ; PIERS
-	li "Patissier"        ; KATY
+	li "Businessman"      ; LARRY
 	li "Surfer"           ; VICTOR
 	li "#Maniac"          ; BILL_T
 	li "<PK><MN> Trainer" ; YELLOW
@@ -148,4 +148,5 @@ TrainerClassNames::
 	li "Student"          ; IMAKUNI
 	li "Collector"        ; LAWRENCE
 	li "Shrine"           ; REI
+	li "Firebreather"     ; FIREBREATHER_ASHES
 	assert_list_length NUM_TRAINER_CLASSES

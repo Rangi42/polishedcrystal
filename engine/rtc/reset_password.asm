@@ -26,10 +26,7 @@ _ResetClock:
 
 .text_okay
 	; Select CONTINUE & reset settings.
-	text_far _PasswordAskResetText
-	text_end
-
+	text_farend _PasswordAskResetText
 .text_askreset
 	; Reset the clock?
-	text_far _PasswordAskResetClockText
-	text_end
+	text_farend _PasswordAskResetClockText

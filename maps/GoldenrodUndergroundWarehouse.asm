@@ -2,7 +2,7 @@ GoldenrodUndergroundWarehouse_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, GoldenrodUndergroundWarehouseResetSwitches
+	callback MAPCALLBACK_NEWMAP, GoldenrodUndergroundResetSwitches
 
 	def_warp_events
 	warp_event  2, 12, GOLDENROD_UNDERGROUND_SWITCH_ROOM, 2
@@ -21,26 +21,6 @@ GoldenrodUndergroundWarehouse_MapScriptHeader:
 	itemball_event 18, 15, MAX_ETHER, 1, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_MAX_ETHER
 	tmhmball_event 13,  9, TM_X_SCISSOR, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_TM_X_SCISSOR
 	itemball_event  2,  1, ULTRA_BALL, 1, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_ULTRA_BALL
-
-GoldenrodUndergroundWarehouseResetSwitches:
-	clearevent EVENT_SWITCH_1
-	clearevent EVENT_SWITCH_2
-	clearevent EVENT_SWITCH_3
-	clearevent EVENT_EMERGENCY_SWITCH
-	clearevent EVENT_DOOR_1_OPEN
-	clearevent EVENT_DOOR_2_OPEN
-	clearevent EVENT_DOOR_3_OPEN
-	clearevent EVENT_DOOR_4_OPEN
-	clearevent EVENT_DOOR_5_OPEN
-	clearevent EVENT_DOOR_6_OPEN
-	clearevent EVENT_DOOR_7_OPEN
-	clearevent EVENT_DOOR_8_OPEN
-	clearevent EVENT_DOOR_9_OPEN
-	clearevent EVENT_DOOR_10_OPEN
-	clearevent EVENT_DOOR_11_OPEN
-	setval $0
-	writemem wUndergroundSwitchPositions
-	endcallback
 
 GenericTrainerGruntM24:
 	generictrainer GRUNTM, 24, EVENT_BEAT_ROCKET_GRUNTM_24, GruntM24SeenText, GruntM24BeatenText

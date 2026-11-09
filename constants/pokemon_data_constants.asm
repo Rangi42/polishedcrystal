@@ -274,14 +274,14 @@ DEF MALE   EQU %00000000
 DEF FEMALE EQU %10000000
 DEF GENDERLESS EQU MALE ; for trainer party parsing
 
-; caught data
+; caught data (high bit 7 is unused, formerly OT gender)
 DEF CAUGHT_TIME_MASK   EQU %01100000
 DEF CAUGHT_BALL_MASK   EQU %00011111
 
 ; hyper training (stored at end of OT name)
 DEF HYPER_TRAINING_MASK EQU %11111100
 
-DEF MON_CRY_LENGTH EQU 6
+DEF MON_CRY_LENGTH EQU 5
 
 ; maximum number of party pokemon
 DEF PARTY_LENGTH EQU 6

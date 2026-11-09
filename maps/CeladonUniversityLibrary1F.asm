@@ -91,8 +91,7 @@ CeladonUniversityLibrary1FCooltrainermScript:
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem FOCUS_BAND
-	iffalse_endtext
+	verbosegiveitem FOCUS_BAND, iffalse_endtext
 	setevent EVENT_GOT_FOCUS_BAND_IN_UNIVERSITY
 	jumpopenedtext .Text2
 

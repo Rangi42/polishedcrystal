@@ -1,4 +1,9 @@
 BattleCommand_falseswipe:
+	; We can't use CheckSubHit because we haven't set it yet,
+	; if we're using False Swipe.
+	call CheckSubstituteOpp
+	jr nz, .done
+
 	ld hl, wEnemyMonHP
 	ldh a, [hBattleTurn]
 	and a

@@ -13,4 +13,3 @@ TinTower6F_MapScriptHeader:
 
 	def_object_events
 	itemball_event  6,  8, MAX_POTION, 1, EVENT_TIN_TOWER_6F_MAX_POTION
-

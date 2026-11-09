@@ -31,14 +31,8 @@ TrainerHouseB1FCallback:
 	and a
 	jr nz, .got_opponent
 .pick_opponent
-	ld a, NUM_TRAINER_HOUSE_OPPONENTS
-	call RandomRange
-	inc a
-	ld [wDailyTrainerHouseOpponent], a
+	farcall PickDailyTrainerHouseOpponent
 .got_opponent
-	call .IsOpponentValid
-	and a
-	jr z, .pick_opponent
 	call GetDailyTrainerHouseOpponent
 	ld a, [hl]
 	farjp LoadTrainerSpriteAsMapObject1
@@ -123,7 +117,7 @@ TrainerHouseReceptionistScript:
 	ld [wOtherTrainerClass], a
 	ld a, [hl]
 	ld [wOtherTrainerID], a
-	xor a
+	xor a ; TRAINERPAL_NONE
 	ld [wTrainerPal], a
 	ret
 

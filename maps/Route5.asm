@@ -12,19 +12,10 @@ Route5_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 17, 29, BGEVENT_JUMPTEXT, Route5UndergroundPathSignText
+	bg_event 18, 28, BGEVENT_JUMPTEXT, Route5UndergroundPathSignText
 	bg_event  5, 27, BGEVENT_JUMPTEXT, Route5AdvancedTipsSignText
 
 	def_object_events
-	object_event 17, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route5PokefanMText, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
-
-Route5PokefanMText:
-	text "The road is closed"
-	line "until the problem"
-
-	para "at the Power Plant"
-	line "is solved."
-	done
 
 Route5UndergroundPathSignText:
 	text "Underground Path"

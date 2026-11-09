@@ -108,7 +108,7 @@ AnimateHallOfFame:
 	call ApplyTilemapInVBlank
 	decoord 6, 5
 	ld c, $6
-	predef HOF_AnimateFrontpic
+	farcall HOF_AnimateFrontpic
 	ld c, 60
 	call DelayFrames
 	and a
@@ -227,18 +227,19 @@ AnimateHOFMonEntrance:
 	ld a, ' '
 	rst ByteFill
 	ld de, vTiles2 tile $31
-	predef GetBackpic
+	farcall GetBackpic
 	ld a, $31
 	ldh [hGraphicStartTile], a
 	hlcoord 6, 6
 	lb bc, 6, 6
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $d0
 	ldh [hSCY], a
 	ld a, $90
 	ldh [hSCX], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
@@ -252,6 +253,7 @@ AnimateHOFMonEntrance:
 	call PrepMonFrontpicFlipped
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hSCY], a
 	; fallthrough
@@ -374,7 +376,7 @@ _HallOfFamePC:
 	call SetDefaultBGPAndOBP
 	decoord 6, 5
 	ld c, $6
-	predef HOF_AnimateFrontpic
+	farcall HOF_AnimateFrontpic
 	and a
 	ret
 
@@ -412,6 +414,7 @@ LoadHOFTeam:
 
 DisplayHOFMon:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [hli]
 	ld [wTempMonSpecies], a
@@ -512,13 +515,14 @@ HOF_AnimatePlayerPic:
 	ldh [hGraphicStartTile], a
 	hlcoord 6, 6
 	lb bc, 6, 6
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $d0
 	ldh [hSCY], a
 	ld a, $90
 	ldh [hSCX], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld [wCurPartySpecies], a
 	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
@@ -536,15 +540,17 @@ HOF_AnimatePlayerPic:
 	ldh [hGraphicStartTile], a
 	hlcoord 13, 5
 	lb bc, 5, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $c0
 	ldh [hSCX], a
 	call ApplyTilemapInVBlank
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hSCY], a
 	call HOF_SlideFrontpic
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 2
 	lb bc, 8, 9
@@ -584,4 +590,3 @@ HOF_AnimatePlayerPic:
 
 .PlayTime:
 	db "Play Time@"
-

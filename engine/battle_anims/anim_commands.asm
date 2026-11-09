@@ -39,7 +39,7 @@ _PlayBattleAnim:
 	pop af
 	ldh [hVBlank], a
 
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 
 	ld c, 3
@@ -149,7 +149,7 @@ BattleAnimClearHUD:
 	call DelayFrame
 	call WaitTop
 	call ClearActorHUD
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call Delay2
 	jmp WaitTop
@@ -168,7 +168,7 @@ BattleAnimRestoreHUDs:
 	pop af
 	ldh [rWBK], a
 
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call Delay2
 	jmp WaitTop
@@ -348,17 +348,6 @@ BattleAnimCmd_Call:
 	set 1, [hl]
 	ret
 
-BattleAnimCmd_Jump:
-	call GetBattleAnimByte
-	ld e, a
-	call GetBattleAnimByte
-	ld d, a
-	ld hl, wBattleAnimAddress
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ret
-
 BattleAnimCmd_StatLoop:
 	ld a, [wChangedStat]
 	swap a
@@ -372,7 +361,7 @@ DoBattleAnimLoop:
 	bit 2, [hl]
 	jr nz, .continue_loop
 	and a
-	jr z, .perpetual
+	jr z, BattleAnimCmd_Jump
 	dec a
 	set 2, [hl]
 	ld [wBattleAnimLoops], a
@@ -382,59 +371,39 @@ DoBattleAnimLoop:
 	and a
 	jr z, .return_from_loop
 	dec [hl]
-.perpetual
-	call GetBattleAnimByte
-	ld e, a
-	call GetBattleAnimByte
-	ld d, a
-	ld hl, wBattleAnimAddress
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ret
+	jr BattleAnimCmd_Jump
 
 .return_from_loop
 	ld hl, wBattleAnimFlags
 	res 2, [hl]
+	jr _BattleAnimCmd_DontJump
+
+BattleAnimCmd_Jump:
 	ld hl, wBattleAnimAddress
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	inc de
-	inc de
-	ld a, d
-	ld [hld], a
-	ld [hl], e
+	call GetBattleAnimByte
+	cp $80
+	ld h, 0
+	jr c, .positive
+	dec h ; negative
+.positive
+	ld l, a
+	add hl, de
+	ld a, l
+	ld [wBattleAnimAddress], a
+	ld a, h
+	ld [wBattleAnimAddress+1], a
 	ret
 
 BattleAnimCmd_JumpUntil:
 	ld hl, wBattleAnimParam
 	ld a, [hl]
 	and a
-	jr z, .dont_jump
-
+	jr z, _BattleAnimCmd_DontJump
 	dec [hl]
-	call GetBattleAnimByte
-	ld e, a
-	call GetBattleAnimByte
-	ld d, a
-	ld hl, wBattleAnimAddress
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ret
-
-.dont_jump
-	ld hl, wBattleAnimAddress
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	inc de
-	inc de
-	ld a, d
-	ld [hld], a
-	ld [hl], e
-	ret
+	jr BattleAnimCmd_Jump
 
 BattleAnimCmd_SetVar:
 	call GetBattleAnimByte
@@ -446,90 +415,37 @@ BattleAnimCmd_IncVar:
 	inc [hl]
 	ret
 
-BattleAnimCmd_IfVarEqual:
-	call GetBattleAnimByte
-	ld hl, wBattleAnimVar
-	cp [hl]
-	jr z, .jump
-
+_BattleAnimCmd_DontJump:
 	ld hl, wBattleAnimAddress
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	inc de
 	inc de
 	ld a, d
 	ld [hld], a
 	ld [hl], e
 	ret
 
-.jump
+BattleAnimCmd_IfVarEqual:
 	call GetBattleAnimByte
-	ld e, a
-	call GetBattleAnimByte
-	ld d, a
-	ld hl, wBattleAnimAddress
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ret
+	ld hl, wBattleAnimVar
+	jr _BattleAnimCommand_JumpIfEqual
 
 BattleAnimCmd_IfParamEqual:
 	call GetBattleAnimByte
 	ld hl, wBattleAnimParam
+_BattleAnimCommand_JumpIfEqual:
 	cp [hl]
-	jr z, .jump
-
-	ld hl, wBattleAnimAddress
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	inc de
-	inc de
-	ld a, d
-	ld [hld], a
-	ld [hl], e
-	ret
-
-.jump
-	call GetBattleAnimByte
-	ld e, a
-	call GetBattleAnimByte
-	ld d, a
-	ld hl, wBattleAnimAddress
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ret
+	jr z, BattleAnimCmd_Jump
+	jr _BattleAnimCmd_DontJump
 
 BattleAnimCmd_IfParamAnd:
 	call GetBattleAnimByte
 	ld e, a
 	ld a, [wBattleAnimParam]
 	and e
-	jr nz, .jump
-
-	ld hl, wBattleAnimAddress
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	inc de
-	inc de
-	ld a, d
-	ld [hld], a
-	ld [hl], e
-	ret
-
-.jump
-	call GetBattleAnimByte
-	ld e, a
-	call GetBattleAnimByte
-	ld d, a
-	ld hl, wBattleAnimAddress
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	ret
+	jr nz, BattleAnimCmd_Jump
+	jr _BattleAnimCmd_DontJump
 
 BattleAnimCmd_HiObj:
 ; index, x, y, param
@@ -841,7 +757,7 @@ BattleAnimCmd_Transform:
 	ld a, [wBattleMonForm]
 	ld [wCurForm], a
 	ld de, vTiles0 tile $00
-	predef GetFrontpic
+	farcall GetFrontpic
 	jr .done
 
 .player
@@ -850,7 +766,7 @@ BattleAnimCmd_Transform:
 	ld a, [wEnemyMonForm]
 	ld [wCurForm], a
 	ld de, vTiles0 tile $00
-	predef GetBackpic
+	farcall GetBackpic
 
 .done
 	pop af
@@ -1044,14 +960,14 @@ BattleAnimCmd_BeatUp:
 	ld a, [wBattleMonForm]
 	ld [wCurForm], a
 	ld de, vTiles2 tile $00
-	predef GetFrontpic
+	farcall GetFrontpic
 	jr .done
 
 .player
 	ld a, [wEnemyMonForm]
 	ld [wCurForm], a
 	ld de, vTiles2 tile $31
-	predef GetBackpic
+	farcall GetBackpic
 
 .done
 	pop af
@@ -1271,7 +1187,7 @@ BattleAnim_RevertPals:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call DelayFrame
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ret
 

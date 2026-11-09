@@ -45,7 +45,6 @@ SpecialsPointers::
 	add_special Special_UnownPuzzle
 	add_special Special_SlotMachine
 	add_special Special_CardFlip
-;	add_special Special_UnusedMemoryGame
 	add_special FadeOutPalettes
 	add_special Special_FadeBlackQuickly
 	add_special FadeInPalettes
@@ -86,6 +85,7 @@ SpecialsPointers::
 	add_special Special_DisplayLinkRecord
 	add_special GetFirstPokemonHappiness
 	add_special CheckFirstMonIsEgg
+	add_special GetSelectedPokemonHappiness
 	add_special RandomPhoneRareWildMon
 	add_special RandomPhoneWildMon
 	add_special RandomPhoneMon
@@ -177,3 +177,4 @@ SpecialsPointers::
 	add_special ItemManiac_SelectQuantity
 	add_special MultiplyMoneyByQuantity
 	add_special TakeItemFromMemWithQuantity
+	add_special Special_CableCar

@@ -37,7 +37,7 @@ Script_BattleFloor:
 	battletowertext 1
 	promptbutton
 	closetext
-	special Special_BattleTower_Battle ; calls predef startbattle
+	special Special_BattleTower_Battle ; calls StartBattle
 	special FadeOutPalettes
 	ifequalfwd BTCHALLENGE_LOST, Script_LostBattleFactory
 	reloadmap

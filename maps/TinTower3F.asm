@@ -13,4 +13,3 @@ TinTower3F_MapScriptHeader:
 
 	def_object_events
 	itemball_event  1, 14, FULL_HEAL, 1, EVENT_TIN_TOWER_3F_FULL_HEAL
-

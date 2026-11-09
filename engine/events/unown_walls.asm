@@ -91,6 +91,7 @@ Special_DisplayUnownWords:
 .load
 	call LoadMenuHeader
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call MenuBox
 	call UpdateSprites

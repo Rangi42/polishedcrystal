@@ -1,5 +1,5 @@
-	db  75,  90, 140,  40,  60,  60 ; 465 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 465,  75,  90, 140,  60,  60,  40
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db BUG, STEEL ; type
 	db 75 ; catch rate

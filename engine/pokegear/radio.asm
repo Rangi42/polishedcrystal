@@ -23,102 +23,93 @@ PlayRadioShow:
 ; entries correspond to constants/radio_constants.asm
 	table_width 2
 	dw OaksPkmnTalk1  ; $00
-	dw PokedexShow1 ; $01
-	dw BenMonMusic1  ; $02
-	dw LuckyNumberShow1 ; $03
-	dw BuenasPassword1 ; $04
-	dw PeoplePlaces1 ; $05
-	dw FernMonMusic1 ; $06
-	dw RocketRadio1 ; $07
-	dw PokeFluteRadio ; $08
-	dw UnownRadio ; $09
-	dw EvolutionRadio ; $0a
+	dw BenMonMusic1  ; $01
+	dw LuckyNumberShow1 ; $02
+	dw BuenasPassword1 ; $03
+	dw PeoplePlaces1 ; $04
+	dw FernMonMusic1 ; $05
+	dw RocketRadio1 ; $06
+	dw PokeFluteRadio ; $07
+	dw UnownRadio ; $08
+	dw EvolutionRadio ; $09
 	assert_table_length NUM_RADIO_CHANNELS
 ; OaksPkmnTalk
-	dw OaksPkmnTalk2  ; $0b
-	dw OaksPkmnTalk3  ; $0c
-	dw OaksPkmnTalk4  ; $0d
-	dw OaksPkmnTalk5  ; $0e
-	dw OaksPkmnTalk6  ; $0f
-	dw OaksPkmnTalk7  ; $10
-	dw OaksPkmnTalk8  ; $11
-	dw OaksPkmnTalk9  ; $12
-	dw PokedexShow2 ; $13
-	dw PokedexShow3 ; $14
-	dw PokedexShow4 ; $15
-	dw PokedexShow5 ; $16
+	dw OaksPkmnTalk2  ; $0a
+	dw OaksPkmnTalk3  ; $0b
+	dw OaksPkmnTalk4  ; $0c
+	dw OaksPkmnTalk5  ; $0d
+	dw OaksPkmnTalk6  ; $0e
+	dw OaksPkmnTalk7  ; $0f
+	dw OaksPkmnTalk8  ; $10
+	dw OaksPkmnTalk9  ; $11
 ; Ben Music
-	dw BenMonMusic2  ; $17
-	dw BenMonMusic3  ; $18
-	dw BenFernMusic4 ; $19
-	dw BenFernMusic5 ; $1a
-	dw BenFernMusic6 ; $1b
-	dw DoNothing     ; $1c
-	dw FernMonMusic2 ; $1d
+	dw BenMonMusic2  ; $12
+	dw BenMonMusic3  ; $13
+	dw BenFernMusic4 ; $14
+	dw BenFernMusic5 ; $15
+	dw BenFernMusic6 ; $16
+	dw DoNothing     ; $17
+	dw FernMonMusic2 ; $18
 ; Lucky Number Show
-	dw LuckyNumberShow2 ; $1e
-	dw LuckyNumberShow3 ; $1f
-	dw LuckyNumberShow4 ; $20
-	dw LuckyNumberShow5 ; $21
-	dw LuckyNumberShow6 ; $22
-	dw LuckyNumberShow7 ; $23
-	dw LuckyNumberShow8 ; $24
-	dw LuckyNumberShow9 ; $25
-	dw LuckyNumberShow10 ; $26
-	dw LuckyNumberShow11 ; $27
-	dw LuckyNumberShow12 ; $28
-	dw LuckyNumberShow13 ; $29
-	dw LuckyNumberShow14 ; $2a
-	dw LuckyNumberShow15 ; $2b
+	dw LuckyNumberShow2 ; $19
+	dw LuckyNumberShow3 ; $1a
+	dw LuckyNumberShow4 ; $1b
+	dw LuckyNumberShow5 ; $1c
+	dw LuckyNumberShow6 ; $1d
+	dw LuckyNumberShow7 ; $1e
+	dw LuckyNumberShow8 ; $1f
+	dw LuckyNumberShow9 ; $20
+	dw LuckyNumberShow10 ; $21
+	dw LuckyNumberShow11 ; $22
+	dw LuckyNumberShow12 ; $23
+	dw LuckyNumberShow13 ; $24
+	dw LuckyNumberShow14 ; $25
+	dw LuckyNumberShow15 ; $26
 ; People & Places
-	dw PeoplePlaces2 ; $2c
-	dw PeoplePlaces3 ; $2d
-	dw PeoplePlaces4 ; $2e
-	dw PeoplePlaces5 ; $2f
-	dw PeoplePlaces6 ; $30
-	dw PeoplePlaces7 ; $31
+	dw PeoplePlaces2 ; $27
+	dw PeoplePlaces3 ; $28
+	dw PeoplePlaces4 ; $29
+	dw PeoplePlaces5 ; $2a
+	dw PeoplePlaces6 ; $2b
+	dw PeoplePlaces7 ; $2c
 ; Rocket Radio
-	dw RocketRadio2 ; $32
-	dw RocketRadio3 ; $33
-	dw RocketRadio4 ; $34
-	dw RocketRadio5 ; $35
-	dw RocketRadio6 ; $36
-	dw RocketRadio7 ; $37
-	dw RocketRadio8 ; $38
-	dw RocketRadio9 ; $39
-	dw RocketRadio10 ; $3a
+	dw RocketRadio2 ; $2d
+	dw RocketRadio3 ; $2e
+	dw RocketRadio4 ; $2f
+	dw RocketRadio5 ; $30
+	dw RocketRadio6 ; $31
+	dw RocketRadio7 ; $32
+	dw RocketRadio8 ; $33
+	dw RocketRadio9 ; $34
+	dw RocketRadio10 ; $35
 ; More Pokemon Channel stuff
-	dw OaksPkmnTalk10 ; $3b
-	dw OaksPkmnTalk11 ; $3c
-	dw OaksPkmnTalk12 ; $3d
-	dw OaksPkmnTalk13 ; $3e
-	dw OaksPkmnTalk14 ; $3f
+	dw OaksPkmnTalk10 ; $36
+	dw OaksPkmnTalk11 ; $37
+	dw OaksPkmnTalk12 ; $38
+	dw OaksPkmnTalk13 ; $39
+	dw OaksPkmnTalk14 ; $3a
 ; Buenas Password
-	dw BuenasPassword2 ; $40
-	dw BuenasPassword3 ; $41
-	dw BuenasPassword4 ; $42
-	dw BuenasPassword5 ; $43
-	dw BuenasPassword6 ; $44
-	dw BuenasPassword7 ; $45
-	dw BuenasPassword8 ; $46
-	dw BuenasPassword9 ; $47
-	dw BuenasPassword10 ; $48
-	dw BuenasPassword11 ; $49
-	dw BuenasPassword12 ; $4a
-	dw BuenasPassword13 ; $4b
-	dw BuenasPassword14 ; $4c
-	dw BuenasPassword15 ; $4d
-	dw BuenasPassword16 ; $4e
-	dw BuenasPassword17 ; $4f
-	dw BuenasPassword18 ; $50
-	dw BuenasPassword19 ; $51
-	dw BuenasPassword20 ; $52
-	dw BuenasPassword21 ; $53
-	dw RadioScroll ; $54
-; More Pokemon Channel stuff
-	dw PokedexShow6 ; $55
-	dw PokedexShow7 ; $56
-	dw PokedexShow8 ; $57
+	dw BuenasPassword2 ; $3b
+	dw BuenasPassword3 ; $3c
+	dw BuenasPassword4 ; $3d
+	dw BuenasPassword5 ; $3e
+	dw BuenasPassword6 ; $3f
+	dw BuenasPassword7 ; $40
+	dw BuenasPassword8 ; $41
+	dw BuenasPassword9 ; $42
+	dw BuenasPassword10 ; $43
+	dw BuenasPassword11 ; $44
+	dw BuenasPassword12 ; $45
+	dw BuenasPassword13 ; $46
+	dw BuenasPassword14 ; $47
+	dw BuenasPassword15 ; $48
+	dw BuenasPassword16 ; $49
+	dw BuenasPassword17 ; $4a
+	dw BuenasPassword18 ; $4b
+	dw BuenasPassword19 ; $4c
+	dw BuenasPassword20 ; $4d
+	dw BuenasPassword21 ; $4e
+	dw RadioScroll ; $4f
 	assert_table_length NUM_RADIO_SEGMENTS
 
 NextRadioLine:
@@ -288,34 +279,22 @@ OaksPkmnTalk6:
 
 OPT_IntroText1:
 	; MARY: PROF.OAK'S
-	text_far _OPT_IntroText1
-	text_end
-
+	text_farend _OPT_IntroText1
 OPT_IntroText2:
 	; #MON TALK!
-	text_far _OPT_IntroText2
-	text_end
-
+	text_farend _OPT_IntroText2
 OPT_IntroText3:
 	; With me, MARY!
-	text_far _OPT_IntroText3
-	text_end
-
+	text_farend _OPT_IntroText3
 OPT_OakText1:
 	; OAK: @ @
-	text_far _OPT_OakText1
-	text_end
-
+	text_farend _OPT_OakText1
 OPT_OakText2:
 	; may be seen around
-	text_far _OPT_OakText2
-	text_end
-
+	text_farend _OPT_OakText2
 OPT_OakText3:
 	; @ .
-	text_far _OPT_OakText3
-	text_end
-
+	text_farend _OPT_OakText3
 OaksPkmnTalk7:
 	ld hl, wNamedObjectIndex
 	ld a, [wCurPartySpecies]
@@ -329,9 +308,7 @@ OaksPkmnTalk7:
 
 OPT_MaryText1:
 	; MARY: @ 's
-	text_far _OPT_MaryText1
-	text_end
-
+	text_farend _OPT_MaryText1
 OaksPkmnTalk8:
 	call Random
 	and $f
@@ -366,84 +343,52 @@ OaksPkmnTalk8:
 
 .sweetadorably
 	; sweet and adorably
-	text_far OPT_SweetAdorably
-	text_end
-
+	text_farend OPT_SweetAdorably
 .wigglyslickly
 	; wiggly and slickly
-	text_far OPT_WigglySlickly
-	text_end
-
+	text_farend OPT_WigglySlickly
 .aptlynamed
 	; aptly named and
-	text_far OPT_AptlyNamed
-	text_end
-
+	text_farend OPT_AptlyNamed
 .undeniablykindof
 	; undeniably kind of
-	text_far OPT_UndeniablyKindOf
-	text_end
-
+	text_farend OPT_UndeniablyKindOf
 .unbearably
 	; so, so unbearably
-	text_far OPT_Unbearably
-	text_end
-
+	text_farend OPT_Unbearably
 .wowimpressively
 	; wow, impressively
-	text_far OPT_WowImpressively
-	text_end
-
+	text_farend OPT_WowImpressively
 .almostpoisonously
 	; almost poisonously
-	text_far OPT_AlmostPoisonously
-	text_end
-
+	text_farend OPT_AlmostPoisonously
 .sensually
 	; ooh, so sensually
-	text_far OPT_Sensually
-	text_end
-
+	text_farend OPT_Sensually
 .mischievously
 	; so mischievously
-	text_far OPT_Mischievously
-	text_end
-
+	text_farend OPT_Mischievously
 .topically
 	; so very topically
-	text_far OPT_Topically
-	text_end
-
+	text_farend OPT_Topically
 .addictively
 	; sure addictively
-	text_far OPT_Addictively
-	text_end
-
+	text_farend OPT_Addictively
 .looksinwater
 	; looks in water is
-	text_far OPT_LooksInWater
-	text_end
-
+	text_farend OPT_LooksInWater
 .evolutionmustbe
 	; evolution must be
-	text_far OPT_EvolutionMustBe
-	text_end
-
+	text_farend OPT_EvolutionMustBe
 .provocatively
 	; provocatively
-	text_far OPT_Provocatively
-	text_end
-
+	text_farend OPT_Provocatively
 .flippedout
 	; so flipped out and
-	text_far OPT_FlippedOut
-	text_end
-
+	text_farend OPT_FlippedOut
 .heartmeltingly
 	; heart-meltingly
-	text_far OPT_HeartMeltingly
-	text_end
-
+	text_farend OPT_HeartMeltingly
 OaksPkmnTalk9:
 	call Random
 	and $f
@@ -486,84 +431,52 @@ OaksPkmnTalk9:
 
 .cute
 	; cute.
-	text_far OPT_Cute
-	text_end
-
+	text_farend OPT_Cute
 .weird
 	; weird.
-	text_far OPT_Weird
-	text_end
-
+	text_farend OPT_Weird
 .pleasant
 	; pleasant.
-	text_far OPT_Pleasant
-	text_end
-
+	text_farend OPT_Pleasant
 .boldsortof
 	; bold, sort of.
-	text_far OPT_BoldSortOf
-	text_end
-
+	text_farend OPT_BoldSortOf
 .frightening
 	; frightening.
-	text_far OPT_Frightening
-	text_end
-
+	text_farend OPT_Frightening
 .suavedebonair
 	; suave & debonair!
-	text_far OPT_SuaveDebonair
-	text_end
-
+	text_farend OPT_SuaveDebonair
 .powerful
 	; powerful.
-	text_far OPT_Powerful
-	text_end
-
+	text_farend OPT_Powerful
 .exciting
 	; exciting.
-	text_far OPT_Exciting
-	text_end
-
+	text_farend OPT_Exciting
 .groovy
 	; groovy!
-	text_far OPT_Groovy
-	text_end
-
+	text_farend OPT_Groovy
 .inspiring
 	; inspiring.
-	text_far OPT_Inspiring
-	text_end
-
+	text_farend OPT_Inspiring
 .friendly
 	; friendly.
-	text_far OPT_Friendly
-	text_end
-
+	text_farend OPT_Friendly
 .hothothot
 	; hot, hot, hot!
-	text_far OPT_HotHotHot
-	text_end
-
+	text_farend OPT_HotHotHot
 .stimulating
 	; stimulating.
-	text_far OPT_Stimulating
-	text_end
-
+	text_farend OPT_Stimulating
 .guarded
 	; guarded.
-	text_far OPT_Guarded
-	text_end
-
+	text_farend OPT_Guarded
 .lovely
 	; lovely.
-	text_far OPT_Lovely
-	text_end
-
+	text_farend OPT_Lovely
 .speedy
 	; speedy.
-	text_far OPT_Speedy
-	text_end
-
+	text_farend OPT_Speedy
 OaksPkmnTalk10:
 	farcall RadioMusicRestartPokemonChannel
 	ld hl, EmptyString
@@ -579,9 +492,7 @@ OaksPkmnTalk10:
 
 OPT_PokemonChannelText:
 	; #MON
-	text_far _OPT_PokemonChannelText
-	text_end
-
+	text_farend _OPT_PokemonChannelText
 OaksPkmnTalk11:
 	ld hl, wRadioTextDelay
 	dec [hl]
@@ -658,126 +569,6 @@ ClearBottomLine:
 	rst ByteFill
 	ret
 
-PokedexShow1:
-	call StartRadioStation
-.loop
-	ld bc, NUM_SPECIES
-	call RandomRange16
-	ld a, c
-	and a
-	jr z, .loop
-	inc a
-	jr z, .loop
-	ld a, b
-	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
-	swap a
-	rla
-	ld b, a
-	push bc
-	call CheckCosmeticCaughtMon
-	pop bc
-	jr z, .loop
-	ld hl, wNamedObjectIndex
-	ld a, c
-	ld [wCurPartySpecies], a
-	ld [hli], a
-	ld a, b
-	ld [wCurForm], a
-	ld [hl], a
-	call GetPokemonName
-	ld hl, PokedexShowText
-	ld a, POKEDEX_SHOW_2
-	jmp NextRadioLine
-
-PokedexShow2:
-	ld a, [wCurPartySpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	call GetSpeciesAndFormIndex
-	call GetDexEntryPointer
-	call CopyDexEntryParts
-	ld a, POKEDEX_SHOW_3
-	jmp PrintRadioLine
-
-PokedexShow3:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_4
-	jmp PrintRadioLine
-
-PokedexShow4:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_5
-	jmp PrintRadioLine
-
-PokedexShow5:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_6
-	jmp PrintRadioLine
-
-PokedexShow6:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_7
-	jmp PrintRadioLine
-
-PokedexShow7:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW_8
-	jmp PrintRadioLine
-
-PokedexShow8:
-	call CopyDexEntry
-	ld a, POKEDEX_SHOW
-	jmp PrintRadioLine
-
-CopyDexEntry:
-	ld hl, wPokedexShowPointerAddr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wPokedexShowPointerBank]
-CopyDexEntryParts:
-	push af
-	push hl
-	ld de, wPokedexShowNextLine+1
-	ld bc, SCREEN_WIDTH - 1
-	call FarCopyBytes
-	ld hl, wPokedexShowNextLine
-	push hl
-	ld [hl], '<LINE>'
-	ld d, BANK(@)
-	call .GetTerminator
-	dec hl
-	ld [hl], '<DONE>'
-	pop hl
-	call CopyRadioTextToRAM
-	pop hl
-	pop af
-	ld d, a
-	call .GetTerminator
-	ld a, l
-	ld [wPokedexShowPointerAddr], a
-	ld a, h
-	ld [wPokedexShowPointerAddr + 1], a
-	ld a, d
-	ld [wPokedexShowPointerBank], a
-	ret
-
-.GetTerminator:
-	ld a, d
-	call GetFarByte
-	inc hl
-	cp '@'
-	ret z
-	cp '<NEXT>'
-	ret z
-	jr .GetTerminator
-
-PokedexShowText:
-	; @ @
-	text_far _PokedexShowText
-	text_end
-
 BenMonMusic1:
 	call StartPokemonMusicChannel
 	ld hl, BenIntroText1
@@ -843,54 +634,34 @@ StartPokemonMusicChannel:
 
 BenIntroText1:
 	; BEN: #MON MUSIC
-	text_far _BenIntroText1
-	text_end
-
+	text_farend _BenIntroText1
 BenIntroText2:
 	; CHANNEL!
-	text_far _BenIntroText2
-	text_end
-
+	text_farend _BenIntroText2
 BenIntroText3:
 	; It's me, DJ BEN!
-	text_far _BenIntroText3
-	text_end
-
+	text_farend _BenIntroText3
 FernIntroText1:
 	; FERN: #MUSIC!
-	text_far _FernIntroText1
-	text_end
-
+	text_farend _FernIntroText1
 FernIntroMusic2:
 	; With DJ FERN!
-	text_far _FernIntroText2
-	text_end
-
+	text_farend _FernIntroText2
 BenFernText1:
 	; Today's @ ,
-	text_far _BenFernText1
-	text_end
-
+	text_farend _BenFernText1
 BenFernText2A:
 	; so let us jam to
-	text_far _BenFernText2A
-	text_end
-
+	text_farend _BenFernText2A
 BenFernText2B:
 	; so chill out to
-	text_far _BenFernText2B
-	text_end
-
+	text_farend _BenFernText2B
 BenFernText3A:
 	; #MON March!
-	text_far _BenFernText3A
-	text_end
-
+	text_farend _BenFernText3A
 BenFernText3B:
 	; #MON Lullaby!
-	text_far _BenFernText3B
-	text_end
-
+	text_farend _BenFernText3B
 LuckyNumberShow1:
 	call StartRadioStation
 	farcall Special_CheckLuckyNumberShowFlag
@@ -984,69 +755,43 @@ LuckyNumberShow15:
 
 LC_Text1:
 	; REED: Yeehaw! How
-	text_far _LC_Text1
-	text_end
-
+	text_farend _LC_Text1
 LC_Text2:
 	; y'all doin' now?
-	text_far _LC_Text2
-	text_end
-
+	text_farend _LC_Text2
 LC_Text3:
 	; Whether you're up
-	text_far _LC_Text3
-	text_end
-
+	text_farend _LC_Text3
 LC_Text4:
 	; or way down low,
-	text_far _LC_Text4
-	text_end
-
+	text_farend _LC_Text4
 LC_Text5:
 	; don't you miss the
-	text_far _LC_Text5
-	text_end
-
+	text_farend _LC_Text5
 LC_Text6:
 	; LUCKY NUMBER SHOW!
-	text_far _LC_Text6
-	text_end
-
+	text_farend _LC_Text6
 LC_Text7:
 	; This week's Lucky
-	text_far _LC_Text7
-	text_end
-
+	text_farend _LC_Text7
 LC_Text8:
 	; Number is @ !
-	text_far _LC_Text8
-	text_end
-
+	text_farend _LC_Text8
 LC_Text9:
 	; I'll repeat that!
-	text_far _LC_Text9
-	text_end
-
+	text_farend _LC_Text9
 LC_Text10:
 	; Match it and go to
-	text_far _LC_Text10
-	text_end
-
+	text_farend _LC_Text10
 LC_Text11:
 	; the RADIO TOWER!
-	text_far _LC_Text11
-	text_end
-
+	text_farend _LC_Text11
 LC_DragText1:
 	; …Repeating myself
-	text_far _LC_DragText1
-	text_end
-
+	text_farend _LC_DragText1
 LC_DragText2:
 	; gets to be a drag…
-	text_far _LC_DragText2
-	text_end
-
+	text_farend _LC_DragText2
 PeoplePlaces1:
 	call StartRadioStation
 	ld hl, PnP_Text1
@@ -1065,19 +810,13 @@ PeoplePlaces3:
 
 PnP_Text1:
 	; PLACES AND PEOPLE!
-	text_far _PnP_Text1
-	text_end
-
+	text_farend _PnP_Text1
 PnP_Text2:
 	; Brought to you by
-	text_far _PnP_Text2
-	text_end
-
+	text_farend _PnP_Text2
 PnP_Text3:
 	; me, DJ LILY!
-	text_far _PnP_Text3
-	text_end
-
+	text_farend _PnP_Text3
 PeoplePlaces4: ; People
 	call Random
 	cp NUM_TRAINER_CLASSES
@@ -1116,9 +855,7 @@ INCLUDE "data/radio/pnp_hidden_people.asm"
 
 PnP_Text4:
 	; @  @ @
-	text_far _PnP_Text4
-	text_end
-
+	text_farend _PnP_Text4
 PeoplePlaces5:
 	call Random
 	and $f
@@ -1153,84 +890,52 @@ PeoplePlaces5:
 
 PnP_cute:
 	; is cute.
-	text_far _PnP_cute
-	text_end
-
+	text_farend _PnP_cute
 PnP_lazy:
 	; is sort of lazy.
-	text_far _PnP_lazy
-	text_end
-
+	text_farend _PnP_lazy
 PnP_happy:
 	; is always happy.
-	text_far _PnP_happy
-	text_end
-
+	text_farend _PnP_happy
 PnP_noisy:
 	; is quite noisy.
-	text_far _PnP_noisy
-	text_end
-
+	text_farend _PnP_noisy
 PnP_precocious:
 	; is precocious.
-	text_far _PnP_precocious
-	text_end
-
+	text_farend _PnP_precocious
 PnP_bold:
 	; is somewhat bold.
-	text_far _PnP_bold
-	text_end
-
+	text_farend _PnP_bold
 PnP_picky:
 	; is too picky!
-	text_far _PnP_picky
-	text_end
-
+	text_farend _PnP_picky
 PnP_sortofok:
 	; is sort of OK.
-	text_far _PnP_sortofok
-	text_end
-
+	text_farend _PnP_sortofok
 PnP_soso:
 	; is just so-so.
-	text_far _PnP_soso
-	text_end
-
+	text_farend _PnP_soso
 PnP_great:
 	; is actually great.
-	text_far _PnP_great
-	text_end
-
+	text_farend _PnP_great
 PnP_mytype:
 	; is just my type.
-	text_far _PnP_mytype
-	text_end
-
+	text_farend _PnP_mytype
 PnP_cool:
 	; is so cool, no?
-	text_far _PnP_cool
-	text_end
-
+	text_farend _PnP_cool
 PnP_inspiring:
 	; is inspiring!
-	text_far _PnP_inspiring
-	text_end
-
+	text_farend _PnP_inspiring
 PnP_weird:
 	; is kind of weird.
-	text_far _PnP_weird
-	text_end
-
+	text_farend _PnP_weird
 PnP_rightforme:
 	; is right for me?
-	text_far _PnP_rightforme
-	text_end
-
+	text_farend _PnP_rightforme
 PnP_odd:
 	; is definitely odd!
-	text_far _PnP_odd
-	text_end
-
+	text_farend _PnP_odd
 PeoplePlaces6: ; Places
 	call Random
 	cp PnP_Places.End - PnP_Places
@@ -1249,9 +954,7 @@ INCLUDE "data/radio/pnp_places.asm"
 
 PnP_Text5:
 	; @ @
-	text_far _PnP_Text5
-	text_end
-
+	text_farend _PnP_Text5
 PeoplePlaces7:
 	call Random
 	and $f
@@ -1352,54 +1055,34 @@ RocketRadio10:
 
 RocketRadioText1:
 	; … …Ahem, we are
-	text_far _RocketRadioText1
-	text_end
-
+	text_farend _RocketRadioText1
 RocketRadioText2:
 	; TEAM ROCKET!
-	text_far _RocketRadioText2
-	text_end
-
+	text_farend _RocketRadioText2
 RocketRadioText3:
 	; After three years
-	text_far _RocketRadioText3
-	text_end
-
+	text_farend _RocketRadioText3
 RocketRadioText4:
 	; of preparation, we
-	text_far _RocketRadioText4
-	text_end
-
+	text_farend _RocketRadioText4
 RocketRadioText5:
 	; have risen again
-	text_far _RocketRadioText5
-	text_end
-
+	text_farend _RocketRadioText5
 RocketRadioText6:
 	; from the ashes!
-	text_far _RocketRadioText6
-	text_end
-
+	text_farend _RocketRadioText6
 RocketRadioText7:
 	; GIOVANNI! @ Can you
-	text_far _RocketRadioText7
-	text_end
-
+	text_farend _RocketRadioText7
 RocketRadioText8:
 	; hear?@  We did it!
-	text_far _RocketRadioText8
-	text_end
-
+	text_farend _RocketRadioText8
 RocketRadioText9:
 	; @ Where is our boss?
-	text_far _RocketRadioText9
-	text_end
-
+	text_farend _RocketRadioText9
 RocketRadioText10:
 	; @ Is he listening?
-	text_far _RocketRadioText10
-	text_end
-
+	text_farend _RocketRadioText10
 PokeFluteRadio:
 	call StartRadioStation
 	ld a, 1
@@ -1432,6 +1115,7 @@ BuenasPassword1:
 	ldh a, [hBGMapMode]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld de, BuenasPasswordChannelName
 	hlcoord 2, 9
@@ -1705,106 +1389,64 @@ BuenasPasswordChannelName:
 
 BuenaRadioText1:
 	; BUENA: BUENA here!
-	text_far _BuenaRadioText1
-	text_end
-
+	text_farend _BuenaRadioText1
 BuenaRadioText2:
 	; Today's password!
-	text_far _BuenaRadioText2
-	text_end
-
+	text_farend _BuenaRadioText2
 BuenaRadioText3:
 	; Let me think… It's
-	text_far _BuenaRadioText3
-	text_end
-
+	text_farend _BuenaRadioText3
 BuenaRadioText4:
 	; @ !
-	text_far _BuenaRadioText4
-	text_end
-
+	text_farend _BuenaRadioText4
 BuenaRadioText5:
 	; Don't forget it!
-	text_far _BuenaRadioText5
-	text_end
-
+	text_farend _BuenaRadioText5
 BuenaRadioText6:
 	; I'm in GOLDENROD's
-	text_far _BuenaRadioText6
-	text_end
-
+	text_farend _BuenaRadioText6
 BuenaRadioText7:
 	; RADIO TOWER!
-	text_far _BuenaRadioText7
-	text_end
-
+	text_farend _BuenaRadioText7
 BuenaRadioMidnightText1:
 	; BUENA: Oh my…
-	text_far _BuenaRadioMidnightText1
-	text_end
-
+	text_farend _BuenaRadioMidnightText1
 BuenaRadioMidnightText2:
 	; It's midnight! I
-	text_far _BuenaRadioMidnightText2
-	text_end
-
+	text_farend _BuenaRadioMidnightText2
 BuenaRadioMidnightText3:
 	; have to shut down!
-	text_far _BuenaRadioMidnightText3
-	text_end
-
+	text_farend _BuenaRadioMidnightText3
 BuenaRadioMidnightText4:
 	; Thanks for tuning
-	text_far _BuenaRadioMidnightText4
-	text_end
-
+	text_farend _BuenaRadioMidnightText4
 BuenaRadioMidnightText5:
 	; in to the end! But
-	text_far _BuenaRadioMidnightText5
-	text_end
-
+	text_farend _BuenaRadioMidnightText5
 BuenaRadioMidnightText6:
 	; don't stay up too
-	text_far _BuenaRadioMidnightText6
-	text_end
-
+	text_farend _BuenaRadioMidnightText6
 BuenaRadioMidnightText7:
 	; late! Presented to
-	text_far _BuenaRadioMidnightText7
-	text_end
-
+	text_farend _BuenaRadioMidnightText7
 BuenaRadioMidnightText8:
 	; you by DJ BUENA!
-	text_far _BuenaRadioMidnightText8
-	text_end
-
+	text_farend _BuenaRadioMidnightText8
 BuenaRadioMidnightText9:
 	; I'm outta here!
-	text_far _BuenaRadioMidnightText9
-	text_end
-
+	text_farend _BuenaRadioMidnightText9
 BuenaRadioMidnightText10:
 	; …
-	text_far _BuenaRadioMidnightText10
-	text_end
-
+	text_farend _BuenaRadioMidnightText10
 BuenaOffTheAirText:
 	;
-	text_far _BuenaOffTheAirText
-	text_end
+	text_farend _BuenaOffTheAirText
 
 CopyRadioTextToRAM:
 	ld a, [hl]
 	cp '<FAR>'
 	jmp z, FarCopyRadioText
-	ld de, wRadioCompressedText
-	ld bc, SCREEN_WIDTH * 2
-	rst CopyBytes
-	ld hl, wRadioCompressedText
-	ld de, wRadioText
-	ld a, [hli]
-	ld [de], a
-	inc de
+	call PrepareToDecompressRadioText
 	jmp DecompressStringToRAM
 
 StartRadioStation:

@@ -64,9 +64,9 @@ MusicPlayer::
 	call ClearTileMap
 
 	ld a, LOW(LCDMusicPlayer)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDMusicPlayer)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 ; Load palette
 	ld hl, rIE
@@ -192,7 +192,7 @@ MusicPlayerLoop:
 	jpbutton PAD_SELECT, .select
 
 	; prioritize refreshing the note display
-	ld a, 2
+	ld a, 1
 	ldh [hBGMapHalf], a
 	jr MusicPlayerLoop
 
@@ -264,9 +264,9 @@ MusicPlayerLoop:
 	res B_IE_STAT, [hl]
 
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 	ret
 
 .start:
@@ -298,7 +298,7 @@ SongEditor:
 	jpbutton PAD_SELECT, .select
 
 	; prioritize refreshing the note display
-	ld a, 2
+	ld a, 1
 	ldh [hBGMapHalf], a
 	jr SongEditor
 
@@ -552,7 +552,7 @@ AdjustTempo:
 	jrbutton PAD_START, .start
 
 	; prioritize refreshing the note display
-	ld a, 2
+	ld a, 1
 	ldh [hBGMapHalf], a
 	jr .loop
 

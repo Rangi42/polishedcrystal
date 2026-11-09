@@ -1,10 +1,10 @@
-	db  95,  65,  65,  60, 110, 130 ; 525 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 525,  95,  65,  65, 110, 130,  60
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db FAIRY, FAIRY ; type
 	db 45 ; catch rate
 	db 196 ; base exp
-	db NO_ITEM, PINK_BOW ; held items
+	db NO_ITEM, FAIRYFEATHER ; held items
 	dn GENDER_F12_5, HATCH_SLOWER ; gender ratio, step cycles to hatch
 
 if DEF(FAITHFUL)

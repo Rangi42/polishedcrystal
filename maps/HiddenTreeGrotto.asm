@@ -15,7 +15,7 @@ HiddenTreeGrotto_MapScriptHeader:
 
 	def_object_events
 	object_event  3,  3, SPRITE_GROTTO_MON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  3,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_POKE_BALL, OBJECTTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  3,  3, SPRITE_BALL_CUT_TREE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_ENV_RED, OBJECTTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 
 	object_const_def
 	const HIDDENTREEGROTTO_POKEMON
@@ -64,8 +64,7 @@ HiddenGrottoHiddenItemScript:
 HiddenGrottoItemScript:
 	special GetHiddenGrottoContents
 	getitemname USE_SCRIPT_VAR, STRING_BUFFER_4
-	giveitem ITEM_FROM_MEM
-	iffalsefwd .PackFull
+	giveitem ITEM_FROM_MEM, iffalsefwd .PackFull
 	disappear HIDDENTREEGROTTO_ITEM
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	opentext

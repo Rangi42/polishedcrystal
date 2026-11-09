@@ -274,17 +274,16 @@ BattleCommand_checkturn:
 
 .woke_up
 if !DEF(FAITHFUL)
-	; if user has Early Bird, display ability activation
+	; if user has Early Bird, display ability
 	; a is still (user's ability - EARLY_BIRD)
 	and a
 	jr nz, .woke_up_no_early_bird
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 endc
 .woke_up_no_early_bird
 	ld hl, WokeUpText
 	call StdBattleTextbox
-	; does nothing in case we never showed an ability activation
+	; does nothing in case we never showed an ability
 	farcall EndAbility
 	ldh a, [hBattleTurn]
 	and a
@@ -297,7 +296,7 @@ endc
 	ld hl, UpdateEnemyHUD
 .ok1
 	call CallBattleCore
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	jr .not_asleep
 
@@ -336,9 +335,10 @@ endc
 	jr z, .thaw
 
 	; Check for defrosting
-	call BattleRandom
-	cp 1 + (20 percent)
-	jr c, .thaw
+	ld a, 5
+	call BattleRandomRange
+	and a
+	jr z, .thaw
 	ld hl, FrozenSolidText
 	call StdBattleTextbox
 	xor a
@@ -382,9 +382,10 @@ endc
 	call FarPlayBattleAnimation
 
 	; 33% chance of hitting itself (updated from 50% in Gen VII)
-	call BattleRandom
-	cp 1 + (33 percent)
-	jr nc, .not_confused
+	ld a, 3
+	call BattleRandomRange
+	and a
+	jr nz, .not_confused
 
 	; clear confusion-dependent substatus
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -412,7 +413,7 @@ endc
 
 	; 50% chance of infatuation
 	call BattleRandom
-	cp 1 + (50 percent)
+	add a
 	jr c, .not_infatuated
 
 	ld hl, InfatuationText
@@ -453,7 +454,7 @@ endc
 
 	; 25% chance to be fully paralyzed
 	call BattleRandom
-	cp 1 + (25 percent)
+	cp 64
 	ret nc
 
 	ld hl, FullyParalyzedText
@@ -579,8 +580,18 @@ CheckPowerHerb:
 	cp WEATHER_SUN
 	jr z, .chargeup
 
+	; check for solarization
+	call GetSolarizedWeather
+	jr nz, .no_solar_beam
+
+	farcall BeginAndShowUserAbility
+	ld hl, BattleText_MegaSolCharged
+	call StdBattleTextbox
+	farcall EndAbility
+	jr .chargeup
+
 .no_solar_beam
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_POWER_HERB
 	jr z, .has_power_herb
@@ -735,7 +746,7 @@ HitConfusion:
 	and a
 	jr nz, .enemy
 	farcall UpdatePlayerHUD
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 .enemy
 	call TakeOpponentDamage
@@ -1206,7 +1217,7 @@ BattleCommand_critical:
 	ld c, 0
 	jr nz, .Ability
 
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld c, 0
 	ld a, [hl]
 	cp LUCKY_PUNCH
@@ -1638,7 +1649,7 @@ CheckAirborne:
 	; Check Iron Ball
 	push de
 	push bc
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	pop de
@@ -1699,7 +1710,7 @@ CheckTypeMatchup:
 
 	; Ring Target or Inverse battles bypass the type matchup check.
 	push bc
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_RING_TARGET
@@ -1846,18 +1857,14 @@ _CheckTypeMatchup:
 	ret
 
 BattleCommand_checkpowder:
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	cp SING
-	jr nz, .not_sing
 	farcall CheckNullificationAbilities
 	ld a, [wTypeMatchup]
 	and a
-	ret nz
+	jr nz, .no_nullification
 	ld [wTypeModifier], a
 	ret
 
-.not_sing
+.no_nullification
 	cp THUNDER_WAVE
 	jr z, BattleCommand_resettypematchup
 	cp TOXIC
@@ -2113,7 +2120,7 @@ BattleCommand_checkhit:
 	farcall ApplyAccuracyAbilities
 
 	; Check user items
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_ACCURACY_BOOST
 	jr z, .accuracy_boost_item
@@ -2287,7 +2294,8 @@ BattleCommand_checkhit:
 
 .WeatherAccCheck:
 ; Returns z if the move used always hits in the current weather
-	call GetWeatherAfterOpponentUmbrella
+	call GetSolarizedWeather
+	call nz, GetWeatherAfterOpponentUmbrella
 	cp WEATHER_RAIN
 	jr z, .RainAccCheck
 	cp WEATHER_HAIL
@@ -2667,6 +2675,10 @@ BattleCommand_applydamage:
 ; 3 - Nonconsumable item (i.e. Focus Band)
 ; 4 - Item consumed after use (i.e. Focus Sash)
 ; 5 - High Affection
+	call ResetSubHit
+	call CheckSubstituteOpp
+	call nz, SetSubHit
+
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_ENDURE, a
@@ -2719,7 +2731,6 @@ BattleCommand_applydamage:
 	ld b, $0
 .okay
 	push bc
-	ld c, $0
 	call TakeDamage
 	call .damage_taken
 	pop bc
@@ -2740,17 +2751,18 @@ BattleCommand_applydamage:
 .not_enduring2
 	dec a
 	jr nz, .enduring_with_item
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	ld hl, EnduredText
 	call StdBattleTextbox
 	farjp EndAbility
 
 .enduring_with_item
 	push af
+	call SwitchTurn
+	farcall ItemRecoveryAnim
+	call SwitchTurn
 	call GetOpponentItem
 	call GetCurItemName
-
 	ld hl, HungOnText
 	call StdBattleTextbox
 	pop af
@@ -2861,7 +2873,7 @@ FailText_CheckOpponentProtect:
 	ld hl, AttackMissedText
 	call StdBattleTextbox
 .cont_atkmiss
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_BLUNDER_POLICY
 	ret nz
@@ -2937,7 +2949,7 @@ BattleCommand_criticaltext:
 	jr c, .cont
 	ld b, SET_FLAG
 	ld hl, wEvolvableFlags
-	predef FlagPredef ; c still contains wCurBatlteMon
+	farcall SmallFlagAction ; c still contains wCurBatlteMon
 
 .cont
 	call ResetCrit
@@ -2987,7 +2999,7 @@ BattleCommand_startloop:
 	ld a, 5
 	jr z, .got_count
 	push hl
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	pop hl
 	ld a, b
 	cp HELD_LOADED_DICE
@@ -3222,7 +3234,7 @@ BattleCommand_postfainteffects:
 	call StdBattleTextbox
 
 	call GetMaxHP
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
@@ -3445,7 +3457,7 @@ BattleCommand_posthiteffects:
 	call c, FlinchTarget
 	ret
 
-CheckStatHerbsAfterIntimidate:
+CheckStatHerbsAfterAbility:
 	ld hl, wDeferredSwitch
 	ld a, [hl]
 	push af
@@ -3512,7 +3524,7 @@ CheckThroatSpray:
 	call HasUserFainted
 	ret z
 
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_THROAT_SPRAY
 	ret nz
@@ -3541,7 +3553,7 @@ CheckWhiteHerbEjectPack:
 
 .do_it
 	push bc
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_WHITE_HERB
@@ -3570,7 +3582,7 @@ CheckWhiteHerbEjectPack:
 	push bc
 	push de
 	push hl
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop hl
 	pop de
@@ -3668,7 +3680,7 @@ CheckMirrorHerb:
 	push bc
 	push hl
 	push de
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_MIRROR_HERB
 	jr nz, .stat_raise_failed
@@ -3727,7 +3739,7 @@ EndMoveDamageChecks:
 	call SwitchTurn
 	call CanStealItem
 	jr nz, .no_pickpocket
-	farcall BeginAbility
+	farcall BeginUserAbility
 	call BattleCommand_thief
 	farcall EndAbility
 .no_pickpocket
@@ -3737,7 +3749,7 @@ EndMoveDamageChecks:
 	; life orb, shell bell
 	call HasUserFainted
 	ret z
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	push bc
 	call GetCurItemName
 	pop bc
@@ -3806,7 +3818,7 @@ EndMoveDamageChecks:
 	ld b, a
 	ldh a, [hQuotient + 2]
 	ld c, a
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, BattleText_UserLostSomeOfItsHP
 	jmp StdBattleTextbox
 
@@ -3879,7 +3891,7 @@ UnevolvedEviolite:
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	predef GetEvosAttacksPointer
+	farcall GetEvosAttacksPointer
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	inc a
@@ -4110,7 +4122,8 @@ HailDefenseBoost:
 	push bc
 	lb bc, WEATHER_HAIL, ICE
 WeatherDefenseBoost:
-	call GetWeatherAfterOpponentUmbrella
+	call GetSolarizedWeather
+	call nz, GetWeatherAfterOpponentUmbrella
 	cp b
 	ld a, c
 	pop bc
@@ -4715,7 +4728,6 @@ TakeOpponentDamage:
 
 TakeDamage:
 ; opponent takes damage
-	call ResetSubHit
 	ld hl, wCurDamage
 	ld a, [hli]
 	ld b, a
@@ -4723,13 +4735,7 @@ TakeDamage:
 	or b
 	jr z, .did_no_damage
 
-	ld a, c
-	and a
-	jr nz, .mimic_sub_check
-
-	ld a, BATTLE_VARS_SUBSTATUS4_OPP
-	call GetBattleVar
-	bit SUBSTATUS_SUBSTITUTE, a
+	call CheckSubHit
 	jr nz, SelfInflictDamageToSubstitute
 .mimic_sub_check
 	ld a, [hld]
@@ -4740,7 +4746,6 @@ TakeDamage:
 	jmp RefreshBattleHuds
 
 SelfInflictDamageToSubstitute:
-	call SetSubHit
 	ld hl, SubTookDamageText
 	call StdBattleTextbox
 
@@ -4891,7 +4896,7 @@ BattleCommand_sleep:
 	ld [wNumHits], a
 	ld de, ANIM_SLP
 	call PlayOpponentBattleAnim
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
@@ -4920,8 +4925,7 @@ BattleCommand_sleep:
 	jmp StdBattleTextbox
 
 .ability_ok
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	call AnimateFailedMove
 	call PrintDoesntAffect
 	farjp EndAbility
@@ -5155,8 +5159,7 @@ SapHealth:
 
 .damage
 	pop hl
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	farcall SubtractHPFromUser_OverrideFaintOrder
 	ld hl, SuckedUpOozeText
 	call StdBattleTextbox
@@ -5170,7 +5173,7 @@ GetHPAbsorption:
 HandleBigRoot:
 ; Bonus +30% HP drain (or reduction if Liquid Ooze)
 	push bc
-	predef GetUserItemAfterUnnerve
+	call GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_BIG_ROOT
@@ -5383,7 +5386,7 @@ DisplayStatusProblem:
 	ret z ; Nothing happened?
 
 	ld e, a
-	farcall ShowPotentialAbilityActivation
+	farcall ShowPendingUserAbility
 	ld bc, 4
 	ld hl, StatusProblemTable - 4
 .loop
@@ -5471,8 +5474,7 @@ StatusTargetVerbose:
 	jr .done
 
 .ability_ok
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	ld hl, DoesntAffectText
 .failed
 	push hl
@@ -5494,6 +5496,7 @@ BattleCommand_raisesubnoanim:
 	ld hl, GetMonFrontpic
 .PlayerTurn:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call CallBattleCore
 	jmp ApplyTilemapInVBlank
@@ -5506,6 +5509,7 @@ BattleCommand_lowersubnoanim:
 	ld hl, DropEnemySub
 .PlayerTurn:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call CallBattleCore
 	jmp ApplyTilemapInVBlank
@@ -5843,19 +5847,13 @@ BattleCommand_charge:
 
 .SolarBeam:
 ; 'took in sunlight!'
-	text_far _BattleTookSunlightText
-	text_end
-
+	text_farend _BattleTookSunlightText
 .Fly:
 ; 'flew up high!'
-	text_far _BattleFlewText
-	text_end
-
+	text_farend _BattleFlewText
 .Dig:
 ; 'dug a hole!'
-	text_far _BattleDugText
-	text_end
-
+	text_farend _BattleDugText
 BattleCommand_traptarget:
 	call HasOpponentFainted
 	ret z
@@ -5874,19 +5872,29 @@ BattleCommand_traptarget:
 	ld a, [hl]
 	and a
 	ret nz
-	call CheckSubstituteOpp
+	call CheckSubHit
 	ret nz
-	ld a, HELD_PROLONG_WRAP
-	call GetItemBoostedDuration
+	push hl
+	call GetUserItemAfterUnnerve
+	pop hl
+	ld a, b
+	cp HELD_PROLONG_WRAP
+	ld a, c
 	jr z, .got_count
 	call BattleRandom
 	and 1
 	add 4
-	jr .got_count
-.seven_turns
-	ld a, 7
 .got_count
 	ld [hl], a
+
+	; Because the state of Binding Band depends on the item when we attacked,
+	; not the current item, store the Binding Band flag as the 4th bit in
+	; the wrap count.
+	ld a, b
+	cp HELD_BINDING_BAND
+	jr nz, .binding_band_done
+	set 3, [hl]
+.binding_band_done
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld [de], a
@@ -5944,7 +5952,7 @@ BattleCommand_recoil:
 	call HalveBC
 .recoil_floor
 	call FloorBC
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 .recoil_text
 	ld hl, RecoilText
 	jmp StdBattleTextbox
@@ -6009,8 +6017,7 @@ BattleCommand_confuse:
 	call GetOpponentIgnorableAbility
 	cp OWN_TEMPO
 	jr nz, .no_ability_protection
-	farcall BeginAbility
-	farcall ShowEnemyAbilityActivation
+	farcall BeginAndShowOpponentAbility
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
 	farjp EndAbility
@@ -6062,6 +6069,7 @@ FinishConfusingTargetAnim:
 	call StdBattleTextbox
 
 	farcall UseOpponentConfusionHealingItem
+	farcall UseOpponentHeldStatusHealingItem
 	farjp RunEnemyStatusHealAbilities
 
 Confuse_CheckSwagger_ConfuseHit:
@@ -6153,8 +6161,7 @@ BattleCommand_heal:
 	jmp SwitchTurn
 
 .ability_prevents_rest
-	farcall BeginAbility
-	farcall ShowAbilityActivation
+	farcall BeginAndShowUserAbility
 	call AnimateFailedMove
 	farjp EndAbility
 

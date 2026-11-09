@@ -6,6 +6,7 @@ _SafeCopyTilemapAtOnce::
 	ldh a, [hVBlank]
 	push af
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hMapAnims], a
 
@@ -48,14 +49,14 @@ _SafeCopyTilemapAtOnce::
 .noForceOAMUpdate
 	bit 3, b
 	ld a, 3
-	jr z, .gotTileCount
+	jr z, .gotRowCount
 	ld a, 9
-.gotTileCount
-	ldh [hTilesPerCycle], a
+.gotRowCount
+	ldh [hBGMapCopyNRows], a
 	ld a, b
 	and %1000
 	swap a
-	or 5
+	or TRANSFER_TILEMAP_OFS
 	ldh [hBGMapMode], a ; bit 7 = skip attr map
 	ld a, 1 << 7 | 7 ; execute actual VBlank7
 	ldh [hVBlank], a
@@ -78,6 +79,7 @@ _CopyTilemapAtOnce::
 	push af
 
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ldh [hMapAnims], a
 
@@ -113,7 +115,7 @@ VBlankSafeCopyTilemapAtOnce::
 	ldh a, [hBGMapMode]
 	bit 7, a
 	jr nz, .skipAttr
-	ld a, 6
+	ld a, TRANSFER_ATTRMAP_OFS
 	ldh [hBGMapMode], a
 	call UpdateBGMap
 .skipAttr
@@ -169,7 +171,7 @@ Copy5RowsOfTilemapInHBlank:
 ; fallthrough
 CopyTilemapInHBlank:
 ; Copy all tiles to vBGMap
-	ld [hSPBuffer], sp
+	ld [wSPBuffer], sp
 
 	ld sp, hl
 	ldh a, [hBGMapAddress + 1]
@@ -180,7 +182,7 @@ CopyTilemapInHBlank:
 
 	ld a, b
 .loop
-	ldh [hTilesPerCycle], a
+	ldh [hNbRowsToCopy], a
 ; if in v/hblank, wait until not in v/hblank
 	pop bc
 	pop de
@@ -262,11 +264,11 @@ CopyTilemapInHBlank:
 	ld de, TILEMAP_WIDTH - (SCREEN_WIDTH - 1)
 	add hl, de
 
-	ldh a, [hTilesPerCycle]
+	ldh a, [hNbRowsToCopy]
 	dec a
 	jr nz, .loop
 
-	ld sp, hSPBuffer
+	ld sp, wSPBuffer
 	pop hl
 	ld sp, hl
 	ret

@@ -46,6 +46,9 @@ CeladonPokeCenter1FPharmacistText:
 
 	para "Oh, wait. That was"
 	line "three years ago."
+
+	para "I wonder what it's"
+	line "used for now?"
 	done
 
 CeladonPokeCenter1FCooltrainerfText:

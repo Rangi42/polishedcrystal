@@ -35,17 +35,31 @@ MACRO dual_connection
 		fail "Invalid direction for 'dual_connection'."
 	endc
 
+	REDEF CURRENT_MAP_ID EQUS "\2"
 	DEF CURRENT_MAP_WIDTH = \2_WIDTH
 	DEF CURRENT_MAP_HEIGHT = \2_HEIGHT
+	DEF MAP_CONNECTIONS_\2 = -1 ; sentinel for dual connections
 	connection \1, \4, \5, \6
 	connection \1, \7, \8, \9
 ENDM
 
 DualMapConnections:
+	; When you walk south off of Route13, if [wXCoord] < 18,
+	; then use "connection south, Route14, ROUTE_14, 0",
+	; else use "connection south, LuckyIsland, LUCKY_ISLAND, 9".
+	dual_connection south, ROUTE_13, 18, \
+		Route14, ROUTE_14, 0, \
+		LuckyIsland, LUCKY_ISLAND, 9
 	; When you walk north off of Route35CoastSouth, if [wXCoord] < 30,
-	; then use "connection north, OlivineCity, OLIVINE_CITY, -7";
+	; then use "connection north, OlivineCity, OLIVINE_CITY, -7",
 	; else use "connection north, Route35CoastNorth, ROUTE_35_COAST_NORTH, 15".
 	dual_connection north, ROUTE_35_COAST_SOUTH, 30, \
 		OlivineCity, OLIVINE_CITY, -7, \
 		Route35CoastNorth, ROUTE_35_COAST_NORTH, 15
+	; When you walk east off of CherrygroveBay, if [wYCoord] < 30,
+	; then use "connection east, CherrygroveTrainTrackDual, CHERRYGROVE_TRAIN_TRACK_DUAL, 0",
+	; else use "connection east, CherrygroveCity, CHERRYGROVE_CITY, 15".
+	dual_connection east, CHERRYGROVE_BAY, 30, \
+		CherrygroveTrainTrackDual, CHERRYGROVE_TRAIN_TRACK_DUAL, 0, \
+		CherrygroveCity, CHERRYGROVE_CITY, 15
 	db 0 ; end

@@ -139,16 +139,17 @@ _Init::
 	ldh [hSerialConnectionStatus], a
 
 	ld a, $cb ; prefix
-	ldh [hBitwisePrefix], a
+	ldh [hBitwiseFunctionPrefix], a
 	ld a, $c9 ; ret
-	ldh [hBitwiseRet], a
-	ldh [hSingleRet], a
+	ldh [hBitwiseFunctionRet], a
+	ldh [hSingleFunctionRet], a
 	ld a, $c3 ; jp
-	ldh [hFunctionJump], a
+	ldh [hLCDInterruptFunctionJump], a
+	ldh [hJumpFunctionJump], a
 	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
+	ldh [hLCDInterruptFunctionTargetLo], a
 	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
+	ldh [hLCDInterruptFunctionTargetHi], a
 
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a

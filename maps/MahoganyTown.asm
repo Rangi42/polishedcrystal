@@ -20,7 +20,7 @@ MahoganyTown_MapScriptHeader:
 	def_bg_events
 	bg_event  1,  5, BGEVENT_JUMPTEXT, MahoganyTownSignText
 	bg_event  9,  7, BGEVENT_READ, MahoganyTownSouvenirShopSign
-	bg_event  3, 13, BGEVENT_JUMPTEXT, MahoganyGymSignText
+	bg_event  7, 13, BGEVENT_JUMPTEXT, MahoganyGymSignText
 
 	def_object_events
 	object_event 19,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, MahoganyTownPokefanMScript, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
@@ -58,8 +58,7 @@ RageCandyBarMerchantScript:
 	iffalse_jumpopenedtext RageCandyBarMerchantRefusedText
 	checkmoney YOUR_MONEY, 300
 	ifequalfwd HAVE_LESS, .NotEnoughMoney
-	giveitem RAGECANDYBAR
-	iffalse_jumpopenedtext RageCandyBarMerchantNoRoomText
+	giveitem RAGECANDYBAR, iffalse_jumpopenedtext RageCandyBarMerchantNoRoomText
 	waitsfx
 	playsound SFX_TRANSACTION
 	takemoney YOUR_MONEY, 300

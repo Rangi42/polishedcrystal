@@ -1,5 +1,5 @@
-	db  90,  60,  60,  40,  40,  40 ; 330 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 330,  90,  60,  60,  40,  40,  40
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db GROUND, GROUND ; type
 	db 120 ; catch rate

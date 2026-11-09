@@ -272,16 +272,7 @@ Music_MartHGSS_Ch2:
 	note A#, 2
 Music_MartHGSS_Loop2:
 	octave 4
-	note C#, 3
-	octave 3
-	note F#, 1
-	octave 4
-	note D#, 2
-	octave 3
-	note B_, 8
-	note B_, 1
-	octave 4
-	note C#, 1
+	sound_call Music_MartHGSS_Ch2_ditty1
 	note D#, 2
 	note D_, 2
 	note D#, 2
@@ -289,16 +280,7 @@ Music_MartHGSS_Loop2:
 	note D#, 1
 	note E_, 1
 	note F#, 2
-	note C#, 3
-	octave 3
-	note F#, 1
-	octave 4
-	note D#, 2
-	octave 3
-	note B_, 8
-	note B_, 1
-	octave 4
-	note C#, 1
+	sound_call Music_MartHGSS_Ch2_ditty1
 	note D#, 2
 	note D_, 2
 	note D#, 2
@@ -333,31 +315,13 @@ Music_MartHGSS_Loop2:
 	note E_, 2
 	note D#, 2
 	volume_envelope 12, 5
-	note C#, 3
-	octave 3
-	note F#, 1
-	octave 4
-	note D#, 2
-	octave 3
-	note B_, 8
-	note B_, 1
-	octave 4
-	note C#, 1
+	sound_call Music_MartHGSS_Ch2_ditty1
 	note D#, 6
 	note E_, 4
 	note D#, 2
 	note E_, 2
 	note F#, 2
-	note C#, 3
-	octave 3
-	note F#, 1
-	octave 4
-	note D#, 2
-	octave 3
-	note B_, 8
-	note B_, 1
-	octave 4
-	note C#, 1
+	sound_call Music_MartHGSS_Ch2_ditty1
 	note_type 6, 12, 5
 	note D#, 11
 	note G_, 1
@@ -497,38 +461,9 @@ Music_MartHGSS_Ch3:
 	rest 7
 Music_MartHGSS_Loop3:
 	octave 2
-	note B_, 4
-	rest 2
-	note B_, 1
-	rest 1
-	note F#, 4
-	rest 2
-	note F#, 1
-	rest 1
-	note B_, 4
-	rest 2
-	note B_, 1
-	rest 1
-	note F#, 4
-	rest 2
-	note F#, 1
-	rest 1
-	note B_, 4
-	rest 2
-	note B_, 1
-	rest 1
-	note F#, 4
-	rest 2
-	note F#, 1
-	rest 1
-	note B_, 4
-	rest 2
-	note B_, 1
-	rest 1
-	note F#, 4
-	rest 2
-	note F#, 1
-	rest 1
+Music_MartHGSS_Ch3_loop_opt1:
+	sound_call Music_MartHGSS_Ch3_ditty1
+	sound_loop 4, Music_MartHGSS_Ch3_loop_opt1
 	note E_, 4
 	rest 2
 	note E_, 1
@@ -541,14 +476,7 @@ Music_MartHGSS_Loop3:
 	rest 2
 	note F_, 1
 	rest 1
-	note B_, 4
-	rest 2
-	note B_, 1
-	rest 1
-	note F#, 4
-	rest 2
-	note F#, 1
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty1
 	octave 3
 	note F#, 4
 	rest 2
@@ -562,51 +490,14 @@ Music_MartHGSS_Loop3:
 	sound_call Music_MartHGSS_Branch
 	sound_call Music_MartHGSS_Branch
 	note E_, 4
-	volume_envelope 2, 4
-	octave 6
-	note G#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty3
 	note E_, 1
-	rest 1
-	note B_, 4
-	volume_envelope 2, 4
-	octave 5
-	note G#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
-	note B_, 1
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty5
 	note F_, 4
-	volume_envelope 2, 4
-	octave 6
-	note G#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty3
 	note F_, 1
-	rest 1
-	note B_, 4
-	volume_envelope 2, 4
-	octave 5
-	note G#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
-	note B_, 1
-	rest 1
-	note F#, 4
-	volume_envelope 2, 4
-	octave 6
-	note F#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
-	note F#, 1
-	rest 1
-	octave 3
+	sound_call Music_MartHGSS_Ch3_ditty5
+	sound_call Music_MartHGSS_Ch3_ditty4
 	note F#, 4
 	volume_envelope 2, 4
 	octave 5
@@ -676,48 +567,23 @@ Music_MartHGSS_Loop3:
 	note D#, 4
 	note G_, 4
 	note G#, 4
-	volume_envelope 2, 4
-	octave 6
-	note D#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty2
 	note G#, 1
 	rest 1
 	note G_, 4
-	volume_envelope 2, 4
-	octave 6
-	note D#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty2
 	note G_, 1
 	rest 1
 	note F#, 4
-	volume_envelope 2, 4
-	octave 6
-	note D#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty2
 	note F#, 1
 	rest 1
 	note F_, 4
-	volume_envelope 2, 4
-	octave 6
-	note D#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty2
 	note F_, 1
 	rest 1
 	note E_, 4
-	volume_envelope 2, 4
-	octave 6
-	note G#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty3
 	note E_, 1
 	rest 1
 	octave 1
@@ -732,12 +598,7 @@ Music_MartHGSS_Loop3:
 	rest 1
 	octave 2
 	note F_, 4
-	volume_envelope 2, 4
-	octave 6
-	note G#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
+	sound_call Music_MartHGSS_Ch3_ditty3
 	note F_, 1
 	rest 1
 	octave 1
@@ -751,16 +612,7 @@ Music_MartHGSS_Loop3:
 	note B_, 1
 	rest 1
 	octave 2
-	note F#, 4
-	volume_envelope 2, 4
-	octave 6
-	note F#, 1
-	volume_envelope 1, 4
-	octave 2
-	rest 1
-	note F#, 1
-	rest 1
-	octave 3
+	sound_call Music_MartHGSS_Ch3_ditty4
 	note C#, 4
 	volume_envelope 2, 4
 	octave 5
@@ -823,54 +675,9 @@ Music_MartHGSS_Loop4:
 	drum_note 8, 2
 	drum_note 3, 2
 	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
+	sound_call Music_MartHGSS_Ch4_ditty1
+	sound_call Music_MartHGSS_Ch4_ditty1
+	sound_call Music_MartHGSS_Ch4_ditty1
 	drum_note 8, 16
 	drum_note 8, 2
 	drum_note 3, 2
@@ -880,118 +687,13 @@ Music_MartHGSS_Loop4:
 	drum_note 8, 2
 	drum_note 3, 2
 	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 3, 2
+	sound_call Music_MartHGSS_Ch4_ditty1
+	sound_call Music_MartHGSS_Ch4_ditty1
+	sound_call Music_MartHGSS_Ch4_ditty1
 	drum_note 8, 16
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
-	drum_note 11, 4
-	drum_note 8, 2
-	drum_note 3, 2
+Music_MartHGSS_Ch4_loop_opt1:
+	sound_call Music_MartHGSS_Ch4_ditty2
+	sound_loop 7, Music_MartHGSS_Ch4_loop_opt1
 	drum_note 11, 4
 	drum_note 8, 2
 	drum_note 3, 2
@@ -1002,3 +704,102 @@ Music_MartHGSS_Loop4:
 	drum_note 8, 2
 	drum_note 8, 2
 	sound_jump Music_MartHGSS_Loop4
+
+Music_MartHGSS_Ch2_ditty1:
+	note C#, 3
+	octave 3
+	note F#, 1
+	octave 4
+	note D#, 2
+	octave 3
+	note B_, 8
+	note B_, 1
+	octave 4
+	note C#, 1
+	sound_ret
+
+Music_MartHGSS_Ch3_ditty1:
+	note B_, 4
+	rest 2
+	note B_, 1
+	rest 1
+	note F#, 4
+	rest 2
+	note F#, 1
+	rest 1
+	sound_ret
+
+Music_MartHGSS_Ch3_ditty2:
+	volume_envelope 2, 4
+	octave 6
+	note D#, 1
+	volume_envelope 1, 4
+	octave 2
+	rest 1
+	sound_ret
+
+Music_MartHGSS_Ch3_ditty3:
+	volume_envelope 2, 4
+	octave 6
+	note G#, 1
+	volume_envelope 1, 4
+	octave 2
+	rest 1
+	sound_ret
+
+Music_MartHGSS_Ch3_ditty4:
+	note F#, 4
+	volume_envelope 2, 4
+	octave 6
+	note F#, 1
+	volume_envelope 1, 4
+	octave 2
+	rest 1
+	note F#, 1
+	rest 1
+	octave 3
+	sound_ret
+
+Music_MartHGSS_Ch3_ditty5:
+	rest 1
+	note B_, 4
+	volume_envelope 2, 4
+	octave 5
+	note G#, 1
+	volume_envelope 1, 4
+	octave 2
+	rest 1
+	note B_, 1
+	rest 1
+	sound_ret
+
+Music_MartHGSS_Ch4_ditty1:
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	sound_ret
+
+Music_MartHGSS_Ch4_ditty2:
+	drum_note 11, 4
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 11, 4
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 11, 4
+	drum_note 8, 2
+	drum_note 3, 2
+	sound_ret

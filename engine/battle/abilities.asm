@@ -9,8 +9,10 @@ RunEntryAbilitiesInner_SkillSwap:
 ; Runs on Skill Swap or pending Neutralizing Gas deactivation.
 	; Some abilities do nothing in this case.
 	call GetTrueUserAbility
-	farcall NoSkillSwapEntry
-	ret c
+	cp IMPOSTER
+	ret z
+	cp CLOUD_NINE
+	ret z
 	; fallthrough
 _RunEntryAbilitiesInner:
 	; Chain-triggering causes graphical glitches, so ensure animations
@@ -88,13 +90,9 @@ UnnerveAbility:
 NeutralizingGasAbility:
 	ld hl, NotifyNeutralizingGas
 NotificationAbilities:
-	push hl
-	call BeginAbility
-	call ShowAbilityActivation
-	pop hl
+	call BeginAndShowUserAbility
 	call StdBattleTextbox
 	jmp EndAbility
-
 
 ImmunityAbility:
 PastelVeilAbility:
@@ -119,8 +117,7 @@ HealStatusAbility:
 	call GetBattleVar
 	and b
 	ret z ; not afflicted/wrong status
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	xor a
@@ -138,8 +135,7 @@ OwnTempoAbility:
 	call GetBattleVar
 	bit SUBSTATUS_CONFUSED, a
 	ret z ; not confused
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
@@ -152,8 +148,7 @@ ObliviousAbility:
 	call GetBattleVar
 	bit SUBSTATUS_IN_LOVE, a
 	ret z ; not infatuated
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOVE, [hl]
@@ -163,17 +158,16 @@ ObliviousAbility:
 
 TraceAbility:
 	call GetOpponentIgnorableAbility
-	farcall AbilityCanBeTraced
-	ret c
-
+	call AbilityCanBeTraced
+	ret nz
 	push af
-	ld b, a
 	farcall BufferAbility
 
-	; TODO: fancier graphics?
-	call BeginAbility
-	call ShowAbilityActivation
-	call ShowEnemyAbilityActivation
+	call BeginAndShowUserAbility
+	call ShowOpponentAbility
+	pop af
+	push af
+	call ShowAbilityReplacement
 	ld hl, TraceActivationText
 	call StdBattleTextbox
 	call EndAbility
@@ -203,8 +197,7 @@ WeatherAbility:
 	cp b
 	ret z ; don't re-activate it
 
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	; Disable running animations as part of Start(wWeather) commands. This will not block
 	; PlayBattleAnimDE that plays the animation manually.
 	ld a, b
@@ -238,25 +231,22 @@ WeatherAbility:
 IntimidateAbility:
 	; does not work against Inner Focus, Own Tempo, Oblivious, Scrappy
 	call GetOpponentIgnorableAbility
+	ld b, a
 	inc a
 	jr z, .intimidate_ok
 	dec a
-	ld b, a
-	push af
+	call GetAbilityFlags
+	and ABILFLAG_NO_INTIMIDATE
+	jr z, .intimidate_ok
 	farcall BufferAbility
-	pop af
-	ld hl, NoIntimidateAbilities
-	call IsInByteArray
-	jr nc, .intimidate_ok
-	call BeginAbility
-	call ShowAbilityActivation
-	call ShowEnemyAbilityActivation
+	call BeginAndShowUserAbility
+	call ShowOpponentAbility
 	ld hl, BattleText_IntimidateResisted
 	call StdBattleTextbox
 	jmp EndAbility
 
 .intimidate_ok
-	call BeginAbility
+	call BeginUserAbility
 	ld b, ATTACK
 	farcall ForceLowerOppStat
 
@@ -274,13 +264,11 @@ IntimidateAbility:
 	call SwitchTurn
 	call EndAbility
 	farcall CheckMirrorHerb
-	farjp CheckStatHerbsAfterIntimidate
-
-INCLUDE "data/abilities/no_intimidate_abilities.asm"
+	farjp CheckStatHerbsAfterAbility
 
 DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
-	call BeginAbility
+	call BeginUserAbility
 	ld hl, wEnemyMonDefense
 	ldh a, [hBattleTurn]
 	and a
@@ -318,9 +306,7 @@ DownloadAbility:
 	farjp CheckMirrorHerb
 
 ImposterAbility:
-	call BeginAbility
-	; flags for the transform wave anim to not affect slideouts
-	call ShowPotentialAbilityActivation
+	call BeginAndShowUserAbility
 	farcall BattleCommand_transform
 	jmp EndAbility
 
@@ -378,8 +364,7 @@ AnticipationAbility:
 .shudder
 	pop bc
 	pop hl
-	call BeginAbility
-	call ShowEnemyAbilityActivation
+	call BeginAndShowOpponentAbility
 	ld hl, ShudderedText
 	call StdBattleTextbox
 	call EndAbility
@@ -475,8 +460,7 @@ ForewarnAbility:
 	and a
 	ret z
 	push af
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	pop af
 	ld [wNamedObjectIndex], a
 	call GetMoveName
@@ -489,8 +473,7 @@ FriskAbility:
 	ld a, [hl]
 	and a
 	ret z ; no item
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	call GetCurItemName
 	ld hl, FriskedItemText
 	call StdBattleTextbox
@@ -504,8 +487,7 @@ ScreenCleanerAbility:
 	and a
 	ret z
 .screens_up
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	ldh a, [hBattleTurn]
 	push af
 	call .do_it
@@ -547,9 +529,7 @@ SynchronizeAbility:
 	call GetBattleVar
 	and 1 << PAR | 1 << BRN | 1 << PSN
 	ret z ; not statused or frozen/asleep (which doesn't proc Synchronize)
-	call BeginAbility
-	; 'potential' to not run the slideout twice
-	call ShowPotentialAbilityActivation
+	call BeginAndShowUserAbility
 	farcall ResetMiss
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
@@ -608,19 +588,22 @@ RunFaintAbilities:
 ; abilities that run after an attack faints an enemy
 	farcall GetFutureSightUser
 	ret nz
-	call GetTrueUserIgnorableAbility
-	call _RunFaintUserAbilities
+	ld hl, UserFaintAbilities
+	call UserIgnorableAbilityJumptable
 	call GetOpponentIgnorableAbility
-	push af
 	call SwitchTurn
-	pop af
-	call _RunFaintOpponentAbilities
+	ld hl, TargetFaintAbilities
+	call AbilityJumptable
 	jmp SwitchTurn
 
-_RunFaintOpponentAbilities:
-	cp AFTERMATH
-	ret nz
-	; fallthrough
+UserFaintAbilities:
+	dbw MOXIE, MoxieAbility
+	dbw -1, -1
+
+TargetFaintAbilities:
+	dbw AFTERMATH, AftermathAbility
+	dbw -1, -1
+
 AftermathAbility:
 	; Damp protects against this
 	call GetOpponentIgnorableAbility
@@ -630,8 +613,7 @@ AftermathAbility:
 	call CheckOpponentContactMove
 	ret c
 .is_contact
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	call SwitchTurn
 	call GetQuarterMaxHP
 	farcall SubtractHPFromUser_OverrideFaintOrder
@@ -644,6 +626,11 @@ RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
 	call CheckContactMove
 	call nc, RunContactAbilities
+	call HasOpponentFainted
+	ld hl, EnemyHitAbilities
+	jr z, .got_enemy_abilities
+	ld hl, EnemyHitAbilitiesNonfainted
+.got_enemy_abilities
 	; Store type and category (phy/spe/sta) so that abilities can check on them
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
@@ -651,44 +638,32 @@ RunHitAbilities:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld c, a
-	push bc
 	call GetOpponentIgnorableAbility
-	push af
 	call SwitchTurn
-	pop af
-	pop bc
-	call .do_enemy_abilities
+	call AbilityJumptable
 	jmp SwitchTurn
 
-.do_enemy_abilities
-	cp CURSED_BODY
-	jr z, CursedBodyAbility
-	push bc
-	push af
-	call HasUserFainted
-	pop bc
-	ld a, b
-	pop bc
-	ret z
-	cp JUSTIFIED
-	jmp z, JustifiedAbility
-	cp RATTLED
-	jmp z, RattledAbility
-	cp WEAK_ARMOR
-	jmp z, WeakArmorAbility
-	ret
+EnemyHitAbilitiesNonfainted:
+	dbw JUSTIFIED, JustifiedAbility
+	dbw RATTLED, RattledAbility
+	dbw WEAK_ARMOR, WeakArmorAbility
+EnemyHitAbilities:
+	dbw CURSED_BODY, CursedBodyAbility
+	dbw -1, -1
 
 CursedBodyAbility:
 	call SwitchTurn
 	farcall GetFutureSightUser
 	call SwitchTurn
 	ret nc
+	farcall CheckSubHit
+	ret nz
 	ld a, 10
 	call BattleRandomRange
 	cp 3
 	ret nc
-	call BeginAbility
-	; this runs ShowAbilityActivation when relevant
+	call BeginUserAbility
+	; this runs ShowPendingUserAbility when relevant
 	farcall BattleCommand_disable
 	jmp EndAbility
 
@@ -707,6 +682,7 @@ UserContactAbilities:
 	dbw -1, -1
 
 TargetContactAbilities:
+	dbw IRON_BARBS, IronBarbsAbility
 	dbw EFFECT_SPORE, EffectSporeAbility
 	dbw FLAME_BODY, FlameBodyAbility
 	dbw POISON_POINT, PoisonPointAbility
@@ -726,8 +702,8 @@ CuteCharmAbility:
 	cp 3
 	ret nc
 
-	call BeginAbility
-	; this runs ShowAbilityActivation when relevant
+	call BeginUserAbility
+	; this runs ShowPendingUserAbility when relevant
 	farcall BattleCommand_attract
 	jmp EndAbility
 
@@ -751,8 +727,7 @@ PerishBodyAbility:
 	ld a, 4
 	ld [de], a
 .no_user
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	ld hl, StartPerishBodyText
 	call StdBattleTextbox
 	jmp EndAbility
@@ -761,12 +736,29 @@ TanglingHairAbility:
 	call HasOpponentFainted
 	ret z
 
-	call BeginAbility
+	call BeginUserAbility
 	ld b, SPEED
 	ld a, STAT_SILENT
 	farcall _ForceLowerOppStat
 	call EndAbility
 	farjp CheckMirrorHerb
+
+IronBarbsAbility:
+	call HasOpponentFainted
+	ret z
+
+	call GetOpponentIgnorableAbility
+	cp MAGIC_GUARD
+	ret z
+
+	call BeginAndShowUserAbility
+	call SwitchTurn
+	call GetEighthMaxHP
+	farcall SubtractHPFromUser_OverrideFaintOrder
+	ld hl, IsHurtText
+	call StdBattleTextbox
+	call EndAbility
+	jmp SwitchTurn
 
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
@@ -778,15 +770,53 @@ EffectSporeAbility:
 	ld a, b
 	cp HELD_SAFETY_GOGGLES
 	ret z
-	call BattleRandom
-	cp 1 + 33 percent
-	jr c, PoisonPointAbility
-	cp 1 + 66 percent
-	jr c, StaticAbility
+	ld a, 3
+	call BattleRandomRange
+	and a
+	jr z, PoisonPointAbility
+	dec a
+	jr z, StaticAbility
 
+	; If we put the foe to sleep, we need to immediately cancel an ongoing
+	; multihit move. Due to this, add some special handling for sleep in
+	; particular. Note that Chesto or Lum will prevent this, which is why
+	; we check the sleep state after the fact, not merely "did we put
+	; the foe to sleep".
+
+	; Is the foe already statused? Avoids the latter check triggering
+	; in case the foe was already asleep and using Sleep Talk.
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	ld a, [hl]
+	and a
+	ret nz
+	push hl
 	ld hl, CanSleepTarget
 	ld c, SLP_MASK
-	jr AfflictStatusAbility
+	call AfflictStatusAbility
+	pop hl
+
+	; Is the opponent now asleep?
+	ld a, [hl]
+	and SLP_MASK
+	ret z
+
+	; Are they using a multihit move?
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	call GetBattleVar
+	bit SUBSTATUS_IN_LOOP, a
+	ret z
+
+	; Set the "hits left" counter to 1.
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wEnemyRolloutCount
+	jr z, .got_opponent_count
+	ld hl, wPlayerRolloutCount
+.got_opponent_count
+	ld [hl], 1
+	ret
+
 FlameBodyAbility:
 	ld hl, CanBurnTarget
 	ld c, 1 << BRN
@@ -859,7 +889,7 @@ _AfflictStatusAbility:
 .got_status
 	ld [hl], a
 
-	call BeginAbility
+	call BeginUserAbility
 	farcall DisplayStatusProblem
 	call UpdateOpponentInParty
 	call UpdateBattleHuds
@@ -969,8 +999,7 @@ RunEnemyNullificationAbilities:
 	ret nz
 
 	; For other abilities, don't do anything except print a message (for example Levitate)
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	call SwitchTurn
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
@@ -997,8 +1026,7 @@ CannotUseTextAbility:
 	call GetBattleVar
 	ld [wNamedObjectIndex], a
 	call GetMoveName
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	ld hl, CannotUseText
 	call StdBattleTextbox
 	jmp EndAbility
@@ -1035,10 +1063,6 @@ JustifiedAbility:
 	cp DARK
 	ret nz
 	jr AttackUpAbility
-_RunFaintUserAbilities:
-	cp MOXIE
-	ret nz
-	; fallthrough
 MoxieAbility:
 	; Don't run if battle is over
 	farcall CheckAnyOtherAliveOpponentMons
@@ -1070,7 +1094,7 @@ SpeedUpAbility:
 StatUpAbility:
 	call HasUserFainted
 	ret z
-	call BeginAbility
+	call BeginUserAbility
 	ld a, STAT_SILENT
 	farcall _ForceRaiseStat
 	ld a, [wFailedMessage]
@@ -1084,10 +1108,11 @@ StatUpAbility:
 	cp MOTOR_DRIVE
 	jr z, .print_immunity
 	cp SAP_SIPPER
+	jr z, .print_immunity
+	cp WIND_RIDER
 	jr nz, .done
 .print_immunity
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	call SwitchTurn
 	ld hl, DoesntAffectText
 	call StdBattleTextbox
@@ -1103,7 +1128,7 @@ WeakArmorAbility:
 	and a ; cp PHYSICAL
 	ret nz
 
-	call BeginAbility
+	call BeginUserAbility
 	ld b, DEFENSE
 	farcall LowerStat
 	ld b, $10 | SPEED
@@ -1112,8 +1137,7 @@ WeakArmorAbility:
 	farjp CheckMirrorHerb
 
 FlashFireAbility:
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	ld a, [hl]
@@ -1133,8 +1157,7 @@ FlashFireAbility:
 DrySkinAbility:
 VoltAbsorbAbility:
 WaterAbsorbAbility:
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	farcall CheckFullHP
 	jr z, .full_hp
 	call GetQuarterMaxHP
@@ -1243,6 +1266,7 @@ SlushRushAbility:
 WeatherSpeedAbility:
 ; Doubles Speed in relevant weather
 	ln c, 2, 1 ; x2
+	call GetWeatherAfterUserUmbrella
 	jr WeatherBoostAbility
 
 SandVeilAbility:
@@ -1253,8 +1277,10 @@ SnowCloakAbility:
 WeatherAccAbility:
 ; Decrease target accuracy by 20% in relevant weather
 	ln c, 4, 5 ; x0.8
+	call GetSolarizedWeather
+	call nz, GetWeatherAfterOpponentUmbrella
+	; fallthrough
 WeatherBoostAbility:
-	call GetWeatherAfterOpponentUmbrella
 	cp b
 	ret nz
 	ld a, c
@@ -1278,10 +1304,9 @@ SolarPowerWeatherAbility:
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	ret nz
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	call GetEighthMaxHP
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, IsHurtText
 	call StdBattleTextbox
 	jmp EndAbility
@@ -1298,8 +1323,7 @@ WeatherRecoveryAbility:
 	ret nz
 	farcall CheckFullHP
 	ret z
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	call GetTrueUserIgnorableAbility
 	cp DRY_SKIN
 	jr z, .eighth_max_hp
@@ -1336,12 +1360,12 @@ EndturnAbilityTableA:
 	dbw -1, -1
 
 EndturnAbilityTableB:
-	; If Bad Dreams is implemented, remember to add CheckFaint in endturn.asm
 	dbw CUD_CHEW, CudChewAbility
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
 	dbw PICKUP, PickupAbility
 	dbw SPEED_BOOST, SpeedBoostAbility
+	dbw BAD_DREAMS, BadDreamsAbility
 	dbw -1, -1
 
 CudChewAbility:
@@ -1365,7 +1389,7 @@ CudChewAbility:
 	ld [wCurItem], a
 	xor a
 	ld [hl], a
-	call BeginAbility
+	call BeginUserAbility
 	farcall ReconsumeConfusionHealingItem
 	farcall ReconsumeHeldStatusHealingItem
 	farcall ReconsumeHPHealingItem ; also Enigma Berry
@@ -1471,8 +1495,7 @@ RegainItemByAbility:
 	; Update party struct if applicable
 	push af
 	push hl
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	pop hl
 	pop af
 
@@ -1588,7 +1611,7 @@ MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
 ; It will not try to raise a stat at +6 (or lower one at -6). This means that,
 ; should all stats be +6, Moody will not raise any stat, and vice versa.
-	call BeginAbility
+	call BeginUserAbility
 
 	call GetCappedStats
 	call SelectRandomRaiseStat
@@ -1606,7 +1629,23 @@ MoodyAbility:
 	farcall ForceLowerStat
 .lower_done
 	call EndAbility
-	farjp CheckMirrorHerb
+	farcall CheckMirrorHerb
+	farjp CheckStatHerbsAfterAbility
+
+BadDreamsAbility:
+; Inflict 1/8th of Max HP damage to sleeping foes.
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and SLP_MASK
+	ret z
+	call BeginAndShowUserAbility
+	call SwitchTurn
+	call GetEighthMaxHP
+	farcall SubtractHPFromUser
+	call SwitchTurn
+	ld hl, IsTormentedText
+	call StdBattleTextbox
+	jmp EndAbility
 
 ApplyDamageAbilities_AfterTypeMatchup:
 	ld hl, OffensiveDamageAbilities_AfterTypeMatchup
@@ -1956,8 +1995,9 @@ HydrationAbility:
 	jr HealAllStatusAbility
 ShedSkinAbility:
 ; Cure a non-volatile status 30% of the time
-	call BattleRandom
-	cp 1 + (30 percent)
+	ld a, 10
+	call BattleRandomRange
+	cp 3
 	ret nc
 	; fallthrough
 NaturalCureAbility:
@@ -1966,14 +2006,14 @@ HealAllStatusAbility:
 	jmp HealStatusAbility
 
 AngerPointAbility:
-	call BeginAbility
+	call BeginUserAbility
 	ld b, $f0 | ATTACK
 	ld a, STAT_SILENT | STAT_SKIPTEXT
 	farcall _RaiseStat
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .done
-	call ShowAbilityActivation
+	call ShowUserAbility
 	ld hl, AngerPointMaximizedAttackText
 	xor a
 	farcall DoPrintStatChange
@@ -1992,8 +2032,7 @@ RunSwitchAbilities:
 RegeneratorAbility:
 	farcall CheckFullHP
 	ret z
-	call BeginAbility
-	call ShowAbilityActivation
+	call BeginAndShowUserAbility
 	call GetThirdMaxHP
 	farcall RestoreHP
 	call EndAbility
@@ -2001,6 +2040,53 @@ RegeneratorAbility:
 	and a
 	jmp z, UpdateBattleMonInParty
 	jmp UpdateEnemyMonInParty
+
+_GetOpponentAbility:
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	push bc
+	push af
+	ld b, a
+
+	; If we're transformed, verify that it's allowed when transformed.
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVar
+	bit SUBSTATUS_TRANSFORMED, a
+	jr z, .not_transformed
+	ld a, b
+	call _GetAbilityFlags
+	and ABILFLAG_NO_TRANSFORM
+	jr nz, .remove_ability
+
+.not_transformed
+	; Unless the ability is Neutralizing Gas, check if it's suppressed by it.
+	ld a, b
+	ld c, NEUTRALIZING_GAS
+	cp c
+	jr z, .not_suppressed
+
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp c
+	jr nz, .not_suppressed
+
+	; We know that the user has either Neutralizing Gas, or nothing.
+	; Thus, this doesn't cause an infinite loop. The reason this check
+	; exists at all is to verify that the Neutralizing Gas is active.
+	call GetUserAbility
+	cp c
+	jr nz, .not_suppressed
+
+	ld a, b
+	call AbilityCanBeSuppressed
+	jr nz, .not_suppressed
+.remove_ability
+	ld b, 0
+.not_suppressed
+	ld a, b
+	pop bc
+	pop bc
+	ret
 
 _GetOpponentIgnorableAbility::
 	call GetOpponentAbility
@@ -2021,26 +2107,55 @@ _GetIgnorableAbility:
 	swap a
 .got_movestate
 	and MOVESTATE_IGNOREABIL
-	jr nz, .done
+	jr z, .done
 
-	push hl
-	push bc
-	ld hl, MoldBreakerSuppressedAbilities
-	call IsInByteArray
-	pop bc
-	pop hl
-	; a = carry ? NO_ABILITY (0) : b
-	ccf
-	sbc a
-	and b
+	ld a, b
+	call _GetAbilityFlags
+	and ABILFLAG_IGNORABLE
+	jr z, .done
+	ld b, 0
 .done
+	ld a, b
 	pop bc
 	pop de
 	ret
 
-INCLUDE "data/abilities/mold_breaker_suppressed_abilities.asm"
+_GetAbilityFlags:
+; return flags for ability in a.
+	push hl
+	add LOW(AbilityFlags)
+	ld l, a
+	adc HIGH(AbilityFlags)
+	sub l
+	ld h, a
+	ld a, [hl]
+	pop hl
+	ret
+
+INCLUDE "data/abilities/flags.asm"
+
+DisplayAbilitySwap:
+	call BeginAndShowUserAbility
+	call ShowOpponentAbility
+	call GetTrueUserAbility
+	call ShowEnemyAbilityReplacement
+	call GetOpponentAbility
+	call ShowAbilityReplacement
+	ld hl, SwappedAbilitiesText
+	call StdBattleTextbox
+	; fallthrough
+
+EndAbility:
+	ld a, [wInAbility]
+	and a
+	ret z
+	call DismissAbilityOverlays
+	xor a
+	ld [wInAbility], a
+	ret
 
 BeginAbility:
+; Only sets ability mode, does not register any side's ability as pending.
 	ld a, [wInAbility]
 	and a
 	ret nz
@@ -2055,63 +2170,110 @@ BeginAbility:
 	ld [wInAbility], a
 	ret
 
-EndAbility:
-	ld a, [wInAbility]
-	and a
-	ret z
-	call DismissAbilityOverlays
-	xor a
-	ld [wInAbility], a
+BeginOpponentAbility:
+	call StackCallOpponentTurn
+BeginUserAbility:
+; Sets user's ability as pending.
+	call BeginAbility ; possibly redundant, if already performed
+	ldh a, [hBattleTurn]
+	inc a
+	add a
+	assert (ABIL_PLAYER_PENDING == 1 && ABIL_ENEMY_PENDING == 2)
+
+	push hl
+	ld hl, wInAbility
+	or [hl]
+	ld [hl], a
+	pop hl
 	ret
 
-ShowEnemyAbilityActivation::
+BeginAndShowOpponentAbility:
 	call StackCallOpponentTurn
-ShowAbilityActivation::
-; Unconditionally does slideout. Consider ShowPotentialAbilityActivation
-; if you need to avoid risking repeated slideouts, or for conditional cases
-; (it checks wInAbility).
+BeginAndShowUserAbility:
+	; no need to deal with pending flags if we're just going to instantly
+	; unset them anyway by showing the ability, so run the "non-safe" versions
+	; of the functions.
+	call BeginAbility
+	jr ShowUserAbility
+
+ShowEnemyAbilityReplacement:
+	call StackCallOpponentTurn
+ShowAbilityReplacement:
 	push hl
 	push de
 	push bc
+	ld c, a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld b, a
+	call PerformAbilityReplacementGFX
+	jmp PopBCDEHL
+
+ShowOpponentAbility::
+	call StackCallOpponentTurn
+ShowUserAbility::
+; Does slideout, pending or not. Prefer ShowPendingUserAbility when possible.
+	push hl
+	push de
+	push bc
+
+	; Only allow within ability mode, or we can't properly dismiss the gfx.
+	ld hl, wInAbility
+	ld a, [hl]
+	and a
+	jr z, .done
+	ldh a, [hBattleTurn]
+	inc a
+	add a
+	add a
+	add a
+	assert (ABIL_PLAYER_VISIBLE == 3 && ABIL_ENEMY_VISIBLE == 4)
+
+	; Write the visibility flag, and check if it was already set.
+	ld b, [hl]
+	or [hl]
+	ld [hl], a
+	xor b ; zero if the visility flag didn't change, because it was already set.
+	jr z, .done
+
+	; Draw the graphics.
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	ld b, a
 	call PerformAbilityGFX
+.done
 	jmp PopBCDEHL
 
-ShowPotentialSpecificAbilityActivation:
-; ShowPotentialAbilityActivation if user's ability matches ability in a.
-	push bc
-	ld b, a
-	call GetTrueUserAbility
-	cp b
-	pop bc
-	ret nz
-ShowPotentialAbilityActivation:
-; This avoids duplicating checks to avoid text spam. This will run
-; ShowAbilityActivation if we're within an ability execution (see BeginAbility).
+ShowPendingOpponentAbility:
+	call StackCallOpponentTurn
+ShowPendingUserAbility:
+; Displays an ability slideout if pending. Returns z if nothing was shown.
+; To set an ability as pending, run Begin(User/Opponent)Ability
+	; Check if we're in "ability mode"
 	ld a, [wInAbility]
 	and a
 	ret z
+
 	push hl
 	ld h, a
+
+	; Sets a to ABIL_PLAYER_PENDING for player, ABIL_ENEMY_PENDING for enemy.
 	ldh a, [hBattleTurn]
 	inc a
-	rrca
-	rrca
+	add a
+
+	; Check if the ability is pending. Requires the relevant bit set
+	; within wInAbility.
 	and h
-	pop hl
-	ret nz
-	call ShowAbilityActivation
-	ldh a, [hBattleTurn]
-	inc a
-	rrca
-	rrca
-	push hl
-	ld h, a
-	ld a, [wInAbility]
-	or h
+	jr z, .pop_hl_ret
+
+	; Unset the pending ability flag.
+	xor h
 	ld [wInAbility], a
+
+	call ShowUserAbility
+	or 1
+.pop_hl_ret
 	pop hl
 	ret
 
@@ -2296,7 +2458,7 @@ GetScaledItemReward:
 .rare:
 ; 2% of Pickup results use a different table with generally better items
 	call Random
-	cp 1 + 50 percent
+	add a
 	call c, .inc_bc
 	ld a, d
 	pop de

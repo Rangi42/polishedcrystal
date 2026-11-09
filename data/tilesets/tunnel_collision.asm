@@ -111,3 +111,4 @@
 	tilecoll WALL, WALL, WALL, WALL ; 6e
 	tilecoll WALL, WALL, WALL, WALL ; 6f
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 70
+	tilecoll FLOOR, FLOOR, FLOOR, CAVE_MOUTH_GLOW ; 71

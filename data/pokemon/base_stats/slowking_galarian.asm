@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  95,  65,  80,  30, 110, 110 ; 490 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 490,  95,  65,  80, 110, 110,  30
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  95,  65,  80,  30, 110, 120 ; 500 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 500,  95,  65,  80, 110, 120,  30
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db POISON, PSYCHIC ; type

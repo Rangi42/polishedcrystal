@@ -1,0 +1,27 @@
+if !DEF(MONOCHROME)
+
+; regular
+	RGB 28,31,16, 00,17,21, 00,11,17, 07,07,07 ; morn
+	RGB 27,31,27, 00,17,21, 00,11,17, 07,07,07 ; day
+	RGB 15,14,24, 00,08,16, 00,05,13, 00,00,00 ; nite
+	RGB 31,21,14, 00,13,10, 00,08,08, 06,05,05 ; eve
+; overcast
+	RGB 20,21,14, 04,12,13, 03,08,11, 04,04,04 ; morn
+	RGB 21,22,21, 04,12,13, 03,08,11, 04,04,04 ; day
+	RGB 10,10,14, 03,07,10, 02,05,08, 00,00,00 ; nite
+	RGB 18,17,16, 02,08,07, 02,05,05, 03,02,02 ; eve
+
+else
+
+; regular
+	MONOCHROME_RGB_FOUR       ; morn
+	MONOCHROME_RGB_FOUR       ; day
+	MONOCHROME_RGB_FOUR_NIGHT ; nite
+	MONOCHROME_RGB_FOUR       ; eve
+; overcast
+	MONOCHROME_RGB_FOUR       ; morn
+	MONOCHROME_RGB_FOUR       ; day
+	MONOCHROME_RGB_FOUR_NIGHT ; nite
+	MONOCHROME_RGB_FOUR       ; eve
+
+endc

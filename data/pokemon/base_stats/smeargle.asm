@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
-	db  55,  20,  35,  75,  20,  45 ; 250 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 250,  55,  20,  35,  20,  45,  75
+	;   bst   hp  atk  def  sat  sdf  spe
 else
-	db  55,  20,  35, 100,  20,  45 ; 275 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 275,  55,  20,  35,  20,  45, 100
+	;   bst   hp  atk  def  sat  sdf  spe
 endc
 
 	db NORMAL, NORMAL ; type

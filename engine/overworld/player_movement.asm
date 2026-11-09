@@ -453,10 +453,17 @@ DoPlayerMovement::
 	ld d, 0
 	ld hl, .EdgeWarps
 	add hl, de
+	ld a, [hl]
+	cp COLL_WARP_CARPET_DOWN
 	ld a, [wPlayerTileCollision]
+	jr nz, .not_down
+	cp COLL_CAVE_MOUTH_GLOW
+	jr z, .facing_edge_warp
+.not_down
 	cp [hl]
 	jr nz, .not_warp
 
+.facing_edge_warp
 	ld a, TRUE
 	ld [wWalkingIntoEdgeWarp], a
 	ld a, [wPlayerDirection]
@@ -507,9 +514,10 @@ DoPlayerMovement::
 	ld a, [hl]
 	ld [wPlayerTurningDirection], a
 
+	; Leave the final cooldown tick for DoOverworldWeather to finish.
 	ld a, [wOverworldWeatherCooldown]
-	and a
-	jr z, .no_cooldown
+	cp 2
+	jr c, .no_cooldown
 	dec a
 	ld [wOverworldWeatherCooldown], a
 .no_cooldown
@@ -549,7 +557,7 @@ DoPlayerMovement::
 	big_step_up
 	big_step_left
 	big_step_right
-.Run
+.Run:
 	run_step_down
 	run_step_up
 	run_step_left

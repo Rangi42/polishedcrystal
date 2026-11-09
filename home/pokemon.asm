@@ -1,3 +1,13 @@
+IsCurPartySpeciesAPokemon::
+	ld a, [wCurPartySpecies]
+IsAPokemon::
+; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
+; Returns carry if species a is not a Pokemon (including $ff)
+	inc a
+	cp 2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
+	dec a
+	ret
+
 DrawBattleHPBar::
 ; Draw an HP bar d tiles long at hl
 ; Fill it up to e pixels
@@ -92,6 +102,7 @@ PrepMonFrontpicFlipped::
 
 PrepMonFrontpic::
 	ld a, $1
+	; fallthrough
 
 _PrepMonFrontpic:
 	ld [wBoxAlignment], a
@@ -101,12 +112,12 @@ _PrepMonFrontpic:
 
 	push hl
 	ld de, vTiles2
-	predef GetFrontpic
+	farcall GetFrontpic
 	pop hl
 	xor a
 	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	xor a
 	ld [wBoxAlignment], a
 	ret
@@ -197,15 +208,13 @@ GetNature::
 ; returns nature in b
 	ld a, [wInitialOptions]
 	bit NATURES_OPT, a
+	ld a, NO_NATURE
 	jr z, .no_nature
 	ld a, b
 	and NATURE_MASK
 	; assume nature is 0-24
-	ld b, a
-	ret
-
 .no_nature:
-	ld b, NO_NATURE
+	ld b, a
 	ret
 
 GetLeadAbility::

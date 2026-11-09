@@ -174,14 +174,6 @@ Special_CardFlip:
 	ld hl, _CardFlip
 	; fallthrough
 
-;Special_UnusedMemoryGame:
-;	call Special_CheckCoins
-;	ret c
-;	ld a, BANK(_MemoryGame)
-;	ld hl, _MemoryGame
-;	call Special_StartGameCornerGame
-;	ret
-
 Special_StartGameCornerGame:
 	call FarQueueScript
 	call FadeToMenu_BackupSprites
@@ -221,14 +213,10 @@ Special_CheckCoins:
 
 .NoCoinsText:
 	; You have no coins.
-	text_far _NoCoinsText
-	text_end
-
+	text_farend _NoCoinsText
 .NoCoinCaseText:
 	; You don't have a COIN CASE.
-	text_far _NoCoinCaseText
-	text_end
-
+	text_farend _NoCoinCaseText
 Special_CheckLuckyNumberShowFlag:
 	ld hl, wLuckyNumberShowFlag
 	bit LUCKYNUMBERSHOW_GAME_OVER_F, [hl]
@@ -339,7 +327,7 @@ CheckIfTrendyPhraseIsLucky:
 
 RespawnOneOffs:
 	eventflagreset EVENT_BEAT_FLANNERY
-	eventflagreset EVENT_BEAT_KATY
+	eventflagreset EVENT_BEAT_LARRY
 	eventflagreset EVENT_BEAT_KUKUI
 	eventflagreset EVENT_BEAT_LAWRENCE
 	eventflagreset EVENT_BEAT_MARLON_AGAIN

@@ -1,6 +1,6 @@
 CeruleanGym_MapScriptHeader:
 	def_scene_scripts
-	scene_script CeruleanGymNoopScene, SCENE_CERULEANGYM_NOOP
+	scene_script DoNothingScript, SCENE_CERULEANGYM_NOOP
 	scene_script CeruleanGymGruntRunsOutScene, SCENE_CERULEANGYM_GRUNT_RUNS_OUT
 
 	def_callbacks
@@ -30,11 +30,10 @@ CeruleanGym_MapScriptHeader:
 	const CERULEANGYM_ROCKET
 
 CeruleanGymGruntRunsOutScene:
-	sdefer CeruleanGymGruntRunsOutScript
-CeruleanGymNoopScene:
+	sdefer .Script
 	end
 
-CeruleanGymGruntRunsOutScript:
+.Script:
 	applymovement CERULEANGYM_ROCKET, CeruleanGymGruntRunsDownMovement
 	playsound SFX_TACKLE
 	applymovement CERULEANGYM_ROCKET, CeruleanGymGruntRunsIntoYouMovement

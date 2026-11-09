@@ -16,7 +16,7 @@ SnowtopMountainInside_MapScriptHeader:
 	bg_event  6, 22, BGEVENT_ITEM + ZINC, EVENT_SNOWTOP_MOUNTAIN_INSIDE_HIDDEN_ZINC
 
 	def_object_events
-	object_event 28, 14, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, KimonoGirlAmiScript, -1
+	object_event 28, 14, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, PAL_NPC_AZURE, OBJECTTYPE_SCRIPT, 0, KimonoGirlAmiScript, -1
 	object_event  5, 20, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, SnowtopMountainInsideSkierScript, -1
 	itemball_event  8,  8, ETHER, 1, EVENT_SNOWTOP_MOUNTAIN_INSIDE_ETHER
 	itemball_event 16,  9, HEAVY_BOOTS, 1, EVENT_SNOWTOP_MOUNTAIN_INSIDE_HEAVY_BOOTS
@@ -32,7 +32,7 @@ SnowtopMountainInsideFixFacing:
 .FixFacing:
 	ld hl, wPrevWarp
 	ld a, [hli]
-	dec a ; warp 1?
+	dec a ; warp #1 of SNOWTOP_MOUNTAIN_OUTSIDE comes here
 	ret nz
 	assert wPrevWarp + 1 == wPrevMapGroup
 	ld a, [hli]
@@ -74,8 +74,7 @@ KimonoGirlAmiScript:
 	opentext
 	writetext .AfterText
 	promptbutton
-	verbosegiveitem PP_MAX
-	iffalse_endtext
+	verbosegiveitem PP_MAX, iffalse_endtext
 	setevent EVENT_GOT_PP_MAX_FROM_KIMONO_GIRL_AMI
 	jumpthisopenedtext
 
@@ -196,4 +195,3 @@ Text_SnowtopMountainInsideTutorQuestion:
 Text_SnowtopMountainInsideTutorRefused: ; text > text
 	text "Brr…"
 	done
-

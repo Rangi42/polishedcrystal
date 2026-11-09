@@ -43,8 +43,7 @@ QuietCaveB3FMarleyScript:
 	opentext
 	writetext .ItemText
 	promptbutton
-	verbosegiveitem POWER_ANKLET
-	iffalse_endtext
+	verbosegiveitem POWER_ANKLET, iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext

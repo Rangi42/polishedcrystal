@@ -43,58 +43,14 @@ Music_Route203DPPt_Ch1:
 	octave 4
 	note C_, 1
 	note_type 12, 9, 0
-	note D#, 16
-	volume_envelope 9, 7
-	note D#, 8
-	note_type 8, 9, 7
-	rest 4
-	note D#, 1
-	rest 5
-	note_type 12, 9, 0
-	note D_, 16
-	volume_envelope 9, 7
-	note D_, 8
-	note_type 4, 9, 7
-	rest 4
-	volume_envelope 9, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note E_, 1
-	note D_, 1
-	note C_, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note E_, 1
-	note F_, 1
-	note G_, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C_, 1
-	note D_, 1
-	note E_, 1
-	note F_, 1
-	note G_, 1
+	sound_call Music_Route203DPPt_Ch1_ditty2
+	sound_call Music_Route203DPPt_Ch1_ditty1
 	note A_, 1
 	note A#, 1
 	octave 4
 	note C_, 1
 	note_type 12, 9, 0
-	note D#, 16
-	volume_envelope 9, 7
-	note D#, 8
-	note_type 8, 9, 7
-	rest 4
-	note D#, 1
-	rest 5
-	volume_envelope 9, 0
-	note D_, 14
+	sound_call Music_Route203DPPt_Ch1_ditty4
 	note_type 12, 9, 0
 	octave 3
 	note A#, 8
@@ -358,36 +314,8 @@ Music_Route203DPPt_Ch1_loop:
 	note D#, 4
 	note C_, 2
 	octave 2
-	note C#, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note F_, 4
-	octave 2
-	note C#, 2
-	octave 3
-	note D#, 4
-	octave 2
-	note D#, 2
-	note A#, 4
-	note D#, 2
-	note C#, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note F_, 4
-	octave 2
-	note C#, 2
-	octave 3
-	note D#, 4
-	octave 2
-	note D#, 2
-	note A#, 4
-	note D#, 2
+	sound_call Music_Route203DPPt_Ch1_ditty3
+	sound_call Music_Route203DPPt_Ch1_ditty3
 	note E_, 2
 	octave 3
 	note E_, 2
@@ -409,44 +337,8 @@ Music_Route203DPPt_Ch1_loop:
 	note_type 12, 9, 0
 	duty_cycle 1
 	octave 4
-	note D#, 16
-	volume_envelope 9, 7
-	note D#, 8
-	note_type 8, 9, 7
-	rest 4
-	note D#, 1
-	rest 5
-	note_type 12, 9, 0
-	note D_, 16
-	volume_envelope 9, 7
-	note D_, 8
-	note_type 4, 9, 7
-	rest 4
-	volume_envelope 9, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note E_, 1
-	note D_, 1
-	note C_, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note E_, 1
-	note F_, 1
-	note G_, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C_, 1
-	note D_, 1
-	note E_, 1
-	note F_, 1
-	note G_, 1
+	sound_call Music_Route203DPPt_Ch1_ditty2
+	sound_call Music_Route203DPPt_Ch1_ditty1
 	volume_envelope 11, 4
 	note A_, 3
 	octave 4
@@ -478,29 +370,7 @@ Music_Route203DPPt_Ch1_loop:
 	note C_, 8
 	note D_, 4
 	volume_envelope 9, 1
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note E_, 1
-	note D_, 1
-	note C_, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note E_, 1
-	note F_, 1
-	note G_, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C_, 1
-	note D_, 1
-	note E_, 1
-	note F_, 1
-	note G_, 1
+	sound_call Music_Route203DPPt_Ch1_ditty1
 	volume_envelope 11, 4
 	note A_, 15
 	octave 2
@@ -534,41 +404,11 @@ Music_Route203DPPt_Ch1_loop:
 	note C_, 8
 	note D_, 4
 	volume_envelope 9, 1
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note E_, 1
-	note D_, 1
-	note C_, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note E_, 1
-	note F_, 1
-	note G_, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C_, 1
-	note D_, 1
-	note E_, 1
-	note F_, 1
-	note G_, 1
+	sound_call Music_Route203DPPt_Ch1_ditty1
 	note A_, 3
 	note_type 12, 9, 0
 	octave 4
-	note D#, 16
-	volume_envelope 9, 7
-	note D#, 8
-	note_type 8, 9, 7
-	rest 4
-	note D#, 1
-	rest 5
-	volume_envelope 9, 0
-	note D_, 14
+	sound_call Music_Route203DPPt_Ch1_ditty4
 	octave 3
 	note A#, 12
 	sound_jump Music_Route203DPPt_Ch1_loop
@@ -579,34 +419,7 @@ Music_Route203DPPt_Ch2:
 	pitch_offset 1
 	vibrato 0, 1, 2
 	octave 4
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
-	note G_, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
+	sound_call Music_Route203DPPt_Ch2_ditty1
 	note_type 12, 10, 0
 	note G_, 16
 	volume_envelope 10, 7
@@ -622,34 +435,7 @@ Music_Route203DPPt_Ch2:
 	note_type 4, 10, 7
 	rest 4
 	volume_envelope 10, 1
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
-	note G_, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
+	sound_call Music_Route203DPPt_Ch2_ditty1
 	note_type 12, 10, 0
 	note G_, 16
 	volume_envelope 10, 7
@@ -938,124 +724,11 @@ Music_Route203DPPt_Ch2_loop:
 	rest 4
 	volume_envelope 10, 1
 	octave 4
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
-	note G_, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
-	note_type 12, 12, 0
-	octave 5
-	note C_, 16
-	volume_envelope 12, 7
-	note C_, 8
-	note_type 8, 12, 7
-	rest 4
-	note C_, 1
-	rest 5
-	note_type 12, 12, 0
-	note D_, 16
-	volume_envelope 12, 7
-	note D_, 8
-	note_type 4, 12, 7
-	rest 4
-	volume_envelope 10, 1
-	octave 4
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
-	note G_, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
-	note_type 12, 12, 0
-	octave 5
-	note C_, 16
-	volume_envelope 12, 7
-	note C_, 8
-	note_type 8, 12, 7
-	rest 4
-	note C_, 1
-	rest 5
-	note_type 12, 12, 0
-	note D_, 16
-	volume_envelope 12, 7
-	note D_, 8
-	note_type 4, 12, 7
-	rest 4
-	volume_envelope 10, 1
-	octave 4
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note G_, 1
-	note F_, 1
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
-	note G_, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note F_, 1
+	sound_call Music_Route203DPPt_Ch2_ditty1
+	sound_call Music_Route203DPPt_Ch2_ditty2
+	sound_call Music_Route203DPPt_Ch2_ditty1
+	sound_call Music_Route203DPPt_Ch2_ditty2
+	sound_call Music_Route203DPPt_Ch2_ditty1
 	note_type 12, 10, 0
 	octave 5
 	note C_, 16
@@ -1075,59 +748,9 @@ Music_Route203DPPt_Ch3:
 	note_type 8, 1, 2
 	octave 1
 	rest 12
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 1
-	rest 1
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 1
-	rest 1
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
+	sound_call Music_Route203DPPt_Ch3_ditty1
+	sound_call Music_Route203DPPt_Ch3_ditty3
+	sound_call Music_Route203DPPt_Ch3_ditty1
 Music_Route203DPPt_Ch3_loop:
 	octave 1
 	note A#, 2
@@ -1147,28 +770,7 @@ Music_Route203DPPt_Ch3_loop:
 	note A#, 4
 	rest 1
 	note_type 2, 1, 5
-	note A#, 1
-	rest 3
-	note A#, 1
-	rest 3
-	note A#, 1
-	rest 3
-	volume_envelope 1, 2
-	octave 2
-	note A#, 2
-	volume_envelope 1, 5
-	octave 4
-	note A#, 8
-	rest 6
-	note A#, 1
-	rest 7
-	volume_envelope 1, 2
-	octave 1
-	note A#, 8
-	volume_envelope 1, 5
-	octave 4
-	note A#, 1
-	rest 7
+	sound_call Music_Route203DPPt_Ch3_ditty2
 	note A#, 8
 	volume_envelope 1, 2
 	octave 2
@@ -1185,28 +787,7 @@ Music_Route203DPPt_Ch3_loop:
 	octave 4
 	note A#, 8
 	rest 2
-	note A#, 1
-	rest 3
-	note A#, 1
-	rest 3
-	note A#, 1
-	rest 3
-	volume_envelope 1, 2
-	octave 2
-	note A#, 2
-	volume_envelope 1, 5
-	octave 4
-	note A#, 8
-	rest 6
-	note A#, 1
-	rest 7
-	volume_envelope 1, 2
-	octave 1
-	note A#, 8
-	volume_envelope 1, 5
-	octave 4
-	note A#, 1
-	rest 7
+	sound_call Music_Route203DPPt_Ch3_ditty2
 	note A#, 5
 	rest 3
 	volume_envelope 1, 2
@@ -1520,149 +1101,15 @@ Music_Route203DPPt_Ch3_loop:
 	note G#, 4
 	rest 2
 	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 1
-	rest 1
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 1
-	rest 1
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 1
-	rest 1
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 1
-	rest 1
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 1
-	rest 1
-	octave 1
-	note A#, 1
-	rest 1
-	octave 2
-	note A#, 4
-	rest 2
-	octave 1
-	note A#, 2
-	rest 4
-	octave 2
-	note A#, 4
-	rest 2
+	sound_call Music_Route203DPPt_Ch3_ditty1
+	sound_call Music_Route203DPPt_Ch3_ditty3
+	sound_call Music_Route203DPPt_Ch3_ditty1
+	sound_call Music_Route203DPPt_Ch3_ditty3
+	sound_call Music_Route203DPPt_Ch3_ditty1
+	sound_call Music_Route203DPPt_Ch3_ditty3
+	sound_call Music_Route203DPPt_Ch3_ditty1
+	sound_call Music_Route203DPPt_Ch3_ditty3
+	sound_call Music_Route203DPPt_Ch3_ditty1
 	sound_jump Music_Route203DPPt_Ch3_loop
 
 Music_Route203DPPt_Ch4:
@@ -1679,60 +1126,8 @@ Music_Route203DPPt_Ch4:
 	drum_note 8, 2
 	drum_note 12, 2
 	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
+	sound_call Music_Route203DPPt_Ch4_ditty1
+	sound_call Music_Route203DPPt_Ch4_ditty1
 Music_Route203DPPt_Ch4_loop:
 	drum_note 2, 2
 	drum_note 2, 4
@@ -1759,314 +1154,301 @@ Music_Route203DPPt_Ch4_loop:
 	drum_note 8, 6
 	drum_note 4, 4
 	drum_note 4, 2
-	drum_note 8, 6
-	drum_note 4, 2
-	drum_note 4, 4
-	drum_note 8, 4
-	drum_note 4, 2
-	drum_note 4, 4
-	drum_note 4, 2
-	drum_note 8, 6
-	drum_note 4, 2
-	drum_note 4, 4
+	sound_call Music_Route203DPPt_Ch4_ditty4
 	drum_note 8, 4
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 4, 4
+	sound_call Music_Route203DPPt_Ch4_ditty4
 	drum_note 8, 6
-	drum_note 4, 2
-	drum_note 4, 4
-	drum_note 8, 4
-	drum_note 4, 2
-	drum_note 4, 4
-	drum_note 4, 2
-	drum_note 8, 6
-	drum_note 4, 2
-	drum_note 4, 4
-	drum_note 8, 6
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 2, 2
-	drum_note 2, 4
+	sound_call Music_Route203DPPt_Ch4_ditty3
 	drum_note 2, 8
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 2, 2
-	drum_note 2, 4
+	sound_call Music_Route203DPPt_Ch4_ditty3
 	drum_note 2, 8
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 2, 2
-	drum_note 2, 4
+	sound_call Music_Route203DPPt_Ch4_ditty3
 	drum_note 2, 8
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 2, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 2, 2
-	drum_note 2, 4
+	sound_call Music_Route203DPPt_Ch4_ditty3
 	drum_note 2, 2
 	drum_note 12, 6
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 2, 2
+Music_Route203DPPt_Ch4_loop_opt1:
+	sound_call Music_Route203DPPt_Ch4_ditty2
+	sound_loop 4, Music_Route203DPPt_Ch4_loop_opt1
 	drum_note 2, 2
 	drum_note 2, 4
 	drum_note 12, 6
 	drum_note 2, 6
 	drum_note 12, 6
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 6
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 2, 4
-	drum_note 8, 2
-	drum_note 12, 2
-	drum_note 2, 2
+Music_Route203DPPt_Ch4_loop_opt2:
+	sound_call Music_Route203DPPt_Ch4_ditty1
+	sound_loop 5, Music_Route203DPPt_Ch4_loop_opt2
 	sound_jump Music_Route203DPPt_Ch4_loop
+
+Music_Route203DPPt_Ch1_ditty1:
+	note A#, 1
+	note A_, 1
+	note G_, 1
+	note F_, 1
+	note E_, 1
+	note D_, 1
+	note C_, 1
+	octave 2
+	note A#, 1
+	note A_, 1
+	note G_, 1
+	note F_, 1
+	note E_, 1
+	note F_, 1
+	note G_, 1
+	note A_, 1
+	note A#, 1
+	octave 3
+	note C_, 1
+	note D_, 1
+	note E_, 1
+	note F_, 1
+	note G_, 1
+	sound_ret
+
+Music_Route203DPPt_Ch1_ditty2:
+	note D#, 16
+	volume_envelope 9, 7
+	note D#, 8
+	note_type 8, 9, 7
+	rest 4
+	note D#, 1
+	rest 5
+	note_type 12, 9, 0
+	note D_, 16
+	volume_envelope 9, 7
+	note D_, 8
+	note_type 4, 9, 7
+	rest 4
+	volume_envelope 9, 1
+	octave 3
+	sound_ret
+
+Music_Route203DPPt_Ch1_ditty3:
+	note C#, 2
+	octave 3
+	note F_, 2
+	octave 2
+	note C#, 2
+	octave 3
+	note F_, 4
+	octave 2
+	note C#, 2
+	octave 3
+	note D#, 4
+	octave 2
+	note D#, 2
+	note A#, 4
+	note D#, 2
+	sound_ret
+
+Music_Route203DPPt_Ch1_ditty4:
+	note D#, 16
+	volume_envelope 9, 7
+	note D#, 8
+	note_type 8, 9, 7
+	rest 4
+	note D#, 1
+	rest 5
+	volume_envelope 9, 0
+	note D_, 14
+	sound_ret
+
+Music_Route203DPPt_Ch2_ditty1:
+	note D#, 1
+	note D_, 1
+	note C_, 1
+	octave 3
+	note A#, 1
+	note A_, 1
+	note G_, 1
+	note F_, 1
+	note D#, 1
+	note D_, 1
+	note C_, 1
+	octave 2
+	note A#, 1
+	note A_, 1
+	note A#, 1
+	octave 3
+	note C_, 1
+	note D_, 1
+	note D#, 1
+	note F_, 1
+	note G_, 1
+	note A_, 1
+	note A#, 1
+	octave 4
+	note C_, 1
+	note D_, 1
+	note D#, 1
+	note F_, 1
+	sound_ret
+
+Music_Route203DPPt_Ch2_ditty2:
+	note_type 12, 12, 0
+	octave 5
+	note C_, 16
+	volume_envelope 12, 7
+	note C_, 8
+	note_type 8, 12, 7
+	rest 4
+	note C_, 1
+	rest 5
+	note_type 12, 12, 0
+	note D_, 16
+	volume_envelope 12, 7
+	note D_, 8
+	note_type 4, 12, 7
+	rest 4
+	volume_envelope 10, 1
+	octave 4
+	sound_ret
+
+Music_Route203DPPt_Ch3_ditty1:
+	note A#, 2
+	rest 4
+	octave 2
+	note A#, 4
+	rest 2
+	octave 1
+	note A#, 1
+	rest 1
+	octave 2
+	note A#, 1
+	rest 1
+	octave 1
+	note A#, 1
+	rest 1
+	octave 2
+	note A#, 4
+	rest 2
+	octave 1
+	note A#, 2
+	rest 4
+	octave 2
+	note A#, 4
+	rest 2
+	sound_ret
+
+Music_Route203DPPt_Ch3_ditty2:
+	note A#, 1
+	rest 3
+	note A#, 1
+	rest 3
+	note A#, 1
+	rest 3
+	volume_envelope 1, 2
+	octave 2
+	note A#, 2
+	volume_envelope 1, 5
+	octave 4
+	note A#, 8
+	rest 6
+	note A#, 1
+	rest 7
+	volume_envelope 1, 2
+	octave 1
+	note A#, 8
+	volume_envelope 1, 5
+	octave 4
+	note A#, 1
+	rest 7
+	sound_ret
+
+Music_Route203DPPt_Ch3_ditty3:
+	octave 1
+	note A#, 2
+	rest 4
+	octave 2
+	note A#, 4
+	rest 2
+	octave 1
+	sound_ret
+
+Music_Route203DPPt_Ch4_ditty1:
+	drum_note 2, 6
+	drum_note 8, 2
+	drum_note 12, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 8, 2
+	drum_note 12, 2
+	drum_note 2, 2
+	drum_note 2, 6
+	drum_note 8, 2
+	drum_note 12, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 8, 2
+	drum_note 12, 2
+	drum_note 2, 2
+	drum_note 2, 6
+	drum_note 8, 2
+	drum_note 12, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 8, 2
+	drum_note 12, 2
+	drum_note 2, 2
+	sound_ret
+
+Music_Route203DPPt_Ch4_ditty2:
+	drum_note 2, 6
+	drum_note 8, 2
+	drum_note 5, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 8, 2
+	drum_note 5, 2
+	drum_note 2, 2
+	drum_note 2, 6
+	drum_note 8, 2
+	drum_note 5, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 8, 2
+	drum_note 5, 2
+	drum_note 2, 2
+	sound_ret
+
+Music_Route203DPPt_Ch4_ditty3:
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 6
+	drum_note 2, 2
+	drum_note 2, 4
+	sound_ret
+
+Music_Route203DPPt_Ch4_ditty4:
+	drum_note 8, 6
+	drum_note 4, 2
+	drum_note 4, 4
+	drum_note 8, 4
+	drum_note 4, 2
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 8, 6
+	drum_note 4, 2
+	drum_note 4, 4
+	sound_ret

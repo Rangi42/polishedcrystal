@@ -5,10 +5,15 @@
 	const PAL_FOR_OVERCAST
 	const PAL_FOR_DARKNESS
 
-	const_def 1
-	const PAL_SINGLE
-	const PAL_TIMEOFDAY
-	const PAL_SPECIAL
+DEF PALSET_TYPE_MASK  EQU %11000000
+DEF PALSET_START_MASK EQU %00111000
+DEF PALSET_COUNT_MASK EQU %00000111
+
+	const_def
+	const PALTYPE_SINGLE      ; 0
+	const PALTYPE_TIMEOFDAY   ; 1
+	const PALTYPE_TIMEWEATHER ; 2
+	const PALTYPE_SPECIAL     ; 3
 
 LoadBlindingFlashPalette::
 	ld de, wBGPals1 palette PAL_BG_TEXT
@@ -36,16 +41,31 @@ LoadSpecialMapPalette:
 	; b = type
 	ld a, [hli]
 	ld b, a
+	and PALSET_START_MASK
+	ld [wSpecialPalStart], a
+	ld a, b
+	rlca
+	rlca
+	ld b, a
+	rlca
+	and PALSET_COUNT_MASK << 3
+	add 1 << 3
+	ld [wSpecialPalCount], a
+	ld a, b
+	and PALSET_TYPE_MASK >> 6
+	ld b, a
 	; hl = source
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 
 	ld a, b
-	dec a ; PAL_SINGLE?
-	jr z, LoadSevenBGPalettes
+	and a ; PAL_SINGLE?
+	jr z, LoadSpecialBGPalettes
 	dec a ; PAL_TIMEOFDAY?
-	jr z, LoadSevenTimeOfDayBGPalettes
+	jr z, LoadSpecialTimeOfDayBGPalettes
+	dec a ; PAL_TIMEWEATHER?
+	jr z, LoadSpecialTimeWeatherBGPalettes
 	; PAL_SPECIAL
 	jp hl
 
@@ -59,22 +79,48 @@ endr
 	and a
 	ret
 
+LoadSpecialTimeWeatherBGPalettes:
+	push hl
+	farcall GetOvercastIndex
+	pop hl
+	and a
+	jr z, LoadSpecialTimeOfDayBGPalettes
+	; skip the four regular time-of-day pals to reach the four overcast time-of-day pals
+	ld a, [wSpecialPalCount]
+	add a ; * 2 (most we can do in 8-bit without overflow)
+	ld c, a
+	ld b, 0
+	add hl, bc ; + 2
+	add hl, bc ; + 4
+	; fallthrough
 ; don't copy the eighth palette, it's loaded based on the map's sign
-LoadSevenTimeOfDayBGPalettes:
+LoadSpecialTimeOfDayBGPalettes:
+	ld a, [wSpecialPalCount]
+	ld c, a
+	ld b, 0
 	ld a, [wTimeOfDayPal]
 	and 3
-	ld bc, 8 palettes
 	rst AddNTimes
-LoadSevenBGPalettes:
-	ld de, wBGPals1
-	ld bc, 7 palettes
+	; fallthrough
+LoadSpecialBGPalettes:
+	; de = wBGPals1 + [wSpecialPalStart]
+	ld a, [wSpecialPalStart]
+	add LOW(wBGPals1)
+	ld e, a
+	adc HIGH(wBGPals1)
+	sub e
+	ld d, a
+	; bc = [wSpecialPalCount]
+	ld a, [wSpecialPalCount]
+	ld c, a
+	ld b, 0
 	call FarCopyColorWRAM
 	scf
 	ret
 
 PokeCenterSpecialCase:
 	ld hl, PokeCenterPalette
-	call LoadSevenBGPalettes
+	call LoadSpecialBGPalettes
 	; Shamouti has the default orange floors
 	call RegionCheck
 	ld a, e
@@ -101,7 +147,7 @@ PokeCenterSpecialCase:
 
 MartSpecialCase:
 	ld hl, MartPalette
-	call LoadSevenBGPalettes
+	call LoadSpecialBGPalettes
 	ld hl, wMapBlocksBank
 	ld a, [hli]
 	cp BANK(GenericMart_BlockData)
@@ -120,37 +166,51 @@ MartSpecialCase:
 	scf
 	ret
 
+MagnetTrainSpecialCase:
+	; The Magnet Train animation sets the environment to TOWN instead of INDOOR.
+	ld a, [wEnvironment]
+	assert TOWN == 0
+	and a
+	ret z
+	; The Mart palette just replaces YELLOW (for the seats and caution stripes)
+	; with the more muted Goldenrod roof palette.
+	ld hl, MartPalette
+	jr LoadSpecialBGPalettes
+
 HiddenGrottoSpecialCase:
 	ld a, [wTimeOfDayPal]
 	and 3
 	cp NITE
 	ld hl, HiddenGrottoPalette
 	jr nz, .got_palette
-	ld hl, HiddenGrottoPalette + 8 palettes
+	ld hl, HiddenGrottoPalette + 7 palettes
 .got_palette
-	call LoadSevenBGPalettes
+	call LoadSpecialBGPalettes
 	ld a, [wBackupMapGroup]
+	ld hl, wBGPals1 palette PAL_BG_RED
 	cp GROUP_BELLCHIME_TRAIL
 	jr nz, .not_bellchime_trail_grotto
 	ld a, [wBackupMapNumber]
 	cp MAP_BELLCHIME_TRAIL
-	jr nz, .not_bellchime_trail_grotto
-	ld hl, wBGPals1 palette PAL_BG_RED
-	ld de, wBGPals1 palette PAL_BG_GREEN
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	jr .continue
+	jr z, .continue
 .not_bellchime_trail_grotto
+	ld hl, wBGPals1 palette PAL_BG_GRAY
 	cp GROUP_CHERRYGROVE_BAY
-	jr nz, .done
+	jr nz, .not_cherrygrove_bay
 	ld a, [wBackupMapNumber]
 	cp MAP_CHERRYGROVE_BAY
+	jr z, .continue
+.not_cherrygrove_bay
+	ld hl, wBGPals1 palette PAL_BG_WATER
+	cp GROUP_YELLOW_FOREST
 	jr nz, .done
-	ld hl, wBGPals1 palette PAL_BG_GRAY
+	ld a, [wBackupMapNumber]
+	cp MAP_YELLOW_FOREST
+	jr nz, .done
+.continue
 	ld de, wBGPals1 palette PAL_BG_GREEN
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
-.continue
 	ld hl, wBGPals1 palette PAL_BG_GREEN color 1
 	ld de, wBGPals1 palette PAL_BG_ROOF color 1
 	ld bc, 3 colors
@@ -217,4 +277,3 @@ CheckIfSpecialPaletteApplies:
 	ret
 
 INCLUDE "data/maps/palettes.asm"
-INCLUDE "data/maps/palettes_overcast.asm"

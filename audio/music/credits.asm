@@ -976,32 +976,12 @@ Music_Credits_Ch3:
 	vibrato 22, 2, 3
 	note_type 12, 3, 4
 	stereo_panning TRUE, TRUE
-	octave 6
-	note G_, 1
-	note D_, 1
-	note C_, 1
-	octave 5
-	note G_, 1
-	octave 6
-	note G_, 1
-	note D_, 1
-	note C_, 1
-	octave 5
-	note G_, 1
+	sound_call Music_Credits_Ch3_ditty1
+	sound_call Music_Credits_Ch3_ditty1
 	volume_envelope 2, 4
-	octave 6
-	note G_, 1
-	note D_, 1
-	note C_, 1
-	octave 5
-	note G_, 1
+	sound_call Music_Credits_Ch3_ditty1
 	volume_envelope 1, 4
-	octave 6
-	note G_, 1
-	note D_, 1
-	note C_, 1
-	octave 5
-	note G_, 1
+	sound_call Music_Credits_Ch3_ditty1
 	octave 6
 	note G_, 1
 	note D_, 1
@@ -1432,21 +1412,9 @@ Music_Credits_Ch4:
 	toggle_noise 3
 	drum_speed 12
 	drum_note 9, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
+	sound_call Music_Credits_Ch4_ditty2
+	sound_call Music_Credits_Ch4_ditty2
+	sound_call Music_Credits_Ch4_ditty2
 	drum_note 9, 1
 	drum_note 8, 1
 	drum_note 12, 2
@@ -1465,17 +1433,7 @@ Music_Credits_Ch4:
 	sound_call Music_Credits_branch_1fa4d
 	sound_call Music_Credits_branch_1fa6d
 Music_Credits_branch_1f9a8:
-	drum_note 11, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 3, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 11, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 3, 2
-	drum_note 7, 2
+	sound_call Music_Credits_Ch4_ditty1
 	sound_loop 7, Music_Credits_branch_1f9a8
 	drum_note 9, 1
 	drum_note 8, 1
@@ -1493,17 +1451,7 @@ Music_Credits_branch_1f9a8:
 	drum_note 3, 1
 	drum_note 3, 1
 Music_Credits_branch_1f9c6:
-	drum_note 11, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 3, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 11, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 3, 2
-	drum_note 7, 2
+	sound_call Music_Credits_Ch4_ditty1
 	sound_loop 7, Music_Credits_branch_1f9c6
 	drum_note 9, 1
 	drum_note 8, 1
@@ -1527,17 +1475,7 @@ Music_Credits_branch_1f9c6:
 	sound_call Music_Credits_branch_1fa4d
 	sound_call Music_Credits_branch_1fa6d
 Music_Credits_branch_1f9f2:
-	drum_note 11, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 3, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 11, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 3, 2
-	drum_note 7, 2
+	sound_call Music_Credits_Ch4_ditty1
 	sound_loop 7, Music_Credits_branch_1f9f2
 	drum_note 9, 1
 	drum_note 8, 1
@@ -1672,4 +1610,35 @@ Music_Credits_branch_1fa6d:
 	drum_note 3, 1
 	drum_note 11, 1
 	drum_note 3, 1
+	sound_ret
+
+Music_Credits_Ch3_ditty1:
+	octave 6
+	note G_, 1
+	note D_, 1
+	note C_, 1
+	octave 5
+	note G_, 1
+	sound_ret
+
+Music_Credits_Ch4_ditty1:
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 7, 2
+	sound_ret
+
+Music_Credits_Ch4_ditty2:
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
 	sound_ret

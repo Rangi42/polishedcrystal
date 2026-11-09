@@ -37,10 +37,10 @@ _MainMenu:
 NewGame_ClearTileMapEtc:
 	xor a
 	ldh [hMapAnims], a
-	ld a, '<BLACK>'
-	call FillTileMap
 	call LoadFrame
 	call LoadStandardFont
+	ld a, '<BLACK>'
+	call FillTileMap
 	jmp ClearWindowData
 
 NewGamePlus:
@@ -49,6 +49,7 @@ NewGamePlus:
 	call YesNoBox
 	jr c, _MainMenu
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	farcall TryLoadSaveFile
 	ret c
@@ -71,6 +72,7 @@ NewGamePlus:
 
 NewGame:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call ResetWRAM_NotPlus
 _NewGame_FinishSetup:
@@ -80,7 +82,7 @@ _NewGame_FinishSetup:
 	ld [wOvercastRandomDay], a
 	call NewGame_ClearTileMapEtc
 	call WarnVBA
-	call SetInitialOptions
+	farcall SetInitialOptions
 	call ProfElmSpeech
 	call InitializeWorld
 	ld a, 1
@@ -342,7 +344,7 @@ Continue:
 
 	call LoadStandardMenuHeader
 	call DisplaySaveInfoOnContinue
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld c, 20
 	call DelayFrames
@@ -402,7 +404,7 @@ ConfirmContinue:
 	ret
 
 WarnVBA:
-	call CheckVBA
+	farcall CheckVBA
 	ret z
 if !DEF(DEBUG)
 	ld hl, .WarnVBAText
@@ -419,9 +421,7 @@ else
 endc
 
 .WarnVBAText:
-	text_far _WarnVBAText
-	text_end
-
+	text_farend _WarnVBAText
 Continue_CheckRTC_RestartClock:
 	call CheckRTCStatus
 	and %10000000 ; Day count exceeded 16383
@@ -436,7 +436,9 @@ Continue_CheckRTC_RestartClock:
 Continue_CheckEGO_ResetInitialOptions:
 	ld a, [wInitialOptions2]
 	bit RESET_INIT_OPTS, a
-	call nz, SetInitialOptions
+	jr z, .skip_reset_initial_options
+	farcall SetInitialOptions
+.skip_reset_initial_options
 	; fallthrough
 Continue_FinishReset:
 	xor a
@@ -489,6 +491,7 @@ DisplayContinueDataWithRTCError:
 
 Continue_LoadMenuHeader:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld hl, .MenuDataHeader_Dex
 	ld a, [wStatusFlags]
@@ -694,9 +697,7 @@ endc
 	jmp PrintText
 
 ElmText1:
-	text_far _ElmText1
-	text_end
-
+	text_farend _ElmText1
 ElmText2:
 	text_far _ElmText2
 	text_asm
@@ -706,25 +707,15 @@ ElmText2:
 	ret
 
 ElmText3:
-	text_far Text_Waitbutton_2
-	text_end
-
+	text_farend Text_Waitbutton_2
 ElmText4:
-	text_far _ElmText4
-	text_end
-
+	text_farend _ElmText4
 ElmText5:
-	text_far _ElmText5
-	text_end
-
+	text_farend _ElmText5
 ElmText6:
-	text_far _ElmText6
-	text_end
-
+	text_farend _ElmText6
 ElmText7:
-	text_far _ElmText7
-	text_end
-
+	text_farend _ElmText7
 InitGender:
 	ld c, 15
 	call FadeToWhite
@@ -891,33 +882,29 @@ GenderMenu::
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
-	text_far Text_AreYouABoyOrAreYouAGirl
-	text_end
-
+	text_farend Text_AreYouABoyOrAreYouAGirl
 SoThisIsYouText:
 	; So this is you?
-	text_far Text_SoThisIsYou
-	text_end
-
+	text_farend Text_SoThisIsYou
 InitGenderGraphics:
-	ld hl, ChrisCardPic
+	ld hl, CalPic
 	ld de, vTiles2 tile $00
-	lb bc, BANK(ChrisCardPic), 5 * 7
-	call DecompressRequest2bpp
-	ld hl, KrisCardPic
+	ld b, BANK(CalPic)
+	call .DecompressRequestPicSlice
+	ld hl, CarriePic
 	ld de, vTiles2 tile $23
-	lb bc, BANK(KrisCardPic), 5 * 7
-	call DecompressRequest2bpp
-	ld hl, CrysCardPic
+	ld b, BANK(CarriePic)
+	call .DecompressRequestPicSlice
+	ld hl, JackyPic
 	ld de, vTiles2 tile $46
-	lb bc, BANK(CrysCardPic), 5 * 7
-	call DecompressRequest2bpp
+	ld b, BANK(JackyPic)
+	call .DecompressRequestPicSlice
 	ld a, 1
 	ldh [rVBK], a
-	ld hl, BetaCardPic
+	ld hl, EunaPic
 	ld de, vTiles5 tile $00
-	lb bc, BANK(BetaCardPic), 5 * 7
-	call DecompressRequest2bpp
+	ld b, BANK(EunaPic)
+	call .DecompressRequestPicSlice
 	xor a
 	ldh [rVBK], a
 
@@ -925,22 +912,30 @@ InitGenderGraphics:
 	ldh [hGraphicStartTile], a
 	hlcoord 0, 4
 	lb bc, 5, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $23
 	ldh [hGraphicStartTile], a
 	hlcoord 5, 4
 	lb bc, 5, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	ld a, $46
 	ldh [hGraphicStartTile], a
 	hlcoord 10, 4
 	lb bc, 5, 7
-	predef PlaceGraphic
+	farcall PlaceGraphic
 	xor a
 	ldh [hGraphicStartTile], a
 	hlcoord 15, 4
 	lb bc, 5, 7
-	predef_jump PlaceGraphic
+	farjp PlaceGraphic
+
+.DecompressRequestPicSlice:
+	push de
+	call FarDecompressWRA6InB
+	pop hl
+	ld de, wDecompressScratch tile $07
+	ld c, 5 * 7
+	jmp Request2bppInWRA6
 
 NamePlayer:
 	ld b, $1 ; player
@@ -1052,7 +1047,7 @@ FinishPrepIntroPic:
 	ldh [hGraphicStartTile], a
 	hlcoord 6, 4
 	lb bc, 7, 7
-	predef_jump PlaceGraphic
+	farjp PlaceGraphic
 
 Intro_PlacePlayerSprite:
 	farcall GetPlayerIcon
@@ -1379,7 +1374,7 @@ Copyright:
 	call LoadFrame
 	ld hl, CopyrightGFX
 	ld de, vTiles2 tile $60
-	lb bc, BANK(CopyrightGFX), $1d
+	lb bc, BANK(CopyrightGFX), $1e
 	call DecompressRequest2bpp
 	hlcoord 2, 7
 	ld de, CopyrightString
@@ -1387,16 +1382,4 @@ Copyright:
 	ret
 
 CopyrightString:
-	; ©1995-2001 Nintendo
-	db $60, $61, $62, $63, $64, $65, $66
-	db $67, $68, $69, $6a, $6b, $6c
-
-	; ©1995-2001 Creatures inc.
-	db "<NEXT>"
-	db $60, $61, $62, $63, $64, $65, $66
-	db $6d, $6e, $6f, $70, $71, $72, $7a, $7b, $7c
-
-	; ©1995-2001 GAME FREAK inc.
-	db "<NEXT>"
-	db $60, $61, $62, $63, $64, $65, $66
-	db $73, $74, $75, $76, $77, $78, $79, $7a, $7b, $7c, "@"
+INCLUDE "data/copyright.asm"

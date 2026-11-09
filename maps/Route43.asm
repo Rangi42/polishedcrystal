@@ -97,8 +97,7 @@ Route43SightseerfScript:
 	opentext
 	writetext .AfterText1
 	promptbutton
-	verbosegiveitem FLAME_ORB
-	iffalse_endtext
+	verbosegiveitem FLAME_ORB, iffalse_endtext
 	setevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
 	jumpthisopenedtext
 
@@ -362,8 +361,8 @@ PicnickerTiffany1Script:
 	opentext
 	checkflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	iftruefwd .WantsBattle
-	checkflag ENGINE_TIFFANY_HAS_PINK_BOW
-	iftruefwd .HasPinkBow
+	checkflag ENGINE_TIFFANY_HAS_FAIRYFEATHER
+	iftruefwd .HasFairyFeather
 	checkcellnum PHONE_PICNICKER_TIFFANY
 	iftruefwd .NumberAccepted
 	checkpoke CLEFAIRY
@@ -434,12 +433,11 @@ PicnickerTiffany1Script:
 	clearflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	end
 
-.HasPinkBow:
+.HasFairyFeather:
 	scall .Gift
-	verbosegiveitem PINK_BOW
-	iffalsefwd .NoRoom
-	clearflag ENGINE_TIFFANY_HAS_PINK_BOW
-	setevent EVENT_TIFFANY_GAVE_PINK_BOW
+	verbosegiveitem FAIRYFEATHER, iffalsefwd .NoRoom
+	clearflag ENGINE_TIFFANY_HAS_FAIRYFEATHER
+	setevent EVENT_TIFFANY_GAVE_FAIRYFEATHER
 	sjumpfwd .NumberAccepted
 
 .NoRoom:

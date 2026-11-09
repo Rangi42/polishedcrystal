@@ -108,6 +108,7 @@
 	const HONEY_GATHER
 	const FRISK
 	const RECKLESS
+	const BAD_DREAMS
 	const PICKPOCKET
 	const SHEER_FORCE
 	const CONTRARY
@@ -135,6 +136,7 @@
 	const SAP_SIPPER
 	const PRANKSTER
 	const SAND_FORCE
+	const IRON_BARBS
 	const FUR_COAT
 	const BULLETPROOF
 	const COMPETITIVE
@@ -160,4 +162,5 @@
 	const SHARPNESS
 	const ARMOR_TAIL
 	const MINDS_EYE
+	const MEGA_SOL
 DEF NUM_ABILITIES EQU const_value

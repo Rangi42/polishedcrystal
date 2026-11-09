@@ -2,7 +2,6 @@ _SweetHoney:
 	farcall CanUseSweetHoney
 	jr nc, .no_battle
 	farcall GetMapEncounterRate
-	ld a, b
 	and a
 	jr z, .no_battle
 	ld hl, wStatusFlags2
@@ -54,9 +53,6 @@ SweetHoneyScript:
 	farsjump BugCatchingContestBattleScript
 
 UseSweetHoneyText:
-	text_far _UseSweetHoneyText
-	text_end
-
+	text_farend _UseSweetHoneyText
 SweetHoneyNothingText:
-	text_far _SweetHoneyNothingText
-	text_end
+	text_farend _SweetHoneyNothingText

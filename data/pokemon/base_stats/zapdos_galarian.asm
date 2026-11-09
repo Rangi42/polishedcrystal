@@ -1,5 +1,5 @@
-	db  90, 125,  90, 100,  85,  90 ; 580 BST
-	;   hp  atk  def  spe  sat  sdf
+	bst 580,  90, 125,  90,  85,  90, 100
+	;   bst   hp  atk  def  sat  sdf  spe
 
 	db FIGHTING, FLYING ; type
 	db 3 ; catch rate

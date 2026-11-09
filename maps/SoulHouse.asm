@@ -196,4 +196,3 @@ AgathaRewardText:
 	para "Here, take this"
 	line "TM!"
 	done
-

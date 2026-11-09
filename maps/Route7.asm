@@ -10,7 +10,7 @@ Route7_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5, 13, BGEVENT_JUMPTEXT, Route7UndergroundPathSignText
+	bg_event  4, 12, BGEVENT_JUMPTEXT, Route7UndergroundPathSignText
 	bg_event  6, 11, BGEVENT_JUMPTEXT, Route7LockedDoorText
 
 	def_object_events
@@ -67,7 +67,6 @@ Route7Snorlax:
 	setevent EVENT_FOUGHT_SNORLAX
 	reloadmapafterbattle
 	end
-
 
 .AwakeText:
 	text "The #gear was"

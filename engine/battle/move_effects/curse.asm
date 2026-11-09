@@ -26,7 +26,7 @@ BattleCommand_curse:
 	ld [wBattleAnimParam], a
 	call AnimateCurrentMove
 	call GetHalfMaxHP
-	predef SubtractHPFromUser
+	farcall SubtractHPFromUser
 	call UpdateUserInParty
 	ld hl, PutACurseText
 	jmp StdBattleTextbox

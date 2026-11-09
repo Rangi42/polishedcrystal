@@ -141,7 +141,7 @@ TrainerPicPointers::
 	dba ValeriePic
 	dba KukuiPic
 	dba PiersPic
-	dba KatyPic
+	dba LarryPic
 	dba VictorPic
 	dba BillPic
 	dba YellowPic
@@ -149,6 +149,7 @@ TrainerPicPointers::
 	dba ImakuniPic
 	dba LawrencePic
 	dba ReiPic
+	dba FirebreatherAshesPic
 	assert_table_length NUM_TRAINER_CLASSES
 	dba OmastarFossilPic
 	dba KabutopsFossilPic

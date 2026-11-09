@@ -4,8 +4,8 @@ FarawayJungle_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 12, 18, FARAWAY_ISLAND, 1
-	warp_event 13, 18, FARAWAY_ISLAND, 2
+	warp_event 12, 18, FARAWAY_ISLAND_NORTH, 1
+	warp_event 13, 18, FARAWAY_ISLAND_NORTH, 2
 
 	def_coord_events
 

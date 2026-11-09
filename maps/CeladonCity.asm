@@ -12,21 +12,24 @@ CeladonCity_MapScriptHeader:
 	warp_event 33,  9, CELADON_POKECENTER_1F, 1
 	warp_event 22, 19, CELADON_GAME_CORNER, 1
 	warp_event 27, 19, CELADON_GAME_CORNER_PRIZE_ROOM, 1
-	warp_event 14, 29, CELADON_GYM, 1
+	warp_event 12, 29, CELADON_GYM, 1
 	warp_event 25, 29, CELADON_CAFE, 1
 	warp_event 29, 29, CELADON_CHIEF_HOUSE, 1
 	warp_event 35, 29, CELADON_HOTEL_1F, 1
 	warp_event 13,  9, CELADON_HOME_DECOR_STORE_1F, 1
-	warp_event  4, 29, CELADON_UNIVERSITY_1F, 1
+	warp_event  5, 29, CELADON_UNIVERSITY_1F, 1
 	warp_event 29,  9, EUSINES_HOUSE, 1
 	warp_event 33, 19, CELADON_OLD_MAN_SPEECH_HOUSE, 1
 	warp_event 37, 19, CELADON_DEVELOPMENT_SPEECH_HOUSE, 1
+	warp_event  9,  9, CELADON_DEPT_STORE_1F, 2
+	warp_event 23, 19, CELADON_GAME_CORNER, 2
+	warp_event  6, 29, CELADON_UNIVERSITY_1F, 2
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  9, 18, BGEVENT_JUMPTEXT, CeladonCitySignText
-	bg_event 15, 31, BGEVENT_JUMPTEXT, CeladonGymSignText
+	bg_event 11, 18, BGEVENT_JUMPTEXT, CeladonCitySignText
+	bg_event 13, 29, BGEVENT_JUMPTEXT, CeladonGymSignText
 	bg_event  3, 31, BGEVENT_JUMPTEXT, CeladonUniversitySignText
 	bg_event 10,  9, BGEVENT_JUMPTEXT, CeladonCityDeptStoreSignText
 	bg_event 14,  9, BGEVENT_JUMPTEXT, CeladonCityHomeDecorStoreSignText
@@ -40,12 +43,13 @@ CeladonCity_MapScriptHeader:
 	bg_event 41, 21, BGEVENT_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
 	def_object_events
-	object_event  5, 16, SPRITE_RICH_BOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityScript, -1
+	object_event  4, 15, SPRITE_RICH_BOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityScript, -1
 	object_event 30, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityFisherText, -1
-	pokemon_event 31, 11, POLIWRATH, SPRITEMOVEDATA_POKEMON, -1, PAL_NPC_BLUE, CeladonCityPoliwrathText, -1
+	pokemon_event 31, 11, POLIWRATH, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, CeladonCityPoliwrathText, -1
 	object_event 24, 24, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityTeacher1Text, -1
 	object_event 17, 16, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityGramps1Text, -1
-	object_event 12, 31, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityGramps2Text, -1
+	object_event 10, 32, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << DAY) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityGramps2Text, -1
+	object_event  9, 31, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, (1 << MORN) | (1 << EVE), PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityPicnickerText, -1
 	object_event 22, 13, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityYoungster1Text, -1
 	object_event 27, 32, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityYoungster2Text, -1
 	object_event 12, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityTeacher2Text, -1
@@ -54,7 +58,6 @@ CeladonCity_MapScriptHeader:
 	object_event 35, 23, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityLassText, -1
 	itemball_event 39,  7, MAX_ETHER, 1, EVENT_CELADON_CITY_MAX_ETHER
 	cuttree_event 32, 34, EVENT_CELADON_CITY_CUT_TREE
-	cuttree_event -5, 24, EVENT_ROUTE_16_CUT_TREE
 
 CeladonCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CELADON
@@ -191,6 +194,20 @@ CeladonCityGramps2Text:
 	line "here!"
 	done
 
+CeladonCityPicnickerText:
+	text "It's our responsi-"
+	line "bility as Gym"
+
+	para "trainers to tend"
+	line "to these flowers."
+
+	para "The University"
+	line "here also counts"
+
+	para "it as practical"
+	line "gardening credit."
+	done
+
 CeladonCityYoungster1Text:
 	text "Want to know a"
 	line "secret?"
@@ -295,13 +312,15 @@ CeladonCityHomeDecorStoreSignText:
 
 CeladonCityMansionSignText:
 	text "Celadon"
-	line "Condominium"
+	line "Condominiums"
 	done
 
 CeladonCityGameCornerSignText:
 	text "The Playground for"
-	line "Everybody--Celadon"
-	cont "Game Corner"
+	line "Everybody!"
+
+	para "Celadon City"
+	line "Game Corner"
 	done
 
 CeladonCityPrizeExchangeSignText:

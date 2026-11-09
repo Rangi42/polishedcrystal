@@ -37,7 +37,7 @@ LancesRoomLockDoorScene:
 	reanchormap
 	playsound SFX_STRENGTH
 	earthquake 80
-	changeblock 6, 22, $34
+	changeblock 6, 22, $26
 	refreshmap
 	closetext
 	setscene SCENE_LANCESROOM_APPROACH_LANCE
@@ -54,11 +54,11 @@ WalkIntoEliteFourRoomMovement:
 LancesRoomDoorCallback:
 	checkevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	iffalsefwd .LanceEntranceOpen
-	changeblock 6, 22, $34
+	changeblock 6, 22, $26
 .LanceEntranceOpen:
 	checkevent EVENT_LANCES_ROOM_EXIT_OPEN
 	iffalsefwd .LanceExitClosed
-	changeblock 6, 0, $b
+	changeblock 6, 0, $13
 .LanceExitClosed:
 	endcallback
 
@@ -96,7 +96,7 @@ LanceScript:
 .EndBattle:
 	setevent EVENT_BEAT_CHAMPION_LANCE
 	playsound SFX_ENTER_DOOR
-	changeblock 6, 0, $b
+	changeblock 6, 0, $13
 	refreshmap
 	closetext
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED

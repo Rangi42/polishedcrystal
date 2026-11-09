@@ -198,6 +198,3 @@ ManiaText_ShuckieLikesYou:
 	para "But promise to"
 	line "be good to it!"
 	done
-
-
-

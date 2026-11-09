@@ -95,9 +95,7 @@ _CardFlip:
 
 .PlayWithThreeCoinsText:
 	; Play with three coins?
-	text_far _CardFlipPlayWithThreeCoinsText
-	text_end
-
+	text_farend _CardFlipPlayWithThreeCoinsText
 .DeductCoins:
 	ld hl, wCoins
 	ld a, [hli]
@@ -124,20 +122,20 @@ _CardFlip:
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call CardFlip_PrintCoinBalance
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call WaitSFX
 	jr .Increment
 
 .NotEnoughCoinsText:
 	; Not enough coins…
-	text_far _CardFlipNotEnoughCoinsText
-	text_end
-
+	text_farend _CardFlipNotEnoughCoinsText
 .ChooseACard:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	lb bc, 12, 9
@@ -148,13 +146,13 @@ _CardFlip:
 	ld a, [wCardFlipNumCardsPlayed]
 	rst AddNTimes
 	ld [hl], CARDFLIP_LIGHT_ON
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld c, 20
 	call DelayFrames
 	hlcoord 2, 0
 	call PlaceCardFaceDown
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	ld c, 20
 	call DelayFrames
@@ -211,9 +209,7 @@ _CardFlip:
 
 .ChooseACardText:
 	; Choose a card.
-	text_far _CardFlipChooseACardText
-	text_end
-
+	text_farend _CardFlipChooseACardText
 .PlaceYourBet:
 	ld hl, .PlaceYourBetText
 	call CardFlip_UpdateCoinBalanceDisplay
@@ -229,9 +225,7 @@ _CardFlip:
 
 .PlaceYourBetText:
 	; Place your bet.
-	text_far _CardFlipPlaceYourBetText
-	text_end
-
+	text_farend _CardFlipPlaceYourBetText
 .CheckTheCard:
 	xor a
 	ldh [hVBlankCounter], a
@@ -277,7 +271,7 @@ _CardFlip:
 	cp 12
 	jr c, .KeepTheCurrentDeck
 	call CardFlip_InitTilemap
-	ld a, $1
+	ld a, TRANSFER_TILEMAP
 	ldh [hBGMapMode], a
 	call CardFlip_ShuffleDeck
 	ld hl, .CardsShuffledText
@@ -294,14 +288,10 @@ _CardFlip:
 
 .PlayAgainText:
 	; Want to play again?
-	text_far _CardFlipPlayAgainText
-	text_end
-
+	text_farend _CardFlipPlayAgainText
 .CardsShuffledText:
 	; The cards have been shuffled.
-	text_far _CardFlipShuffledText
-	text_end
-
+	text_farend _CardFlipShuffledText
 .Quit:
 	ld hl, wJumptableIndex
 	set 7, [hl]
@@ -343,6 +333,7 @@ GetCoordsOfChosenCard:
 
 PlaceCardFaceDown:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld de, .FaceDownCardTilemap
 	lb bc, 6, 5
@@ -358,6 +349,7 @@ PlaceCardFaceDown:
 
 CardFlip_DisplayCardFaceUp:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	push hl
 	push hl
@@ -455,6 +447,7 @@ CardFlip_PrintCoinBalance:
 
 CardFlip_InitTilemap:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
@@ -512,6 +505,7 @@ CardFlip_CopyOAM:
 
 CardFlip_BlankDiscardedCardSlot:
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	ld a, [wCardFlipFaceUpCard]
 	ld e, a
@@ -1003,14 +997,10 @@ CardFlip_CheckWinCondition:
 
 .Text_Yeah:
 	; Yeah!
-	text_far _CardFlipYeahText
-	text_end
-
+	text_farend _CardFlipYeahText
 .Text_Darn:
 	; Darn…
-	text_far _CardFlipDarnText
-	text_end
-
+	text_farend _CardFlipDarnText
 .AddCoinPlaySFX:
 	ld hl, wCoins
 	ld a, [hli]

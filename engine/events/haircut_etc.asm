@@ -27,7 +27,8 @@ MassageOrHaircut:
 	call GetPartyParamLocationAndValue
 	bit MON_IS_EGG_F, a
 	pop hl
-	jr nz, .egg
+	ld a, 1
+	jr nz, .done
 	push hl
 	call GetCurNickname
 	call CopyPokemonName_Buffer1_Buffer3
@@ -46,15 +47,11 @@ MassageOrHaircut:
 	ld a, [hli]
 	ldh [hScriptVar], a
 	ld c, [hl]
-	predef_jump ChangeHappiness
+	jmp ChangeHappiness
 
 .nope
 	xor a
-	ldh [hScriptVar], a
-	ret
-
-.egg
-	ld a, 1
+.done
 	ldh [hScriptVar], a
 	ret
 

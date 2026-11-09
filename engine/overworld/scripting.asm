@@ -278,6 +278,8 @@ RunScriptCommand:
 	dw Script_loadtrainerwithpal         ; db
 	dw Script_nooryes                    ; dc
 	dw Script_digmod                     ; dd
+	dw Script_toggleevent                ; de
+	dw Script_usepaletteswap             ; df
 	assert_table_length NUM_EVENT_COMMANDS
 
 GetScriptWordDE::
@@ -534,11 +536,8 @@ Script_pokepic:
 	; While we actually have species+form stored right now if zero, we need to
 	; handle color variation. Thus, notify Pokepic that we want a partymon.
 	ld a, -1
+	call nz, GetScriptByte
 	ld [wCurForm], a
-	jr z, .pokepic
-	call GetScriptByte
-	ld [wCurForm], a
-.pokepic
 	farjp Pokepic
 
 GetCurPartyMonSpeciesIfZero:
@@ -1034,7 +1033,7 @@ ApplyObjectFacing::
 	hlcoord 0, 0
 	ld bc, SCREEN_AREA
 .loop
-	res 7, [hl]
+	res B_BG_PRIO, [hl]
 	inc hl
 	dec bc
 	ld a, b
@@ -1057,6 +1056,10 @@ Script_variablesprite:
 	add hl, de
 	call GetScriptByte
 	ld [hl], a
+	; Keep battle text intact until the overworld graphics are reloaded.
+	ld a, [wSpriteUpdatesEnabled]
+	and a
+	ret z
 	farjp ReloadSpriteIndex
 
 Script_appear:
@@ -1224,7 +1227,7 @@ Script_loadtrainer:
 	ld [wOtherTrainerClass], a
 	call GetScriptByte
 	ld [wOtherTrainerID], a
-	xor a
+	xor a ; TRAINERPAL_NONE
 	ld [wTrainerPal], a
 	ret
 
@@ -1241,7 +1244,7 @@ Script_loadtrainerwithpal:
 
 Script_startbattle:
 	call BufferScreen
-	predef StartBattle
+	farcall StartBattle
 	ld a, [wBattleResult]
 	and ~BATTLERESULT_BITMASK
 	ldh [hScriptVar], a
@@ -1621,9 +1624,9 @@ Script_random16:
 	or c
 	ret z
 	call RandomRange16
-	ld b, a
+	ld a, b
 	ldh [hScriptVar], a
-	ld c, a
+	ld a, c
 	ldh [hScriptVar+1], a
 	ret
 
@@ -2048,13 +2051,10 @@ Script_checkcellnum:
 Script_specialphonecall:
 	call GetScriptByte
 	ld [wSpecialPhoneCallID], a
-	xor a
-	ld [wSpecialPhoneCallID + 1], a
 	ret
 
 Script_checkphonecall:
 ; returns false if no special phone call is stored
-
 	ld a, [wSpecialPhoneCallID]
 	and a
 	jr z, .ok
@@ -2134,6 +2134,25 @@ Script_checkevent:
 	jr z, .false
 	ld a, TRUE
 .false
+	ldh [hScriptVar], a
+	ret
+
+Script_toggleevent:
+	call GetScriptWordDE
+	ld b, CHECK_FLAG
+	push de
+	call EventFlagAction
+	pop de
+	jr z, .false
+	ld b, RESET_FLAG
+	call EventFlagAction
+	xor a
+	jr .done
+.false
+	ld b, SET_FLAG
+	call EventFlagAction
+	ld a, TRUE
+.done
 	ldh [hScriptVar], a
 	ret
 
@@ -2249,6 +2268,13 @@ Script_usestonetable:
 	ld [wStoneTableAddress+1], a
 	ret
 
+Script_usepaletteswap:
+	call GetScriptByte
+	ld [wPaletteSwapAddress], a
+	call GetScriptByte
+	ld [wPaletteSwapAddress+1], a
+	ret
+
 Script_changemapblocks:
 	call GetScriptByte
 	ld [wMapBlocksBank], a
@@ -2273,6 +2299,7 @@ Script_changeblock:
 
 Script_refreshmap::
 	xor a
+	assert NO_BG_MAP_TRANSFER == 0
 	ldh [hBGMapMode], a
 	call LoadMapPart
 	call GetMovementPermissions
@@ -2474,7 +2501,7 @@ Script_verbosegivetmhm:
 	; off by one error?
 	ld hl, wTempTMHM
 	inc [hl]
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	ld b, BANK(GiveTMHMScript)
 	ld de, GiveTMHMScript
 	jmp ScriptCall
@@ -2498,6 +2525,11 @@ Script_tmhmnotify:
 	; the "▶" needed by the right cursor arrow.
 	farjp LoadFonts_NoOAMUpdate
 
+GetCurTMHMName:
+	ld a, [wCurTMHM]
+	ld [wNamedObjectIndex], a
+	jmp GetTMHMName
+
 Script_gettmhmname:
 	call GetScriptByte
 	and a
@@ -2514,7 +2546,7 @@ Script_gettmhmname:
 	inc a
 	ld [wTempTMHM], a
 
-	predef GetTMHMMove
+	farcall GetTMHMMove
 	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
