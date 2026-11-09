@@ -68,7 +68,7 @@ DEF OW_RIGHT EQU RIGHT << 2
 	shift_const BG_OFFSET      ; 4
 	shift_const FROZEN         ; 5
 	shift_const OFF_SCREEN     ; 6
-	shift_const UNDER_TILES    ; 7
+	const_skip                 ; 7 (unused)
 
 ; object_struct OBJECT_PALETTE bit flags
 	const_def 4

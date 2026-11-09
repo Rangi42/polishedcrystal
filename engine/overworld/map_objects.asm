@@ -2920,16 +2920,12 @@ InitSprites:
 	jr nz, .not_vram1
 	or OAM_BANK1
 .not_vram1
+	ld d, a
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	ld e, [hl]
-	bit UNDER_TILES_F, e
-	jr z, .not_under_tiles
-	or OAM_PRIO
-.not_under_tiles
-	ld hl, OBJECT_PALETTE
-	add hl, bc
-	ld d, a
+	assert OBJECT_FLAGS2 + 1 == OBJECT_PALETTE
+	inc hl
 	ld a, [hl]
 	and OAM_PALETTE
 	or d
