@@ -92,6 +92,7 @@ DoPlayerMovement::
 	ld a, [wWalkingDirection]
 	cp STANDING
 	call nz, .BumpSound
+.Standing:
 	call .StandInPlace
 	xor a
 	ret
@@ -106,11 +107,6 @@ DoPlayerMovement::
 	and a
 	call z, .BumpSound
 	call ._WalkInPlace
-	xor a
-	ret
-
-.Standing:
-	call .StandInPlace
 	xor a
 	ret
 
@@ -181,7 +177,6 @@ DoPlayerMovement::
 .finish
 	call .DoStep
 	ld a, 5
-	scf
 	ret
 
 .CheckTurning:
@@ -206,7 +201,6 @@ DoPlayerMovement::
 	ld a, STEP_TURN
 	call .DoStep
 	ld a, 2
-	scf
 	ret
 
 .not_turning
@@ -252,6 +246,10 @@ DoPlayerMovement::
 	cp STANDING
 	jr z, .walk
 
+	ld a, [wPlayerTileCollision]
+	cp COLL_LONG_GRASS
+	jr z, .walk
+
 	call .RunCheck
 	jr nz, .walk
 
@@ -263,10 +261,14 @@ DoPlayerMovement::
 	push af
 	call CheckTrainerRun ; we know [wWalkingDirection] is not STANDING, so always call this
 	pop af
-	scf
 	ret
 
 .bike_or_skate
+; Long grass can still be biked through, but slowly.
+	ld a, [wPlayerTileCollision]
+	cp COLL_LONG_GRASS
+	jr z, .pan
+
 ; Downhill riding is slower when not moving down.
 	ld hl, wOWState
 	bit OWSTATE_BIKING_DOWNHILL, [hl]
@@ -274,42 +276,29 @@ DoPlayerMovement::
 
 	ld a, [wWalkingDirection]
 	cp DOWN
-	jr z, .fast
-
-	ld a, STEP_WALK
-	call .DoStep
-	scf
-	ret
+	jr nz, .pan
 
 .fast
 	ld a, STEP_BIKE
-	call .DoStep
-	scf
-	ret
+	jmp .DoStep
 
 .walk
 	call .StopRunning
 .pan
 	ld a, STEP_WALK
-	call .DoStep
-	scf
-	ret
+	jmp .DoStep
 
 .ice
 	call .StopRunning
 	ld a, STEP_ICE
-	call .DoStep
-	scf
-	ret
+	jmp .DoStep
 
 .spin
 	call .StopRunning
 	ld de, SFX_SQUEAK
 	call PlaySFX
 	ld a, STEP_SPIN
-	call .DoStep
-	scf
-	ret
+	jmp .DoStep
 
 .bump
 	xor a
@@ -330,9 +319,7 @@ DoPlayerMovement::
 	set OWSTATE_SURF, a
 	ld [wOWState], a
 	ld a, STEP_FAST
-	call .DoStep
-	scf
-	ret
+	jmp .DoStep
 
 .ExitWater:
 	call .StartWalking
@@ -340,7 +327,6 @@ DoPlayerMovement::
 	ld a, STEP_WALK
 	call .DoStep
 	ld a, 6
-	scf
 	ret
 
 .surf_bump
@@ -387,7 +373,6 @@ DoPlayerMovement::
 	ld a, STEP_LEDGE
 	call .DoStep
 	ld a, 7
-	scf
 	ret
 
 .DontJump:
@@ -431,7 +416,6 @@ DoPlayerMovement::
 	ld a, STEP_STAIRS
 	call .DoStep
 	ld a, 7
-	scf
 	ret
 
 .FacingStairsTable:
@@ -503,8 +487,12 @@ DoPlayerMovement::
 	ld a, [wWalkingDirection]
 	ld e, a
 	cp STANDING
-	jr z, .StandInPlace
+	jr nz, .continue
+	call .StandInPlace
+	scf
+	ret
 
+.continue
 	add hl, de
 	ld a, [hl]
 	ld [wMovementAnimation], a
@@ -523,6 +511,7 @@ DoPlayerMovement::
 .no_cooldown
 
 	ld a, 4
+	scf
 	ret
 
 .Steps:
