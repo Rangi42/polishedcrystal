@@ -309,6 +309,7 @@ _ChooseWildEncounter:
 	ld b, 0
 .got_prob_params
 	call RandomRange
+	add b
 
 	ld b, -1
 	ld h, d
