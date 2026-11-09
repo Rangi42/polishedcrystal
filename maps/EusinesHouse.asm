@@ -2,6 +2,7 @@ EusinesHouse_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, EusinesHouseEusineCallback
 
 	def_warp_events
 	warp_event  2,  7, CELADON_CITY, 14
@@ -18,13 +19,26 @@ EusinesHouse_MapScriptHeader:
 	object_const_def
 	const EUSINESHOUSE_EUSINE
 
+EusinesHouseEusineCallback:
+	special UpdateEusineVisibility
+	endcallback
+
 CeladonEusine:
+	special UpdateEusineVisibility
+	ifnotequal EUSINE_RESEARCHING, .Gone
 	faceplayer
 	opentext
 	writetext CeladonEusineText1
 	promptbutton
-	special SpecialBeastsCheck
+	checkevent EVENT_GOT_RAINBOW_WING
 	iftruefwd .HoOh
+	special SpecialBeastsCheck
+	iffalsefwd .NoBeasts
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftruefwd .HoOh
+	jumpopenedtext EusineStillResearchingText
+
+.NoBeasts:
 	writetext EusineNoBeastsText
 	waitbutton
 	closetext
@@ -75,6 +89,8 @@ CeladonEusine:
 	writetext EusineLeavesCeladonText
 	waitbutton
 	closetext
+	setevent EVENT_EUSINE_LEFT_CELADON
+	special UpdateEusineVisibility
 	readvar VAR_FACING
 	ifnotequal UP, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement
@@ -83,6 +99,10 @@ CeladonEusine:
 	disappear EUSINESHOUSE_EUSINE
 	playsound SFX_EXIT_BUILDING
 	waitsfx
+	end
+
+.Gone:
+	disappear EUSINESHOUSE_EUSINE
 	end
 
 .PlayerStepsAsideMovement:
@@ -98,14 +118,10 @@ CeladonEusine:
 	step_end
 
 EusinesHouseGrampsScript:
-	checkevent EVENT_EUSINES_HOUSE_EUSINE
-	iffalse_jumptextfaceplayer EusinesHouseGrampsGrandsonHomeText
-	checkevent EVENT_FOUGHT_SUICUNE
-	iffalse_jumptextfaceplayer EusinesHouseGrampsEusineSearchingForSuicuneText
-	checkevent EVENT_DECO_ABRA_DOLL
-	iftrue_jumptextfaceplayer EusinesHouseGrampsEusineTravelingWorldText
-	checkevent EVENT_FOUGHT_HO_OH
-	iftruefwd .AfterHoOhFight
+	special UpdateEusineVisibility
+	ifequalfwd EUSINE_RESEARCHING, .Home
+	ifequalfwd EUSINE_SEARCHING, .Searching
+	ifequalfwd EUSINE_TRAVELING, .AfterFarewell
 	jumpthistextfaceplayer
 
 	text "My grandson Eusine"
@@ -117,7 +133,15 @@ EusinesHouseGrampsScript:
 	cont "Ecruteak City."
 	done
 
-.AfterHoOhFight:
+.Home:
+	jumptextfaceplayer EusinesHouseGrampsGrandsonHomeText
+
+.Searching:
+	jumptextfaceplayer EusinesHouseGrampsEusineSearchingForSuicuneText
+
+.AfterFarewell:
+	checkevent EVENT_DECO_ABRA_DOLL
+	iftrue_jumptextfaceplayer EusinesHouseGrampsEusineTravelingWorldText
 	faceplayer
 	opentext
 	writetext EusinesHouseGrampsThankYouGiftText
@@ -187,6 +211,16 @@ EusineNoBeastsText:
 
 	para "Let me give you"
 	line "my research notes."
+	done
+
+EusineStillResearchingText:
+	text "You caught all"
+	line "three legendary"
+	cont "beast #mon!"
+
+	para "I'll keep studying"
+	line "their connection"
+	cont "to Ho-Oh."
 	done
 
 EusineShowsRaikouText:

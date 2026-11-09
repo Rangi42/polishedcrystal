@@ -42,6 +42,7 @@ TinTower1FSuicuneBattleScene:
 	end
 
 TinTower1FNPCsCallback:
+	special UpdateEusineVisibility
 	checkevent EVENT_GOT_RAINBOW_WING
 	iftruefwd .GotRainbowWing
 	checkevent EVENT_BEAT_ELITE_FOUR
@@ -51,10 +52,6 @@ TinTower1FNPCsCallback:
 	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
 .GotRainbowWing:
-	checkevent EVENT_FOUGHT_HO_OH
-	iffalsefwd .Done
-	appear TINTOWER1F_EUSINE
-.Done:
 	endcallback
 
 .FaceBeasts:
@@ -140,7 +137,7 @@ TinTower1FSuicuneBattleScript:
 	setevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	setmapscene CIANWOOD_CITY, SCENE_CIANWOODCITY_NOOP
 	setscene SCENE_TINTOWER1F_NOOP
-	clearevent EVENT_EUSINES_HOUSE_EUSINE
+	special UpdateEusineVisibility
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
 	iffalsefwd .nocatch
@@ -295,13 +292,20 @@ TinTower1FSage6Script:
 	done
 
 TinTower1FEusineAfterHoOhScript:
+	special UpdateEusineVisibility
+	ifnotequal EUSINE_FAREWELL_PENDING, .Gone
 	faceplayer
 	showtext TinTowerEusineHoOhText
+	setevent EVENT_EUSINE_LEFT_CELADON
+	setevent EVENT_EUSINE_HO_OH_ENCOUNTER
+	setevent EVENT_EUSINE_HO_OH_FAREWELL
+	special UpdateEusineVisibility
 	readvar VAR_FACING
 	ifnotequal RIGHT, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement
 .PathClear:
 	applymovement TINTOWER1F_EUSINE, .EusineLeavesAfterHoOhMovement
+.Gone:
 	disappear TINTOWER1F_EUSINE
 	end
 

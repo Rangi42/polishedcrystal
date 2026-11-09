@@ -40,6 +40,10 @@ TinTowerHoOh:
 	pause 15
 	closetext
 	setevent EVENT_FOUGHT_HO_OH
+	; Record the visit before battle: a loss skips the postbattle script.
+	setevent EVENT_EUSINE_LEFT_CELADON
+	setevent EVENT_EUSINE_HO_OH_ENCOUNTER
+	special UpdateEusineVisibility
 	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	loadwildmon HO_OH, 75
 	startbattle

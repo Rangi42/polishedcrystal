@@ -2462,5 +2462,10 @@
 	const EVENT_INTRODUCED_CABLE_CAR_GATE_NURSE
 	const EVENT_GOT_EJECT_PACK_FROM_MOUNT_MOON_SQUARE
 
+; Eusine's story does not reset when Ho-Oh respawns.
+	const EVENT_EUSINE_LEFT_CELADON
+	const EVENT_EUSINE_HO_OH_ENCOUNTER
+	const EVENT_EUSINE_HO_OH_FAREWELL
+
 	const_next $8ff
 DEF NUM_EVENTS EQU const_value ; 2303
