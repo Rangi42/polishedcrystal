@@ -298,8 +298,18 @@ _ChooseWildEncounter:
 .get_random_mon
 	dec c
 	push hl ; wild mon data pointer
-	ld a, 100
+
+; Roll [0, 100) normally, or [LONG_GRASS_BIAS, 100) in long grass for more rare encounters.
+	ld a, [wPlayerTileCollision]
+	cp COLL_LONG_GRASS
+	ld a, 100 - LONG_GRASS_BIAS
+	ld b, LONG_GRASS_BIAS
+	jr z, .got_prob_params
+	add b ; a = 100
+	ld b, 0
+.got_prob_params
 	call RandomRange
+
 	ld b, -1
 	ld h, d
 	ld l, e
@@ -390,7 +400,7 @@ _ChooseWildEncounter:
 	cp c
 	jr z, .loadwildmon
 	inc c
-	jr nz, .get_random_mon
+	jmp nz, .get_random_mon
 
 .loadwildmon
 	ld a, [wCurForm]
