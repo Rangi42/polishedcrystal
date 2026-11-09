@@ -147,17 +147,7 @@ ProfElmScript:
 	iftrue ElmAskBattleScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
 	iffalsefwd ElmCheckTogepiEgg
-	scall ElmEggHatchedScript
-	; need to reopen text boxes since ElmCheckGotEggAgain's
-	; jumpopenedtext will close them.
-	jumpthistext
-
-	text "<PLAYER>? I thought"
-	line "the Egg hatched."
-
-	para "Where is the"
-	line "#mon?"
-	done
+	; fallthrough
 
 ElmEggHatchedScript:
 	setmonval TOGEPI
@@ -169,7 +159,16 @@ ElmEggHatchedScript:
 	setmonval TOGEKISS
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	sjumpfwd ElmCheckGotEggAgain
+	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
+	iffalsefwd ElmCheckGotEggAgain
+	jumpthisopenedtext
+
+	text "<PLAYER>? I thought"
+	line "the Egg hatched."
+
+	para "Where is the"
+	line "#mon?"
+	done
 
 ElmCheckTogepiEgg:
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
