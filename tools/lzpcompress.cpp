@@ -706,15 +706,15 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 	auto copy_start_ofs = [&emitted_bytes](Span const &dest, uint8_t const *first_src_byte_ptr)
 	                      -> std::optional<int16_t> {
 		assert(dest.start - first_src_byte_ptr > 0);
-		assert(first_src_byte_ptr - emitted_bytes.start >= 0);
-
-		ptrdiff_t relative_ofs = dest.start - first_src_byte_ptr;
-		ptrdiff_t absolute_ofs = relative_ofs <= 128 ? -relative_ofs
-		                                             : first_src_byte_ptr - emitted_bytes.start;
-		if (absolute_ofs < INT16_MIN || absolute_ofs > INT16_MAX) {
-			return std::nullopt;
+		if (size_t relative_ofs = dest.start - first_src_byte_ptr; relative_ofs <= 128) {
+			return -static_cast<int16_t>(relative_ofs);
 		}
-		return static_cast<int16_t>(absolute_ofs);
+		assert(first_src_byte_ptr - emitted_bytes.start >= 0);
+		if (size_t absolute_ofs = first_src_byte_ptr - emitted_bytes.start;
+		    absolute_ofs <= INT16_MAX) {
+			return static_cast<int16_t>(absolute_ofs);
+		}
+		return std::nullopt;
 	};
 
 	uint8_t last_byte = emitted_bytes[-1], last_byte_flipped = reverse_bits(last_byte);
