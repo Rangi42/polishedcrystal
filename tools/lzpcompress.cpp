@@ -1368,7 +1368,7 @@ int main(int argc, char *argv[]) {
 		if (options.mode == Options::MODE_DECOMPRESS) {
 			xfwrite(decompressed.data(), decompressed.size(), output, output_filename);
 		} else {
-			serialize(commands, decompressed, output, true, output_filename);
+			serialize(commands, decompressed, output, textual_output, output_filename);
 		}
 		close_output_file(output);
 	} break;
