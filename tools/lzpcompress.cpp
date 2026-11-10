@@ -190,29 +190,35 @@ static std::pair<FILE *, char const *> open_output_file(char const *path, bool t
 	return {output, filename};
 }
 
-static void close_output_file(FILE *file) {
+static void close_output_file(FILE *file, char const *filename) {
+	errno = 0;
+	int result = file == stdout ? fflush(file) : fclose(file);
+	if (result == EOF) {
+		error_exit(EXIT_IO_ERR, "could not finish writing to output file \"%s\": %s\n", filename,
+		           strerror(errno));
+	}
+}
+
+[[noreturn]] static void write_error_exit(FILE *file, char const *filename) {
+	int errnum = errno;
 	if (file != stdout) {
 		fclose(file);
 	}
+	error_exit(EXIT_IO_ERR, "could not write to output file \"%s\": %s\n", filename,
+	           strerror(errnum));
 }
 
 void xfwrite(uint8_t const *data, size_t size, FILE *file, char const *filename) {
 	errno = 0;
 	if (fwrite(data, sizeof(*data), size, file) != size) {
-		int errnum = errno;
-		close_output_file(file);
-		error_exit(EXIT_IO_ERR, "could not write to output file \"%s\": %s\n", filename,
-		           strerror(errnum));
+		write_error_exit(file, filename);
 	}
 }
 
 void xputc(uint8_t ch, FILE *file, char const *filename) {
 	errno = 0;
 	if (putc(ch, file) == EOF) {
-		int errnum = errno;
-		close_output_file(file);
-		error_exit(EXIT_IO_ERR, "could not write to output file \"%s\": %s\n", filename,
-		           strerror(errnum));
+		write_error_exit(file, filename);
 	}
 }
 
@@ -1355,7 +1361,7 @@ int main(int argc, char *argv[]) {
 		bool textual_output = options.mode == Options::MODE_COMPRESS_TEXT;
 		auto [output, output_filename] = open_output_file(options.output, textual_output);
 		serialize(commands, input_bytes, output, textual_output, output_filename);
-		close_output_file(output);
+		close_output_file(output, output_filename);
 	} break;
 
 	case Options::MODE_DECOMPRESS:
@@ -1370,7 +1376,7 @@ int main(int argc, char *argv[]) {
 		} else {
 			serialize(commands, decompressed, output, textual_output, output_filename);
 		}
-		close_output_file(output);
+		close_output_file(output, output_filename);
 	} break;
 	}
 
