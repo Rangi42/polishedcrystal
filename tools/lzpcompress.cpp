@@ -603,28 +603,39 @@ struct LzCopyCmd : public LzCmd {
 			}
 		}
 	}
-	uint8_t const *copy_src_start(std::vector<uint8_t> const &dest, uint8_t const *payload,
+	uint8_t const *copy_src_start(std::vector<uint8_t> &dest, uint8_t const *payload,
 		                          bool reversed) const {
+		// Required for the returned pointer to remain stable during insertion.
+		dest.reserve(dest.size() + this->len);
+
+		size_t source_idx;
 		if (this->start_ofs < 0) {
-			if (ptrdiff_t(dest.size()) + this->start_ofs < 0 ||
-			    (reversed ? ptrdiff_t(dest.size()) + this->start_ofs - this->len < 0
-			              : dest.size() + this->start_ofs + this->len >= dest.size())) {
-				error_exit(EXIT_DATA_ERR,
-				           "corrupted input (encountered out-of-bounds copy command)\n");
-			}
-			assert((127 - payload[0]) == this->start_ofs);
+			assert(127 - this->start_ofs == payload[0]);
 			assert(this->start_ofs >= -128);
-			return &dest[dest.size() + this->start_ofs];
-		} else {
-			if (reversed ? this->start_ofs - this->len < 0
-			             : size_t(this->start_ofs + this->len) >= dest.size()) {
+
+			size_t distance = static_cast<size_t>(-static_cast<int32_t>(this->start_ofs));
+			if (distance > dest.size()) {
 				error_exit(EXIT_DATA_ERR,
 				           "corrupted input (encountered out-of-bounds copy command)\n");
 			}
+			source_idx = dest.size() - distance;
+		} else {
 			assert((payload[0] << 8 | payload[1]) == this->start_ofs);
-			assert(size_t(this->start_ofs) < dest.size());
-			return &dest[this->start_ofs];
+
+			source_idx = static_cast<size_t>(this->start_ofs);
+			if (source_idx >= dest.size()) {
+				error_exit(EXIT_DATA_ERR,
+				           "corrupted input (encountered out-of-bounds copy command)\n");
+			}
 		}
+
+		// Forward copies may overlap the output, since emitted bytes can become later source bytes.
+		// Reverse copies may not overlap, since they read toward the beginning of the buffer.
+		if (reversed && source_idx < static_cast<size_t>(this->len - 1)) {
+			error_exit(EXIT_DATA_ERR,
+			           "corrupted input (encountered out-of-bounds copy command)\n");
+		}
+		return dest.data() + source_idx;
 	}
 };
 struct LzCopyNormal final : public LzCopyCmd {
@@ -641,8 +652,6 @@ struct LzCopyNormal final : public LzCopyCmd {
 		this->serialize_copy_cmd("normal", LZ_COPY_NORMAL, bytes, file, textual, filename);
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
-		dest.reserve(dest.size() +
-		             this->len); // Required for the next pointer to remain stable during insertion.
 		uint8_t const *src = this->copy_src_start(dest, payload, false);
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(*src);
@@ -664,8 +673,6 @@ struct LzCopyFlipped final : public LzCopyCmd {
 		this->serialize_copy_cmd("flipped", LZ_COPY_FLIPPED, bytes, file, textual, filename);
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
-		dest.reserve(dest.size() +
-		             this->len); // Required for the next pointer to remain stable during insertion.
 		uint8_t const *src = this->copy_src_start(dest, payload, false);
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(reverse_bits(*src));
@@ -687,8 +694,6 @@ struct LzCopyReversed final : public LzCopyCmd {
 		this->serialize_copy_cmd("reversed", LZ_COPY_REVERSED, bytes, file, textual, filename);
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
-		dest.reserve(dest.size() +
-		             this->len); // Required for the next pointer to remain stable during insertion.
 		uint8_t const *src = this->copy_src_start(dest, payload, true);
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(*src);
