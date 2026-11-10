@@ -738,7 +738,9 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 				assert(src.len == dest.len);
 
 				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, src.start);
-				    !start_ofs.has_value() || !func(LzCopyNormal(src.len, *start_ofs))) {
+				    !start_ofs.has_value()) {
+					continue; // A longer match may move the source start into the encodable range
+				} else if (!func(LzCopyNormal(src.len, *start_ofs))) {
 					break;
 				}
 				// If the copy would start at the beginning of the decompressed stream, stop
@@ -758,7 +760,9 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 				assert(src.len == dest.len);
 
 				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, &src[-1]);
-				    !start_ofs.has_value() || !func(LzCopyReversed(src.len, *start_ofs))) {
+				    !start_ofs.has_value()) {
+					continue; // A longer reverse match moves the source start farther forward
+				} else if (!func(LzCopyReversed(src.len, *start_ofs))) {
 					break;
 				}
 				// Unlike a forward copy, `src` and `dest` must NOT overlap!
@@ -778,7 +782,9 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 			     emitted_bytes[-dest.len] == reverse_bits(src[0]);
 			     src.resize_left(1), dest.resize_left(1)) {
 				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, src.start);
-				    !start_ofs.has_value() || !func(LzCopyFlipped(src.len, *start_ofs))) {
+				    !start_ofs.has_value()) {
+					continue; // A longer match may move the source start into the encodable range
+				} else if (!func(LzCopyFlipped(src.len, *start_ofs))) {
 					break;
 				}
 				// If the copy would start at the beginning of the decompressed stream, stop
