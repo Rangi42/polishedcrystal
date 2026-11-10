@@ -1118,7 +1118,7 @@ decompress(std::vector<std::pair<Command, uint8_t const *>> const &commands) {
 static void serialize(std::forward_list<Command> const &cmds,
                       std::vector<uint8_t> const &uncompressed, FILE *output, bool textual_output,
                       char const *filename) {
-	uint8_t const *bytes = uncompressed.data();
+	size_t byte_idx = 0;
 	for (Command const &cmd : cmds) {
 		LzCmd const &inner_base = lz_cmd(cmd);
 		assert(inner_base.len >= inner_base.min_length());
@@ -1126,12 +1126,12 @@ static void serialize(std::forward_list<Command> const &cmds,
 		if (0) { // To print costs at the start of each line:
 			fprintf(output, "/* %2zu */", inner_base.num_encoded_bytes());
 		}
-		inner_base.serialize(bytes, output, textual_output, filename);
+		inner_base.serialize(uncompressed.data() + byte_idx, output, textual_output, filename);
 
-		bytes += inner_base.len;
+		byte_idx += inner_base.len;
 	}
 
-	assert(size_t(bytes - uncompressed.data()) == uncompressed.size());
+	assert(byte_idx == uncompressed.size());
 	if (textual_output) {
 		fputs("\tlzend\n", output);
 	} else {
@@ -1141,7 +1141,7 @@ static void serialize(std::forward_list<Command> const &cmds,
 static void serialize(std::vector<std::pair<Command, uint8_t const *>> const &cmds,
                       std::vector<uint8_t> const &uncompressed, FILE *output, bool textual_output,
                       char const *filename) {
-	uint8_t const *bytes = uncompressed.data();
+	size_t byte_idx = 0;
 	for (auto const &[cmd, payload] : cmds) {
 		LzCmd const &inner_base = lz_cmd(cmd);
 		assert(inner_base.len >= inner_base.min_length());
@@ -1149,12 +1149,12 @@ static void serialize(std::vector<std::pair<Command, uint8_t const *>> const &cm
 		if (0) { // To print costs at the start of each line:
 			fprintf(output, "/* %2zu */", inner_base.num_encoded_bytes());
 		}
-		inner_base.serialize(bytes, output, textual_output, filename);
+		inner_base.serialize(uncompressed.data() + byte_idx, output, textual_output, filename);
 
-		bytes += inner_base.len;
+		byte_idx += inner_base.len;
 	}
 
-	assert(size_t(bytes - uncompressed.data()) == uncompressed.size());
+	assert(byte_idx == uncompressed.size());
 	if (textual_output) {
 		fputs("\tlzend\n", output);
 	} else {
