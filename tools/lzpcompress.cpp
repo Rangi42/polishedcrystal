@@ -222,19 +222,19 @@ void xputc(uint8_t ch, FILE *file, char const *filename) {
 	}
 }
 
-// C++20-like `span`, but with Python slice indexing semantics.
+// C++20-like `span`.
 struct Span {
 	uint8_t const *start;
 	size_t len;
 
-	uint8_t const &operator[](int idx) const {
-		if (idx < 0) {
-			assert(size_t(-idx) <= len);
-			return start[idx + len];
-		} else {
-			assert(size_t(idx) < len);
-			return start[idx];
-		}
+	uint8_t const &at(size_t idx) const {
+		assert(idx < len);
+		return start[idx];
+	}
+
+	uint8_t const &at_end(size_t idx) const {
+		assert(idx <= len);
+		return start[len - idx];
 	}
 
 	uint8_t const *begin() const { return start; }
@@ -409,11 +409,11 @@ struct LzRepeat final : public LzCmd {
 
 	template <typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
-		uint8_t last_byte = emitted_bytes[-1];
+		uint8_t last_byte = emitted_bytes.at_end(1);
 		for (size_t data_len = 2;
 		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + MAX_LONG_LENGTH; ++data_len) {
 			// If the bytes are no longer repeating, stop.
-			if (emitted_bytes[-data_len] != last_byte) {
+			if (emitted_bytes.at_end(data_len) != last_byte) {
 				break;
 			}
 			// Since this command's cost increases monotonically, if the cost is higher than the
@@ -456,12 +456,13 @@ struct LzAlternate final : public LzCmd {
 	template <typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		if (emitted_bytes.len >= 2) {
-			uint8_t last_byte = emitted_bytes[-1], penultimate = emitted_bytes[-2];
+			uint8_t last_byte = emitted_bytes.at_end(1), penultimate = emitted_bytes.at_end(2);
 			for (size_t data_len = 3;
 			     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + MAX_LONG_LENGTH;
 			     ++data_len) {
 				// If the bytes are no longer repeating (alternated), stop.
-				if (emitted_bytes[-data_len] != (data_len % 2 != 0 ? last_byte : penultimate)) {
+				if (uint8_t next_byte = data_len % 2 != 0 ? last_byte : penultimate;
+				    emitted_bytes.at_end(data_len) != next_byte) {
 					break;
 				}
 				// Since this command's cost increases monotonically, if the cost is higher than the
@@ -516,11 +517,11 @@ struct LzZero final : public LzCmd {
 
 	template <typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
-		assert(emitted_bytes[-1] == 0);
+		assert(emitted_bytes.at_end(1) == 0);
 		for (size_t data_len = 1;
 		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + MAX_LONG_LENGTH; ++data_len) {
 			// If the bytes are no longer repeating, stop.
-			if (emitted_bytes[-data_len] != 0) {
+			if (emitted_bytes.at_end(data_len) != 0) {
 				break;
 			}
 			// Since this command's cost increases monotonically, if the cost is higher than the
@@ -717,7 +718,7 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 		return std::nullopt;
 	};
 
-	uint8_t last_byte = emitted_bytes[-1], last_byte_flipped = reverse_bits(last_byte);
+	uint8_t last_byte = emitted_bytes.at_end(1), last_byte_flipped = reverse_bits(last_byte);
 	// Seek opportunities for referencing previously-decompressed data;
 	// since, as usual, we are looking for copies that *end* at the current byte,
 	// we anchor searches based on that byte, and then proceed through each candidate range in
@@ -729,11 +730,11 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 	// data onto itself.
 	assert(emitted_bytes.len > 0);
 	for (size_t src_end_idx = emitted_bytes.len - 1; src_end_idx--;) {
-		if (emitted_bytes[src_end_idx] == last_byte) {
+		if (emitted_bytes.at(src_end_idx) == last_byte) {
 			// Check if a normal, forward copy is possible.
-			for (Span dest{&emitted_bytes[-1], 1}, src{&emitted_bytes[src_end_idx], 1};
+			for (Span dest{&emitted_bytes.at_end(1), 1}, src{&emitted_bytes.at(src_end_idx), 1};
 			     src.len < LzCopyNormal::MIN_LENGTH + MAX_LONG_LENGTH &&
-			     emitted_bytes[-dest.len] == src[0];
+			     emitted_bytes.at_end(dest.len) == src.at(0);
 			     src.resize_left(1), dest.resize_left(1)) {
 				assert(src.len == dest.len);
 
@@ -753,13 +754,13 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 			}
 			// Try also a reverse-direction copy; the logic is the same, but `src` grows to the
 			// *right* instead.
-			for (Span dest{&emitted_bytes[-1], 1}, src{&emitted_bytes[src_end_idx], 1};
+			for (Span dest{&emitted_bytes.at_end(1), 1}, src{&emitted_bytes.at(src_end_idx), 1};
 			     src.len < LzCopyReversed::MIN_LENGTH + MAX_LONG_LENGTH &&
-			     emitted_bytes[-dest.len] == src[-1];
+			     emitted_bytes.at_end(dest.len) == src.at_end(1);
 			     src.len += 1, dest.resize_left(1)) {
 				assert(src.len == dest.len);
 
-				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, &src[-1]);
+				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, &src.at_end(1));
 				    !start_ofs.has_value()) {
 					continue; // A longer reverse match moves the source start farther forward
 				} else if (!func(LzCopyReversed(src.len, *start_ofs))) {
@@ -775,11 +776,11 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 			}
 		}
 		// This is not mutually exclusive with the above, in case the byte is symmetrical.
-		if (emitted_bytes[src_end_idx] == last_byte_flipped) {
+		if (emitted_bytes.at(src_end_idx) == last_byte_flipped) {
 			// Check if a normal, forward copy is possible.
-			for (Span dest{&emitted_bytes[-1], 1}, src{&emitted_bytes[src_end_idx], 1};
+			for (Span dest{&emitted_bytes.at_end(1), 1}, src{&emitted_bytes.at(src_end_idx), 1};
 			     src.len < LzCopyFlipped::MIN_LENGTH + MAX_LONG_LENGTH &&
-			     emitted_bytes[-dest.len] == reverse_bits(src[0]);
+			     emitted_bytes.at_end(dest.len) == reverse_bits(src.at(0));
 			     src.resize_left(1), dest.resize_left(1)) {
 				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, src.start);
 				    !start_ofs.has_value()) {
@@ -846,7 +847,7 @@ struct LzSpecialPackhi0 final : public LzSpecialCmd {
 		for (size_t data_len = MIN_LENGTH;
 		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + 256; ++data_len) {
 			// If the lower nibble is no longer zero, stop.
-			if ((emitted_bytes[-data_len] & 0x0f) != 0) {
+			if ((emitted_bytes.at_end(data_len) & 0x0f) != 0) {
 				break;
 			}
 			// Since this command's cost increases monotonically, if the cost is higher than the
@@ -910,7 +911,8 @@ struct LzSpecialPack16Short final : public LzSpecialCmd {
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		for (size_t data_len = 1; data_len <= emitted_bytes.len && data_len <= 256; ++data_len) {
 			// If the bytes are no longer in the dictionary, stop.
-			if (std::find(dict.cbegin(), dict.cend(), emitted_bytes[-data_len]) == dict.cend()) {
+			if (std::find(dict.cbegin(), dict.cend(), emitted_bytes.at_end(data_len))
+			    == dict.cend()) {
 				break;
 			}
 			// Since this command's cost increases monotonically, if the cost is higher than the
@@ -965,7 +967,7 @@ struct LzSpecialPacklo0 final : public LzSpecialCmd {
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		for (size_t data_len = 1; data_len <= emitted_bytes.len && data_len <= 256; ++data_len) {
 			// If the upper nibble is no longer zero, stop.
-			if ((emitted_bytes[-data_len] & 0xf0) != 0) {
+			if ((emitted_bytes.at_end(data_len) & 0xf0) != 0) {
 				break;
 			}
 			// Since this command's cost increases monotonically, if the cost is higher than the
