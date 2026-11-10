@@ -31,6 +31,8 @@ PewterCity_MapScriptHeader:
 	object_event 29, 19, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PewterCityGrampsScript, -1
 	object_event  6, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 2, 2, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PewterCityYoungsterScript, -1
 	object_event 25, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 2, 2, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, PewterCityPokefanMScript, -1
+	object_event  6,  6, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_PINK, OBJECTTYPE_COMMAND, jumptextfaceplayer, PewterCityLadyText, -1
+	pokemon_event  7,  6, MEOWTH, ALOLAN_FORM, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_GRAY, PewterCityMeowthText, -1
 	fruittree_event 26,  5, FRUITTREE_PEWTER_CITY_1, PETAYA_BERRY, PAL_NPC_PINK
 	fruittree_event 24,  5, FRUITTREE_PEWTER_CITY_2, APICOT_BERRY, PAL_NPC_BLUE
 
@@ -204,6 +206,17 @@ PewterCityYoungsterText1:
 	line "there."
 	done
 
+PewterCityLadyText:
+	text "Pewter City stays"
+	line "cool since it"
+
+	para "lies at the base"
+	line "of Mt.Moon."
+	done
+
+PewterCityMeowthText:
+	text "Meowth: Miao!"
+	done
 
 PewterCitySignText:
 	text "Pewter City"
