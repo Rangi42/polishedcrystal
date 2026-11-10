@@ -649,3 +649,6 @@ CampfireSpriteGFX:: INCBIN "gfx/sprites/campfire.2bpp.lzp"
 
 SECTION "CableCarSpriteGFX", ROMX
 CableCarSpriteGFX:: INCBIN "gfx/sprites/cable_car.2bpp.lzp"
+
+SECTION "LilypadSpriteGFX", ROMX
+LilypadSpriteGFX:: INCBIN "gfx/sprites/lilypad.2bpp.lzp"

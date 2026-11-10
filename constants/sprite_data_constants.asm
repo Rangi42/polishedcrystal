@@ -92,7 +92,9 @@ DEF FIRST_COPY_BG_PAL EQU const_value
 	ow_npc_pal_const COPY_BG_BROWN     ; 39
 	ow_npc_pal_const COPY_BG_ROOF      ; 3a
 	ow_npc_pal_const COPY_BG_TEXT      ; 3b
+DEF FIRST_COPY_SPECIAL_BG_PAL EQU const_value
 	ow_npc_pal_const COPY_BG_WHITE     ; 3c
+	ow_npc_pal_const COPY_BG_GRASS     ; 3d
 DEF NUM_OW_BG_COPY_PALS EQU const_value - NUM_OW_INDIVIDUAL_PALS
 DEF NUM_OW_PALS EQU const_value
 

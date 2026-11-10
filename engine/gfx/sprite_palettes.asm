@@ -175,13 +175,14 @@ CopyObjectSpritePalHandler::
 	; already partially faded BG palette. Replaying the elapsed fade steps would
 	; put it ahead of the BG palette it is meant to match. Fades from white still
 	; need the normal catch-up path because their active palette started as white;
-	; PAL_OW_COPY_BG_WHITE also needs it because it is built from target colors.
+	; Special copy-BG palettes (WHITE and GRASS) also need it because they are
+	; built from target colors.
 	ld a, [wPalWhiteState]
 	and a
 	jr nz, .catch_up
 	ld a, [wNeededPalIndex]
-	cp PAL_OW_COPY_BG_WHITE
-	jr z, .catch_up
+	cp FIRST_COPY_SPECIAL_BG_PAL
+	jr nc, .catch_up
 	cp FIRST_COPY_BG_PAL
 	jr nc, .caught_up
 .catch_up
@@ -220,6 +221,8 @@ CopySpritePal::
 
 	cp PAL_OW_COPY_BG_WHITE - FIRST_COPY_BG_PAL
 	jr z, .copy_white
+	cp PAL_OW_COPY_BG_GRASS - FIRST_COPY_BG_PAL
+	jr z, .copy_grass
 
 .copy_bg
 	; Copy-BG palettes use the corresponding buffer for the requested state.
@@ -239,31 +242,46 @@ CopySpritePal::
 	rst AddNTimes
 	jr .got_pal
 
+.copy_grass
+	ld hl, wBGPals1 palette PAL_BG_GREEN
+	jr .copy_special_bg
 .copy_white
+	ld hl, wBGPals1 palette PAL_BG_GRAY
+.copy_special_bg
 	pop de
 	push de ; push wOBPals1 palette *
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals1)
 	ldh [rWBK], a
-	ld hl, wBGPals1 color 0
-rept 2
+; color 0 = BG color 0
 	ld a, [hli]
 	ld [de], a
 	inc de
 	ld a, [hld]
 	ld [de], a
 	inc de
-endr
-	ld hl, wBGPals1 color 3
-rept 2
+; color 1 = BG color 0
 	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hld]
+	ld a, [hli]
 	ld [de], a
 	inc de
-endr
+; color 2 = BG color 1
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+; color 3 = BG color 2
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	inc de
 	pop af
 	ldh [rWBK], a
 	jr .copied_pal

@@ -466,4 +466,12 @@ SpriteMovementData::
 	db BG_OFFSET ; flags2
 	db 0 ; palette flags
 
+; SPRITEMOVEDATA_LILYPAD
+	db SPRITEMOVEFN_STANDING ; movement function
+	db DOWN ; facing
+	db OBJECT_ACTION_STAND ; action
+	db WONT_DELETE | FIXED_FACING | SLIDING | EMOTE_OBJECT ; flags1
+	db LOW_PRIORITY ; flags2
+	db BG_ALIGNED ; palette flags
+
 	assert_table_length NUM_SPRITEMOVEDATA
