@@ -1398,7 +1398,9 @@ int main(int argc, char *argv[]) {
 		bool textual_output = options.mode == Options::MODE_DUMP;
 		auto [output, output_filename] = open_output_file(options.output, textual_output);
 		if (options.mode == Options::MODE_DECOMPRESS) {
-			xfwrite(decompressed.data(), decompressed.size(), output, output_filename);
+			if (!decompressed.empty()) {
+				xfwrite(decompressed.data(), decompressed.size(), output, output_filename);
+			}
 		} else {
 			serialize(commands, decompressed, output, textual_output, output_filename);
 		}
