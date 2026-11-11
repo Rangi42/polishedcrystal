@@ -80,8 +80,8 @@
 #include <vector>
 
 #if defined(_MSC_VER) || defined(__MINGW32__)
-#include <fcntl.h> // `_O_BINARY`.
-#include <io.h>    // `_setmode`.
+	#include <fcntl.h> // `_O_BINARY`.
+	#include <io.h>    // `_setmode`.
 #endif
 
 // Not using `common.h` so this program can be easily copy-pasted into other projects;
@@ -109,7 +109,8 @@ static void error_exit(int error_code, char const *error, ...) {
 	exit(error_code);
 }
 
-[[noreturn]] static void unreachable() {
+[[noreturn]]
+static void unreachable() {
 #if __has_builtin(__builtin_unreachable)
 	__builtin_unreachable();
 #else
@@ -125,8 +126,9 @@ static std::vector<uint8_t> read_input(char const *path) {
 		errno = 0;
 		int result = _setmode(_fileno(stdin), _O_BINARY);
 		if (result == -1) {
-			error_exit(EXIT_OS_ERR, "cannot set standard input to binary mode: %s\n",
-			           strerror(errno));
+			error_exit(
+			    EXIT_OS_ERR, "cannot set standard input to binary mode: %s\n", strerror(errno)
+			);
 		}
 #endif
 		input = stdin;
@@ -135,8 +137,9 @@ static std::vector<uint8_t> read_input(char const *path) {
 		errno = 0;
 		input = fopen(path, "rb");
 		if (input == nullptr) {
-			error_exit(EXIT_MISSING_INPUT, "cannot open input file \"%s\": %s\n", filename,
-			           strerror(errno));
+			error_exit(
+			    EXIT_MISSING_INPUT, "cannot open input file \"%s\": %s\n", filename, strerror(errno)
+			);
 		}
 	}
 
@@ -170,8 +173,12 @@ static std::pair<FILE *, char const *> open_output_file(char const *path, bool t
 		errno = 0;
 		int result = _setmode(_fileno(stdout), textual ? _O_TEXT : _O_BINARY);
 		if (result == -1) {
-			error_exit(EXIT_OS_ERR, "cannot set standard output to %s mode: %s\n",
-			           textual ? "text" : "binary", strerror(errno));
+			error_exit(
+			    EXIT_OS_ERR,
+			    "cannot set standard output to %s mode: %s\n",
+			    textual ? "text" : "binary",
+			    strerror(errno)
+			);
 		}
 #endif
 		output = stdout;
@@ -180,8 +187,9 @@ static std::pair<FILE *, char const *> open_output_file(char const *path, bool t
 		errno = 0;
 		output = fopen(path, textual ? "wt" : "wb");
 		if (output == nullptr) {
-			error_exit(EXIT_CANT_CREATE, "cannot create output file \"%s\": %s\n", path,
-			           strerror(errno));
+			error_exit(
+			    EXIT_CANT_CREATE, "cannot create output file \"%s\": %s\n", path, strerror(errno)
+			);
 		}
 	}
 	return {output, filename};
@@ -191,18 +199,24 @@ static void close_output_file(FILE *file, char const *filename) {
 	errno = 0;
 	int result = file == stdout ? fflush(file) : fclose(file);
 	if (result == EOF) {
-		error_exit(EXIT_IO_ERR, "could not finish writing to output file \"%s\": %s\n", filename,
-		           strerror(errno));
+		error_exit(
+		    EXIT_IO_ERR,
+		    "could not finish writing to output file \"%s\": %s\n",
+		    filename,
+		    strerror(errno)
+		);
 	}
 }
 
-[[noreturn]] static void write_error_exit(FILE *file, char const *filename) {
+[[noreturn]]
+static void write_error_exit(FILE *file, char const *filename) {
 	int errnum = errno;
 	if (file != stdout) {
 		fclose(file);
 	}
-	error_exit(EXIT_IO_ERR, "could not write to output file \"%s\": %s\n", filename,
-	           strerror(errnum));
+	error_exit(
+	    EXIT_IO_ERR, "could not write to output file \"%s\": %s\n", filename, strerror(errnum)
+	);
 }
 
 void xfwrite(uint8_t const *data, size_t size, FILE *file, char const *filename) {
@@ -240,8 +254,9 @@ struct Span {
 	/// Are all of the bytes in this span identical?
 	bool is_uniform() const {
 		assert(this->len > 0);
-		return std::all_of(this->begin(), this->end(),
-		                   [this](uint8_t byte) { return byte == this->start[0]; });
+		return std::all_of(this->begin(), this->end(), [this](uint8_t byte) {
+			return byte == this->start[0];
+		});
 	}
 
 	void resize_left(int how_much) {
@@ -314,14 +329,14 @@ struct LzCmd {
 	/// How many bytes in the compressed output would this command take?
 	virtual size_t num_encoded_bytes() const = 0;
 
-	virtual void serialize(uint8_t const *bytes, FILE *output, bool textual,
-	                       char const *filename) const = 0;
+	virtual void
+	    serialize(uint8_t const *bytes, FILE *output, bool textual, char const *filename) const = 0;
 	virtual void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const = 0;
 
 	// No default-constructing the base class or any derived one unless it specifically wants to.
 	LzCmd() = delete;
 
-  protected:
+protected:
 	explicit LzCmd(uint16_t len_) : len(len_) {}
 
 	/// Helper function for computing encoded sizes.
@@ -355,10 +370,11 @@ struct LzData final : public LzCmd {
 	// Header + each payload byte as-is.
 	size_t num_encoded_bytes() const override { return this->num_header_bytes() + this->len; }
 
-	template <typename Func>
+	template<typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		for (size_t data_len = 1;
-		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + MAX_LONG_LENGTH; ++data_len) {
+		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + MAX_LONG_LENGTH;
+		     ++data_len) {
 			// Since this command's cost increases monotonically, if the cost is higher than the
 			// current best sum, any further attempts are guaranteed to fail.
 			if (!func(LzData(data_len))) {
@@ -370,8 +386,8 @@ struct LzData final : public LzCmd {
 	/**
 	 * The command is followed by the bytes that it needs to copy (as many as its length, thus).
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
+	void serialize(uint8_t const *bytes, FILE *file, bool textual, char const *filename)
+	    const override {
 		if (textual) {
 			fprintf(file, "\tlzdata ");
 			print_byte_list(file, bytes, this->len);
@@ -401,11 +417,12 @@ struct LzRepeat final : public LzCmd {
 	// Header + payload byte.
 	size_t num_encoded_bytes() const override { return this->num_header_bytes() + 1; }
 
-	template <typename Func>
+	template<typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		uint8_t last_byte = emitted_bytes.at_end(1);
 		for (size_t data_len = 2;
-		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + MAX_LONG_LENGTH; ++data_len) {
+		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + MAX_LONG_LENGTH;
+		     ++data_len) {
 			// If the bytes are no longer repeating, stop.
 			if (emitted_bytes.at_end(data_len) != last_byte) {
 				break;
@@ -421,8 +438,8 @@ struct LzRepeat final : public LzCmd {
 	/**
 	 * The command is followed by the byte that ought to be repeated.
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
+	void serialize(uint8_t const *bytes, FILE *file, bool textual, char const *filename)
+	    const override {
 		assert((Span{bytes, this->len}).is_uniform());
 
 		if (textual) {
@@ -449,7 +466,7 @@ struct LzAlternate final : public LzCmd {
 	// Header + the 2 payload bytes.
 	size_t num_encoded_bytes() const override { return this->num_header_bytes() + 2; }
 
-	template <typename Func>
+	template<typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		if (emitted_bytes.len >= 2) {
 			uint8_t last_byte = emitted_bytes.at_end(1), penultimate = emitted_bytes.at_end(2);
@@ -473,16 +490,21 @@ struct LzAlternate final : public LzCmd {
 	/**
 	 * The command is followed by the two bytes to be repeated.
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
+	void serialize(uint8_t const *bytes, FILE *file, bool textual, char const *filename)
+	    const override {
 		assert(std::all_of(bytes, bytes + this->len, [&bytes](uint8_t const &byte) {
 			size_t idx = &byte - bytes;
 			return byte == bytes[idx % 2];
 		}));
 
 		if (textual) {
-			fprintf(file, "\tlzalternate %" PRIu16 ", $%02" PRIx8 ", $%02" PRIx8 " ; ", this->len,
-			        bytes[0], bytes[1]);
+			fprintf(
+			    file,
+			    "\tlzalternate %" PRIu16 ", $%02" PRIx8 ", $%02" PRIx8 " ; ",
+			    this->len,
+			    bytes[0],
+			    bytes[1]
+			);
 			print_byte_list(file, bytes, this->len);
 			xputc('\n', file, filename);
 		} else {
@@ -509,11 +531,12 @@ struct LzZero final : public LzCmd {
 	// Just the header.
 	size_t num_encoded_bytes() const override { return this->num_header_bytes(); }
 
-	template <typename Func>
+	template<typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		assert(emitted_bytes.at_end(1) == 0);
 		for (size_t data_len = 1;
-		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + MAX_LONG_LENGTH; ++data_len) {
+		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + MAX_LONG_LENGTH;
+		     ++data_len) {
 			// If the bytes are no longer repeating, stop.
 			if (emitted_bytes.at_end(data_len) != 0) {
 				break;
@@ -529,8 +552,9 @@ struct LzZero final : public LzCmd {
 	/**
 	 * The command does not have any payload bytes.
 	 */
-	void serialize([[maybe_unused]] uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
+	void serialize(
+	    [[maybe_unused]] uint8_t const *bytes, FILE *file, bool textual, char const *filename
+	) const override {
 		assert(bytes[0] == 0);
 		assert((Span{bytes, this->len}).is_uniform());
 
@@ -540,8 +564,8 @@ struct LzZero final : public LzCmd {
 			this->serialize_header(file, LZ_ZERO, filename);
 		}
 	}
-	void decompress(std::vector<uint8_t> &dest,
-	                [[maybe_unused]] uint8_t const *payload) const override {
+	void decompress(std::vector<uint8_t> &dest, [[maybe_unused]] uint8_t const *payload)
+	    const override {
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(0);
 		}
@@ -565,10 +589,10 @@ struct LzCopyCmd : public LzCmd {
 		return this->num_header_bytes() + (this->start_ofs < 0 ? 1 : 2);
 	}
 
-	template <typename Func>
+	template<typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes);
 
-  protected:
+protected:
 	LzCopyCmd(uint16_t len_, int16_t start_ofs_) : LzCmd(len_), start_ofs(start_ofs_) {}
 
 	/**
@@ -577,15 +601,22 @@ struct LzCopyCmd : public LzCmd {
 	 * The former indicates that the offset is (127 - N) bytes behind the current write position,
 	 * the latter that the offset is N bytes from the start of the decompressed stream.
 	 */
-	void serialize_copy_cmd(char const *name, LzCmdId cmd_id, uint8_t const *bytes, FILE *file,
-	                        bool textual, char const *filename) const {
+	void serialize_copy_cmd(
+	    char const *name,
+	    LzCmdId cmd_id,
+	    uint8_t const *bytes,
+	    FILE *file,
+	    bool textual,
+	    char const *filename
+	) const {
 		if (this->start_ofs < 0) {
 			assert(this->start_ofs >= -128);
 		}
 
 		if (textual) {
-			fprintf(file, "\tlzcopy %s, %" PRIu16 ", %" PRId16 " ; ", name, this->len,
-			        this->start_ofs);
+			fprintf(
+			    file, "\tlzcopy %s, %" PRIu16 ", %" PRId16 " ; ", name, this->len, this->start_ofs
+			);
 			print_byte_list(file, bytes, this->len);
 			xputc('\n', file, filename);
 		} else {
@@ -600,8 +631,8 @@ struct LzCopyCmd : public LzCmd {
 			}
 		}
 	}
-	size_t copy_src_start(std::vector<uint8_t> const &dest,
-		                  [[maybe_unused]] uint8_t const *payload) const {
+	size_t copy_src_start(std::vector<uint8_t> const &dest, [[maybe_unused]] uint8_t const *payload)
+	    const {
 		size_t source_idx;
 		if (this->start_ofs < 0) {
 			assert(127 - this->start_ofs == payload[0]);
@@ -609,8 +640,9 @@ struct LzCopyCmd : public LzCmd {
 
 			size_t distance = static_cast<size_t>(-static_cast<int32_t>(this->start_ofs));
 			if (distance > dest.size()) {
-				error_exit(EXIT_DATA_ERR,
-				           "corrupted input (encountered out-of-bounds copy command)\n");
+				error_exit(
+				    EXIT_DATA_ERR, "corrupted input (encountered out-of-bounds copy command)\n"
+				);
 			}
 			source_idx = dest.size() - distance;
 		} else {
@@ -618,8 +650,9 @@ struct LzCopyCmd : public LzCmd {
 
 			source_idx = static_cast<size_t>(this->start_ofs);
 			if (source_idx >= dest.size()) {
-				error_exit(EXIT_DATA_ERR,
-				           "corrupted input (encountered out-of-bounds copy command)\n");
+				error_exit(
+				    EXIT_DATA_ERR, "corrupted input (encountered out-of-bounds copy command)\n"
+				);
 			}
 		}
 		return source_idx;
@@ -634,8 +667,8 @@ struct LzCopyNormal final : public LzCopyCmd {
 	/**
 	 * See `LzCopyCmd::serialize_copy_cmd()`.
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
+	void serialize(uint8_t const *bytes, FILE *file, bool textual, char const *filename)
+	    const override {
 		this->serialize_copy_cmd("normal", LZ_COPY_NORMAL, bytes, file, textual, filename);
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
@@ -654,8 +687,8 @@ struct LzCopyFlipped final : public LzCopyCmd {
 	/**
 	 * See `LzCopyCmd::serialize_copy_cmd()`.
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
+	void serialize(uint8_t const *bytes, FILE *file, bool textual, char const *filename)
+	    const override {
 		this->serialize_copy_cmd("flipped", LZ_COPY_FLIPPED, bytes, file, textual, filename);
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
@@ -674,25 +707,27 @@ struct LzCopyReversed final : public LzCopyCmd {
 	/**
 	 * See `LzCopyCmd::serialize_copy_cmd()`.
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
+	void serialize(uint8_t const *bytes, FILE *file, bool textual, char const *filename)
+	    const override {
 		this->serialize_copy_cmd("reversed", LZ_COPY_REVERSED, bytes, file, textual, filename);
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		size_t start = this->copy_src_start(dest, payload);
 		if (start < static_cast<size_t>(this->len - 1)) {
-			error_exit(EXIT_DATA_ERR,
-			           "corrupted input (encountered out-of-bounds reverse copy command)\n");
+			error_exit(
+			    EXIT_DATA_ERR, "corrupted input (encountered out-of-bounds reverse copy command)\n"
+			);
 		}
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(dest[start - i]);
 		}
 	}
 };
-template <typename Func>
+template<typename Func>
 void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
-	auto copy_start_ofs = [&emitted_bytes](Span const &dest, uint8_t const *first_src_byte_ptr)
-	                      -> std::optional<int16_t> {
+	auto copy_start_ofs = [&emitted_bytes](
+	                          Span const &dest, uint8_t const *first_src_byte_ptr
+	                      ) -> std::optional<int16_t> {
 		assert(dest.start - first_src_byte_ptr > 0);
 		if (size_t relative_ofs = dest.start - first_src_byte_ptr; relative_ofs <= 128) {
 			return -static_cast<int16_t>(relative_ofs);
@@ -720,8 +755,8 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 		if (emitted_bytes.at(src_end_idx) == last_byte) {
 			// Check if a normal, forward copy is possible.
 			for (Span dest{&emitted_bytes.at_end(1), 1}, src{&emitted_bytes.at(src_end_idx), 1};
-			     src.len < LzCopyNormal::MIN_LENGTH + MAX_LONG_LENGTH &&
-			     emitted_bytes.at_end(dest.len) == src.at(0);
+			     src.len < LzCopyNormal::MIN_LENGTH + MAX_LONG_LENGTH
+			     && emitted_bytes.at_end(dest.len) == src.at(0);
 			     src.resize_left(1), dest.resize_left(1)) {
 				assert(src.len == dest.len);
 
@@ -742,8 +777,8 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 			// Try also a reverse-direction copy; the logic is the same, but `src` grows to the
 			// *right* instead.
 			for (Span dest{&emitted_bytes.at_end(1), 1}, src{&emitted_bytes.at(src_end_idx), 1};
-			     src.len < LzCopyReversed::MIN_LENGTH + MAX_LONG_LENGTH &&
-			     emitted_bytes.at_end(dest.len) == src.at_end(1);
+			     src.len < LzCopyReversed::MIN_LENGTH + MAX_LONG_LENGTH
+			     && emitted_bytes.at_end(dest.len) == src.at_end(1);
 			     src.len += 1, dest.resize_left(1)) {
 				assert(src.len == dest.len);
 
@@ -766,8 +801,8 @@ void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_byte
 		if (emitted_bytes.at(src_end_idx) == last_byte_flipped) {
 			// Check if a normal, forward copy is possible.
 			for (Span dest{&emitted_bytes.at_end(1), 1}, src{&emitted_bytes.at(src_end_idx), 1};
-			     src.len < LzCopyFlipped::MIN_LENGTH + MAX_LONG_LENGTH &&
-			     emitted_bytes.at_end(dest.len) == reverse_bits(src.at(0));
+			     src.len < LzCopyFlipped::MIN_LENGTH + MAX_LONG_LENGTH
+			     && emitted_bytes.at_end(dest.len) == reverse_bits(src.at(0));
 			     src.resize_left(1), dest.resize_left(1)) {
 				if (std::optional<int16_t> start_ofs = copy_start_ofs(dest, src.start);
 				    !start_ofs.has_value()) {
@@ -798,7 +833,7 @@ struct LzSpecialCmd : public LzCmd {
 	// stream, thus two output bytes compress to one (rounding up, though).
 	size_t num_encoded_bytes() const override { return 1 + 1 + (this->len + 1) / 2; }
 
-  protected:
+protected:
 	explicit LzSpecialCmd(uint16_t len_) : LzCmd(len_) {
 		assert(this->len >= this->min_length());
 		assert(this->len <= this->max_length());
@@ -814,9 +849,10 @@ struct LzSpecialCmd : public LzCmd {
 		xputc(cmd_id, file, filename);
 		xputc(this->len - 1, file, filename);
 	}
-	template <typename Func>
-	void decompress_special_cmd(std::vector<uint8_t> &dest, uint8_t const *payload,
-	                            Func const &func) const {
+	template<typename Func>
+	void decompress_special_cmd(
+	    std::vector<uint8_t> &dest, uint8_t const *payload, Func const &func
+	) const {
 		for (size_t i = 0; i < this->len; ++i) {
 			uint8_t byte = payload[i / 2];
 			dest.push_back(func(i & 1 ? byte & 0x0f : byte >> 4));
@@ -829,10 +865,11 @@ struct LzSpecialPackhi0 final : public LzSpecialCmd {
 		assert(this->len <= this->max_length());
 	}
 
-	template <typename Func>
+	template<typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		for (size_t data_len = MIN_LENGTH;
-		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + 256; ++data_len) {
+		     data_len <= emitted_bytes.len && data_len < MIN_LENGTH + 256;
+		     ++data_len) {
 			// If the lower nibble is no longer zero, stop.
 			if ((emitted_bytes.at_end(data_len) & 0x0f) != 0) {
 				break;
@@ -849,10 +886,11 @@ struct LzSpecialPackhi0 final : public LzSpecialCmd {
 	 * This command is followed by a stream of “big-endian” nibbles that get zero-padded then
 	 * output; if there is an odd number of nibbles, the last byte's low nibble is ignored.
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
-		assert(
-			std::all_of(bytes, bytes + this->len, [](uint8_t byte) { return (byte & 0x0f) == 0; }));
+	void serialize(uint8_t const *bytes, FILE *file, bool textual, char const *filename)
+	    const override {
+		assert(std::all_of(bytes, bytes + this->len, [](uint8_t byte) {
+			return (byte & 0x0f) == 0;
+		}));
 
 		if (textual) {
 			fputs("\tlzpackhi ", file);
@@ -886,15 +924,29 @@ struct LzSpecialPack16Short final : public LzSpecialCmd {
 	/// Fixed dictionary designed to be indexed using a single nibble.
 	/// This is intentionally biased toward very common tile/bitmask bytes.
 	static constexpr std::array<uint8_t, 16> const dict{
-		0x00, 0xff, 0x01, 0x02, 0x03, 0xfe, 0x80, 0x07,
-		0xc0, 0x7f, 0x04, 0x0f, 0x1f, 0x3f, 0x08, 0xfc,
+	    0x00,
+	    0xff,
+	    0x01,
+	    0x02,
+	    0x03,
+	    0xfe,
+	    0x80,
+	    0x07,
+	    0xc0,
+	    0x7f,
+	    0x04,
+	    0x0f,
+	    0x1f,
+	    0x3f,
+	    0x08,
+	    0xfc,
 	};
 	// Returns 16 if not in the dict.
 	static uint8_t dict_key(uint8_t byte) {
 		return std::find(dict.cbegin(), dict.cend(), byte) - dict.cbegin();
 	}
 
-	template <typename Func>
+	template<typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		for (size_t data_len = 1; data_len <= emitted_bytes.len && data_len <= 256; ++data_len) {
 			// If the bytes are no longer in the dictionary, stop.
@@ -913,10 +965,11 @@ struct LzSpecialPack16Short final : public LzSpecialCmd {
 	 * This command is followed by a stream of “big-endian” nibbles that get zero-padded then
 	 * output; if there is an odd number of nibbles, the last byte's low nibble is ignored.
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
-		assert(std::all_of(bytes, bytes + this->len,
-		                   [](uint8_t byte) { return dict_key(byte) < 16; }));
+	void serialize(uint8_t const *bytes, FILE *file, bool textual, char const *filename)
+	    const override {
+		assert(std::all_of(bytes, bytes + this->len, [](uint8_t byte) {
+			return dict_key(byte) < 16;
+		}));
 
 		if (textual) {
 			fputs("\tlzpack16 ", file);
@@ -928,7 +981,7 @@ struct LzSpecialPack16Short final : public LzSpecialCmd {
 			Span remaining{bytes, this->len};
 			while (remaining.len >= 2) {
 				uint8_t first_idx = dict_key(remaining.start[0]),
-						second_idx = dict_key(remaining.start[1]);
+				        second_idx = dict_key(remaining.start[1]);
 				xputc(first_idx << 4 | second_idx, file, filename);
 
 				remaining.resize_left(-2);
@@ -949,7 +1002,7 @@ struct LzSpecialPacklo0 final : public LzSpecialCmd {
 		assert(this->len <= this->max_length());
 	}
 
-	template <typename Func>
+	template<typename Func>
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		for (size_t data_len = 1; data_len <= emitted_bytes.len && data_len <= 256; ++data_len) {
 			// If the upper nibble is no longer zero, stop.
@@ -968,10 +1021,11 @@ struct LzSpecialPacklo0 final : public LzSpecialCmd {
 	 * This command is followed by a stream of “big-endian” nibbles that get zero-padded then
 	 * output; if there is an odd number of nibbles, the last byte's low nibble is ignored.
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
-	               char const *filename) const override {
-		assert(
-			std::all_of(bytes, bytes + this->len, [](uint8_t byte) { return (byte & 0xf0) == 0; }));
+	void serialize(uint8_t const *bytes, FILE *file, bool textual, char const *filename)
+	    const override {
+		assert(std::all_of(bytes, bytes + this->len, [](uint8_t byte) {
+			return (byte & 0xf0) == 0;
+		}));
 
 		if (textual) {
 			fputs("\tlzpacklo ", file);
@@ -1001,9 +1055,17 @@ struct LzSpecialPacklo0 final : public LzSpecialCmd {
 	}
 };
 
-using Command =
-	std::variant<LzData, LzRepeat, LzAlternate, LzZero, LzCopyNormal, LzCopyFlipped, LzCopyReversed,
-	             LzSpecialPackhi0, LzSpecialPack16Short, LzSpecialPacklo0>;
+using Command = std::variant<
+    LzData,
+    LzRepeat,
+    LzAlternate,
+    LzZero,
+    LzCopyNormal,
+    LzCopyFlipped,
+    LzCopyReversed,
+    LzSpecialPackhi0,
+    LzSpecialPack16Short,
+    LzSpecialPacklo0>;
 
 /// Extract a `LzCmd` pointer out of a `Command`, for common dynamic dispatch.
 LzCmd const &lz_cmd(Command const &cmd) {
@@ -1095,7 +1157,7 @@ static std::forward_list<Command> compress(std::vector<uint8_t> const &uncompres
 // Must decompress to a buffer, so that back-refs (`LzCopy`-derived commands) can access previous
 // output.
 static std::vector<uint8_t>
-decompress(std::vector<std::pair<Command, uint8_t const *>> const &commands) {
+    decompress(std::vector<std::pair<Command, uint8_t const *>> const &commands) {
 	std::vector<uint8_t> data;
 	for (auto const &[cmd, payload] : commands) {
 		lz_cmd(cmd).decompress(data, payload);
@@ -1103,9 +1165,13 @@ decompress(std::vector<std::pair<Command, uint8_t const *>> const &commands) {
 	return data;
 }
 
-static void serialize(std::forward_list<Command> const &cmds,
-                      std::vector<uint8_t> const &uncompressed, FILE *output, bool textual_output,
-                      char const *filename) {
+static void serialize(
+    std::forward_list<Command> const &cmds,
+    std::vector<uint8_t> const &uncompressed,
+    FILE *output,
+    bool textual_output,
+    char const *filename
+) {
 	size_t byte_idx = 0;
 	for (Command const &cmd : cmds) {
 		LzCmd const &inner_base = lz_cmd(cmd);
@@ -1126,9 +1192,13 @@ static void serialize(std::forward_list<Command> const &cmds,
 		xputc(LZ_END, output, filename);
 	}
 }
-static void serialize(std::vector<std::pair<Command, uint8_t const *>> const &cmds,
-                      std::vector<uint8_t> const &uncompressed, FILE *output, bool textual_output,
-                      char const *filename) {
+static void serialize(
+    std::vector<std::pair<Command, uint8_t const *>> const &cmds,
+    std::vector<uint8_t> const &uncompressed,
+    FILE *output,
+    bool textual_output,
+    char const *filename
+) {
 	size_t byte_idx = 0;
 	for (auto const &[cmd, payload] : cmds) {
 		LzCmd const &inner_base = lz_cmd(cmd);
@@ -1151,7 +1221,7 @@ static void serialize(std::vector<std::pair<Command, uint8_t const *>> const &cm
 }
 
 static std::vector<std::pair<Command, uint8_t const *>>
-deserialize(std::vector<uint8_t> const &compressed) {
+    deserialize(std::vector<uint8_t> const &compressed) {
 	if (compressed.empty()) {
 		error_exit(EXIT_DATA_ERR, "empty input\n");
 	}
@@ -1163,10 +1233,12 @@ deserialize(std::vector<uint8_t> const &compressed) {
 		size_t cmd_start_idx = byte_idx;
 		auto require_bytes = [&compressed, &byte_idx, &cmd_start_idx](size_t amount) {
 			if (compressed.size() - byte_idx < amount) {
-				error_exit(EXIT_DATA_ERR,
-				           "corrupted input (encountered EOF while parsing command starting at "
-				           "offset %zu)\n",
-				           cmd_start_idx);
+				error_exit(
+				    EXIT_DATA_ERR,
+				    "corrupted input (encountered EOF while parsing command starting at "
+				    "offset %zu)\n",
+				    cmd_start_idx
+				);
 			}
 			uint8_t const *start = &compressed[byte_idx];
 			byte_idx += amount;
@@ -1178,8 +1250,9 @@ deserialize(std::vector<uint8_t> const &compressed) {
 			break;
 		}
 		uint8_t const *payload_start;
-		Command cmd = [&payload_start, &first_byte, &compressed, &byte_idx,
-		               &require_bytes, &cmd_start_idx]() -> Command {
+		Command cmd =
+		    [&payload_start, &first_byte, &compressed, &byte_idx, &require_bytes, &cmd_start_idx](
+		    ) -> Command {
 			if ((first_byte & 0b111'111'00) == 0b111'111'00) { // Special commands.
 				uint16_t len = require_bytes(1)[0] + LzSpecialCmd::MIN_LENGTH;
 				payload_start = compressed.data() + byte_idx;
@@ -1198,19 +1271,23 @@ deserialize(std::vector<uint8_t> const &compressed) {
 				uint16_t len;
 				if ((first_byte & 0b111'00000) == 0b111'00000) { // “Long” encoded commands.
 					if (first_byte & 0b10) {
-						error_exit(EXIT_DATA_ERR,
-						           "corrupted input (encountered invalid long command header at "
-						           "offset %zu)\n",
-						           cmd_start_idx);
+						error_exit(
+						    EXIT_DATA_ERR,
+						    "corrupted input (encountered invalid long command header at "
+						    "offset %zu)\n",
+						    cmd_start_idx
+						);
 					}
 					uint8_t extended_header = require_bytes(1)[0];
 					cmd_id = (first_byte >> 2) & 0b111;
 					len = (first_byte & 1) << 8 | extended_header;
 					if (len < (1 << 5)) { // “Short” encoded commands.
-						error_exit(EXIT_DATA_ERR,
-						           "corrupted input (encountered too-short long command header at "
-						           "offset %zu)\n",
-						           cmd_start_idx);
+						error_exit(
+						    EXIT_DATA_ERR,
+						    "corrupted input (encountered too-short long command header at "
+						    "offset %zu)\n",
+						    cmd_start_idx
+						);
 					}
 				} else {
 					cmd_id = first_byte >> 5;
@@ -1258,9 +1335,12 @@ deserialize(std::vector<uint8_t> const &compressed) {
 	}
 
 	if (byte_idx != compressed.size()) {
-		error_exit(EXIT_DATA_ERR,
-		           "corrupted input (end marker found after %zu bytes, but %zu remain)\n",
-		           byte_idx - 1, compressed.size() - byte_idx);
+		error_exit(
+		    EXIT_DATA_ERR,
+		    "corrupted input (end marker found after %zu bytes, but %zu remain)\n",
+		    byte_idx - 1,
+		    compressed.size() - byte_idx
+		);
 	}
 
 	return commands;
@@ -1268,21 +1348,24 @@ deserialize(std::vector<uint8_t> const &compressed) {
 
 // CLI option parsing.
 
-[[noreturn]] static void usage(int retcode, char const *program_name) {
-	fprintf(stderr,
-	        "Usage: %s [<options>] [<source file> [<output>]]\n"
-	        "\n"
-	        "Execution mode:\n"
-	        "    -b, --binary      Output the command stream as binary data (default).\n"
-	        "    -t, --text        Output the command stream as text.\n"
-	        "    -u, --uncompress  Process a compressed file and output the original data.\n"
-	        "    -d, --dump        Process a compressed file and dump the command stream as\n"
-	        "                      text (as if compressing with the --text option).\n"
-	        "    -h, --help        Print this help text and exit.\n"
-	        "\n"
-	        "The source and output filenames can be given as - (or omitted) to use standard\n"
-	        "input and output. Use -- to indicate that subsequent arguments are file names.\n",
-	        program_name);
+[[noreturn]]
+static void usage(int retcode, char const *program_name) {
+	fprintf(
+	    stderr,
+	    "Usage: %s [<options>] [<source file> [<output>]]\n"
+	    "\n"
+	    "Execution mode:\n"
+	    "    -b, --binary      Output the command stream as binary data (default).\n"
+	    "    -t, --text        Output the command stream as text.\n"
+	    "    -u, --uncompress  Process a compressed file and output the original data.\n"
+	    "    -d, --dump        Process a compressed file and dump the command stream as\n"
+	    "                      text (as if compressing with the --text option).\n"
+	    "    -h, --help        Print this help text and exit.\n"
+	    "\n"
+	    "The source and output filenames can be given as - (or omitted) to use standard\n"
+	    "input and output. Use -- to indicate that subsequent arguments are file names.\n",
+	    program_name
+	);
 	exit(retcode);
 }
 
@@ -1292,8 +1375,7 @@ struct Options {
 	enum { MODE_COMPRESS_BIN, MODE_COMPRESS_TEXT, MODE_DECOMPRESS, MODE_DUMP } mode;
 
 	/// Parse from CLI args.
-	Options(int argc, char *argv[])
-		: input(nullptr), output(nullptr), mode(MODE_COMPRESS_BIN) {
+	Options(int argc, char *argv[]) : input(nullptr), output(nullptr), mode(MODE_COMPRESS_BIN) {
 		char const *program_name = argv[0] ? argv[0] : "lzpcompress";
 		bool accepting_options = true;
 		for (size_t arg_idx = 1; arg_idx < size_t(argc); ++arg_idx) {
@@ -1325,8 +1407,9 @@ struct Options {
 				} else if (name == "dump") {
 					this->mode = MODE_DUMP;
 				} else {
-					error_exit(EXIT_BAD_USAGE, "unknown option --%.*s\n", int(name.size()),
-					           name.data());
+					error_exit(
+					    EXIT_BAD_USAGE, "unknown option --%.*s\n", int(name.size()), name.data()
+					);
 				}
 
 			} else { // Short option.
