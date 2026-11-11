@@ -42,7 +42,7 @@ CeladonCity_MapScriptHeader:
 	bg_event 33, 29, BGEVENT_JUMPTEXT, CeladonCityHotelSignText
 	bg_event 33, 21, BGEVENT_JUMPTEXT, CeladonCityTrainerTips1Text
 	bg_event 21, 15, BGEVENT_JUMPTEXT, CeladonCityTrainerTips2Text
-	bg_event 41, 21, BGEVENT_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
+	bg_event 41, 16, BGEVENT_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
 	def_object_events
 	object_event  4, 15, SPRITE_RICH_BOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityScript, -1
@@ -59,7 +59,8 @@ CeladonCity_MapScriptHeader:
 	object_event 45, 10, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_7_SNORLAX
 	object_event 35, 23, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityLassText, -1
 	itemball_event 41,  7, MAX_ETHER, 1, EVENT_CELADON_CITY_MAX_ETHER
-	cuttree_event 32, 34, EVENT_CELADON_CITY_CUT_TREE
+	cuttree_event 32, 34, EVENT_CELADON_CITY_CUT_TREE_1
+	cuttree_event 40, 20, EVENT_CELADON_CITY_CUT_TREE_2
 
 CeladonCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CELADON
