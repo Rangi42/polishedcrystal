@@ -300,13 +300,16 @@ struct LzCmd {
 	// bytes as `lzrepeat 1, <byte>` while emitting the same byte), and increasing the maximum
 	// representable length allows a command to be more efficient at compressing data.
 	virtual uint16_t min_length() const = 0;
+
 	/// This command cannot encode more bytes than this. (Inclusive.)
 	virtual uint16_t max_length() const { return this->min_length() + MAX_LONG_LENGTH - 1; }
+
 	/// How many bytes in the compressed output would this command take?
 	virtual size_t num_encoded_bytes() const = 0;
 
 	virtual void
 	    serialize(uint8_t const *bytes, FILE *output, bool textual, char const *filename) const = 0;
+
 	virtual void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const = 0;
 
 	// No default-constructing the base class or any derived one unless it specifically wants to.
@@ -342,7 +345,9 @@ struct LzData final : public LzCmd {
 	// This is the “fallback” command, and thus it needs to be able to emit a single byte.
 	// (See also the comment on `LzRepeat::min_length()` for more details of this decision.)
 	constexpr static uint16_t MIN_LENGTH = 1;
+
 	uint16_t min_length() const override { return MIN_LENGTH; }
+
 	// Header + each payload byte as-is.
 	size_t num_encoded_bytes() const override { return this->num_header_bytes() + this->len; }
 
@@ -373,23 +378,28 @@ struct LzData final : public LzCmd {
 			xfwrite(bytes, this->len, file, filename);
 		}
 	}
+
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(payload[i]);
 		}
 	}
 };
+
 struct LzRepeat final : public LzCmd {
 	explicit LzRepeat(uint16_t len_) : LzCmd(len_) {
 		assert(this->len >= this->min_length());
 		assert(this->len <= this->max_length());
 	}
+
 	// To avoid being equivalent to `LzData`.
 	// Note that the minimum count of `LzData` could instead have been bumped to 2 instead, but
 	// since that command performs no compression (it's pretty much a fall-back), we want to
 	// generally avoid it, and thus it is not worth allowing it to be longer.
 	constexpr static uint16_t MIN_LENGTH = 2;
+
 	uint16_t min_length() const override { return MIN_LENGTH; }
+
 	// Header + payload byte.
 	size_t num_encoded_bytes() const override { return this->num_header_bytes() + 1; }
 
@@ -425,20 +435,25 @@ struct LzRepeat final : public LzCmd {
 			xputc(bytes[0], file, filename);
 		}
 	}
+
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(payload[0]);
 		}
 	}
 };
+
 struct LzAlternate final : public LzCmd {
 	explicit LzAlternate(uint16_t len_) : LzCmd(len_) {
 		assert(this->len >= this->min_length());
 		assert(this->len <= this->max_length());
 	}
+
 	// Less than this is just sparkling `LzData`. The same rationale as for `LzRepeat` applies.
 	constexpr static uint16_t MIN_LENGTH = 3;
+
 	uint16_t min_length() const override { return MIN_LENGTH; }
+
 	// Header + the 2 payload bytes.
 	size_t num_encoded_bytes() const override { return this->num_header_bytes() + 2; }
 
@@ -488,20 +503,24 @@ struct LzAlternate final : public LzCmd {
 			xfwrite(bytes, 2, file, filename);
 		}
 	}
+
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(payload[i & 1]);
 		}
 	}
 };
+
 struct LzZero final : public LzCmd {
 	explicit LzZero(uint16_t len_) : LzCmd(len_) {
 		assert(this->len >= this->min_length());
 		assert(this->len <= this->max_length());
 	}
+
 	// Note that this command uses the default minimum length of 1: unlike `LzRepeat`, `lzzero 1` is
 	// *smaller* than `lzdata $00`! Thus, it's always worth attempting it when possible.
 	constexpr static uint16_t MIN_LENGTH = 1;
+
 	uint16_t min_length() const override { return MIN_LENGTH; }
 
 	// Just the header.
@@ -540,6 +559,7 @@ struct LzZero final : public LzCmd {
 			this->serialize_header(file, LZ_ZERO, filename);
 		}
 	}
+
 	void decompress(std::vector<uint8_t> &dest, [[maybe_unused]] uint8_t const *payload)
 	    const override {
 		for (size_t i = 0; i < this->len; ++i) {
@@ -558,6 +578,7 @@ struct LzCopyCmd : public LzCmd {
 	//        variant), and incrementing/decrementing the source *before* each copy within the loop.
 	//        (Make sure to change `for_each_possible_cmd` accordingly!)
 	constexpr static uint16_t MIN_LENGTH = 1;
+
 	uint16_t min_length() const override { return MIN_LENGTH; }
 
 	// Header + start offset, which is either 1-byte or 2-byte.
@@ -607,6 +628,7 @@ protected:
 			}
 		}
 	}
+
 	size_t copy_src_start(std::vector<uint8_t> const &dest, [[maybe_unused]] uint8_t const *payload)
 	    const {
 		size_t source_idx;
@@ -630,6 +652,7 @@ protected:
 		return source_idx;
 	}
 };
+
 struct LzCopyNormal final : public LzCopyCmd {
 	LzCopyNormal(uint16_t len_, int16_t start_ofs_) : LzCopyCmd(len_, start_ofs_) {
 		assert(this->len >= this->min_length());
@@ -643,6 +666,7 @@ struct LzCopyNormal final : public LzCopyCmd {
 	    const override {
 		this->serialize_copy_cmd("normal", LZ_COPY_NORMAL, bytes, file, textual, filename);
 	}
+
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		size_t start = this->copy_src_start(dest, payload);
 		for (size_t i = 0; i < this->len; ++i) {
@@ -650,6 +674,7 @@ struct LzCopyNormal final : public LzCopyCmd {
 		}
 	}
 };
+
 struct LzCopyFlipped final : public LzCopyCmd {
 	LzCopyFlipped(uint16_t len_, int16_t start_ofs_) : LzCopyCmd(len_, start_ofs_) {
 		assert(this->len >= this->min_length());
@@ -663,6 +688,7 @@ struct LzCopyFlipped final : public LzCopyCmd {
 	    const override {
 		this->serialize_copy_cmd("flipped", LZ_COPY_FLIPPED, bytes, file, textual, filename);
 	}
+
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		size_t start = this->copy_src_start(dest, payload);
 		for (size_t i = 0; i < this->len; ++i) {
@@ -670,6 +696,7 @@ struct LzCopyFlipped final : public LzCopyCmd {
 		}
 	}
 };
+
 struct LzCopyReversed final : public LzCopyCmd {
 	LzCopyReversed(uint16_t len_, int16_t start_ofs_) : LzCopyCmd(len_, start_ofs_) {
 		assert(this->len >= this->min_length());
@@ -683,6 +710,7 @@ struct LzCopyReversed final : public LzCopyCmd {
 	    const override {
 		this->serialize_copy_cmd("reversed", LZ_COPY_REVERSED, bytes, file, textual, filename);
 	}
+
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		size_t start = this->copy_src_start(dest, payload);
 		if (start < static_cast<size_t>(this->len - 1)) {
@@ -693,6 +721,7 @@ struct LzCopyReversed final : public LzCopyCmd {
 		}
 	}
 };
+
 template<typename Func>
 void LzCopyCmd::for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 	auto copy_start_ofs = [&emitted_bytes](
@@ -796,9 +825,12 @@ struct LzSpecialCmd : public LzCmd {
 	// FIXME: min length should be 2, and then the max length should become 257,
 	//        or that value reserved for some special purpose...
 	constexpr static uint16_t MIN_LENGTH = 1;
+
 	uint16_t min_length() const override { return MIN_LENGTH; }
+
 	// All of the special commands use an 8-bit length instead of the “long” header encoding.
 	uint16_t max_length() const override { return this->min_length() + 256 - 1; }
+
 	// All of the special commands have a one-byte header, one-byte length, and operate on a nibble
 	// stream, thus two output bytes compress to one (rounding up, though).
 	size_t num_encoded_bytes() const override { return 1 + 1 + (this->len + 1) / 2; }
@@ -819,6 +851,7 @@ protected:
 		xputc(cmd_id, file, filename);
 		xputc(this->len - 1, file, filename);
 	}
+
 	template<typename Func>
 	void decompress_special_cmd(
 	    std::vector<uint8_t> &dest, uint8_t const *payload, Func const &func
@@ -829,6 +862,7 @@ protected:
 		}
 	}
 };
+
 struct LzSpecialPackhi0 final : public LzSpecialCmd {
 	explicit LzSpecialPackhi0(uint16_t len_) : LzSpecialCmd(len_) {
 		assert(this->len >= this->min_length());
@@ -882,15 +916,18 @@ struct LzSpecialPackhi0 final : public LzSpecialCmd {
 			}
 		}
 	}
+
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		this->decompress_special_cmd(dest, payload, [](uint8_t byte) { return byte << 4; });
 	}
 };
+
 struct LzSpecialPack16Short final : public LzSpecialCmd {
 	explicit LzSpecialPack16Short(uint16_t len_) : LzSpecialCmd(len_) {
 		assert(this->len >= this->min_length());
 		assert(this->len <= this->max_length());
 	}
+
 	/// Fixed dictionary designed to be indexed using a single nibble.
 	/// This is intentionally biased toward very common tile/bitmask bytes.
 	static constexpr std::array<uint8_t, 16> const dict{
@@ -911,6 +948,7 @@ struct LzSpecialPack16Short final : public LzSpecialCmd {
 	    0x08,
 	    0xfc,
 	};
+
 	// Returns 16 if not in the dict.
 	static uint8_t dict_key(uint8_t byte) {
 		return std::find(dict.cbegin(), dict.cend(), byte) - dict.cbegin();
@@ -962,10 +1000,12 @@ struct LzSpecialPack16Short final : public LzSpecialCmd {
 			}
 		}
 	}
+
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		this->decompress_special_cmd(dest, payload, [](uint8_t byte) { return dict[byte]; });
 	}
 };
+
 struct LzSpecialPacklo0 final : public LzSpecialCmd {
 	explicit LzSpecialPacklo0(uint16_t len_) : LzSpecialCmd(len_) {
 		assert(this->len >= this->min_length());
@@ -1020,6 +1060,7 @@ struct LzSpecialPacklo0 final : public LzSpecialCmd {
 			}
 		}
 	}
+
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		this->decompress_special_cmd(dest, payload, [](uint8_t byte) { return byte; });
 	}
@@ -1124,6 +1165,7 @@ static std::forward_list<Command> compress(std::vector<uint8_t> const &uncompres
 	}
 	return final;
 }
+
 // Must decompress to a buffer, so that back-refs (`LzCopy`-derived commands) can access previous
 // output.
 static std::vector<uint8_t>
@@ -1162,6 +1204,7 @@ static void serialize(
 		xputc(LZ_END, output, filename);
 	}
 }
+
 static void serialize(
     std::vector<std::pair<Command, uint8_t const *>> const &cmds,
     std::vector<uint8_t> const &uncompressed,
