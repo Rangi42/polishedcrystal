@@ -96,8 +96,8 @@
 	tilecoll WALL, WALL, WALL, WALL ; 5f
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; 60
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 61
-	tilecoll WALL, WALL, WALL, FLOOR ; 62
-	tilecoll WALL, WALL, FLOOR, WALL ; 63
+	tilecoll WALL, WALL, WALL, DOOR ; 62
+	tilecoll WALL, WALL, WALL, WALL ; 63
 	tilecoll WATER, WATER, WATER, WATER ; 64
 	tilecoll WATER, WATER, WATER, WATER ; 65
 	tilecoll WALL, WALL, DOOR, WALL ; 66
@@ -252,5 +252,5 @@
 	tilecoll WATER, BUOY, WATER, BUOY ; fb
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fc
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fd
-	tilecoll WALL, WALL, WALL, DOOR ; fe
-	tilecoll WALL, WALL, WALL, WALL ; ff
+	tilecoll WALL, WALL, POKECENTER_SIGN, WALL ; fe
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; ff

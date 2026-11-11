@@ -3,6 +3,7 @@ CeladonCity_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeladonCityFlyPoint
+	callback MAPCALLBACK_CMDQUEUE, CeladonCitySetUpPaletteSwap
 
 	def_warp_events
 	warp_event  8,  9, CELADON_DEPT_STORE_1F, 1
@@ -62,6 +63,15 @@ CeladonCity_MapScriptHeader:
 CeladonCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CELADON
 	endcallback
+
+CeladonCitySetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 26, 41, 1, 15, PAL_BG_WATER, OverworldWaterPalettes, OverworldRedPalettes
+	paletteswap 14, 35, 11, 25, PAL_BG_RED, OverworldRedPalettes, GameCornerExteriorPalettes
+	db -1 ; end
 
 CeladonCityScript:
 	faceplayer
