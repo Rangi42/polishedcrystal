@@ -68,7 +68,6 @@
 #include <errno.h>
 #include <forward_list>
 #include <inttypes.h>
-#include <iterator>
 #include <optional>
 #include <stdarg.h>
 #include <stdint.h>
@@ -383,7 +382,9 @@ struct LzData final : public LzCmd {
 		}
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
-		std::copy_n(payload, this->len, std::back_inserter(dest));
+		for (size_t i = 0; i < this->len; ++i) {
+			dest.push_back(payload[i]);
+		}
 	}
 };
 struct LzRepeat final : public LzCmd {
@@ -432,7 +433,9 @@ struct LzRepeat final : public LzCmd {
 		}
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
-		std::fill_n(std::back_inserter(dest), this->len, payload[0]);
+		for (size_t i = 0; i < this->len; ++i) {
+			dest.push_back(payload[0]);
+		}
 	}
 };
 struct LzAlternate final : public LzCmd {
@@ -488,11 +491,9 @@ struct LzAlternate final : public LzCmd {
 		}
 	}
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
-		std::generate_n(std::back_inserter(dest), this->len, [&payload, i = 0]() mutable {
-			uint8_t byte = payload[i];
-			i ^= 1;
-			return byte;
-		});
+		for (size_t i = 0; i < this->len; ++i) {
+			dest.push_back(payload[i & 1]);
+		}
 	}
 };
 struct LzZero final : public LzCmd {
@@ -541,7 +542,9 @@ struct LzZero final : public LzCmd {
 	}
 	void decompress(std::vector<uint8_t> &dest,
 	                [[maybe_unused]] uint8_t const *payload) const override {
-		std::fill_n(std::back_inserter(dest), this->len, 0);
+		for (size_t i = 0; i < this->len; ++i) {
+			dest.push_back(0);
+		}
 	}
 };
 
@@ -814,10 +817,10 @@ struct LzSpecialCmd : public LzCmd {
 	template <typename Func>
 	void decompress_special_cmd(std::vector<uint8_t> &dest, uint8_t const *payload,
 	                            Func const &func) const {
-		std::generate_n(std::back_inserter(dest), this->len, [&payload, &func, i = 0]() mutable {
+		for (size_t i = 0; i < this->len; ++i) {
 			uint8_t byte = payload[i / 2];
-			return func(i++ % 2 == 0 ? byte >> 4 : byte & 0x0f);
-		});
+			dest.push_back(func(i & 1 ? byte & 0x0f : byte >> 4));
+		}
 	}
 };
 struct LzSpecialPackhi0 final : public LzSpecialCmd {
