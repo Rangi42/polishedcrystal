@@ -132,7 +132,7 @@ static std::vector<uint8_t> read_input(char const *path) {
 		size_t cur_size = data.size();
 		data.resize(cur_size + BUFSIZ);
 		errno = 0;
-		size_t ret = fread(data.data() + cur_size, sizeof(uint8_t), BUFSIZ, input);
+		size_t ret = fread(data.data() + cur_size, 1, BUFSIZ, input);
 		if (ret < BUFSIZ) { // This only occurs at EOF or on error.
 			if (ferror(input)) {
 				error_exit("error reading \"%s\": %s\n", filename, strerror(errno));
@@ -197,7 +197,7 @@ static void write_error_exit(FILE *file, char const *filename) {
 
 void xfwrite(uint8_t const *data, size_t size, FILE *file, char const *filename) {
 	errno = 0;
-	if (fwrite(data, sizeof(*data), size, file) != size) {
+	if (fwrite(data, 1, size, file) != size) {
 		write_error_exit(file, filename);
 	}
 }
