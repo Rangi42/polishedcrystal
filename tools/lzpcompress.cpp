@@ -1352,35 +1352,24 @@ static std::vector<std::pair<Command, uint8_t const *>>
 static void usage(int retcode, char const *program_name) {
 	fprintf(
 	    stderr,
-	    "Usage: %s [<options>] [<source file> [<output>]]\n"
-	    "\n"
-	    "Execution mode:\n"
-	    "    -b, --binary      Output the command stream as binary data (default).\n"
-	    "    -t, --text        Output the command stream as text.\n"
-	    "    -u, --uncompress  Process a compressed file and output the original data.\n"
-	    "    -d, --dump        Process a compressed file and dump the command stream as\n"
-	    "                      text (as if compressing with the --text option).\n"
-	    "    -h, --help        Print this help text and exit.\n"
-	    "\n"
-	    "The source and output filenames can be given as - (or omitted) to use standard\n"
-	    "input and output. Use -- to indicate that subsequent arguments are file names.\n",
+	    "Usage: %s [-h|--help] [-u|--uncompress] [-t|--text] [<infile> [<outfile>]]\n",
 	    program_name
 	);
 	exit(retcode);
 }
 
 struct Options {
-	char const *input;
-	char const *output;
-	enum { MODE_COMPRESS_BIN, MODE_COMPRESS_TEXT, MODE_DECOMPRESS, MODE_DUMP } mode;
+	char const *input = nullptr;
+	char const *output = nullptr;
+	bool uncompress = false;
+	bool text = false;
 
 	/// Parse from CLI args.
-	Options(int argc, char *argv[]) : input(nullptr), output(nullptr), mode(MODE_COMPRESS_BIN) {
+	Options(int argc, char *argv[]) {
 		char const *program_name = argv[0] ? argv[0] : "lzpcompress";
 		bool accepting_options = true;
 		for (size_t arg_idx = 1; arg_idx < size_t(argc); ++arg_idx) {
 			char const *arg = argv[arg_idx];
-
 			// Positional argument (just "-" is an arg, not an option).
 			if (!accepting_options || arg[0] != '-' || arg[1] == '\0') {
 				if (this->input == nullptr) {
@@ -1390,28 +1379,20 @@ struct Options {
 				} else {
 					error_exit(EXIT_BAD_USAGE, "too many positional arguments (use `--help`)\n");
 				}
-
 			} else if (arg[1] == '-') { // Long option.
-				std::string_view name(&arg[2]);
-
-				if (arg[2] == '\0') {
-					accepting_options = false;
+				if (std::string_view name(&arg[2]); name == "") {
+					accepting_options = false; // --
 				} else if (name == "help") {
 					usage(EXIT_SUCCESS, program_name);
-				} else if (name == "binary") {
-					this->mode = MODE_COMPRESS_BIN;
 				} else if (name == "text") {
-					this->mode = MODE_COMPRESS_TEXT;
-				} else if (name == "uncompress" || name == "decompress") {
-					this->mode = MODE_DECOMPRESS;
-				} else if (name == "dump") {
-					this->mode = MODE_DUMP;
+					this->text = true;
+				} else if (name == "uncompress") {
+					this->uncompress = true;
 				} else {
 					error_exit(
 					    EXIT_BAD_USAGE, "unknown option --%.*s\n", int(name.size()), name.data()
 					);
 				}
-
 			} else { // Short option.
 				// Since short options can be packed into a single arg, parse it char by char.
 				for (size_t i = 1; arg[i] != '\0'; ++i) {
@@ -1419,20 +1400,12 @@ struct Options {
 					case '?':
 					case 'h':
 						usage(EXIT_SUCCESS, program_name);
-
-					case 'b':
-						this->mode = MODE_COMPRESS_BIN;
-						break;
 					case 't':
-						this->mode = MODE_COMPRESS_TEXT;
+						this->text = true;
 						break;
 					case 'u':
-						this->mode = MODE_DECOMPRESS;
+						this->uncompress = true;
 						break;
-					case 'd':
-						this->mode = MODE_DUMP;
-						break;
-
 					default:
 						error_exit(EXIT_BAD_USAGE, "unknown option -%c\n", arg[i]);
 					}
@@ -1447,35 +1420,19 @@ struct Options {
 int main(int argc, char *argv[]) {
 	Options options(argc, argv);
 	std::vector<uint8_t> input_bytes = read_input(options.input);
-
-	switch (options.mode) {
-	case Options::MODE_COMPRESS_BIN:
-	case Options::MODE_COMPRESS_TEXT: {
-		std::forward_list<Command> commands = compress(input_bytes);
-
-		bool textual_output = options.mode == Options::MODE_COMPRESS_TEXT;
-		auto [output, output_filename] = open_output_file(options.output, textual_output);
-		serialize(commands, input_bytes, output, textual_output, output_filename);
-		close_output_file(output, output_filename);
-	} break;
-
-	case Options::MODE_DECOMPRESS:
-	case Options::MODE_DUMP: {
+	auto [output, output_filename] = open_output_file(options.output, options.text);
+	if (options.uncompress) {
 		std::vector<std::pair<Command, uint8_t const *>> commands = deserialize(input_bytes);
 		std::vector<uint8_t> decompressed = decompress(commands);
-
-		bool textual_output = options.mode == Options::MODE_DUMP;
-		auto [output, output_filename] = open_output_file(options.output, textual_output);
-		if (options.mode == Options::MODE_DECOMPRESS) {
-			if (!decompressed.empty()) {
-				xfwrite(decompressed.data(), decompressed.size(), output, output_filename);
-			}
-		} else {
-			serialize(commands, decompressed, output, textual_output, output_filename);
+		if (options.text) {
+			serialize(commands, decompressed, output, options.text, output_filename);
+		} else if (!decompressed.empty()) {
+			xfwrite(decompressed.data(), decompressed.size(), output, output_filename);
 		}
-		close_output_file(output, output_filename);
-	} break;
+	} else {
+		std::forward_list<Command> commands = compress(input_bytes);
+		serialize(commands, input_bytes, output, options.text, output_filename);
 	}
-
+	close_output_file(output, output_filename);
 	return EXIT_SUCCESS;
 }
