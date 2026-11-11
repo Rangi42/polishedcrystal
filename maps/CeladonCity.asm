@@ -7,24 +7,25 @@ CeladonCity_MapScriptHeader:
 
 	def_warp_events
 	warp_event  8,  9, CELADON_DEPT_STORE_1F, 1
-	warp_event 20,  9, CELADON_MANSION_1F, 1
-	warp_event 20,  3, CELADON_MANSION_1F, 3
-	warp_event 21,  3, CELADON_MANSION_1F, 3
-	warp_event 33,  9, CELADON_POKECENTER_1F, 1
+	warp_event 22,  9, CELADON_MANSION_1F, 1
+	warp_event 22,  3, CELADON_MANSION_1F, 3
+	warp_event 23,  3, CELADON_MANSION_1F, 3
+	warp_event 35,  9, CELADON_POKECENTER_1F, 1
 	warp_event 22, 19, CELADON_GAME_CORNER, 1
 	warp_event 27, 19, CELADON_GAME_CORNER_PRIZE_ROOM, 1
 	warp_event 12, 29, CELADON_GYM, 1
 	warp_event 25, 29, CELADON_CAFE, 1
 	warp_event 29, 29, CELADON_CHIEF_HOUSE, 1
 	warp_event 35, 29, CELADON_HOTEL_1F, 1
-	warp_event 13,  9, CELADON_HOME_DECOR_STORE_1F, 1
+	warp_event 14,  9, CELADON_HOME_DECOR_STORE_1F, 1
 	warp_event  5, 29, CELADON_UNIVERSITY_1F, 1
-	warp_event 29,  9, EUSINES_HOUSE, 1
+	warp_event 31,  9, EUSINES_HOUSE, 1
 	warp_event 33, 19, CELADON_OLD_MAN_SPEECH_HOUSE, 1
 	warp_event 37, 19, CELADON_DEVELOPMENT_SPEECH_HOUSE, 1
 	warp_event  9,  9, CELADON_DEPT_STORE_1F, 2
 	warp_event 23, 19, CELADON_GAME_CORNER, 2
 	warp_event  6, 29, CELADON_UNIVERSITY_1F, 2
+	warp_event 15,  9, CELADON_HOME_DECOR_STORE_1F, 2
 
 	def_coord_events
 
@@ -33,8 +34,8 @@ CeladonCity_MapScriptHeader:
 	bg_event 13, 29, BGEVENT_JUMPTEXT, CeladonGymSignText
 	bg_event  3, 31, BGEVENT_JUMPTEXT, CeladonUniversitySignText
 	bg_event 10,  9, BGEVENT_JUMPTEXT, CeladonCityDeptStoreSignText
-	bg_event 14,  9, BGEVENT_JUMPTEXT, CeladonCityHomeDecorStoreSignText
-	bg_event 17,  9, BGEVENT_JUMPTEXT, CeladonCityMansionSignText
+	bg_event 16,  9, BGEVENT_JUMPTEXT, CeladonCityHomeDecorStoreSignText
+	bg_event 19,  9, BGEVENT_JUMPTEXT, CeladonCityMansionSignText
 	bg_event 21, 21, BGEVENT_JUMPTEXT, CeladonCityGameCornerSignText
 	bg_event 27, 21, BGEVENT_JUMPTEXT, CeladonCityPrizeExchangeSignText
 	bg_event 23, 29, BGEVENT_JUMPTEXT, CeladonCityCafeSignText
@@ -45,8 +46,8 @@ CeladonCity_MapScriptHeader:
 
 	def_object_events
 	object_event  4, 15, SPRITE_RICH_BOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityScript, -1
-	object_event 30, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityFisherText, -1
-	pokemon_event 31, 11, POLIWRATH, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, CeladonCityPoliwrathText, -1
+	object_event 28, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityFisherText, -1
+	pokemon_event 29, 11, POLIWRATH, SPRITEMOVEDATA_POKEMON, -1, PAL_MON_BLUE, CeladonCityPoliwrathText, -1
 	object_event 24, 24, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityTeacher1Text, -1
 	object_event 17, 16, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityGramps1Text, -1
 	object_event 10, 32, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << DAY) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityGramps2Text, -1
@@ -57,7 +58,7 @@ CeladonCity_MapScriptHeader:
 	object_event 10, 22, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityLassText_PCC, -1
 	object_event 45, 10, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_7_SNORLAX
 	object_event 35, 23, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCityLassText, -1
-	itemball_event 39,  7, MAX_ETHER, 1, EVENT_CELADON_CITY_MAX_ETHER
+	itemball_event 41,  7, MAX_ETHER, 1, EVENT_CELADON_CITY_MAX_ETHER
 	cuttree_event 32, 34, EVENT_CELADON_CITY_CUT_TREE
 
 CeladonCityFlyPoint:
@@ -69,7 +70,7 @@ CeladonCitySetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 26, 41, 1, 15, PAL_BG_WATER, OverworldWaterPalettes, OverworldRedPalettes
+	paletteswap 26, 255, 1, 15, PAL_BG_WATER, OverworldWaterPalettes, OverworldRedPalettes
 	paletteswap 14, 35, 11, 25, PAL_BG_RED, OverworldRedPalettes, GameCornerExteriorPalettes
 	db -1 ; end
 

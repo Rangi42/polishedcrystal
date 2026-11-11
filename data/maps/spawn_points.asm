@@ -20,7 +20,7 @@ SpawnPoints:
 	spawn VERMILION_CITY,              9,  4
 	spawn LAVENDER_TOWN,               5,  8
 	spawn SAFFRON_CITY,                9, 30
-	spawn CELADON_CITY,               33, 10
+	spawn CELADON_CITY,               35, 10
 	spawn FUCHSIA_CITY,               19, 28
 	spawn CINNABAR_ISLAND,            11, 16
 	spawn INDIGO_PLATEAU,             11,  6
