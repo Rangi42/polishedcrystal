@@ -30,14 +30,6 @@ UpdateEusineVisibility:
 	call GetEusineState
 	eventflagset EVENT_EUSINES_HOUSE_EUSINE
 	eventflagset EVENT_TIN_TOWER_1F_EUSINE
-	assert EUSINE_SEARCHING == 0
-	and a
-	ret z
-
-; Suicune's tower scene supersedes any skipped early Eusine conversations.
-	eventflagset EVENT_BURNED_TOWER_1F_EUSINE
-	eventflagset EVENT_EUSINE_IN_BURNED_TOWER
-	eventflagset EVENT_CIANWOOD_CITY_EUSINE
 	cp EUSINE_RESEARCHING
 	jr nz, .not_home
 	eventflagreset EVENT_EUSINES_HOUSE_EUSINE

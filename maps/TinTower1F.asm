@@ -296,8 +296,6 @@ TinTower1FEusineAfterHoOhScript:
 	ifnotequal EUSINE_FAREWELL_PENDING, .Gone
 	faceplayer
 	showtext TinTowerEusineHoOhText
-	setevent EVENT_EUSINE_LEFT_CELADON
-	setevent EVENT_EUSINE_HO_OH_ENCOUNTER
 	setevent EVENT_EUSINE_HO_OH_FAREWELL
 	special UpdateEusineVisibility
 	readvar VAR_FACING

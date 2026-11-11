@@ -30,13 +30,24 @@ CeladonEusine:
 	opentext
 	writetext CeladonEusineText1
 	promptbutton
-	checkevent EVENT_GOT_RAINBOW_WING
-	iftruefwd .HoOh
 	special SpecialBeastsCheck
 	iffalsefwd .NoBeasts
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iftruefwd .HoOh
-	jumpopenedtext EusineStillResearchingText
+
+.HoOh:
+	writetext EusineLeavesCeladonText
+	waitbutton
+	closetext
+	setevent EVENT_EUSINE_LEFT_CELADON
+	special UpdateEusineVisibility
+	readvar VAR_FACING
+	ifnotequal UP, .PathClear
+	applymovement PLAYER, .PlayerStepsAsideMovement
+.PathClear:
+	applymovement EUSINESHOUSE_EUSINE, .EusineLeavesMovement
+	disappear EUSINESHOUSE_EUSINE
+	playsound SFX_EXIT_BUILDING
+	waitsfx
+	end
 
 .NoBeasts:
 	writetext EusineNoBeastsText
@@ -84,22 +95,6 @@ CeladonEusine:
 	para "I'm counting on"
 	line "you, <PLAYER>!"
 	done
-
-.HoOh:
-	writetext EusineLeavesCeladonText
-	waitbutton
-	closetext
-	setevent EVENT_EUSINE_LEFT_CELADON
-	special UpdateEusineVisibility
-	readvar VAR_FACING
-	ifnotequal UP, .PathClear
-	applymovement PLAYER, .PlayerStepsAsideMovement
-.PathClear:
-	applymovement EUSINESHOUSE_EUSINE, .EusineLeavesMovement
-	disappear EUSINESHOUSE_EUSINE
-	playsound SFX_EXIT_BUILDING
-	waitsfx
-	end
 
 .Gone:
 	disappear EUSINESHOUSE_EUSINE
@@ -211,16 +206,6 @@ EusineNoBeastsText:
 
 	para "Let me give you"
 	line "my research notes."
-	done
-
-EusineStillResearchingText:
-	text "You caught all"
-	line "three legendary"
-	cont "beast #mon!"
-
-	para "I'll keep studying"
-	line "their connection"
-	cont "to Ho-Oh."
 	done
 
 EusineShowsRaikouText:
