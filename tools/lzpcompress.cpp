@@ -87,26 +87,14 @@
 // Not using `common.h` so this program can be easily copy-pasted into other projects;
 // pardon the boilerplate.
 
-/// From BSD <sysexits.h>, which is deprecated but at least is a convention:
-/// https://man.freebsd.org/cgi/man.cgi?query=sysexits&apropos=0&sektion=0&manpath=FreeBSD+16.0-CURRENT&format=html
-/// This excludes `EXIT_SUCCESS` and `EXIT_FAILURE`, which are provided by <stdlib.h>.
-enum {
-	EXIT_BAD_USAGE = 64,
-	EXIT_DATA_ERR = 65,
-	EXIT_MISSING_INPUT = 66,
-	EXIT_OS_ERR = 71,
-	EXIT_CANT_CREATE = 73,
-	EXIT_IO_ERR = 74,
-};
-
-[[noreturn, gnu::format(printf, 2, 3)]]
-static void error_exit(int error_code, char const *error, ...) {
+[[noreturn, gnu::format(printf, 1, 2)]]
+static void error_exit(char const *error, ...) {
 	va_list ap;
 	va_start(ap, error);
 	fputs("error: ", stderr);
 	vfprintf(stderr, error, ap);
 	va_end(ap);
-	exit(error_code);
+	exit(1);
 }
 
 [[noreturn]]
@@ -126,9 +114,7 @@ static std::vector<uint8_t> read_input(char const *path) {
 		errno = 0;
 		int result = _setmode(_fileno(stdin), _O_BINARY);
 		if (result == -1) {
-			error_exit(
-			    EXIT_OS_ERR, "cannot set standard input to binary mode: %s\n", strerror(errno)
-			);
+			error_exit("cannot set standard input to binary mode: %s\n", strerror(errno));
 		}
 #endif
 		input = stdin;
@@ -137,9 +123,7 @@ static std::vector<uint8_t> read_input(char const *path) {
 		errno = 0;
 		input = fopen(path, "rb");
 		if (input == nullptr) {
-			error_exit(
-			    EXIT_MISSING_INPUT, "cannot open input file \"%s\": %s\n", filename, strerror(errno)
-			);
+			error_exit("cannot open input file \"%s\": %s\n", filename, strerror(errno));
 		}
 	}
 
@@ -151,7 +135,7 @@ static std::vector<uint8_t> read_input(char const *path) {
 		size_t ret = fread(data.data() + cur_size, sizeof(uint8_t), BUFSIZ, input);
 		if (ret < BUFSIZ) { // This only occurs at EOF or on error.
 			if (ferror(input)) {
-				error_exit(EXIT_IO_ERR, "error reading \"%s\": %s\n", filename, strerror(errno));
+				error_exit("error reading \"%s\": %s\n", filename, strerror(errno));
 			}
 			assert(feof(input));
 			data.resize(cur_size + ret);
@@ -174,7 +158,6 @@ static std::pair<FILE *, char const *> open_output_file(char const *path, bool t
 		int result = _setmode(_fileno(stdout), textual ? _O_TEXT : _O_BINARY);
 		if (result == -1) {
 			error_exit(
-			    EXIT_OS_ERR,
 			    "cannot set standard output to %s mode: %s\n",
 			    textual ? "text" : "binary",
 			    strerror(errno)
@@ -187,9 +170,7 @@ static std::pair<FILE *, char const *> open_output_file(char const *path, bool t
 		errno = 0;
 		output = fopen(path, textual ? "wt" : "wb");
 		if (output == nullptr) {
-			error_exit(
-			    EXIT_CANT_CREATE, "cannot create output file \"%s\": %s\n", path, strerror(errno)
-			);
+			error_exit("cannot create output file \"%s\": %s\n", path, strerror(errno));
 		}
 	}
 	return {output, filename};
@@ -200,10 +181,7 @@ static void close_output_file(FILE *file, char const *filename) {
 	int result = file == stdout ? fflush(file) : fclose(file);
 	if (result == EOF) {
 		error_exit(
-		    EXIT_IO_ERR,
-		    "could not finish writing to output file \"%s\": %s\n",
-		    filename,
-		    strerror(errno)
+		    "could not finish writing to output file \"%s\": %s\n", filename, strerror(errno)
 		);
 	}
 }
@@ -214,9 +192,7 @@ static void write_error_exit(FILE *file, char const *filename) {
 	if (file != stdout) {
 		fclose(file);
 	}
-	error_exit(
-	    EXIT_IO_ERR, "could not write to output file \"%s\": %s\n", filename, strerror(errnum)
-	);
+	error_exit("could not write to output file \"%s\": %s\n", filename, strerror(errnum));
 }
 
 void xfwrite(uint8_t const *data, size_t size, FILE *file, char const *filename) {
@@ -640,9 +616,7 @@ protected:
 
 			size_t distance = static_cast<size_t>(-static_cast<int32_t>(this->start_ofs));
 			if (distance > dest.size()) {
-				error_exit(
-				    EXIT_DATA_ERR, "corrupted input (encountered out-of-bounds copy command)\n"
-				);
+				error_exit("corrupted input (encountered out-of-bounds copy command)\n");
 			}
 			source_idx = dest.size() - distance;
 		} else {
@@ -650,9 +624,7 @@ protected:
 
 			source_idx = static_cast<size_t>(this->start_ofs);
 			if (source_idx >= dest.size()) {
-				error_exit(
-				    EXIT_DATA_ERR, "corrupted input (encountered out-of-bounds copy command)\n"
-				);
+				error_exit("corrupted input (encountered out-of-bounds copy command)\n");
 			}
 		}
 		return source_idx;
@@ -714,9 +686,7 @@ struct LzCopyReversed final : public LzCopyCmd {
 	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
 		size_t start = this->copy_src_start(dest, payload);
 		if (start < static_cast<size_t>(this->len - 1)) {
-			error_exit(
-			    EXIT_DATA_ERR, "corrupted input (encountered out-of-bounds reverse copy command)\n"
-			);
+			error_exit("corrupted input (encountered out-of-bounds reverse copy command)\n");
 		}
 		for (size_t i = 0; i < this->len; ++i) {
 			dest.push_back(dest[start - i]);
@@ -1223,7 +1193,7 @@ static void serialize(
 static std::vector<std::pair<Command, uint8_t const *>>
     deserialize(std::vector<uint8_t> const &compressed) {
 	if (compressed.empty()) {
-		error_exit(EXIT_DATA_ERR, "empty input\n");
+		error_exit("empty input\n");
 	}
 
 	std::vector<std::pair<Command, uint8_t const *>> commands;
@@ -1234,7 +1204,6 @@ static std::vector<std::pair<Command, uint8_t const *>>
 		auto require_bytes = [&compressed, &byte_idx, &cmd_start_idx](size_t amount) {
 			if (compressed.size() - byte_idx < amount) {
 				error_exit(
-				    EXIT_DATA_ERR,
 				    "corrupted input (encountered EOF while parsing command starting at "
 				    "offset %zu)\n",
 				    cmd_start_idx
@@ -1272,7 +1241,6 @@ static std::vector<std::pair<Command, uint8_t const *>>
 				if ((first_byte & 0b111'00000) == 0b111'00000) { // “Long” encoded commands.
 					if (first_byte & 0b10) {
 						error_exit(
-						    EXIT_DATA_ERR,
 						    "corrupted input (encountered invalid long command header at "
 						    "offset %zu)\n",
 						    cmd_start_idx
@@ -1283,7 +1251,6 @@ static std::vector<std::pair<Command, uint8_t const *>>
 					len = (first_byte & 1) << 8 | extended_header;
 					if (len < (1 << 5)) { // “Short” encoded commands.
 						error_exit(
-						    EXIT_DATA_ERR,
 						    "corrupted input (encountered too-short long command header at "
 						    "offset %zu)\n",
 						    cmd_start_idx
@@ -1336,7 +1303,6 @@ static std::vector<std::pair<Command, uint8_t const *>>
 
 	if (byte_idx != compressed.size()) {
 		error_exit(
-		    EXIT_DATA_ERR,
 		    "corrupted input (end marker found after %zu bytes, but %zu remain)\n",
 		    byte_idx - 1,
 		    compressed.size() - byte_idx
@@ -1349,13 +1315,13 @@ static std::vector<std::pair<Command, uint8_t const *>>
 // CLI option parsing.
 
 [[noreturn]]
-static void usage(int retcode, char const *program_name) {
+static void usage_exit(int code, char const *program_name) {
 	fprintf(
 	    stderr,
 	    "Usage: %s [-h|--help] [-u|--uncompress] [-t|--text] [<infile> [<outfile>]]\n",
 	    program_name
 	);
-	exit(retcode);
+	exit(code);
 }
 
 struct Options {
@@ -1377,21 +1343,22 @@ struct Options {
 				} else if (this->output == nullptr) {
 					this->output = arg;
 				} else {
-					error_exit(EXIT_BAD_USAGE, "too many positional arguments (use `--help`)\n");
+					error_exit("too many positional arguments (use `--help`)\n");
 				}
 			} else if (arg[1] == '-') { // Long option.
 				if (std::string_view name(&arg[2]); name == "") {
 					accepting_options = false; // --
 				} else if (name == "help") {
-					usage(EXIT_SUCCESS, program_name);
+					usage_exit(0, program_name);
 				} else if (name == "text") {
 					this->text = true;
 				} else if (name == "uncompress") {
 					this->uncompress = true;
 				} else {
-					error_exit(
-					    EXIT_BAD_USAGE, "unknown option --%.*s\n", int(name.size()), name.data()
+					fprintf(
+					    stderr, "error: unknown option '--%.*s'\n", int(name.size()), name.data()
 					);
+					usage_exit(1, program_name);
 				}
 			} else { // Short option.
 				// Since short options can be packed into a single arg, parse it char by char.
@@ -1399,7 +1366,7 @@ struct Options {
 					switch (arg[i]) {
 					case '?':
 					case 'h':
-						usage(EXIT_SUCCESS, program_name);
+						usage_exit(0, program_name);
 					case 't':
 						this->text = true;
 						break;
@@ -1407,7 +1374,8 @@ struct Options {
 						this->uncompress = true;
 						break;
 					default:
-						error_exit(EXIT_BAD_USAGE, "unknown option -%c\n", arg[i]);
+						fprintf(stderr, "error: unknown option '-%c'\n", arg[i]);
+						usage_exit(1, program_name);
 					}
 				}
 			}
@@ -1434,5 +1402,5 @@ int main(int argc, char *argv[]) {
 		serialize(commands, input_bytes, output, options.text, output_filename);
 	}
 	close_output_file(output, output_filename);
-	return EXIT_SUCCESS;
+	return 0;
 }
