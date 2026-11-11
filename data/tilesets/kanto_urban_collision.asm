@@ -253,4 +253,4 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fc
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fd
 	tilecoll WALL, WALL, POKECENTER_SIGN, WALL ; fe
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; ff
+	tilecoll FLOOR, FLOOR, WALL, WALL ; ff
