@@ -14,7 +14,7 @@ Route16FuchsiaSpeechHouse_MapScriptHeader:
 
 	def_object_events
 	object_event  2,  3, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route16FuchsiaSpeechHouseSuperNerdText, -1
-	object_event  5,  4, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route16FuchsiaSpeechHouseLadyText, -1
+	object_event  5,  4, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route16FuchsiaSpeechHouseLadyScript, -1
 
 Route16FuchsiaSpeechHouseSuperNerdText:
 	text "If you cruise down"
@@ -24,13 +24,32 @@ Route16FuchsiaSpeechHouseSuperNerdText:
 	line "Fuchsia City."
 	done
 
-Route16FuchsiaSpeechHouseLadyText:
-	text "The person who"
+Route16FuchsiaSpeechHouseLadyScript:
+	checkevent EVENT_GOT_BLUNDRPOLICY_FROM_ROUTE_16_NORTH
+	iftrue_jumptextfaceplayer .Text2
+	faceplayer
+	opentext
+	writetext .Text1
+	promptbutton
+	verbosegiveitem BLUNDRPOLICY, iffalse_endtext
+	setevent EVENT_GOT_BLUNDRPOLICY_FROM_ROUTE_16_NORTH
+	jumpthisopenedtext
+
+.Text2:
+	text "The celebrity who"
+	line "lived here…"
+
+	para "I wonder where"
+	line "she went?"
+	done
+
+.Text1:
+	text "The celebrity who"
 	line "used to live here"
 
 	para "moved away three"
 	line "years ago."
 
-	para "I wonder where"
-	line "she went?"
+	para "But she left this"
+	line "item behind."
 	done

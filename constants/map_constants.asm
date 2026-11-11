@@ -575,7 +575,6 @@ ENDM
 	map_const SAFFRON_BOOK_SPEECH_HOUSE,                   4,  4 ; 18
 	map_const SAFFRON_ORRE_SPEECH_HOUSE,                   4,  4 ; 19
 	map_const SAFFRON_RICH_SPEECH_HOUSE,                   4,  4 ; 20
-	map_const ROUTE_16_NORTH,                             11,  5 ; 21
 
 	newgroup                                                     ; 26
 	map_const ROUTE_30,                                   14, 27 ;  1
@@ -715,5 +714,8 @@ ENDM
 	newgroup                                                     ; 39
 	map_const ROUTE_35,                                   12, 18 ;  1
 	map_const ROUTE_36,                                   23,  9 ;  2
+
+	newgroup                                                     ; 40
+	map_const ROUTE_16_NORTH,                             11,  5 ; 21
 
 DEF NUM_MAP_GROUPS EQU const_value ; 37

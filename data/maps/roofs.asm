@@ -42,4 +42,5 @@ MapGroupRoofs:
 	db -1             ; 37
 	db -1             ; 38
 	db ROOF_PARK      ; 39 (Route 35+36)
+	db -1             ; 40
 	assert_table_length NUM_MAP_GROUPS + 1
