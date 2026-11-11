@@ -85,8 +85,6 @@
 #include <io.h>    // `_setmode`.
 #endif
 
-using namespace std::literals;
-
 // Not using `common.h` so this program can be easily copy-pasted into other projects;
 // pardon the boilerplate.
 
@@ -1313,15 +1311,15 @@ struct Options {
 
 				if (arg[2] == '\0') {
 					accepting_options = false;
-				} else if (name == "help"sv) {
+				} else if (name == "help") {
 					usage(EXIT_SUCCESS, program_name);
-				} else if (name == "binary"sv) {
+				} else if (name == "binary") {
 					this->mode = MODE_COMPRESS_BIN;
-				} else if (name == "text"sv) {
+				} else if (name == "text") {
 					this->mode = MODE_COMPRESS_TEXT;
-				} else if (name == "uncompress"sv || name == "decompress"sv) {
+				} else if (name == "uncompress" || name == "decompress") {
 					this->mode = MODE_DECOMPRESS;
-				} else if (name == "dump"sv) {
+				} else if (name == "dump") {
 					this->mode = MODE_DUMP;
 				} else {
 					error_exit(EXIT_BAD_USAGE, "unknown option --%.*s\n", int(name.size()),
