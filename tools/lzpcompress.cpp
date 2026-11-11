@@ -897,8 +897,7 @@ struct LzSpecialPack16Short final : public LzSpecialCmd {
 	static void for_each_possible_cmd(Func const &func, Span const &emitted_bytes) {
 		for (size_t data_len = 1; data_len <= emitted_bytes.len && data_len <= 256; ++data_len) {
 			// If the bytes are no longer in the dictionary, stop.
-			if (std::find(dict.cbegin(), dict.cend(), emitted_bytes.at_end(data_len))
-			    == dict.cend()) {
+			if (dict_key(emitted_bytes.at_end(data_len)) == dict.size()) {
 				break;
 			}
 			// Since this command's cost increases monotonically, if the cost is higher than the
