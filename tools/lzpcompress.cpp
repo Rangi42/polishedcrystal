@@ -535,7 +535,7 @@ struct LzZero final : public LzCmd {
 	/**
 	 * The command does not have any payload bytes.
 	 */
-	void serialize(uint8_t const *bytes, FILE *file, bool textual,
+	void serialize([[maybe_unused]] uint8_t const *bytes, FILE *file, bool textual,
 	               char const *filename) const override {
 		assert(bytes[0] == 0);
 		assert((Span{bytes, this->len}).is_uniform());
@@ -604,8 +604,8 @@ struct LzCopyCmd : public LzCmd {
 			}
 		}
 	}
-	uint8_t const *copy_src_start(std::vector<uint8_t> &dest, uint8_t const *payload,
-		                          bool reversed) const {
+	uint8_t const *copy_src_start(std::vector<uint8_t> &dest,
+		                          [[maybe_unused]] uint8_t const *payload, bool reversed) const {
 		// Required for the returned pointer to remain stable during insertion.
 		dest.reserve(dest.size() + this->len);
 
