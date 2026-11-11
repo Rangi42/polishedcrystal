@@ -255,11 +255,6 @@ struct Span {
 		this->len += how_much;
 		this->start -= how_much;
 	}
-
-	bool has_same_contents_as(Span const &other) const {
-		assert(this->len == other.len);
-		return std::equal(this->begin(), this->end(), other.begin());
-	}
 };
 
 // `std::bit_reverse` is in C++29. Ouch.
