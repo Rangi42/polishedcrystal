@@ -539,8 +539,8 @@ struct LzZero final : public LzCmd {
 			this->serialize_header(file, LZ_ZERO, filename);
 		}
 	}
-	void decompress(std::vector<uint8_t> &dest, uint8_t const *payload) const override {
-		(void)payload;
+	void decompress(std::vector<uint8_t> &dest,
+	                [[maybe_unused]] uint8_t const *payload) const override {
 		std::fill_n(std::back_inserter(dest), this->len, 0);
 	}
 };
