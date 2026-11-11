@@ -29,16 +29,16 @@
  * with the eigth value triggering some other special behavior.
  *
  * These commands have a “short”, 1-byte encoding:
- *   %cccl_llll
- * The three `c` bits indicate the command, and the five `l` bits encode a length from 0 to 31.
+ *   %ccc_nnnnn
+ * The three `c` bits indicate the command, and the five `n` bits encode a length from 0 to 31.
  *
  * They also have a “long”, 2-byte encoding:
- *   %111c_cc0l llll_llll
+ *   %111_ccc_0_n %nnnn_nnnn
  * The length is expanded to 9 bits (0–511); the 10th bit is unused because that allows massively
  * speeding up the decompressor's loops. [^9bit_len]
  *
  * There are also some “special” commands:
- *   %1111_11cc llll_llll
+ *   %111111_cc %nnnn_nnnn
  * ...although %1111_1111 instead indicates the end of the stream, and does not have a length byte.
  *
  * [^9bit_len]: “Shorten long lz counts to 9 bits”
@@ -1193,7 +1193,7 @@ deserialize(std::vector<uint8_t> const &compressed) {
 		}
 		uint8_t const *payload_start;
 		Command cmd = [&payload_start, &first_byte, &compressed, &byte_idx,
-		               &require_bytes]() -> Command {
+		               &require_bytes, &cmd_start_idx]() -> Command {
 			if ((first_byte & 0b111'111'00) == 0b111'111'00) { // Special commands.
 				uint16_t len = require_bytes(1)[0] + LzSpecialCmd::MIN_LENGTH;
 				payload_start = compressed.data() + byte_idx;
@@ -1210,10 +1210,22 @@ deserialize(std::vector<uint8_t> const &compressed) {
 			} else {
 				uint8_t cmd_id;
 				uint16_t len;
-				if ((first_byte & 0b111'00000) == 0b111'00000) {
+				if ((first_byte & 0b111'00000) == 0b111'00000) { // “Long” encoded commands.
+					if (first_byte & 0b10) {
+						error_exit(EXIT_DATA_ERR,
+						           "corrupted input (encountered invalid long command header at "
+						           "offset %zu)\n",
+						           cmd_start_idx);
+					}
 					uint8_t extended_header = require_bytes(1)[0];
 					cmd_id = (first_byte >> 2) & 0b111;
 					len = (first_byte & 1) << 8 | extended_header;
+					if (len < (1 << 5)) { // “Short” encoded commands.
+						error_exit(EXIT_DATA_ERR,
+						           "corrupted input (encountered too-short long command header at "
+						           "offset %zu)\n",
+						           cmd_start_idx);
+					}
 				} else {
 					cmd_id = first_byte >> 5;
 					len = first_byte & 0b000'11111;
@@ -1253,6 +1265,7 @@ deserialize(std::vector<uint8_t> const &compressed) {
 				unreachable();
 			}
 		}();
+		// Too-short long command lengths are considered an error and rejected above.
 		assert(byte_idx - cmd_start_idx == lz_cmd(cmd).num_encoded_bytes());
 
 		commands.emplace_back(std::move(cmd), payload_start);
