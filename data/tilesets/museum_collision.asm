@@ -145,7 +145,7 @@
 	tilecoll WALL, WALL, AQUARIUM_GLOW, FLOOR ; 90
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 91
 	tilecoll WALL, WALL, WALL, FLOOR ; 92
-	tilecoll DOOR, WALL, FLOOR, FLOOR ; 93
+	tilecoll DOOR, WALL, FLOOR, AQUARIUM_GLOW ; 93
 	tilecoll WALL, WALL, WALL, WALL ; 94
 	tilecoll WALL, WALL, WALL, WALL ; 95
 	tilecoll WALL, WALL, WALL, WALL ; 96
@@ -163,3 +163,5 @@
 	tilecoll WALL, WALL, WALL, WALL ; a2
 	tilecoll WALL, WALL, WALL, WALL ; a3
 	tilecoll FLOOR, WALL, FLOOR, WALL ; a4
+	tilecoll WALL, WALL, FLOOR, AQUARIUM_GLOW ; a5
+	tilecoll FLOOR, AQUARIUM_GLOW, FLOOR, AQUARIUM_GLOW ; a6
