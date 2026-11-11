@@ -606,9 +606,6 @@ struct LzCopyCmd : public LzCmd {
 	}
 	uint8_t const *copy_src_start(std::vector<uint8_t> &dest,
 		                          [[maybe_unused]] uint8_t const *payload, bool reversed) const {
-		// Required for the returned pointer to remain stable during insertion.
-		dest.reserve(dest.size() + this->len);
-
 		size_t source_idx;
 		if (this->start_ofs < 0) {
 			assert(127 - this->start_ofs == payload[0]);
@@ -636,6 +633,9 @@ struct LzCopyCmd : public LzCmd {
 			error_exit(EXIT_DATA_ERR,
 			           "corrupted input (encountered out-of-bounds copy command)\n");
 		}
+
+		// Required for the returned pointer to remain stable during insertion.
+		dest.reserve(dest.size() + this->len);
 		return dest.data() + source_idx;
 	}
 };
