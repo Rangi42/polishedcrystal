@@ -28,7 +28,7 @@ COMMON_FLAGS := ${WARNFLAGS} -O3 -flto
 # debugging sanitizers:
 #COMMON_FLAGS += -ggdb3 -Og -D_GLIBCXX_ASSERTIONS \
 #                -fno-omit-frame-pointer -fno-optimize-sibling-calls \
-#                -fsanitize=address,undefined,float-divide-by-zero
+#                -fsanitize=address,undefined,float-divide-by-zero -Wno-inline
 
 CFLAGS := ${COMMON_FLAGS} -std=c17 -Wnested-externs -Wold-style-definition -Wstrict-prototypes
 CXXFLAGS := ${COMMON_FLAGS} -std=c++17 -Wold-style-cast
