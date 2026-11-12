@@ -1,18 +1,18 @@
 FarDecompressWRA6InB::
-; Decompress LZ data from b:hl to 6:d000.
+; Decompress LZP data from b:hl to 6:d000.
 	call RunFunctionInWRA6
 FarDecompressInB::
-; Decompress LZ data from b:hl to d000.
+; Decompress LZP data from b:hl to d000.
 	ld a, b
 FarDecompress::
-; Decompress LZ data from a:hl to d000.
+; Decompress LZP data from a:hl to d000.
 	ld de, wDecompressScratch
 	assert wDecompressScratch == STARTOF(WRAMX)
 FarDecompressToDE::
-; Decompress LZ data from a:hl to de.
+; Decompress LZP data from a:hl to de.
 	call StackCallInBankA
 Decompress::
-; Decompress LZ data from hl to de.
+; Decompress LZP data from hl to de.
 	ldh a, [hVBlank]
 	cp 4
 	jr z, _Decompress
@@ -25,65 +25,33 @@ Decompress::
 	ret
 
 _Decompress:
-; Pokemon Crystal uses an lz variant for compression.
+; Pokemon Crystal uses an LZ variant we call "LZP" for compression.
 ; This is mainly (but not necessarily) used for graphics.
 
-; This function decompresses lz-compressed data from hl to de.
-
-DEF LZ_END EQU $ff ; Compressed data is terminated with $ff.
-
-; A typical control command consists of:
-
-DEF LZ_CMD EQU %11100000 ; command id (bits 5-7)
-DEF LZ_LEN EQU %00011111 ; length n   (bits 0-4)
-
-; Additional parameters are read during command execution.
+; This function decompresses LZP-compressed data from hl to de.
+; For more information on the LZP format, see the code below and in tools/lzpcompress.cpp.
 
 ; Commands:
+
+DEF LZ_CMD           EQU %11100000 ; command id (bits 5-7)
 
 DEF LZ_DATA          EQU 0 << 5 ; Read literal data for n bytes.
 DEF LZ_REPEAT        EQU 1 << 5 ; Write the same byte for n bytes.
 DEF LZ_ALTERNATE     EQU 2 << 5 ; Alternate two bytes for n bytes.
 DEF LZ_ZERO          EQU 3 << 5 ; Write 0 for n bytes.
-
-; Another class of commands reuses data from the decompressed output.
-DEF LZ_COPY          EQU 7 ; bit
-
-; These commands take a signed offset to start copying from.
-; Wraparound is simulated.
-; Positive offsets (15-bit) are added to the start address.
-; Negative offsets (7-bit) are subtracted from the current position.
-
 DEF LZ_COPY_NORMAL   EQU 4 << 5 ; Repeat n bytes from the offset.
 DEF LZ_COPY_FLIPPED  EQU 5 << 5 ; Repeat n bitflipped bytes.
 DEF LZ_COPY_REVERSED EQU 6 << 5 ; Repeat n bytes in reverse.
+DEF LZ_LONG          EQU 7 << 5 ; Extended command length in second byte.
 
-; If the value in the count needs to be larger than 5 bits,
-; LZ_LONG can be used to expand the count to 10 bits.
-DEF LZ_LONG          EQU 7 << 5
-
-; A new control command is read in bits 2-4.
-; The top two bits of the length are bits 0-1.
-; Another byte is read containing the bottom 8 bits.
-DEF LZ_LONG_CMD      EQU %00011100
-DEF LZ_LONG_HI       EQU %00000011
+DEF LZ_END EQU $ff ; Compressed data is terminated with $ff.
 
 ; Special opcode bytes ($fc-$fe)
 ; These are in the LZ_LONG range and would otherwise decode as an invalid long command.
-DEF LZ_SPECIAL_MASK          EQU %11111100
-DEF LZ_SPECIAL_BASE          EQU $fc
-DEF LZ_SPECIAL_SUBTYPE_MASK  EQU %00000011
-
-DEF LZ_SPECIAL_PACKHI0       EQU 0 ; $fc
-DEF LZ_SPECIAL_PACK16_SHORT  EQU 1 ; $fd (len 1..256)
-DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
-
-; In other words, the structure of the command becomes
-; 111xxxyy yyyyyyyy
-; x: the new control command
-; y: the length
-
-; For more information, refer to the code below and in extras/gfx.py.
+DEF LZ_SPECIAL_BASE         EQU $fc
+DEF LZ_SPECIAL_PACKHI0      EQU $fc
+DEF LZ_SPECIAL_PACK16_SHORT EQU $fd ; (len 1..256)
+DEF LZ_SPECIAL_PACKLO0      EQU $fe ; (len 1..256)
 
 	; Swap de and hl for speed
 	call SwapHLDE
@@ -336,19 +304,17 @@ DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
 	and LZ_CMD
 	static_assert LZ_DATA == 0
 	jr z, .lz_data ; C already contains the length and nothing else, so go!
-	ld b, c
 	cp LZ_LONG
 	jr nc, .long
 
 	; Extract the bitfields.
-	; b = %cccl llll, a = %ccc0 0000 (from `and` above)
-	xor b ; a = %000l llll
+	; c = %cccl llll, a = %ccc0 0000 (from `and` above)
+	ld b, a ; B = command.
+	xor c ; a = %000l llll
 	ld c, a ; Thus, C = length.
-	xor b ; a = %ccc0 0000
-	ld b, a
 
 .process_cmd
-	; command in a
+	ld a, b ; command in the upper 3 bits
 	; length in bc, upper 7 bits of b ignored
 	rla
 	jr c, .lz_copy
@@ -406,108 +372,73 @@ DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
 ; This is where `LZ_LONG` handling actually begins; a nested `LZ_LONG` is nonsensical,
 ; so it's instead handled as special-purpose commands.
 .long
-	inc b
-	ret z ; LZ_END
 	ld b, c
 
-; Special opcodes: $fc-$fe.
-	; Detect by masking off the low two bits.
+; Special opcodes: $fc-$fe (and $ff for the terminator).
 	ld a, b
-	and LZ_SPECIAL_MASK
 	cp LZ_SPECIAL_BASE
-	jr nz, .long_normal
-	ld a, b
-	and LZ_SPECIAL_SUBTYPE_MASK
-	; subtype in a: LZ_SPECIAL_PACKHI0/LZ_SPECIAL_PACK16_SHORT/LZ_SPECIAL_PACKLO0
-	push af
-	ld a, [de]
+	jr c, .long_normal
+	static_assert LZ_END == $ff
+	inc a ; Is it `LZ_END`?
+	ret z
+
+	ld a, [de] ; All special commands read an 8-bit length.
 	inc de
 	ld c, a
-	ld b, 0
-	inc c
-	jr nz, .special_have_len
-	inc b
-.special_have_len
-	pop af
-	cp LZ_SPECIAL_PACKHI0
-	jr nz, .special_pack16
+	inc c ; TODO: this should be done in the compressor instead!
+	ld a, b ; Command ID: $fc, $fd, or $fe.
+	cp LZ_SPECIAL_PACK16_SHORT
+	jr z, .special_pack16
+	jr nc, .special_packlo0
 
 ;; LZ_SPECIAL_PACKHI0: Read nibbles from the input stream, and output them right-padded (`$x0`).
 
 .special_packhi0
-	; Decode packed literals where each output byte is (nibble << 4).
-	; Payload is ceil(count/2) bytes.
-.packhi0_loop
-	ld a, b
-	or c
-	jr z, .Main
 	ld a, [de]
 	inc de
-	push af
+	ld b, a
 	and $f0
 	ld [hli], a
-	dec bc
-	ld a, b
-	or c
-	jr z, .pack_done
-	pop af
-	and $0f
+	dec c
+	jr z, .Main
+	xor b ; `ld a, b :: and $0f` due to A's current value.
 	swap a
 	ld [hli], a
-	dec bc
-	jr .packhi0_loop
-
-.pack_done
-	pop af
+	dec c
+	jr nz, .special_packhi0
 	jr .Main
 
 ;; LZ_SPECIAL_PACK16: Read nibbles from the input stream, and output one of 16 common bytes from that.
 
 .special_pack16
-	cp LZ_SPECIAL_PACKLO0
-	jr z, .special_packlo0
-	; Decode packed literals. Payload is ceil(count/2) bytes.
-	; Uses a small fixed table of 16 bytes.
-.pack_loop
-	ld a, b
-	or c
-	jr z, .Main
 	ld a, [de]
 	inc de
-	push af
+	ld b, a
 	swap a
 	call .pack_lookup
+	jr z, .Main
 	ld a, b
-	or c
-	jr z, .pack_done
-	pop af
 	call .pack_lookup
-	jr .pack_loop
+	jr nz, .special_pack16
+	jr .Main
 
 ;; LZ_SPECIAL_PACKLO0: Read nibbles from the input stream, and output them left-padded (`$0x`).
 
 .special_packlo0
-	; Decode packed literals where each output byte has high nibble 0.
-	; Payload is ceil(count/2) bytes.
-.packlo0_loop
-	ld a, b
-	or c
-	jmp z, .Main
 	ld a, [de]
 	inc de
-	push af
+	ld b, a
 	swap a
 	and $0f
 	ld [hli], a
-	dec bc
+	dec c
+	jr z, .Main
 	ld a, b
-	or c
-	jr z, .pack_done
-	pop af
 	and $0f
 	ld [hli], a
-	dec bc
-	jr .packlo0_loop
+	dec c
+	jr nz, .special_packlo0
+	jmp .Main
 
 ; Output the `a & $0f`th element of `.pack16_table`,
 ; and decrement the count.
@@ -522,7 +453,7 @@ DEF LZ_SPECIAL_PACKLO0       EQU 2 ; $fe (len 1..256)
 	ld a, [de]
 	pop de
 	ld [hli], a
-	dec bc
+	dec c
 	ret
 
 .pack16_table
