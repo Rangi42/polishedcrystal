@@ -10,24 +10,24 @@ If you just want to play Polished Crystal, install the .gbc file directly from t
 To build a ROM yourself from the source code, follow the instructions below. They first provide installation guides for the tools required to build the ROM, then provide the actual ROM building instructions.
 
 Operating Systems:
-- [Windows (10 & Newer)](#windows-10--newer)
-- [Windows (8 & Older)](#windows-8--older)
+- [Windows 10 or newer](#windows-10-or-newer)
+- [Windows 8 or older](#windows-8-or-older)
 - [Linux](#linux)
 - [MacOS](#macos)
 
-## Windows 10 & Newer
+## Windows 10 or newer
 
-Download and install [**Windows Subsystem for Linux**](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Then open the **WSL terminal**.
+Download and install [**Windows Subsystem for Linux**](https://learn.microsoft.com/en-us/windows/wsl/install). Then open the **WSL terminal**.
 
-Update WSL's software before continuing. For example, if you chose Debian, Ubuntu, or another distribution that uses `apt-get`, then enter this command:
+Update WSL's software before continuing. For example, if you chose Debian, Ubuntu, or another distribution that uses `apt` as its package manager, then enter this command:
 
 ```bash
-apt-get update && apt-get upgrade
+sudo apt update && apt upgrade
 ```
 
 Then, follow [the instructions for **Linux**](#linux) below for whatever distribution you installed for WSL.
 
-## Windows (8 & Older)
+## Windows 8 or older
 
 To build on Windows, install [**Cygwin**](http://cygwin.com/install.html) with the default settings.
 
@@ -47,9 +47,9 @@ Now you're ready to [build **polishedcrystal**](#build-polishedcrystal).
 
 ## Linux
 
-Regardless of distro choice, the goal here is to install the following software:
+Regardless of your choice of Linux distribution, the goal here is to install the following software:
 - `make`
-- `gcc` (or `clang`)
+- `gcc` and `g++` (or `clang` and `clang++`)
 - `git`
 - `rgbds`
 
@@ -60,27 +60,27 @@ To do so, open **Terminal** and enter the following commands, depending on which
 To install the software required for **polishedcrystal**:
 
 ```bash
-sudo apt-get install make gcc git
+sudo apt install make gcc g++ git
 ```
 
-Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/linux) to install **rgbds 1.0.1**.
+Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/linux) to install **rgbds 1.0.4**.
 
 ### OpenSUSE
 
 To install the software required for **polishedcrystal**:
 
 ```bash
-sudo zypper install make gcc git
+sudo zypper install make gcc g++ git
 ```
 
-Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/linux) to install **rgbds 1.0.1**.
+Then follow the [**rgbds** instructions](https://rgbds.gbdev.io/install/linux) to install **rgbds 1.0.4**.
 
 ### Arch Linux
 
 To install the software required for **polishedcrystal**:
 
 ```bash
-sudo pacman -S make gcc git rgbds
+sudo pacman -S make gcc g++ git rgbds
 ```
 
 ### Termux
@@ -96,11 +96,11 @@ pkg install make clang git sed rgbds
 If your distro is not listed here, try to find the required software below in its repositories:
 
 - `make`
-- `gcc` (or `clang`)
+- `gcc` and `g++` (or `clang` and `clang++`)
 - `git`
 - `rgbds`
 
-If `rgbds` is not available, you'll need to follow the [**rgbds** instructions](https://rgbds.gbdev.io/install#building-from-source) to build **rgbds 1.0.1** from source.
+If `rgbds` is not available, you'll need to follow the [**rgbds** instructions](https://rgbds.gbdev.io/install#building-from-source) to build **rgbds 1.0.4** from source.
 
 Now you're ready to [build **polishedcrystal**](#build-polishedcrystal).
 
@@ -146,5 +146,3 @@ For example, to build a mononchrome faithful version:
 ```bash
 make faithful monochrome
 ```
-
-
