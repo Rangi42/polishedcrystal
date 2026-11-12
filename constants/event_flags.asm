@@ -2464,5 +2464,10 @@
 	const EVENT_CELADON_CITY_CUT_TREE_2
 	const EVENT_GOT_BLUNDRPOLICY_FROM_ROUTE_16_NORTH
 
+; Eusine's story does not reset when Ho-Oh respawns.
+	const EVENT_EUSINE_LEFT_CELADON
+	const EVENT_EUSINE_HO_OH_ENCOUNTER
+	const EVENT_EUSINE_HO_OH_FAREWELL
+
 	const_next $8ff
 DEF NUM_EVENTS EQU const_value ; 2303
