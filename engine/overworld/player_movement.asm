@@ -370,7 +370,12 @@ DoPlayerMovement::
 	call .StopRunning
 	ld de, SFX_JUMP_OVER_LEDGE
 	call PlaySFX
+	ld a, [wPlayerState]
+	cp PLAYER_BIKE
+	ld a, STEP_BIKE_LEDGE
+	jr z, .bike_ledge
 	ld a, STEP_LEDGE
+.bike_ledge
 	call .DoStep
 	ld a, 7
 	ret
@@ -529,6 +534,7 @@ DoPlayerMovement::
 	dw .SpinStep
 	dw .Fast ; x2
 	dw .StairsStep
+	dw .FastJumpStep
 	assert_table_length NUM_STEPS
 
 .SlowStep:
@@ -591,6 +597,11 @@ DoPlayerMovement::
 	stairs_step_up
 	stairs_step_left
 	stairs_step_right
+.FastJumpStep
+	fast_jump_step_down
+	fast_jump_step_up
+	fast_jump_step_left
+	fast_jump_step_right
 
 .StandInPlace:
 	ld a, movement_step_sleep_1

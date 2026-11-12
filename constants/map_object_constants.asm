@@ -360,4 +360,5 @@ DEF NUM_FACINGS EQU const_value
 	const STEP_SPIN          ; 9
 	const STEP_FAST          ; a (same as STEP_RUN but without doubling animation speed)
 	const STEP_STAIRS        ; b
+	const STEP_BIKE_LEDGE    ; c
 DEF NUM_STEPS EQU const_value
