@@ -5,7 +5,7 @@
 >
 > — Anonymous, [/vp/](https://boards.4channel.org/vp/)
 
-If you just want to play Polished Crystal, install the .gbc file directly from the [latest release](https://github.com/Rangi42/polishedcrystal/releases/latest).
+If you just want to play Polished Crystal, download the **.gbc** file directly from the [latest release](https://github.com/Rangi42/polishedcrystal/releases/latest).
 
 To build a ROM yourself from the source code, follow the instructions below. They first provide installation guides for the tools required to build the ROM, then provide the actual ROM building instructions.
 
@@ -29,7 +29,7 @@ Then, follow [the instructions for **Linux**](#linux) below for whatever distrib
 
 ## Windows 8 or older
 
-To build on Windows, install [**Cygwin**](http://cygwin.com/install.html) with the default settings.
+WSL was only introduced in Windows 10, so to build on Windows 8 or older, install [**Cygwin**](http://cygwin.com/install.html) with the default settings.
 
 In the installer, select the following packages: `git`, `make`, and `gcc-core`.
 
@@ -48,6 +48,7 @@ Now you're ready to [build **polishedcrystal**](#build-polishedcrystal).
 ## Linux
 
 Regardless of your choice of Linux distribution, the goal here is to install the following software:
+
 - `make`
 - `gcc` and `g++` (or `clang` and `clang++`)
 - `git`
