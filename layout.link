@@ -210,6 +210,9 @@ ROMX $49
 ROMX $4A
 	"Dynamic Pals System"
 
+ROMX $4B
+	"Battle Stat Changes"
+
 VRAM $0
 	"VRAM0"
 

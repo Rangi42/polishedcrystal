@@ -10,7 +10,7 @@
 if DEF(FAITHFUL)
 	abilities_for SHUCKLE, STURDY, GLUTTONY, CONTRARY
 else
-	abilities_for SHUCKLE, SOLID_ROCK, GLUTTONY, CONTRARY
+	abilities_for SHUCKLE, SOLID_ROCK, RIPEN, CONTRARY
 endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups
