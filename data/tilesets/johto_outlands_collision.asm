@@ -178,7 +178,7 @@
 	tilecoll FLOOR, WALL, WALL, WALL ; b1
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; b2
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; b3
-	tilecoll TOP_WALL, TOP_WALL, FLOOR, FLOOR ; b4
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; b4
 	tilecoll FLOOR, FLOOR, WALL, WALL ; b5
 	tilecoll FLOOR, TOP_WALL, FLOOR, BOTTOM_WALL ; b6
 	tilecoll TOP_WALL, FLOOR, BOTTOM_WALL, FLOOR ; b7
@@ -247,4 +247,3 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f6
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f7
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f8
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f9

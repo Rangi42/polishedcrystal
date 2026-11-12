@@ -20,8 +20,8 @@ SnowtopPokeCenter1FStairsCallback:
 	; no second floor
 	changeblock 0, 6, $49
 	; wooden table
-	changeblock 8, 4, $4a
-	changeblock 8, 6, $4b
+	changeblock 8, 4, $24
+	changeblock 8, 6, $34
 	endcallback
 
 PokemonJournalProfWillowScript:
