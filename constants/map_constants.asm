@@ -358,15 +358,14 @@ ENDM
 	map_const INDIGO_PLATEAU,                             12, 13 ;  4
 	map_const INDIGO_PLATEAU_POKECENTER_1F,                8,  7 ;  5
 	map_const ROUTE_26,                                   10, 54 ;  6
-	map_const ROUTE_27,                                   38,  9 ;  7
-	map_const ROUTE_28,                                   20,  9 ;  8
-	map_const WILLS_ROOM,                                  5,  9 ;  9
-	map_const KOGAS_ROOM,                                  5,  9 ; 10
-	map_const BRUNOS_ROOM,                                 5,  9 ; 11
-	map_const KARENS_ROOM,                                 5,  9 ; 12
-	map_const LANCES_ROOM,                                 7, 12 ; 13
-	map_const HALL_OF_FAME,                                5,  7 ; 14
-	map_const BELLCHIME_TRAIL,                            12,  7 ; 15
+	map_const ROUTE_28,                                   20,  9 ;  7
+	map_const WILLS_ROOM,                                  5,  9 ;  8
+	map_const KOGAS_ROOM,                                  5,  9 ;  9
+	map_const BRUNOS_ROOM,                                 5,  9 ; 10
+	map_const KARENS_ROOM,                                 5,  9 ; 11
+	map_const LANCES_ROOM,                                 7, 12 ; 12
+	map_const HALL_OF_FAME,                                5,  7 ; 13
+	map_const BELLCHIME_TRAIL,                            12,  7 ; 14
 
 	newgroup                                                     ; 17
 	map_const ROUTE_12_SOUTH,                             10, 44 ;  1
@@ -716,6 +715,7 @@ ENDM
 	map_const ROUTE_36,                                   23,  9 ;  2
 
 	newgroup                                                     ; 40
-	map_const ROUTE_16_NORTH,                             11,  5 ; 21
+	map_const ROUTE_16_NORTH,                             11,  5 ;  1
+	map_const ROUTE_27,                                   38,  9 ;  2
 
 DEF NUM_MAP_GROUPS EQU const_value ; 37
