@@ -38,7 +38,7 @@ _Displaypic:
 	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
 	farcall PlaceGraphic
-	ld b, 1
+	ld b, MAPS_COPY_SET_PALS
 	jmp SafeCopyTilemapAtOnce
 
 ClearSpritesUnderPokePic:
@@ -86,6 +86,7 @@ Trainerpic::
 	call CopyMenuHeader
 	call MenuBox
 	call UpdateSprites
+	; BUG: missing arg!!
 	call SafeCopyTilemapAtOnce
 	xor a
 	ld [wTrainerPal], a
@@ -136,7 +137,7 @@ ClosePokepic::
 	call LoadMapPart
 	call RestoreSprites
 	call UpdateSprites
-	ld b, 1
+	ld b, MAPS_COPY_SET_PALS
 	call SafeCopyTilemapAtOnce
 	farjp RefreshSprites
 

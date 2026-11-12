@@ -226,19 +226,15 @@ HPBarAnim_BGMapUpdate:
 	jr z, .player_hp_bar
 	xor a
 	ldh [hCGBPalUpdate], a
-	inc a
-	ld b, a
-	assert TRANSFER_TILEMAP == 1
-	ldh [hBGMapMode], a
 
 	ld a, [wCurPartyMon]
 	ld c, a
 	cp 4
-	jr nc, .lowerHalf
-	dec b
-.lowerHalf
-	ld a, b
-	ldh [hBGMapHalf], a
+	ld a, TRANSFER_TILEMAP ; Bit 7 clear = top half
+	jr c, .upperHalf
+	set 7, a
+.upperHalf
+	ldh [hBGMapMode], a
 	ld a, c
 	hlbgcoord 12, 2, vBGMap2
 	ld bc, TILEMAP_WIDTH * 2
@@ -267,18 +263,20 @@ endr
 	jmp DelayFrame
 
 .enemy_hp_bar
-	lb bc, BGPI_AUTOINC | (0 palette PAL_BATTLE_BG_ENEMY_HP color 2), 0
+	ld hl, hBGMapMode
+	res 7, [hl] ; Force updating the top half (why?)
+	ld b, BGPI_AUTOINC | (0 palette PAL_BATTLE_BG_ENEMY_HP color 2)
 	ld hl, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP color 2
 	jr .finish
 
 .player_hp_bar
-	lb bc, BGPI_AUTOINC | (0 palette PAL_BATTLE_BG_PLAYER_HP color 2), 1
+	ld hl, hBGMapMode
+	set 7, [hl] ; Force updating the bottom half (why?)
+	ld b, BGPI_AUTOINC | (0 palette PAL_BATTLE_BG_PLAYER_HP color 2)
 	ld hl, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP color 2
 .finish
 	xor a
 	ldh [hCGBPalUpdate], a
-	ld a, c
-	ldh [hBGMapHalf], a
 	ldh a, [rWBK]
 	push af
 	ld a, BANK(wBGPals2)

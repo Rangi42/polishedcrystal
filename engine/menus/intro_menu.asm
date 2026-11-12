@@ -833,7 +833,7 @@ GenderMenu::
 	ld a, BANK(wPlayerGender)
 	ldh [rWBK], a
 
-	ld b, 1
+	ld b, MAPS_COPY_SET_PALS
 	call SafeCopyTilemapAtOnce
 
 .loop
