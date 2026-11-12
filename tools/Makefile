@@ -31,7 +31,7 @@ COMMON_FLAGS := ${WARNFLAGS} -O3 -flto
 #                -fsanitize=address,undefined,float-divide-by-zero -Wno-inline
 
 CFLAGS := ${COMMON_FLAGS} -std=c17 -Wnested-externs -Wold-style-definition -Wstrict-prototypes
-CXXFLAGS := ${COMMON_FLAGS} -std=c++17 -Wold-style-cast
+CXXFLAGS := ${COMMON_FLAGS} -std=c++20 -Wold-style-cast
 
 tools := \
 	bankends \
