@@ -129,10 +129,26 @@ EusinesHouseGrampsScript:
 	done
 
 .Home:
-	jumptextfaceplayer EusinesHouseGrampsGrandsonHomeText
+	jumpthistextfaceplayer
+
+	text "My grandson came"
+	line "home!"
+	cont "I'm overjoyed!"
+	done
 
 .Searching:
-	jumptextfaceplayer EusinesHouseGrampsEusineSearchingForSuicuneText
+	jumpthistextfaceplayer
+
+	text "My grandson Eusine"
+	line "is in Johto,"
+
+	para "searching far and"
+	line "wide for Suicune."
+
+	para "I taught him all"
+	line "about the legend-"
+	cont "ary #mon!"
+	done
 
 .AfterFarewell:
 	checkevent EVENT_DECO_ABRA_DOLL
@@ -220,26 +236,6 @@ EusineShowsSuicuneText:
 	text "This, of course,"
 	line "is Suicune:"
 	done
-
-
-EusinesHouseGrampsGrandsonHomeText:
-	text "My grandson came"
-	line "home!"
-	cont "I'm overjoyed!"
-	done
-
-EusinesHouseGrampsEusineSearchingForSuicuneText:
-	text "My grandson Eusine"
-	line "is in Johto,"
-
-	para "searching far and"
-	line "wide for Suicune."
-
-	para "I taught him all"
-	line "about the legend-"
-	cont "ary #mon!"
-	done
-
 
 EusinesHouseGrampsThankYouGiftText:
 	text "My grandson Eusine"
