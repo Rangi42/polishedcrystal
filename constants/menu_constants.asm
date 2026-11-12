@@ -38,6 +38,21 @@
 	const SCROLLINGMENU_ITEMS_QUANTITY
 	const SCROLLINGMENU_ITEMS_KEY
 
+; w2DMenuFlags1 (see _2DMenuInterpretJoypad in engine/menus/menu.asm)
+	const_def
+	shift_const _2DMENU_EXIT_RIGHT            ; 0
+	shift_const _2DMENU_EXIT_LEFT             ; 1
+	shift_const _2DMENU_EXIT_UP               ; 2
+	shift_const _2DMENU_EXIT_DOWN             ; 3
+	shift_const _2DMENU_WRAP_LEFT_RIGHT       ; 4
+	shift_const _2DMENU_WRAP_UP_DOWN          ; 5
+	shift_const _2DMENU_ENABLE_SPRITE_ANIMS   ; 6
+	shift_const _2DMENU_DISABLE_JOYPAD_FILTER ; 7
+
+; w2DMenuFlags2
+	const_def 7
+	shift_const _2DMENU_EXITING ; 7
+
 ; MonMenuOptions indexes (see data/mon_menu.asm)
 ; used by PokemonActionSubmenu (see engine/pokemon/mon_menu.asm)
 	const_def 1

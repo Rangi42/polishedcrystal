@@ -244,23 +244,38 @@ wInitMinuteBuffer:: ds 17
 SECTION UNION "Misc 404", WRAM0
 ; link patch lists
 
-wPlayerPatchLists:: ds 200
-wOTPatchLists:: ds 200
-
-
-SECTION UNION "Misc 404", WRAM0
-; link engine
-
-wLinkMisc:: ds 10
-wLinkPlayerFixedPartyMon1ID:: ds 3
-	ds 37
+wPlayerPatchLists:: ds SERIAL_PATCH_LIST_LENGTH
+wOTPatchLists:: ds SERIAL_PATCH_LIST_LENGTH
+assert wOTPatchLists - wPlayerPatchLists >= SERIAL_PATCH_LIST_LENGTH
 
 
 SECTION UNION "Misc 404", WRAM0
 ; polished link transfer buffer
 
 wLinkReceivedPolishedMiscBuffer:: ds 10
-wLinkPolishedMiscBuffer:: ds 10
+wLinkReceivedPolishedMiscBufferEnd::
+
+; Polished-only negotiation packets share their two-byte outgoing preamble.
+; Payloads overlay each other because game ID, version/room, and options
+; are transferred separately; version words are high byte first.
+wLinkPolishedMiscBuffer::
+	ds 2 ; SERIAL_PREAMBLE_BYTE, SERIAL_POLISHED_PREAMBLE_BYTE
+UNION
+wLinkPolishedMiscGameID:: db
+wLinkPolishedMiscGameIDEnd::
+NEXTU
+wLinkPolishedMiscVersion:: dw
+wLinkPolishedMiscMinTradeVersion:: dw
+wLinkPolishedMiscRoom:: db
+wLinkPolishedMiscVersionEnd::
+NEXTU
+wLinkPolishedMiscOptions:: db
+wLinkPolishedMiscOptions2:: db
+wLinkPolishedMiscOptionsEnd::
+ENDU
+	ds 3 ; reserve the original ten-byte buffer
+wLinkPolishedMiscBufferEnd::
+assert wLinkPolishedMiscBufferEnd - wLinkPolishedMiscBuffer == wLinkReceivedPolishedMiscBufferEnd - wLinkReceivedPolishedMiscBuffer
 
 
 SECTION UNION "Misc 404", WRAM0
@@ -897,25 +912,56 @@ wSummaryScreenPPTileBuffer:: ds 3 * TILE_1BPP_SIZE
 
 
 SECTION UNION "Misc 1300", WRAM0
-; raw link data
+; Reserve the entire link workspace, including unused bytes written during
+; received-mail alignment.
 
 wLinkData:: ds 1300
 wLinkDataEnd::
 
 
 SECTION UNION "Misc 1300", WRAM0
-; decoded link data members (without the serial preamble)
+; Player's party data, formatted for link transfer. Polished Crystal sends
+; only the party count, without pokecrystal's species list or terminator.
 
+wLinkSendParty::
+wLinkSendPartyPreamble:: ds SERIAL_PREAMBLE_LENGTH
+wLinkSendPartyPlayerName:: ds NAME_LENGTH
+wLinkSendPartyPartyCount:: db
+wLinkSendPartyPlayerID:: dw
+for n, 1, PARTY_LENGTH + 1
+wLinkSendPartyPlayerPartyMon{d:n}:: party_struct wLinkSendPartyPlayerPartyMon{d:n}
+endr
+wLinkSendPartyPatchedDataEnd::
+
+wLinkSendPartyPlayerPartyMonOTs::
+for n, 1, PARTY_LENGTH + 1
+wLinkSendPartyPlayerPartyMon{d:n}OT:: ds NAME_LENGTH
+endr
+
+wLinkSendPartyPlayerPartyMonNicknames::
+for n, 1, PARTY_LENGTH + 1
+wLinkSendPartyPlayerPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
+endr
+wLinkSendPartyPadding:: ds SERIAL_PADDING_LENGTH
+wLinkSendPartyEnd::
+
+
+SECTION UNION "Misc 1300", WRAM0
+; Received party data, without its serial preamble. The player name and
+; party count are not patched, as they cannot normally contain
+; SERIAL_NO_DATA_BYTE; the player ID and party structs are patched.
+
+wLinkPlayerPartyData::
 wLinkPlayerName:: ds NAME_LENGTH
 wLinkPartyCount:: db
 
-UNION
-; link player data
+wLinkPlayerPatchedData::
 wLinkPlayerID:: dw
-wLinkPlayerData::
+wLinkPlayerPartyMons::
 for n, 1, PARTY_LENGTH + 1
 wLinkPlayerPartyMon{d:n}:: party_struct wLinkPlayerPartyMon{d:n}
 endr
+wLinkPlayerPatchedDataEnd::
 
 wLinkPlayerPartyMonOTs::
 for n, 1, PARTY_LENGTH + 1
@@ -926,40 +972,55 @@ wLinkPlayerPartyMonNicknames::
 for n, 1, PARTY_LENGTH + 1
 wLinkPlayerPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
-wLinkPlayerDataEnd::
+wLinkPlayerPartyDataEnd::
+
+assert wLinkSendParty == wLinkPlayerPartyData
+assert wLinkSendPartyPlayerID == wLinkPlayerPatchedData + SERIAL_PREAMBLE_LENGTH
+assert wLinkSendPartyPatchedDataEnd == wLinkPlayerPatchedDataEnd + SERIAL_PREAMBLE_LENGTH
+assert wLinkSendPartyPadding == wLinkPlayerPartyDataEnd + SERIAL_PREAMBLE_LENGTH
+assert wLinkSendPartyEnd == wLinkPlayerPartyDataEnd + SERIAL_PREAMBLE_LENGTH + SERIAL_PADDING_LENGTH
+assert wLinkPlayerPatchedDataEnd - wLinkPlayerPatchedData > SERIAL_PATCH_DATA_SIZE
+assert wLinkPlayerPatchedDataEnd - wLinkPlayerPatchedData <= 2 * SERIAL_PATCH_DATA_SIZE
+
+
+SECTION UNION "Misc 1300", WRAM0
+; Player's mail, formatted for link transfer.
+	ds 500
+
+wLinkSendMail::
+wLinkSendMailPreamble:: ds SERIAL_MAIL_PREAMBLE_LENGTH
+wLinkSendMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
+wLinkSendMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
+wLinkSendMailPatchSet:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1) + 3) * PARTY_LENGTH + 1
+wLinkSendMailEnd::
+	ds 10
+
+UNION
+; Other player's raw mail, before its preamble is removed.
+wLinkReceivedMail::
+	ds SERIAL_MAIL_PREAMBLE_LENGTH
+	ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
+	ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1) + 3) * PARTY_LENGTH + 1
+wLinkReceivedMailEnd::
 
 NEXTU
-; link patch lists
-wLinkPatchList1:: ds SERIAL_PATCH_LIST_LENGTH
-wLinkPatchList2:: ds SERIAL_PATCH_LIST_LENGTH
+; The raw mail is aligned here, then its messages and metadata are patched.
+wLinkReceivedMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
+wLinkReceivedMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
+wLinkReceivedMailPatchSet:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1) + 3) * PARTY_LENGTH + 1
 ENDU
+	ds 10 ; unused, but written during received-mail alignment
+
+assert wLinkSendMailEnd - wLinkSendMail == wLinkReceivedMailEnd - wLinkReceivedMail
+assert @ <= wLinkDataEnd
 
 
 SECTION UNION "Misc 1300", WRAM0
-; link mail data
+; Received mail, patched and rearranged into individual mailmsg structs.
 	ds 500
 
-wLinkPlayerMail::
-wLinkPlayerMailPreamble:: ds SERIAL_MAIL_PREAMBLE_LENGTH
-wLinkPlayerMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
-wLinkPlayerMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
-wLinkPlayerMailPatchSet:: ds 103
-wLinkPlayerMailEnd::
-	ds 10
-wLinkOTMail::
-wLinkOTMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
-wLinkOTMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
-wOTPlayerMailPatchSet:: ds 103 + SERIAL_MAIL_PREAMBLE_LENGTH
-wLinkOTMailEnd::
-	ds 10
-
-
-SECTION UNION "Misc 1300", WRAM0
-; received link mail data
-	ds 500
-
-wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
-wLinkReceivedMailEnd:: db
+wLinkOTMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
+wLinkOTMailEnd:: db
 
 
 SECTION UNION "Misc 1300", WRAM0
