@@ -35,8 +35,8 @@ VermilionCity_MapScriptHeader:
 	bg_event 27, 15, BGEVENT_JUMPTEXT, VermilionCityPortSignText
 	bg_event 27, 24, BGEVENT_JUMPTEXT, VermilionCityPierSignText
 	bg_event 23,  7, BGEVENT_JUMPTEXT, VermilionCityBattleFactorySignText
-	bg_event 10, 23, BGEVENT_JUMPTEXT, VermilionCityAdvancedTipsSignText
-	bg_event 12, 19, BGEVENT_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
+	bg_event 12, 22, BGEVENT_JUMPTEXT, VermilionCityAdvancedTipsSignText
+	bg_event  5, 22, BGEVENT_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
 	bg_event 32,  4, BGEVENT_ITEM + MAX_ETHER, EVENT_VERMILION_CITY_HIDDEN_MAX_ETHER
 
 	def_object_events
@@ -50,7 +50,6 @@ VermilionCity_MapScriptHeader:
 	object_event 11,  6, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
 	object_event 19, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
 	object_event 28,  8, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityOfficerFText, EVENT_RESTORED_POWER_TO_KANTO
-	cuttree_event 13, 19, EVENT_VERMILION_CITY_CUT_TREE
 	object_event 30,  1, SPRITE_PEARL, SPRITEMOVEDATA_ARCH_TREE_LEFT, 0, 0, -1, PAL_NPC_COPY_BG_GREEN, OBJECTTYPE_COMMAND, end, NULL, -1
 	object_event 26,  1, SPRITE_PEARL, SPRITEMOVEDATA_ARCH_TREE_RIGHT, 0, 0, -1, PAL_NPC_COPY_BG_GREEN, OBJECTTYPE_COMMAND, end, NULL, -1
 	object_event 27, 32, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_COPY_BG_WATER, OBJECTTYPE_COMMAND, end, NULL, -1
@@ -83,6 +82,7 @@ VermilionCitySetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
+	paletteswap 0, 15, 5, 17, PAL_BG_GREEN, OverworldGreenPalettes, PokemonFanClubRoofPalettes
 	paletteswap 21, 36, 27, 39, PAL_BG_ROOF, VermilionCityRoofPalettes, SeagallopFerryRoofPalettes
 	db -1 ; end
 

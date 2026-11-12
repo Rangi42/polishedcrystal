@@ -48,6 +48,9 @@ INCLUDE "gfx/tilesets/palette-swap/plant-vendor.pal"
 GoldenrodHarborDollVendorAwningPalettes::
 INCLUDE "gfx/tilesets/palette-swap/doll-vendor.pal"
 
+PokemonFanClubRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/pokemon-fan-club-roof.pal"
+
 SilphCoRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/silph-co.pal"
 
