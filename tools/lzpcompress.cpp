@@ -85,6 +85,8 @@
 	#include <io.h>    // `_setmode`.
 #endif
 
+constexpr static bool print_costs = false; // To print costs at the start of each line
+
 // Not using `common.h` so this program can be easily copy-pasted into other projects;
 // pardon the boilerplate.
 
@@ -1154,7 +1156,7 @@ static void serialize(
 		LzCmd const &inner_base = lz_cmd(cmd);
 		assert(inner_base.len >= inner_base.min_length());
 		assert(inner_base.len <= inner_base.max_length());
-		if (0) { // To print costs at the start of each line:
+		if (print_costs) {
 			fprintf(output, "/* %2zu */", inner_base.num_encoded_bytes());
 		}
 		inner_base.serialize(
@@ -1187,7 +1189,7 @@ static void serialize(
 		LzCmd const &inner_base = lz_cmd(cmd);
 		assert(inner_base.len >= inner_base.min_length());
 		assert(inner_base.len <= inner_base.max_length());
-		if (0) { // To print costs at the start of each line:
+		if (print_costs) {
 			fprintf(output, "/* %2zu */", inner_base.num_encoded_bytes());
 		}
 		inner_base.serialize(
