@@ -86,7 +86,7 @@ Trainerpic::
 	call CopyMenuHeader
 	call MenuBox
 	call UpdateSprites
-	; BUG: missing `MAPS_COPY_*` argument in `b` for `SafeCopyTilemapAtOnce`!
+	ld b, MAPS_COPY_SET_PALS
 	call SafeCopyTilemapAtOnce
 	xor a
 	ld [wTrainerPal], a
