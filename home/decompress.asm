@@ -1,18 +1,18 @@
 FarDecompressWRA6InB::
-; Decompress LZ data from b:hl to 6:d000.
+; Decompress LZP data from b:hl to 6:d000.
 	call RunFunctionInWRA6
 FarDecompressInB::
-; Decompress LZ data from b:hl to d000.
+; Decompress LZP data from b:hl to d000.
 	ld a, b
 FarDecompress::
-; Decompress LZ data from a:hl to d000.
+; Decompress LZP data from a:hl to d000.
 	ld de, wDecompressScratch
 	assert wDecompressScratch == STARTOF(WRAMX)
 FarDecompressToDE::
-; Decompress LZ data from a:hl to de.
+; Decompress LZP data from a:hl to de.
 	call StackCallInBankA
 Decompress::
-; Decompress LZ data from hl to de.
+; Decompress LZP data from hl to de.
 	ldh a, [hVBlank]
 	cp 4
 	jr z, _Decompress
@@ -25,62 +25,33 @@ Decompress::
 	ret
 
 _Decompress:
-; Pokemon Crystal uses an lz variant for compression.
+; Pokemon Crystal uses an LZ variant we call "LZP" for compression.
 ; This is mainly (but not necessarily) used for graphics.
 
-; This function decompresses lz-compressed data from hl to de.
-
-DEF LZ_END EQU $ff ; Compressed data is terminated with $ff.
-
-; A typical control command consists of:
-
-DEF LZ_CMD EQU %11100000 ; command id (bits 5-7)
-DEF LZ_LEN EQU %00011111 ; length n   (bits 0-4)
-
-; Additional parameters are read during command execution.
+; This function decompresses LZP-compressed data from hl to de.
+; For more information on the LZP format, see the code below and in tools/lzpcompress.cpp.
 
 ; Commands:
+
+DEF LZ_CMD           EQU %11100000 ; command id (bits 5-7)
 
 DEF LZ_DATA          EQU 0 << 5 ; Read literal data for n bytes.
 DEF LZ_REPEAT        EQU 1 << 5 ; Write the same byte for n bytes.
 DEF LZ_ALTERNATE     EQU 2 << 5 ; Alternate two bytes for n bytes.
 DEF LZ_ZERO          EQU 3 << 5 ; Write 0 for n bytes.
-
-; Another class of commands reuses data from the decompressed output.
-DEF LZ_COPY          EQU 7 ; bit
-
-; These commands take a signed offset to start copying from.
-; Wraparound is simulated.
-; Positive offsets (15-bit) are added to the start address.
-; Negative offsets (7-bit) are subtracted from the current position.
-
 DEF LZ_COPY_NORMAL   EQU 4 << 5 ; Repeat n bytes from the offset.
 DEF LZ_COPY_FLIPPED  EQU 5 << 5 ; Repeat n bitflipped bytes.
 DEF LZ_COPY_REVERSED EQU 6 << 5 ; Repeat n bytes in reverse.
+DEF LZ_LONG          EQU 7 << 5 ; Extended command length in second byte.
 
-; If the value in the count needs to be larger than 5 bits,
-; LZ_LONG can be used to expand the count to 10 bits.
-DEF LZ_LONG          EQU 7 << 5
-
-; A new control command is read in bits 2-4.
-; The top two bits of the length are bits 0-1.
-; Another byte is read containing the bottom 8 bits.
-DEF LZ_LONG_CMD       EQU %00011100
-DEF LZ_LONG_EXTRA_LEN EQU %00000011
-; In other words, the structure of the command becomes
-; 111xxx0y yyyyyyyy
-; x: the new control command
-; y: the length
+DEF LZ_END EQU $ff ; Compressed data is terminated with $ff.
 
 ; Special opcode bytes ($fc-$fe)
 ; These are in the LZ_LONG range and would otherwise decode as an invalid long command.
-DEF LZ_SPECIAL_BASE          EQU $fc
-
-DEF LZ_SPECIAL_PACKHI0       EQU $fc
-DEF LZ_SPECIAL_PACK16_SHORT  EQU $fd ; (len 1..256)
-DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
-
-; For more information, refer to the code below and in extras/gfx.py.
+DEF LZ_SPECIAL_BASE         EQU $fc
+DEF LZ_SPECIAL_PACKHI0      EQU $fc
+DEF LZ_SPECIAL_PACK16_SHORT EQU $fd ; (len 1..256)
+DEF LZ_SPECIAL_PACKLO0      EQU $fe ; (len 1..256)
 
 	; Swap de and hl for speed
 	call SwapHLDE
@@ -357,7 +328,7 @@ DEF LZ_SPECIAL_PACKLO0       EQU $fe ; (len 1..256)
 	ld a, [de]
 	ld [hli], a
 	inc de
-	db $FE ; cp <imm8>, gobbling next byte.
+	jr .fill
 
 ;; LZ_ZERO: set N of the output bytes to zeros.
 
