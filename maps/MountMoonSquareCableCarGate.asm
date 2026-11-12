@@ -42,6 +42,7 @@ MountMoonSquareCableCarGate_PlayerArrives:
 	follow PLAYER, MOUNTMOONSQUARECABLECARGATE_RECEPTIONIST
 	applymovement PLAYER, .LeaveCableCarMovement
 	stopfollow
+	moveobject ROUTE3CABLECARGATE_RECEPTIONIST, 6, 6
 	setscene SCENE_MOUNTMOONSQUARECABLECARGATE_ASK_ENTER
 	end
 

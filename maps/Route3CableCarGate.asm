@@ -43,6 +43,7 @@ Route3CableCarGate_PlayerArrives:
 	follow PLAYER, ROUTE3CABLECARGATE_RECEPTIONIST
 	applymovement PLAYER, .LeaveCableCarMovement
 	stopfollow
+	moveobject ROUTE3CABLECARGATE_RECEPTIONIST, 6, 6
 	setscene SCENE_ROUTE3CABLECARGATE_ASK_ENTER
 	end
 
