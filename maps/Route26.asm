@@ -2,6 +2,7 @@ Route26_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_CMDQUEUE, Route26SetUpPaletteSwap
 
 	def_warp_events
 	warp_event  8,  5, POKEMON_LEAGUE_GATE, 3
@@ -26,6 +27,16 @@ Route26_MapScriptHeader:
 	fruittree_event 14, 54, FRUITTREE_ROUTE_26, SITRUS_BERRY, PAL_NPC_BROWN
 	itemball_event  9, 15, MAX_ELIXIR, 1, EVENT_ROUTE_26_MAX_ELIXIR
 	tmhmball_event 13, 34, TM_DRAGON_CLAW, EVENT_ROUTE_26_TM_DRAGON_CLAW
+
+Route26SetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 0, 255, 51, 63, PAL_BG_WATER, OverworldWaterPalettes, OverworldRedPalettes
+	; The unswapped NULL case will keep whichever palette was chosen by the previous case
+	paletteswap 0, 255, 65, 77, PAL_BG_WATER, NULL, DayOfWeekSiblingsHouseRoofPalettes
+	db -1 ; end
 
 GenericTrainerDragonTamerKazu:
 	generictrainer DRAGON_TAMER, KAZU, EVENT_BEAT_DRAGON_TAMER_KAZU, DragonTamerKazuSeenText, DragonTamerKazuBeatenText
