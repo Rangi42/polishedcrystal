@@ -634,7 +634,6 @@ DEF NUM_CANDIES EQU const_value - 1
 ; - KeyItemAttributes (see data/items/attributes.asm)
 ; - KeyItemIconPointers (see data/items/icon_pointers.asm)
 ; - KeyItemIconPalettes (see gfx/items/key_items.pal)
-; - DoKeyItemEffect.KeyItemEffects (see engine/items/item_effects.asm)
 	const_def 1
 	const BICYCLE      ; 01
 	const OLD_ROD      ; 02

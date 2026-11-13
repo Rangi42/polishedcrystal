@@ -314,7 +314,7 @@ CheckSelectableKeyItem:
 ; Return 1 in wItemAttributeParamBuffer and carry if wCurKeyItem can be selected.
 	ld a, KEYITEMATTR_PERMISSIONS
 	call GetKeyItemAttr
-	and a
+	and KEYITEM_SELECTABLE
 	ret z
 	ld a, 1
 	ld [wItemAttributeParamBuffer], a
