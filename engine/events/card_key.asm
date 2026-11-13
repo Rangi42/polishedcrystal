@@ -13,10 +13,10 @@ _CardKey:
 	jr nz, .nope
 	call GetFacingTileCoord
 	ld a, d ; x
-	cp 14 + 4
+	cp 15 + 4
 	jr nz, .nope
 	ld a, e ; y
-	cp 2 + 4
+	cp 5 + 4
 	jr nz, .nope
 ; Let's use the Card Key.
 	ld hl, .CardKeyScript
