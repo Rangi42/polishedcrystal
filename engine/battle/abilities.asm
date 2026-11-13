@@ -158,6 +158,7 @@ ObliviousAbility:
 
 TraceAbility:
 	call GetOpponentIgnorableAbility
+	ld b, a
 	call AbilityCanBeTraced
 	ret nz
 	push af
