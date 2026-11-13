@@ -511,6 +511,10 @@ OWPlayerInput:
 	farcall CheckStandingOnIce
 	jr c, .NoAction
 
+	ld a, [wPanningAroundTinyMap]
+	and a
+	jr nz, .PanningAroundSnowtopMountain
+
 	call CheckAPressOW
 	jr c, .Action
 
@@ -525,6 +529,16 @@ OWPlayerInput:
 	push af
 	farcall StopPlayerForEvent
 	pop af
+	scf
+	ret
+
+.PanningAroundSnowtopMountain
+	ldh a, [hJoyPressed]
+	and PAD_B
+	jr z, .NoAction
+	ld a, BANK(SnowtopMountainOutsideStopPanningScript)
+	ld hl, SnowtopMountainOutsideStopPanningScript
+	call CallScript
 	scf
 	ret
 
@@ -874,10 +888,6 @@ CheckMenuOW:
 	ldh [hMenuReturn], a
 	ldh [hMenuReturn + 1], a
 
-	ld a, [wPanningAroundTinyMap]
-	and a
-	jr nz, .PanningAroundSnowtopMountain
-
 	ldh a, [hJoyPressed]
 	bit B_PAD_SELECT, a
 	jr nz, .Select
@@ -897,16 +907,6 @@ CheckMenuOW:
 .Select:
 	ld a, BANK(SelectMenuScript)
 	ld hl, SelectMenuScript
-	call CallScript
-	scf
-	ret
-
-.PanningAroundSnowtopMountain:
-	ldh a, [hJoyPressed]
-	and PAD_B
-	ret z
-	ld a, BANK(SnowtopMountainOutsideStopPanningScript)
-	ld hl, SnowtopMountainOutsideStopPanningScript
 	call CallScript
 	scf
 	ret
