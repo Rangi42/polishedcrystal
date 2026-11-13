@@ -1481,10 +1481,13 @@ SafariZoneWest_BlockData:
 SECTION "SafariZoneHubRestHouse_BlockData", ROMX
 SafariZoneHubRestHouse_BlockData:
 SafariZoneNorthRestHouse_BlockData:
-SafariZoneEastRestHouse_BlockData:
 SafariZoneWestRestHouse1_BlockData:
 SafariZoneWestRestHouse2_BlockData:
 	INCBIN "maps/SafariZoneRestHouse.ablk.lzp"
+
+SECTION "SafariZoneEastRestHouse_BlockData", ROMX
+SafariZoneEastRestHouse_BlockData:
+	INCBIN "maps/SafariZoneEastRestHouse.ablk.lzp"
 
 SECTION "UragaChannelEast_BlockData", ROMX
 UragaChannelEast_BlockData:

@@ -5179,6 +5179,16 @@ CoupleGroup:
 	tr_mon 56, ALAKAZAM, MALE
 	end_trainer
 
+	def_trainer ERIKANDSARA1, "Erik&Sara"
+	tr_mon LEVEL_FROM_BADGES + 5, SCYTHER, MALE
+	tr_mon LEVEL_FROM_BADGES + 5, CHANSEY, FEMALE
+	end_trainer
+
+	def_trainer ERIKANDSARA2, "Sara&Erik"
+	tr_mon LEVEL_FROM_BADGES + 5, CHANSEY, FEMALE
+	tr_mon LEVEL_FROM_BADGES + 5, SCYTHER, MALE
+	end_trainer
+
 
 SECTION "GentlemanGroup", ROMX
 GentlemanGroup:
@@ -5836,6 +5846,12 @@ BurglarGroup:
 	def_trainer LOUIS, "Louis"
 	tr_mon 62, ARCANINE
 	tr_mon 62, RAPIDASH
+	end_trainer
+
+	def_trainer PIERCE, "Pierce"
+	tr_mon LEVEL_FROM_BADGES + 3, WEEZING
+	tr_mon LEVEL_FROM_BADGES + 4, MUK
+	tr_mon LEVEL_FROM_BADGES + 5, MAGMAR
 	end_trainer
 
 
