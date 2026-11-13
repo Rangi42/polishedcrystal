@@ -829,7 +829,7 @@ IsHurtText:
 	prompt
 
 IsTormentedText:
-	text "<USER>"
+	text "<TARGET>"
 	line "is tormented!"
 	prompt
 
