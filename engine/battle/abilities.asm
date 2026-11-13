@@ -1638,6 +1638,11 @@ BadDreamsAbility:
 	call GetBattleVar
 	and SLP_MASK
 	ret z
+
+	call GetOpponentIgnorableAbility
+	cp MAGIC_GUARD
+	ret z
+
 	call BeginAndShowUserAbility
 	call SwitchTurn
 	call GetEighthMaxHP
