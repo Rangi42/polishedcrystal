@@ -92,7 +92,7 @@
 	const MUSIC_SURF_KANTO                     ; 58
 	const MUSIC_VERMILION_CITY                 ; 59
 	const MUSIC_KANTO_GYM_LEADER_BATTLE        ; 5a
-	const MUSIC_LAVENDER_TOWN_RBY              ; 5b
+	const MUSIC_LAVENDER_TOWN_FRLG             ; 5b
 	const MUSIC_POKEMON_TOWER_RBY              ; 5c
 	const MUSIC_LAVENDER_TOWN                  ; 5d
 	const MUSIC_KANTO_WILD_BATTLE              ; 5e

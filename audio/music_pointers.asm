@@ -92,7 +92,7 @@ Music:
 	dba Music_SurfingRBY
 	dba Music_VermilionCity
 	dba Music_KantoGymBattle
-	dba Music_LavenderTownRBY
+	dba Music_LavenderTownFRLG
 	dba Music_PokemonTowerRBY
 	dba Music_LavenderTown
 	dba Music_KantoWildBattle
