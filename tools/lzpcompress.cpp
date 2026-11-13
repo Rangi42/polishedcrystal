@@ -1243,10 +1243,9 @@ static std::vector<std::pair<Command, ByteSpan>> deserialize(std::vector<uint8_t
 		size_t payload_start_idx;
 		Command cmd = [&payload_start_idx,
 		               &first_byte,
-		               &compressed_bytes,
 		               &byte_idx,
 		               &require_bytes,
-		               &cmd_start_idx]() -> Command {
+		               &cmd_start_idx]() -> Command { // Immediately invoked function expression.
 			if ((first_byte & 0b111'111'00) == 0b111'111'00) { // Special commands.
 				uint16_t len = require_bytes(1)[0] + LzSpecialCmd::MIN_LENGTH;
 				payload_start_idx = byte_idx;
