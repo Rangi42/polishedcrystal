@@ -1,10 +1,6 @@
 MACRO loadmapblock
 	ld a, [de]
 	inc de
-	and a
-	jr nz, .notMapBorderBlock\@
-	ldh a, [hMapBorderBlock]
-.notMapBorderBlock\@
 ENDM
 
 MACRO addmapwidthoffset
@@ -864,10 +860,6 @@ MACRO loadmappart_function_macro
 
 ; LoadOneQuarterUpperLeftMetatile
 	ld a, [de]
-	and a
-	jr nz, .notMapBorderBlock3
-	ldh a, [hMapBorderBlock]
-.notMapBorderBlock3
 	swap a
 	ld d, a
 	and $f0
