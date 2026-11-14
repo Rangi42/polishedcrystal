@@ -29,5 +29,6 @@ for (tileset, maps) in tileset_maps.items():
 			used_blocks.update(file.read())
 	unused_blocks = set(range(1, num_blocks)) - set(used_blocks)
 	unused_string = ' '.join(f'{v:02x}' for v in sorted(unused_blocks))
-	common_string = '$%02x (%d)' % tuple(used_blocks.most_common(1)[0])
-	print(f'# {tileset}: {unused_string} [most common: {common_string}]')
+	common_string = ', '.join(f'{v:02x} ({n})' for (v, n) in used_blocks.most_common(5))
+	print(f'# {tileset}: {unused_string}')
+	print(f'  [most common: {common_string}]')
