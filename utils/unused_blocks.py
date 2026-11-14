@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+from collections import Counter
 
 tileset_maps = {
 'johto_traditional': 'CherrygroveBay CherrygroveCity EcruteakCity MagnetTunnelEast MahoganyTown NewBarkTown Route26 Route27 Route29 Route30 Route31 Route32 Route32Coast Route35 Route36 Route37 Route42 Route44 VioletCity VioletOutskirts',
@@ -22,9 +23,11 @@ tileset_maps = {
 for (tileset, maps) in tileset_maps.items():
 	with open(f'data/tilesets/{tileset}_metatiles.bin', 'rb') as file:
 		num_blocks = len(file.read()) // 16
-	used_blocks = set()
+	used_blocks = Counter()
 	for map in maps.split():
 		with open(f'maps/{map}.ablk', 'rb') as file:
 			used_blocks.update(file.read())
-	unused_blocks = set(range(1, num_blocks)) - used_blocks
-	print(f'# {tileset}: {" ".join(f"{v:02x}" for v in sorted(unused_blocks))}')
+	unused_blocks = set(range(1, num_blocks)) - set(used_blocks)
+	unused_string = ' '.join(f'{v:02x}' for v in sorted(unused_blocks))
+	common_string = '$%02x (%d)' % tuple(used_blocks.most_common(1)[0])
+	print(f'# {tileset}: {unused_string} [most common: {common_string}]')
