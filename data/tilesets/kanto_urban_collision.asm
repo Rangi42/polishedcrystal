@@ -17,7 +17,7 @@
 	tilecoll WALL, WALL, WALL, WALL ; 10
 	tilecoll WALL, WALL, DOOR, WALL ; 11
 	tilecoll WALL, WALL, DOOR, WALL ; 12
-	tilecoll WALL, FLOOR, WALL, WALL ; 13
+	tilecoll WALL, FLOOR, WALL, FLOOR ; 13
 	tilecoll BUOY, WATER, BUOY, BUOY ; 14
 	tilecoll WATER, BUOY, BUOY, BUOY ; 15
 	tilecoll WARP_CARPET_LEFT, FLOOR, WARP_CARPET_LEFT, FLOOR ; 16
