@@ -321,7 +321,7 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 
 
 
-%.lzp: %
+%.lzp: % tools/lzpcompress
 	$Qtools/lzpcompress -- $< $@
 
 #%.4bpp: %.png
