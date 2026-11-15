@@ -54,6 +54,9 @@ INCLUDE "gfx/tilesets/palette-swap/pokemon-fan-club-roof.pal"
 SilphCoRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/silph-co.pal"
 
+CeladonHotelRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/celadon-hotel.pal"
+
 PowerPlantRoofPalettes:
 INCLUDE "gfx/tilesets/palette-swap/power-plant.pal"
 
