@@ -229,9 +229,6 @@ DEF LZ_SPECIAL_PACKLO0      EQU $fe ; (len 1..256)
 .relative
 	push de
 	push hl
-	; a = 127 - a
-	cpl
-	add 127 + 1
 	ld e, a
 	ld d, $ff
 

@@ -590,8 +590,7 @@ protected:
 		} else {
 			this->serialize_header(file, cmd_id, filename);
 			if (this->start_ofs < 0) {
-				// FIXME: dumping `start_ofs` as-is should be faster, actually
-				xputc((127 - this->start_ofs) & 0xff, file, filename);
+				xputc(this->start_ofs & 0xff, file, filename);
 			} else {
 				// MSB first, since its bit 7 is what selects between the two.
 				xputc(this->start_ofs >> 8, file, filename);
@@ -604,7 +603,7 @@ protected:
 	    copy_src_start(std::vector<uint8_t> const &dest, [[maybe_unused]] ByteSpan payload) const {
 		size_t source_idx;
 		if (this->start_ofs < 0) {
-			assert(127 - this->start_ofs == payload[0]);
+			assert(this->start_ofs == int8_t(payload[0]));
 			assert(this->start_ofs >= -128);
 
 			size_t distance = static_cast<size_t>(-static_cast<int32_t>(this->start_ofs));
@@ -1288,7 +1287,7 @@ static std::vector<std::pair<Command, ByteSpan>> deserialize(std::vector<uint8_t
 				auto read_copy_start_ofs = [&require_bytes]() -> int16_t {
 					uint8_t first_ofs_byte = require_bytes(1)[0];
 					if ((first_ofs_byte & 0x80) != 0) {
-						return 127 - first_ofs_byte;
+						return int8_t(first_ofs_byte);
 					} else {
 						uint8_t second_byte = require_bytes(1)[0];
 						return first_ofs_byte << 8 | second_byte;
