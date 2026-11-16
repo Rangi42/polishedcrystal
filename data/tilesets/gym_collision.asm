@@ -133,7 +133,7 @@
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 84
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; 85
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 86
-	tilecoll WALL, WALL, WALL, WALL ; 87
+	tilecoll VOID, VOID, VOID, VOID ; 87
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 88
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 89
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 8a

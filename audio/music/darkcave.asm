@@ -155,17 +155,7 @@ Music_DarkCave_branch_ea37e:
 	rest 8
 	stereo_panning TRUE, TRUE
 	volume_envelope 12, 7
-	octave 5
-	note C_, 8
-	volume_envelope 12, 4
-	note D_, 2
-	note C_, 2
-	octave 4
-	note A#, 2
-	note G_, 4
-	note A#, 2
-	octave 5
-	note D_, 4
+	sound_call Music_DarkCave_Ch2_ditty3
 	volume_envelope 11, 0
 	note C#, 4
 	volume_envelope 11, 7
@@ -173,20 +163,7 @@ Music_DarkCave_branch_ea37e:
 	volume_envelope 5, -1
 	note C_, 8
 	volume_envelope 12, 7
-	note C_, 8
-	rest 8
-	volume_envelope 12, 7
-	note C_, 8
-	volume_envelope 12, 4
-	note D_, 2
-	note C_, 2
-	octave 4
-	note A#, 2
-	note G_, 2
-	note G_, 2
-	note A#, 2
-	octave 5
-	note D_, 4
+	sound_call Music_DarkCave_Ch2_ditty2
 	volume_envelope 12, 7
 	note C#, 12
 	volume_envelope 12, 3
@@ -199,23 +176,7 @@ Music_DarkCave_branch_ea37e:
 	stereo_panning FALSE, TRUE
 	volume_envelope 12, 4
 	octave 4
-	note F_, 4
-	note D#, 2
-	note D_, 2
-	note D#, 4
-	note D_, 2
-	note C_, 2
-	note D_, 2
-	note C_, 2
-	octave 3
-	note A#, 2
-	octave 4
-	note C_, 2
-	note D_, 4
-	note C_, 2
-	octave 3
-	note A#, 2
-	octave 4
+	sound_call Music_DarkCave_Ch2_ditty1
 	note C#, 8
 	octave 3
 	note A#, 8
@@ -228,23 +189,7 @@ Music_DarkCave_branch_ea37e:
 	note A#, 2
 	octave 4
 	note C_, 8
-	note F_, 4
-	note D#, 2
-	note D_, 2
-	note D#, 4
-	note D_, 2
-	note C_, 2
-	note D_, 2
-	note C_, 2
-	octave 3
-	note A#, 2
-	octave 4
-	note C_, 2
-	note D_, 4
-	note C_, 2
-	octave 3
-	note A#, 2
-	octave 4
+	sound_call Music_DarkCave_Ch2_ditty1
 	note C#, 4
 	note C_, 2
 	note C#, 2
@@ -261,17 +206,7 @@ Music_DarkCave_branch_ea37e:
 	volume_envelope 12, 7
 	stereo_panning TRUE, TRUE
 	rest 8
-	octave 5
-	note C_, 8
-	volume_envelope 12, 4
-	note D_, 2
-	note C_, 2
-	octave 4
-	note A#, 2
-	note G_, 4
-	note A#, 2
-	octave 5
-	note D_, 4
+	sound_call Music_DarkCave_Ch2_ditty3
 	volume_envelope 4, -1
 	note C#, 8
 	volume_envelope 12, 7
@@ -279,20 +214,7 @@ Music_DarkCave_branch_ea37e:
 	volume_envelope 11, 0
 	note C_, 8
 	volume_envelope 11, 7
-	note C_, 8
-	rest 8
-	volume_envelope 12, 7
-	note C_, 8
-	volume_envelope 12, 4
-	note D_, 2
-	note C_, 2
-	octave 4
-	note A#, 2
-	note G_, 2
-	note G_, 2
-	note A#, 2
-	octave 5
-	note D_, 4
+	sound_call Music_DarkCave_Ch2_ditty2
 	volume_envelope 11, 0
 	note C#, 8
 	volume_envelope 11, 7
@@ -482,3 +404,54 @@ Music_DarkCave_branch_ea4ee:
 	drum_note 2, 2
 	drum_note 2, 2
 	sound_jump Music_DarkCave_branch_ea4ee
+
+Music_DarkCave_Ch2_ditty1:
+	note F_, 4
+	note D#, 2
+	note D_, 2
+	note D#, 4
+	note D_, 2
+	note C_, 2
+	note D_, 2
+	note C_, 2
+	octave 3
+	note A#, 2
+	octave 4
+	note C_, 2
+	note D_, 4
+	note C_, 2
+	octave 3
+	note A#, 2
+	octave 4
+	sound_ret
+
+Music_DarkCave_Ch2_ditty2:
+	note C_, 8
+	rest 8
+	volume_envelope 12, 7
+	note C_, 8
+	volume_envelope 12, 4
+	note D_, 2
+	note C_, 2
+	octave 4
+	note A#, 2
+	note G_, 2
+	note G_, 2
+	note A#, 2
+	octave 5
+	note D_, 4
+	sound_ret
+
+Music_DarkCave_Ch2_ditty3:
+	octave 5
+	note C_, 8
+	volume_envelope 12, 4
+	note D_, 2
+	note C_, 2
+	octave 4
+	note A#, 2
+	note G_, 4
+	note A#, 2
+	octave 5
+	note D_, 4
+	sound_ret

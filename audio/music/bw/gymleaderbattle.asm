@@ -81,66 +81,23 @@ GymLeaderBattleBW_Channel1:
 	octave 3
 	note E_, 2
 	note F_, 2
-	octave 1
-	note A#, 4
-	octave 3
-	note F#, 4
-	octave 1
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 1
-	note A#, 4
-	octave 3
+	sound_call GymLeaderBattleBW_Channel1_ditty3
 	note D#, 4
 	octave 1
 	note A#, 4
 	octave 3
 	note F_, 4
-	octave 1
-	note A#, 4
-	octave 3
-	note F#, 4
-	octave 1
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 1
-	note A#, 4
-	octave 3
+	sound_call GymLeaderBattleBW_Channel1_ditty3
 	note A#, 4
 	octave 1
 	note A#, 4
 	octave 3
 	note F_, 4
-	octave 1
-	note A#, 4
-	octave 3
-	note F#, 4
-	octave 1
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 1
-	note A#, 4
-	octave 3
+	sound_call GymLeaderBattleBW_Channel1_ditty3
 	note D#, 4
 	octave 4
 	note_type 12, 10, 7
-	note D_, 2
-	note D#, 2
-	note D_, 2
-	note C_, 2
-	note D_, 2
-	rest 2
-	note F_, 2
-	rest 2
-	note A#, 2
-	rest 2
-	note F_, 2
-	rest 2
-	note A#, 2
-	rest 2
+	sound_call GymLeaderBattleBW_Channel1_ditty5
 	octave 5
 	note D_, 2
 	rest 2
@@ -357,55 +314,13 @@ GymLeaderBattleBWChannel1_Loop:
 	note_type 12, 8, 7
 	rest 16
 	rest 16
-	octave 2
-	note C_, 3
-	rest 1
-	note G_, 3
-	rest 1
-	octave 3
-	note C_, 3
-	rest 1
-	octave 2
-	note G_, 3
-	rest 1
-	octave 4
-	note C_, 6
-	rest 2
-	octave 3
+	sound_call GymLeaderBattleBW_Channel1_ditty2
 	note G_, 6
 	rest 2
-	octave 2
-	note C_, 3
-	rest 1
-	note G_, 3
-	rest 1
-	octave 3
-	note C_, 3
-	rest 1
-	octave 2
-	note G_, 3
-	rest 1
-	octave 4
-	note C_, 6
-	rest 2
-	octave 3
+	sound_call GymLeaderBattleBW_Channel1_ditty2
 	note F_, 6
 	rest 2
-	octave 2
-	note C_, 3
-	rest 1
-	note G_, 3
-	rest 1
-	octave 3
-	note C_, 3
-	rest 1
-	octave 2
-	note G_, 3
-	rest 1
-	octave 4
-	note C_, 6
-	rest 2
-	octave 3
+	sound_call GymLeaderBattleBW_Channel1_ditty2
 	note A#, 6
 	rest 2
 	note A_, 6
@@ -434,77 +349,14 @@ GymLeaderBattleBWChannel1_Loop:
 	note_type 12, 8, 7
 	note D_, 8
 	octave 3
-	note D_, 2
-	note D#, 2
-	note D_, 2
-	note C_, 2
-	note D_, 2
-	rest 2
-	note F_, 2
-	rest 2
-	note A#, 2
-	rest 2
-	note F_, 2
-	rest 2
-	note A#, 2
-	rest 2
+	sound_call GymLeaderBattleBW_Channel1_ditty5
 	octave 4
 	note D_, 2
 	rest 2
 	stereo_panning TRUE, TRUE
 	octave 3
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C#, 8
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note E_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note E_, 8
-	note C_, 2
-	rest 2
-	note C#, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C#, 8
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note E_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note E_, 8
-	note C_, 2
-	rest 2
-	note C#, 2
-	rest 2
-	note C_, 2
-	rest 2
+	sound_call GymLeaderBattleBW_Channel1_ditty1
+	sound_call GymLeaderBattleBW_Channel1_ditty1
 	octave 2
 	note A#, 2
 	rest 2
@@ -513,56 +365,13 @@ GymLeaderBattleBWChannel1_Loop:
 	note A#, 2
 	rest 2
 	note B_, 8
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 2
-	octave 3
-	note D_, 2
-	rest 2
-	octave 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 2
-	octave 3
-	note D_, 8
-	octave 2
-	note A#, 2
-	rest 2
+	sound_call GymLeaderBattleBW_Channel1_ditty4
 	note B_, 2
 	rest 2
 	note A#, 2
 	rest 2
 	octave 3
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C#, 8
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note E_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	note E_, 8
-	note C_, 2
-	rest 2
-	note C#, 2
-	rest 2
-	note C_, 2
-	rest 2
+	sound_call GymLeaderBattleBW_Channel1_ditty1
 	octave 2
 	note A#, 2
 	rest 2
@@ -573,25 +382,7 @@ GymLeaderBattleBWChannel1_Loop:
 	octave 3
 	note D_, 8
 	octave 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 2
-	octave 3
-	note D_, 2
-	rest 2
-	octave 2
-	note A#, 2
-	rest 2
-	note A#, 2
-	rest 2
-	octave 3
-	note D_, 8
-	octave 2
-	note A#, 2
-	rest 2
+	sound_call GymLeaderBattleBW_Channel1_ditty4
 	octave 3
 	note C_, 2
 	rest 2
@@ -732,24 +523,10 @@ GymLeaderBattleBW_Channel2:
 	note A_, 12
 	note G_, 4
 	note F_, 12
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	note D_, 2
-	note_type 12, 9, 8
-	note E_, 16
-	note_type 12, 9, 7
-	note E_, 8
+	sound_call GymLeaderBattleBW_Channel2_ditty1
 	octave 5
 	duty_cycle 0
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	note D_, 2
-	note_type 12, 9, 8
-	note E_, 16
-	note_type 12, 9, 7
-	note E_, 8
+	sound_call GymLeaderBattleBW_Channel2_ditty1
 	duty_cycle 1
 	octave 3
 	note A#, 12
@@ -788,26 +565,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note D_, 4
 	octave 2
 	note A#, 12
-	note F_, 12
-	note A#, 4
-	octave 3
-	note C_, 4
-	note D_, 8
-	note D#, 4
-	note D_, 4
-	octave 2
-	note A#, 8
-	octave 3
-	note D_, 8
-	note C#, 12
-	octave 2
-	note A_, 12
-	octave 3
-	note C#, 8
-	note_type 12, 9, 8
-	note E_, 16
-	note_type 12, 9, 7
-	note E_, 16
+	sound_call GymLeaderBattleBW_Channel2_ditty2
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 7
 	octave 4
@@ -854,26 +612,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note A#, 4
 	note A_, 4
 	note A#, 4
-	note F_, 12
-	note A#, 4
-	octave 3
-	note C_, 4
-	note D_, 8
-	note D#, 4
-	note D_, 4
-	octave 2
-	note A#, 8
-	octave 3
-	note D_, 8
-	note C#, 12
-	octave 2
-	note A_, 12
-	octave 3
-	note C#, 8
-	note_type 12, 9, 8
-	note E_, 16
-	note_type 12, 9, 7
-	note E_, 16
+	sound_call GymLeaderBattleBW_Channel2_ditty2
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7
 	note A_, 12
@@ -955,14 +694,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note E_, 4
 	note D_, 4
 	note F_, 4
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	note D_, 2
-	note_type 12, 9, 8
-	note E_, 16
-	note_type 12, 9, 7
-	note E_, 8
+	sound_call GymLeaderBattleBW_Channel2_ditty1
 	octave 3
 	note C_, 2
 	note D_, 2
@@ -974,14 +706,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note C_, 16
 	note_type 12, 9, 7
 	note C_, 8
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	note D_, 2
-	note_type 12, 9, 8
-	note E_, 16
-	note_type 12, 9, 7
-	note E_, 8
+	sound_call GymLeaderBattleBW_Channel2_ditty1
 	stereo_panning TRUE, TRUE
 	note_type 12, 9, 8
 	note G_, 16
@@ -998,14 +723,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note A_, 12
 	note G_, 4
 	note F_, 12
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	note D_, 2
-	note_type 12, 9, 8
-	note E_, 16
-	note_type 12, 9, 7
-	note E_, 8
+	sound_call GymLeaderBattleBW_Channel2_ditty1
 	duty_cycle 2
 	note C_, 2
 	note C#, 2
@@ -1067,30 +785,14 @@ GymLeaderBattleBWChannel2_Loop:
 	note A_, 16
 	note_type 12, 9, 7
 	note A_, 16
-	note_type 12, 9, 8
-	note G_, 16
-	note_type 12, 9, 7
-	note G_, 16
-	note_type 12, 9, 8
-	note F_, 16
-	note_type 12, 9, 7
-	note F_, 16
-	note D_, 16
+	sound_call GymLeaderBattleBW_Channel2_ditty3
 	note A_, 8
 	note F_, 8
 	note_type 12, 9, 8
 	note E_, 16
 	note_type 12, 9, 7
 	note E_, 16
-	note_type 12, 9, 8
-	note G_, 16
-	note_type 12, 9, 7
-	note G_, 16
-	note_type 12, 9, 8
-	note F_, 16
-	note_type 12, 9, 7
-	note F_, 16
-	note D_, 16
+	sound_call GymLeaderBattleBW_Channel2_ditty3
 	note A_, 4
 	note F_, 12
 	note_type 12, 9, 8
@@ -1214,128 +916,24 @@ GymLeaderBattleBW_Channel3:
 	octave 2
 	note G_, 1
 	rest 1
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C#, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty4
 	note A#, 4
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C#, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty4
 	octave 3
 	note E_, 4
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C#, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty4
 	note A#, 4
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C#, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty4
 	octave 3
 	note E_, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F#, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 2
-	note A#, 4
-	octave 3
+	sound_call GymLeaderBattleBW_Channel3_ditty3
 	note D#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty3
 	note A#, 4
-	octave 3
-	note F_, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F#, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F#, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 2
-	note A#, 4
-	octave 3
+	sound_call GymLeaderBattleBW_Channel3_ditty3
 	note D#, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F#, 4
-	octave 2
-	note A#, 4
-	octave 3
-	note F_, 4
-	octave 2
-	note A#, 4
-	octave 3
+	sound_call GymLeaderBattleBW_Channel3_ditty3
 	note A#, 4
 GymLeaderBattleBWChannel3_Loop:
 	octave 2
@@ -1367,13 +965,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note G_, 4
 	note F#, 4
 	note G_, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
 	octave 1
 	note A#, 4
@@ -1391,59 +983,19 @@ GymLeaderBattleBWChannel3_Loop:
 	note F_, 4
 	note E_, 4
 	note F_, 4
-	octave 1
-	note A_, 4
-	octave 2
-	note A_, 4
-	octave 1
-	note A_, 4
-	octave 2
-	note A_, 4
-	octave 1
-	note A_, 4
-	octave 2
-	note A_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty5
 	note E_, 4
 	note A_, 4
-	octave 1
-	note A_, 4
-	octave 2
-	note A_, 4
-	octave 1
-	note A_, 4
-	octave 2
-	note A_, 4
-	octave 1
-	note A_, 4
-	octave 2
-	note A_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty5
 	note G_, 4
 	note A_, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
 	note F_, 4
 	note A#, 4
-	octave 1
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
 	note A_, 4
 	note A#, 4
@@ -1478,13 +1030,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note E_, 4
 	note D#, 4
 	note E_, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
 	note F_, 4
 	octave 3
@@ -1545,18 +1091,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A_, 4
 	note G#, 4
 	note A_, 4
-	octave 1
-	note A_, 4
-	octave 2
-	note A_, 4
-	octave 1
-	note A_, 4
-	octave 2
-	note A_, 4
-	octave 1
-	note A_, 4
-	octave 2
-	note A_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty5
 	octave 3
 	note C#, 4
 	octave 2
@@ -1572,33 +1107,15 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 1
 	rest 1
 	note A#, 2
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 1
 	rest 1
 	note A#, 2
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 1
 	rest 1
 	note A#, 2
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 1
 	rest 1
 	note A#, 2
@@ -1645,33 +1162,15 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 1
 	rest 1
 	note A#, 2
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 1
 	rest 1
 	note A#, 2
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 1
 	rest 1
 	note A#, 2
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 1
 	rest 1
 	note A#, 2
@@ -1725,100 +1224,18 @@ GymLeaderBattleBWChannel3_Loop:
 	note D#, 4
 	note E_, 4
 	note G_, 4
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 1
+	sound_call GymLeaderBattleBW_Channel3_ditty1
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
 	octave 1
 	note A#, 2
@@ -1842,13 +1259,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 3
 	note C_, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note G#, 4
 	octave 1
 	note A#, 4
@@ -1866,76 +1277,14 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note A#, 4
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty1
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note G#, 4
 	octave 1
 	note A#, 4
@@ -1945,13 +1294,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note A#, 4
 	octave 2
 	note F_, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note F_, 4
 	octave 1
 	note A#, 4
@@ -1990,53 +1333,15 @@ GymLeaderBattleBWChannel3_Loop:
 	note B_, 4
 	octave 3
 	note C_, 4
-	octave 1
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
-	octave 1
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
-	octave 2
+	sound_call GymLeaderBattleBW_Channel3_ditty2
 	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	octave 1
-	note A#, 4
-	octave 2
-	note A#, 4
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
 	note C_, 4
 	note B_, 4
@@ -2075,21 +1380,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note F_, 4
 	octave 2
 	note F_, 4
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	note D_, 4
 	note C_, 4
 	octave 2
@@ -2103,69 +1394,13 @@ GymLeaderBattleBWChannel3_Loop:
 	octave 3
 	note C_, 4
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
-	octave 2
-	note C_, 4
-	octave 3
-	note C_, 4
+	sound_call GymLeaderBattleBW_Channel3_ditty1
 	sound_jump GymLeaderBattleBWChannel3_Loop
 	sound_ret
 
@@ -2220,21 +1455,9 @@ GymLeaderBattleBW_Channel4:
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 4
-	drum_note 1, 4
+	sound_call GymLeaderBattleBW_Channel4_ditty3
+	sound_call GymLeaderBattleBW_Channel4_ditty3
+	sound_call GymLeaderBattleBW_Channel4_ditty3
 	drum_note 1, 8
 	drum_note 1, 8
 	drum_note 1, 8
@@ -2258,11 +1481,7 @@ GymLeaderBattleBW_Channel4:
 	drum_note 1, 2
 	drum_note 1, 8
 	drum_note 1, 4
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 4
-	drum_note 1, 4
+	sound_call GymLeaderBattleBW_Channel4_ditty3
 	drum_note 1, 2
 	drum_note 1, 6
 	drum_note 1, 2
@@ -2275,26 +1494,8 @@ GymLeaderBattleBW_Channel4:
 	drum_note 1, 2
 	drum_note 1, 2
 GymLeaderBattleBWChannel4_Loop:
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty1
+	sound_call GymLeaderBattleBW_Channel4_ditty1
 	drum_note 1, 8
 	drum_note 2, 8
 	drum_note 1, 4
@@ -2318,41 +1519,14 @@ GymLeaderBattleBWChannel4_Loop:
 	drum_note 2, 4
 	drum_note 2, 2
 	drum_note 2, 2
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty1
 	drum_note 3, 8
 	drum_note 2, 8
 	drum_note 1, 4
 	drum_note 1, 4
 	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty1
+	sound_call GymLeaderBattleBW_Channel4_ditty1
 	drum_note 1, 4
 	drum_note 2, 4
 	drum_note 2, 2
@@ -2364,65 +1538,17 @@ GymLeaderBattleBWChannel4_Loop:
 	drum_note 2, 4
 	drum_note 2, 2
 	drum_note 2, 2
-	drum_note 1, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty2
 	drum_note 2, 8
-	drum_note 1, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty2
 	drum_note 2, 8
-	drum_note 1, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty2
 	drum_note 2, 8
-	drum_note 1, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty2
 	drum_note 2, 8
-	drum_note 1, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty2
 	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty2
 	drum_note 2, 8
 	drum_note 3, 4
 	drum_note 2, 4
@@ -2430,53 +1556,14 @@ GymLeaderBattleBWChannel4_Loop:
 	drum_note 1, 4
 	drum_note 1, 4
 	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty2
 	drum_note 1, 8
 	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 1, 4
-	drum_note 1, 4
+	sound_call GymLeaderBattleBW_Channel4_ditty3
 	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty1
+	sound_call GymLeaderBattleBW_Channel4_ditty1
+	sound_call GymLeaderBattleBW_Channel4_ditty1
 	drum_note 1, 8
 	drum_note 2, 8
 	drum_note 1, 4
@@ -2531,25 +1618,263 @@ GymLeaderBattleBWChannel4_Loop:
 	drum_note 1, 1
 	drum_note 1, 3
 	drum_note 2, 4
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
-	drum_note 1, 8
-	drum_note 2, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 2, 8
+	sound_call GymLeaderBattleBW_Channel4_ditty1
+	sound_call GymLeaderBattleBW_Channel4_ditty1
 	sound_jump GymLeaderBattleBWChannel4_Loop
+	sound_ret
+
+GymLeaderBattleBW_Channel1_ditty1:
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note C#, 8
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note E_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	note E_, 8
+	note C_, 2
+	rest 2
+	note C#, 2
+	rest 2
+	note C_, 2
+	rest 2
+	sound_ret
+
+GymLeaderBattleBW_Channel1_ditty2:
+	octave 2
+	note C_, 3
+	rest 1
+	note G_, 3
+	rest 1
+	octave 3
+	note C_, 3
+	rest 1
+	octave 2
+	note G_, 3
+	rest 1
+	octave 4
+	note C_, 6
+	rest 2
+	octave 3
+	sound_ret
+
+GymLeaderBattleBW_Channel1_ditty3:
+	octave 1
+	note A#, 4
+	octave 3
+	note F#, 4
+	octave 1
+	note A#, 4
+	octave 3
+	note F_, 4
+	octave 1
+	note A#, 4
+	octave 3
+	sound_ret
+
+GymLeaderBattleBW_Channel1_ditty4:
+	note A#, 2
+	rest 2
+	note A#, 2
+	rest 2
+	note A#, 2
+	rest 2
+	octave 3
+	note D_, 2
+	rest 2
+	octave 2
+	note A#, 2
+	rest 2
+	note A#, 2
+	rest 2
+	octave 3
+	note D_, 8
+	octave 2
+	note A#, 2
+	rest 2
+	sound_ret
+
+GymLeaderBattleBW_Channel1_ditty5:
+	note D_, 2
+	note D#, 2
+	note D_, 2
+	note C_, 2
+	note D_, 2
+	rest 2
+	note F_, 2
+	rest 2
+	note A#, 2
+	rest 2
+	note F_, 2
+	rest 2
+	note A#, 2
+	rest 2
+	sound_ret
+
+GymLeaderBattleBW_Channel2_ditty1:
+	note E_, 2
+	note F_, 2
+	note E_, 2
+	note D_, 2
+	note_type 12, 9, 8
+	note E_, 16
+	note_type 12, 9, 7
+	note E_, 8
+	sound_ret
+
+GymLeaderBattleBW_Channel2_ditty2:
+	note F_, 12
+	note A#, 4
+	octave 3
+	note C_, 4
+	note D_, 8
+	note D#, 4
+	note D_, 4
+	octave 2
+	note A#, 8
+	octave 3
+	note D_, 8
+	note C#, 12
+	octave 2
+	note A_, 12
+	octave 3
+	note C#, 8
+	note_type 12, 9, 8
+	note E_, 16
+	note_type 12, 9, 7
+	note E_, 16
+	sound_ret
+
+GymLeaderBattleBW_Channel2_ditty3:
+	note_type 12, 9, 8
+	note G_, 16
+	note_type 12, 9, 7
+	note G_, 16
+	note_type 12, 9, 8
+	note F_, 16
+	note_type 12, 9, 7
+	note F_, 16
+	note D_, 16
+	sound_ret
+
+GymLeaderBattleBW_Channel3_ditty1:
+	note C_, 4
+	octave 3
+	note C_, 4
+	octave 2
+	note C_, 4
+	octave 3
+	note C_, 4
+	octave 2
+	note C_, 4
+	octave 3
+	note C_, 4
+	octave 2
+	note C_, 4
+	octave 3
+	note C_, 4
+	sound_ret
+
+GymLeaderBattleBW_Channel3_ditty2:
+	octave 1
+	note A#, 4
+	octave 2
+	note A#, 4
+	octave 1
+	note A#, 4
+	octave 2
+	sound_ret
+
+GymLeaderBattleBW_Channel3_ditty3:
+	octave 2
+	note A#, 4
+	octave 3
+	note F_, 4
+	octave 2
+	note A#, 4
+	octave 3
+	note F#, 4
+	octave 2
+	note A#, 4
+	octave 3
+	note F_, 4
+	octave 2
+	note A#, 4
+	octave 3
+	sound_ret
+
+GymLeaderBattleBW_Channel3_ditty4:
+	note C_, 4
+	octave 3
+	note C_, 4
+	octave 2
+	note C_, 4
+	octave 3
+	note C#, 4
+	octave 2
+	note C_, 4
+	octave 3
+	note C_, 4
+	octave 2
+	note C_, 4
+	sound_ret
+
+GymLeaderBattleBW_Channel3_ditty5:
+	octave 1
+	note A_, 4
+	octave 2
+	note A_, 4
+	octave 1
+	note A_, 4
+	octave 2
+	note A_, 4
+	octave 1
+	note A_, 4
+	octave 2
+	note A_, 4
+	sound_ret
+
+GymLeaderBattleBW_Channel4_ditty1:
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 2, 8
+	sound_ret
+
+GymLeaderBattleBW_Channel4_ditty2:
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	drum_note 2, 8
+	drum_note 1, 8
+	sound_ret
+
+GymLeaderBattleBW_Channel4_ditty3:
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 1, 4
+	drum_note 1, 4
 	sound_ret

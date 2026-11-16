@@ -92,7 +92,7 @@ Music:
 	dba Music_SurfingRBY
 	dba Music_VermilionCity
 	dba Music_KantoGymBattle
-	dba Music_LavenderTownRBY
+	dba Music_LavenderTownFRLG
 	dba Music_PokemonTowerRBY
 	dba Music_LavenderTown
 	dba Music_KantoWildBattle
@@ -122,6 +122,7 @@ Music:
 	dba Music_LookOfficer
 	dba Music_MtMoon
 	dba Music_MtMoonSquare
+	dba Music_CableCarRSE
 	dba Music_Route1
 	dba Music_PalletTown
 	dba Music_ProfOak

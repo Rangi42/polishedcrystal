@@ -13,14 +13,14 @@ SpawnPoints:
 	spawn PALLET_TOWN,                 5,  6
 	spawn VIRIDIAN_CITY,              23, 26
 	spawn PEWTER_CITY,                13, 28
-	spawn ROUTE_3,                    61,  4
+	spawn ROUTE_3,                    59,  6
 	spawn CERULEAN_CITY,              19, 16
 	spawn CERULEAN_CAPE,               9,  6
 	spawn ROUTE_10_NORTH,             11, 36
 	spawn VERMILION_CITY,              9,  4
 	spawn LAVENDER_TOWN,               5,  8
 	spawn SAFFRON_CITY,                9, 30
-	spawn CELADON_CITY,               33, 10
+	spawn CELADON_CITY,               35, 10
 	spawn FUCHSIA_CITY,               19, 28
 	spawn CINNABAR_ISLAND,            11, 16
 	spawn INDIGO_PLATEAU,             11,  6

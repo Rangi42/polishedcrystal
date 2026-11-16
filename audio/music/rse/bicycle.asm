@@ -411,47 +411,19 @@ Music_BicycleRSE_Ch2:
 	sound_call Music_BicycleRSE_Ch2_branch_2
 	octave 4
 	note E_, 2
-	octave 3
-	note B_, 2
-	note G_, 2
-	note B_, 2
-	octave 4
+	sound_call Music_BicycleRSE_Ch2_ditty1
 	note E_, 2
-	octave 3
-	note B_, 2
-	note G_, 2
-	note B_, 2
-	octave 4
+	sound_call Music_BicycleRSE_Ch2_ditty1
 	note D#, 2
-	octave 3
-	note B_, 2
-	note G_, 2
-	note B_, 2
-	octave 4
+	sound_call Music_BicycleRSE_Ch2_ditty1
 	note D#, 2
-	octave 3
-	note B_, 2
-	note G_, 2
-	note B_, 2
-	octave 4
+	sound_call Music_BicycleRSE_Ch2_ditty1
 	note D_, 2
-	octave 3
-	note B_, 2
-	note G_, 2
-	note B_, 2
-	octave 4
+	sound_call Music_BicycleRSE_Ch2_ditty1
 	note D_, 2
-	octave 3
-	note B_, 2
-	note G_, 2
-	note B_, 2
-	octave 4
+	sound_call Music_BicycleRSE_Ch2_ditty1
 	note C#, 2
-	octave 3
-	note B_, 2
-	note G_, 2
-	note B_, 2
-	octave 4
+	sound_call Music_BicycleRSE_Ch2_ditty1
 	note C#, 2
 	octave 3
 	note B_, 2
@@ -722,16 +694,7 @@ Music_BicycleRSE_Ch3:
 	note D_, 2
 	note E_, 2
 Music_BicycleRSE_Ch3_loop_main:
-	octave 3
-	note D_, 4
-	octave 4
-	note A_, 1
-	rest 3
-	octave 2
-	note A_, 4
-	octave 4
-	note A_, 1
-	rest 3
+	sound_call Music_BicycleRSE_Ch3_ditty2
 	octave 3
 	note D_, 4
 	octave 4
@@ -836,36 +799,9 @@ Music_BicycleRSE_Ch3_loop_main:
 	rest 2
 	note G_, 2
 	rest 2
-	octave 3
-	note D_, 4
-	octave 4
-	note A_, 1
-	rest 3
-	octave 2
-	note A_, 4
-	octave 4
-	note A_, 1
-	rest 3
-	octave 3
-	note D_, 4
-	octave 4
-	note A_, 1
-	rest 3
-	octave 2
-	note A_, 4
-	octave 4
-	note A_, 1
-	rest 3
-	octave 3
-	note D_, 4
-	octave 4
-	note A_, 1
-	rest 3
-	octave 2
-	note A_, 4
-	octave 4
-	note A_, 1
-	rest 3
+	sound_call Music_BicycleRSE_Ch3_ditty2
+	sound_call Music_BicycleRSE_Ch3_ditty2
+	sound_call Music_BicycleRSE_Ch3_ditty2
 	octave 5
 	note C#, 2
 	octave 4
@@ -950,31 +886,7 @@ Music_BicycleRSE_Ch3_loop_main:
 	octave 2
 	note G_, 5
 	rest 7
-	note G_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note G_, 6
-	rest 2
-	note G_, 2
-	rest 2
-	note G_, 3
-	rest 9
-	note G_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note G_, 8
-	note E_, 2
-	rest 2
-	note F#, 3
-	rest 9
-	note F#, 2
-	rest 2
-	note C#, 2
-	rest 2
-	note F#, 6
-	rest 2
+	sound_call Music_BicycleRSE_Ch3_ditty1
 	note A_, 2
 	rest 2
 	note B_, 3
@@ -988,31 +900,7 @@ Music_BicycleRSE_Ch3_loop_main:
 	rest 2
 	note G_, 3
 	rest 9
-	note G_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note G_, 6
-	rest 2
-	note G_, 2
-	rest 2
-	note G_, 3
-	rest 9
-	note G_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note G_, 8
-	note E_, 2
-	rest 2
-	note F#, 3
-	rest 9
-	note F#, 2
-	rest 2
-	note C#, 2
-	rest 2
-	note F#, 6
-	rest 2
+	sound_call Music_BicycleRSE_Ch3_ditty1
 	note A#, 2
 	rest 2
 	note B_, 3
@@ -1102,3 +990,52 @@ Music_BicycleRSE_Ch4_loop_4:
 	rest 16
 	rest 16
 	sound_jump Music_BicycleRSE_Ch4_loop_main
+
+Music_BicycleRSE_Ch2_ditty1:
+	octave 3
+	note B_, 2
+	note G_, 2
+	note B_, 2
+	octave 4
+	sound_ret
+
+Music_BicycleRSE_Ch3_ditty1:
+	note G_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	note G_, 6
+	rest 2
+	note G_, 2
+	rest 2
+	note G_, 3
+	rest 9
+	note G_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	note G_, 8
+	note E_, 2
+	rest 2
+	note F#, 3
+	rest 9
+	note F#, 2
+	rest 2
+	note C#, 2
+	rest 2
+	note F#, 6
+	rest 2
+	sound_ret
+
+Music_BicycleRSE_Ch3_ditty2:
+	octave 3
+	note D_, 4
+	octave 4
+	note A_, 1
+	rest 3
+	octave 2
+	note A_, 4
+	octave 4
+	note A_, 1
+	rest 3
+	sound_ret

@@ -388,20 +388,7 @@ Music_KantoWildBattle_branch_ed1c8:
 	transpose 0, 0
 	sound_call Music_KantoWildBattle_branch_ed340
 	octave 2
-	note C_, 2
-	rest 2
-	octave 3
-	note G_, 4
-	octave 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	octave 4
-	note C_, 4
-	octave 2
-	note C_, 2
-	rest 2
+	sound_call Music_KantoWildBattle_Ch2_ditty2
 	octave 4
 	note D#, 4
 	octave 2
@@ -409,30 +396,12 @@ Music_KantoWildBattle_branch_ed1c8:
 	rest 2
 	octave 4
 	note C#, 4
-	octave 2
-	note C#, 2
-	rest 2
-	note C#, 2
-	rest 2
-	octave 4
-	note C#, 4
-	octave 2
-	note C#, 2
-	rest 2
+	sound_call Music_KantoWildBattle_Ch2_ditty1
 	note C#, 2
 	rest 2
 	octave 4
 	note C#, 4
-	octave 2
-	note C#, 2
-	rest 2
-	note C#, 2
-	rest 2
-	octave 4
-	note C#, 4
-	octave 2
-	note C#, 2
-	rest 2
+	sound_call Music_KantoWildBattle_Ch2_ditty1
 	note C#, 2
 	rest 2
 	octave 4
@@ -456,36 +425,14 @@ Music_KantoWildBattle_branch_ed1c8:
 	rest 2
 	octave 3
 	note G#, 4
-	octave 2
-	note C#, 2
-	rest 2
-	note C#, 2
-	rest 2
-	octave 4
-	note C#, 4
-	octave 2
-	note C#, 2
-	rest 2
+	sound_call Music_KantoWildBattle_Ch2_ditty1
 	octave 3
 	note A#, 4
 	octave 2
 	note C#, 2
 	rest 2
 	sound_call Music_KantoWildBattle_branch_ed340
-	note C_, 2
-	rest 2
-	octave 3
-	note G_, 4
-	octave 2
-	note C_, 2
-	rest 2
-	note C_, 2
-	rest 2
-	octave 4
-	note C_, 4
-	octave 2
-	note C_, 2
-	rest 2
+	sound_call Music_KantoWildBattle_Ch2_ditty2
 	octave 3
 	note A#, 4
 	octave 2
@@ -1186,4 +1133,34 @@ Music_KantoWildBattle_Ch3_Part2:
 	note G#, 16
 	note G_, 16
 	note G_, 16
+	sound_ret
+
+Music_KantoWildBattle_Ch2_ditty1:
+	octave 2
+	note C#, 2
+	rest 2
+	note C#, 2
+	rest 2
+	octave 4
+	note C#, 4
+	octave 2
+	note C#, 2
+	rest 2
+	sound_ret
+
+Music_KantoWildBattle_Ch2_ditty2:
+	note C_, 2
+	rest 2
+	octave 3
+	note G_, 4
+	octave 2
+	note C_, 2
+	rest 2
+	note C_, 2
+	rest 2
+	octave 4
+	note C_, 4
+	octave 2
+	note C_, 2
+	rest 2
 	sound_ret

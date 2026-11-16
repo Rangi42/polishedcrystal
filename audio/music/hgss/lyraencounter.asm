@@ -314,22 +314,7 @@ Music_LyraEncounterHGSS_Ch3:
 	note A#, 1
 Music_LyraEncounterHGSS_Ch3_loop:
 	octave 3
-	note D#, 2
-	rest 1
-	note D#, 1
-	octave 2
-	note A#, 2
-	rest 1
-	note A#, 1
-	octave 3
-	note D_, 2
-	rest 1
-	note D_, 1
-	octave 2
-	note A#, 2
-	rest 1
-	note A#, 1
-	octave 3
+	sound_call Music_LyraEncounterHGSS_Ch3_ditty1
 	note C_, 2
 	rest 1
 	note C_, 1
@@ -370,22 +355,7 @@ Music_LyraEncounterHGSS_Ch3_loop:
 	octave 3
 	note D_, 2
 	note F_, 2
-	note D#, 2
-	rest 1
-	note D#, 1
-	octave 2
-	note A#, 2
-	rest 1
-	note A#, 1
-	octave 3
-	note D_, 2
-	rest 1
-	note D_, 1
-	octave 2
-	note A#, 2
-	rest 1
-	note A#, 1
-	octave 3
+	sound_call Music_LyraEncounterHGSS_Ch3_ditty1
 	note C#, 2
 	rest 1
 	note C#, 1
@@ -508,3 +478,22 @@ Music_LyraEncounterHGSS_Ch4_loop:
 	drum_note 4, 2
 	drum_note 4, 2
 	sound_jump Music_LyraEncounterHGSS_Ch4_loop
+
+Music_LyraEncounterHGSS_Ch3_ditty1:
+	note D#, 2
+	rest 1
+	note D#, 1
+	octave 2
+	note A#, 2
+	rest 1
+	note A#, 1
+	octave 3
+	note D_, 2
+	rest 1
+	note D_, 1
+	octave 2
+	note A#, 2
+	rest 1
+	note A#, 1
+	octave 3
+	sound_ret

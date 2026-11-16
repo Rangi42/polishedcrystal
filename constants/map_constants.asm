@@ -327,8 +327,8 @@ ENDM
 
 	newgroup                                                     ; 14
 	map_const ROUTE_2_NORTH,                              10, 18 ;  1
-	map_const ROUTE_3,                                    36, 11 ;  2
-	map_const ROUTE_3_POKECENTER_1F,                       6,  4 ;  3
+	map_const ROUTE_3,                                    38, 13 ;  2
+	map_const ROUTE_3_CABLE_CAR_GATE,                      7,  6 ;  3
 	map_const PEWTER_CITY,                                20, 19 ;  4
 	map_const PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  5
 	map_const PEWTER_GYM,                                  5,  7 ;  6
@@ -340,7 +340,7 @@ ENDM
 
 	newgroup                                                     ; 15
 	map_const OLIVINE_PORT,                               10, 10 ;  1
-	map_const VERMILION_PORT,                             15, 13 ;  2
+	map_const VERMILION_PORT,                             13, 10 ;  2
 	map_const FAST_SHIP_1F,                               16,  9 ;  3
 	map_const FAST_SHIP_CABINS_NNW_NNE_NE,                 4, 16 ;  4
 	map_const FAST_SHIP_CABINS_SW_SSW_NW,                  4, 16 ;  5
@@ -349,6 +349,7 @@ ENDM
 	map_const MOUNT_MOON_SQUARE,                          15,  9 ;  8
 	map_const MOUNT_MOON_GIFT_SHOP,                        4,  4 ;  9
 	map_const TIN_TOWER_ROOF,                              7,  9 ; 10
+	map_const MOUNT_MOON_SQUARE_CABLE_CAR_GATE,            7,  6 ; 11
 
 	newgroup                                                     ; 16
 	map_const ROUTE_22,                                   19,  9 ;  1
@@ -357,15 +358,14 @@ ENDM
 	map_const INDIGO_PLATEAU,                             12, 13 ;  4
 	map_const INDIGO_PLATEAU_POKECENTER_1F,                8,  7 ;  5
 	map_const ROUTE_26,                                   10, 54 ;  6
-	map_const ROUTE_27,                                   38,  9 ;  7
-	map_const ROUTE_28,                                   20,  9 ;  8
-	map_const WILLS_ROOM,                                  5,  9 ;  9
-	map_const KOGAS_ROOM,                                  5,  9 ; 10
-	map_const BRUNOS_ROOM,                                 5,  9 ; 11
-	map_const KARENS_ROOM,                                 5,  9 ; 12
-	map_const LANCES_ROOM,                                 7, 12 ; 13
-	map_const HALL_OF_FAME,                                5,  7 ; 14
-	map_const BELLCHIME_TRAIL,                            12,  7 ; 15
+	map_const ROUTE_28,                                   20,  9 ;  7
+	map_const WILLS_ROOM,                                  5,  9 ;  8
+	map_const KOGAS_ROOM,                                  5,  9 ;  9
+	map_const BRUNOS_ROOM,                                 5,  9 ; 10
+	map_const KARENS_ROOM,                                 5,  9 ; 11
+	map_const LANCES_ROOM,                                 7, 12 ; 12
+	map_const HALL_OF_FAME,                                5,  7 ; 13
+	map_const BELLCHIME_TRAIL,                            12,  7 ; 14
 
 	newgroup                                                     ; 17
 	map_const ROUTE_12_SOUTH,                             10, 44 ;  1
@@ -574,7 +574,6 @@ ENDM
 	map_const SAFFRON_BOOK_SPEECH_HOUSE,                   4,  4 ; 18
 	map_const SAFFRON_ORRE_SPEECH_HOUSE,                   4,  4 ; 19
 	map_const SAFFRON_RICH_SPEECH_HOUSE,                   4,  4 ; 20
-	map_const ROUTE_16_NORTH,                             11,  5 ; 21
 
 	newgroup                                                     ; 26
 	map_const ROUTE_30,                                   14, 27 ;  1
@@ -714,5 +713,9 @@ ENDM
 	newgroup                                                     ; 39
 	map_const ROUTE_35,                                   12, 18 ;  1
 	map_const ROUTE_36,                                   23,  9 ;  2
+
+	newgroup                                                     ; 40
+	map_const ROUTE_16_NORTH,                             11,  5 ;  1
+	map_const ROUTE_27,                                   38,  9 ;  2
 
 DEF NUM_MAP_GROUPS EQU const_value ; 37

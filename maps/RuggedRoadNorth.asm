@@ -18,8 +18,8 @@ RuggedRoadNorth_MapScriptHeader:
 	object_event  6, 11, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBattleGirlMei, -1
 	object_event 23, 9, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, (1 << DAY) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, RuggedRoadNorthHikerScript, -1
 	object_event 22, 10, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, (1 << MORN) | (1 << EVE), 0, OBJECTTYPE_SCRIPT, 0, RuggedRoadNorthHikerScript, -1
-	object_event 25, 10, SPRITE_FIREBREATHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuggedRoadNorthFirebreatherText, -1
-	object_event 23, 10, SPRITE_CAMPFIRE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuggedRoadNorthCampfireText, -1
+	object_event 25, 10, SPRITE_FIREBREATHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, 0, OBJECTTYPE_SCRIPT, 0, RuggedRoadNorthFirebreatherScript, -1
+	object_event 23, 10, SPRITE_CAMPFIRE, SPRITEMOVEDATA_POKEMON, 0, 0, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuggedRoadNorthCampfireText, -1
 	itemball_event  4,  4, X_ATTACK, 1, EVENT_RUGGED_ROAD_NORTH_X_ATTACK
 	itemball_event 26,  4, HYPER_POTION, 1, EVENT_RUGGED_ROAD_NORTH_HYPER_POTION
 	smashrock_event  5,  8
@@ -124,7 +124,23 @@ RuggedRoadNorthHikerScript:
 	para "Here, take it!"
 	done
 
-RuggedRoadNorthFirebreatherText:
+RuggedRoadNorthFirebreatherScript:
+	checktime (1 << EVE) | (1 << NITE)
+	iftrue_jumptextfaceplayer .FireText
+	jumpthistextfaceplayer
+
+	text "Huff… puff…"
+
+	para "Gathering wood for"
+	line "a fire tonight is"
+	cont "hard work,"
+
+	para "but without it,"
+	line "I'd turn into a"
+	cont "NeverMeltIce."
+	done
+
+.FireText:
 	text "Huff… puff…"
 
 	para "Keeping this fire"

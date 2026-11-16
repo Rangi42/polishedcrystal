@@ -82,7 +82,7 @@ TilesetKantoNorthAnim::
 	tileframe DoNothing
 	tileframe AnimateKantoFlowerTile,         $0:03
 	tileframe DoNothing
-	tileframe AnimateWaterfallTiles,          $1:0c
+	tileframe AnimateWaterfallTiles,          $1:20
 	tileframe StandingTileFrame8
 	tileframe DoneTileAnimation
 

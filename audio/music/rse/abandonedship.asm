@@ -604,14 +604,7 @@ Music_AbandonedShipRSE_Ch4:
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
+	sound_call Music_AbandonedShipRSE_Ch4_ditty1
 	drum_note 3, 1
 Music_AbandonedShipRSE_branch_1:
 	drum_speed 12
@@ -622,14 +615,7 @@ Music_AbandonedShipRSE_branch_1:
 	drum_note 3, 1
 	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	drum_speed 6
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
+	sound_call Music_AbandonedShipRSE_Ch4_ditty1
 	sound_loop 4, Music_AbandonedShipRSE_branch_1
 Music_AbandonedShipRSE_branch_2:
 	drum_speed 12
@@ -642,14 +628,7 @@ Music_AbandonedShipRSE_branch_2:
 	drum_note 3, 1
 	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	drum_speed 6
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
+	sound_call Music_AbandonedShipRSE_Ch4_ditty1
 	drum_speed 12
 	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	drum_note 3, 1
@@ -667,14 +646,7 @@ Music_AbandonedShipRSE_branch_2:
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 3, 1
-	drum_note 3, 1
-	drum_note 3, 1
+	sound_call Music_AbandonedShipRSE_Ch4_ditty1
 	drum_note 3, 1
 	sound_jump Music_AbandonedShipRSE_branch_1
 
@@ -688,4 +660,15 @@ Music_AbandonedShipRSE_branch_eeb6b:
 	drum_note 3, 2
 	drum_note 2, 1
 	drum_note 2, 1
+	sound_ret
+
+Music_AbandonedShipRSE_Ch4_ditty1:
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_ret

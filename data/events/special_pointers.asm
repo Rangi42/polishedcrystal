@@ -116,6 +116,7 @@ SpecialsPointers::
 	add_special SpecialBuenasPassword
 	add_special Special_SampleKenjiBreakCountdown
 	add_special SpecialBeastsCheck
+	add_special UpdateEusineVisibility
 	add_special SpecialBirdsCheck
 	add_special SpecialDuoCheck
 	add_special AskRememberPassword
@@ -177,3 +178,4 @@ SpecialsPointers::
 	add_special ItemManiac_SelectQuantity
 	add_special MultiplyMoneyByQuantity
 	add_special TakeItemFromMemWithQuantity
+	add_special Special_CableCar

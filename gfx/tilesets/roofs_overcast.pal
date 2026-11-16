@@ -40,6 +40,7 @@ if !DEF(MONOCHROME)
 	RGB  20,15,07, 16,09,07,  08,06,06, 05,04,04,  15,11,06, 12,07,05  ; Ecruteak Shrine Outside
 	RGB  16,19,13, 07,14,08,  07,09,09, 02,06,03,  14,13,04, 06,09,03  ; Cerulean Cape (Sea Cottage)
 	RGB  20,14,17, 18,08,06,  10,07,13, 09,04,05,  17,10,13, 15,06,04  ; Route 35+36 (National Park)
+	RGB  23,15,17, 17,11,11,  12,08,11, 09,06,07,  23,13,13, 16,09,08  ; Route 16 North
 else
 rept NUM_MAP_GROUPS + 1
 	MONOCHROME_RGB_TWO

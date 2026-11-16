@@ -2781,7 +2781,7 @@ ShowBadgeIcon:
 	ld [hli], a
 	inc a
 	ld [hl], a
-	ld b, 2
+	ld b, MAPS_COPY_SET_DEFAULT_PALS
 	jmp SafeCopyTilemapAtOnce
 
 Script_setquantity:

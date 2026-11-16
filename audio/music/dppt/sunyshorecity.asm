@@ -58,20 +58,7 @@ Music_SunyshoreCityDPPt_Ch1:
 	note E_, 2
 	note E_, 2
 	note D#, 4
-	duty_cycle 2
-	volume_envelope 8, 7
-	octave 2
-	note A_, 6
-	note G#, 4
-	note F#, 2
-	note E_, 2
-	note F#, 2
-	note B_, 4
-	octave 3
-	note E_, 4
-	note B_, 6
-	note A_, 1
-	note G#, 1
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty4
 Music_SunyshoreCityDPPt_Ch1_loop:
 	note_type 6, 8, 7
 	note G#, 1
@@ -127,29 +114,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note F#, 2
 	note G#, 2
 	note B_, 6
-	duty_cycle 0
-	volume_envelope 8, 1
-	octave 4
-	note E_, 2
-	note D#, 2
-	octave 5
-	note E_, 2
-	octave 4
-	note E_, 6
-	note E_, 2
-	note D#, 2
-	octave 5
-	note E_, 2
-	octave 4
-	note E_, 2
-	note E_, 2
-	octave 5
-	note E_, 2
-	octave 4
-	note E_, 2
-	octave 5
-	note E_, 2
-	duty_cycle 1
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty1
 	volume_envelope 10, 1
 	octave 2
 	note F#, 2
@@ -166,29 +131,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note A_, 2
 	octave 3
 	note C#, 6
-	duty_cycle 0
-	volume_envelope 8, 1
-	octave 4
-	note E_, 2
-	note D#, 2
-	octave 5
-	note E_, 2
-	octave 4
-	note E_, 6
-	note E_, 2
-	note D#, 2
-	octave 5
-	note E_, 2
-	octave 4
-	note E_, 2
-	note E_, 2
-	octave 5
-	note E_, 2
-	octave 4
-	note E_, 2
-	octave 5
-	note E_, 2
-	duty_cycle 1
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty1
 	volume_envelope 10, 1
 	octave 2
 	note C#, 4
@@ -251,29 +194,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note E_, 2
 	note F#, 2
 	note E_, 6
-	duty_cycle 0
-	volume_envelope 8, 1
-	octave 4
-	note E_, 2
-	note D#, 2
-	octave 5
-	note E_, 2
-	octave 4
-	note E_, 6
-	note E_, 2
-	note D#, 2
-	octave 5
-	note E_, 2
-	octave 4
-	note E_, 2
-	note E_, 2
-	octave 5
-	note E_, 2
-	octave 4
-	note E_, 2
-	octave 5
-	note E_, 2
-	duty_cycle 1
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty1
 	volume_envelope 10, 3
 	octave 3
 	note C#, 2
@@ -353,12 +274,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note E_, 1
 	note G#, 1
 	duty_cycle 1
-	volume_envelope 10, 1
-	note C#, 2
-	rest 2
-	volume_envelope 6, 1
-	note C#, 2
-	rest 2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty5
 	note C#, 2
 	rest 2
 	octave 4
@@ -375,21 +291,9 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 5
 	note C#, 2
 	rest 2
-	volume_envelope 10, 1
-	note C#, 2
-	rest 2
-	volume_envelope 6, 1
-	note C#, 2
-	rest 2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty5
 	octave 4
-	note B_, 2
-	rest 2
-	volume_envelope 10, 1
-	note B_, 2
-	rest 2
-	volume_envelope 6, 1
-	note B_, 2
-	rest 2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty3
 	volume_envelope 10, 1
 	note B_, 2
 	rest 2
@@ -414,14 +318,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	rest 2
 	note A_, 2
 	rest 2
-	note B_, 2
-	rest 2
-	volume_envelope 10, 1
-	note B_, 2
-	rest 2
-	volume_envelope 6, 1
-	note B_, 2
-	rest 2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty3
 	note B_, 2
 	rest 2
 	note A_, 2
@@ -434,68 +331,18 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	rest 2
 	octave 5
 	note C#, 2
-	rest 2
-	volume_envelope 10, 1
-	note E_, 2
-	rest 2
-	volume_envelope 6, 1
-	note E_, 2
-	rest 2
-	note E_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	octave 4
-	note A_, 2
-	rest 2
-	note A_, 2
-	rest 2
-	note B_, 2
-	rest 2
-	volume_envelope 10, 1
-	note B_, 2
-	rest 2
-	volume_envelope 6, 1
-	note B_, 2
-	rest 2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty3
 	octave 5
 	note C#, 2
 	rest 2
-	volume_envelope 10, 1
-	note C#, 2
-	rest 2
-	volume_envelope 6, 1
-	note C#, 2
-	rest 2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty5
 	volume_envelope 10, 1
 	note D_, 2
 	rest 2
 	volume_envelope 6, 1
 	note D_, 2
-	rest 2
-	volume_envelope 10, 1
-	note E_, 2
-	rest 2
-	volume_envelope 6, 1
-	note E_, 2
-	rest 2
-	note E_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	note D_, 2
-	rest 2
-	octave 4
-	note A_, 2
-	rest 2
-	note A_, 2
-	rest 2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty2
 	note A#, 2
 	rest 2
 	volume_envelope 10, 1
@@ -504,14 +351,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	volume_envelope 6, 1
 	note A#, 2
 	rest 2
-	note B_, 2
-	rest 2
-	volume_envelope 10, 1
-	note B_, 2
-	rest 2
-	volume_envelope 6, 1
-	note B_, 2
-	rest 2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty3
 	volume_envelope 10, 1
 	octave 5
 	note C#, 2
@@ -519,12 +359,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	volume_envelope 6, 1
 	note D_, 2
 	rest 2
-	volume_envelope 10, 1
-	note C#, 2
-	rest 2
-	volume_envelope 6, 1
-	note C#, 2
-	rest 2
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty5
 	volume_envelope 9, 7
 	octave 3
 	note_type 12, 9, 7
@@ -565,20 +400,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note B_, 6
 	note A_, 16
 	rest 10
-	duty_cycle 2
-	volume_envelope 8, 7
-	octave 2
-	note A_, 6
-	note G#, 4
-	note F#, 2
-	note E_, 2
-	note F#, 2
-	note B_, 4
-	octave 3
-	note E_, 4
-	note B_, 6
-	note A_, 1
-	note G#, 1
+	sound_call Music_SunyshoreCityDPPt_Ch1_ditty4
 	sound_jump Music_SunyshoreCityDPPt_Ch1_loop
 
 Music_SunyshoreCityDPPt_Ch2:
@@ -588,50 +410,12 @@ Music_SunyshoreCityDPPt_Ch2:
 	rest 2
 	duty_cycle 1
 	octave 5
-	note G#, 2
-	volume_envelope 7, 1
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	volume_envelope 12, 1
-	note G#, 2
-	volume_envelope 7, 1
-	note G#, 2
-	note G#, 2
-	volume_envelope 12, 1
+	sound_call Music_SunyshoreCityDPPt_Ch2_ditty1
 	note G#, 2
 	volume_envelope 7, 1
 	note G#, 2
 	volume_envelope 12, 1
-	note G#, 2
-	volume_envelope 7, 1
-	note G#, 2
-	volume_envelope 12, 1
-	note G#, 2
-	volume_envelope 7, 1
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	note G#, 2
-	volume_envelope 12, 1
-	note G#, 2
-	volume_envelope 7, 1
-	note G#, 2
-	note G#, 2
-	volume_envelope 12, 1
-	note G#, 2
-	volume_envelope 7, 1
-	note G#, 2
-	volume_envelope 12, 1
+	sound_call Music_SunyshoreCityDPPt_Ch2_ditty1
 	note F#, 4
 	volume_envelope 12, 6
 	vibrato 8, 2, 3
@@ -834,20 +618,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	octave 3
 	note_type 12, 12, 7
 	note A_, 16
-	note_type 15, 12, 7
-	rest 16
-	note_type 12, 12, 7
-	note F#, 4
-	note A_, 4
-	octave 4
-	note D_, 4
-	note E_, 6
-	note D_, 4
-	octave 3
-	note A_, 4
-	octave 4
-	note D_, 2
-	octave 3
+	sound_call Music_SunyshoreCityDPPt_Ch2_ditty2
 	note A_, 10
 	note F_, 2
 	note G_, 2
@@ -875,20 +646,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	octave 3
 	note A_, 16
 	volume_envelope 12, 7
-	note_type 15, 12, 7
-	rest 16
-	note_type 12, 12, 7
-	note F#, 4
-	note A_, 4
-	octave 4
-	note D_, 4
-	note E_, 6
-	note D_, 4
-	octave 3
-	note A_, 4
-	octave 4
-	note D_, 2
-	octave 3
+	sound_call Music_SunyshoreCityDPPt_Ch2_ditty2
 	note_type 6, 12, 7
 	note G#, 1
 	note A_, 16
@@ -955,137 +713,11 @@ Music_SunyshoreCityDPPt_Ch3:
 	volume_envelope 1, 0
 	note F#, 1
 	note G#, 1
-	octave 1
-	note A_, 2
-	rest 1
-	octave 2
-	note A_, 1
-	rest 1
-	note A_, 1
-	note E_, 1
-	note C#, 1
-	octave 1
-	note A_, 1
-	octave 2
-	note E_, 1
-	rest 1
-	octave 3
-	note C#, 2
-	rest 1
-	octave 2
-	note A_, 1
-	note F#, 1
-	note E_, 2
-	rest 1
-	octave 3
-	note E_, 1
-	rest 1
-	note E_, 1
-	octave 2
-	note B_, 1
-	note G#, 1
-	octave 3
-	note E_, 1
-	octave 2
-	note B_, 1
-	rest 1
-	note G#, 1
-	note E_, 1
-	rest 1
+	sound_call Music_SunyshoreCityDPPt_Ch3_ditty2
 	note D#, 1
 	rest 1
 Music_SunyshoreCityDPPt_Ch3_loop:
-	note D_, 1
-	rest 1
-	note D_, 3
-	rest 1
-	octave 3
-	note C#, 1
-	note D_, 1
-	octave 2
-	note D_, 1
-	note A_, 1
-	rest 1
-	octave 3
-	note D_, 1
-	rest 1
-	octave 2
-	note A_, 1
-	octave 3
-	note C#, 1
-	rest 1
-	octave 2
-	note D_, 1
-	rest 1
-	note D_, 3
-	rest 1
-	octave 1
-	note B_, 1
-	octave 2
-	note C#, 1
-	note D_, 1
-	octave 3
-	note D_, 1
-	octave 2
-	note D_, 1
-	octave 3
-	note D_, 1
-	octave 2
-	note B_, 1
-	rest 1
-	note G#, 1
-	note D_, 1
-	note C#, 2
-	rest 1
-	note C#, 2
-	rest 1
-	octave 1
-	note B_, 1
-	octave 2
-	note C_, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note C_, 1
-	rest 1
-	octave 3
-	note C#, 1
-	octave 2
-	note C#, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note G#, 1
-	rest 1
-	note F#, 1
-	rest 1
-	note F#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 1
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note A_, 1
-	note A#, 1
-	note B_, 2
-	rest 1
-	note B_, 1
-	octave 2
+	sound_call Music_SunyshoreCityDPPt_Ch3_ditty1
 	note B_, 1
 	rest 1
 	note F#, 1
@@ -1106,136 +738,10 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	note G#, 1
 	note E_, 1
 	rest 1
-	octave 1
-	note A_, 2
-	rest 1
-	octave 2
-	note A_, 1
-	rest 1
-	note A_, 1
-	note E_, 1
-	note C#, 1
-	octave 1
-	note A_, 1
-	octave 2
-	note E_, 1
-	rest 1
-	octave 3
-	note C#, 2
-	rest 1
-	octave 2
-	note A_, 1
-	note F#, 1
-	note E_, 2
-	rest 1
-	octave 3
-	note E_, 1
-	rest 1
-	note E_, 1
-	octave 2
-	note B_, 1
-	note G#, 1
-	octave 3
-	note E_, 1
-	octave 2
-	note B_, 1
-	rest 1
-	note G#, 1
-	note E_, 1
-	rest 1
+	sound_call Music_SunyshoreCityDPPt_Ch3_ditty2
 	note D#, 1
 	rest 1
-	note D_, 1
-	rest 1
-	note D_, 3
-	rest 1
-	octave 3
-	note C#, 1
-	note D_, 1
-	octave 2
-	note D_, 1
-	note A_, 1
-	rest 1
-	octave 3
-	note D_, 1
-	rest 1
-	octave 2
-	note A_, 1
-	octave 3
-	note C#, 1
-	rest 1
-	octave 2
-	note D_, 1
-	rest 1
-	note D_, 3
-	rest 1
-	octave 1
-	note B_, 1
-	octave 2
-	note C#, 1
-	note D_, 1
-	octave 3
-	note D_, 1
-	octave 2
-	note D_, 1
-	octave 3
-	note D_, 1
-	octave 2
-	note B_, 1
-	rest 1
-	note G#, 1
-	note D_, 1
-	note C#, 2
-	rest 1
-	note C#, 2
-	rest 1
-	octave 1
-	note B_, 1
-	octave 2
-	note C_, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note C_, 1
-	rest 1
-	octave 3
-	note C#, 1
-	octave 2
-	note C#, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note G#, 1
-	rest 1
-	note F#, 1
-	rest 1
-	note F#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 1
-	note B_, 1
-	rest 1
-	octave 1
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 1
-	note A_, 1
-	note A#, 1
-	note B_, 2
-	rest 1
-	note B_, 1
-	octave 2
+	sound_call Music_SunyshoreCityDPPt_Ch3_ditty1
 	note A#, 1
 	note B_, 1
 	note F#, 1
@@ -1379,33 +885,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	note A_, 1
 	note E_, 1
 	volume_envelope 1, 2
-	note A_, 2
-	rest 16
-	note A_, 2
-	rest 2
-	note E_, 2
-	note A_, 2
-	rest 2
-	note A_, 2
-	rest 2
-	note G_, 2
-	rest 14
-	note G_, 2
-	rest 4
-	note G_, 2
-	rest 2
-	note G_, 2
-	rest 4
-	note F#, 2
-	rest 16
-	note F#, 2
-	rest 2
-	note D_, 2
-	note F#, 2
-	rest 2
-	note F#, 2
-	rest 2
-	note F_, 2
+	sound_call Music_SunyshoreCityDPPt_Ch3_ditty3
 	rest 16
 	note E_, 2
 	rest 2
@@ -1416,33 +896,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	rest 2
 	note B_, 2
 	rest 2
-	note A_, 2
-	rest 16
-	note A_, 2
-	rest 2
-	note E_, 2
-	note A_, 2
-	rest 2
-	note A_, 2
-	rest 2
-	note G_, 2
-	rest 14
-	note G_, 2
-	rest 4
-	note G_, 2
-	rest 2
-	note G_, 2
-	rest 4
-	note F#, 2
-	rest 16
-	note F#, 2
-	rest 2
-	note D_, 2
-	note F#, 2
-	rest 2
-	note F#, 2
-	rest 2
-	note F_, 2
+	sound_call Music_SunyshoreCityDPPt_Ch3_ditty3
 	rest 14
 	note G_, 2
 	rest 12
@@ -1461,43 +915,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	note E_, 2
 	rest 2
 	volume_envelope 1, 0
-	octave 1
-	note A_, 2
-	rest 1
-	octave 2
-	note A_, 1
-	rest 1
-	note A_, 1
-	note E_, 1
-	note C#, 1
-	octave 1
-	note A_, 1
-	octave 2
-	note E_, 1
-	rest 1
-	octave 3
-	note C#, 2
-	rest 1
-	octave 2
-	note A_, 1
-	note F#, 1
-	note E_, 2
-	rest 1
-	octave 3
-	note E_, 1
-	rest 1
-	note E_, 1
-	octave 2
-	note B_, 1
-	note G#, 1
-	octave 3
-	note E_, 1
-	octave 2
-	note B_, 1
-	rest 1
-	note G#, 1
-	note E_, 1
-	rest 1
+	sound_call Music_SunyshoreCityDPPt_Ch3_ditty2
 	note D#, 2
 	sound_jump Music_SunyshoreCityDPPt_Ch3_loop
 
@@ -1506,159 +924,20 @@ Music_SunyshoreCityDPPt_Ch4:
 	drum_speed 12
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 4, 4
-	drum_note 8, 4
-	drum_note 8, 4
-	drum_note 8, 4
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 8, 4
-	drum_note 8, 4
-	drum_note 8, 4
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 8, 2
-	drum_note 4, 2
-	drum_note 4, 4
-	drum_note 4, 4
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty5
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty5
 	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty1
 Music_SunyshoreCityDPPt_Ch4_loop:
 	drum_note 8, 2
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty1
 	drum_note 8, 2
-	drum_note 1, 1
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty1
 	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 8, 2
-	drum_note 1, 2
-	drum_note 8, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 1, 1
-	drum_note 5, 3
-	drum_note 5, 2
-	drum_note 1, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 1, 1
-	drum_note 5, 5
-	drum_note 5, 2
-	drum_note 1, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 1, 1
-	drum_note 5, 3
-	drum_note 5, 2
-	drum_note 1, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 1, 1
-	drum_note 5, 5
-	drum_note 5, 2
-	drum_note 1, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 1, 1
-	drum_note 5, 3
-	drum_note 5, 2
-	drum_note 1, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 1, 1
-	drum_note 5, 5
-	drum_note 5, 2
-	drum_note 1, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 1, 1
-	drum_note 5, 3
-	drum_note 5, 2
-	drum_note 1, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 1, 1
-	drum_note 5, 5
-	drum_note 5, 2
-	drum_note 1, 2
-	drum_note 5, 2
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty1
+Music_SunyshoreCityDPPt_Ch4_loop_opt1:
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty2
+	sound_loop 4, Music_SunyshoreCityDPPt_Ch4_loop_opt1
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 12, 4
@@ -1677,30 +956,9 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	drum_note 8, 4
 	drum_note 8, 4
 	drum_note 8, 4
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty4
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty4
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty4
 	drum_note 12, 2
 	drum_note 8, 1
 	rest 1
@@ -1713,24 +971,7 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	drum_note 8, 1
 	rest 1
 	drum_note 12, 2
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 12, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	rest 1
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty3
 	drum_note 8, 1
 	rest 1
 	drum_note 4, 2
@@ -1768,24 +1009,7 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 2
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 12, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	rest 1
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty3
 	drum_note 8, 1
 	rest 1
 	drum_note 4, 2
@@ -1795,24 +1019,7 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 2
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 8, 1
-	rest 1
-	drum_note 12, 2
-	drum_note 4, 2
-	drum_note 8, 1
-	rest 1
+	sound_call Music_SunyshoreCityDPPt_Ch4_ditty3
 	drum_note 12, 2
 	drum_note 4, 2
 	drum_note 12, 2
@@ -1888,3 +1095,376 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	drum_note 8, 4
 	drum_speed 12
 	sound_jump Music_SunyshoreCityDPPt_Ch4_loop
+
+Music_SunyshoreCityDPPt_Ch1_ditty1:
+	duty_cycle 0
+	volume_envelope 8, 1
+	octave 4
+	note E_, 2
+	note D#, 2
+	octave 5
+	note E_, 2
+	octave 4
+	note E_, 6
+	note E_, 2
+	note D#, 2
+	octave 5
+	note E_, 2
+	octave 4
+	note E_, 2
+	note E_, 2
+	octave 5
+	note E_, 2
+	octave 4
+	note E_, 2
+	octave 5
+	note E_, 2
+	duty_cycle 1
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch1_ditty2:
+	rest 2
+	volume_envelope 10, 1
+	note E_, 2
+	rest 2
+	volume_envelope 6, 1
+	note E_, 2
+	rest 2
+	note E_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	note D_, 2
+	rest 2
+	octave 4
+	note A_, 2
+	rest 2
+	note A_, 2
+	rest 2
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch1_ditty3:
+	note B_, 2
+	rest 2
+	volume_envelope 10, 1
+	note B_, 2
+	rest 2
+	volume_envelope 6, 1
+	note B_, 2
+	rest 2
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch1_ditty4:
+	duty_cycle 2
+	volume_envelope 8, 7
+	octave 2
+	note A_, 6
+	note G#, 4
+	note F#, 2
+	note E_, 2
+	note F#, 2
+	note B_, 4
+	octave 3
+	note E_, 4
+	note B_, 6
+	note A_, 1
+	note G#, 1
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch1_ditty5:
+	volume_envelope 10, 1
+	note C#, 2
+	rest 2
+	volume_envelope 6, 1
+	note C#, 2
+	rest 2
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch2_ditty1:
+	note G#, 2
+	volume_envelope 7, 1
+	note G#, 2
+	note G#, 2
+	note G#, 2
+	note G#, 2
+	note G#, 2
+	note G#, 2
+	note G#, 2
+	note G#, 2
+	volume_envelope 12, 1
+	note G#, 2
+	volume_envelope 7, 1
+	note G#, 2
+	note G#, 2
+	volume_envelope 12, 1
+	note G#, 2
+	volume_envelope 7, 1
+	note G#, 2
+	volume_envelope 12, 1
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch2_ditty2:
+	note_type 15, 12, 7
+	rest 16
+	note_type 12, 12, 7
+	note F#, 4
+	note A_, 4
+	octave 4
+	note D_, 4
+	note E_, 6
+	note D_, 4
+	octave 3
+	note A_, 4
+	octave 4
+	note D_, 2
+	octave 3
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch3_ditty1:
+	note D_, 1
+	rest 1
+	note D_, 3
+	rest 1
+	octave 3
+	note C#, 1
+	note D_, 1
+	octave 2
+	note D_, 1
+	note A_, 1
+	rest 1
+	octave 3
+	note D_, 1
+	rest 1
+	octave 2
+	note A_, 1
+	octave 3
+	note C#, 1
+	rest 1
+	octave 2
+	note D_, 1
+	rest 1
+	note D_, 3
+	rest 1
+	octave 1
+	note B_, 1
+	octave 2
+	note C#, 1
+	note D_, 1
+	octave 3
+	note D_, 1
+	octave 2
+	note D_, 1
+	octave 3
+	note D_, 1
+	octave 2
+	note B_, 1
+	rest 1
+	note G#, 1
+	note D_, 1
+	note C#, 2
+	rest 1
+	note C#, 2
+	rest 1
+	octave 1
+	note B_, 1
+	octave 2
+	note C_, 1
+	octave 3
+	note C#, 1
+	octave 2
+	note C_, 1
+	rest 1
+	octave 3
+	note C#, 1
+	octave 2
+	note C#, 1
+	octave 3
+	note C#, 1
+	octave 2
+	note G#, 1
+	rest 1
+	note F#, 1
+	rest 1
+	note F#, 1
+	rest 1
+	note G#, 1
+	rest 1
+	note G#, 1
+	rest 1
+	note A_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note A#, 1
+	rest 1
+	note B_, 1
+	rest 1
+	octave 1
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 1
+	note A_, 1
+	note A#, 1
+	note B_, 2
+	rest 1
+	note B_, 1
+	octave 2
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch3_ditty2:
+	octave 1
+	note A_, 2
+	rest 1
+	octave 2
+	note A_, 1
+	rest 1
+	note A_, 1
+	note E_, 1
+	note C#, 1
+	octave 1
+	note A_, 1
+	octave 2
+	note E_, 1
+	rest 1
+	octave 3
+	note C#, 2
+	rest 1
+	octave 2
+	note A_, 1
+	note F#, 1
+	note E_, 2
+	rest 1
+	octave 3
+	note E_, 1
+	rest 1
+	note E_, 1
+	octave 2
+	note B_, 1
+	note G#, 1
+	octave 3
+	note E_, 1
+	octave 2
+	note B_, 1
+	rest 1
+	note G#, 1
+	note E_, 1
+	rest 1
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch3_ditty3:
+	note A_, 2
+	rest 16
+	note A_, 2
+	rest 2
+	note E_, 2
+	note A_, 2
+	rest 2
+	note A_, 2
+	rest 2
+	note G_, 2
+	rest 14
+	note G_, 2
+	rest 4
+	note G_, 2
+	rest 2
+	note G_, 2
+	rest 4
+	note F#, 2
+	rest 16
+	note F#, 2
+	rest 2
+	note D_, 2
+	note F#, 2
+	rest 2
+	note F#, 2
+	rest 2
+	note F_, 2
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch4_ditty1:
+	drum_note 8, 2
+	drum_note 1, 1
+	drum_note 8, 2
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 8, 2
+	drum_note 1, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 1, 1
+	drum_note 8, 2
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 8, 2
+	drum_note 1, 2
+	drum_note 8, 2
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch4_ditty2:
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 1, 1
+	drum_note 5, 3
+	drum_note 5, 2
+	drum_note 1, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 1, 1
+	drum_note 5, 5
+	drum_note 5, 2
+	drum_note 1, 2
+	drum_note 5, 2
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch4_ditty3:
+	drum_note 8, 1
+	rest 1
+	drum_note 8, 1
+	rest 1
+	drum_note 8, 1
+	rest 1
+	drum_note 8, 1
+	rest 1
+	drum_note 8, 1
+	rest 1
+	drum_note 8, 1
+	rest 1
+	drum_note 8, 1
+	rest 1
+	drum_note 12, 2
+	drum_note 4, 2
+	drum_note 8, 1
+	rest 1
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch4_ditty4:
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	sound_ret
+
+Music_SunyshoreCityDPPt_Ch4_ditty5:
+	drum_note 4, 4
+	drum_note 8, 4
+	drum_note 8, 4
+	drum_note 8, 4
+	drum_note 8, 2
+	drum_note 4, 2
+	drum_note 8, 2
+	drum_note 4, 2
+	drum_note 4, 4
+	drum_note 4, 4
+	sound_ret

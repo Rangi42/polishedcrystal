@@ -85,43 +85,13 @@ Music_NuggetBridgeHGSS_Loop1:
 	note E_, 2
 	note A_, 2
 	note G#, 2
-	volume_envelope 11, 2
-	note B_, 2
-	note B_, 1
-	octave 3
-	note C#, 1
-	note D_, 2
-	note D_, 1
-	note E_, 1
-	note F#, 2
-	note D_, 2
-	note A_, 4
-	note G#, 3
-	note F#, 1
-	note E_, 6
-	volume_envelope 11, 1
-	octave 2
+	sound_call Music_NuggetBridgeHGSS_Ch1_ditty1
 	note E_, 1
 	note F#, 1
 	note G#, 2
 	note F#, 1
 	note E_, 1
-	volume_envelope 11, 2
-	note B_, 2
-	note B_, 1
-	octave 3
-	note C#, 1
-	note D_, 2
-	note D_, 1
-	note E_, 1
-	note F#, 2
-	note D_, 2
-	note A_, 4
-	note G#, 3
-	note F#, 1
-	note E_, 6
-	volume_envelope 11, 1
-	octave 2
+	sound_call Music_NuggetBridgeHGSS_Ch1_ditty1
 	note G#, 1
 	note A_, 1
 	note B_, 2
@@ -216,33 +186,9 @@ Music_NuggetBridgeHGSS_Loop2:
 	duty_cycle 1
 	note F#, 2
 	note E_, 2
-	note D_, 2
-	note D_, 1
-	note E_, 1
-	note F#, 2
-	note F#, 1
-	note G#, 1
-	note A_, 4
-	octave 4
-	note C#, 4
-	octave 3
-	note B_, 3
-	note A_, 1
-	note G#, 12
+	sound_call Music_NuggetBridgeHGSS_Ch2_ditty1
 	duty_cycle 0
-	note D_, 2
-	note D_, 1
-	note E_, 1
-	note F#, 2
-	note F#, 1
-	note G#, 1
-	note A_, 4
-	octave 4
-	note C#, 4
-	octave 3
-	note B_, 3
-	note A_, 1
-	note G#, 12
+	sound_call Music_NuggetBridgeHGSS_Ch2_ditty1
 	duty_cycle 2
 	note D_, 2
 	note D_, 1
@@ -493,16 +439,7 @@ Music_NuggetBridgeHGSS_Ch4:
 	drum_speed 4
 	toggle_noise 0
 	drum_note 10, 16
-	rest 2
-	drum_note 3, 3
-	drum_note 3, 3
-	drum_note 3, 12
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
+	sound_call Music_NuggetBridgeHGSS_Ch4_ditty1
 Music_NuggetBridgeHGSS_Loop4:
 	drum_note 3, 16
 	rest 2
@@ -514,16 +451,7 @@ Music_NuggetBridgeHGSS_Loop4:
 	drum_note 3, 3
 	drum_note 3, 3
 	drum_note 3, 16
-	rest 2
-	drum_note 3, 3
-	drum_note 3, 3
-	drum_note 3, 12
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
+	sound_call Music_NuggetBridgeHGSS_Ch4_ditty1
 	drum_note 3, 16
 	rest 2
 	drum_note 3, 3
@@ -539,40 +467,19 @@ Music_NuggetBridgeHGSS_Loop4:
 	rest 16
 	rest 16
 	rest 16
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 6
-	drum_note 3, 3
-	drum_note 3, 3
-	drum_note 3, 12
-	drum_note 3, 12
+	sound_call Music_NuggetBridgeHGSS_Ch4_ditty2
 	drum_note 3, 12
 	drum_note 3, 6
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 6
-	drum_note 3, 3
-	drum_note 3, 3
-	drum_note 3, 12
-	drum_note 3, 12
+	sound_call Music_NuggetBridgeHGSS_Ch4_ditty2
 	drum_note 3, 12
 	drum_note 3, 6
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 12
-	drum_note 3, 6
-	drum_note 3, 3
-	drum_note 3, 3
-	drum_note 3, 12
-	drum_note 3, 12
+	sound_call Music_NuggetBridgeHGSS_Ch4_ditty2
 	drum_note 3, 6
 	drum_note 3, 2
 	drum_note 3, 2
@@ -599,6 +506,45 @@ Music_NuggetBridgeHGSS_Loop4:
 	drum_note 3, 3
 	drum_note 3, 3
 	drum_note 10, 16
+	sound_call Music_NuggetBridgeHGSS_Ch4_ditty1
+	sound_jump Music_NuggetBridgeHGSS_Loop4
+
+Music_NuggetBridgeHGSS_Ch1_ditty1:
+	volume_envelope 11, 2
+	note B_, 2
+	note B_, 1
+	octave 3
+	note C#, 1
+	note D_, 2
+	note D_, 1
+	note E_, 1
+	note F#, 2
+	note D_, 2
+	note A_, 4
+	note G#, 3
+	note F#, 1
+	note E_, 6
+	volume_envelope 11, 1
+	octave 2
+	sound_ret
+
+Music_NuggetBridgeHGSS_Ch2_ditty1:
+	note D_, 2
+	note D_, 1
+	note E_, 1
+	note F#, 2
+	note F#, 1
+	note G#, 1
+	note A_, 4
+	octave 4
+	note C#, 4
+	octave 3
+	note B_, 3
+	note A_, 1
+	note G#, 12
+	sound_ret
+
+Music_NuggetBridgeHGSS_Ch4_ditty1:
 	rest 2
 	drum_note 3, 3
 	drum_note 3, 3
@@ -609,4 +555,15 @@ Music_NuggetBridgeHGSS_Loop4:
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
-	sound_jump Music_NuggetBridgeHGSS_Loop4
+	sound_ret
+
+Music_NuggetBridgeHGSS_Ch4_ditty2:
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 12
+	drum_note 3, 6
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 3, 12
+	drum_note 3, 12
+	sound_ret

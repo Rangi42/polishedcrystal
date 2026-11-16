@@ -408,32 +408,8 @@ Music_EliteFourBattleSM_Ch2_loop_4:
 	note C#, 4
 	note F_, 4
 	octave 3
-	note A#, 2
-	note A_, 4
-	octave 4
-	note E_, 2
-	note D#, 4
-	note D#, 2
-	note D_, 2
-	note C#, 2
-	note C_, 4
-	octave 3
-	note G#, 2
-	note G_, 4
-	note B_, 4
-	note A#, 2
-	note A_, 4
-	octave 4
-	note E_, 2
-	note D#, 4
-	note D#, 2
-	note D_, 2
-	note C#, 2
-	note C_, 4
-	octave 3
-	note G#, 2
-	note G_, 4
-	note B_, 4
+	sound_call Music_EliteFourBattleSM_Ch2_ditty1
+	sound_call Music_EliteFourBattleSM_Ch2_ditty1
 	sound_jump Music_EliteFourBattleSM_Ch2_loop_main
 
 Music_EliteFourBattleSM_Ch3:
@@ -512,44 +488,17 @@ Music_EliteFourBattleSM_Ch3_loop_4:
 	note E_, 2
 	note B_, 2
 	sound_loop 13, Music_EliteFourBattleSM_Ch3_loop_4
-	octave 3
-	note C_, 2
-	octave 2
-	note B_, 2
-	octave 3
-	note D_, 2
-	note C#, 2
-	note C_, 2
-	octave 2
-	note B_, 2
+	sound_call Music_EliteFourBattleSM_Ch3_ditty1
 Music_EliteFourBattleSM_Ch3_loop_5:
 	note E_, 2
 	note B_, 2
 	sound_loop 5, Music_EliteFourBattleSM_Ch3_loop_5
-	octave 3
-	note C_, 2
-	octave 2
-	note B_, 2
-	octave 3
-	note D_, 2
-	note C#, 2
-	note C_, 2
-	octave 2
-	note B_, 2
+	sound_call Music_EliteFourBattleSM_Ch3_ditty1
 Music_EliteFourBattleSM_Ch3_loop_6:
 	note E_, 2
 	note B_, 2
 	sound_loop 5, Music_EliteFourBattleSM_Ch3_loop_6
-	octave 3
-	note C_, 2
-	octave 2
-	note B_, 2
-	octave 3
-	note D_, 2
-	note C#, 2
-	note C_, 2
-	octave 2
-	note B_, 2
+	sound_call Music_EliteFourBattleSM_Ch3_ditty1
 Music_EliteFourBattleSM_Ch3_loop_7:
 	note E_, 2
 	note B_, 2
@@ -672,3 +621,32 @@ Music_EliteFourBattleSM_Ch4_loop_3:
 	drum_note 1, 1
 	sound_loop 8, Music_EliteFourBattleSM_Ch4_loop_3
 	sound_jump Music_EliteFourBattleSM_Ch4_loop_main
+
+Music_EliteFourBattleSM_Ch2_ditty1:
+	note A#, 2
+	note A_, 4
+	octave 4
+	note E_, 2
+	note D#, 4
+	note D#, 2
+	note D_, 2
+	note C#, 2
+	note C_, 4
+	octave 3
+	note G#, 2
+	note G_, 4
+	note B_, 4
+	sound_ret
+
+Music_EliteFourBattleSM_Ch3_ditty1:
+	octave 3
+	note C_, 2
+	octave 2
+	note B_, 2
+	octave 3
+	note D_, 2
+	note C#, 2
+	note C_, 2
+	octave 2
+	note B_, 2
+	sound_ret

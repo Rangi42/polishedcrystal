@@ -328,102 +328,26 @@ Music_BikeRiding_branch_7dd17:
 	rest 1
 	note G_, 1
 	rest 1
-	note F_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note F_, 1
-	rest 1
+	sound_call Music_BikeRiding_Ch3_ditty3
 	note A_, 1
 	rest 1
 	note E_, 1
 	rest 1
 	note A_, 1
 	rest 1
-	note D_, 1
-	rest 1
-	note F_, 1
-	rest 1
-	octave 3
-	note A_, 1
-	rest 1
-	octave 4
-	note F_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note F_, 1
-	rest 1
+	sound_call Music_BikeRiding_Ch3_ditty2
 	note E_, 1
 	rest 1
 	note F_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note F_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note F_, 1
-	rest 1
+	sound_call Music_BikeRiding_Ch3_ditty1
+	sound_call Music_BikeRiding_Ch3_ditty3
 	note G_, 1
 	rest 1
 	note A_, 1
 	rest 1
 	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note F_, 1
-	rest 1
-	octave 3
-	note A_, 1
-	rest 1
-	octave 4
-	note F_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note F_, 1
-	rest 1
+	sound_call Music_BikeRiding_Ch3_ditty1
+	sound_call Music_BikeRiding_Ch3_ditty2
 	note D_, 1
 	rest 1
 	note F_, 1
@@ -464,40 +388,11 @@ Music_BikeRiding_branch_7dd17:
 	octave 4
 	note G_, 1
 	rest 1
+	sound_call Music_BikeRiding_Ch3_ditty2
 	note D_, 1
 	rest 1
 	note F_, 1
-	rest 1
-	octave 3
-	note A_, 1
-	rest 1
-	octave 4
-	note F_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note F_, 1
-	rest 1
-	note D_, 1
-	rest 1
-	note F_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
-	note E_, 1
-	rest 1
-	note G_, 1
-	rest 1
+	sound_call Music_BikeRiding_Ch3_ditty1
 	note D_, 1
 	rest 1
 	note F_, 1
@@ -532,16 +427,7 @@ Music_BikeRiding_branch_7dd17:
 	rest 1
 	note G_, 1
 	rest 1
-	note F_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note C_, 1
-	rest 1
-	note A_, 1
-	rest 1
-	note F_, 1
-	rest 1
+	sound_call Music_BikeRiding_Ch3_ditty3
 	note A_, 1
 	rest 1
 	note A_, 1
@@ -698,4 +584,54 @@ Music_BikeRiding_branch_7dec2:
 	rest 2
 	drum_note 9, 1
 	drum_note 9, 1
+	sound_ret
+
+Music_BikeRiding_Ch3_ditty1:
+	rest 1
+	note E_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note E_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note E_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	sound_ret
+
+Music_BikeRiding_Ch3_ditty2:
+	note D_, 1
+	rest 1
+	note F_, 1
+	rest 1
+	octave 3
+	note A_, 1
+	rest 1
+	octave 4
+	note F_, 1
+	rest 1
+	note D_, 1
+	rest 1
+	note F_, 1
+	rest 1
+	sound_ret
+
+Music_BikeRiding_Ch3_ditty3:
+	note F_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	note C_, 1
+	rest 1
+	note A_, 1
+	rest 1
+	note F_, 1
+	rest 1
 	sound_ret

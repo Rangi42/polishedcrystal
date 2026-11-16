@@ -11,7 +11,7 @@ This script parses the *on-disk* LZ stream as implemented by:
 - home/decompress.asm
 - tools/lz/uncomp.c
 
-It understands the extended opcode bytes $fc-$fe.
+It understands the special opcode bytes $fc-$fe.
 
 Usage:
   utils/lz_analyze_pack16.py [root]
@@ -39,12 +39,12 @@ LZ_COPY_FLIPPED  = 5
 LZ_COPY_REVERSED = 6
 LZ_LONG          = 7
 
-# Extended opcode bytes ($fc-$fe)
-LZ_EXT_MASK = 0b11111100
-LZ_EXT_BASE = 0xFC
-LZ_EXT_PACKHI0 = LZ_EXT_BASE + 0  # 0xFC
-LZ_EXT_PACK16_SHORT = LZ_EXT_BASE + 1  # 0xFD
-LZ_EXT_PACKLO0 = LZ_EXT_BASE + 2  # 0xFE
+# Special opcode bytes ($fc-$fe)
+LZ_SPECIAL_MASK         = 0b11111100
+LZ_SPECIAL_BASE         = 0xFC
+LZ_SPECIAL_PACKHI0      = LZ_SPECIAL_BASE + 0  # 0xFC
+LZ_SPECIAL_PACK16_SHORT = LZ_SPECIAL_BASE + 1  # 0xFD
+LZ_SPECIAL_PACKLO0      = LZ_SPECIAL_BASE + 2  # 0xFE
 
 PACK16_TABLE = bytes(
     [
@@ -88,32 +88,32 @@ def parse_stream(buf: bytes) -> Iterator[ParsedCommand]:
         if b0 == LZ_END:
             return
 
-        # Extended opcode bytes: $fc-$fe
-        if (b0 & LZ_EXT_MASK) == LZ_EXT_BASE:
+        # Special opcode bytes: $fc-$fe
+        if (b0 & LZ_SPECIAL_MASK) == LZ_SPECIAL_BASE:
             if i >= n:
                 return
             len_code = buf[i]
             i += 1
 
-            if b0 == LZ_EXT_PACKHI0:
+            if b0 == LZ_SPECIAL_PACKHI0:
                 out_len = len_code + 1
                 payload = _payload_len_packed(out_len)
                 if i + payload > n:
                     return
                 i += payload
-                yield ParsedCommand("ext_packhi0", out_len=out_len, comp_len=2 + payload)
+                yield ParsedCommand("special_packhi0", out_len=out_len, comp_len=2 + payload)
                 continue
 
-            if b0 == LZ_EXT_PACKLO0:
+            if b0 == LZ_SPECIAL_PACKLO0:
                 out_len = len_code + 1
                 payload = _payload_len_packed(out_len)
                 if i + payload > n:
                     return
                 i += payload
-                yield ParsedCommand("ext_packlo0", out_len=out_len, comp_len=2 + payload)
+                yield ParsedCommand("special_packlo0", out_len=out_len, comp_len=2 + payload)
                 continue
 
-            if b0 == LZ_EXT_PACK16_SHORT:
+            if b0 == LZ_SPECIAL_PACK16_SHORT:
                 out_len = len_code + 1
             else:
                 # 0xFF handled above; 0xFC..0xFE only expected
@@ -123,7 +123,7 @@ def parse_stream(buf: bytes) -> Iterator[ParsedCommand]:
             if i + payload > n:
                 return
             i += payload
-            yield ParsedCommand("ext_pack16", out_len=out_len, comp_len=2 + payload)
+            yield ParsedCommand("special_pack16", out_len=out_len, comp_len=2 + payload)
             continue
 
         cmd = (b0 >> 5) & 0x7
@@ -298,7 +298,7 @@ def main() -> int:
             print(f"  estimated upper bound: {run_savings_bestcase:,} bytes")
 
     print("\nCommand mix (compressed bytes by kind)")
-    for kind in ("data", "repeat", "alternate", "zero", "copy", "ext_packhi0", "ext_packlo0", "ext_pack16"):
+    for kind in ("data", "repeat", "alternate", "zero", "copy", "special_packhi0", "special_packlo0", "special_pack16"):
         comp = totals.get(f"comp_{kind}", 0)
         out = totals.get(f"out_{kind}", 0)
         if comp or out:

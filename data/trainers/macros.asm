@@ -49,6 +49,9 @@ endc
 
 MACRO dv_spread
 	def_dvs \#
+	for x, 1, EACH_SPREAD_STAT
+		static_assert VV_{STATS{x}} >= 0 && VV_{STATS{x}} <= 15, "Invalid DV: {d:VV_{STATS{x}}}"
+	endr
 	REDEF DV_SPREAD_FOR EQUS "DV_SPREAD_FOR_"
 	for x, 1, EACH_SPREAD_STAT
 		REDEF DV_SPREAD_FOR EQUS #DV_SPREAD_FOR ++ "_{d:VV_{STATS{x}}}"
@@ -65,6 +68,9 @@ ENDM
 
 MACRO ev_spread
 	def_evs \#
+	for x, 1, EACH_SPREAD_STAT
+		static_assert VV_{STATS{x}} & %11 == 0, "Too-precise EV: {d:VV_{STATS{x}}}"
+	endr
 	REDEF EV_SPREAD_FOR EQUS "EV_SPREAD_FOR_"
 	for x, 1, EACH_SPREAD_STAT
 		REDEF EV_SPREAD_FOR EQUS #EV_SPREAD_FOR ++ "_{d:VV_{STATS{x}}}"

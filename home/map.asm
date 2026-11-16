@@ -498,7 +498,7 @@ LoadBlockData::
 	ldh [hVBlank], a
 	ld hl, wOverworldMapBlocks
 	ld bc, wOverworldMapBlocksEnd - wOverworldMapBlocks
-	xor a
+	ld a, [wMapBorderBlock]
 	rst ByteFill
 	call ChangeMap
 	call FillMapConnections

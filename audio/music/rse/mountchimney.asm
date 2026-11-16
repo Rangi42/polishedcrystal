@@ -152,50 +152,22 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	sound_call Music_MountChimneyRSE_Ch1_branch_1
 	octave 3
 	volume_envelope 10, 2
-	note D#, 2
-	note D#, 2
-	note A#, 2
-	note A_, 2
-	volume_envelope 10, 4
-	note G#, 4
-	volume_envelope 10, 2
-	note G_, 4
+	sound_call Music_MountChimneyRSE_Ch1_ditty1
 	note G_, 2
 	note G#, 4
 	note G#, 2
 	volume_envelope 10, 7
 	note G_, 8
 	volume_envelope 10, 2
-	note D#, 2
-	note D#, 2
-	note A#, 2
-	note A_, 2
-	volume_envelope 10, 4
-	note G#, 4
-	volume_envelope 10, 2
-	note G_, 4
+	sound_call Music_MountChimneyRSE_Ch1_ditty1
 	note G_, 2
 	note G#, 4
 	note G#, 2
 	volume_envelope 10, 7
 	note B_, 8
 	volume_envelope 10, 2
-	note D#, 2
-	note D#, 2
-	note A#, 2
-	note A_, 2
-	volume_envelope 10, 4
-	note G#, 4
-	volume_envelope 10, 2
-	note G_, 4
-	note D#, 2
-	note D#, 2
-	note A#, 2
-	note A_, 2
-	volume_envelope 10, 4
-	note G#, 4
-	volume_envelope 10, 2
-	note G_, 4
+	sound_call Music_MountChimneyRSE_Ch1_ditty1
+	sound_call Music_MountChimneyRSE_Ch1_ditty1
 	note D#, 2
 	note D#, 2
 	note A#, 2
@@ -491,15 +463,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	sound_call Music_MountChimneyRSE_Ch2_branch_1
 	octave 3
 	volume_envelope 10, 2
-	note G#, 2
-	note G#, 2
-	octave 4
-	note F#, 2
-	note F_, 2
-	volume_envelope 10, 4
-	note D#, 4
-	volume_envelope 10, 2
-	note D_, 4
+	sound_call Music_MountChimneyRSE_Ch2_ditty1
 	note D_, 2
 	note D#, 4
 	note D#, 2
@@ -508,15 +472,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	duty_cycle 0
 	octave 3
 	volume_envelope 10, 2
-	note G#, 2
-	note G#, 2
-	octave 4
-	note F#, 2
-	note F_, 2
-	volume_envelope 10, 4
-	note D#, 4
-	volume_envelope 10, 2
-	note D_, 4
+	sound_call Music_MountChimneyRSE_Ch2_ditty1
 	note D_, 2
 	note D#, 4
 	note D#, 2
@@ -525,26 +481,10 @@ Music_MountChimneyRSE_Ch2_loop:
 	duty_cycle 1
 	octave 3
 	volume_envelope 10, 2
-	note G#, 2
-	note G#, 2
-	octave 4
-	note F#, 2
-	note F_, 2
-	volume_envelope 10, 4
-	note D#, 4
-	volume_envelope 10, 2
-	note D_, 4
+	sound_call Music_MountChimneyRSE_Ch2_ditty1
 	duty_cycle 0
 	octave 3
-	note G#, 2
-	note G#, 2
-	octave 4
-	note F#, 2
-	note F_, 2
-	volume_envelope 10, 4
-	note D#, 4
-	volume_envelope 10, 2
-	note D_, 4
+	sound_call Music_MountChimneyRSE_Ch2_ditty1
 	duty_cycle 1
 	octave 3
 	note G#, 2
@@ -935,43 +875,12 @@ Music_MountChimneyRSE_Ch3_loop:
 	octave 1
 	note G#, 4
 	rest 4
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	octave 2
-	note G#, 4
-	octave 1
+	sound_call Music_MountChimneyRSE_Ch3_ditty1
 	note G#, 4
 	rest 4
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	octave 2
-	note G#, 4
-	octave 1
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	octave 2
-	note G#, 4
-	octave 1
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	octave 2
-	note G#, 4
-	octave 1
-	note G#, 1
-	rest 1
-	note G#, 1
-	rest 1
-	octave 2
-	note G#, 4
-	octave 1
+Music_MountChimneyRSE_Ch3_loop_opt1:
+	sound_call Music_MountChimneyRSE_Ch3_ditty1
+	sound_loop 4, Music_MountChimneyRSE_Ch3_loop_opt1
 	note G#, 1
 	rest 1
 	note G#, 1
@@ -1165,35 +1074,11 @@ Music_MountChimneyRSE_Ch4:
 	drum_note 5, 2
 	drum_note 3, 2
 	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_MountChimneyRSE_Ch4_ditty3
 	drum_note 5, 2
 	drum_note 5, 2
 	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_MountChimneyRSE_Ch4_ditty1
 Music_MountChimneyRSE_Ch4_loop:
 	sound_call Music_MountChimneyRSE_Ch4_branch_1
 	sound_call Music_MountChimneyRSE_Ch4_branch_1
@@ -1205,20 +1090,7 @@ Music_MountChimneyRSE_Ch4_loop:
 	drum_note 2, 1
 	drum_note 5, 4
 	drum_note 3, 4
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 3, 1
-	drum_note 2, 1
-	drum_note 5, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 5, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 5, 4
+	sound_call Music_MountChimneyRSE_Ch4_ditty2
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 5, 4
@@ -1237,20 +1109,7 @@ Music_MountChimneyRSE_Ch4_loop:
 	drum_note 5, 4
 	drum_note 3, 2
 	drum_note 3, 2
-	drum_note 5, 2
-	drum_note 2, 2
-	drum_note 2, 2
-	drum_note 3, 1
-	drum_note 2, 1
-	drum_note 5, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 5, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 5, 4
+	sound_call Music_MountChimneyRSE_Ch4_ditty2
 	drum_note 12, 4
 	drum_note 5, 6
 	drum_note 2, 1
@@ -1347,24 +1206,9 @@ Music_MountChimneyRSE_Ch4_loop:
 	drum_note 5, 2
 	drum_note 5, 2
 	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 5, 2
+	sound_call Music_MountChimneyRSE_Ch4_ditty3
+	sound_call Music_MountChimneyRSE_Ch4_ditty3
+	sound_call Music_MountChimneyRSE_Ch4_ditty3
 	drum_note 3, 2
 	rest 2
 	drum_note 5, 2
@@ -1380,26 +1224,7 @@ Music_MountChimneyRSE_Ch4_loop:
 	drum_note 3, 2
 	drum_note 5, 2
 	drum_note 3, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 5, 2
-	drum_note 3, 2
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 5, 2
-	drum_note 5, 2
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
-	drum_note 2, 1
+	sound_call Music_MountChimneyRSE_Ch4_ditty1
 	sound_jump Music_MountChimneyRSE_Ch4_loop
 
 Music_MountChimneyRSE_Ch4_branch_1:
@@ -1485,5 +1310,87 @@ Music_MountChimneyRSE_Ch4_branch_1:
 	drum_note 9, 2
 	drum_note 10, 2
 	drum_note 3, 2
+	drum_note 5, 2
+	sound_ret
+
+Music_MountChimneyRSE_Ch1_ditty1:
+	note D#, 2
+	note D#, 2
+	note A#, 2
+	note A_, 2
+	volume_envelope 10, 4
+	note G#, 4
+	volume_envelope 10, 2
+	note G_, 4
+	sound_ret
+
+Music_MountChimneyRSE_Ch2_ditty1:
+	note G#, 2
+	note G#, 2
+	octave 4
+	note F#, 2
+	note F_, 2
+	volume_envelope 10, 4
+	note D#, 4
+	volume_envelope 10, 2
+	note D_, 4
+	sound_ret
+
+Music_MountChimneyRSE_Ch3_ditty1:
+	note G#, 1
+	rest 1
+	note G#, 1
+	rest 1
+	octave 2
+	note G#, 4
+	octave 1
+	sound_ret
+
+Music_MountChimneyRSE_Ch4_ditty1:
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 5, 2
+	drum_note 3, 2
+	drum_note 5, 2
+	drum_note 3, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	sound_ret
+
+Music_MountChimneyRSE_Ch4_ditty2:
+	drum_note 5, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 3, 1
+	drum_note 2, 1
+	drum_note 5, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 5, 2
+	drum_note 3, 2
+	drum_note 5, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 5, 4
+	sound_ret
+
+Music_MountChimneyRSE_Ch4_ditty3:
+	drum_note 3, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	drum_note 5, 2
 	sound_ret

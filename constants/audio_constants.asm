@@ -120,3 +120,6 @@ DEF MUSIC_FADE_IN_F EQU 7
 	const COND_ADVANTAGE    ; 1
 	const COND_DISADVANTAGE ; 2
 	const COND_FINAL_MON    ; 3
+
+; tempo offset (allows tempo amounts to fit in one byte)
+DEF TEMPO_OFFSET EQU 50

@@ -14,6 +14,10 @@ TrainerHouse1F_MapScriptHeader:
 	bg_event  7,  0, BGEVENT_JUMPTEXT, TrainerHouseSign1Text
 	bg_event  9,  0, BGEVENT_JUMPTEXT, TrainerHouseSign2Text
 	bg_event  4,  6, BGEVENT_JUMPTEXT, TrainerHouseIllegibleText
+	bg_event  8,  5, BGEVENT_READ, PokemonJournalKarenScript
+	bg_event  9,  5, BGEVENT_READ, PokemonJournalKarenScript
+	bg_event  8,  9, BGEVENT_READ, PokemonJournalKarenScript
+	bg_event  9,  9, BGEVENT_READ, PokemonJournalKarenScript
 
 	def_object_events
 	object_event  1, 10, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FReceptionistText, -1
@@ -21,6 +25,25 @@ TrainerHouse1F_MapScriptHeader:
 	object_event  6,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FCooltrainerFText, -1
 	object_event  7,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FYoungsterText, -1
 	object_event  2,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FGentlemanText, -1
+
+PokemonJournalKarenScript:
+	setflag ENGINE_READ_KAREN_JOURNAL
+	jumpthistext
+
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Elite Four Karen!"
+
+	para "Karen supposedly"
+	line "began training"
+
+	para "Dark-type #mon"
+	line "to help overcome"
+
+	para "their sinister"
+	line "reputation."
+	done
 
 TrainerHouse1FReceptionistText:
 	text "Welcome to Trainer"

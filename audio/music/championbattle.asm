@@ -40,26 +40,11 @@ Music_ChampionBattle_branch_ea9fa:
 	volume_envelope 11, 7
 	octave 3
 	note D#, 4
-	volume_envelope 11, 2
-	octave 2
-	note A#, 2
-	note A#, 2
-	volume_envelope 11, 7
-	octave 3
+	sound_call Music_ChampionBattle_Ch1_ditty1
 	note E_, 4
-	volume_envelope 11, 2
-	octave 2
-	note A#, 2
-	note A#, 2
-	volume_envelope 11, 7
-	octave 3
+	sound_call Music_ChampionBattle_Ch1_ditty1
 	note F#, 4
-	volume_envelope 11, 2
-	octave 2
-	note A#, 2
-	note A#, 2
-	volume_envelope 11, 7
-	octave 3
+	sound_call Music_ChampionBattle_Ch1_ditty1
 	note G#, 4
 	volume_envelope 10, 0
 	note A#, 8
@@ -80,36 +65,21 @@ Music_ChampionBattle_branch_eaa35:
 	volume_envelope 11, 7
 	note F#, 4
 Music_ChampionBattle_branch_eaa3d:
-	volume_envelope 11, 2
-	note E_, 2
-	note E_, 2
-	volume_envelope 11, 7
+	sound_call Music_ChampionBattle_Ch1_ditty2
 	note G#, 4
 	sound_loop 2, Music_ChampionBattle_branch_eaa3d
-	volume_envelope 11, 2
-	note E_, 2
-	note E_, 2
-	volume_envelope 11, 7
+	sound_call Music_ChampionBattle_Ch1_ditty2
 	note B_, 4
 	sound_call Music_ChampionBattle_branch_eab0f
 	note E_, 2
 	note E_, 2
 	volume_envelope 11, 7
 	note F#, 4
-	volume_envelope 11, 2
-	note E_, 2
-	note E_, 2
-	volume_envelope 11, 7
+	sound_call Music_ChampionBattle_Ch1_ditty2
 	note G#, 4
-	volume_envelope 11, 2
-	note E_, 2
-	note E_, 2
-	volume_envelope 11, 7
+	sound_call Music_ChampionBattle_Ch1_ditty2
 	note B_, 4
-	volume_envelope 11, 2
-	note E_, 2
-	note E_, 2
-	volume_envelope 11, 7
+	sound_call Music_ChampionBattle_Ch1_ditty2
 	octave 4
 	note E_, 4
 	sound_call Music_ChampionBattle_branch_eab24
@@ -168,12 +138,7 @@ Music_ChampionBattle_branch_eaa3d:
 	note D#, 16
 	note C#, 16
 Music_ChampionBattle_branch_eaab1:
-	volume_envelope 11, 2
-	octave 2
-	note A#, 2
-	note A#, 2
-	volume_envelope 11, 7
-	octave 3
+	sound_call Music_ChampionBattle_Ch1_ditty1
 	note D#, 4
 	sound_loop 4, Music_ChampionBattle_branch_eaab1
 Music_ChampionBattle_branch_eaabe:
@@ -320,20 +285,7 @@ Music_ChampionBattle_Ch2:
 	note F_, 4
 	sound_call Music_ChampionBattle_branch_eac5c
 	note D_, 4
-	volume_envelope 12, 2
-	note D#, 2
-	note D#, 2
-	volume_envelope 12, 7
-	note A#, 4
-	volume_envelope 12, 2
-	note D#, 2
-	note D#, 2
-	volume_envelope 12, 7
-	note B_, 4
-	volume_envelope 12, 2
-	note D#, 2
-	note D#, 2
-	volume_envelope 12, 7
+	sound_call Music_ChampionBattle_Ch2_ditty1
 	octave 4
 	note C_, 4
 	volume_envelope 12, 2
@@ -351,17 +303,7 @@ Music_ChampionBattle_Ch2:
 	volume_envelope 3, -4
 	note E_, 8
 Music_ChampionBattle_branch_eab9d:
-	volume_envelope 12, 5
-	note D#, 6
-	octave 3
-	note A#, 6
-	octave 4
-	note D#, 2
-	note D_, 2
-	note C#, 4
-	note C_, 4
-	octave 3
-	note B_, 4
+	sound_call Music_ChampionBattle_Ch2_ditty2
 	note A#, 4
 	volume_envelope 12, 7
 	note B_, 8
@@ -379,17 +321,7 @@ Music_ChampionBattle_branch_eab9d:
 	volume_envelope 12, 7
 	octave 4
 	note C#, 4
-	volume_envelope 12, 5
-	note D#, 6
-	octave 3
-	note A#, 6
-	octave 4
-	note D#, 2
-	note D_, 2
-	note C#, 4
-	note C_, 4
-	octave 3
-	note B_, 4
+	sound_call Music_ChampionBattle_Ch2_ditty2
 	note A#, 2
 	note B_, 2
 	volume_envelope 12, 7
@@ -438,40 +370,14 @@ Music_ChampionBattle_branch_eabef:
 	note B_, 16
 	note A#, 16
 	note G#, 16
-	volume_envelope 12, 2
-	note D#, 2
-	note D#, 2
-	volume_envelope 12, 7
-	note A#, 4
-	volume_envelope 12, 2
-	note D#, 2
-	note D#, 2
-	volume_envelope 12, 7
-	note B_, 4
-	volume_envelope 12, 2
-	note D#, 2
-	note D#, 2
-	volume_envelope 12, 7
+	sound_call Music_ChampionBattle_Ch2_ditty1
 	note A#, 4
 	volume_envelope 12, 2
 	note D#, 2
 	note D#, 2
 	volume_envelope 12, 7
 	note A_, 4
-	volume_envelope 12, 2
-	note D#, 2
-	note D#, 2
-	volume_envelope 12, 7
-	note A#, 4
-	volume_envelope 12, 2
-	note D#, 2
-	note D#, 2
-	volume_envelope 12, 7
-	note B_, 4
-	volume_envelope 12, 2
-	note D#, 2
-	note D#, 2
-	volume_envelope 12, 7
+	sound_call Music_ChampionBattle_Ch2_ditty1
 	octave 4
 	note C#, 4
 	volume_envelope 12, 2
@@ -772,4 +678,51 @@ Music_ChampionBattle_branch_ead8e:
 	octave 4
 	note D#, 2
 	note E_, 2
+	sound_ret
+
+Music_ChampionBattle_Ch1_ditty1:
+	volume_envelope 11, 2
+	octave 2
+	note A#, 2
+	note A#, 2
+	volume_envelope 11, 7
+	octave 3
+	sound_ret
+
+Music_ChampionBattle_Ch1_ditty2:
+	volume_envelope 11, 2
+	note E_, 2
+	note E_, 2
+	volume_envelope 11, 7
+	sound_ret
+
+Music_ChampionBattle_Ch2_ditty1:
+	volume_envelope 12, 2
+	note D#, 2
+	note D#, 2
+	volume_envelope 12, 7
+	note A#, 4
+	volume_envelope 12, 2
+	note D#, 2
+	note D#, 2
+	volume_envelope 12, 7
+	note B_, 4
+	volume_envelope 12, 2
+	note D#, 2
+	note D#, 2
+	volume_envelope 12, 7
+	sound_ret
+
+Music_ChampionBattle_Ch2_ditty2:
+	volume_envelope 12, 5
+	note D#, 6
+	octave 3
+	note A#, 6
+	octave 4
+	note D#, 2
+	note D_, 2
+	note C#, 4
+	note C_, 4
+	octave 3
+	note B_, 4
 	sound_ret

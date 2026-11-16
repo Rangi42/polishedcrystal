@@ -1331,10 +1331,10 @@ Music_JumpChannel:
 Music_LoopChannel:
 ; loops xx - 1 times
 ; 	00: infinite
-; params: 3
-;	xx ll hh
+; params: 2
+;	xx rr
 ;		xx : loop count
-;   	ll hh : pointer
+;   	rr : relative pointer
 
 	; get loop count
 	call GetMusicByte
@@ -1343,7 +1343,7 @@ Music_LoopChannel:
 	bit SOUND_LOOPING, [hl] ; has the loop been initiated?
 	jr nz, .checkloop
 	and a ; loop counter 0 = infinite
-	jr z, Music_JumpChannel
+	jr z, .doloop
 	; initiate loop
 	dec a
 	set SOUND_LOOPING, [hl] ; set loop flag
@@ -1357,7 +1357,21 @@ Music_LoopChannel:
 	and a ; are we done?
 	jr z, .endloop
 	dec [hl]
-	jr Music_JumpChannel
+.doloop
+	ld hl, wChannel1MusicAddress - wChannel1
+	add hl, bc
+	; get the relative offset in d
+	call GetMusicByte
+	ld d, a
+	; subtract d from the current address
+	ld a, [hli]
+	sub d
+	jr nc, .nocarry
+	dec [hl]
+.nocarry
+	dec hl
+	ld [hl], a
+	ret
 
 .endloop
 	; reset loop flag
@@ -1370,8 +1384,7 @@ Music_LoopChannel:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-	inc de ; skip
-	inc de ; pointer
+	inc de ; skip relative pointer
 	ld a, d
 	ld [hld], a
 	ld [hl], e
@@ -1504,17 +1517,26 @@ Music_SlidePitchTo:
 
 Music_Tone:
 ; tone
-; params: 1 (dw)
+; params: 1 (db or dw)
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
 	set SOUND_PITCH_OFFSET, [hl]
 	ld hl, wChannel1PitchOffset - wChannel1
 	add hl, bc
-	call GetMusicWord
-	ld a, e
+	call GetMusicByte
+	bit 7, a
+	jr nz, .big_pitch_offset
+	ld d, 0
+.got_pitch_offset
 	ld [hli], a
 	ld [hl], d
 	ret
+
+.big_pitch_offset
+	and $7f
+	ld d, a
+	call GetMusicByte
+	jr .got_pitch_offset
 
 Music_SoundDuty:
 ; sequence of 4 duty cycles to be looped
@@ -1628,7 +1650,14 @@ Music_Tempo:
 ; global tempo
 ; params: 2
 ;	de: tempo
-	call GetMusicWord
+	call GetMusicByte
+	; de = a + TEMPO_OFFSET
+	assert 0 < TEMPO_OFFSET && TEMPO_OFFSET < 256
+	sub LOW(-TEMPO_OFFSET)
+	ld e, a
+	sbc a
+	inc a
+	ld d, a
 	ld a, [wCurChannel]
 	cp CHAN5
 	jmp nc, SetGlobalTempo

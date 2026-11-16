@@ -37,15 +37,7 @@ Music_ChampionBattleRSE_Ch1_loop_1:
 	volume_envelope 11, 5
 	note A#, 2
 	octave 4
-	volume_envelope 11, 3
-	note C_, 3
-	note C#, 3
-	volume_envelope 11, 5
-	note D#, 2
-	volume_envelope 11, 3
-	note D#, 3
-	note F_, 3
-	volume_envelope 11, 5
+	sound_call Music_ChampionBattleRSE_Ch1_ditty1
 	note F#, 2
 	octave 5
 	volume_envelope 11, 3
@@ -60,15 +52,7 @@ Music_ChampionBattleRSE_Ch1_loop_1:
 	volume_envelope 11, 5
 	note A#, 2
 	octave 5
-	volume_envelope 11, 3
-	note C_, 3
-	note C#, 3
-	volume_envelope 11, 5
-	note D#, 2
-	volume_envelope 11, 3
-	note D#, 3
-	note F_, 3
-	volume_envelope 11, 5
+	sound_call Music_ChampionBattleRSE_Ch1_ditty1
 	note G_, 2
 Music_ChampionBattleRSE_Ch1_loop_main:
 	duty_cycle 1
@@ -988,23 +972,11 @@ Music_ChampionBattleRSE_Ch4_loop_main:
 Music_ChampionBattleRSE_Ch4_loop_1:
 	sound_call Music_ChampionBattleRSE_Ch4_branch_3
 	sound_loop 4, Music_ChampionBattleRSE_Ch4_loop_1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 4
-	drum_note 4, 2
+	sound_call Music_ChampionBattleRSE_Ch4_ditty1
 	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 4
-	drum_note 4, 2
+	sound_call Music_ChampionBattleRSE_Ch4_ditty1
 	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 4
-	drum_note 4, 2
+	sound_call Music_ChampionBattleRSE_Ch4_ditty1
 	drum_note 1, 2
 	drum_note 4, 2
 	drum_note 4, 4
@@ -1024,19 +996,11 @@ Music_ChampionBattleRSE_Ch4_loop_1:
 	drum_note 1, 2
 	drum_note 4, 2
 	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 4
-	drum_note 4, 2
+	sound_call Music_ChampionBattleRSE_Ch4_ditty1
 	drum_note 1, 2
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 4
-	drum_note 4, 2
+	sound_call Music_ChampionBattleRSE_Ch4_ditty1
 	drum_note 1, 2
 	drum_note 4, 1
 	drum_note 4, 1
@@ -1165,4 +1129,24 @@ Music_ChampionBattleRSE_Ch4_branch_3:
 	drum_note 4, 4
 	drum_note 4, 2
 	drum_note 1, 4
+	sound_ret
+
+Music_ChampionBattleRSE_Ch1_ditty1:
+	volume_envelope 11, 3
+	note C_, 3
+	note C#, 3
+	volume_envelope 11, 5
+	note D#, 2
+	volume_envelope 11, 3
+	note D#, 3
+	note F_, 3
+	volume_envelope 11, 5
+	sound_ret
+
+Music_ChampionBattleRSE_Ch4_ditty1:
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 4
+	drum_note 4, 2
 	sound_ret

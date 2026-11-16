@@ -1,9 +1,9 @@
-	tilecoll VOID, VOID, VOID, VOID ; 00
+	tilecoll WALL, WALL, WALL, WALL ; 00
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 01
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 02
 	tilecoll TALL_GRASS, TALL_GRASS, TALL_GRASS, TALL_GRASS ; 03
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 04
-	tilecoll WALL, WALL, WALL, WALL ; 05
+	tilecoll WATER, WATER, WATER, WATER ; 05
 	tilecoll WALL, WALL, WALL, WALL ; 06
 	tilecoll WATER, BUOY, WATER, WHIRLPOOL ; 07
 	tilecoll WALL, WALL, WALL, WALL ; 08
@@ -51,7 +51,7 @@
 	tilecoll TOP_WALL, FLOOR, FLOOR, FLOOR ; 32
 	tilecoll WALL, WALL, WALL, WALL ; 33
 	tilecoll BUOY, WATER, BUOY, WATER ; 34
-	tilecoll WATER, WATER, WATER, WATER ; 35
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 35
 	tilecoll WATER, BUOY, WATER, BUOY ; 36
 	tilecoll WATERFALL, WATERFALL, WATER, WATER ; 37
 	tilecoll WALL, WALL, WALL, WALL ; 38
@@ -178,7 +178,7 @@
 	tilecoll FLOOR, WALL, WALL, WALL ; b1
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; b2
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; b3
-	tilecoll TOP_WALL, TOP_WALL, FLOOR, FLOOR ; b4
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; b4
 	tilecoll FLOOR, FLOOR, WALL, WALL ; b5
 	tilecoll FLOOR, TOP_WALL, FLOOR, BOTTOM_WALL ; b6
 	tilecoll TOP_WALL, FLOOR, BOTTOM_WALL, FLOOR ; b7
@@ -246,5 +246,3 @@
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; f5
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f6
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f7
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f8
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f9

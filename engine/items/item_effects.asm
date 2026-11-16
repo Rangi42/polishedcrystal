@@ -53,14 +53,9 @@ DoKeyItemEffect::
 	call CopyName1
 	ld a, 1
 	ld [wItemEffectSucceeded], a
-	ld a, [wCurKeyItem]
-	dec a
-	add LOW(KeyItemEffects)
-	ld l, a
-	adc HIGH(KeyItemEffects)
-	sub l
-	ld h, a
-	ld a, [hl]
+	ld a, KEYITEMATTR_EFFECT
+	farcall GetKeyItemAttr
+	and ~KEYITEM_SELECTABLE
 	call StackJumpTable
 
 .KeyItemEffectRoutines:
@@ -83,8 +78,6 @@ DoKeyItemEffect::
 	dw CardKey            ; KEYITEMEFFECT_CARD_KEY
 	dw BasementKey        ; KEYITEMEFFECT_BASEMENT_KEY
 	assert_table_length NUM_KEY_ITEM_EFFECTS
-
-INCLUDE "data/items/key_effects.asm"
 
 PokeBallEffect:
 	; Replacing caught balls

@@ -72,4 +72,5 @@ DEF NUM_SONG_ORIGINS EQU const_value
 	const COMPOSER_CAT333POKEMON                 ; 18
 	const COMPOSER_NOTFROGGESTSPIRIT             ; 19
 	const COMPOSER_SHINKONETCAVY_SHOCKSLAYER     ; 1a
+	const COMPOSER_COSMIC_ANGEL                  ; 1b
 DEF NUM_SONG_ARTISTS EQU const_value

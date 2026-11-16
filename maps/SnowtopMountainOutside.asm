@@ -37,19 +37,20 @@ SnowtopMountainOutside_MapScriptHeader:
 	coord_event 26, 22, SCENE_SNOWTOPMOUNTAINOUTSIDE_PANNING, SnowtopMountainOutsideStopPanningScript
 
 	def_bg_events
-	bg_event 10, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 11, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 12, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 13, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 14, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 15, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 16, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 17, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 18, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
-	bg_event 19, 21, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 10, 21, BGEVENT_UP, SnowtopMountainOutsideAskPanScript
+	bg_event 11, 21, BGEVENT_UP, SnowtopMountainOutsideAskPanScript
+	bg_event 13, 21, BGEVENT_UP, SnowtopMountainOutsideAskPanScript
+	bg_event 14, 21, BGEVENT_UP, SnowtopMountainOutsideAskPanScript
+	bg_event 15, 21, BGEVENT_UP, SnowtopMountainOutsideAskPanScript
+	bg_event 16, 21, BGEVENT_UP, SnowtopMountainOutsideAskPanScript
+	bg_event 17, 21, BGEVENT_UP, SnowtopMountainOutsideAskPanScript
+	bg_event 18, 21, BGEVENT_UP, SnowtopMountainOutsideAskPanScript
+	bg_event 19, 21, BGEVENT_UP, SnowtopMountainOutsideAskPanScript
 
 	def_object_events
 	object_event -3, -3, SPRITE_MOM, SPRITEMOVEDATA_PLACEHOLDER_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event 12, 22, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << MORN) | (1 << DAY), 0, OBJECTTYPE_SCRIPT, 0, SnowtopMountainOutsideSightseerScript, -1
+	object_event 12, 22, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_UP, 0, 0, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, SnowtopMountainOutsideSightseerScript, -1
 	object_event 26,  9, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 0, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	object_event 16, 14, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 1, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	object_event 17,  9, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 3, (1 << EVE) | (1 << NITE), PAL_NPC_TINY_WINDOW, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
@@ -95,12 +96,33 @@ SnowtopMountainOutsideItemCallback:
 .done
 	endcallback
 
-SnowtopMountainOutsideStartPanningScript:
+SnowtopMountainOutsideSightseerScript:
+	faceplayer
 	opentext
 	writetext SnowtopMountainOutsideOutlookText
 	yesorno
 	iffalse_endtext
 	closetext
+	readvar VAR_FACING
+	ifnotequal UP, .skip
+	applymovement PLAYER, .WalkToEdgeMovement
+.skip
+	turnobject LAST_TALKED, UP
+	turnobject PLAYER, UP
+	sjumpfwd SnowtopMountainOutsideStartPanningScript
+
+.WalkToEdgeMovement:
+	step_right
+	step_up
+	step_end
+
+SnowtopMountainOutsideAskPanScript:
+	opentext
+	writetext SnowtopMountainOutsideOutlookText
+	yesorno
+	iffalse_endtext
+	closetext
+SnowtopMountainOutsideStartPanningScript:
 	loadmem wPanningAroundTinyMap, TRUE
 	changeblock 10, 22, $6f
 	changeblock 12, 22, $6f

@@ -303,9 +303,6 @@ INCLUDE "audio/music/rby/indigoplateau.asm"
 SECTION "Song - rby/bikeriding", ROMX
 INCLUDE "audio/music/rby/bikeriding.asm"
 
-SECTION "Song - rby/lavendertown", ROMX
-INCLUDE "audio/music/rby/lavendertown.asm"
-
 SECTION "Song - rby/lookjessiejames", ROMX
 INCLUDE "audio/music/rby/lookjessiejames.asm"
 
@@ -318,6 +315,9 @@ INCLUDE "audio/music/rby/surfing.asm"
 SECTION "Song - rby/surfingpikachu", ROMX
 INCLUDE "audio/music/rby/surfingpikachu.asm"
 
+SECTION "Song - frlg/lavendertown", ROMX
+INCLUDE "audio/music/frlg/lavendertown.asm"
+
 SECTION "Song - rse/surfing", ROMX
 INCLUDE "audio/music/rse/surfing.asm"
 
@@ -326,6 +326,9 @@ INCLUDE "audio/music/rse/bicycle.asm"
 
 SECTION "Song - rse/abandonedship", ROMX
 INCLUDE "audio/music/rse/abandonedship.asm"
+
+SECTION "Song - rse/cablecar", ROMX
+INCLUDE "audio/music/rse/cablecar.asm"
 
 SECTION "Song - rse/championbattle", ROMX
 INCLUDE "audio/music/rse/championbattle.asm"

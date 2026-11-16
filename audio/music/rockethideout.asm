@@ -186,26 +186,8 @@ Music_RocketHideout_branch_eec14:
 	note G#, 4
 	note G_, 2
 	rest 6
-	volume_envelope 12, 7
-	octave 3
-	note C#, 16
-	volume_envelope 12, 4
-	octave 2
-	note C#, 2
-	rest 2
-	note G#, 4
-	note G_, 2
-	rest 6
-	volume_envelope 12, 7
-	octave 3
-	note C#, 16
-	volume_envelope 12, 4
-	octave 2
-	note C#, 2
-	rest 2
-	note G#, 4
-	note G_, 2
-	rest 6
+	sound_call Music_RocketHideout_Ch2_ditty1
+	sound_call Music_RocketHideout_Ch2_ditty1
 	note C#, 2
 	note G#, 4
 	note G_, 2
@@ -305,4 +287,17 @@ Music_RocketHideout_branch_eecdb:
 	drum_note 4, 1
 	stereo_panning TRUE, FALSE
 	drum_note 10, 4
+	sound_ret
+
+Music_RocketHideout_Ch2_ditty1:
+	volume_envelope 12, 7
+	octave 3
+	note C#, 16
+	volume_envelope 12, 4
+	octave 2
+	note C#, 2
+	rest 2
+	note G#, 4
+	note G_, 2
+	rest 6
 	sound_ret

@@ -111,7 +111,7 @@ BGMapAnchorTopLeft::
 	ld a, $1
 	ldh [hOAMUpdate], a
 
-	ld b, 0
+	ld b, MAPS_COPY_SKIP_PALS
 	call SafeCopyTilemapAtOnce
 
 	pop af

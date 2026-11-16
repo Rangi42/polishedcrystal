@@ -518,61 +518,39 @@ Music_PowerPlantXY_Ch4_branch_0:
 	drum_note 11, 2
 	drum_note 1, 4
 Music_PowerPlantXY_Ch4_branch_1:
-	drum_note 3, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 1
-	drum_note 9, 1
-	drum_note 12, 2
-	drum_note 3, 2
-	drum_note 3, 1
-	drum_note 9, 1
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
+	sound_call Music_PowerPlantXY_Ch4_ditty1
 	drum_note 3, 2
 	drum_note 3, 1
 	drum_note 9, 1
 	drum_note 12, 2
 	sound_loop 5, Music_PowerPlantXY_Ch4_branch_1
-	drum_note 3, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 1
-	drum_note 9, 1
-	drum_note 12, 2
-	drum_note 3, 2
-	drum_note 3, 1
-	drum_note 9, 1
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
+	sound_call Music_PowerPlantXY_Ch4_ditty1
 	drum_note 12, 2
 	rest 1
 	drum_note 12, 2
 	rest 1
 Music_PowerPlantXY_Ch4_branch_3:
-	drum_note 3, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 1
-	drum_note 9, 1
-	drum_note 12, 2
-	drum_note 3, 2
-	drum_note 3, 1
-	drum_note 9, 1
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 3, 2
+	sound_call Music_PowerPlantXY_Ch4_ditty1
 	drum_note 3, 2
 	drum_note 3, 1
 	drum_note 9, 1
 	drum_note 12, 2
 	sound_loop 8, Music_PowerPlantXY_Ch4_branch_3
 	sound_jump Music_PowerPlantXY_Ch4_branch_0
+
+Music_PowerPlantXY_Ch4_ditty1:
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 12, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 9, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	sound_ret

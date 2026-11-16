@@ -504,28 +504,10 @@ Music_Route101RSE_Ch4_loop_2:
 	drum_note 3, 1
 	drum_note 12, 1
 	sound_loop 3, Music_Route101RSE_Ch4_loop_2
-	drum_note 3, 1
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 3, 1
-	drum_note 4, 2
-	drum_note 6, 1
-	drum_note 6, 1
-	drum_note 6, 2
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_Route101RSE_Ch4_ditty1
 	drum_note 3, 2
 	drum_note 7, 2
-	drum_note 3, 1
-	drum_note 12, 1
-	drum_note 12, 1
-	drum_note 3, 1
-	drum_note 4, 2
-	drum_note 6, 1
-	drum_note 6, 1
-	drum_note 6, 2
-	drum_note 4, 1
-	drum_note 4, 1
+	sound_call Music_Route101RSE_Ch4_ditty1
 	drum_note 3, 4
 	sound_jump Music_Route101RSE_Ch4_loop
 
@@ -554,4 +536,17 @@ Music_Route101RSE_Ch4_branch_2:
 	drum_note 12, 1
 	drum_note 3, 1
 	drum_note 12, 1
+	sound_ret
+
+Music_Route101RSE_Ch4_ditty1:
+	drum_note 3, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 3, 1
+	drum_note 4, 2
+	drum_note 6, 1
+	drum_note 6, 1
+	drum_note 6, 2
+	drum_note 4, 1
+	drum_note 4, 1
 	sound_ret

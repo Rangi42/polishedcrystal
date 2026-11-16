@@ -15,15 +15,7 @@ Music_Route37_Ch1:
 	rest 16
 	rest 16
 Music_Route37_branch_ee969:
-	volume_envelope 11, 3
-	rest 2
-	octave 2
-	note F#, 2
-	note B_, 2
-	octave 3
-	note E_, 2
-	volume_envelope 11, 7
-	note D#, 10
+	sound_call Music_Route37_Ch1_ditty1
 	volume_envelope 11, 3
 	note E_, 4
 	note D#, 4
@@ -39,15 +31,7 @@ Music_Route37_branch_ee969:
 	note B_, 8
 	octave 3
 	note B_, 12
-	volume_envelope 11, 3
-	rest 2
-	octave 2
-	note F#, 2
-	note B_, 2
-	octave 3
-	note E_, 2
-	volume_envelope 11, 7
-	note D#, 10
+	sound_call Music_Route37_Ch1_ditty1
 	octave 2
 	note A_, 4
 	octave 3
@@ -135,29 +119,11 @@ Music_Route37_Ch2:
 	octave 2
 	note B_, 2
 	note_type 12, 12, 1
-	note B_, 1
-	note B_, 1
-	volume_envelope 12, 2
-	note B_, 2
-	volume_envelope 12, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	volume_envelope 12, 2
+	sound_call Music_Route37_Ch2_ditty1
 	note B_, 6
 	note B_, 2
 	volume_envelope 12, 1
-	note B_, 1
-	note B_, 1
-	volume_envelope 12, 2
-	note B_, 2
-	volume_envelope 12, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	volume_envelope 12, 2
+	sound_call Music_Route37_Ch2_ditty1
 	note B_, 2
 Music_Route37_branch_eea24:
 	sound_call Music_Route37_branch_eeab7
@@ -248,27 +214,9 @@ Music_Route37_branch_eea24:
 	note D#, 6
 	volume_envelope 12, 2
 	octave 3
-	note F#, 2
-	note F#, 1
-	note F#, 1
-	note F#, 2
-	volume_envelope 12, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	volume_envelope 12, 2
+	sound_call Music_Route37_Ch2_ditty2
 	note F#, 6
-	note F#, 2
-	note F#, 1
-	note F#, 1
-	note F#, 2
-	volume_envelope 12, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	volume_envelope 12, 2
+	sound_call Music_Route37_Ch2_ditty2
 	note F#, 2
 	sound_jump Music_Route37_branch_eea24
 
@@ -425,4 +373,42 @@ Music_Route37_branch_eeb6b:
 	drum_note 3, 2
 	drum_note 4, 1
 	drum_note 4, 1
+	sound_ret
+
+Music_Route37_Ch1_ditty1:
+	volume_envelope 11, 3
+	rest 2
+	octave 2
+	note F#, 2
+	note B_, 2
+	octave 3
+	note E_, 2
+	volume_envelope 11, 7
+	note D#, 10
+	sound_ret
+
+Music_Route37_Ch2_ditty1:
+	note B_, 1
+	note B_, 1
+	volume_envelope 12, 2
+	note B_, 2
+	volume_envelope 12, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
+	note B_, 1
+	volume_envelope 12, 2
+	sound_ret
+
+Music_Route37_Ch2_ditty2:
+	note F#, 2
+	note F#, 1
+	note F#, 1
+	note F#, 2
+	volume_envelope 12, 1
+	note F#, 1
+	note F#, 1
+	note F#, 1
+	note F#, 1
+	volume_envelope 12, 2
 	sound_ret

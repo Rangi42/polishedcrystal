@@ -32,7 +32,6 @@ SECTION "Pokemon Center Scripts 4", ROMX
 
 INCLUDE "maps/SilverCavePokeCenter1F.asm"
 INCLUDE "maps/ShamoutiPokeCenter1F.asm"
-INCLUDE "maps/Route3PokeCenter1F.asm"
 INCLUDE "maps/Route10PokeCenter1F.asm"
 INCLUDE "maps/Route32PokeCenter1F.asm"
 INCLUDE "maps/GoldenrodPokecomCenter1F.asm"
@@ -528,6 +527,7 @@ INCLUDE "maps/MountMoonB1F.asm"
 INCLUDE "maps/MountMoonB2F.asm"
 INCLUDE "maps/MountMoonGiftShop.asm"
 INCLUDE "maps/MountMoonSquare.asm"
+INCLUDE "maps/MountMoonSquareCableCarGate.asm"
 
 
 SECTION "Cerulean Scripts", ROMX
@@ -925,6 +925,7 @@ INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2NuggetSpeechHouse.asm"
 INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/Route3.asm"
+INCLUDE "maps/Route3CableCarGate.asm"
 INCLUDE "maps/Route4.asm"
 
 
@@ -934,12 +935,12 @@ INCLUDE "maps/Route5.asm"
 INCLUDE "maps/Route5CleanseTagSpeechHouse.asm"
 INCLUDE "maps/Route5SaffronCityGate.asm"
 INCLUDE "maps/Route5UndergroundPathEntrance.asm"
-INCLUDE "maps/Route6.asm"
+INCLUDE "maps/Route6.asm" ; shares text with Route5.asm
 INCLUDE "maps/Route6SaffronGate.asm"
 INCLUDE "maps/Route6UndergroundPathEntrance.asm"
 INCLUDE "maps/Route7.asm"
 INCLUDE "maps/Route7SaffronGate.asm"
-INCLUDE "maps/Route8.asm"
+INCLUDE "maps/Route8.asm" ; shares text with Route7.asm
 INCLUDE "maps/Route8SaffronGate.asm"
 
 

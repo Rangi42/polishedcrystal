@@ -5,7 +5,7 @@ CeladonHomeDecorStore1F_MapScriptHeader:
 
 	def_warp_events
 	warp_event  3,  7, CELADON_CITY, 12
-	warp_event  4,  7, CELADON_CITY, 12
+	warp_event  4,  7, CELADON_CITY, 20
 	warp_event  9,  0, CELADON_HOME_DECOR_STORE_2F, 1
 
 	def_coord_events

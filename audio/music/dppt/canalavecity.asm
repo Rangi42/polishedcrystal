@@ -44,25 +44,7 @@ Music_CanalaveCityDPPt_Ch1_loop:
 	note E_, 1
 	note_type 6, 10, 7
 	octave 3
-	note E_, 1
-	note A_, 1
-	note_type 13, 10, 7
-	note A_, 12
-	note_type 6, 10, 7
-	note G#, 1
-	octave 4
-	note C#, 1
-	note C#, 16
-	rest 16
-	rest 2
-	octave 3
-	note G_, 1
-	note B_, 1
-	note_type 15, 10, 7
-	note B_, 12
-	note_type 6, 10, 7
-	note F#, 1
-	note A_, 1
+	sound_call Music_CanalaveCityDPPt_Ch1_ditty1
 	octave 4
 	note C#, 8
 	octave 3
@@ -99,25 +81,7 @@ Music_CanalaveCityDPPt_Ch1_loop:
 	note_type 12, 10, 7
 	note E_, 9
 	note_type 6, 10, 7
-	note E_, 1
-	note A_, 1
-	note_type 13, 10, 7
-	note A_, 12
-	note_type 6, 10, 7
-	note G#, 1
-	octave 4
-	note C#, 1
-	note C#, 16
-	rest 16
-	rest 2
-	octave 3
-	note G_, 1
-	note B_, 1
-	note_type 15, 10, 7
-	note B_, 12
-	note_type 6, 10, 7
-	note F#, 1
-	note A_, 1
+	sound_call Music_CanalaveCityDPPt_Ch1_ditty1
 	note_type 15, 10, 7
 	note A_, 12
 	note_type 6, 10, 7
@@ -242,21 +206,7 @@ Music_CanalaveCityDPPt_Ch2_loop:
 	note A_, 2
 	note B_, 2
 	octave 4
-	note C#, 4
-	octave 3
-	note B_, 2
-	octave 4
-	note C#, 4
-	note D_, 4
-	note E_, 14
-	note C#, 2
-	note D_, 2
-	note E_, 10
-	note E_, 2
-	note F#, 2
-	note C#, 2
-	note E_, 4
-	note D_, 4
+	sound_call Music_CanalaveCityDPPt_Ch2_ditty1
 	note C#, 4
 	note E_, 4
 	note D_, 6
@@ -278,21 +228,7 @@ Music_CanalaveCityDPPt_Ch2_loop:
 	octave 4
 	note E_, 2
 	note D_, 2
-	note C#, 4
-	octave 3
-	note B_, 2
-	octave 4
-	note C#, 4
-	note D_, 4
-	note E_, 14
-	note C#, 2
-	note D_, 2
-	note E_, 10
-	note E_, 2
-	note F#, 2
-	note C#, 2
-	note E_, 4
-	note D_, 4
+	sound_call Music_CanalaveCityDPPt_Ch2_ditty1
 	note_type 8, 11, 7
 	note C#, 4
 	note E_, 4
@@ -414,81 +350,7 @@ Music_CanalaveCityDPPt_Ch3:
 	octave 4
 	rest 2
 Music_CanalaveCityDPPt_Ch3_loop:
-	note_type 8, 2, 5
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note A_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
-	octave 6
-	note C#, 1
-	octave 5
-	note A_, 1
-	note C#, 1
-	note E_, 1
-	octave 4
-	note B_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	octave 4
-	note E_, 1
+	sound_call Music_CanalaveCityDPPt_Ch3_ditty1
 	note_type 12, 1, 0
 	octave 2
 	note A_, 16
@@ -658,81 +520,7 @@ Music_CanalaveCityDPPt_Ch3_loop:
 	note G_, 1
 	note D_, 6
 	rest 2
-	note_type 8, 2, 5
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note E_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	note B_, 1
-	note C#, 1
-	octave 3
-	note A_, 1
-	octave 4
-	note A_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
-	octave 6
-	note C#, 1
-	octave 5
-	note A_, 1
-	note C#, 1
-	note E_, 1
-	octave 4
-	note B_, 1
-	note A_, 1
-	octave 5
-	note C#, 1
-	octave 4
-	note E_, 1
+	sound_call Music_CanalaveCityDPPt_Ch3_ditty1
 	sound_jump Music_CanalaveCityDPPt_Ch3_loop
 
 Music_CanalaveCityDPPt_Ch4:
@@ -833,21 +621,11 @@ Music_CanalaveCityDPPt_Ch4_loop:
 	drum_note 11, 1
 	drum_note 1, 1
 	drum_note 11, 2
-	drum_note 11, 1
-	drum_note 11, 2
-	drum_note 1, 3
-	drum_note 11, 1
-	drum_note 11, 3
-	drum_note 11, 2
+	sound_call Music_CanalaveCityDPPt_Ch4_ditty1
 	drum_note 1, 1
 	drum_note 11, 1
 	drum_note 11, 2
-	drum_note 11, 1
-	drum_note 11, 2
-	drum_note 1, 3
-	drum_note 11, 1
-	drum_note 11, 3
-	drum_note 11, 2
+	sound_call Music_CanalaveCityDPPt_Ch4_ditty1
 	drum_note 1, 4
 	drum_note 11, 1
 	drum_note 11, 2
@@ -859,27 +637,139 @@ Music_CanalaveCityDPPt_Ch4_loop:
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 11, 2
-	drum_note 11, 1
-	drum_note 11, 2
-	drum_note 1, 3
-	drum_note 11, 1
-	drum_note 11, 3
-	drum_note 11, 2
+	sound_call Music_CanalaveCityDPPt_Ch4_ditty1
 	drum_note 1, 4
-	drum_note 11, 1
-	drum_note 11, 2
-	drum_note 1, 3
-	drum_note 11, 1
-	drum_note 11, 3
-	drum_note 11, 2
+	sound_call Music_CanalaveCityDPPt_Ch4_ditty1
 	drum_note 1, 4
-	drum_note 11, 1
-	drum_note 11, 2
-	drum_note 1, 3
-	drum_note 11, 1
-	drum_note 11, 3
-	drum_note 11, 2
+	sound_call Music_CanalaveCityDPPt_Ch4_ditty1
 	drum_note 1, 1
 	drum_note 11, 2
 	drum_note 1, 1
 	sound_jump Music_CanalaveCityDPPt_Ch4_loop
+
+Music_CanalaveCityDPPt_Ch1_ditty1:
+	note E_, 1
+	note A_, 1
+	note_type 13, 10, 7
+	note A_, 12
+	note_type 6, 10, 7
+	note G#, 1
+	octave 4
+	note C#, 1
+	note C#, 16
+	rest 16
+	rest 2
+	octave 3
+	note G_, 1
+	note B_, 1
+	note_type 15, 10, 7
+	note B_, 12
+	note_type 6, 10, 7
+	note F#, 1
+	note A_, 1
+	sound_ret
+
+Music_CanalaveCityDPPt_Ch2_ditty1:
+	note C#, 4
+	octave 3
+	note B_, 2
+	octave 4
+	note C#, 4
+	note D_, 4
+	note E_, 14
+	note C#, 2
+	note D_, 2
+	note E_, 10
+	note E_, 2
+	note F#, 2
+	note C#, 2
+	note E_, 4
+	note D_, 4
+	sound_ret
+
+Music_CanalaveCityDPPt_Ch3_ditty1:
+	note_type 8, 2, 5
+	octave 3
+	note A_, 1
+	octave 4
+	note E_, 1
+	note A_, 1
+	octave 5
+	note C#, 1
+	note B_, 1
+	note C#, 1
+	octave 3
+	note A_, 1
+	octave 4
+	note E_, 1
+	note A_, 1
+	octave 5
+	note C#, 1
+	note B_, 1
+	note C#, 1
+	octave 3
+	note A_, 1
+	octave 4
+	note E_, 1
+	note A_, 1
+	octave 5
+	note C#, 1
+	note B_, 1
+	note C#, 1
+	octave 3
+	note A_, 1
+	octave 4
+	note E_, 1
+	note A_, 1
+	octave 5
+	note C#, 1
+	note B_, 1
+	note C#, 1
+	octave 3
+	note A_, 1
+	octave 4
+	note E_, 1
+	note A_, 1
+	octave 5
+	note C#, 1
+	note B_, 1
+	note C#, 1
+	octave 3
+	note A_, 1
+	octave 4
+	note E_, 1
+	note A_, 1
+	octave 5
+	note C#, 1
+	note B_, 1
+	note C#, 1
+	octave 3
+	note A_, 1
+	octave 4
+	note A_, 1
+	octave 5
+	note E_, 1
+	note B_, 1
+	octave 6
+	note C#, 1
+	octave 5
+	note A_, 1
+	note C#, 1
+	note E_, 1
+	octave 4
+	note B_, 1
+	note A_, 1
+	octave 5
+	note C#, 1
+	octave 4
+	note E_, 1
+	sound_ret
+
+Music_CanalaveCityDPPt_Ch4_ditty1:
+	drum_note 11, 1
+	drum_note 11, 2
+	drum_note 1, 3
+	drum_note 11, 1
+	drum_note 11, 3
+	drum_note 11, 2
+	sound_ret

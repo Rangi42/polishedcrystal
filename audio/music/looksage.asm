@@ -14,14 +14,7 @@ Music_LookSage_Ch1:
 	sound_call Music_LookSage_branch_ee3fa
 	volume_envelope 11, 3
 	octave 3
-	note D_, 2
-	volume_envelope 9, 3
-	note D_, 2
-	volume_envelope 11, 3
-	note E_, 2
-	volume_envelope 9, 3
-	note E_, 2
-	volume_envelope 11, 3
+	sound_call Music_LookSage_Ch1_ditty2
 	note A_, 2
 	volume_envelope 9, 3
 	note A_, 2
@@ -30,23 +23,7 @@ Music_LookSage_Ch1:
 	volume_envelope 9, 3
 	note F_, 2
 Music_LookSage_branch_ee38e:
-	volume_envelope 11, 3
-	note D_, 2
-	volume_envelope 9, 3
-	note D_, 2
-	volume_envelope 11, 3
-	octave 2
-	note B_, 2
-	volume_envelope 9, 3
-	note B_, 2
-	volume_envelope 11, 3
-	note A_, 2
-	volume_envelope 9, 3
-	note A_, 2
-	volume_envelope 11, 3
-	note B_, 2
-	volume_envelope 9, 3
-	note B_, 2
+	sound_call Music_LookSage_Ch1_ditty1
 	volume_envelope 11, 3
 	octave 3
 	note D_, 2
@@ -59,46 +36,16 @@ Music_LookSage_branch_ee38e:
 	note B_, 2
 	volume_envelope 11, 3
 	octave 3
-	note D_, 2
-	volume_envelope 9, 3
-	note D_, 2
-	volume_envelope 11, 3
-	note E_, 2
-	volume_envelope 9, 3
-	note E_, 2
-	volume_envelope 11, 3
+	sound_call Music_LookSage_Ch1_ditty2
 	note F_, 2
 	volume_envelope 9, 3
 	note F_, 2
 	volume_envelope 11, 3
-	note D_, 2
-	volume_envelope 9, 3
-	note D_, 2
-	volume_envelope 11, 3
-	note E_, 2
-	volume_envelope 9, 3
-	note E_, 2
-	volume_envelope 11, 3
+	sound_call Music_LookSage_Ch1_ditty2
 	note A_, 2
 	volume_envelope 9, 3
 	note A_, 2
-	volume_envelope 11, 3
-	note D_, 2
-	volume_envelope 9, 3
-	note D_, 2
-	volume_envelope 11, 3
-	octave 2
-	note B_, 2
-	volume_envelope 9, 3
-	note B_, 2
-	volume_envelope 11, 3
-	note A_, 2
-	volume_envelope 9, 3
-	note A_, 2
-	volume_envelope 11, 3
-	note B_, 2
-	volume_envelope 9, 3
-	note B_, 2
+	sound_call Music_LookSage_Ch1_ditty1
 	sound_call Music_LookSage_branch_ee3fa
 	sound_jump Music_LookSage_branch_ee38e
 
@@ -177,3 +124,34 @@ Music_LookSage_branch_ee430:
 	note G_, 1
 	note G#, 1
 	sound_jump Music_LookSage_branch_ee430
+
+Music_LookSage_Ch1_ditty1:
+	volume_envelope 11, 3
+	note D_, 2
+	volume_envelope 9, 3
+	note D_, 2
+	volume_envelope 11, 3
+	octave 2
+	note B_, 2
+	volume_envelope 9, 3
+	note B_, 2
+	volume_envelope 11, 3
+	note A_, 2
+	volume_envelope 9, 3
+	note A_, 2
+	volume_envelope 11, 3
+	note B_, 2
+	volume_envelope 9, 3
+	note B_, 2
+	sound_ret
+
+Music_LookSage_Ch1_ditty2:
+	note D_, 2
+	volume_envelope 9, 3
+	note D_, 2
+	volume_envelope 11, 3
+	note E_, 2
+	volume_envelope 9, 3
+	note E_, 2
+	volume_envelope 11, 3
+	sound_ret

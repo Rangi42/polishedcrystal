@@ -1131,19 +1131,7 @@ Music_JohtoTrainerBattle_branch_f65ce:
 	note G#, 2
 	note G_, 2
 	note F_, 2
-	note D#, 2
-	note A#, 2
-	note D#, 2
-	note A#, 2
-	note D#, 2
-	note A#, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note A#, 2
-	note D#, 2
-	note A#, 2
-	octave 4
+	sound_call Music_JohtoTrainerBattle_Ch3_ditty1
 	note C#, 2
 	note C_, 2
 	octave 3
@@ -1151,19 +1139,7 @@ Music_JohtoTrainerBattle_branch_f65ce:
 	note G#, 2
 	note G_, 2
 	note G#, 2
-	note D#, 2
-	note A#, 2
-	note D#, 2
-	note A#, 2
-	note D#, 2
-	note A#, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note A#, 2
-	note D#, 2
-	note A#, 2
-	octave 4
+	sound_call Music_JohtoTrainerBattle_Ch3_ditty1
 	note C_, 2
 	note C#, 2
 	note D#, 2
@@ -1329,4 +1305,20 @@ Music_JohtoTrainerBattle_branch_f66b4:
 	note G_, 1
 	note G#, 1
 	note A#, 2
+	sound_ret
+
+Music_JohtoTrainerBattle_Ch3_ditty1:
+	note D#, 2
+	note A#, 2
+	note D#, 2
+	note A#, 2
+	note D#, 2
+	note A#, 2
+	octave 4
+	note C#, 2
+	octave 3
+	note A#, 2
+	note D#, 2
+	note A#, 2
+	octave 4
 	sound_ret

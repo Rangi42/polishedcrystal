@@ -12,9 +12,13 @@ DEF ITEMATTR_STRUCT_LENGTH EQU _RS
 
 ; key_item_attribute struct members (see data/items/attributes.asm)
 rsreset
-DEF KEYITEMATTR_PERMISSIONS rb
+DEF KEYITEMATTR_EFFECT      rb
+DEF KEYITEMATTR_PERMISSIONS EQU KEYITEMATTR_EFFECT
 DEF KEYITEMATTR_HELP        rb
 DEF KEYITEMATTR_STRUCT_LENGTH EQU _RS
+
+	const_def 7
+	shift_const KEYITEM_SELECTABLE
 
 ; item menu types
 ; UseItem.dw indexes (see engine/items/pack.asm)
@@ -81,7 +85,7 @@ DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const ITEMEFFECT_ABILITY_PATCH
 DEF NUM_ITEM_EFFECTS EQU const_value
 
-; key item effects (see data/items/key_effects.asm)
+; key item effects (see data/items/attributes.asm)
 ; DoKeyItemEffect.KeyItemEffectRoutines values (see engine/items/item_effects.asm)
 	const_def
 	const KEYITEMEFFECT_NONE

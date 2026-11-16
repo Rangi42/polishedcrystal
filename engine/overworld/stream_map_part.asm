@@ -128,10 +128,6 @@ MACRO stream_map_quarters
 	assert "\1" === "row" || "\1" === "column"
 .quarter
 	ld a, [de]
-	and a
-	jr nz, .not_border
-	ldh a, [hMapBorderBlock]
-.not_border
 	push de
 	swap a
 	ld d, a

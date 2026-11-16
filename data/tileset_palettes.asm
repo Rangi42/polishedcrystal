@@ -15,6 +15,9 @@ INCLUDE "gfx/tilesets/roofs_overcast.pal"
 
 ; The palettes below are used by `paletteswap` callbacks.
 
+OverworldRedPalettes::
+INCLUDE "gfx/tilesets/palette-swap/bg-red.pal"
+
 OverworldGreenPalettes::
 INCLUDE "gfx/tilesets/palette-swap/bg-green.pal"
 
@@ -45,8 +48,17 @@ INCLUDE "gfx/tilesets/palette-swap/plant-vendor.pal"
 GoldenrodHarborDollVendorAwningPalettes::
 INCLUDE "gfx/tilesets/palette-swap/doll-vendor.pal"
 
+PokemonFanClubRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/pokemon-fan-club-roof.pal"
+
 SilphCoRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/silph-co.pal"
+
+CeladonHotelRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/celadon-hotel.pal"
+
+PowerPlantRoofPalettes:
+INCLUDE "gfx/tilesets/palette-swap/power-plant.pal"
 
 FuchsiaCityRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/fuchsia-roof.pal"
@@ -54,6 +66,7 @@ INCLUDE "gfx/tilesets/palette-swap/fuchsia-roof.pal"
 SafariZoneRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/safari-zone-roof.pal"
 
+DayOfWeekSiblingsHouseRoofPalettes::
 LavenderRadioTowerRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/lavender-radio-tower-roof.pal"
 
@@ -62,6 +75,9 @@ INCLUDE "gfx/tilesets/palette-swap/mr-pokemon-roof.pal"
 
 MrPsychicsHouseRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/mr-psychic-roof.pal"
+
+SteelWingHouseRoofPalettes::
+INCLUDE "gfx/tilesets/palette-swap/steel-wing-roof.pal"
 
 NuggetBridgePalettes::
 RuggedRoadSouthFlowerPalettes::

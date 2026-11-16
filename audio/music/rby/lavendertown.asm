@@ -22,47 +22,11 @@ Music_LavenderTownRBY_Ch1:
 	note_type 12, 10, 7
 
 Music_LavenderTownRBY_branch_bb6b:
-	octave 3
-	note G_, 8
-	note G_, 8
-	note E_, 8
-	note E_, 8
-	note G_, 4
-	note F#, 4
-	note E_, 4
-	note B_, 4
-	note C#, 8
-	note C#, 8
-	note G_, 8
-	note G_, 8
-	note F#, 8
-	note F#, 8
-	note B_, 4
-	note G_, 4
-	note F#, 4
-	note B_, 4
+	sound_call Music_LavenderTownRBY_Ch1_ditty1
 	octave 4
 	note C_, 8
 	note C_, 8
-	octave 3
-	note G_, 8
-	note G_, 8
-	note E_, 8
-	note E_, 8
-	note G_, 4
-	note F#, 4
-	note E_, 4
-	note B_, 4
-	note C#, 8
-	note C#, 8
-	note G_, 8
-	note G_, 8
-	note F#, 8
-	note F#, 8
-	note B_, 4
-	note G_, 4
-	note F#, 4
-	note B_, 4
+	sound_call Music_LavenderTownRBY_Ch1_ditty1
 	note C_, 8
 	note C_, 8
 	rest 16
@@ -94,33 +58,9 @@ Music_LavenderTownRBY_Ch3:
 	note_type 12, 2, 10 ; waveform 10
 Music_LavenderTownRBY_branch_bbb9:
 	octave 4
-	note E_, 16
-	note D_, 16
-	note C_, 16
-	note E_, 4
-	note C_, 4
-	octave 3
-	note B_, 4
-	octave 4
-	note E_, 4
-	note E_, 16
-	note D_, 16
-	note C_, 16
-	note E_, 4
-	note C_, 4
-	octave 3
-	note B_, 4
-	octave 4
-	note E_, 4
-	note E_, 16
-	note D_, 16
-	note C_, 16
-	note E_, 4
-	note C_, 4
-	octave 3
-	note B_, 4
-	octave 4
-	note E_, 4
+	sound_call Music_LavenderTownRBY_Ch3_ditty1
+	sound_call Music_LavenderTownRBY_Ch3_ditty1
+	sound_call Music_LavenderTownRBY_Ch3_ditty1
 	note_type 12, 3, 10 ; waveform 10
 	octave 6
 	note B_, 4
@@ -142,33 +82,9 @@ Music_LavenderTownRBY_branch_bbb9:
 	note G_, 4
 	note F#, 4
 	note B_, 4
-	note E_, 16
-	note D_, 16
-	note C_, 16
-	note E_, 4
-	note C_, 4
-	octave 3
-	note B_, 4
-	octave 4
-	note E_, 4
-	note E_, 16
-	note D_, 16
-	note C_, 16
-	note E_, 4
-	note C_, 4
-	octave 3
-	note B_, 4
-	octave 4
-	note E_, 4
-	note E_, 16
-	note D_, 16
-	note C_, 16
-	note E_, 4
-	note C_, 4
-	octave 3
-	note B_, 4
-	octave 4
-	note E_, 4
+	sound_call Music_LavenderTownRBY_Ch3_ditty1
+	sound_call Music_LavenderTownRBY_Ch3_ditty1
+	sound_call Music_LavenderTownRBY_Ch3_ditty1
 	note_type 12, 2, 10 ; waveform 10
 	octave 6
 	note B_, 4
@@ -204,3 +120,37 @@ Music_LavenderTownRBY_branch_bc26:
 	drum_note 7, 8
 	drum_note 7, 8
 	sound_jump Music_LavenderTownRBY_branch_bc26
+
+Music_LavenderTownRBY_Ch1_ditty1:
+	octave 3
+	note G_, 8
+	note G_, 8
+	note E_, 8
+	note E_, 8
+	note G_, 4
+	note F#, 4
+	note E_, 4
+	note B_, 4
+	note C#, 8
+	note C#, 8
+	note G_, 8
+	note G_, 8
+	note F#, 8
+	note F#, 8
+	note B_, 4
+	note G_, 4
+	note F#, 4
+	note B_, 4
+	sound_ret
+
+Music_LavenderTownRBY_Ch3_ditty1:
+	note E_, 16
+	note D_, 16
+	note C_, 16
+	note E_, 4
+	note C_, 4
+	octave 3
+	note B_, 4
+	octave 4
+	note E_, 4
+	sound_ret

@@ -68,7 +68,7 @@ DEF OW_RIGHT EQU RIGHT << 2
 	shift_const BG_OFFSET      ; 4
 	shift_const FROZEN         ; 5
 	shift_const OFF_SCREEN     ; 6
-	shift_const UNDER_TILES    ; 7
+	const_skip                 ; 7 (unused)
 
 ; object_struct OBJECT_PALETTE bit flags
 	const_def 4
@@ -176,6 +176,8 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_AQUARIUM_BOTTOM      ; 36
 	const SPRITEMOVEDATA_PAGODA_LEFT          ; 37
 	const SPRITEMOVEDATA_PAGODA_RIGHT         ; 38
+	const SPRITEMOVEDATA_RADIO_DISH           ; 39
+	const SPRITEMOVEDATA_LILYPAD              ; 3a
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -358,4 +360,5 @@ DEF NUM_FACINGS EQU const_value
 	const STEP_SPIN          ; 9
 	const STEP_FAST          ; a (same as STEP_RUN but without doubling animation speed)
 	const STEP_STAIRS        ; b
+	const STEP_BIKE_LEDGE    ; c
 DEF NUM_STEPS EQU const_value

@@ -13,8 +13,9 @@ Music_SafariZoneGateHGSS:
 Music_SafariZoneGateHGSS_Ch1:
 	tempo 164
 	volume 7, 7
-	duty_cycle 0
 	pitch_offset 2
+Music_SafariZoneGateHGSS_Ch1_loop:
+	duty_cycle 0
 	vibrato 8, 1, 5
 	note_type 12, 8, 6
 	octave 3
@@ -133,7 +134,6 @@ Music_SafariZoneGateHGSS_Ch1:
 	note E_, 2
 	note D_, 2
 	note E_, 2
-
 	duty_cycle 2
 	volume_envelope 7, 5
 	octave 2
@@ -199,13 +199,13 @@ Music_SafariZoneGateHGSS_Ch1:
 	rest 16
 	rest 16
 	rest 16
-	sound_jump Music_SafariZoneGateHGSS_Ch1
-	sound_ret
+	sound_jump Music_SafariZoneGateHGSS_Ch1_loop
 
 Music_SafariZoneGateHGSS_Ch2:
-	duty_cycle 3
 	vibrato 18, 2, 5
 	pitch_offset 1
+Music_SafariZoneGateHGSS_Ch2_loop:
+	duty_cycle 3
 	note_type 12, 9, 6
 	octave 3
 	note E_, 4
@@ -280,26 +280,12 @@ Music_SafariZoneGateHGSS_Ch2:
 	note B_, 1
 	note A_, 3
 	duty_cycle 2
-	note A_, 2
-	note A_, 2
-	note E_, 2
-	duty_cycle 0
-	octave 4
-	note E_, 1
-	note E_, 2
-	volume_envelope 9, 4
+	sound_call Music_SafariZoneGateHGSS_Ch2_ditty1
 	note E_, 7
 	duty_cycle 2
 	volume_envelope 9, 2
 	octave 3
-	note A_, 2
-	note A_, 2
-	note E_, 2
-	duty_cycle 0
-	octave 4
-	note E_, 1
-	note E_, 2
-	volume_envelope 9, 4
+	sound_call Music_SafariZoneGateHGSS_Ch2_ditty1
 	note E_, 2
 	duty_cycle 3
 	note F#, 1
@@ -413,8 +399,7 @@ Music_SafariZoneGateHGSS_Ch2:
 	note C#, 2
 	sound_call Music_SafariZoneGateHGSS_Ch2_branch_1
 	rest 1
-	sound_jump Music_SafariZoneGateHGSS_Ch2
-	sound_ret
+	sound_jump Music_SafariZoneGateHGSS_Ch2_loop
 
 Music_SafariZoneGateHGSS_Ch2_branch_1:
 	volume_envelope 8, 2
@@ -440,6 +425,17 @@ Music_SafariZoneGateHGSS_Ch2_branch_1:
 	note E_, 2
 	note D_, 1
 	note E_, 2
+	sound_ret
+
+Music_SafariZoneGateHGSS_Ch2_ditty1:
+	note A_, 2
+	note A_, 2
+	note E_, 2
+	duty_cycle 0
+	octave 4
+	note E_, 1
+	note E_, 2
+	volume_envelope 9, 4
 	sound_ret
 
 Music_SafariZoneGateHGSS_Ch3:
@@ -571,7 +567,6 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note C#, 2
 	volume_envelope 3, 4
 	note C#, 2
-
 	note_type 6, 1, 2
 	octave 5
 	note C#, 1
@@ -654,7 +649,6 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	octave 4
 	note B_, 2
 	rest 2
-
 	octave 5
 	note E_, 8
 	sound_call Music_SafariZoneGateHGSS_Ch3_branch_1
@@ -671,7 +665,6 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	volume_envelope 2, 5
 	rest 16
 	sound_jump Music_SafariZoneGateHGSS_Ch3_loop
-	sound_ret
 
 Music_SafariZoneGateHGSS_Ch3_branch_1:
 	note F#, 2
@@ -754,7 +747,6 @@ Music_SafariZoneGateHGSS_Ch4_loop_5:
 	sound_loop 15, Music_SafariZoneGateHGSS_Ch4_loop_5
 	drum_note 12, 16
 	sound_jump Music_SafariZoneGateHGSS_Ch4_loop_main
-	sound_ret
 
 Music_SafariZoneGateHGSS_Ch4_branch_1:
 	drum_note 3, 1

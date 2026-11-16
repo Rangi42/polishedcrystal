@@ -463,9 +463,31 @@ WriteTrainerEVs:
 
 	push de
 	ld hl, EVSpreads
-	ld bc, NUM_STATS
+	ld bc, NUM_STATS - 1
 	rst AddNTimes
-	rst CopyBytes
+	ld b, 0
+rept 3 ; HP, Atk, Def
+	ld a, [hli]
+rept 2
+	add a
+	rl b
+endr
+	ld [de], a
+	inc de
+endr
+	; Speed
+	ld a, b
+	add a
+	add a
+	ld [de], a
+	inc de
+	; Sp.Atk
+	ld a, [hli]
+	ld [de], a
+	inc de
+	; Sp.Def
+	ld a, [hl]
+	ld [de], a
 	pop hl
 
 	; If modern EVs are enabled, we're done.
@@ -504,13 +526,17 @@ DVSpreads:
 	assert_table_length NUM_DV_SPREADS
 
 EVSpreads:
-	table_width NUM_STATS
+	table_width NUM_STATS - 1
 	for n, NUM_EV_SPREADS
 		; each EV_SPREAD_*_HP/ATK/DEF/SPE/SAT/SDF is implicitly defined
 		; by `tr_evs` (see data/trainers/parties.asm)
-		for x, 1, EACH_SPREAD_STAT
-			db EV_SPREAD_{d:n}_{STATS{x}}
-		endr
+		; Since every 4 EV points equals 1 stat point, EVs have 2 unused bits.
+		; Pack the Speed EV's 6 bits into the unused bits of HP, Atk, and Def.
+		db ((EV_SPREAD_{d:n}_{STATS$4} & %11000000) << 0) | (EV_SPREAD_{d:n}_{STATS$1} >> 2)
+		db ((EV_SPREAD_{d:n}_{STATS$4} & %00110000) << 2) | (EV_SPREAD_{d:n}_{STATS$2} >> 2)
+		db ((EV_SPREAD_{d:n}_{STATS$4} & %00001100) << 4) | (EV_SPREAD_{d:n}_{STATS$3} >> 2)
+		db EV_SPREAD_{d:n}_{STATS$5}
+		db EV_SPREAD_{d:n}_{STATS$6}
 	endr
 	assert_table_length NUM_EV_SPREADS
 

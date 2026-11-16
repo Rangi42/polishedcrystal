@@ -10,11 +10,10 @@ Route6_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 23, 12, BGEVENT_JUMPTEXT, Route6UndergroundPathSignText
+	bg_event 23, 12, BGEVENT_JUMPTEXT, Route5UndergroundPathSignText
 	bg_event  7, 11, BGEVENT_JUMPTEXT, Route6AdvancedTipsSignText
 
 	def_object_events
-	object_event 21, 12, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route6PokefanMText, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	object_event 10, 26, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerPokefanmRex, -1
 	object_event 11, 26, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerPokefanmAllan, -1
 	object_event 14, 19, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerTwinsDayanddani1, -1
@@ -176,21 +175,6 @@ OfficerfJennyScript:
 
 	para "I get jumpy at"
 	line "night."
-	done
-
-Route6PokefanMText:
-	text "The road is closed"
-	line "until the problem"
-
-	para "at the Power Plant"
-	line "is solved."
-	done
-
-Route6UndergroundPathSignText:
-	text "Underground Path"
-
-	para "Cerulean City -"
-	line "Vermilion City"
 	done
 
 Route6AdvancedTipsSignText:

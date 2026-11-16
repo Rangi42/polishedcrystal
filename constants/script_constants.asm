@@ -9,6 +9,14 @@ DEF LAST_TALKED EQU -2
 	const STRING_BUFFER_5 ; use wStringBuffer5
 DEF NUM_STRING_BUFFERS EQU const_value
 
+; GetEusineState / UpdateEusineVisibility results
+	const_def
+	const EUSINE_SEARCHING
+	const EUSINE_RESEARCHING
+	const EUSINE_LEFT_CELADON
+	const EUSINE_FAREWELL_PENDING
+	const EUSINE_TRAVELING
+
 DEF STRING_BUFFER_LENGTH EQU 19
 
 ; checkmoney/takemoney accounts

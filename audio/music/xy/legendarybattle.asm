@@ -39,65 +39,15 @@ Music_LegendaryBattleXY_Ch1:
 	volume_envelope 8, 4
 	octave 2
 	note C_, 2
-	volume_envelope 10, 0
-	octave 3
-	note C_, 2
-	note G_, 3
-	note A#, 1
-	note A_, 2
-	volume_envelope 10, 7
-	note A_, 4
-	note G_, 1
-	note F_, 1
-	volume_envelope 10, 0
-	note G_, 2
-	volume_envelope 10, 7
-	note G_, 4
-	note A#, 2
-	octave 4
-	volume_envelope 10, 0
-	note C_, 2
-	volume_envelope 10, 7
+	sound_call Music_LegendaryBattleXY_Ch1_ditty2
 	note C_, 6
 Music_LegendaryBattleXY_Ch1_loop_main:
 	octave 3
-	volume_envelope 6, 0
-	note C_, 12
-	volume_envelope 6, 4
-	note C_, 4
-	volume_envelope 6, 0
-	note F_, 12
-	volume_envelope 6, 4
-	note F_, 4
-	volume_envelope 6, 0
-	note G_, 12
-	volume_envelope 6, 4
-	note G_, 4
-	volume_envelope 6, 0
-	note G_, 6
-	volume_envelope 6, 4
-	note G_, 2
-	volume_envelope 6, 0
+	sound_call Music_LegendaryBattleXY_Ch1_ditty1
 	note A#, 6
 	volume_envelope 6, 4
 	note A#, 2
-	volume_envelope 6, 0
-	note C_, 12
-	volume_envelope 6, 4
-	note C_, 4
-	volume_envelope 6, 0
-	note F_, 12
-	volume_envelope 6, 4
-	note F_, 4
-	volume_envelope 6, 0
-	note G_, 12
-	volume_envelope 6, 4
-	note G_, 4
-	volume_envelope 6, 0
-	note G_, 6
-	volume_envelope 6, 4
-	note G_, 2
-	volume_envelope 6, 0
+	sound_call Music_LegendaryBattleXY_Ch1_ditty1
 	note G_, 2
 	volume_envelope 6, 4
 	note G_, 2
@@ -133,95 +83,27 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	note C_, 3
 	note D#, 1
 	note F_, 2
-	volume_envelope 10, 0
-	octave 3
-	note C_, 2
-	note G_, 3
-	note A#, 1
-	note A_, 2
-	volume_envelope 10, 7
-	note A_, 4
-	note G_, 1
-	note F_, 1
-	volume_envelope 10, 0
-	note G_, 2
-	volume_envelope 10, 7
-	note G_, 4
-	note A#, 2
-	octave 4
-	volume_envelope 10, 0
-	note C_, 2
-	volume_envelope 10, 7
+	sound_call Music_LegendaryBattleXY_Ch1_ditty2
 	note C_, 4
-	note D_, 1
-	octave 3
-	note A#, 1
-	octave 4
-	volume_envelope 10, 0
-	note C_, 2
-	volume_envelope 10, 7
-	note C_, 4
-	note D_, 1
-	octave 3
-	note A#, 1
-	octave 4
+	sound_call Music_LegendaryBattleXY_Ch1_ditty5
 	note C_, 2
 	note D_, 1
 	note D#, 1
 	note F_, 2
-	note D_, 1
-	octave 3
-	note A#, 1
-	octave 4
-	volume_envelope 10, 0
-	note C_, 2
-	volume_envelope 10, 7
-	note C_, 4
-	note D_, 1
-	octave 3
-	note A#, 1
-	octave 4
+	sound_call Music_LegendaryBattleXY_Ch1_ditty5
 	volume_envelope 10, 0
 	note C_, 2
 	volume_envelope 10, 7
 	note C_, 6
 	duty_cycle 1
-	volume_envelope 10, 0
-	note C#, 4
-	volume_envelope 10, 7
-	note C#, 4
-	volume_envelope 10, 2
-	note C_, 1
-	octave 3
-	note A#, 5
-	volume_envelope 10, 4
-	note A_, 1
-	note A#, 1
-	octave 4
-	volume_envelope 10, 0
-	note C_, 4
-	volume_envelope 10, 7
+	sound_call Music_LegendaryBattleXY_Ch1_ditty4
 	note C_, 4
 	volume_envelope 10, 2
 	octave 3
 	note A#, 1
 	note A_, 7
 	octave 4
-	volume_envelope 10, 0
-	note C#, 4
-	volume_envelope 10, 7
-	note C#, 4
-	volume_envelope 10, 2
-	note C_, 1
-	octave 3
-	note A#, 5
-	volume_envelope 10, 4
-	note A_, 1
-	note A#, 1
-	octave 4
-	volume_envelope 10, 0
-	note C_, 4
-	volume_envelope 10, 7
+	sound_call Music_LegendaryBattleXY_Ch1_ditty4
 	note C_, 2
 	octave 3
 	note A_, 1
@@ -232,50 +114,8 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	volume_envelope 10, 7
 	note E_, 4
 	duty_cycle 2
-	octave 2
-	note A#, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note A#, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C#, 1
-	octave 2
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 3
-	note C#, 1
+	sound_call Music_LegendaryBattleXY_Ch1_ditty3
+	sound_call Music_LegendaryBattleXY_Ch1_ditty3
 	note D_, 1
 	note C#, 1
 	note C_, 1
@@ -284,30 +124,14 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	duty_cycle 0
 	octave 3
 Music_LegendaryBattleXY_Ch1_loop_1:
-	volume_envelope 8, 0
-	pitch_sweep 3, -7
-	note D_, 1
-	pitch_sweep 0, 0
-	note C_, 3
-	volume_envelope 8, 7
-	note C_, 4
-	volume_envelope 8, 0
-	pitch_sweep 3, 7
+	sound_call Music_LegendaryBattleXY_Ch1_ditty6
 	note C_, 1
 	pitch_sweep 0, 0
 	note D_, 3
 	volume_envelope 8, 7
 	note D_, 4
 	sound_loop 3, Music_LegendaryBattleXY_Ch1_loop_1
-	volume_envelope 8, 0
-	pitch_sweep 3, -7
-	note D_, 1
-	pitch_sweep 0, 0
-	note C_, 3
-	volume_envelope 8, 7
-	note C_, 4
-	volume_envelope 8, 0
-	pitch_sweep 3, 7
+	sound_call Music_LegendaryBattleXY_Ch1_ditty6
 	note D#, 1
 	octave 3
 	pitch_sweep 0, 0
@@ -321,53 +145,7 @@ Music_LegendaryBattleXY_Ch2:
 	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 12, 8, 4
-	octave 2
-	note F_, 2
-	octave 3
-	volume_envelope 10, 0
-	note F_, 2
-	octave 4
-	note C_, 3
-	note D#, 1
-	note D_, 2
-	volume_envelope 10, 7
-	note D_, 6
-	volume_envelope 8, 4
-	octave 2
-	note F_, 2
-	volume_envelope 10, 0
-	octave 3
-	note F_, 2
-	octave 4
-	note C_, 3
-	note D#, 1
-	note F_, 2
-	volume_envelope 10, 7
-	note F_, 6
-	volume_envelope 8, 4
-	octave 2
-	note F_, 2
-	volume_envelope 10, 0
-	octave 3
-	note F_, 2
-	octave 4
-	note C_, 3
-	note D#, 1
-	note D_, 2
-	volume_envelope 10, 7
-	note D_, 4
-	note C_, 1
-	octave 3
-	note A#, 1
-	volume_envelope 10, 0
-	octave 4
-	note C_, 2
-	volume_envelope 10, 7
-	note C_, 4
-	note D#, 2
-	volume_envelope 10, 0
-	note F_, 2
-	volume_envelope 10, 7
+	sound_call Music_LegendaryBattleXY_Ch2_ditty1
 	note F_, 6
 Music_LegendaryBattleXY_Ch2_loop_main:
 	duty_cycle 2
@@ -378,16 +156,7 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note F_, 4
 	volume_envelope 8, 0
 	octave 4
-	note C_, 6
-	volume_envelope 8, 4
-	note C_, 2
-	octave 3
-	volume_envelope 8, 0
-	note A#, 2
-	volume_envelope 8, 4
-	note A#, 2
-	octave 4
-	volume_envelope 8, 0
+	sound_call Music_LegendaryBattleXY_Ch2_ditty5
 	note D#, 2
 	volume_envelope 8, 4
 	note D#, 2
@@ -434,67 +203,12 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	volume_envelope 8, 4
 	note C#, 4
 	volume_envelope 8, 0
-	note C_, 6
-	volume_envelope 8, 4
-	note C_, 2
-	octave 3
-	volume_envelope 8, 0
-	note A#, 2
-	volume_envelope 8, 4
-	note A#, 2
-	octave 4
-	volume_envelope 8, 0
+	sound_call Music_LegendaryBattleXY_Ch2_ditty5
 	note C_, 2
 	volume_envelope 8, 4
 	note C_, 2
 	duty_cycle 3
-	octave 2
-	note F_, 2
-	octave 3
-	volume_envelope 10, 0
-	note F_, 2
-	octave 4
-	note C_, 3
-	note D#, 1
-	note D_, 2
-	volume_envelope 10, 7
-	note D_, 6
-	volume_envelope 8, 4
-	octave 2
-	note F_, 2
-	volume_envelope 10, 0
-	octave 3
-	note F_, 2
-	octave 4
-	note C_, 3
-	note D#, 1
-	note F_, 2
-	volume_envelope 10, 7
-	note F_, 6
-	volume_envelope 8, 4
-	octave 2
-	note F_, 2
-	volume_envelope 10, 0
-	octave 3
-	note F_, 2
-	octave 4
-	note C_, 3
-	note D#, 1
-	note D_, 2
-	volume_envelope 10, 7
-	note D_, 4
-	note C_, 1
-	octave 3
-	note A#, 1
-	volume_envelope 10, 0
-	octave 4
-	note C_, 2
-	volume_envelope 10, 7
-	note C_, 4
-	note D#, 2
-	volume_envelope 10, 0
-	note F_, 2
-	volume_envelope 10, 7
+	sound_call Music_LegendaryBattleXY_Ch2_ditty1
 	note F_, 4
 	note G_, 1
 	note D#, 1
@@ -521,36 +235,12 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	volume_envelope 10, 7
 	note F_, 6
 	duty_cycle 0
-	volume_envelope 10, 0
-	note F#, 4
-	volume_envelope 10, 7
-	note F#, 4
-	volume_envelope 10, 2
-	note F_, 1
-	note D#, 5
-	volume_envelope 10, 4
-	note D_, 1
-	note D#, 1
-	volume_envelope 10, 0
-	note F_, 4
-	volume_envelope 10, 7
+	sound_call Music_LegendaryBattleXY_Ch2_ditty4
 	note F_, 4
 	volume_envelope 10, 2
 	note D#, 1
 	note D_, 7
-	volume_envelope 10, 0
-	note F#, 4
-	volume_envelope 10, 7
-	note F#, 4
-	volume_envelope 10, 2
-	note F_, 1
-	note D#, 5
-	volume_envelope 10, 4
-	note D_, 1
-	note D#, 1
-	volume_envelope 10, 0
-	note F_, 4
-	volume_envelope 10, 7
+	sound_call Music_LegendaryBattleXY_Ch2_ditty4
 	note F_, 2
 	note D_, 1
 	note F_, 1
@@ -559,50 +249,8 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	volume_envelope 10, 7
 	note A_, 4
 	duty_cycle 3
-	octave 3
-	note A#, 1
-	octave 4
-	note C#, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C#, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C#, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C#, 1
-	octave 3
-	note A#, 1
-	octave 4
-	note C#, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C#, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C#, 1
-	octave 3
-	note A#, 1
-	note A_, 1
-	note A#, 1
-	octave 4
-	note C#, 1
+	sound_call Music_LegendaryBattleXY_Ch2_ditty2
+	sound_call Music_LegendaryBattleXY_Ch2_ditty2
 	note D_, 1
 	note C#, 1
 	note C_, 1
@@ -610,35 +258,11 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note B_, 1
 	duty_cycle 2
 	octave 2
-	volume_envelope 8, 0
-	note F_, 4
-	volume_envelope 8, 7
-	note F_, 4
-	volume_envelope 8, 0
+	sound_call Music_LegendaryBattleXY_Ch2_ditty3
 	note A_, 4
 	volume_envelope 8, 7
 	note A_, 4
-	volume_envelope 8, 0
-	note F_, 4
-	volume_envelope 8, 7
-	note F_, 4
-	volume_envelope 8, 0
-	note A_, 4
-	volume_envelope 8, 7
-	note A_, 4
-	volume_envelope 8, 0
-	note F_, 4
-	volume_envelope 8, 7
-	note F_, 4
-	volume_envelope 8, 0
-	note A_, 4
-	volume_envelope 8, 7
-	note A_, 4
-	volume_envelope 8, 0
-	note F_, 4
-	volume_envelope 8, 7
-	note F_, 4
-	volume_envelope 8, 0
+	sound_call Music_LegendaryBattleXY_Ch2_ditty3
 	octave 3
 	note D#, 4
 	volume_envelope 8, 7
@@ -720,38 +344,8 @@ Music_LegendaryBattleXY_Ch3_loop_2:
 	note F_, 2
 	octave 2
 	note A#, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note F_, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note F_, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note F_, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note A#, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note F_, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note F_, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note F_, 2
-	octave 1
-	note F_, 2
-	octave 2
-	note A#, 2
+	sound_call Music_LegendaryBattleXY_Ch3_ditty1
+	sound_call Music_LegendaryBattleXY_Ch3_ditty1
 Music_LegendaryBattleXY_Ch3_loop_3:
 	volume_envelope 1, 9
 	octave 1
@@ -830,3 +424,254 @@ Music_LegendaryBattleXY_Ch3_loop_12:
 	note F_, 2
 	sound_loop 32, Music_LegendaryBattleXY_Ch3_loop_12
 	sound_jump Music_LegendaryBattleXY_Ch3_loop_main
+
+Music_LegendaryBattleXY_Ch1_ditty1:
+	volume_envelope 6, 0
+	note C_, 12
+	volume_envelope 6, 4
+	note C_, 4
+	volume_envelope 6, 0
+	note F_, 12
+	volume_envelope 6, 4
+	note F_, 4
+	volume_envelope 6, 0
+	note G_, 12
+	volume_envelope 6, 4
+	note G_, 4
+	volume_envelope 6, 0
+	note G_, 6
+	volume_envelope 6, 4
+	note G_, 2
+	volume_envelope 6, 0
+	sound_ret
+
+Music_LegendaryBattleXY_Ch1_ditty2:
+	volume_envelope 10, 0
+	octave 3
+	note C_, 2
+	note G_, 3
+	note A#, 1
+	note A_, 2
+	volume_envelope 10, 7
+	note A_, 4
+	note G_, 1
+	note F_, 1
+	volume_envelope 10, 0
+	note G_, 2
+	volume_envelope 10, 7
+	note G_, 4
+	note A#, 2
+	octave 4
+	volume_envelope 10, 0
+	note C_, 2
+	volume_envelope 10, 7
+	sound_ret
+
+Music_LegendaryBattleXY_Ch1_ditty3:
+	octave 2
+	note A#, 1
+	octave 3
+	note C#, 1
+	octave 2
+	note A#, 1
+	note A_, 1
+	note A#, 1
+	octave 3
+	note C#, 1
+	octave 2
+	note A#, 1
+	note A_, 1
+	note A#, 1
+	octave 3
+	note C#, 1
+	octave 2
+	note A#, 1
+	note A_, 1
+	note A#, 1
+	octave 3
+	note C#, 1
+	sound_ret
+
+Music_LegendaryBattleXY_Ch1_ditty4:
+	volume_envelope 10, 0
+	note C#, 4
+	volume_envelope 10, 7
+	note C#, 4
+	volume_envelope 10, 2
+	note C_, 1
+	octave 3
+	note A#, 5
+	volume_envelope 10, 4
+	note A_, 1
+	note A#, 1
+	octave 4
+	volume_envelope 10, 0
+	note C_, 4
+	volume_envelope 10, 7
+	sound_ret
+
+Music_LegendaryBattleXY_Ch1_ditty5:
+	note D_, 1
+	octave 3
+	note A#, 1
+	octave 4
+	volume_envelope 10, 0
+	note C_, 2
+	volume_envelope 10, 7
+	note C_, 4
+	note D_, 1
+	octave 3
+	note A#, 1
+	octave 4
+	sound_ret
+
+Music_LegendaryBattleXY_Ch1_ditty6:
+	volume_envelope 8, 0
+	pitch_sweep 3, -7
+	note D_, 1
+	pitch_sweep 0, 0
+	note C_, 3
+	volume_envelope 8, 7
+	note C_, 4
+	volume_envelope 8, 0
+	pitch_sweep 3, 7
+	sound_ret
+
+Music_LegendaryBattleXY_Ch2_ditty1:
+	octave 2
+	note F_, 2
+	octave 3
+	volume_envelope 10, 0
+	note F_, 2
+	octave 4
+	note C_, 3
+	note D#, 1
+	note D_, 2
+	volume_envelope 10, 7
+	note D_, 6
+	volume_envelope 8, 4
+	octave 2
+	note F_, 2
+	volume_envelope 10, 0
+	octave 3
+	note F_, 2
+	octave 4
+	note C_, 3
+	note D#, 1
+	note F_, 2
+	volume_envelope 10, 7
+	note F_, 6
+	volume_envelope 8, 4
+	octave 2
+	note F_, 2
+	volume_envelope 10, 0
+	octave 3
+	note F_, 2
+	octave 4
+	note C_, 3
+	note D#, 1
+	note D_, 2
+	volume_envelope 10, 7
+	note D_, 4
+	note C_, 1
+	octave 3
+	note A#, 1
+	volume_envelope 10, 0
+	octave 4
+	note C_, 2
+	volume_envelope 10, 7
+	note C_, 4
+	note D#, 2
+	volume_envelope 10, 0
+	note F_, 2
+	volume_envelope 10, 7
+	sound_ret
+
+Music_LegendaryBattleXY_Ch2_ditty2:
+	octave 3
+	note A#, 1
+	octave 4
+	note C#, 1
+	octave 3
+	note A#, 1
+	note A_, 1
+	note A#, 1
+	octave 4
+	note C#, 1
+	octave 3
+	note A#, 1
+	note A_, 1
+	note A#, 1
+	octave 4
+	note C#, 1
+	octave 3
+	note A#, 1
+	note A_, 1
+	note A#, 1
+	octave 4
+	note C#, 1
+	sound_ret
+
+Music_LegendaryBattleXY_Ch2_ditty3:
+	volume_envelope 8, 0
+	note F_, 4
+	volume_envelope 8, 7
+	note F_, 4
+	volume_envelope 8, 0
+	note A_, 4
+	volume_envelope 8, 7
+	note A_, 4
+	volume_envelope 8, 0
+	note F_, 4
+	volume_envelope 8, 7
+	note F_, 4
+	volume_envelope 8, 0
+	sound_ret
+
+Music_LegendaryBattleXY_Ch2_ditty4:
+	volume_envelope 10, 0
+	note F#, 4
+	volume_envelope 10, 7
+	note F#, 4
+	volume_envelope 10, 2
+	note F_, 1
+	note D#, 5
+	volume_envelope 10, 4
+	note D_, 1
+	note D#, 1
+	volume_envelope 10, 0
+	note F_, 4
+	volume_envelope 10, 7
+	sound_ret
+
+Music_LegendaryBattleXY_Ch2_ditty5:
+	note C_, 6
+	volume_envelope 8, 4
+	note C_, 2
+	octave 3
+	volume_envelope 8, 0
+	note A#, 2
+	volume_envelope 8, 4
+	note A#, 2
+	octave 4
+	volume_envelope 8, 0
+	sound_ret
+
+Music_LegendaryBattleXY_Ch3_ditty1:
+	octave 1
+	note F_, 2
+	octave 2
+	note F_, 2
+	octave 1
+	note F_, 2
+	octave 2
+	note F_, 2
+	octave 1
+	note F_, 2
+	octave 2
+	note F_, 2
+	octave 1
+	note F_, 2
+	octave 2
+	note A#, 2
+	sound_ret

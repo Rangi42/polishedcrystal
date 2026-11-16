@@ -342,21 +342,7 @@ Music_TrainerBattleSM_Ch2:
 	volume_envelope 7, 2
 	note D_, 1
 Music_TrainerBattleSM_Ch2_loop_main:
-	duty_cycle 3
-	octave 4
-	volume_envelope 10, 0
-	note C_, 6
-	note F_, 6
-	volume_envelope 10, 7
-	note F_, 2
-	note E_, 2
-	volume_envelope 10, 0
-	note G_, 6
-	volume_envelope 10, 7
-	note G_, 6
-	note G_, 2
-	note A_, 2
-	volume_envelope 10, 0
+	sound_call Music_TrainerBattleSM_Ch2_ditty1
 	note A#, 6
 	note A_, 6
 	note F_, 4
@@ -367,21 +353,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	sound_call Music_TrainerBattleSM_Ch2_branch_2
 	volume_envelope 10, 7
 	note G_, 10
-	duty_cycle 3
-	octave 4
-	volume_envelope 10, 0
-	note C_, 6
-	note F_, 6
-	volume_envelope 10, 7
-	note F_, 2
-	note E_, 2
-	volume_envelope 10, 0
-	note G_, 6
-	volume_envelope 10, 7
-	note G_, 6
-	note G_, 2
-	note A_, 2
-	volume_envelope 10, 0
+	sound_call Music_TrainerBattleSM_Ch2_ditty1
 	note A#, 4
 	volume_envelope 10, 4
 	note A#, 2
@@ -698,25 +670,7 @@ Music_TrainerBattleSM_Ch3_loop_6:
 	note F_, 1
 	rest 1
 	note F_, 2
-	rest 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 2
-	note D#, 1
-	rest 1
-	note D#, 4
-	rest 2
-	note D#, 1
-	rest 1
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 2
-	note D#, 1
-	rest 1
-	note D#, 2
-	rest 2
+	sound_call Music_TrainerBattleSM_Ch3_ditty1
 	note C#, 2
 	rest 2
 	note C#, 2
@@ -734,25 +688,7 @@ Music_TrainerBattleSM_Ch3_loop_6:
 	note C#, 1
 	rest 1
 	note C#, 2
-	rest 2
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 2
-	note D#, 1
-	rest 1
-	note D#, 4
-	rest 2
-	note D#, 1
-	rest 1
-	note D#, 2
-	rest 2
-	note D#, 2
-	rest 2
-	note D#, 1
-	rest 1
-	note D#, 2
-	rest 2
+	sound_call Music_TrainerBattleSM_Ch3_ditty1
 	sound_loop 2, Music_TrainerBattleSM_Ch3_loop_6
 	octave 1
 	note F_, 2
@@ -763,31 +699,9 @@ Music_TrainerBattleSM_Ch3_loop_6:
 	note A#, 2
 	note B_, 2
 	octave 2
-	note C_, 2
-	note C#, 2
-	note D_, 2
-	note D#, 2
-	note E_, 2
-	note F_, 2
-	note F#, 2
-	note G_, 2
-	note G#, 2
-	note A_, 2
-	note A#, 2
-	note B_, 2
+	sound_call Music_TrainerBattleSM_Ch3_ditty2
 	octave 3
-	note C_, 2
-	note C#, 2
-	note D_, 2
-	note D#, 2
-	note E_, 2
-	note F_, 2
-	note F#, 2
-	note G_, 2
-	note G#, 2
-	note A_, 2
-	note A#, 2
-	note B_, 2
+	sound_call Music_TrainerBattleSM_Ch3_ditty2
 	octave 4
 	note C_, 2
 	octave 2
@@ -837,24 +751,9 @@ Music_TrainerBattleSM_Ch4_loop_3:
 	drum_note 7, 1
 	drum_note 1, 4
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 3
-	drum_note 3, 1
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 3
-	drum_note 3, 1
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 3
-	drum_note 3, 1
-	drum_note 1, 4
-	drum_note 4, 2
+	sound_call Music_TrainerBattleSM_Ch4_ditty1
+	sound_call Music_TrainerBattleSM_Ch4_ditty1
+	sound_call Music_TrainerBattleSM_Ch4_ditty1
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 1, 2
@@ -982,3 +881,67 @@ Music_TrainerBattleSM_Ch4_loop_9:
 	drum_note 3, 1
 	drum_note 3, 1
 	sound_jump Music_TrainerBattleSM_Ch4_loop_main
+
+Music_TrainerBattleSM_Ch2_ditty1:
+	duty_cycle 3
+	octave 4
+	volume_envelope 10, 0
+	note C_, 6
+	note F_, 6
+	volume_envelope 10, 7
+	note F_, 2
+	note E_, 2
+	volume_envelope 10, 0
+	note G_, 6
+	volume_envelope 10, 7
+	note G_, 6
+	note G_, 2
+	note A_, 2
+	volume_envelope 10, 0
+	sound_ret
+
+Music_TrainerBattleSM_Ch3_ditty1:
+	rest 2
+	note D#, 2
+	rest 2
+	note D#, 2
+	rest 2
+	note D#, 1
+	rest 1
+	note D#, 4
+	rest 2
+	note D#, 1
+	rest 1
+	note D#, 2
+	rest 2
+	note D#, 2
+	rest 2
+	note D#, 1
+	rest 1
+	note D#, 2
+	rest 2
+	sound_ret
+
+Music_TrainerBattleSM_Ch3_ditty2:
+	note C_, 2
+	note C#, 2
+	note D_, 2
+	note D#, 2
+	note E_, 2
+	note F_, 2
+	note F#, 2
+	note G_, 2
+	note G#, 2
+	note A_, 2
+	note A#, 2
+	note B_, 2
+	sound_ret
+
+Music_TrainerBattleSM_Ch4_ditty1:
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 4, 3
+	drum_note 3, 1
+	drum_note 1, 4
+	drum_note 4, 2
+	sound_ret

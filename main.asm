@@ -19,6 +19,7 @@ SECTION "Special Events", ROMX
 INCLUDE "engine/events/shiny_ditto.asm"
 INCLUDE "engine/events/shuckle.asm"
 INCLUDE "engine/events/mint_tea.asm"
+INCLUDE "engine/events/eusine.asm"
 
 
 SECTION "bank2", ROMX

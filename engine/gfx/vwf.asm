@@ -133,22 +133,21 @@ _GetNextVWFLength::
 	cp '@'
 	ret z
 
-	push hl
 	push de
 	sub FIRST_VWF_CHAR
 	jr nc, .valid
 	ld a, FAILSAFE_VWF_CHAR - FIRST_VWF_CHAR
 .valid
 	; get VWFWidths + a
+	add LOW(VWFWidths)
 	ld e, a
-	ld d, 0
-	ld hl, VWFWidths
-	add hl, de
-	ld a, [hl] ; b = width in pixels
+	adc HIGH(VWFWidths)
+	sub e
+	ld d, a
+	ld a, [de] ; b = width in pixels
 	add c
 	ld c, a
 	pop de
-	pop hl
 	or 1
 	ret
 

@@ -48,9 +48,14 @@ _SafeCopyTilemapAtOnce::
 	ldh [hOAMUpdate], a
 .noForceOAMUpdate
 	bit 3, b
-	ld a, 3
+def NB_ROWS_TILEMAP_ONLY equ 9
+; If we're copying both maps, we won't have enough time to copy as many rows.
+; Thus, the remainder gets copied outside of VBlank, in chunks of 5 rows; this leaves a remainder of 3,
+; which is suitable to be transferred during VBlank (twice: once for each of the two maps).
+def NB_ROWS_BOTH_MAPS equ 3
+	ld a, NB_ROWS_BOTH_MAPS
 	jr z, .gotRowCount
-	ld a, 9
+	ld a, NB_ROWS_TILEMAP_ONLY
 .gotRowCount
 	ldh [hBGMapCopyNRows], a
 	ld a, b
@@ -66,33 +71,6 @@ _SafeCopyTilemapAtOnce::
 	ldh [hCGBPalUpdate], a
 	pop af
 	ldh [hVBlank], a
-	pop af
-	ldh [hMapAnims], a
-	pop af
-	ldh [hBGMapMode], a
-	ret
-
-_CopyTilemapAtOnce::
-	ldh a, [hBGMapMode]
-	push af
-	ldh a, [hMapAnims]
-	push af
-
-	xor a
-	assert NO_BG_MAP_TRANSFER == 0
-	ldh [hBGMapMode], a
-	ldh [hMapAnims], a
-
-	di
-	hlcoord 0, 0, wAttrmap
-	ld a, 1 ; BANK(vStandingFrameTiles)
-	call CopyFullTilemapInHBlank
-	hlcoord 0, 0
-	xor a ; BANK(vObjTiles)
-	call CopyFullTilemapInHBlank
-
-	ei ; in case we've passed vblank
-
 	pop af
 	ldh [hMapAnims], a
 	pop af
@@ -128,25 +106,18 @@ VBlankSafeCopyTilemapAtOnce::
 	ld de, TILEMAP_WIDTH * 9
 	ld b, 9
 	jr CopyTilemapInHBlank
+
 .attrAndBGCopy
-; now copy both tile and attr map, of alternating groups of 5/5/4
-	hlcoord 0, 3, wAttrmap
-	ld de, TILEMAP_WIDTH * 3
+for x, NB_ROWS_BOTH_MAPS, SCREEN_HEIGHT, 5
+	hlcoord 0, x, wAttrmap
+	ld de, TILEMAP_WIDTH * x
 	call Copy5RowsOfTilemapInHBlank_VBK1
-	hlcoord 0, 3
-	ld de, TILEMAP_WIDTH * 3
-	call Copy5RowsOfTilemapInHBlank_VBK0
-	hlcoord 0, 8, wAttrmap
-	ld de, TILEMAP_WIDTH * 8
-	call Copy5RowsOfTilemapInHBlank_VBK1
-	hlcoord 0, 8
-	ld de, TILEMAP_WIDTH * 8
-	call Copy5RowsOfTilemapInHBlank_VBK0
-	hlcoord 0, 13, wAttrmap
-	ld de, TILEMAP_WIDTH * 13
-	call Copy5RowsOfTilemapInHBlank_VBK1
-	hlcoord 0, 13
-	ld de, TILEMAP_WIDTH * 13
+	hlcoord 0, x
+	ld de, TILEMAP_WIDTH * x
+	if x != SCREEN_HEIGHT - 5 ; omit the last call for a fallthrough
+		call Copy5RowsOfTilemapInHBlank_VBK0
+	endc
+endr
 
 ; fallthrough
 Copy5RowsOfTilemapInHBlank_VBK0:
@@ -271,4 +242,31 @@ CopyTilemapInHBlank:
 	ld sp, wSPBuffer
 	pop hl
 	ld sp, hl
+	ret
+
+_CopyTilemapAtOnce::
+	ldh a, [hBGMapMode]
+	push af
+	ldh a, [hMapAnims]
+	push af
+
+	xor a
+	assert NO_BG_MAP_TRANSFER == 0
+	ldh [hBGMapMode], a
+	ldh [hMapAnims], a
+
+	di
+	hlcoord 0, 0, wAttrmap
+	ld a, 1 ; BANK(vStandingFrameTiles)
+	call CopyFullTilemapInHBlank
+	hlcoord 0, 0
+	xor a ; BANK(vObjTiles)
+	call CopyFullTilemapInHBlank
+
+	ei ; in case we've passed vblank
+
+	pop af
+	ldh [hMapAnims], a
+	pop af
+	ldh [hBGMapMode], a
 	ret

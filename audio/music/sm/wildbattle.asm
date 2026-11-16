@@ -864,49 +864,21 @@ Music_WildBattleSM_Ch4:
 	drum_note 4, 4
 	drum_note 4, 4
 	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 4, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 4, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 4, 2
+	sound_call Music_WildBattleSM_Ch4_ditty3
 	drum_note 3, 4
 	drum_note 3, 2
-	drum_note 4, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 4, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 4, 4
-	drum_note 3, 2
-	drum_note 3, 2
-	drum_note 4, 2
+	sound_call Music_WildBattleSM_Ch4_ditty3
 	drum_note 1, 2
 	drum_note 3, 2
 	drum_note 1, 2
 Music_WildBattleSM_Ch4_loop_main:
-	drum_note 11, 4
-	drum_note 1, 4
-	drum_note 11, 2
-	drum_note 11, 2
-	drum_note 1, 4
-	drum_note 11, 2
+	sound_call Music_WildBattleSM_Ch4_ditty5
 	drum_note 11, 4
 	drum_note 1, 2
 	drum_note 11, 4
 	drum_note 1, 2
 	drum_note 1, 2
-	drum_note 11, 4
-	drum_note 1, 4
-	drum_note 11, 2
-	drum_note 11, 2
-	drum_note 1, 4
-	drum_note 11, 2
+	sound_call Music_WildBattleSM_Ch4_ditty5
 	drum_note 11, 2
 	drum_note 1, 2
 	drum_note 4, 1
@@ -932,12 +904,7 @@ Music_WildBattleSM_Ch4_loop_main:
 	drum_note 1, 2
 	drum_note 4, 1
 	drum_note 4, 1
-	drum_note 11, 4
-	drum_note 1, 4
-	drum_note 11, 2
-	drum_note 11, 2
-	drum_note 1, 4
-	drum_note 11, 2
+	sound_call Music_WildBattleSM_Ch4_ditty5
 	drum_note 11, 2
 	drum_note 1, 2
 	drum_note 11, 4
@@ -949,28 +916,10 @@ Music_WildBattleSM_Ch4_loop_main:
 	drum_note 1, 4
 	drum_note 4, 2
 	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
+	sound_call Music_WildBattleSM_Ch4_ditty4
 	drum_note 4, 4
 	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 1, 2
+	sound_call Music_WildBattleSM_Ch4_ditty4
 	drum_note 1, 4
 	drum_note 4, 2
 	drum_note 11, 6
@@ -1004,41 +953,14 @@ Music_WildBattleSM_Ch4_loop_main:
 	drum_note 4, 2
 	sound_call Music_WildBattleSM_Ch4_branch_1
 	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 4, 3
-	drum_note 4, 1
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 4
-	drum_note 1, 2
-	drum_note 4, 3
-	drum_note 4, 1
-	drum_note 1, 4
-	drum_note 4, 2
+	sound_call Music_WildBattleSM_Ch4_ditty2
 	drum_note 4, 2
 	drum_note 1, 3
-	drum_note 1, 1
-	drum_note 4, 3
-	drum_note 4, 1
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 4
-	drum_note 1, 2
-	drum_note 4, 3
-	drum_note 4, 1
-	drum_note 1, 4
-	drum_note 4, 2
+	sound_call Music_WildBattleSM_Ch4_ditty2
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 1, 2
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
+	sound_call Music_WildBattleSM_Ch4_ditty1
 	drum_note 4, 2
 	drum_note 1, 4
 	drum_note 4, 4
@@ -1074,35 +996,14 @@ Music_WildBattleSM_Ch4_loop_main:
 	drum_note 1, 2
 	drum_note 1, 1
 	drum_note 1, 1
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
+	sound_call Music_WildBattleSM_Ch4_ditty1
 	drum_note 4, 2
 	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
+	sound_call Music_WildBattleSM_Ch4_ditty1
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 1, 2
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
+	sound_call Music_WildBattleSM_Ch4_ditty1
 	drum_note 1, 4
 	drum_note 1, 2
 	drum_note 4, 4
@@ -1129,4 +1030,64 @@ Music_WildBattleSM_Ch4_branch_1:
 	drum_note 4, 4
 	drum_note 4, 2
 	drum_note 1, 2
+	sound_ret
+
+Music_WildBattleSM_Ch4_ditty1:
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 2
+	sound_ret
+
+Music_WildBattleSM_Ch4_ditty2:
+	drum_note 1, 1
+	drum_note 4, 3
+	drum_note 4, 1
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 4
+	drum_note 1, 2
+	drum_note 4, 3
+	drum_note 4, 1
+	drum_note 1, 4
+	drum_note 4, 2
+	sound_ret
+
+Music_WildBattleSM_Ch4_ditty3:
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 4, 2
+	sound_ret
+
+Music_WildBattleSM_Ch4_ditty4:
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	sound_ret
+
+Music_WildBattleSM_Ch4_ditty5:
+	drum_note 11, 4
+	drum_note 1, 4
+	drum_note 11, 2
+	drum_note 11, 2
+	drum_note 1, 4
+	drum_note 11, 2
 	sound_ret

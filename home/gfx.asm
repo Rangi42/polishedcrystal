@@ -19,21 +19,12 @@ ApplyTilemap::
 	ldh [hBGMapMode], a
 	ld a, [wSpriteUpdatesEnabled]
 	and a
-	ld b, 3
+	ld b, MAPS_COPY_USE_CUR_PAL_SETTING
 	jr nz, SafeCopyTilemapAtOnce
-	ld b, 1 << 3 | 3
-
+	ld b, MAPS_COPY_USE_CUR_PAL_SETTING | MAPS_COPY_NO_ATTRS
 ; fallthrough
 SafeCopyTilemapAtOnce::
-; copies the tile&attr map at once
-; without any tearing
-; input:
-; b: 0 = no palette copy
-;    1 = copy raw palettes
-;    2 = set palettes and copy
-;    3 = use whatever was in hCGBPalUpdate
-; bit 2: if set, clear hOAMUpdate
-; bit 3: if set, only update tilemap
+; copies the tile&attr map at once without any tearing
 	farjp _SafeCopyTilemapAtOnce
 
 CopyTilemapAtOnce::

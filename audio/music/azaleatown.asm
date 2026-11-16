@@ -501,30 +501,8 @@ Music_AzaleaTown_branch_f5a24:
 	note C#, 2
 	rest 2
 	octave 2
-	note F#, 1
-	note G_, 1
-	note G#, 1
-	rest 5
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	rest 1
-	octave 3
-	note D#, 2
-	rest 2
-	octave 2
-	note F#, 1
-	note G_, 1
-	note G#, 1
-	rest 5
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	rest 1
-	octave 3
-	note D#, 2
-	rest 2
-	octave 2
+	sound_call Music_AzaleaTown_Ch3_ditty1
+	sound_call Music_AzaleaTown_Ch3_ditty1
 	note B_, 1
 	octave 3
 	note C_, 1
@@ -630,25 +608,36 @@ Music_AzaleaTown_Ch4:
 	drum_speed 12
 	drum_note 6, 2
 Music_AzaleaTown_branch_f5aea:
-	drum_note 4, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 4, 1
+	sound_call Music_AzaleaTown_Ch4_ditty1
 	drum_note 8, 1
 	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 4, 2
-	drum_note 3, 2
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 4, 2
-	drum_note 7, 2
-	drum_note 3, 2
-	drum_note 4, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 8, 1
-	drum_note 4, 2
-	drum_note 3, 2
+	sound_call Music_AzaleaTown_Ch4_ditty1
 	drum_note 7, 2
 	sound_jump Music_AzaleaTown_branch_f5aea
+
+Music_AzaleaTown_Ch3_ditty1:
+	note F#, 1
+	note G_, 1
+	note G#, 1
+	rest 5
+	note G#, 1
+	note G#, 1
+	note G#, 1
+	rest 1
+	octave 3
+	note D#, 2
+	rest 2
+	octave 2
+	sound_ret
+
+Music_AzaleaTown_Ch4_ditty1:
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 4, 2
+	drum_note 3, 2
+	sound_ret

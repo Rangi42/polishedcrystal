@@ -18,54 +18,9 @@ Music_TrainerBattleBW_Ch1:
 	vibrato 18, 1, 5
 	octave 5
 	note_type 12, 11, 2
-	note E_, 1
-	octave 4
-	note B_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
-	note E_, 1
-	octave 4
-	note B_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
-	note E_, 1
-	octave 4
-	note B_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
-	note E_, 1
-	octave 4
-	note B_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
-	note E_, 1
-	octave 4
-	note B_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
-	note E_, 1
-	octave 4
-	note B_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
-	note E_, 1
-	octave 4
-	note B_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
-	note E_, 1
-	octave 4
-	note B_, 1
-	octave 5
-	note E_, 1
-	note B_, 1
+Music_TrainerBattleBW_Ch1_loop_opt1:
+	sound_call Music_TrainerBattleBW_Ch1_ditty1
+	sound_loop 4, Music_TrainerBattleBW_Ch1_loop_opt1
 	volume_envelope 11, 7
 	octave 4
 	note B_, 14
@@ -230,22 +185,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note E_, 2
 	note D#, 2
 	duty_cycle 0
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 3
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 3
-	octave 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 3
-	note D#, 1
-	rest 1
-	note D#, 1
+	sound_call Music_TrainerBattleBW_Ch1_ditty2
 	rest 3
 	duty_cycle 2
 	octave 3
@@ -260,22 +200,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	rest 1
 	duty_cycle 0
 	octave 3
-	note A#, 1
-	rest 1
-	note A#, 1
-	rest 3
-	note B_, 1
-	rest 1
-	note B_, 1
-	rest 3
-	octave 4
-	note C#, 1
-	rest 1
-	note C#, 1
-	rest 3
-	note D#, 1
-	rest 1
-	note D#, 1
+	sound_call Music_TrainerBattleBW_Ch1_ditty2
 	rest 1
 	duty_cycle 2
 	octave 3
@@ -710,38 +635,8 @@ Music_TrainerBattleBW_Ch2_loop:
 	note D#, 1
 	rest 1
 	duty_cycle 0
-	note D#, 1
-	rest 1
-	note D#, 1
-	rest 3
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 3
-	note F#, 1
-	rest 1
-	note F#, 1
-	rest 3
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 11
-	note D#, 1
-	rest 1
-	note D#, 1
-	rest 3
-	note E_, 1
-	rest 1
-	note E_, 1
-	rest 3
-	note F#, 1
-	rest 1
-	note F#, 1
-	rest 3
-	note G_, 1
-	rest 1
-	note G_, 1
-	rest 11
+	sound_call Music_TrainerBattleBW_Ch2_ditty1
+	sound_call Music_TrainerBattleBW_Ch2_ditty1
 	note E_, 1
 	rest 1
 	note E_, 1
@@ -1068,50 +963,14 @@ Music_TrainerBattleBW_Ch3:
 	note E_, 2
 	note F_, 1
 	note G_, 1
-	octave 2
-	note F_, 2
-	octave 3
-	note C_, 2
-	note F_, 2
-	note C_, 2
-	note F#, 2
-	note F#, 2
-	octave 2
-	note F_, 2
-	note A#, 2
-	octave 3
-	note G#, 2
-	octave 2
-	note F_, 2
-	octave 3
-	note A_, 2
-	note D#, 2
-	octave 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty4
 	note F_, 1
 	note B_, 1
 	octave 3
 	note C_, 2
 	note F_, 2
 	note F#, 2
-	octave 2
-	note F_, 2
-	octave 3
-	note C_, 2
-	note F_, 2
-	note C_, 2
-	note F#, 2
-	note F#, 2
-	octave 2
-	note F_, 2
-	note A#, 2
-	octave 3
-	note G#, 2
-	octave 2
-	note F_, 2
-	octave 3
-	note A_, 2
-	note D#, 2
-	octave 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty4
 	note F_, 2
 	octave 3
 	note D_, 2
@@ -1134,19 +993,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note F_, 2
 	octave 3
 	note A_, 2
-	octave 2
-	note F_, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note F_, 2
-	octave 3
-	note E_, 2
-	octave 2
-	note F_, 2
-	octave 3
-	note F_, 2
-	octave 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty8
 	note F#, 2
 	octave 3
 	note F#, 2
@@ -1190,19 +1037,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note F_, 2
 	octave 3
 	note F_, 2
-	octave 2
-	note F_, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note F_, 2
-	octave 3
-	note E_, 2
-	octave 2
-	note F_, 2
-	octave 3
-	note F_, 2
-	octave 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty8
 	note D#, 2
 	octave 3
 	note D#, 2
@@ -1275,13 +1110,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	octave 3
 	note D#, 2
 	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty6
 	note G#, 2
 	octave 2
 	note C#, 2
@@ -1378,24 +1207,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	octave 3
 	note G_, 2
 	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty1
 	note D#, 2
 	note E_, 1
 	note F#, 1
@@ -1406,24 +1218,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note D#, 2
 	octave 2
 	note A#, 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty1
 	note D#, 2
 	note C#, 1
 	note D#, 1
@@ -1439,21 +1234,9 @@ Music_TrainerBattleBW_Ch3_loop:
 	note E_, 2
 	octave 3
 	note E_, 2
-	octave 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty9
 	note E_, 2
-	octave 3
-	note E_, 2
-	octave 2
-	note E_, 2
-	octave 3
-	note E_, 2
-	octave 2
-	note E_, 2
-	octave 3
-	note E_, 2
-	octave 2
-	note E_, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty9
 	note E_, 2
 	note D#, 1
 	note E_, 1
@@ -1466,24 +1249,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note G#, 2
 	note E_, 2
 	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty1
 	note D#, 2
 	octave 2
 	note D#, 2
@@ -1508,54 +1274,19 @@ Music_TrainerBattleBW_Ch3_loop:
 	note D_, 1
 	note D#, 1
 	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty1
 	note D#, 2
 	octave 2
 	note D#, 2
 	octave 3
 	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note E_, 2
-	octave 3
-	note E_, 2
-	octave 2
-	note E_, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty9
 	note D#, 1
 	note E_, 1
-	octave 2
-	note E_, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty9
 	note E_, 2
 	octave 2
-	note E_, 2
-	octave 3
-	note E_, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty6
 	octave 2
 	note C#, 2
 	octave 3
@@ -1581,24 +1312,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note G_, 2
 	note D#, 2
 	note A#, 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty1
 	note C#, 2
 	octave 2
 	note D#, 2
@@ -1614,59 +1328,12 @@ Music_TrainerBattleBW_Ch3_loop:
 	octave 3
 	note D_, 4
 	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty6
 	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty6
+	sound_call Music_TrainerBattleBW_Ch3_ditty7
 	note D_, 2
-	octave 3
-	note D_, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	note C#, 2
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note G_, 1
-	note G_, 1
-	octave 2
-	note D#, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty2
 	note F_, 1
 	note F_, 1
 	note D#, 2
@@ -1674,57 +1341,16 @@ Music_TrainerBattleBW_Ch3_loop:
 	note D#, 2
 	octave 2
 	note A#, 2
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty6
 	octave 2
 	note G#, 2
 	octave 3
 	note F_, 2
 	note C_, 2
 	note C#, 2
-	octave 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty7
 	note C#, 2
-	octave 3
-	note F_, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note C#, 2
-	octave 2
-	note C#, 2
-	octave 3
-	note D_, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	note C#, 2
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note D#, 2
-	octave 2
-	note D#, 2
-	octave 3
-	note G_, 1
-	note G_, 1
-	octave 2
-	note D#, 2
-	octave 3
+	sound_call Music_TrainerBattleBW_Ch3_ditty2
 	note G_, 1
 	note G_, 1
 	octave 2
@@ -1902,45 +1528,9 @@ Music_TrainerBattleBW_Ch3_loop:
 	octave 2
 	note D#, 1
 	note_type 4, 1, 9
-	rest 1
-	note F#, 3
-	rest 1
+	sound_call Music_TrainerBattleBW_Ch3_ditty5
 	note G#, 3
-	rest 5
-	note G#, 3
-	rest 1
-	note G#, 3
-	rest 1
-	octave 1
-	note G#, 3
-	rest 5
-	note G#, 3
-	rest 5
-	note G#, 3
-	rest 1
-	note G#, 3
-	rest 1
-	octave 2
-	note G#, 3
-	rest 1
-	note F#, 3
-	rest 1
-	note G#, 3
-	rest 5
-	note G#, 3
-	rest 1
-	note G#, 3
-	rest 1
-	octave 1
-	note G#, 3
-	rest 5
-	note G#, 3
-	rest 5
-	note G#, 3
-	rest 1
-	note G#, 3
-	rest 1
-	octave 2
+	sound_call Music_TrainerBattleBW_Ch3_ditty5
 	note C#, 3
 	rest 1
 	note E_, 3
@@ -2078,52 +1668,10 @@ Music_TrainerBattleBW_Ch3_loop:
 	note C#, 3
 	rest 1
 	note C#, 6
-	octave 3
-	note C_, 6
-	note F_, 6
-	note C_, 6
-	note F#, 6
-	note F#, 6
+	sound_call Music_TrainerBattleBW_Ch3_ditty3
 	octave 2
 	note F_, 6
-	note A#, 6
-	octave 3
-	note G#, 6
-	octave 2
-	note F_, 6
-	octave 3
-	note A_, 6
-	note D#, 6
-	octave 2
-	note F_, 6
-	octave 3
-	note C_, 6
-	note F_, 6
-	note F#, 6
-	octave 2
-	note F_, 6
-	octave 3
-	note C_, 6
-	note F_, 6
-	note C_, 6
-	note F#, 6
-	note F#, 6
-	octave 2
-	note F_, 6
-	note A#, 6
-	octave 3
-	note G#, 6
-	octave 2
-	note F_, 6
-	octave 3
-	note A_, 6
-	note D#, 6
-	octave 2
-	note F_, 6
-	octave 3
-	note C_, 6
-	note F_, 6
-	note F#, 6
+	sound_call Music_TrainerBattleBW_Ch3_ditty3
 	note_type 12, 1, 9
 	sound_jump Music_TrainerBattleBW_Ch3_loop
 
@@ -2203,67 +1751,16 @@ Music_TrainerBattleBW_Ch4:
 	drum_note 1, 4
 Music_TrainerBattleBW_Ch4_loop:
 	drum_note 12, 16
-	drum_note 1, 16
-	drum_note 4, 8
-	drum_note 4, 8
-	drum_note 1, 16
+	sound_call Music_TrainerBattleBW_Ch4_ditty3
 	drum_note 4, 16
-	drum_note 1, 16
-	drum_note 4, 8
-	drum_note 4, 8
-	drum_note 1, 16
-	drum_note 4, 16
-	drum_note 1, 8
-	drum_note 4, 16
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 4, 8
-	drum_note 4, 16
-	drum_note 1, 8
-	drum_note 4, 16
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 1, 4
-	drum_note 1, 4
-	drum_note 4, 16
-	drum_note 1, 16
-	drum_note 4, 8
-	drum_note 4, 8
-	drum_note 1, 16
-	drum_note 4, 16
-	drum_note 1, 16
-	drum_note 4, 8
-	drum_note 4, 8
-	drum_note 1, 16
-	drum_note 4, 16
-	drum_note 1, 8
-	drum_note 4, 16
-	drum_note 1, 8
-	drum_note 1, 8
-	drum_note 4, 8
-	drum_note 4, 16
-	drum_note 1, 8
-	drum_note 4, 16
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 1, 4
-	drum_note 1, 4
+	sound_call Music_TrainerBattleBW_Ch4_ditty3
 	drum_note 4, 8
 	drum_note 4, 8
 	drum_note 1, 16
 	drum_note 4, 8
 	drum_note 4, 8
 	drum_note 1, 16
-	drum_note 4, 16
-	drum_note 1, 16
-	drum_note 4, 8
-	drum_note 4, 8
-	drum_note 1, 16
-	drum_note 4, 16
-	drum_note 1, 16
-	drum_note 4, 8
-	drum_note 4, 8
-	drum_note 1, 16
+	sound_call Music_TrainerBattleBW_Ch4_ditty5
 	drum_note 4, 16
 	drum_note 1, 16
 	drum_note 1, 4
@@ -2271,16 +1768,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 8
 	drum_note 4, 8
 	drum_note 1, 8
-	drum_note 4, 16
-	drum_note 1, 16
-	drum_note 4, 8
-	drum_note 4, 8
-	drum_note 1, 16
-	drum_note 4, 16
-	drum_note 1, 16
-	drum_note 4, 8
-	drum_note 4, 8
-	drum_note 1, 16
+	sound_call Music_TrainerBattleBW_Ch4_ditty5
 	drum_note 1, 2
 	drum_speed 15
 	drum_note 1, 4
@@ -2310,16 +1798,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_speed 5
 	drum_note 1, 5
 	drum_speed 12
-	drum_note 1, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 1, 2
-	drum_speed 11
-	drum_note 4, 1
-	drum_speed 13
-	drum_note 4, 1
-	drum_speed 12
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty6
 	drum_note 1, 2
 	drum_note 1, 1
 	drum_note 1, 1
@@ -2331,36 +1810,13 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 2
 	drum_note 4, 2
 	drum_note 1, 2
-	drum_note 1, 2
-	drum_note 4, 1
-	drum_note 4, 1
-	drum_note 1, 2
-	drum_speed 11
-	drum_note 4, 1
-	drum_speed 13
-	drum_note 4, 1
-	drum_speed 12
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty6
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 1, 2
 	drum_note 1, 1
 	drum_note 1, 1
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
+	sound_call Music_TrainerBattleBW_Ch4_ditty1
 	drum_note 4, 4
 	drum_note 1, 4
 	drum_note 4, 2
@@ -2368,21 +1824,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 2
 	drum_note 1, 1
 	drum_note 1, 1
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
+	sound_call Music_TrainerBattleBW_Ch4_ditty1
 	drum_note 4, 2
 	drum_note 1, 2
 	drum_speed 9
@@ -2395,36 +1837,8 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 2
 	drum_note 1, 1
 	drum_note 1, 1
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
+	sound_call Music_TrainerBattleBW_Ch4_ditty1
+	sound_call Music_TrainerBattleBW_Ch4_ditty1
 	drum_note 4, 4
 	drum_note 1, 4
 	drum_note 4, 2
@@ -2442,41 +1856,9 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 4
 	drum_note 1, 2
 	drum_note 1, 2
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
+Music_TrainerBattleBW_Ch4_loop_opt1:
+	sound_call Music_TrainerBattleBW_Ch4_ditty4
+	sound_loop 7, Music_TrainerBattleBW_Ch4_loop_opt1
 	drum_note 4, 8
 	drum_note 1, 8
 	drum_note 1, 4
@@ -2484,11 +1866,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 4, 4
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
+	sound_call Music_TrainerBattleBW_Ch4_ditty4
 	drum_note 4, 4
 	drum_note 1, 4
 	drum_note 1, 8
@@ -2496,22 +1874,14 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 4
 	drum_note 4, 4
 	drum_note 1, 4
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
+	sound_call Music_TrainerBattleBW_Ch4_ditty4
 	drum_note 4, 8
 	drum_note 1, 8
 	drum_note 4, 4
 	drum_note 4, 4
 	drum_note 1, 4
 	drum_note 1, 4
-	drum_note 4, 8
-	drum_note 1, 8
-	drum_note 4, 4
-	drum_note 4, 4
-	drum_note 1, 8
+	sound_call Music_TrainerBattleBW_Ch4_ditty4
 	drum_note 1, 4
 	drum_note 4, 4
 	drum_note 1, 8
@@ -2552,30 +1922,15 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 1, 1
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty7
 	drum_note 1, 4
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty7
 	drum_note 1, 2
 	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 2
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty7
 	drum_note 1, 2
 	drum_note 1, 2
 	drum_note 4, 2
@@ -2583,35 +1938,11 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 4
 	drum_note 1, 4
 	drum_speed 8
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 1, 1
-	drum_note 1, 4
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty2
 	drum_note 1, 6
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 1, 1
-	drum_note 1, 4
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty2
 	drum_note 1, 6
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 1, 1
-	drum_note 1, 4
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty2
 	drum_note 1, 6
 	drum_note 4, 2
 	drum_note 4, 2
@@ -2624,35 +1955,11 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 1
 	drum_note 4, 2
 	drum_note 1, 6
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 1, 1
-	drum_note 1, 4
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty2
 	drum_note 1, 6
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 1, 1
-	drum_note 1, 4
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty2
 	drum_note 1, 6
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 1
-	drum_note 1, 1
-	drum_note 1, 4
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 4, 2
+	sound_call Music_TrainerBattleBW_Ch4_ditty2
 	drum_note 1, 4
 	drum_note 4, 2
 	drum_note 4, 2
@@ -2686,3 +1993,323 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 1
 	drum_speed 3
 	sound_jump Music_TrainerBattleBW_Ch4_loop
+
+Music_TrainerBattleBW_Ch1_ditty1:
+	note E_, 1
+	octave 4
+	note B_, 1
+	octave 5
+	note E_, 1
+	note B_, 1
+	note E_, 1
+	octave 4
+	note B_, 1
+	octave 5
+	note E_, 1
+	note B_, 1
+	sound_ret
+
+Music_TrainerBattleBW_Ch1_ditty2:
+	note A#, 1
+	rest 1
+	note A#, 1
+	rest 3
+	note B_, 1
+	rest 1
+	note B_, 1
+	rest 3
+	octave 4
+	note C#, 1
+	rest 1
+	note C#, 1
+	rest 3
+	note D#, 1
+	rest 1
+	note D#, 1
+	sound_ret
+
+Music_TrainerBattleBW_Ch2_ditty1:
+	note D#, 1
+	rest 1
+	note D#, 1
+	rest 3
+	note E_, 1
+	rest 1
+	note E_, 1
+	rest 3
+	note F#, 1
+	rest 1
+	note F#, 1
+	rest 3
+	note G_, 1
+	rest 1
+	note G_, 1
+	rest 11
+	sound_ret
+
+Music_TrainerBattleBW_Ch3_ditty1:
+	note D#, 2
+	octave 3
+	note D#, 2
+	octave 2
+	note D#, 2
+	octave 3
+	note D#, 2
+	octave 2
+	note D#, 2
+	octave 3
+	note D#, 2
+	octave 2
+	note D#, 2
+	octave 3
+	note D#, 2
+	octave 2
+	note D#, 2
+	octave 3
+	sound_ret
+
+Music_TrainerBattleBW_Ch3_ditty2:
+	octave 3
+	note D_, 2
+	octave 2
+	note D#, 2
+	octave 3
+	note D#, 2
+	octave 2
+	note D#, 2
+	octave 3
+	note D#, 2
+	note C#, 2
+	note D#, 2
+	octave 2
+	note D#, 2
+	octave 3
+	note D#, 2
+	octave 2
+	note D#, 2
+	octave 3
+	note G_, 1
+	note G_, 1
+	octave 2
+	note D#, 2
+	octave 3
+	sound_ret
+
+Music_TrainerBattleBW_Ch3_ditty3:
+	octave 3
+	note C_, 6
+	note F_, 6
+	note C_, 6
+	note F#, 6
+	note F#, 6
+	octave 2
+	note F_, 6
+	note A#, 6
+	octave 3
+	note G#, 6
+	octave 2
+	note F_, 6
+	octave 3
+	note A_, 6
+	note D#, 6
+	octave 2
+	note F_, 6
+	octave 3
+	note C_, 6
+	note F_, 6
+	note F#, 6
+	sound_ret
+
+Music_TrainerBattleBW_Ch3_ditty4:
+	octave 2
+	note F_, 2
+	octave 3
+	note C_, 2
+	note F_, 2
+	note C_, 2
+	note F#, 2
+	note F#, 2
+	octave 2
+	note F_, 2
+	note A#, 2
+	octave 3
+	note G#, 2
+	octave 2
+	note F_, 2
+	octave 3
+	note A_, 2
+	note D#, 2
+	octave 2
+	sound_ret
+
+Music_TrainerBattleBW_Ch3_ditty5:
+	rest 1
+	note F#, 3
+	rest 1
+	note G#, 3
+	rest 5
+	note G#, 3
+	rest 1
+	note G#, 3
+	rest 1
+	octave 1
+	note G#, 3
+	rest 5
+	note G#, 3
+	rest 5
+	note G#, 3
+	rest 1
+	note G#, 3
+	rest 1
+	octave 2
+	sound_ret
+
+Music_TrainerBattleBW_Ch3_ditty6:
+	note C#, 2
+	octave 3
+	note C#, 2
+	octave 2
+	note C#, 2
+	octave 3
+	note C#, 2
+	sound_ret
+
+Music_TrainerBattleBW_Ch3_ditty7:
+	octave 2
+	note C#, 2
+	octave 3
+	note F_, 2
+	octave 2
+	note C#, 2
+	octave 3
+	note D#, 2
+	octave 2
+	note C#, 2
+	octave 3
+	note C#, 2
+	octave 2
+	sound_ret
+
+Music_TrainerBattleBW_Ch3_ditty8:
+	octave 2
+	note F_, 2
+	octave 3
+	note F_, 2
+	octave 2
+	note F_, 2
+	octave 3
+	note E_, 2
+	octave 2
+	note F_, 2
+	octave 3
+	note F_, 2
+	octave 2
+	sound_ret
+
+Music_TrainerBattleBW_Ch3_ditty9:
+	octave 2
+	note E_, 2
+	octave 3
+	note E_, 2
+	octave 2
+	note E_, 2
+	octave 3
+	sound_ret
+
+Music_TrainerBattleBW_Ch4_ditty1:
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 4
+	sound_ret
+
+Music_TrainerBattleBW_Ch4_ditty2:
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 1, 1
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	sound_ret
+
+Music_TrainerBattleBW_Ch4_ditty3:
+	drum_note 1, 16
+	drum_note 4, 8
+	drum_note 4, 8
+	drum_note 1, 16
+	drum_note 4, 16
+	drum_note 1, 16
+	drum_note 4, 8
+	drum_note 4, 8
+	drum_note 1, 16
+	drum_note 4, 16
+	drum_note 1, 8
+	drum_note 4, 16
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 4, 8
+	drum_note 4, 16
+	drum_note 1, 8
+	drum_note 4, 16
+	drum_note 4, 8
+	drum_note 1, 8
+	drum_note 1, 4
+	drum_note 1, 4
+	sound_ret
+
+Music_TrainerBattleBW_Ch4_ditty4:
+	drum_note 4, 8
+	drum_note 1, 8
+	drum_note 4, 4
+	drum_note 4, 4
+	drum_note 1, 8
+	sound_ret
+
+Music_TrainerBattleBW_Ch4_ditty5:
+	drum_note 4, 16
+	drum_note 1, 16
+	drum_note 4, 8
+	drum_note 4, 8
+	drum_note 1, 16
+	drum_note 4, 16
+	drum_note 1, 16
+	drum_note 4, 8
+	drum_note 4, 8
+	drum_note 1, 16
+	sound_ret
+
+Music_TrainerBattleBW_Ch4_ditty6:
+	drum_note 1, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 1, 2
+	drum_speed 11
+	drum_note 4, 1
+	drum_speed 13
+	drum_note 4, 1
+	drum_speed 12
+	drum_note 4, 2
+	sound_ret
+
+Music_TrainerBattleBW_Ch4_ditty7:
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	sound_ret

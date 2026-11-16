@@ -17,35 +17,14 @@ Music_EternaForestDPPt_Ch1_loop:
 	duty_cycle 0
 	octave 5
 	rest 1
-	note B_, 5
-	volume_envelope 7, 2
-	note B_, 6
-	volume_envelope 6, 2
-	note B_, 6
-	volume_envelope 5, 2
-	note B_, 6
-	volume_envelope 4, 2
+	sound_call Music_EternaForestDPPt_Ch1_ditty1
 	note B_, 9
 	volume_envelope 8, 2
-	note B_, 5
-	volume_envelope 7, 2
-	note B_, 6
-	volume_envelope 6, 2
-	note B_, 6
-	volume_envelope 5, 2
-	note B_, 6
-	volume_envelope 4, 2
+	sound_call Music_EternaForestDPPt_Ch1_ditty1
 	note B_, 7
 	volume_envelope 8, 2
 	octave 4
-	note B_, 5
-	volume_envelope 7, 2
-	note B_, 6
-	volume_envelope 6, 2
-	note B_, 6
-	volume_envelope 5, 2
-	note B_, 6
-	volume_envelope 4, 2
+	sound_call Music_EternaForestDPPt_Ch1_ditty1
 	note B_, 9
 	volume_envelope 8, 2
 	octave 5
@@ -243,44 +222,16 @@ Music_EternaForestDPPt_Ch1_loop:
 	note D#, 3
 	duty_cycle 0
 	octave 5
-	note B_, 5
-	volume_envelope 7, 2
-	note B_, 6
-	volume_envelope 6, 2
-	note B_, 6
-	volume_envelope 5, 2
-	note B_, 6
-	volume_envelope 4, 2
+	sound_call Music_EternaForestDPPt_Ch1_ditty1
 	note B_, 9
 	volume_envelope 8, 2
-	note B_, 5
-	volume_envelope 7, 2
-	note B_, 6
-	volume_envelope 6, 2
-	note B_, 6
-	volume_envelope 5, 2
-	note B_, 6
-	volume_envelope 4, 2
+	sound_call Music_EternaForestDPPt_Ch1_ditty1
 	note B_, 9
 	volume_envelope 8, 2
-	note B_, 5
-	volume_envelope 7, 2
-	note B_, 6
-	volume_envelope 6, 2
-	note B_, 6
-	volume_envelope 5, 2
-	note B_, 6
-	volume_envelope 4, 2
+	sound_call Music_EternaForestDPPt_Ch1_ditty1
 	note B_, 9
 	volume_envelope 8, 2
-	note B_, 5
-	volume_envelope 7, 2
-	note B_, 6
-	volume_envelope 6, 2
-	note B_, 6
-	volume_envelope 5, 2
-	note B_, 6
-	volume_envelope 4, 2
+	sound_call Music_EternaForestDPPt_Ch1_ditty1
 	note B_, 8
 	sound_jump Music_EternaForestDPPt_Ch1_loop
 
@@ -344,58 +295,8 @@ Music_EternaForestDPPt_Ch2_loop:
 	note F#, 6
 	volume_envelope 11, 6
 	duty_cycle 2
-	octave 2
-	note C_, 2
-	rest 4
-	octave 1
-	note C_, 2
-	rest 16
-	rest 8
-	octave 2
-	note C_, 2
-	rest 4
-	octave 1
-	note C_, 2
-	rest 16
-	rest 8
-	note G_, 2
-	rest 4
-	octave 1
-	note G_, 2
-	rest 16
-	rest 16
-	rest 8
-	octave 1
-	note E_, 2
-	rest 6
-	note D_, 2
-	rest 6
-	octave 2
-	note C_, 2
-	rest 4
-	octave 1
-	note C_, 2
-	rest 16
-	rest 8
-	octave 2
-	note C_, 2
-	rest 4
-	octave 1
-	note C_, 2
-	rest 16
-	rest 8
-	note G_, 2
-	rest 4
-	octave 1
-	note G_, 2
-	rest 16
-	rest 16
-	rest 8
-	octave 1
-	note E_, 2
-	rest 6
-	note D_, 2
-	rest 6
+	sound_call Music_EternaForestDPPt_Ch2_ditty2
+	sound_call Music_EternaForestDPPt_Ch2_ditty2
 	octave 1
 	note A_, 2
 	rest 4
@@ -473,49 +374,9 @@ Music_EternaForestDPPt_Ch2_loop:
 	note C_, 10
 	volume_envelope 9, 2
 	duty_cycle 0
-	octave 5
-	note C_, 6
-	volume_envelope 8, 2
-	note C_, 6
-	volume_envelope 7, 2
-	note C_, 6
-	volume_envelope 6, 2
-	note C_, 6
-	volume_envelope 5, 2
-	note C_, 8
+	sound_call Music_EternaForestDPPt_Ch2_ditty1
 	volume_envelope 9, 2
-	octave 4
-	note G_, 6
-	volume_envelope 8, 2
-	note G_, 6
-	volume_envelope 7, 2
-	note G_, 6
-	volume_envelope 6, 2
-	note G_, 6
-	volume_envelope 5, 2
-	note G_, 8
-	volume_envelope 9, 2
-	octave 5
-	note C_, 6
-	volume_envelope 8, 2
-	note C_, 6
-	volume_envelope 7, 2
-	note C_, 6
-	volume_envelope 6, 2
-	note C_, 6
-	volume_envelope 5, 2
-	note C_, 8
-	volume_envelope 9, 2
-	octave 4
-	note G_, 6
-	volume_envelope 8, 2
-	note G_, 6
-	volume_envelope 7, 2
-	note G_, 6
-	volume_envelope 6, 2
-	note G_, 6
-	volume_envelope 5, 2
-	note G_, 8
+	sound_call Music_EternaForestDPPt_Ch2_ditty1
 	sound_jump Music_EternaForestDPPt_Ch2_loop
 
 Music_EternaForestDPPt_Ch3:
@@ -526,88 +387,10 @@ Music_EternaForestDPPt_Ch3_loop:
 	rest 16
 	rest 16
 	rest 16
-	octave 5
-	note B_, 2
-	octave 6
-	note C_, 2
-	rest 2
-	octave 5
-	note B_, 2
-	note A_, 2
-	note B_, 2
-	rest 2
-	octave 6
-	note C_, 2
-	octave 5
-	note B_, 2
-	rest 2
-	note F#, 2
-	note G_, 2
-	rest 2
-	note A_, 2
-	rest 2
-	note G_, 2
-	note F#, 2
-	note G_, 2
-	rest 2
-	note A_, 2
-	note G_, 2
-	rest 2
-	note E_, 2
-	note G_, 2
-	note F#, 2
-	note G_, 2
-	rest 2
-	note F#, 2
-	note D_, 2
-	rest 2
-	octave 4
-	note B_, 2
-	rest 16
-	rest 16
-	rest 16
+	sound_call Music_EternaForestDPPt_Ch3_ditty1
 	rest 16
 	rest 2
-	octave 5
-	note B_, 2
-	octave 6
-	note C_, 2
-	rest 2
-	octave 5
-	note B_, 2
-	note A_, 2
-	note B_, 2
-	rest 2
-	octave 6
-	note C_, 2
-	octave 5
-	note B_, 2
-	rest 2
-	note F#, 2
-	note G_, 2
-	rest 2
-	note A_, 2
-	rest 2
-	note G_, 2
-	note F#, 2
-	note G_, 2
-	rest 2
-	note A_, 2
-	note G_, 2
-	rest 2
-	note E_, 2
-	note G_, 2
-	note F#, 2
-	note G_, 2
-	rest 2
-	note F#, 2
-	note D_, 2
-	rest 2
-	octave 4
-	note B_, 2
-	rest 16
-	rest 16
-	rest 16
+	sound_call Music_EternaForestDPPt_Ch3_ditty1
 	rest 14
 	octave 5
 	note E_, 2
@@ -777,175 +560,13 @@ Music_EternaForestDPPt_Ch4_loop:
 	rest 16
 	rest 16
 	rest 16
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 7, 2
-	drum_note 9, 2
-	drum_note 9, 2
-	drum_note 9, 2
+Music_EternaForestDPPt_Ch4_loop_opt1:
+	sound_call Music_EternaForestDPPt_Ch4_ditty1
+	sound_loop 8, Music_EternaForestDPPt_Ch4_loop_opt1
 	drum_note 4, 2
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 7, 2
-	drum_note 4, 2
-	drum_note 1, 1
-	drum_note 4, 1
-	drum_note 7, 2
-	drum_note 4, 2
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 7, 2
-	drum_note 4, 2
-	drum_note 1, 1
-	drum_note 4, 1
-	drum_note 7, 2
-	drum_note 4, 2
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 7, 2
-	drum_note 4, 2
-	drum_note 1, 1
-	drum_note 4, 1
-	drum_note 7, 2
-	drum_note 4, 2
-	drum_note 7, 1
-	drum_note 4, 1
-	drum_note 1, 2
-	drum_note 4, 2
-	drum_note 7, 2
-	drum_note 4, 2
-	drum_note 1, 1
-	drum_note 4, 1
-	drum_note 7, 2
-	drum_note 4, 2
+Music_EternaForestDPPt_Ch4_loop_opt2:
+	sound_call Music_EternaForestDPPt_Ch4_ditty2
+	sound_loop 4, Music_EternaForestDPPt_Ch4_loop_opt2
 	drum_note 4, 2
 	drum_note 1, 1
 	drum_note 4, 2
@@ -982,3 +603,142 @@ Music_EternaForestDPPt_Ch4_loop:
 	rest 16
 	rest 16
 	sound_jump Music_EternaForestDPPt_Ch4_loop
+
+Music_EternaForestDPPt_Ch1_ditty1:
+	note B_, 5
+	volume_envelope 7, 2
+	note B_, 6
+	volume_envelope 6, 2
+	note B_, 6
+	volume_envelope 5, 2
+	note B_, 6
+	volume_envelope 4, 2
+	sound_ret
+
+Music_EternaForestDPPt_Ch2_ditty1:
+	octave 5
+	note C_, 6
+	volume_envelope 8, 2
+	note C_, 6
+	volume_envelope 7, 2
+	note C_, 6
+	volume_envelope 6, 2
+	note C_, 6
+	volume_envelope 5, 2
+	note C_, 8
+	volume_envelope 9, 2
+	octave 4
+	note G_, 6
+	volume_envelope 8, 2
+	note G_, 6
+	volume_envelope 7, 2
+	note G_, 6
+	volume_envelope 6, 2
+	note G_, 6
+	volume_envelope 5, 2
+	note G_, 8
+	sound_ret
+
+Music_EternaForestDPPt_Ch2_ditty2:
+	octave 2
+	note C_, 2
+	rest 4
+	octave 1
+	note C_, 2
+	rest 16
+	rest 8
+	octave 2
+	note C_, 2
+	rest 4
+	octave 1
+	note C_, 2
+	rest 16
+	rest 8
+	note G_, 2
+	rest 4
+	octave 1
+	note G_, 2
+	rest 16
+	rest 16
+	rest 8
+	octave 1
+	note E_, 2
+	rest 6
+	note D_, 2
+	rest 6
+	sound_ret
+
+Music_EternaForestDPPt_Ch3_ditty1:
+	octave 5
+	note B_, 2
+	octave 6
+	note C_, 2
+	rest 2
+	octave 5
+	note B_, 2
+	note A_, 2
+	note B_, 2
+	rest 2
+	octave 6
+	note C_, 2
+	octave 5
+	note B_, 2
+	rest 2
+	note F#, 2
+	note G_, 2
+	rest 2
+	note A_, 2
+	rest 2
+	note G_, 2
+	note F#, 2
+	note G_, 2
+	rest 2
+	note A_, 2
+	note G_, 2
+	rest 2
+	note E_, 2
+	note G_, 2
+	note F#, 2
+	note G_, 2
+	rest 2
+	note F#, 2
+	note D_, 2
+	rest 2
+	octave 4
+	note B_, 2
+	rest 16
+	rest 16
+	rest 16
+	sound_ret
+
+Music_EternaForestDPPt_Ch4_ditty1:
+	drum_note 7, 2
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 7, 2
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 7, 2
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 7, 2
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 9, 2
+	sound_ret
+
+Music_EternaForestDPPt_Ch4_ditty2:
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 4, 2
+	drum_note 1, 1
+	drum_note 4, 1
+	drum_note 7, 2
+	drum_note 4, 2
+	sound_ret

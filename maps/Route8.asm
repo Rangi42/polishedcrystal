@@ -11,7 +11,7 @@ Route8_MapScriptHeader:
 
 	def_bg_events
 	bg_event  8,  8, BGEVENT_JUMPTEXT, Route8UndergroundPathSignText
-	bg_event 10,  7, BGEVENT_JUMPTEXT, Route8LockedDoorText
+	bg_event 10,  7, BGEVENT_JUMPTEXT, Route7LockedDoorText
 
 	def_object_events
 	object_event 12, 10, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerBikerDwayne, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
@@ -243,10 +243,6 @@ LassMeadowSeenText:
 
 LassMeadowBeatenText:
 	text "Oh my!"
-	done
-
-Route8LockedDoorText:
-	text "It's locked…"
 	done
 
 Route8UndergroundPathSignText:

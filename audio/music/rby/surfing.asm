@@ -68,18 +68,7 @@ Music_Surfing_branch_7fa30:
 	note_type 12, 11, 7
 	note C#, 6
 	note_type 12, 11, 3
-	note D_, 2
-	note C#, 2
-	octave 3
-	note B_, 2
-	note A_, 2
-	note G#, 2
-	note F#, 2
-	note E_, 2
-	note F#, 2
-	note G#, 2
-	note A_, 2
-	note G#, 2
+	sound_call Music_SurfingRBY_Ch1_ditty1
 	note F#, 2
 	note G#, 2
 	note F#, 2
@@ -94,18 +83,7 @@ Music_Surfing_branch_7fa30:
 	note A_, 2
 	note B_, 2
 	octave 4
-	note D_, 2
-	note C#, 2
-	octave 3
-	note B_, 2
-	note A_, 2
-	note G#, 2
-	note F#, 2
-	note E_, 2
-	note F#, 2
-	note G#, 2
-	note A_, 2
-	note G#, 2
+	sound_call Music_SurfingRBY_Ch1_ditty1
 	note A_, 2
 	note E_, 2
 	note G#, 2
@@ -225,119 +203,91 @@ Music_Surfing_branch_7fb03:
 	octave 3
 	note A_, 2
 	octave 4
-	note A_, 2
-	note A_, 2
-	note E_, 2
-	note A_, 2
-	note A_, 2
-	octave 3
-	note B_, 2
-	octave 4
-	note G#, 2
-	note G#, 2
-	note E_, 2
-	note G#, 2
-	note G#, 2
-	octave 3
-	note B_, 2
-	octave 4
-	note G#, 2
-	note G#, 2
-	note E_, 2
-	note G#, 1
-	rest 2
-	note E_, 1
+	sound_call Music_SurfingRBY_Ch3_ditty1
 	note C#, 2
-	note A_, 2
-	note A_, 2
-	note E_, 2
-	note A_, 2
-	note A_, 2
-	note C#, 2
-	note A_, 2
-	note A_, 2
-	note E_, 2
-	note A_, 2
-	note A_, 2
-	octave 3
-	note B_, 2
-	octave 4
-	note G#, 2
-	note G#, 2
-	note E_, 2
-	note G#, 2
-	note G#, 2
-	octave 3
-	note B_, 2
-	octave 4
-	note G#, 2
-	note G#, 2
-	note E_, 2
-	note G#, 1
-	rest 2
-	note E_, 1
-	note C#, 2
-	note A_, 2
-	note A_, 2
-	note E_, 2
-	note A_, 2
-	note A_, 2
-	note D_, 2
-	note F#, 2
-	note F#, 2
-	octave 3
-	note A_, 2
-	octave 4
-	note F#, 2
-	note F#, 2
-	note E_, 2
-	note A_, 2
-	note A_, 2
-	note C#, 2
-	note A_, 2
-	note A_, 2
-	note E_, 2
-	note G#, 2
-	note G#, 2
-	octave 3
-	note B_, 2
-	octave 4
-	note G#, 2
-	note G#, 2
-	note E_, 2
-	note A_, 2
-	note A_, 2
+	sound_call Music_SurfingRBY_Ch3_ditty1
+	sound_call Music_SurfingRBY_Ch3_ditty2
 	octave 3
 	note A_, 2
 	octave 4
 	note A_, 2
 	note A_, 2
-	note D_, 2
-	note F#, 2
-	note F#, 2
-	octave 3
-	note A_, 2
-	octave 4
-	note F#, 2
-	note F#, 2
-	note E_, 2
-	note A_, 2
-	note A_, 2
-	note C#, 2
-	note A_, 2
-	note A_, 2
-	note E_, 2
-	note G#, 2
-	note G#, 2
-	octave 3
-	note B_, 2
-	octave 4
-	note G#, 2
-	note G#, 2
-	note E_, 2
-	note A_, 2
-	note A_, 2
+	sound_call Music_SurfingRBY_Ch3_ditty2
 	note C#, 2
 	note D_, 2
 	note E_, 2
 	sound_jump Music_Surfing_branch_7fb03
+
+Music_SurfingRBY_Ch1_ditty1:
+	note D_, 2
+	note C#, 2
+	octave 3
+	note B_, 2
+	note A_, 2
+	note G#, 2
+	note F#, 2
+	note E_, 2
+	note F#, 2
+	note G#, 2
+	note A_, 2
+	note G#, 2
+	sound_ret
+
+Music_SurfingRBY_Ch3_ditty1:
+	note A_, 2
+	note A_, 2
+	note E_, 2
+	note A_, 2
+	note A_, 2
+	octave 3
+	note B_, 2
+	octave 4
+	note G#, 2
+	note G#, 2
+	note E_, 2
+	note G#, 2
+	note G#, 2
+	octave 3
+	note B_, 2
+	octave 4
+	note G#, 2
+	note G#, 2
+	note E_, 2
+	note G#, 1
+	rest 2
+	note E_, 1
+	note C#, 2
+	note A_, 2
+	note A_, 2
+	note E_, 2
+	note A_, 2
+	note A_, 2
+	sound_ret
+
+Music_SurfingRBY_Ch3_ditty2:
+	note D_, 2
+	note F#, 2
+	note F#, 2
+	octave 3
+	note A_, 2
+	octave 4
+	note F#, 2
+	note F#, 2
+	note E_, 2
+	note A_, 2
+	note A_, 2
+	note C#, 2
+	note A_, 2
+	note A_, 2
+	note E_, 2
+	note G#, 2
+	note G#, 2
+	octave 3
+	note B_, 2
+	octave 4
+	note G#, 2
+	note G#, 2
+	note E_, 2
+	note A_, 2
+	note A_, 2
+	sound_ret

@@ -51,26 +51,10 @@ Music_ScaryHouseXY_Ch1_loop_main:
 	octave 3
 	note E_, 8
 	note F#, 8
-	note G_, 8
-	note A_, 8
-	volume_envelope 5, 5
-	note A_, 8
-	volume_envelope 4, 5
-	note A_, 8
-	volume_envelope 3, 5
-	note A_, 8
-	volume_envelope 7, 5
+	sound_call Music_ScaryHouseXY_Ch1_ditty1
 	note E_, 4
 	note F#, 4
-	note G_, 8
-	note A_, 8
-	volume_envelope 5, 5
-	note A_, 8
-	volume_envelope 4, 5
-	note A_, 8
-	volume_envelope 3, 5
-	note A_, 8
-	volume_envelope 7, 5
+	sound_call Music_ScaryHouseXY_Ch1_ditty1
 	note E_, 8
 	note B_, 8
 	note A#, 8
@@ -274,3 +258,15 @@ Music_ScaryHouseXY_Ch3_loop_1:
 	rest 16
 	rest 8
 	sound_jump Music_ScaryHouseXY_Ch3_loop_main
+
+Music_ScaryHouseXY_Ch1_ditty1:
+	note G_, 8
+	note A_, 8
+	volume_envelope 5, 5
+	note A_, 8
+	volume_envelope 4, 5
+	note A_, 8
+	volume_envelope 3, 5
+	note A_, 8
+	volume_envelope 7, 5
+	sound_ret

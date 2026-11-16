@@ -25,27 +25,9 @@ Music_Route47HGSS_Ch1_loop_1:
 	sound_call Music_Route47HGSS_Ch1_branch_1
 	sound_call Music_Route47HGSS_Ch1_branch_1
 	sound_call Music_Route47HGSS_Ch1_branch_1
-	volume_envelope 8, 2
-	octave 4
-	note C_, 2
-	volume_envelope 6, 2
-	octave 3
-	note C_, 2
-	volume_envelope 4, 2
-	note C_, 2
-	volume_envelope 2, 2
-	note C_, 2
+	sound_call Music_Route47HGSS_Ch1_ditty1
 	sound_loop 4, Music_Route47HGSS_Ch1_loop_1
-	volume_envelope 8, 2
-	octave 4
-	note C_, 2
-	volume_envelope 6, 2
-	octave 3
-	note C_, 2
-	volume_envelope 4, 2
-	note C_, 2
-	volume_envelope 2, 2
-	note C_, 2
+	sound_call Music_Route47HGSS_Ch1_ditty1
 	note_type 12, 9, 3
 	duty_cycle 2
 	octave 3
@@ -323,37 +305,16 @@ Music_Route47HGSS_Ch1_loop_1:
 	octave 3
 	note F_, 1
 	note C_, 1
-	note F_, 1
-	note G_, 1
-	octave 4
-	note C_, 1
-	note F_, 1
-	note G_, 1
-	octave 5
-	note C_, 1
+	sound_call Music_Route47HGSS_Ch1_ditty2
 	octave 4
 	note C_, 1
 	octave 3
-	note F_, 1
-	note G_, 1
-	octave 4
-	note C_, 1
-	note F_, 1
-	note G_, 1
-	octave 5
-	note C_, 1
+	sound_call Music_Route47HGSS_Ch1_ditty2
 	note F_, 1
 	octave 3
 	note F_, 1
 	note C_, 1
-	note F_, 1
-	note G_, 1
-	octave 4
-	note C_, 1
-	note F_, 1
-	note G_, 1
-	octave 5
-	note C_, 1
+	sound_call Music_Route47HGSS_Ch1_ditty2
 	octave 4
 	note D_, 1
 	octave 3
@@ -712,20 +673,7 @@ Music_Route47HGSS_Ch2_loop:
 	octave 4
 	volume_envelope 10, 7
 	note C_, 4
-	volume_envelope 11, 3
-	note F_, 3
-	volume_envelope 6, 3
-	note F_, 3
-	volume_envelope 11, 3
-	note G_, 3
-	volume_envelope 6, 3
-	note G_, 1
-	volume_envelope 11, 3
-	note F_, 3
-	volume_envelope 6, 3
-	note F_, 1
-	volume_envelope 11, 3
-	note E_, 2
+	sound_call Music_Route47HGSS_Ch2_ditty2
 	octave 5
 	note C_, 3
 	volume_envelope 6, 3
@@ -736,68 +684,19 @@ Music_Route47HGSS_Ch2_loop:
 	volume_envelope 6, 3
 	note A#, 1
 	volume_envelope 11, 3
-	note A_, 3
-	volume_envelope 6, 3
-	note A_, 1
-	volume_envelope 11, 3
-	note G_, 3
-	volume_envelope 6, 3
-	note G_, 1
-	volume_envelope 11, 3
-	note F_, 3
-	volume_envelope 6, 3
-	note F_, 3
-	volume_envelope 11, 3
-	note G_, 3
-	volume_envelope 6, 3
-	note G_, 1
-	volume_envelope 11, 3
-	note F_, 3
-	volume_envelope 6, 3
-	note F_, 1
-	volume_envelope 11, 3
-	note E_, 2
-	note A_, 3
-	volume_envelope 6, 3
-	note A_, 1
-	volume_envelope 11, 3
-	note G_, 3
-	volume_envelope 6, 3
-	note G_, 1
-	volume_envelope 11, 3
-	note F_, 3
-	volume_envelope 6, 3
-	note F_, 1
-	volume_envelope 11, 3
-	note E_, 3
-	volume_envelope 6, 3
-	note E_, 1
-	volume_envelope 11, 3
+	sound_call Music_Route47HGSS_Ch2_ditty3
+	sound_call Music_Route47HGSS_Ch2_ditty2
+	sound_call Music_Route47HGSS_Ch2_ditty3
+	sound_call Music_Route47HGSS_Ch2_ditty1
 	note D_, 3
 	volume_envelope 6, 3
 	note D_, 3
-	volume_envelope 11, 3
-	note F_, 3
-	volume_envelope 6, 3
-	note F_, 1
-	volume_envelope 11, 3
-	note E_, 3
-	volume_envelope 6, 3
-	note E_, 1
-	volume_envelope 11, 3
+	sound_call Music_Route47HGSS_Ch2_ditty1
 	note F_, 2
 	note C_, 3
 	volume_envelope 6, 3
 	note C_, 3
-	volume_envelope 11, 3
-	note F_, 3
-	volume_envelope 6, 3
-	note F_, 1
-	volume_envelope 11, 3
-	note E_, 3
-	volume_envelope 6, 3
-	note E_, 1
-	volume_envelope 11, 3
+	sound_call Music_Route47HGSS_Ch2_ditty1
 	note F_, 2
 	note G#, 3
 	volume_envelope 6, 3
@@ -816,22 +715,8 @@ Music_Route47HGSS_Ch2_loop:
 	note C_, 3
 	volume_envelope 6, 3
 	note C_, 1
-	volume_envelope 11, 3
-	note F_, 3
-	volume_envelope 6, 3
-	note F_, 1
-	volume_envelope 11, 3
-	note E_, 3
-	volume_envelope 6, 3
-	note E_, 1
-	volume_envelope 11, 3
-	note A_, 3
-	volume_envelope 6, 3
-	note A_, 1
-	volume_envelope 11, 3
-	note G_, 3
-	volume_envelope 6, 3
-	note G_, 1
+	sound_call Music_Route47HGSS_Ch2_ditty1
+	sound_call Music_Route47HGSS_Ch2_ditty3
 	octave 1
 	volume_envelope 7, 0
 	note F_, 8
@@ -1187,4 +1072,67 @@ Music_Route47HGSS_Ch4_branch_4:
 	drum_note 2, 1
 	drum_note 2, 2
 	drum_note 2, 3
+	sound_ret
+
+Music_Route47HGSS_Ch1_ditty1:
+	volume_envelope 8, 2
+	octave 4
+	note C_, 2
+	volume_envelope 6, 2
+	octave 3
+	note C_, 2
+	volume_envelope 4, 2
+	note C_, 2
+	volume_envelope 2, 2
+	note C_, 2
+	sound_ret
+
+Music_Route47HGSS_Ch1_ditty2:
+	note F_, 1
+	note G_, 1
+	octave 4
+	note C_, 1
+	note F_, 1
+	note G_, 1
+	octave 5
+	note C_, 1
+	sound_ret
+
+Music_Route47HGSS_Ch2_ditty1:
+	volume_envelope 11, 3
+	note F_, 3
+	volume_envelope 6, 3
+	note F_, 1
+	volume_envelope 11, 3
+	note E_, 3
+	volume_envelope 6, 3
+	note E_, 1
+	volume_envelope 11, 3
+	sound_ret
+
+Music_Route47HGSS_Ch2_ditty2:
+	volume_envelope 11, 3
+	note F_, 3
+	volume_envelope 6, 3
+	note F_, 3
+	volume_envelope 11, 3
+	note G_, 3
+	volume_envelope 6, 3
+	note G_, 1
+	volume_envelope 11, 3
+	note F_, 3
+	volume_envelope 6, 3
+	note F_, 1
+	volume_envelope 11, 3
+	note E_, 2
+	sound_ret
+
+Music_Route47HGSS_Ch2_ditty3:
+	note A_, 3
+	volume_envelope 6, 3
+	note A_, 1
+	volume_envelope 11, 3
+	note G_, 3
+	volume_envelope 6, 3
+	note G_, 1
 	sound_ret

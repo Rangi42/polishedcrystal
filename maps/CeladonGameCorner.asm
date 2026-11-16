@@ -395,7 +395,7 @@ CeladonGameCornerPosterScript:
 	text "Hey!"
 
 	para "A switch behind"
-	line "the poster!?"
+	line "the poster?!"
 	cont "Let's push it!"
 	done
 

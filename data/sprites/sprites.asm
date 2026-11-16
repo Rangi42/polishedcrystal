@@ -224,4 +224,6 @@ SpriteHeaders:
 	overworld_sprite PearlSpriteGFX, STANDING_SPRITE, PAL_OW_COPY_BG_GREEN
 	overworld_sprite PagodaSpriteGFX, STANDING_SPRITE, PAL_OW_COPY_BG_WHITE
 	overworld_sprite CampfireSpriteGFX, STANDING_SPRITE, PAL_OW_CAMPFIRE
+	overworld_sprite CableCarSpriteGFX, STANDING_SPRITE, PAL_OW_CABLE_CAR
+	overworld_sprite LilypadSpriteGFX, STANDING_SPRITE, PAL_OW_COPY_BG_GRASS
 	assert_table_length NUM_OVERWORLD_SPRITES

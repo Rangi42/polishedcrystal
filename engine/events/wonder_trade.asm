@@ -421,6 +421,13 @@ GetGSBallPichu:
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
+	ld hl, wPartyMon1CaughtBall
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld a, [hl]
+	and CAUGHT_BALL_MASK
+	ld [wPlayerTrademonCaughtBall], a
+
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon

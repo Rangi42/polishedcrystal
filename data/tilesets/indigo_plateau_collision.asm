@@ -1,4 +1,4 @@
-	tilecoll VOID, VOID, VOID, VOID ; 00
+	tilecoll WATER, WATER, WATER, WATER ; 00
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 01
 	tilecoll WALL, WALL, WALL, DOOR ; 02
 	tilecoll WALL, WALL, WALL, WALL ; 03
@@ -65,7 +65,7 @@
 	tilecoll WALL, WALL, WALL, WALL ; 40
 	tilecoll WALL, WALL, WALL, WALL ; 41
 	tilecoll CURRENT_LEFT, CURRENT_LEFT, CURRENT_DOWN, CURRENT_LEFT ; 42
-	tilecoll WATER, WATER, WATER, WATER ; 43
+	tilecoll BUOY, BUOY, WATER, WATER ; 43
 	tilecoll WALL, WALL, WALL, WALL ; 44
 	tilecoll WALL, WALL, WALL, WALL ; 45
 	tilecoll WALL, WALL, WALL, WALL ; 46
@@ -245,4 +245,3 @@
 	tilecoll WALL, WALL, WALL, WALL ; f4
 	tilecoll WALL, WALL, WALL, WALL ; f5
 	tilecoll CURRENT_LEFT, CURRENT_LEFT, CURRENT_DOWN, CURRENT_DOWN ; f6
-	tilecoll BUOY, BUOY, WATER, WATER ; f7

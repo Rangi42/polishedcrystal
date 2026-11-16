@@ -401,25 +401,7 @@ Music_LugiaBattleHGSS_Ch2_L:
 	note D#, 16
 	note E_, 16
 Music_LugiaBattleHGSS_Ch2_L1:
-	octave 3
-	note E_, 2
-	rest 2
-	note E_, 2
-	rest 2
-	note E_, 1
-	rest 1
-	note E_, 2
-	rest 2
-	note E_, 3
-	rest 1
-	note E_, 2
-	rest 2
-	note E_, 1
-	rest 1
-	note E_, 2
-	rest 2
-	note E_, 2
-	rest 2
+	sound_call Music_LugiaBattleHGSS_Ch2_ditty1
 	sound_loop 2, Music_LugiaBattleHGSS_Ch2_L1
 Music_LugiaBattleHGSS_Ch2_L2:
 	octave 2
@@ -442,25 +424,7 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	note B_, 2
 	rest 2
 	sound_loop 2, Music_LugiaBattleHGSS_Ch2_L2
-	octave 3
-	note E_, 2
-	rest 2
-	note E_, 2
-	rest 2
-	note E_, 1
-	rest 1
-	note E_, 2
-	rest 2
-	note E_, 3
-	rest 1
-	note E_, 2
-	rest 2
-	note E_, 1
-	rest 1
-	note E_, 2
-	rest 2
-	note E_, 2
-	rest 2
+	sound_call Music_LugiaBattleHGSS_Ch2_ditty1
 	note G#, 2
 	rest 2
 	note G#, 2
@@ -552,53 +516,11 @@ Music_LugiaBattleHGSS_Ch2_L2:
 Music_LugiaBattleHGSS_Ch3:
 	note_type 12, 2, 3
 	octave 6
-	note G_, 1
-	note G#, 1
-	note A_, 1
+	sound_call Music_LugiaBattleHGSS_Ch3_ditty1
 	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
+	sound_call Music_LugiaBattleHGSS_Ch3_ditty1
 	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
-	note G_, 1
-	note G#, 1
-	note A_, 1
+	sound_call Music_LugiaBattleHGSS_Ch3_ditty1
 	note A#, 2
 	rest 3
 	note G_, 1
@@ -621,38 +543,8 @@ Music_LugiaBattleHGSS_Ch3:
 	octave 2
 	note F#, 2
 Music_LugiaBattleHGSS_Ch3_L:
-	octave 1
-	note B_, 2
-	octave 2
-	note F#, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F#, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F#, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F#, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F#, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F#, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F#, 2
-	octave 1
-	note B_, 2
-	octave 2
-	note F#, 2
+	sound_call Music_LugiaBattleHGSS_Ch3_ditty2
+	sound_call Music_LugiaBattleHGSS_Ch3_ditty2
 	note C_, 2
 	note G_, 2
 	note C_, 2
@@ -763,3 +655,62 @@ Music_LugiaBattleHGSS_Ch3_L8:
 	octave 2
 	note F#, 2
 	sound_jump Music_LugiaBattleHGSS_Ch3_L
+
+Music_LugiaBattleHGSS_Ch2_ditty1:
+	octave 3
+	note E_, 2
+	rest 2
+	note E_, 2
+	rest 2
+	note E_, 1
+	rest 1
+	note E_, 2
+	rest 2
+	note E_, 3
+	rest 1
+	note E_, 2
+	rest 2
+	note E_, 1
+	rest 1
+	note E_, 2
+	rest 2
+	note E_, 2
+	rest 2
+	sound_ret
+
+Music_LugiaBattleHGSS_Ch3_ditty1:
+	note G_, 1
+	note G#, 1
+	note A_, 1
+	note A#, 1
+	note G_, 1
+	note G#, 1
+	note A_, 1
+	note A#, 1
+	note G_, 1
+	note G#, 1
+	note A_, 1
+	note A#, 1
+	note G_, 1
+	note G#, 1
+	note A_, 1
+	sound_ret
+
+Music_LugiaBattleHGSS_Ch3_ditty2:
+	octave 1
+	note B_, 2
+	octave 2
+	note F#, 2
+	octave 1
+	note B_, 2
+	octave 2
+	note F#, 2
+	octave 1
+	note B_, 2
+	octave 2
+	note F#, 2
+	octave 1
+	note B_, 2
+	octave 2
+	note F#, 2
+	sound_ret

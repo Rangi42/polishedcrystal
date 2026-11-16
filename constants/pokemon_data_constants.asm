@@ -361,6 +361,8 @@ DEF GRASS_WILDDATA_LENGTH EQU 2 + 1 + NUM_GRASSMON * 3 * 3
 DEF WATER_WILDDATA_LENGTH EQU 2 + 1 + NUM_WATERMON * 3
 DEF FISHGROUP_DATA_LENGTH EQU 2 + 2 * 3
 
+DEF LONG_GRASS_BIAS EQU 20 ; COLL_LONG_GRASS minimum roll for more rare encounters
+
 DEF NUM_ROAMMON_MAPS EQU 16 ; RoamMaps table size (see data/wild/roammon_maps.asm)
 
 DEF LEVEL_FROM_BADGES EQU 178 ; allows ±77 in either direction

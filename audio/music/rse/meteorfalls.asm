@@ -171,24 +171,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	octave 7
 	note C_, 1
 	volume_envelope 9, 2
-	octave 3
-	note A#, 2
-	octave 4
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	octave 3
-	note A#, 2
-	note E_, 2
-	octave 2
-	note A#, 2
-	octave 3
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	note A#, 2
-	octave 4
-	note A#, 2
+	sound_call Music_MeteorFallsRSE_Ch1_ditty1
 	octave 3
 	note A#, 2
 	octave 4
@@ -206,24 +189,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note E_, 2
 	octave 5
 	note C#, 2
-	octave 3
-	note A#, 2
-	octave 4
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	octave 3
-	note A#, 2
-	note E_, 2
-	octave 2
-	note A#, 2
-	octave 3
-	note E_, 2
-	note F_, 2
-	note E_, 2
-	note A#, 2
-	octave 4
-	note A#, 2
+	sound_call Music_MeteorFallsRSE_Ch1_ditty1
 	octave 5
 	note C#, 2
 	octave 4
@@ -247,18 +213,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	duty_cycle 3
 	volume_envelope 13, 2
 	octave 4
-	note D#, 8
-	note D#, 2
-	note D#, 2
-	note D#, 8
-	note D#, 2
-	note D#, 2
-	note D#, 9
-	duty_cycle 2
-	volume_envelope 6, 2
-	octave 5
-	note D#, 2
-	note D_, 2
+	sound_call Music_MeteorFallsRSE_Ch1_ditty2
 	octave 4
 	note G_, 2
 	note D#, 2
@@ -268,18 +223,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note D_, 1
 	duty_cycle 3
 	volume_envelope 13, 2
-	note D#, 8
-	note D#, 2
-	note D#, 2
-	note D#, 8
-	note D#, 2
-	note D#, 2
-	note D#, 9
-	duty_cycle 2
-	volume_envelope 6, 2
-	octave 5
-	note D#, 2
-	note D_, 2
+	sound_call Music_MeteorFallsRSE_Ch1_ditty2
 	note C_, 2
 	octave 4
 	note G#, 2
@@ -641,3 +585,39 @@ Music_MeteorFallsRSE_Ch3_loop_main:
 	note G#, 4
 	note F_, 4
 	sound_jump Music_MeteorFallsRSE_Ch3_loop_main
+
+Music_MeteorFallsRSE_Ch1_ditty1:
+	octave 3
+	note A#, 2
+	octave 4
+	note E_, 2
+	note F_, 2
+	note E_, 2
+	octave 3
+	note A#, 2
+	note E_, 2
+	octave 2
+	note A#, 2
+	octave 3
+	note E_, 2
+	note F_, 2
+	note E_, 2
+	note A#, 2
+	octave 4
+	note A#, 2
+	sound_ret
+
+Music_MeteorFallsRSE_Ch1_ditty2:
+	note D#, 8
+	note D#, 2
+	note D#, 2
+	note D#, 8
+	note D#, 2
+	note D#, 2
+	note D#, 9
+	duty_cycle 2
+	volume_envelope 6, 2
+	octave 5
+	note D#, 2
+	note D_, 2
+	sound_ret

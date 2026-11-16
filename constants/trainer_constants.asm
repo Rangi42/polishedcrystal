@@ -650,6 +650,8 @@ DEF BETA EQU __trainer_class__
 	const TIMANDSUE2
 	const JOEANDJO1 ; custom pal
 	const JOEANDJO2 ; custom pal
+	const ERIKANDSARA1
+	const ERIKANDSARA2
 
 	trainerclass GENTLEMAN
 	const PRESTON
@@ -780,6 +782,7 @@ DEF BETA EQU __trainer_class__
 	const COREY
 	const PETE
 	const LOUIS
+	const PIERCE
 
 	trainerclass PI
 	const LOOKER

@@ -34,7 +34,28 @@ DEF SPRITEOAM_SKIP_PAL_APPLY_XFLIP EQU -2 ; Same as above, but with X-flip attri
 	const ANIM_MON_EGG1
 	const ANIM_MON_EGG2
 
+DEF PIC_ANIM_END_MASK   EQU %10000000
+DEF PIC_ANIM_CMD_MASK   EQU %01100000
+DEF PIC_ANIM_PARAM_MASK EQU %00011111
+
+DEF PIC_ANIM_FRAME_CMD         EQU %00000000
+DEF PIC_ANIM_SETREPEAT_CMD     EQU %00100000
+DEF PIC_ANIM_DOREPEAT_CMD      EQU %01000000
+DEF PIC_ANIM_IMPLICITFRAME_CMD EQU %01100000
+
+DEF MAX_PIC_ANIM_LENGTH EQU 32
+DEF IMPLICIT_FRAME_DURATION EQU 6 ; measured as the most common `frame` duration value
+
 DEF OAM_YCOORD_HIDDEN EQU 160 ; hides an OAM offscreen
+
+; Argument in `b` for `SafeCopyTilemapAtOnce` (see home/gfx.asm)
+	const_def
+	const MAPS_COPY_SKIP_PALS           ; 0: Do not transfer, but leave `hCGBPalUpdate` alone.
+	const MAPS_COPY_SET_PALS            ; 1: Transfer just once.
+	const MAPS_COPY_SET_DEFAULT_PALS    ; 2: Call `SetDefaultBGPAndOBP` and transfer just once.
+	const MAPS_COPY_USE_CUR_PAL_SETTING ; 3: Use what's in `hCGBPalUpdate` before disabling it.
+def MAPS_COPY_DISABLE_OAM_UPDATE equ 1 << 2
+def MAPS_COPY_NO_ATTRS           equ 1 << 3
 
 ; VWF flags (see engine/gfx/vwf.asm)
 	const_def

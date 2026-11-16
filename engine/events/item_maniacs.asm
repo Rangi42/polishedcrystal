@@ -17,6 +17,7 @@ GetItemManiacPrice:
 	ld a, [hli]
 	inc a
 	ret z
+	dec a
 	cp b
 	jr z, .found
 	inc hl

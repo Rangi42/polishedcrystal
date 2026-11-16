@@ -16,6 +16,25 @@ SafariZoneHubRestHouse_MapScriptHeader:
 	bg_event  7,  1, BGEVENT_READ, PokemonJournalKogaScript
 
 	def_object_events
+	object_event  2,  3, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBurglarPierce, -1
+
+GenericTrainerBurglarPierce:
+	generictrainer BURGLAR, PIERCE, EVENT_BEAT_BURGLAR_PIERCE, .SeenText, .BeatenText
+
+	text "There's nothing"
+	line "worth stealing"
+	cont "here anyway."
+	done
+
+.SeenText:
+	text "Hey!"
+	line "Get outta here!"
+	cont "This is my turf!"
+	done
+
+.BeatenText:
+	text "I'm sorry!"
+	done
 
 PokemonJournalKogaScript:
 	setflag ENGINE_READ_KOGA_JOURNAL
