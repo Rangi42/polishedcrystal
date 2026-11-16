@@ -14,7 +14,7 @@ VermilionPort_MapScriptHeader:
 	coord_event  3,  9, SCENE_VERMILIONPORT_ASK_ENTER_SHIP, VermilionPortWalkUpToShipScript
 
 	def_bg_events
-	bg_event 23, 11, BGEVENT_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
+	bg_event 21, 11, BGEVENT_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
 
 	def_object_events
 	object_event  3, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionPortSailorAtGangwayScript, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
