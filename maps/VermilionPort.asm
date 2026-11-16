@@ -6,20 +6,20 @@ VermilionPort_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  8,  4, VERMILION_CITY, 8
-	warp_event  7, 15, FAST_SHIP_1F, 1
-	warp_event  9,  4, VERMILION_CITY, 9
+	warp_event  4,  4, VERMILION_CITY, 8
+	warp_event  3, 15, FAST_SHIP_1F, 1
+	warp_event  5,  4, VERMILION_CITY, 9
 
 	def_coord_events
-	coord_event  7,  9, SCENE_VERMILIONPORT_ASK_ENTER_SHIP, VermilionPortWalkUpToShipScript
+	coord_event  3,  9, SCENE_VERMILIONPORT_ASK_ENTER_SHIP, VermilionPortWalkUpToShipScript
 
 	def_bg_events
-	bg_event 27, 11, BGEVENT_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
+	bg_event 23, 11, BGEVENT_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
 
 	def_object_events
-	object_event  7, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionPortSailorAtGangwayScript, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
-	object_event  6,  9, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionPortSailorScript, -1
-	object_event 11,  9, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionPortSuperNerdText, -1
+	object_event  3, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionPortSailorAtGangwayScript, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
+	object_event  2,  9, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionPortSailorScript, -1
+	object_event  7,  9, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionPortSuperNerdText, -1
 
 	object_const_def
 	const VERMILIONPORT_SAILOR1
