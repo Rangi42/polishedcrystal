@@ -536,9 +536,11 @@ endr
 	call .PrepOAM
 	pop hl
 .skip_badge
-	ld bc, $e ; 6 + 2 * 4
+	ld bc, $e ; 2 + 6 * 4
 	add hl, bc
 	pop bc
+    add bc
+    pop hl
 	dec b
 	jr nz, .loop
 	ret
