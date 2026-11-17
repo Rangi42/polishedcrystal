@@ -42,6 +42,7 @@ BodyColorNames:
 	dr BodyBlack
 	dr BodyBrown
 	dr BodyPurple
+    dr BodyMagenta
 	dr BodyGray
 	dr BodyWhite
 	dr BodyPink
