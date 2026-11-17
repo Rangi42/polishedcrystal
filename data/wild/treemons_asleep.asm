@@ -22,6 +22,17 @@ AsleepTreeMons:
 	db 0 ; end
 
 .Morn
+    dp VENONAT
+	dp HOOTHOOT
+	dp NOCTOWL
+	dp HERACROSS
+    dp CATERPIE
+	dp METAPOD
+	dp BUTTERFREE
+	dp WEEDLE
+	dp KAKUNA
+	dp BEEDRILL
+	db 0 ; end
 .Day
 	dp VENONAT
 	dp HOOTHOOT
