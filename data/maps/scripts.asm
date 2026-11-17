@@ -272,7 +272,7 @@ INCLUDE "maps/MagnetTunnelInside.asm"
 SECTION "National Park Scripts", ROMX
 
 INCLUDE "maps/NationalPark.asm"
-INCLUDE "maps/NationalParkBugContest.asm"
+INCLUDE "maps/NationalParkBugContest.asm" ; shares text with NationalPark.asm
 
 
 SECTION "Ecruteak Scripts", ROMX
