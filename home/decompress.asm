@@ -312,9 +312,9 @@ DEF LZ_SPECIAL_PACKLO0      EQU $fe ; (len 1..256)
 	ld b, a ; B = command.
 	xor c ; a = %000l llll
 	ld c, a ; Thus, C = length.
-
-.process_cmd
 	ld a, b ; command in the upper 3 bits
+	and LZ_CMD
+.process_cmd
 	; length in bc, upper 7 bits of b ignored
 	rla
 	jr c, .lz_copy
@@ -432,7 +432,7 @@ DEF LZ_SPECIAL_PACKLO0      EQU $fe ; (len 1..256)
 	and $0f
 	ld [hli], a
 	dec c
-	jr z, .Main
+	jmp z, .Main
 	ld a, b
 	and $0f
 	ld [hli], a
