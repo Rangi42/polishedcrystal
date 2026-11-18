@@ -579,6 +579,7 @@ endc
 	const NAM_TIMER_BALL
 	const NAM_TINYMUSHROOM
 	const NAM_TOXIC_ORB
+    const NAM_BLUE_ORB
 	const NAM_TWISTEDSPOON
 	const NAM_ULTRA_BALL
 	const NAM_UPGRADE
