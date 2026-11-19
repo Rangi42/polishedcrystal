@@ -254,9 +254,9 @@ SECTION "CherrygroveBay_BlockData", ROMX
 CherrygroveBay_BlockData:
 	INCBIN "maps/CherrygroveBay.ablk.lzp"
 
-SECTION "CherrygroveTrainTrackDual_BlockData", ROMX
-CherrygroveTrainTrackDual_BlockData:
-	INCBIN "maps/CherrygroveTrainTrackDual.ablk.lzp"
+SECTION "CherrygroveTrainTrack_BlockData", ROMX
+CherrygroveTrainTrack_BlockData:
+	INCBIN "maps/CherrygroveTrainTrack.ablk.lzp"
 
 SECTION "Route32Coast_BlockData", ROMX
 Route32Coast_BlockData:

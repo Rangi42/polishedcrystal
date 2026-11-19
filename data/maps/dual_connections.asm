@@ -57,9 +57,9 @@ DualMapConnections:
 		OlivineCity, OLIVINE_CITY, -7, \
 		Route35CoastNorth, ROUTE_35_COAST_NORTH, 15
 	; When you walk east off of CherrygroveBay, if [wYCoord] < 30,
-	; then use "connection east, CherrygroveTrainTrackDual, CHERRYGROVE_TRAIN_TRACK_DUAL, 0",
+	; then use "connection east, CherrygroveTrainTrack, CHERRYGROVE_TRAIN_TRACK, 0",
 	; else use "connection east, CherrygroveCity, CHERRYGROVE_CITY, 15".
 	dual_connection east, CHERRYGROVE_BAY, 30, \
-		CherrygroveTrainTrackDual, CHERRYGROVE_TRAIN_TRACK_DUAL, 0, \
+		CherrygroveTrainTrack, CHERRYGROVE_TRAIN_TRACK, 0, \
 		CherrygroveCity, CHERRYGROVE_CITY, 15
 	db 0 ; end

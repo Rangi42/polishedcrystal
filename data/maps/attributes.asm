@@ -80,7 +80,8 @@ ENDM
 	map_attributes Route30, ROUTE_30, $0
 	connection north, Route31, ROUTE_31, -9
 	connection south, CherrygroveCity, CHERRYGROVE_CITY, -4
-	connection west, CherrygroveTrainTrackDual, CHERRYGROVE_TRAIN_TRACK_DUAL, 12
+	; CherrygroveTrainTrack is tall enough to be its own dual connection
+	connection west, CherrygroveTrainTrack, CHERRYGROVE_TRAIN_TRACK, 12
 
 	map_attributes Route31, ROUTE_31, $0
 	connection south, Route30, ROUTE_30, 9
@@ -365,9 +366,9 @@ ENDM
 	map_attributes CherrygroveBay, CHERRYGROVE_BAY, $5
 	connection south, Route32Coast, ROUTE_32_COAST, 0
 	connection west, Route32, ROUTE_32, -12
-	connection east, CherrygroveTrainTrackDual, CHERRYGROVE_TRAIN_TRACK_DUAL, 0
+	connection east, CherrygroveTrainTrack, CHERRYGROVE_TRAIN_TRACK, 0
 
-	map_attributes CherrygroveTrainTrackDual, CHERRYGROVE_TRAIN_TRACK_DUAL, $5
+	map_attributes CherrygroveTrainTrack, CHERRYGROVE_TRAIN_TRACK, $5
 	connection west, CherrygroveBay, CHERRYGROVE_BAY, 0
 	connection east, Route30, ROUTE_30, -12
 

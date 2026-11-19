@@ -9,7 +9,7 @@ ENDM
 
 RandomAliasedOvercastMapGroups:
 	const_def NUM_MAP_GROUPS + 1 ; aliased groups start after normal groups
-	overcast_area AREA_CHERRYGROVE_BAY, CHERRYGROVE_BAY, CHERRYGROVE_TRAIN_TRACK_DUAL
+	overcast_area AREA_CHERRYGROVE_BAY, CHERRYGROVE_BAY, CHERRYGROVE_TRAIN_TRACK
 	overcast_area AREA_ROUTE_32, ROUTE_32, MAGNET_TUNNEL_EAST
 	overcast_area AREA_AZALEA, AZALEA_TOWN, ROUTE_33
 	overcast_area AREA_ROUTE_34, ROUTE_34, ROUTE_34_COAST
