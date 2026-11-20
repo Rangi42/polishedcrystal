@@ -178,8 +178,8 @@
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; b1
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; b2
 	tilecoll FLOOR, FLOOR, WARP_CARPET_DOWN, WARP_CARPET_DOWN ; b3
-	tilecoll WALL, FLOOR, WALL, FLOOR ; b4
-	tilecoll FLOOR, WALL, FLOOR, WALL ; b5
+	tilecoll WALL, FLOOR, WALL, LANTERN_GLOW ; b4
+	tilecoll FLOOR, WALL, LANTERN_GLOW, WALL ; b5
 	tilecoll WALL, WALL, WALL, WATER ; b6
 	tilecoll WALL, WALL, WATER, WALL ; b7
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; b8
