@@ -3,6 +3,9 @@ NavelRockRoof_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_OBJECTS, NavelRockRoofDailyLeafRematchCallback
+if 0
+	callback MAPCALLBACK_TILES, NavelRockRoofMoonCallback
+endc
 
 	def_warp_events
 	warp_event  9, 15, NAVEL_ROCK_INSIDE, 14
@@ -34,6 +37,22 @@ NavelRockRoofDailyLeafRematchCallback:
 	appear NAVELROCKROOF_GREEN
 .Disappear
 	endcallback
+
+; This callback only exists for any tools generating an overworld map stitch image.
+; It should not exist or run in-game, because the changeblock commands should be run
+; by the `Leaf` script after battle, immediately before panning up.
+if 0
+NavelRockRoofMoonCallback:
+	checktime 1 << NITE
+	iffalsefwd .done
+	changeblock 6, 0, $4a
+	changeblock 8, 0, $4b
+	changeblock 6, 2, $4e
+	changeblock 8, 2, $4f
+.done
+	endcallback
+	endcallback
+endc
 
 Leaf:
 	special Special_FadeOutMusic
