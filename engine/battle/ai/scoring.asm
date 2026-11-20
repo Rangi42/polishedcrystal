@@ -1286,6 +1286,11 @@ AI_Smart_PriorityHit:
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jmp nz, AIDiscourageMove
 
+; Dismiss this move if the player has Armor Tail.
+	call AIGetOpponentIgnorableAbility
+	cp ARMOR_TAIL
+	jmp z, AIDiscourageMove
+
 ; Greatly encourage this move if it will KO the player.
 	ld a, 1
 	ldh [hBattleTurn], a
