@@ -61,7 +61,7 @@ OlivineCityFlyPoint:
 OlivineCityLighthouseCallback:
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iffalsefwd .done
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iffalsefwd .done
 	changeblock 32, 14, $9a
 	changeblock 34, 14, $9b
