@@ -473,6 +473,7 @@ ENDM
 
 	map_attributes RuggedRoadSouth, RUGGED_ROAD_SOUTH, $71
 	connection north, RuggedRoadNorth, RUGGED_ROAD_NORTH, 0
+	fake_connection south, Route39, ROUTE_39, 3, -3
 
 	map_attributes NavelRockInside, NAVEL_ROCK_INSIDE, $9
 	connection north, NavelRockInside, NAVEL_ROCK_INSIDE, 11
@@ -911,7 +912,7 @@ ENDM
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $0
 	map_attributes BellchimeTrail, BELLCHIME_TRAIL, $0
-	fake_connection west, EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, 8.5, -3
+	fake_connection west, EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, -8.5, -3
 	map_attributes PewterMuseumOfScience1F, PEWTER_MUSEUM_OF_SCIENCE_1F, $0
 	map_attributes PewterMuseumOfScience2F, PEWTER_MUSEUM_OF_SCIENCE_2F, $0
 	map_attributes ViridianForest, VIRIDIAN_FOREST, $45
@@ -944,7 +945,7 @@ ENDM
 	map_attributes SafariZoneHub, SAFARI_ZONE_HUB, $0
 	fake_connection east, SafariZoneEast, SAFARI_ZONE_EAST, -6, 1
 	fake_connection west, SafariZoneWest, SAFARI_ZONE_WEST, -6, 1
-	fake_connection west, SafariZoneNorth, SAFARI_ZONE_NORTH, -2.5, 7
+	fake_connection north, SafariZoneNorth, SAFARI_ZONE_NORTH, -2.5, 7
 	map_attributes SafariZoneEast, SAFARI_ZONE_EAST, $0
 	map_attributes SafariZoneNorth, SAFARI_ZONE_NORTH, $0
 	map_attributes SafariZoneWest, SAFARI_ZONE_WEST, $0
