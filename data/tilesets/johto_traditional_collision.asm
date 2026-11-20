@@ -250,3 +250,5 @@
 	tilecoll WALL, WALL, WALL, WALL ; f9
 	tilecoll WALL, WALL, WALL, WALL ; fa
 	tilecoll WALL, WALL, WALL, WALL ; fb
+	tilecoll LANTERN_GLOW, FLOOR, FLOOR, FLOOR ; fc
+	tilecoll FLOOR, LANTERN_GLOW, FLOOR, FLOOR ; fd

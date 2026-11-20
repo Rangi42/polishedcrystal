@@ -160,12 +160,12 @@
 	tilecoll WALL, WALL, WALL, WALL ; 9f
 	tilecoll WALL, WALL, WALL, WALL ; a0
 	tilecoll WALL, WALL, WALL, WALL ; a1
-	tilecoll WALL, WALL, FLOOR, FLOOR ; a2
-	tilecoll WALL, WALL, FLOOR, FLOOR ; a3
-	tilecoll WALL, WALL, FLOOR, WALL ; a4
-	tilecoll WALL, WALL, FLOOR, FLOOR ; a5
-	tilecoll WALL, WALL, FLOOR, WALL ; a6
-	tilecoll WALL, WALL, WALL, FLOOR ; a7
+	tilecoll WALL, WALL, LANTERN_GLOW, LANTERN_GLOW ; a2
+	tilecoll WALL, WALL, LANTERN_GLOW, LANTERN_GLOW ; a3
+	tilecoll WALL, WALL, LANTERN_GLOW, WALL ; a4
+	tilecoll WALL, WALL, LANTERN_GLOW, LANTERN_GLOW ; a5
+	tilecoll WALL, WALL, LANTERN_GLOW, LANTERN_GLOW ; a6
+	tilecoll WALL, WALL, WALL, LANTERN_GLOW ; a7
 	tilecoll WATER, BUOY, WATER, BUOY ; a8
 	tilecoll WATER, BUOY, BUOY, BUOY ; a9
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; aa
