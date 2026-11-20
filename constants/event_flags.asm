@@ -1,5 +1,8 @@
 ; wEventFlags bit flags
 
+; Any tools generating an overworld map stitch image with object_events should
+; set any commented "stitch-set" and clear any commented "stitch-clear" event flags.
+
 	const_def
 
 ; The first eight flags are reset upon reloading the map
@@ -2225,12 +2228,12 @@
 	const EVENT_ROUTE_22_PAST_CELEBI
 	const EVENT_ROUTE_22_PAST_SILVER
 	const EVENT_ROUTE_22_PAST_GIOVANNI
-	const EVENT_CINNABAR_LAB_CELEBI
-	const EVENT_CINNABAR_LAB_CHRIS
-	const EVENT_CINNABAR_LAB_KRIS
-	const EVENT_CINNABAR_LAB_SCIENTIST1
-	const EVENT_CINNABAR_LAB_SCIENTIST2
-	const EVENT_CINNABAR_LAB_MEWTWO
+	const EVENT_CINNABAR_LAB_CELEBI ; stitch-set
+	const EVENT_CINNABAR_LAB_CHRIS ; stitch-set
+	const EVENT_CINNABAR_LAB_KRIS ; stitch-set
+	const EVENT_CINNABAR_LAB_SCIENTIST1 ; stitch-clear
+	const EVENT_CINNABAR_LAB_SCIENTIST2 ; stitch-set
+	const EVENT_CINNABAR_LAB_MEWTWO ; stitch-set
 	const EVENT_LEAF_IN_NAVEL_ROCK
 	const EVENT_CHRIS_IN_NAVEL_ROCK
 	const EVENT_KRIS_IN_NAVEL_ROCK
@@ -2356,7 +2359,7 @@
 	const_skip ; EVENT_REMATCH_GYM_LEADER_5
 	const_skip ; EVENT_REMATCH_GYM_LEADER_6
 	const_skip ; EVENT_COPYCAT_3
-	const EVENT_CINNABAR_LAB_CRYS
+	const EVENT_CINNABAR_LAB_CRYS ; stitch-set
 	const EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	const EVENT_RUINS_OF_ALPH_CLIMAX_DONE
 	const EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT
@@ -2431,7 +2434,7 @@
 	const EVENT_CHERRYGROVE_BAY_CUT_TREE_1
 	const EVENT_BETA_IN_NAVEL_ROCK
 	const_skip ; EVENT_COPYCAT_4
-	const EVENT_CINNABAR_LAB_BETA
+	const EVENT_CINNABAR_LAB_BETA ; stitch-set
 
 ; Miscellaneous
 	const EVENT_RUINS_OF_ALPH_OUTSIDE_HYPER_POTION
