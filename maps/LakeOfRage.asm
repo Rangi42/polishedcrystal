@@ -16,7 +16,7 @@ LakeOfRage_MapScriptHeader:
 	def_bg_events
 	bg_event 21, 27, BGEVENT_JUMPTEXT, LakeOfRageSignText
 	bg_event  3, 26, BGEVENT_JUMPTEXT, LakeOfRageAdvancedTipsSignText
-	bg_event 25, 31, BGEVENT_READ, LakeOfRageFishingGuruSign
+	bg_event 25, 31, BGEVENT_READ, LakeOfRageFishingDudeSign
 	bg_event  4,  4, BGEVENT_ITEM + RARE_CANDY, EVENT_LAKE_OF_RAGE_HIDDEN_RARE_CANDY
 	bg_event 35,  5, BGEVENT_ITEM + MAX_POTION, EVENT_LAKE_OF_RAGE_HIDDEN_MAX_POTION
 	bg_event 11, 28, BGEVENT_ITEM + FULL_RESTORE, EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE
@@ -98,7 +98,7 @@ endc
 	line "vered Fairy type!"
 	done
 
-LakeOfRageFishingGuruSign:
+LakeOfRageFishingDudeSign:
 	opentext
 	writetext .Text
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
@@ -111,7 +111,7 @@ LakeOfRageFishingGuruSign:
 	endtext
 
 .Text:
-	text "Fishing Guru's"
+	text "Fishing Dude's"
 	line "House"
 	done
 

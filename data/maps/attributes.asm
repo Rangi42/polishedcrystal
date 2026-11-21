@@ -751,6 +751,7 @@ ENDM
 	map_attributes FuchsiaMart, FUCHSIA_MART, $0
 	map_attributes FuchsiaGym, FUCHSIA_GYM, $0
 	map_attributes FuchsiaBillSpeechHouse, FUCHSIA_BILL_SPEECH_HOUSE, $0
+	map_attributes FuchsiaFishingSpeechHouse, FUCHSIA_FISHING_SPEECH_HOUSE, $0
 	map_attributes FuchsiaSafariBallHouse, FUCHSIA_SAFARI_BALL_HOUSE, $0
 	map_attributes FuchsiaPokeCenter1F, FUCHSIA_POKECENTER_1F, $0
 	map_attributes SafariZoneWardensHome, SAFARI_ZONE_WARDENS_HOME, $0

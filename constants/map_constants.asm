@@ -373,20 +373,21 @@ ENDM
 	map_const FUCHSIA_MART,                                6,  4 ;  7
 	map_const FUCHSIA_GYM,                                 5,  9 ;  8
 	map_const FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ;  9
-	map_const FUCHSIA_SAFARI_BALL_HOUSE,                   4,  4 ; 10
-	map_const FUCHSIA_POKECENTER_1F,                       6,  4 ; 11
-	map_const SAFARI_ZONE_WARDENS_HOME,                    5,  4 ; 12
-	map_const SAFARI_ZONE_FUCHSIA_GATE,                    5,  4 ; 13
-	map_const ROUTE_12_GATE,                               5,  5 ; 14
-	map_const ROUTE_12_GATE_2F,                            4,  4 ; 15
-	map_const ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 16
-	map_const ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 17
-	map_const ROUTE_19_FUCHSIA_GATE,                       5,  4 ; 18
-	map_const ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 19
-	map_const LUCKY_ISLAND,                               26, 19 ; 20
-	map_const ROUTE_14_LUCKY_ISLAND_DUAL,                 35,  3 ; 21
-	map_const FUCHSIA_AQUARIUM_1F,                         9,  5 ; 22
-	map_const FUCHSIA_AQUARIUM_2F,                         9,  5 ; 23
+	map_const FUCHSIA_FISHING_SPEECH_HOUSE,                4,  4 ; 10
+	map_const FUCHSIA_SAFARI_BALL_HOUSE,                   4,  4 ; 11
+	map_const FUCHSIA_POKECENTER_1F,                       6,  4 ; 12
+	map_const SAFARI_ZONE_WARDENS_HOME,                    5,  4 ; 13
+	map_const SAFARI_ZONE_FUCHSIA_GATE,                    5,  4 ; 14
+	map_const ROUTE_12_GATE,                               5,  5 ; 15
+	map_const ROUTE_12_GATE_2F,                            4,  4 ; 16
+	map_const ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 17
+	map_const ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 18
+	map_const ROUTE_19_FUCHSIA_GATE,                       5,  4 ; 19
+	map_const ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 20
+	map_const LUCKY_ISLAND,                               26, 19 ; 21
+	map_const ROUTE_14_LUCKY_ISLAND_DUAL,                 35,  3 ; 22
+	map_const FUCHSIA_AQUARIUM_1F,                         9,  5 ; 23
+	map_const FUCHSIA_AQUARIUM_2F,                         9,  5 ; 24
 
 	newgroup                                                     ; 18
 	map_const ROUTE_8,                                    26, 11 ;  1

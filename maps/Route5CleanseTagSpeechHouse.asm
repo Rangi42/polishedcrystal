@@ -10,6 +10,7 @@ Route5CleanseTagSpeechHouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
+	bg_event  6,  1, BGEVENT_JUMPTEXT, Route5CleanseTagSpeechHouseRadioText
 	bg_event  7,  1, BGEVENT_JUMPSTD, difficultbookshelf
 
 	def_object_events
@@ -57,4 +58,9 @@ Route5CleanseTagHouseTeacherText:
 
 	para "I'm sorry that she"
 	line "startled you."
+	done
+
+Route5CleanseTagSpeechHouseRadioText:
+	text "The radio is only"
+	line "playing static."
 	done

@@ -10,19 +10,23 @@ VermilionHouseFishingSpeechHouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  0, BGEVENT_JUMPTEXT, FishingDudesHousePhotoText
+	bg_event  5,  0, BGEVENT_JUMPTEXT, FishingGurusHousePhotoText
 
 	def_object_events
-	object_event  2,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, FishingDudeText, -1
+	object_event  2,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, FishingGuruText, -1
 
-FishingDudeText:
+FishingGuruText:
 	text "I am the Fishing"
-	line "Dude, the elder of"
-	cont "the Fishing Bros."
+	line "Guru, the middle"
 
-	para "Have you met the"
-	line "Fishing Guru at"
-	cont "Lake of Rage?"
+	para "child of the three"
+	line "Fishing Bros."
+
+	para "Have you met my"
+	line "friend the"
+
+	para "Fishing Dude at"
+	line "Lake of Rage?"
 
 	para "He dreams about"
 	line "seeing the world's"
@@ -39,7 +43,7 @@ FishingDudeText:
 	cont "of his dreams."
 	done
 
-FishingDudesHousePhotoText:
+FishingGurusHousePhotoText:
 	text "It's a photo of"
 	line "people fishing…"
 

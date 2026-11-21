@@ -14,6 +14,7 @@ Route5_MapScriptHeader:
 	def_bg_events
 	bg_event 18, 28, BGEVENT_JUMPTEXT, Route5UndergroundPathSignText
 	bg_event  5, 27, BGEVENT_JUMPTEXT, Route5AdvancedTipsSignText
+	bg_event 10, 21, BGEVENT_JUMPTEXT, HouseForSaleSignText
 
 	def_object_events
 
@@ -38,4 +39,11 @@ Route5AdvancedTipsSignText:
 
 	para "Ability won't"
 	line "get confused!"
+	done
+
+HouseForSaleSignText:
+	text "What's this?"
+
+	para "House for Sale…"
+	line "Nobody lives here."
 	done

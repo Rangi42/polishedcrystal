@@ -19,6 +19,9 @@ FuchsiaCity_MapScriptHeader:
 	warp_event 15, 27, FUCHSIA_SAFARI_BALL_HOUSE, 1
 	warp_event 22, 13, FUCHSIA_AQUARIUM_1F, 1
 	warp_event 23, 13, FUCHSIA_AQUARIUM_1F, 2
+	warp_event 31, 27, FUCHSIA_FISHING_SPEECH_HOUSE, 1
+	warp_event 31, 24, FUCHSIA_FISHING_SPEECH_HOUSE, 3
+	warp_event 32, 24, FUCHSIA_FISHING_SPEECH_HOUSE, 3
 
 	def_coord_events
 
@@ -37,7 +40,6 @@ FuchsiaCity_MapScriptHeader:
 	bg_event  9, 15, BGEVENT_READ, FuchsiaCityZooLaprasSign
 	bg_event 11, 35, BGEVENT_JUMPTEXT, FuchsiaCityCarefulSwimmingSignText
 	bg_event 26, 13, BGEVENT_JUMPTEXT, FuchsiaAquariumSignText
-	bg_event 31, 27, BGEVENT_JUMPTEXT, HouseForSaleSignText
 	bg_event 26, 12, BGEVENT_ITEM + NUGGET, EVENT_FUCHSIA_CITY_HIDDEN_NUGGET
 
 	def_object_events
@@ -330,13 +332,6 @@ FuchsiaCityZooLaprasSign:
 	para "understand human"
 	line "speech and is very"
 	cont "intelligent."
-	done
-
-HouseForSaleSignText:
-	text "What's this?"
-
-	para "House for Sale…"
-	line "Nobody lives here."
 	done
 
 FuchsiaCityCarefulSwimmingSignText:

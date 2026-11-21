@@ -1458,6 +1458,10 @@ SECTION "LuckyIslandHidden_BlockData", ROMX
 LuckyIslandHidden_BlockData:
 	INCBIN "maps/LuckyIslandHidden.ablk.lzp"
 
+SECTION "FuchsiaFishingSpeechHouse_BlockData", ROMX
+FuchsiaFishingSpeechHouse_BlockData:
+	INCBIN "maps/FuchsiaFishingSpeechHouse.ablk.lzp"
+
 SECTION "SafariZoneWardensHome_BlockData", ROMX
 SafariZoneWardensHome_BlockData:
 	INCBIN "maps/SafariZoneWardensHome.ablk.lzp"
