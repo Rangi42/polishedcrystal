@@ -26,7 +26,7 @@ FuchsiaCity_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 25, 19, BGEVENT_JUMPTEXT, FuchsiaCitySignText
+	bg_event 35, 16, BGEVENT_JUMPTEXT, FuchsiaCitySignText
 	bg_event  7, 27, BGEVENT_JUMPTEXT, FuchsiaGymSignText
 	bg_event 21, 16, BGEVENT_JUMPTEXT, FuchsiaZooSignText
 	bg_event 27, 29, BGEVENT_JUMPTEXT, WardensHomeSignText
