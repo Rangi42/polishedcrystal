@@ -169,3 +169,4 @@
 	tilecoll WALL, WALL, DOOR, WALL ; a8
 	tilecoll WALL, WALL, WALL, WALL ; a9
 	tilecoll FLOOR, LANTERN_GLOW, FLOOR, FLOOR ; aa
+	tilecoll LANTERN_GLOW, LANTERN_GLOW, FLOOR, FLOOR ; ab

@@ -202,8 +202,8 @@
 	tilecoll WALL, FLOOR, WALL, WALL ; c9
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; ca
 	tilecoll FLOOR, FLOOR, FLOOR, WALL ; cb
-	tilecoll FLOOR, FLOOR, WALL, WALL ; cc
-	tilecoll FLOOR, FLOOR, WALL, WALL ; cd
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; cc
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; cd
 	tilecoll WALL, WALL, WALL, WALL ; ce
 	tilecoll WALL, WALL, WALL, WALL ; cf
 	tilecoll WALL, WALL, FLOOR, FLOOR ; d0
@@ -250,7 +250,7 @@
 	tilecoll WATER, BUOY, WATER, BUOY ; f9
 	tilecoll BUOY, BUOY, WATER, WATER ; fa
 	tilecoll WATER, BUOY, WATER, BUOY ; fb
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fc
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fd
-	tilecoll FLOOR, LANTERN_GLOW, WALL, WALL ; fe
+	tilecoll FLOOR, FLOOR, WALL, WALL ; fc
+	tilecoll FLOOR, LANTERN_GLOW, WALL, WALL ; fd
+	tilecoll LANTERN_GLOW, LANTERN_GLOW, FLOOR, FLOOR ; fe
 	tilecoll LANTERN_GLOW, FLOOR, WALL, WALL ; ff
