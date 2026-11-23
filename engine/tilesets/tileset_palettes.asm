@@ -398,11 +398,17 @@ LoadMapPals::
 ; palette table order: regular morn, day, nite, eve, overcast morn, day, nite, eve
 SwapColorPalette::
 	ld a, d
+	ld c, a
 
 	; If `d` is PALSWAP_BG_INDEX, then `e` must be a `PAL_BG_*` index instead of
 	; `de` being a pointer. Use the default BG colors in that case.
 	cp PALSWAP_BG_INDEX
 	jr z, .use_bg_index
+
+	; If `d` is PALSWAP_ROOF_INDEX, then `e` must be a `GROUP_*` index instead of
+	; `de` being a pointer. Use the roof BG colors in that case.
+	cp PALSWAP_ROOF_INDEX
+	jr z, .use_roof_index
 
 	; Do not swap if the palette table is NULL.
 	; This allows maps to specify multiple `palette_swap`s for the same palette.
@@ -425,9 +431,9 @@ SwapColorPalette::
 	ld a, PALSTATE_OVERCAST_INDEX
 	farcall GetPalState
 	and a
+	ld a, 0 ; no-optimize a = 0
 	jr z, .finish
-	ld de, 4 palettes
-	add hl, de
+	ld a, 4 palettes
 	jr .finish
 
 .use_bg_index
@@ -436,9 +442,9 @@ SwapColorPalette::
 	farcall GetPalState
 	and a
 	ld hl, TilesetBGPalette
-	jr z, .not_overcast
+	jr z, .not_overcast_bg
 	ld hl, OvercastBGPalette
-.not_overcast
+.not_overcast_bg
 	; hl += e * 1 palettes
 	ld a, e
 	add a
@@ -453,11 +459,42 @@ SwapColorPalette::
 	; hl += a * 8 palettes
 	rrca
 	rrca
+	jr .finish
+
+.use_roof_index
+	; Set `hl` to the selected state's time-of-day palette in the default BG palettes.
+	ld a, PALSTATE_OVERCAST_INDEX
+	farcall GetPalState
+	and a
+	ld hl, RoofPals
+	jr z, .not_overcast_roof
+	ld hl, OvercastRoofPals
+.not_overcast_roof
+	; hl += e * 2 colors * 3
+	ld a, e
+	add a
+	add a
+	ld e, a
+	add a
+	add e
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, PALSTATE_TIME_OF_DAY
+	farcall GetPalState
+	and 3
+	jr z, .morn_roof
+	dec a ; morn/day/nite/eve being 0/1/2/3 becomes 0/0/1/2
+.morn_roof
+	; hl += a * 2 colors
+	add a
+	add a
+
+.finish
 	ld e, a
 	ld d, 0
 	add hl, de
 
-.finish
 	; Previous-state palettes become active; current-state palettes are the target.
 	; d = [wPalState] == PREV_PALSTATE ? LOW(wBGPals2) : LOW(wBGPals1)
 	ld a, [wPalState]
@@ -480,7 +517,15 @@ SwapColorPalette::
 	ld d, a
 
 	; Apply the swapped palette.
+	; Only update middle colors for roofs.
+	ld a, c
+	cp PALSWAP_ROOF_INDEX
 	ld bc, 1 palettes
+	jr nz, .whole_palette
+	inc de
+	inc de
+	ld c, 2 colors
+.whole_palette
 	jmp FarCopyColorWRAM
 
 UpdatePaletteSwapState::

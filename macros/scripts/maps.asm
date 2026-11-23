@@ -232,14 +232,18 @@ MACRO paletteswap
 	db \3, \4 ; Y range
 	db \5 ; palette ID
 	if STRFIND("\6", "PAL_BG_") == 0
-		db \6, PALSWAP_BG_INDEX ; out-of-range palette index
+		db \6, PALSWAP_BG_INDEX ; out-of-range bg palette index
+	elif STRFIND("\6", "GROUP_") == 0
+		db \6, PALSWAP_ROOF_INDEX ; out-of-range roof palette index
 	else
 	dw \6 ; out-of-range palette list
 		assert BANK(\6) == BANK(SwapColorPalette) || BANK(\6) == 0, \
 			"\6 is not accessible in the color ROMX bank!"
 	endc
 	if STRFIND("\7", "PAL_BG_") == 0
-		db \7, PALSWAP_BG_INDEX ; in-range palette index
+		db \7, PALSWAP_BG_INDEX ; in-range bg palette index
+	elif STRFIND("\7", "GROUP_") == 0
+		db \7, PALSWAP_ROOF_INDEX ; in-range roof palette index
 	else
 	dw \7 ; in-range palette list
 		assert BANK(\7) == BANK(SwapColorPalette) || BANK(\7) == 0, \

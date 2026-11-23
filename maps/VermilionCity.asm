@@ -83,7 +83,7 @@ VermilionCitySetUpPaletteSwap:
 
 .PaletteSwap:
 	paletteswap 0, 15, 5, 17, PAL_BG_GREEN, PAL_BG_GREEN, PokemonFanClubRoofPalettes
-	paletteswap 21, 36, 27, 39, PAL_BG_ROOF, VermilionCityRoofPalettes, SeagallopFerryRoofPalettes
+	paletteswap 21, 36, 27, 39, PAL_BG_ROOF, GROUP_VERMILION_CITY, SeagallopFerryRoofPalettes
 	db -1 ; end
 
 LawrenceIntroScript:

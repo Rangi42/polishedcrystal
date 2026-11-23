@@ -29,7 +29,7 @@ Route6SetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 255, 0, 15, PAL_BG_ROOF, VermilionCityRoofPalettes, PAL_BG_BROWN
+	paletteswap 0, 255, 0, 15, PAL_BG_ROOF, GROUP_VERMILION_CITY, PAL_BG_BROWN
 	db -1 ; end
 
 GenericTrainerPokefanmRex:

@@ -29,9 +29,6 @@ INCLUDE "gfx/tilesets/palette-swap/goldenrod-museum.pal"
 GoldenrodBikeShopRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/goldenrod-bike-shop.pal"
 
-GoldenrodCityRoofPalettes::
-INCLUDE "gfx/tilesets/palette-swap/goldenrod-roof.pal"
-
 GoldenrodHarborPlantVendorAwningPalettes::
 INCLUDE "gfx/tilesets/palette-swap/plant-vendor.pal"
 
@@ -49,9 +46,6 @@ INCLUDE "gfx/tilesets/palette-swap/celadon-hotel.pal"
 
 PowerPlantRoofPalettes:
 INCLUDE "gfx/tilesets/palette-swap/power-plant.pal"
-
-FuchsiaCityRoofPalettes::
-INCLUDE "gfx/tilesets/palette-swap/fuchsia-roof.pal"
 
 SafariZoneRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/safari-zone-roof.pal"
@@ -72,9 +66,6 @@ INCLUDE "gfx/tilesets/palette-swap/steel-wing-roof.pal"
 NuggetBridgePalettes::
 RuggedRoadSouthFlowerPalettes::
 INCLUDE "gfx/tilesets/palette-swap/nugget-bridge.pal"
-
-VermilionCityRoofPalettes::
-INCLUDE "gfx/tilesets/palette-swap/vermilion-roof.pal"
 
 SeagallopFerryRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/seagallop-ferry-roof.pal"
