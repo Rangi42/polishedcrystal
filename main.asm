@@ -724,7 +724,6 @@ INCLUDE "engine/gfx/dynamic_pals.asm"
 SECTION "Weather System", ROMX
 
 INCLUDE "engine/overworld/weather.asm"
-INCLUDE "engine/events/weather.asm"
 
 
 SECTION "Exp Candy Names", ROMX
