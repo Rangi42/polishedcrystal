@@ -252,3 +252,5 @@
 	tilecoll WATER, BUOY, WATER, BUOY ; fb
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fc
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fd
+	tilecoll FLOOR, LANTERN_GLOW, WALL, WALL ; fe
+	tilecoll LANTERN_GLOW, FLOOR, WALL, WALL ; ff
