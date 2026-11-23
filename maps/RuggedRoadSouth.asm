@@ -80,7 +80,7 @@ RuggedRoadSouthSetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 255, 0, 22, PAL_BG_YELLOW, OverworldYellowPalettes, RuggedRoadSouthFlowerPalettes
+	paletteswap 0, 255, 0, 22, PAL_BG_YELLOW, PAL_BG_YELLOW, RuggedRoadSouthFlowerPalettes
 	db -1 ; end
 
 TrainerBird_keeperSalim:

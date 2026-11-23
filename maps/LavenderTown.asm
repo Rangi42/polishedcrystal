@@ -56,7 +56,7 @@ LavenderTownSetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 6, 255, 0, 9, PAL_BG_GREEN, OverworldGreenPalettes, LavenderRadioTowerRoofPalettes
+	paletteswap 6, 255, 0, 9, PAL_BG_GREEN, PAL_BG_GREEN, LavenderRadioTowerRoofPalettes
 	db -1 ; end
 
 LavenderTownExpositionTrigger1:

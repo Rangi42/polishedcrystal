@@ -33,7 +33,7 @@ Route26SetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 255, 51, 63, PAL_BG_WATER, OverworldWaterPalettes, OverworldRedPalettes
+	paletteswap 0, 255, 51, 63, PAL_BG_WATER, PAL_BG_WATER, PAL_BG_RED
 	; The unswapped NULL case will keep whichever palette was chosen by the previous case
 	paletteswap 0, 255, 65, 77, PAL_BG_WATER, NULL, DayOfWeekSiblingsHouseRoofPalettes
 	db -1 ; end

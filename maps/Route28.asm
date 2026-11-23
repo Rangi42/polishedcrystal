@@ -22,7 +22,7 @@ Route28SetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 15, 0, 255, PAL_BG_RED, OverworldRedPalettes, SteelWingHouseRoofPalettes
+	paletteswap 0, 15, 0, 255, PAL_BG_RED, PAL_BG_RED, SteelWingHouseRoofPalettes
 	db -1 ; end
 
 Route28SignText: ; text > text

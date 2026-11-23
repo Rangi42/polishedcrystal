@@ -102,7 +102,7 @@ Route24SetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 255, 0, 255, PAL_BG_YELLOW, OverworldYellowPalettes, NuggetBridgePalettes
+	paletteswap 0, 255, 0, 255, PAL_BG_YELLOW, PAL_BG_YELLOW, NuggetBridgePalettes
 	db -1 ; end
 
 TrainerGruntM31:

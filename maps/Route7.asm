@@ -28,7 +28,7 @@ Route7SetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 5, 0, 255, PAL_BG_WATER, OverworldWaterPalettes, OverworldRedPalettes
+	paletteswap 0, 5, 0, 255, PAL_BG_WATER, PAL_BG_WATER, PAL_BG_RED
 	db -1 ; end
 
 GenericTrainerBreederCarlene:

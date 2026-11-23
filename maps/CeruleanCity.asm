@@ -58,7 +58,7 @@ CeruleanCitySetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 12, 29, 0, 3, PAL_BG_YELLOW, OverworldYellowPalettes, NuggetBridgePalettes
+	paletteswap 12, 29, 0, 3, PAL_BG_YELLOW, PAL_BG_YELLOW, NuggetBridgePalettes
 	db -1 ; end
 
 CeruleanCityPrepareRoute24BridgeOverhead:

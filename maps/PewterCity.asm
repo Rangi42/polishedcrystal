@@ -45,7 +45,7 @@ PewterCitySetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 255, 0, 13, PAL_BG_WATER, OverworldWaterPalettes, PewterCityMuseumRoofPalettes
+	paletteswap 0, 255, 0, 13, PAL_BG_WATER, PAL_BG_WATER, PewterCityMuseumRoofPalettes
 	db -1 ; end
 
 PewterCityGrampsScript:

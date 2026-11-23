@@ -71,8 +71,8 @@ CeladonCitySetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 14, 35, 11, 25, PAL_BG_RED, OverworldRedPalettes, GameCornerExteriorPalettes
-	paletteswap 26, 255, 1, 15, PAL_BG_WATER, OverworldWaterPalettes, OverworldRedPalettes
+	paletteswap 14, 35, 11, 25, PAL_BG_RED, PAL_BG_RED, GameCornerExteriorPalettes
+	paletteswap 26, 255, 1, 15, PAL_BG_WATER, PAL_BG_WATER, PAL_BG_RED
 	; The unswapped NULL case will keep whichever palette was chosen by the previous case
 	paletteswap 28, 45, 21, 33, PAL_BG_WATER, NULL, CeladonHotelRoofPalettes
 	db -1 ; end

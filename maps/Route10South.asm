@@ -26,7 +26,7 @@ Route10SouthSetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 255, 12, 255, PAL_BG_GREEN, OverworldGreenPalettes, LavenderRadioTowerRoofPalettes
+	paletteswap 0, 255, 12, 255, PAL_BG_GREEN, PAL_BG_GREEN, LavenderRadioTowerRoofPalettes
 	db -1 ; end
 
 GenericTrainerHikerJim:

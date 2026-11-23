@@ -115,7 +115,7 @@ SpecialBGPalettes:
 	special_bg_pal tileset,  TILESET_RUINS_OF_ALPH,            SINGLE,      WATER,  3, RuinsOfAlphPalette
 	special_bg_pal tileset,  TILESET_SNOWTOP_MOUNTAIN,         TIMEOFDAY,   GRAY,   7, SnowtopMountainPalette
 	special_bg_pal tileset,  TILESET_HIDDEN_GROTTO,            SPECIAL,     GRAY,   7, HiddenGrottoSpecialCase ; *
-	special_bg_pal overcast,                                   TIMEOFDAY,   GRAY,   7, OvercastBGPalette
+	special_bg_pal overcast,                                   TIMEOFDAY,   GRAY,   8, OvercastBGPalette
 	db 0 ; end
 
 BlindingFlashPalette:

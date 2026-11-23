@@ -397,9 +397,15 @@ LoadMapPals::
 ; input: `de` = palette table (in this bank), `b` = BG palette ID (0-7)
 ; palette table order: regular morn, day, nite, eve, overcast morn, day, nite, eve
 SwapColorPalette::
+	ld a, d
+
+	; If `d` is PALSWAP_BG_INDEX, then `e` must be a `PAL_BG_*` index instead of
+	; `de` being a pointer. Use the default BG colors in that case.
+	cp PALSWAP_BG_INDEX
+	jr z, .use_bg_index
+
 	; Do not swap if the palette table is NULL.
 	; This allows maps to specify multiple `palette_swap`s for the same palette.
-	ld a, d
 	or e
 	ret z
 
@@ -407,6 +413,7 @@ SwapColorPalette::
 	ld a, PALSTATE_TIME_OF_DAY
 	farcall GetPalState
 	and 3
+	; hl = de + a * 8
 	add a
 	add a
 	add a
@@ -414,6 +421,43 @@ SwapColorPalette::
 	ld h, 0
 	add hl, de
 
+	; Skip past the regular palettes to the overcast ones if applicable.
+	ld a, PALSTATE_OVERCAST_INDEX
+	farcall GetPalState
+	and a
+	jr z, .finish
+	ld de, 4 palettes
+	add hl, de
+	jr .finish
+
+.use_bg_index
+	; Set `hl` to the selected state's time-of-day palette in the default BG palettes.
+	ld a, PALSTATE_OVERCAST_INDEX
+	farcall GetPalState
+	and a
+	ld hl, TilesetBGPalette
+	jr z, .not_overcast
+	ld hl, OvercastBGPalette
+.not_overcast
+	; hl += e * 1 palettes
+	ld a, e
+	add a
+	add a
+	add a
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, PALSTATE_TIME_OF_DAY
+	farcall GetPalState
+	and 3
+	; hl += a * 8 palettes
+	rrca
+	rrca
+	ld e, a
+	ld d, 0
+	add hl, de
+
+.finish
 	; Previous-state palettes become active; current-state palettes are the target.
 	; d = [wPalState] == PREV_PALSTATE ? LOW(wBGPals2) : LOW(wBGPals1)
 	ld a, [wPalState]
@@ -434,15 +478,6 @@ SwapColorPalette::
 	adc HIGH(wBGPals1)
 	sub e
 	ld d, a
-
-	; Skip past the regular palettes to the overcast ones if applicable.
-	ld a, PALSTATE_OVERCAST_INDEX
-	farcall GetPalState
-	and a
-	jr z, .not_overcast
-	ld bc, 4 palettes
-	add hl, bc
-.not_overcast
 
 	; Apply the swapped palette.
 	ld bc, 1 palettes

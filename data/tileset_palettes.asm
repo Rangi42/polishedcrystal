@@ -1,6 +1,8 @@
 TilesetBGPalette::
 	table_width 1 palettes
 INCLUDE "gfx/tilesets/bg_tiles.pal"
+	assert_table_length 8 * 5 ; morn, day, nite, eve, indoor
+INCLUDE "gfx/tilesets/bg_dungeon_water.pal"
 	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
 
 RoofPals:
@@ -14,18 +16,6 @@ INCLUDE "gfx/tilesets/roofs_overcast.pal"
 	assert_table_length NUM_MAP_GROUPS + 1
 
 ; The palettes below are used by `paletteswap` callbacks.
-
-OverworldRedPalettes::
-INCLUDE "gfx/tilesets/palette-swap/bg-red.pal"
-
-OverworldGreenPalettes::
-INCLUDE "gfx/tilesets/palette-swap/bg-green.pal"
-
-OverworldWaterPalettes::
-INCLUDE "gfx/tilesets/palette-swap/bg-water.pal"
-
-OverworldYellowPalettes::
-INCLUDE "gfx/tilesets/palette-swap/bg-yellow.pal"
 
 GameCornerExteriorPalettes::
 INCLUDE "gfx/tilesets/palette-swap/game-corner.pal"

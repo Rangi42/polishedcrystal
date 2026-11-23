@@ -64,7 +64,7 @@ Route10NorthSetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 255, 41, 255, PAL_BG_RED, OverworldRedPalettes, PowerPlantRoofPalettes
+	paletteswap 0, 255, 41, 255, PAL_BG_RED, PAL_BG_RED, PowerPlantRoofPalettes
 	db -1 ; end
 
 Route10NorthLawrenceScene:

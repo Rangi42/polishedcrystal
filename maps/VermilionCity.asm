@@ -82,7 +82,7 @@ VermilionCitySetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 0, 15, 5, 17, PAL_BG_GREEN, OverworldGreenPalettes, PokemonFanClubRoofPalettes
+	paletteswap 0, 15, 5, 17, PAL_BG_GREEN, PAL_BG_GREEN, PokemonFanClubRoofPalettes
 	paletteswap 21, 36, 27, 39, PAL_BG_ROOF, VermilionCityRoofPalettes, SeagallopFerryRoofPalettes
 	db -1 ; end
 
