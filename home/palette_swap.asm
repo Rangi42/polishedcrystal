@@ -160,7 +160,7 @@ UpdateSwappedPalette::
 	; so chained swaps and NULL entries keep their original meaning.
 	ld a, BANK(SwapColorPalette)
 	rst Bankswitch
-	call SwapColorPalette
+	call SwapColorPalette ; far-ok
 
 .swapped
 	pop hl
