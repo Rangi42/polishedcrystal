@@ -475,10 +475,9 @@ SwapColorPalette::
 	add a
 	add a
 	ld e, a
-	add a
-	add e
-	ld e, a
 	ld d, 0
+	add hl, de
+	add hl, de
 	add hl, de
 	ld a, PALSTATE_TIME_OF_DAY
 	farcall GetPalState

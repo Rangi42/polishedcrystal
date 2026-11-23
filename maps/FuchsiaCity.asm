@@ -68,7 +68,7 @@ FuchsiaCitySetUpPaletteSwap:
 	endcallback
 
 .PaletteSwap:
-	paletteswap 9, 31, 0, 19, PAL_BG_ROOF, GROUP_FUCHSIA_CITY, SafariZoneRoofPalettes
+	paletteswap 9, 31, 0, 19, PAL_BG_ROOF, GROUP_FUCHSIA_CITY, GROUP_SAFARI_ZONE_HUB
 	db -1 ; end
 
 FuchsiaCityYoungsterText:

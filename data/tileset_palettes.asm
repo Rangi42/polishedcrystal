@@ -47,9 +47,6 @@ INCLUDE "gfx/tilesets/palette-swap/celadon-hotel.pal"
 PowerPlantRoofPalettes:
 INCLUDE "gfx/tilesets/palette-swap/power-plant.pal"
 
-SafariZoneRoofPalettes::
-INCLUDE "gfx/tilesets/palette-swap/safari-zone-roof.pal"
-
 DayOfWeekSiblingsHouseRoofPalettes::
 LavenderRadioTowerRoofPalettes::
 INCLUDE "gfx/tilesets/palette-swap/lavender-radio-tower-roof.pal"
