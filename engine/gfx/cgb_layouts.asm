@@ -665,7 +665,7 @@ MailPals:
 INCLUDE "gfx/mail/mail.pal"
 
 _CGB_MapPals:
-	call LoadMapPals
+	farcall LoadMapPals
 	ld a, CGB_MAPPALS
 	ld [wMemCGBLayout], a
 	ret

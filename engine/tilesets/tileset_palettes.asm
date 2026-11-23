@@ -277,3 +277,252 @@ CheckIfSpecialPaletteApplies:
 	ret
 
 INCLUDE "data/maps/palettes.asm"
+
+LoadMapPals::
+	; Which palette group is based on whether we're outside or inside
+	ld a, [wEnvironment]
+	and 7
+	ld e, a
+	ld d, 0
+	ld hl, EnvironmentColorsPointers
+	add hl, de
+	ld e, [hl]
+	add hl, de
+
+	; Further refine by time of day
+	ld a, [wTimeOfDayPal]
+	and 3
+	add a
+	add a
+	add a
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld e, l
+	ld d, h
+
+	; Switch to palettes WRAM bank
+	ldh a, [rWBK]
+	push af
+	ld a, $5
+	ldh [rWBK], a
+
+	ld hl, wBGPals1
+	ld b, 7
+.outer_loop
+	ld a, [de] ; lookup index for TilesetBGPalette
+	push de
+	push hl
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, TilesetBGPalette
+	add hl, de
+	ld e, l
+	ld d, h
+	pop hl
+	ld c, 1 palettes
+.inner_loop
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec c
+	jr nz, .inner_loop
+	pop de
+	inc de
+	dec b
+	jr nz, .outer_loop
+
+	pop af
+	ldh [rWBK], a
+
+	; special map palettes may overwrite only a subset of the default ones
+	call LoadSpecialMapPalette
+
+	ld hl, wPalFlags
+	bit MAP_CONNECTION_PAL_F, [hl]
+	res MAP_CONNECTION_PAL_F, [hl]
+	jr nz, .skip_clearing_obj_pals
+	farcall ClearSavedObjPals
+.skip_clearing_obj_pals
+
+	; only non-indoor environments load roof palettes
+	ld a, [wEnvironment]
+	cp FIRST_INDOOR_ENV
+	jr nc, .finish
+	; some exceptions to the usual rules which do not load roof palettes
+	ld a, [wMapTileset]
+	cp TILESET_SNOWTOP_MOUNTAIN ; covers map_id SNOWTOP_MOUNTAIN_OUTSIDE
+	jr z, .finish
+	cp TILESET_FOREST ; covers map_id YELLOW_FOREST
+	jr z, .finish
+	cp TILESET_FARAWAY_ISLAND ; covers map_id FARAWAY_ISLAND_SOUTH
+	jr z, .finish
+
+	; load a roof palette based on map group and overcast weather
+	farcall GetOvercastIndex
+	and a
+	ld hl, RoofPals
+	jr z, .not_overcast
+	ld hl, OvercastRoofPals
+.not_overcast
+	ld a, [wMapGroup]
+	add a
+	add a
+	ld e, a
+	ld d, 0
+	add hl, de
+	add hl, de
+	add hl, de
+	ld de, 4
+	ld a, [wTimeOfDayPal]
+	and 3
+	cp NITE
+	jr c, .morn_day
+	jr z, .nite
+; eve
+	add hl, de
+.nite
+	add hl, de
+.morn_day
+	ld de, wBGPals1 palette PAL_BG_ROOF + 2
+	ld bc, 4
+	call FarCopyColorWRAM
+
+.finish
+	jmp InitializeSwappedPalette
+
+; input: `de` = palette table (in this bank), `b` = BG palette ID (0-7)
+; palette table order: regular morn, day, nite, eve, overcast morn, day, nite, eve
+SwapColorPalette::
+	; Do not swap if the palette table is NULL.
+	; This allows maps to specify multiple `palette_swap`s for the same palette.
+	ld a, d
+	or e
+	ret z
+
+	; Set `hl` to the selected state's time-of-day palette in the table at `de`.
+	ld a, PALSTATE_TIME_OF_DAY
+	farcall GetPalState
+	and 3
+	add a
+	add a
+	add a
+	ld l, a
+	ld h, 0
+	add hl, de
+
+	; Previous-state palettes become active; current-state palettes are the target.
+	; d = [wPalState] == PREV_PALSTATE ? LOW(wBGPals2) : LOW(wBGPals1)
+	ld a, [wPalState]
+	assert PREV_PALSTATE == 0
+	and a
+	ld d, LOW(wBGPals2)
+	jr z, .got_target
+	ld d, LOW(wBGPals1)
+.got_target
+	; Set `de` to the `b`th palette of `wBGPals1` or `wBGPals2`.
+	ld a, b
+	add a
+	add a
+	add a
+	add d ; LOW(wBGPals1) or LOW(wBGPals2)
+	ld e, a
+	assert HIGH(wBGPals1) == HIGH(wBGPals2)
+	adc HIGH(wBGPals1)
+	sub e
+	ld d, a
+
+	; Skip past the regular palettes to the overcast ones if applicable.
+	ld a, PALSTATE_OVERCAST_INDEX
+	farcall GetPalState
+	and a
+	jr z, .not_overcast
+	ld bc, 4 palettes
+	add hl, bc
+.not_overcast
+
+	; Apply the swapped palette.
+	ld bc, 1 palettes
+	jmp FarCopyColorWRAM
+
+UpdatePaletteSwapState::
+; wPaletteSwapStates stores the current state of each entry.
+; wPaletteSwapInits records which entries have been initialized.
+; Input: `c` PALETTE_SWAP_INSIDE_F set inside the rectangle,
+;        `e` = this entry's state bit.
+; Output: `c` PALETTE_SWAP_CHANGED_F set on first check or a state change.
+	ld a, [wPaletteSwapStates]
+	ld d, a
+	; Build this entry's new state in `a`.
+	bit PALETTE_SWAP_INSIDE_F, c
+	jr nz, .inside
+	ld a, e
+	cpl
+	and d
+	jr .compare
+.inside
+	or e
+
+	; Store only on first check or if the current state changed.
+.compare
+	cp d
+	jr nz, .changed
+	ld a, [wPaletteSwapInits]
+	and e
+	ret nz
+	jr .finish
+.changed
+	ld [wPaletteSwapStates], a
+.finish
+	ld a, [wPaletteSwapInits]
+	or e
+	ld [wPaletteSwapInits], a
+	set PALETTE_SWAP_CHANGED_F, c
+	ret
+
+CatchUpPaletteSwapFade::
+; Rebuild BG palette `b` from palette list `de` under the fade's previous and
+; current conditions, then catch its active palette up to the current step.
+	push bc
+	push de
+	ld a, [wPalWhiteState]
+	and a
+	jr z, .swap_previous
+
+	; de = wBGPals2 palette b
+	ld a, b
+	add a
+	add a
+	add a
+	add LOW(wBGPals2)
+	ld e, a
+	adc HIGH(wBGPals2)
+	sub e
+	ld d, a
+
+	farcall CopyWhitePal
+	jr .got_previous
+
+.swap_previous
+	xor a
+	assert PREV_PALSTATE == 0
+	ld [wPalState], a
+	push bc
+	call SwapColorPalette
+	pop bc
+
+.got_previous
+	pop de
+	ld a, CURR_PALSTATE
+	ld [wPalState], a
+	call SwapColorPalette
+	pop bc
+	ld a, b
+	farjp CatchUpBGPaletteFade
+
+INCLUDE "data/tileset_palettes.asm"
+
+INCLUDE "data/maps/environment_colors.asm"
