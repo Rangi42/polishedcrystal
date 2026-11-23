@@ -2,6 +2,7 @@ Route6_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_CMDQUEUE, Route6SetUpPaletteSwap
 
 	def_warp_events
 	warp_event 21, 11, ROUTE_6_UNDERGROUND_PATH_ENTRANCE, 1
@@ -22,6 +23,14 @@ Route6_MapScriptHeader:
 	object_event  6, 15, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, PAL_NPC_RED, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGuitaristfWanda, -1
 	object_event  9,  7, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, 0, OBJECTTYPE_SCRIPT, 1, OfficerfJennyScript, -1
 	fruittree_event 17,  3, FRUITTREE_ROUTE_6, STARF_BERRY, PAL_NPC_GREEN
+
+Route6SetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 0, 255, 0, 15, PAL_BG_ROOF, VermilionCityRoofPalettes, PAL_BG_BROWN
+	db -1 ; end
 
 GenericTrainerPokefanmRex:
 	generictrainer POKEFANM, REX, EVENT_BEAT_POKEFANM_REX, PokefanmRexSeenText, PokefanmRexBeatenText

@@ -46,6 +46,7 @@ SpecialBGPalettes:
 	special_bg_pal map,      FIGHTING_DOJO,                    SINGLE,      GREEN,  5, FightingDojoPalette
 	special_bg_pal map,      VIOLET_CITY,                      TIMEWEATHER, RED,    3, VioletEcruteakPalette
 	special_bg_pal map,      MURKY_SWAMP,                      SINGLE,      GRAY,   7, MurkySwampPalette
+	special_bg_pal map,      ROUTE_7,                          SINGLE,      WATER,  1, wBGPals1 palette PAL_BG_BROWN
 	special_bg_pal map,      ROUTE_39,                         TIMEWEATHER, WATER,  1, Route39Palette
 	special_bg_pal map,      GOLDENROD_DEPT_STORE_ROOF,        TIMEWEATHER, GRAY,   7, GoldenrodDeptStoreRoofPalette
 	special_bg_pal map,      GOLDENROD_MUSEUM_1F,              SINGLE,      YELLOW, 1, GoldenrodMuseumPalette

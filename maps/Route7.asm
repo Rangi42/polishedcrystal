@@ -2,7 +2,6 @@ Route7_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_CMDQUEUE, Route7SetUpPaletteSwap
 
 	def_warp_events
 	warp_event 15,  6, ROUTE_7_SAFFRON_GATE, 1
@@ -22,14 +21,6 @@ Route7_MapScriptHeader:
 
 	object_const_def
 	const ROUTE7_BIG_SNORLAX
-
-Route7SetUpPaletteSwap:
-	usepaletteswap .PaletteSwap
-	endcallback
-
-.PaletteSwap:
-	paletteswap 0, 5, 0, 255, PAL_BG_WATER, PAL_BG_WATER, PAL_BG_RED
-	db -1 ; end
 
 GenericTrainerBreederCarlene:
 	generictrainer BREEDER, CARLENE, EVENT_BEAT_BREEDER_CARLENE, .SeenText, .BeatenText
