@@ -1,12 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
 Find unused tiles and blocks.
 Usage: utils/find-unused-tiles.py > unused-tiles.txt
 """
-
-from __future__ import print_function
 
 import sys
 from collections import defaultdict
@@ -21,14 +19,59 @@ metatile_filename_fmt  = 'data/tilesets/%s_metatiles.bin'
 attribute_filename_fmt = 'data/tilesets/%s_attributes.bin'
 
 tileset_names = [
-	'johto_traditional', 'johto_modern', 'battle_tower_outside', 'johto_overcast',
-	'kanto', 'indigo_plateau', 'shamouti_island', 'valencia_island', 'faraway_island',
-	'johto_house', 'kanto_house', 'traditional_house', 'pokecenter', 'pokecom_center',
-	'mart', 'gate', 'gym', 'magnet_train', 'champions_room', 'port', 'lab',
-	'facility', 'celadon_mansion', 'game_corner', 'home_decor_store', 'museum',
-	'hotel', 'sprout_tower', 'battle_tower_inside', 'radio_tower', 'lighthouse',
-	'underground', 'cave', 'quiet_cave', 'ice_path', 'tunnel', 'forest', 'park',
-	'safari_zone', 'ruins_of_alph', 'alph_word_room', 'pokemon_mansion'
+	'johto_traditional',
+	'johto_modern',
+	'johto_coast',
+	'johto_outlands',
+	'johto_ancient',
+	'johto_sacred',
+	'battle_tower_outside',
+	'snowtop_mountain',
+	'kanto',
+	'kanto_north',
+	'kanto_urban',
+	'indigo_plateau',
+	'shamouti_island',
+	'valencia_island',
+	'faraway_island',
+	'johto_house',
+	'kanto_house',
+	'traditional_house',
+	'pokecenter',
+	'pokecom_center',
+	'mart',
+	'gate',
+	'gym',
+	'magnet_train',
+	'champions_room',
+	'port',
+	'lab',
+	'facility',
+	'celadon_mansion',
+	'game_corner',
+	'home_decor_store',
+	'museum',
+	'hotel',
+	'sprout_tower',
+	'battle_tower_inside',
+	'radio_tower',
+	'lighthouse',
+	'underground',
+	'cave',
+	'quiet_cave',
+	'volcano',
+	'ice_path',
+	'tunnel',
+	'forest',
+	'park',
+	'safari_zone',
+	'ruins_of_alph',
+	'pokemon_mansion',
+	'battle_factory',
+	'hidden_grotto',
+	'peaks',
+	'hideout',
+	'kanto_gym',
 ]
 
 # {'TILESET_PC_JOHTO_1': 'johto1', ...}
@@ -93,12 +136,7 @@ def read_tileset_ids():
 	with open(code_directory + tileset_filename, 'r') as f:
 		for line in f:
 			line = line.strip()
-			if line.startswith('const PAL_BG_'):
-				break
-			elif line.startswith('const_def '):
-				parts = line.split()
-				tileset_id = int(parts[1])
-			elif line.startswith('const '):
+			if line.startswith('const TILESET_'):
 				parts = line.split()
 				tileset_name = parts[1]
 				tileset_ids[tileset_name] = tileset_names[tileset_id - 1]
@@ -122,9 +160,9 @@ def read_block_filenames():
 		for line in f:
 			line = line.strip()
 			if line.endswith('_BlockData:'):
-				map_names.append(line[:-11])
-			elif line.startswith('INCBIN "maps/') and line.endswith('.ablk.lz"'):
-				block_data_name = line[13:-9]
+				map_names.append(line.removesuffix('_BlockData:'))
+			elif line.startswith('INCBIN "maps/') and line.endswith('.ablk.lzp"'):
+				block_data_name = line.removeprefix('INCBIN "maps/').removesuffix('.ablk.lzp"')
 				for map_name in map_names:
 					if map_name != block_data_name:
 						map_block_data_exceptions[map_name] = block_data_name
@@ -134,7 +172,7 @@ def read_used_block_ids():
 	for map_name, tileset_id in map_tilesets.items():
 		block_data_name = map_block_data_exceptions.get(map_name, map_name)
 		with open(code_directory + block_filename_fmt % block_data_name, 'rb') as f:
-			used_block_ids = {ord(b) for b in f.read()}
+			used_block_ids = set(f.read())
 			tileset_used_block_ids[tileset_id].update(used_block_ids)
 
 def read_used_block_ids_2():
@@ -146,7 +184,7 @@ def read_used_block_ids_2():
 				map_name = parts[1].rstrip(',')
 				used_block_id = parts[3].rstrip(',')
 				if used_block_id.startswith('$'):
-					used_block_id = int(used_block_id[1:], 16)
+					used_block_id = int(used_block_id.removeprefix('$'), 16)
 				else:
 					used_block_id = int(used_block_id)
 				tileset_id = map_tilesets[map_name]
@@ -158,8 +196,8 @@ def read_used_tile_ids():
 		with open(code_directory + metatile_filename_fmt % tileset_id, 'rb') as f, open(code_directory + attribute_filename_fmt % tileset_id, 'rb') as g:
 			block_id = 0
 			while True:
-				used_tile_ids = [ord(b) for b in f.read(16)]
-				used_tile_attrs = [ord(b) for b in g.read(16)]
+				used_tile_ids = bytearray(f.read(16))
+				used_tile_attrs = bytearray(g.read(16))
 				if not used_tile_ids or not used_tile_attrs:
 					break
 				used_tile_indexes = [b + (0x80 if c & 0b1000 else 0) for (b, c) in zip(used_tile_ids, used_tile_attrs)]
