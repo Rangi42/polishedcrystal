@@ -14,8 +14,13 @@ DEF SUMMARY_LCD_SCROLL_BACKGROUND EQU 2
 DEF SUMMARY_FLAGS_PLACE_FRONTPIC_F EQU 4
 DEF SUMMARY_FLAGS_FINISH_ANIM_F    EQU 5
 DEF SUMMARY_FLAGS_DO_ANIM_F        EQU 6
+DEF SUMMARY_FLAGS_FORGET_MOVE_F    EQU 7 ; set by the caller to choose a move to forget
 
 DEF SUMMARY_FLAGS_PAGE_MASK EQU %00000011
+
+; When choosing a move to forget, the move list starts this many pixels higher
+; to make room for the new move.
+DEF SUMMARY_FORGET_MOVE_SHIFT EQU 12
 
 ; vTiles0
 DEF SUMMARY_TILE_OAM_START                  EQU $3C
@@ -57,6 +62,11 @@ DEF SUMMARY_TILE_PP_START                   EQU $41
 DEF SUMMARY_TILE_BALL                       EQU $4F
 DEF SUMMARY_TILE_CATEGORY_START             EQU $50
 DEF SUMMARY_TILE_ITEM                       EQU $56
+; When choosing a move to forget, the move list's separator reuses tiles that
+; page has no use for (hyper training marks and the page arrows).
+DEF SUMMARY_TILE_SEPARATOR_JOIN             EQU SUMMARY_TILE_HYPER_TRAINING
+DEF SUMMARY_TILE_SEPARATOR                  EQU SUMMARY_TILE_ARROW
+assert SUMMARY_TILE_SEPARATOR == SUMMARY_TILE_SEPARATOR_JOIN + 1
 
 ; vTiles3
 DEF SUMMARY_TILE_TYPE_START                 EQU $04
