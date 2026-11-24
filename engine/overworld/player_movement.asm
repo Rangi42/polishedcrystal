@@ -927,9 +927,11 @@ CheckTrainerRun:
 	ld hl, MAPOBJECT_TYPE
 	add hl, de
 	ld a, [hl]
-	cp OBJECTTYPE_TRAINER
+	and $0f
+	sub OBJECTTYPE_TRAINER
 	jr z, .trainer
-	cp OBJECTTYPE_GENERICTRAINER
+	assert OBJECTTYPE_TRAINER + 1 == OBJECTTYPE_GENERICTRAINER
+	dec a ; cp OBJECTTYPE_GENERICTRAINER
 	jr nz, .next
 .trainer
 

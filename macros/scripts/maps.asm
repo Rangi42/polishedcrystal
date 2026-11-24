@@ -112,8 +112,9 @@ MACRO object_event
 		dn \5, \6 ; radius: y, x
 	endc
 	db \8 ; palette
-	db \7 ; time of day
-	db \9 ; type
+	assert (\7) == -1 || (\7) == (\7) & $f, "Invalid object time of day: \7"
+	assert (\9) == (\9) & $f, "Invalid object type: \9"
+	dn ((\7) & $f), \9 ; time of day, type
 	if \9 == OBJECTTYPE_COMMAND
 		db \<10>_command ; command id
 	elif \3 == SPRITE_MON_ICON || \3 == SPRITE_AQUARIUM_MON

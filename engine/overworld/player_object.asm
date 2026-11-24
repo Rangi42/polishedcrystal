@@ -40,7 +40,7 @@ SpawnPlayer:
 	ld [hl], a
 	ld hl, MAPOBJECT_TYPE
 	add hl, bc
-	ld [hl], OBJECTTYPE_SCRIPT
+	ld [hl], ((-1) & $f0) | OBJECTTYPE_SCRIPT
 	xor a
 	ldh [hMapObjectIndexBuffer], a
 	ld bc, wMapObjects
