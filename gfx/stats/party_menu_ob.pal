@@ -6,8 +6,8 @@ if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 ; unused
 	RGB 31, 31, 31
-	RGB 20, 00, 20
-	RGB 10, 00, 10
+	RGB 31, 00, 31
+	RGB 16, 00, 16
 	RGB 00, 00, 00
 ; minis
 rept 6

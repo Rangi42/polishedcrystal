@@ -972,46 +972,6 @@ GetStatusConditionIndex:
 	inc a ; 1
 	ret
 
-PlaceStatusString:
-; de points to status from a party_struct
-; hl points to where to place the string
-	push hl
-	call GetStatusConditionOrFaintIndex
-	pop hl
-	and a
-	ret z
-
-	ld e, a
-	add e
-	add e
-	add LOW(StatusStrings)
-	ld e, a
-	adc HIGH(StatusStrings)
-	sub e
-	ld d, a
-
-	ld a, [de]
-	inc de
-	ld [hli], a
-	ld a, [de]
-	inc de
-	ld [hli], a
-	ld a, [de]
-	ld [hl], a
-	ret
-
-StatusStrings:
-	table_width 3
-	rawchar "OK "
-	rawchar "Psn"
-	rawchar "Par"
-	rawchar "Slp"
-	rawchar "Brn"
-	rawchar "Frz"
-	rawchar "Tox"
-	rawchar "Fnt"
-	assert_table_length 8
-
 ListMoves:
 ; List moves at hl, spaced every [wListMovesLineSpacing] tiles.
 	ld de, wListMoves_MoveIndicesBuffer

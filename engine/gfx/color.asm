@@ -13,12 +13,23 @@ CheckShininess:
 	and a
 	ret
 
-InitPartyMenuPalettes:
+LoadPartyMenuPalettes:
 	ld de, wBGPals1
-	ld hl, PartyMenuBGPals
-	ld c, 4 palettes
-	call LoadPalettes
-	call InitPartyMenuOBPals
+	ld hl, GenderAndExpBarPals
+	call LoadPalette_White_Col1_Col2_Black
+	assert GenderAndExpBarPals + 2 colors == HPBarInteriorPals
+rept 3
+	call LoadPalette_White_Col1_Col2_Black
+endr
+	assert HPBarInteriorPals + (3 * 2) colors == StatusIconPals
+rept 8 / 2
+	call LoadPalette_White_Col1_Col2_Black
+endr
+	assert StatusIconPals + 8 colors == EndPartyMenuPals
+	jmp InitPartyMenuOBPals
+
+InitPartyMenuPalettes:
+	call LoadPartyMenuPalettes
 	; fallthrough
 WipeAttrMap:
 	hlcoord 0, 0, wAttrmap
@@ -102,9 +113,6 @@ _LoadStatusIconPalette:
 	add hl, bc
 	ld bc, 2
 	jmp FarCopyColorWRAM
-
-StatusIconPals:
-INCLUDE "gfx/battle/status.pal"
 
 LoadBattleCategoryAndTypePals:
 	ld a, [wPlayerMoveStruct + MOVE_ANIM]
