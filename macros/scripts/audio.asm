@@ -30,28 +30,8 @@ MACRO square_note
 	_delta_note 2, \#
 ENDM
 
-MACRO raw_square_note
-	db \1 ; length
-	if \3 < 0
-		dn \2, AUD1ENV_UP | (\3 * -1) ; volume envelope
-	else
-		dn \2, \3 ; volume envelope
-	endc
-	dw \4 ; frequency
-ENDM
-
 MACRO noise_note
 	_delta_note 1, \#
-ENDM
-
-MACRO raw_noise_note
-	db \1 ; length
-	if \3 < 0
-		dn \2, AUD4ENV_UP | (\3 * -1) ; volume envelope
-	else
-		dn \2, \3 ; volume envelope
-	endc
-	db \4 ; frequency
 ENDM
 
 ; MusicCommands indexes (see audio/engine.asm)

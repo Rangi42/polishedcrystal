@@ -2396,7 +2396,11 @@ WaveSamples::
 INCLUDE "audio/wave_samples.asm"
 	assert_table_length NUM_WAVEFORMS
 
+; ReadNoiseSample consumes fixed-width records. Crystal Tracker rewrites
+; drumkits.asm when saving, so keep the format selection outside the file.
+DEF RAW_NOTES = 1
 INCLUDE "audio/drumkits.asm"
+DEF RAW_NOTES = 0
 
 MonoOrStereoTracks:
 ; bit corresponds to track #

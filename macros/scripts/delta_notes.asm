@@ -1,8 +1,11 @@
 ; Only adjacent notes under the same named label share a packet. A call, loop or
 ; jump can enter a label with any frequency, and a pitch slide can change the
 ; first note's frequency between frames. Two consecutive notes establish a
-; predictor independent of the entry path. Use a raw note at an anonymous
-; label or a computed entry point, which has no scope of its own.
+; predictor independent of the entry path.
+
+; Set RAW_NOTES to 1 for fixed-width records or at anonymous or computed
+; entry points. Set it to 0 to resume compression.
+DEF RAW_NOTES = 0
 DEF _note_scope EQUS ""
 DEF _note_width = 0
 DEF _note_can_predict = 0
@@ -17,7 +20,7 @@ MACRO _delta_note ; frequency width, duration, volume, envelope, frequency
 	endc
 
 	DEF _note_tag = -1
-	if ISCONST(\2) && ISCONST(\3) && ISCONST(\4) && ISCONST(\5)
+	if !RAW_NOTES && ISCONST(\2) && ISCONST(\3) && ISCONST(\4) && ISCONST(\5)
 		if 0 <= (\2) && (\2) <= DELTA_NOTE_DURATION_MASK && 0 <= (\3) && (\3) < 16 \
 			&& -7 <= (\4) && (\4) < 16 && 0 <= (\5) && (\5) < 1 << (8 * (\1))
 			_choose_delta_note \#
@@ -49,14 +52,22 @@ MACRO _delta_note ; frequency width, duration, volume, envelope, frequency
 			db _note_tag + DELTA_NOTE_MORE * {_note_more}, _note_operand
 		endc
 		DEF {_note_more} = 0
-	elif (\1) == 1
-		raw_noise_note \2, \3, \4, \5
 	else
-		raw_square_note \2, \3, \4, \5
+		db \2 ; length
+		if (\4) < 0
+			dn \3, AUD1ENV_UP | -(\4)
+		else
+			dn \3, \4
+		endc
+		if (\1) == 1
+			db \5 ; noise frequency
+		else
+			dw \5 ; tone frequency
+		endc
 	endc
 	DEF _note_in_packet = _note_tag >= 0
 	DEF _note_width = \1
-	DEF _note_can_predict = _adjacent && ISCONST(\5)
+	DEF _note_can_predict = !RAW_NOTES && _adjacent && ISCONST(\5)
 	if ISCONST(\5)
 		DEF _note_frequency = \5
 	endc
