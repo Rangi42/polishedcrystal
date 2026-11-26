@@ -847,6 +847,7 @@ AipomEggSpeciesMoves:
 	dp AIPOM, PLAIN_FORM
 	db COUNTER
 	db PURSUIT
+	db ROCK_BLAST
 	db $ff
 
 SunkernEggSpeciesMoves:
