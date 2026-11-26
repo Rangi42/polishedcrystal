@@ -18,6 +18,12 @@ DEF TEXTBOX_INNERX EQU TEXTBOX_X + 1
 DEF TEXTBOX_Y      EQU SCREEN_HEIGHT - TEXTBOX_HEIGHT
 DEF TEXTBOX_INNERY EQU TEXTBOX_Y + 2
 
+; hTextPairState (all other values are pending literal characters)
+	const_def
+	const TEXTSTATE_COMPRESSED
+	const TEXTSTATE_MAP_PAIR
+	assert const_value <= ' '
+
 ; see gfx/frames/*.png
 DEF TEXTBOX_FRAME_TILES EQU 8
 

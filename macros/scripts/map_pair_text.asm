@@ -1,12 +1,12 @@
 ; Build RGBDS lookups from the same canonical groups used by the ROM reader.
-MACRO pair_rule
+MACRO x_pair_rule
 	DEF _left = \1
 	DEF _right = \2
 	DEF _map_pair_{02X:_left}{02X:_right} EQU _pair_index
 	DEF _pair_index += 1
 ENDM
 
-MACRO pair_contexts
+MACRO x_pair_contexts
 	rept _NARG
 		DEF _map_context_{02X:_context_byte} EQU \1
 		DEF _context_byte += 1
@@ -14,7 +14,7 @@ MACRO pair_contexts
 	endr
 ENDM
 
-MACRO pair_codes
+MACRO x_pair_codes
 	DEF _code <<= 1
 	DEF _length += 1
 	rept _NARG
@@ -90,7 +90,7 @@ ENDM
 
 MACRO _write_map_pairs
 	DEF _compressed_bytes = 1
-	DEF _compressed_byte_0 = MAP_PAIR_TEXT_MARKER
+	DEF _compressed_byte_0 = '<MAP_PAIR_TEXT_MARKER>'
 	DEF _pair_bits = 0
 	DEF _pending_bits = 0
 	DEF _previous = ' '

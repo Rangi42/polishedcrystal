@@ -741,3 +741,13 @@ INCLUDE "audio/music/printer.asm"
 SECTION "LureMenu", ROMX
 
 INCLUDE "engine/menus/lure_menu.asm"
+
+
+SECTION "Weekday text", ROMX
+
+INCLUDE "engine/text/weekday.asm"
+
+
+SECTION "Map dialog decoder", ROMX
+
+INCLUDE "engine/text/map_pair_text.asm"

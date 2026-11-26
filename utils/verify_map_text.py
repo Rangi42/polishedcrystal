@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check actual linked map dialogue, including command boundaries and fallback sizes."""
+"""Check actual linked map dialog, including command boundaries and fallback sizes."""
 
 import argparse
 from collections import Counter

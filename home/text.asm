@@ -189,16 +189,16 @@ PlaceNextChar::
 	jr nc, _PlaceLiteralChar
 	cp SPECIALS_START
 	jr nc, _PlaceSpecialChar
-	cp MAP_PAIR_TEXT_MARKER
+	cp '<MAP_PAIR_TEXT_MARKER>'
 	jr nc, _PlaceNgramChar
 	dec de
 	jmp FinishString
 
 
 _PlaceNgramChar:
-	assert MAP_PAIR_TEXT_MARKER + 1 == NGRAMS_START
+	assert '<MAP_PAIR_TEXT_MARKER>' + 1 == NGRAMS_START
 	sub NGRAMS_START
-	jp c, DecompressString
+	jmp c, DecompressString
 	push de
 	push hl
 	ld e, a
@@ -734,49 +734,6 @@ TextCommand_DAY::
 PrintDayOfWeek::
 	farjp _PrintDayOfWeek
 
-; Keep the weekday text and its printer together in switchable ROM to leave
-; room in ROM0 for the streaming decoder's bank-switch and refill routines.
-PUSHS
-SECTION "Weekday text", ROMX
-_PrintDayOfWeek:
-	push hl
-	push bc
-	ld c, a
-	ld b, 0
-	ld hl, .Days
-	add hl, bc
-	ld c, [hl]
-	add hl, bc
-	ld d, h
-	ld e, l
-	pop hl
-	rst PlaceString
-	ld h, b
-	ld l, c
-	ld de, .Day
-	rst PlaceString
-	pop hl
-	ret
-
-.Days:
-	dr .Sun
-	dr .Mon
-	dr .Tues
-	dr .Wednes
-	dr .Thurs
-	dr .Fri
-	dr .Satur
-
-.Sun:    db "Sun@"
-.Mon:    db "Mon@"
-.Tues:   db "Tues@"
-.Wednes: db "Wednes@"
-.Thurs:  db "Thurs@"
-.Fri:    db "Fri@"
-.Satur:  db "Satur@"
-.Day:    db "day@"
-POPS
-
 DecompressString::
 	; save starting coords
 	pop bc
@@ -788,7 +745,7 @@ DecompressString::
 
 	call SwapHLDE ; hl = string, de = current coords
 
-	ld a, [hli]
+	ld a, [hli] ; skip "<CTXT>" or "<MAP_PAIR_TEXT_MARKER>"
 	call InitTextDecoder
 
 	; terminate buffer for printing each character
@@ -881,7 +838,7 @@ DecompressStringToRAM::
 	ld a, [hli]
 	cp '<CTXT>'
 	jr z, .do_decompression
-	cp MAP_PAIR_TEXT_MARKER
+	cp '<MAP_PAIR_TEXT_MARKER>'
 	jr z, .do_decompression
 	call CheckTerminatorChar
 	jr z, .append_terminator
@@ -915,10 +872,11 @@ DecompressStringToRAM::
 	ret
 
 InitTextDecoder:
-	; The caller consumed either <CTXT> (mode 0) or the pair marker (mode 1).
+	; A holds the compressed stream marker.
+	assert TEXTSTATE_COMPRESSED == 0
 	sub '<CTXT>'
 	jr z, .set_mode
-	ld a, 1
+	ld a, TEXTSTATE_MAP_PAIR
 .set_mode
 	ldh [hTextPairState], a
 	ld a, ' '
@@ -928,17 +886,20 @@ InitTextDecoder:
 
 ReadHuffmanChar:
 	ldh a, [hTextPairState]
+	assert TEXTSTATE_COMPRESSED == 0
 	and a
 	jr z, ReadLegacyHuffmanChar
+	assert TEXTSTATE_MAP_PAIR == 1
 	dec a
 	jr z, .read_token
 	; Only literal letters and spaces can be pending.
 	inc a
 	ld e, a
-	ld a, 1
+	ld a, TEXTSTATE_MAP_PAIR
 	ldh [hTextPairState], a
 	ld a, e
 	ret
+
 .read_token
 	ldh a, [hROMBank]
 	ldh [hTextSourceBank], a
