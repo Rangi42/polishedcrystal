@@ -8,7 +8,7 @@ MACRO siren_delay ; machine cycles, clobbers a and flags
 	dec a
 	jr nz, .wait\@
 	rept (\1 - 1) % 4
-		nop
+		nop ; no-optimize nops (remainder after the four-cycle loop)
 	endr
 ENDM
 
@@ -41,27 +41,27 @@ DecodeSirenNote:
 	push af ; duration
 	ld a, d
 	cp $40
-	jr nc, .short_delta
+	jr c, .wide_delta
+	and $f
+	xor 8
+	sub 8
+	ld e, a ; signed nibble delta
+	ld a, [hli] ; intensity
+	jr .delta
+.wide_delta
 	swap a
 	and $f0
 	or 8
 	ld d, a ; intensity
 	ld a, [hli]
-	jr .delta
-.short_delta
-	and $f
-	xor 8
-	sub 8
-	ld d, [hl]
-	inc hl
-	nop ; match wide delta
+	ld e, a ; signed byte delta
+	ld a, d
 .delta
 	push hl ; next tag
 	ld hl, wChannel1Intensity - wChannel1
 	add hl, bc
-	ld [hl], d
-	inc hl ; FrequencyLo
-	ld e, a
+	ld [hli], a
+	ld a, e
 	add [hl]
 	ld [hli], a
 	; Sign-extend e without disturbing carry.
@@ -87,8 +87,8 @@ DecodeSirenNote:
 	ld a, e
 	call .get_duration
 	push af
-	ld e, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
 	ld a, [hli]
 	push hl
 	ld hl, wChannel1Intensity - wChannel1
@@ -97,8 +97,8 @@ DecodeSirenNote:
 	and $f0
 	or d
 	ld [hli], a
-	ld [hl], e
-	inc hl
+	ld a, e
+	ld [hli], a
 	pop af
 	and 7
 	ld [hl], a
@@ -107,12 +107,12 @@ DecodeSirenNote:
 
 .literal
 	push af
-	siren_delay 48
+	siren_delay 45
 	jr .raw
 .escaped
 	ld a, [hli] ; $28, full legacy duration
 	push af
-	siren_delay 43
+	siren_delay 40
 .raw
 	ld a, [hli] ; intensity
 	ld d, a
@@ -126,12 +126,12 @@ DecodeSirenNote:
 	push hl
 	ld hl, wChannel1Intensity - wChannel1
 	add hl, bc
-	ld [hl], d
+	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e (a holds the tonal frequency high byte)
 	inc hl
-	ld [hl], e
+	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a holds the tonal frequency high byte)
 	inc hl
 	jr nz, .raw_high
-	nop ; balance the two optional high-byte accesses
+	nop ; no-optimize nops (balance the two optional high-byte accesses)
 	jr .finish
 .raw_high
 	ld [hl], a
@@ -143,7 +143,7 @@ DecodeSirenNote:
 .last_byte
 	ld a, [hl]
 	ld [wCurMusicByte], a ; final operand, as with ParseSFXOrCry
-	siren_delay 26
+	siren_delay 29
 	pop de
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
@@ -160,10 +160,9 @@ DecodeSirenNote:
 
 .get_duration
 	push hl
-	ld hl, .durations
-	add l
+	add LOW(.durations)
 	ld l, a
-	adc h
+	adc HIGH(.durations)
 	sub l
 	ld h, a
 	ld a, [hl]
