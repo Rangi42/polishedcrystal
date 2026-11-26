@@ -6,18 +6,16 @@ SECTION "Map dialogue decoder", ROMX
 ReadMapPairToken::
 	ld d, h
 	ld e, l
-	ld hl, MapPairContexts
 	ldh a, [hCompressedTextBuffer]
-	add l
+	add LOW(MapPairContexts)
 	ld l, a
-	adc h
+	adc HIGH(MapPairContexts)
 	sub l
 	ld h, a
 	ld a, [hl]
-	ld hl, MapPairTrees
-	add l
+	add LOW(MapPairTrees)
 	ld l, a
-	adc h
+	adc HIGH(MapPairTrees)
 	sub l
 	ld h, a
 	ld a, [hli]
@@ -60,10 +58,9 @@ ReadMapPairToken::
 	cp ' '
 	jr nc, .literal
 	add a
-	ld hl, MapPairDictionary
-	add l
+	add LOW(MapPairDictionary)
 	ld l, a
-	adc h
+	adc HIGH(MapPairDictionary)
 	sub l
 	ld h, a
 	ld a, [hli]

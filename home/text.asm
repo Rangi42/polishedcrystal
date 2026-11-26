@@ -877,6 +877,16 @@ DecompressString::
 
 DecompressStringToRAM::
 ; input: hl = string, de = destination
+.copy_loop
+	ld a, [hli]
+	cp '<CTXT>'
+	jr z, .do_decompression
+	cp MAP_PAIR_TEXT_MARKER
+	jr z, .do_decompression
+	call CheckTerminatorChar
+	jr z, .append_terminator
+	ld [de], a
+	inc de
 	jr .copy_loop
 
 .do_decompression
@@ -897,18 +907,6 @@ DecompressStringToRAM::
 	inc de
 	jr .decompress_loop
 
-.copy_loop
-	ld a, [hli]
-	cp '<CTXT>'
-	jr z, .do_decompression
-	cp MAP_PAIR_TEXT_MARKER
-	jr z, .do_decompression
-	call CheckTerminatorChar
-	jr z, .append_terminator
-	ld [de], a
-	inc de
-	jr .copy_loop
-
 .append_terminator
 	; to maintain generic usage, this function will return on
 	; any terminator encountered. it is up to the caller to decide
@@ -917,11 +915,10 @@ DecompressStringToRAM::
 	ret
 
 InitTextDecoder:
-	; A is the marker, HL already points to the first payload byte.
-	cp MAP_PAIR_TEXT_MARKER
-	ld a, 0
-	jr nz, .set_mode
-	inc a
+	; The caller consumed either <CTXT> (mode 0) or the pair marker (mode 1).
+	sub '<CTXT>'
+	jr z, .set_mode
+	ld a, 1
 .set_mode
 	ldh [hTextPairState], a
 	ld a, ' '

@@ -74,35 +74,35 @@ streams, 229 legacy streams and 88 raw fragments. Both ROMs are 2 MiB.
 | Pair dictionary | 254 |
 | Context lookup and tree directory | 326 |
 | Canonical model headers and symbols | 2,698 |
-| New reader and integration, net code growth | 155 |
+| New reader and integration, net code growth | 149 |
 | Six map script branches shortened after compression | 6 saved |
-| **Net ROM space recovered** | **37,478** |
+| **Net ROM space recovered** | **37,484** |
 
-The code growth includes the 92-byte banked token reader and the trampoline for
-weekday text, whose existing printer and strings moved to ROMX. ROM0 gained seven
+The code growth includes the 89-byte banked token reader and the trampoline for
+weekday text, whose existing printer and strings moved to ROMX. ROM0 gained ten
 free bytes. The decoder uses two additional HRAM bytes and zero additional WRAM
-bytes. The default link has 62,071 free bytes, up from 51,404 with the first
+bytes. The default link has 62,077 free bytes, up from 51,404 with the first
 pair encoder and 24,593 with the original reader. On the audit revision
-`f9a3e47a`, the same change raised free space from 24,311 to 61,789 bytes.
+`f9a3e47a`, the same change raised free space from 24,311 to 61,795 bytes.
 With the first pair tables,
 optimal parsing alone saved 4,308 payload bytes. In a timed assembly of
 `data/maps/map_data.asm` with those tables, it added about 10 seconds (51 to 61).
 
 In vibeEmu (`b7938e4`), the original reader averaged 730.3 CPU T-cycles on the
 404,722 expanded bytes now served by the pair reader. The pair reader averaged
-760.2. The maximum on those bytes went from 2,288 to 2,272. The largest increase
-for an individual byte at the same position was 1,576 T-cycles. Across all
+753.6. The maximum on those bytes went from 2,288 to 2,260. The largest increase
+for an individual byte at the same position was 1,564 T-cycles. Across all
 408,872 compressed bytes, including the legacy fallback, the mean went from
-730.8 to 760.8 and the maximum from 2,288 to 2,316. Timings include the call and
+730.8 to 754.2 and the maximum from 2,288 to 2,316. Timings include the call and
 return and exclude printer delays. A separate sweep of 86,840 cases covered every
 pair context, legal token, direct and escaped encoding, and initial bit alignment
-at the end of a ROM bank. Its maximum was also 2,272 T-cycles.
+at the end of a ROM bank. Its maximum was also 2,260 T-cycles.
 
 Nine rendering traces covered player and rival names, RAM substitutions, repeated
 line and paragraph breaks, consecutive pages, prompts, far text and inline
 assembly. Glyphs, tile coordinates, final tilemaps, command order and resume
 positions matched the original game. The largest difference in scene duration
-was 0.015 frames.
+was 0.012 frames.
 
 ## General Huffman tables
 
