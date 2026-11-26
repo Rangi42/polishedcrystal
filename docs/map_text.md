@@ -1,15 +1,22 @@
 # Map dialog compression
 
 Map scripts use the usual text macros. For each segment, the assembler first
-compares raw text with the general Huffman encoding (`<CTXT>`). If the general
-encoding saves a byte, it also tries the map pair encoding
-(`<MAP_PAIR_TEXT_MARKER>`). The pair encoding must beat the general encoding
+compares raw text with the singular Huffman encoding (`<CTXT>`), which codes
+one character at a time. If that saves a byte, it also tries the map pair encoding
+(`<MAP_PAIR_TEXT_MARKER>`). The pair encoding must beat the singular encoding
 after counting the marker and rounding the payload up to whole bytes. Ties keep
-the first choice.
+the first choice. Outside map scripts, the assembler chooses between raw text
+and the singular encoding.
 
 A segment ends at `@`, `<DONE>`, or `<PROMPT>`. Before an inline text command,
 the macros supply an implicit `@` for the compressed reader. A raw segment
 falls through to that command without storing the extra terminator.
+
+The raw/compressed choice also affects callers. When a compressed segment
+ends in `<DONE>` or `<PROMPT>`, the decoder sets `hStopPrintingString`. A
+nested `text_far` can then stop the caller's text command loop. Switching
+between singular and pair codes preserves this behavior because both use the
+same terminator handling.
 
 ## How the pair format works
 

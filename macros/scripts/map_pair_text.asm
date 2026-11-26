@@ -82,7 +82,7 @@ MACRO _try_map_pairs
 		DEF _following = _byte
 	endr
 
-	; _dchr already chose legacy over raw. Replace it only for a byte saving.
+	; _dchr already chose singular over raw. Replace it only for a byte saving.
 	if 1 + (_cost_one_ahead + 7) / 8 < _compressed_bytes
 		_write_map_pairs
 	endc

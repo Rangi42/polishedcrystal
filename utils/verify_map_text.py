@@ -9,7 +9,7 @@ from huffman import BOUNDARY_TOKENS, VOWELS
 from pair_text import optimal_parse, records, token_lengths
 from verify_huffman import decode_symbol, read_charmap, read_codes, read_tree_addresses
 
-PAIR, LEGACY = 0x4c, 0x5d
+PAIR, SINGULAR = 0x4c, 0x5d
 SPACE = 0x7f
 TERMINALS = (0x52, 0x53, 0x54)
 
@@ -113,13 +113,13 @@ def verify(rom_path, sym_path, corpus):
 		old_size += old
 		new_size += len(data)
 		expected_size = old
-		expected_mode = "legacy" if old < len(raw) - implicit else "raw"
-		if expected_mode == "legacy" and "MapPairTrees" in syms:
+		expected_mode = "singular" if old < len(raw) - implicit else "raw"
+		if expected_mode == "singular" and "MapPairTrees" in syms:
 			optimal_bits, _ = optimal_parse(raw, pair_ids, contexts, lengths)
 			pair_size = 1 + (optimal_bits + 7) // 8
 			if pair_size < old:
 				expected_mode, expected_size = "pair", pair_size
-		if data[0] in (PAIR, LEGACY):
+		if data[0] in (PAIR, SINGULAR):
 			bits = "".join(f"{b:08b}" for b in data[1:])
 			if data[0] == PAIR:
 				out, pos = decode_pair(pairs, contexts, pair_trees, bits)
@@ -131,7 +131,7 @@ def verify(rom_path, sym_path, corpus):
 				while last not in TERMINALS:
 					last, pos = decode_symbol(rom, trees[context(last)], bits, pos)
 					out.append(last)
-				mode = "legacy"
+				mode = "singular"
 			ok = out == raw and bits[pos:] == "0" * (-pos % 8)
 		else:
 			mode = "raw"
@@ -144,7 +144,7 @@ def verify(rom_path, sym_path, corpus):
 	if not counts or len(labels) != 2 * sum(counts.values()):
 		raise ValueError("corpus and linked record labels disagree")
 	print(f"Verified {sum(counts.values()):,} segments "
-	      f"({counts['pair']:,} paired, {counts['legacy']:,} legacy, {counts['raw']:,} raw)")
+	      f"({counts['pair']:,} paired, {counts['singular']:,} singular, {counts['raw']:,} raw)")
 	print(f"Payload {old_size:,} -> {new_size:,} bytes ({old_size - new_size:,} saved)")
 
 

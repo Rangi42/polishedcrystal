@@ -173,7 +173,7 @@ fn main() {
             boundary = Some((rom[offset..offset + usize::from(end - start)].to_vec(), raw));
         }
     }
-    for (name, t) in ["legacy", "pair"].iter().zip(&reader.timing[1..]) {
+    for (name, t) in ["singular", "pair"].iter().zip(&reader.timing[1..]) {
         if t.characters != 0 {
             println!(
                 "{name}: {} bytes, mean {} and max {} T-cycles",

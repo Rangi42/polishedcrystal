@@ -888,7 +888,7 @@ ReadHuffmanChar:
 	ldh a, [hTextPairState]
 	assert TEXTSTATE_COMPRESSED == 0
 	and a
-	jr z, ReadLegacyHuffmanChar
+	jr z, ReadSingularHuffmanChar
 	assert TEXTSTATE_MAP_PAIR == 1
 	dec a
 	jr z, .read_token
@@ -912,8 +912,7 @@ ReadHuffmanChar:
 	ld a, e
 	ret
 
-; Called from the model bank. Read exactly one source byte, including when
-; the last compressed byte is at $7fff. Preserve the partial Huffman code.
+; Fetch the next source byte into C, then restore the model bank and partial code in A.
 RefillMapPairBits::
 	push af
 	ldh a, [hTextSourceBank]
@@ -927,7 +926,7 @@ RefillMapPairBits::
 	pop af
 	ret
 
-ReadLegacyHuffmanChar:
+ReadSingularHuffmanChar:
 	; Keep the compressed source pointer in de, leaving hl available for the
 	; context-specific tree base.
 	ld d, h

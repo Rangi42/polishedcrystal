@@ -20,9 +20,9 @@ DEF TEXTBOX_INNERY EQU TEXTBOX_Y + 2
 
 ; hTextPairState (all other values are pending literal characters)
 	const_def
-	const TEXTSTATE_COMPRESSED
-	const TEXTSTATE_MAP_PAIR
-	assert const_value <= ' '
+	const TEXTSTATE_COMPRESSED ; 0
+	const TEXTSTATE_MAP_PAIR   ; 1
+	assert const_value <= FIRST_REGULAR_TEXT_CHAR
 
 ; see gfx/frames/*.png
 DEF TEXTBOX_FRAME_TILES EQU 8

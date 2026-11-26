@@ -34,7 +34,7 @@ def literal(byte):
 		return byte + 0xec - 0x4d
 	if SPACE <= byte <= 0xeb:
 		return byte
-	raise ValueError(f"unexpected legacy alphabet byte ${byte:02x}")
+	raise ValueError(f"unexpected singular alphabet byte ${byte:02x}")
 
 
 def token_lengths(groups):

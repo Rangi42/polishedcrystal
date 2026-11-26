@@ -1,14 +1,14 @@
 INCLUDE "data/text/map_pair_models.inc"
 
 MACRO x_pair_rule
-	assert (\1 == ' ' || (\1 >= 'A' && \1 <= 'Z') || (\1 >= 'a' && \1 <= 'z'))
-	assert (\2 == ' ' || (\2 >= 'A' && \2 <= 'Z') || (\2 >= 'a' && \2 <= 'z'))
+	assert \1 == ' ' || (\1 >= 'A' && \1 <= 'Z') || (\1 >= 'a' && \1 <= 'z')
+	assert \2 == ' ' || (\2 >= 'A' && \2 <= 'Z') || (\2 >= 'a' && \2 <= 'z')
 	db \1, \2
 ENDM
 
 MACRO x_pair_contexts
 	rept _NARG
-		db 2 * \1 ; byte offset in the pointer table
+		db 2 * (\1) ; byte offset in the pointer table
 		shift
 	endr
 ENDM
