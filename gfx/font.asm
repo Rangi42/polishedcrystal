@@ -54,7 +54,7 @@ ShinyIconGFX:
 INCBIN "gfx/stats/shiny.2bpp"
 
 SummaryStatusIconGFX:
-INCBIN "gfx/stats/status.2bpp"
+INCBIN "gfx/stats/status-summary.2bpp"
 
 StatusIconGFX:
 INCBIN "gfx/battle/status.2bpp"

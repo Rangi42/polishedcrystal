@@ -91,9 +91,10 @@ EggHatchGFX::     INCBIN "gfx/evo/egg_hatch.2bpp"
 
 SECTION "Stats Graphics", ROMX
 
-GFX_Summary:: INCBIN "gfx/stats/summary.2bpp.lzp"
+GFX_Summary::         INCBIN "gfx/stats/summary.2bpp.lzp"
 GFX_Summary_Sprites:: INCBIN "gfx/stats/summary_sprites.2bpp.lzp"
-GFX_Balls:: INCBIN "gfx/stats/balls.2bpp.lzp"
+GFX_Balls::           INCBIN "gfx/stats/balls.2bpp.lzp"
+GFX_StatusIcons::     INCBIN "gfx/stats/status-party.2bpp.lzp"
 
 
 SECTION "Town Map Graphics", ROMX

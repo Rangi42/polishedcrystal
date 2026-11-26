@@ -514,6 +514,10 @@ InitPartyMenuLayout:
 
 LoadPartyMenuGFX:
 	call LoadFontsBattleExtra
+	ld hl, GFX_StatusIcons
+	ld de, vTiles2 tile $00
+	lb bc, BANK(GFX_StatusIcons), 8 * 2
+	call DecompressRequest2bpp
 	farcall InitPartyMenuPalettes
 	jmp ClearSpriteAnims2
 
@@ -533,6 +537,7 @@ WritePartyMenuTilemap:
 	rst ByteFill
 
 	call PlacePartyNicknames
+	call PlacePartyMonStatus
 
 	ld a, [wPartyMenuActionText]
 	and $f0
@@ -549,7 +554,6 @@ WritePartyMenuTilemap:
 
 	call PlacePartyMonLevel
 	call PlacePartyMonGender
-	call PlacePartyMonStatus
 
 	pop af
 	ld [wOptions1], a
@@ -762,6 +766,7 @@ PlacePartyMonStatus:
 	push hl
 	call PartyMenuCheckEgg
 	jr nz, .next
+
 	push hl
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -769,8 +774,22 @@ PlacePartyMonStatus:
 	rst AddNTimes
 	ld e, l
 	ld d, h
+	call GetStatusConditionOrFaintIndex
 	pop hl
-	call PlaceStatusString
+
+	push af
+	add a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	pop af
+
+	srl a
+	add 4
+	ld de, wAttrmap - wTilemap
+	add hl, de
+	ld [hld], a
+	ld [hl], a
 
 .next
 	pop hl
