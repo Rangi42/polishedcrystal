@@ -157,16 +157,8 @@ $1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
 endef
 
 ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
-$(foreach obj, $(filter-out audio.o,$(crystal_obj)), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
-$(foreach obj, $(filter-out audio_vc.o,$(crystal_vc_obj)), $(eval $(call VCDEP,$(obj),$(obj:_vc.o=.asm))))
-
-# Run the sizing pass with the same assembler flags as the final audio object.
-# Its DEFs select packed streams. Both passes include the same channel sources.
-audio.o: private audio_asmflags = $(RGBASMFLAGS)
-audio_vc.o: private audio_asmflags = $(RGBASMVCFLAGS)
-audio.o audio_vc.o: audio.asm $(shell tools/scan_includes audio.asm) audio/measure_delta_notes.asm $(shell tools/scan_includes audio/measure_delta_notes.asm) $(preinclude_deps) | rgbdscheck.o
-	$Qmodes=$$($(RGBASM) $(audio_asmflags) audio/measure_delta_notes.asm) && \
-		printf '%s\n' "$$modes" 'INCLUDE "$<"' | $(RGBASM) $(audio_asmflags) -o $@ -
+$(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
+$(foreach obj, $(crystal_vc_obj), $(eval $(call VCDEP,$(obj),$(obj:_vc.o=.asm))))
 endif
 
 $(ROM_NAME).patch: $(ROM_NAME)_vc.gbc $(ROM_NAME).$(EXTENSION) vc.patch.template

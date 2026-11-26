@@ -1,173 +1,178 @@
-; UpdateChannels writes each channel to the APU before processing the next
-; one. Match the stock parser's per-note cost, including its banked operand
-; reads, so writes and waveform phase stay at the same cycle within the frame.
-MACRO delta_note_delay ; machine cycles, clobbers a and flags
-	assert 5 <= \1 && \1 < 1025
-	ld a, (\1 - 1) / 4
-.wait\@ ; load + loop = 4 * iterations + 1
-	dec a
-	jr nz, .wait\@
-	rept (\1 - 1) % 4
-		nop ; no-optimize nops (remainder after the four-cycle loop)
-	endr
+; UpdateChannels writes each channel to the APU within VBlank. Match the
+; processing time of ParseSFXOrCry so retriggers keep their waveform phase.
+MACRO delta_note_delay ; SM83 machine cycles; delays of eight or more clobber af
+	if \1 >= 8
+		ld a, (\1 - 1) / 4
+	.wait\@
+		dec a
+		jr nz, .wait\@
+		rept (\1 - 1) % 4
+			nop ; no-optimize nops (remainder of the four-cycle loop)
+		endr
+	else
+		rept \1
+			nop ; no-optimize nops (sub-loop APU timing)
+		endr
+	endc
 ENDM
 
-; Called in the same bank as the packed channel. bc = channel struct.
-; Return the stock duration in a. Frequency holds the previous *unmodified*
-; note (the pitch offset is applied later to wCurTrackFrequency).
+; ParseSFXOrCry enters here with the next tag from a continued packet.
 DecodeDeltaNote:
-	ld hl, wChannel1NoteFlags - wChannel1
+	delta_note_delay 29
+	jr Music_DeltaNotes.read
+; ParseMusic dispatches a packet marker through MusicCommands. It starts a
+; timed note, so SetNoteDuration returns directly to the caller of ParseMusic.
+Music_DeltaNotes:
+	pop hl ; command dispatch's return to the ParseMusic loop
+	; ParseMusic.readnote checks channel 4's music-player selector.
+	ld a, [wCurChannel]
+	cp CHAN4
+	jr nz, .flags
+	ld a, [wChannelSelectorSwitches+3]
+	and a
+	jr nz, .flags
+	delta_note_delay 10
+.flags
+	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
+	bit SOUND_SFX, [hl]
+	jr nz, .read
+	delta_note_delay 7
+.read
+	; ParseSFXOrCry sets the note flags, intensity, frequency and duration.
+	; Fetch the packed note's operands together from the channel's ROM bank.
+	inc hl
+	inc hl ; NoteFlags
 	set NOTE_NOISE_SAMPLING, [hl]
-	ld hl, wChannel1MusicAddress - wChannel1
+	ld hl, wChannel1MusicBank - wChannel1
 	add hl, bc
+	ld a, [hli]
+	ld e, a ; stream bank
 	ld a, [hli]
 	ld h, [hl]
-	ld l, a ; hl = operands
-	ld a, [wCurMusicByte]
-	cp $20
-	jr c, .literal
-	cp $28
-	jr c, .absolute
-	jr z, .escaped
-
-	; $50..$8f: envelope 8, signed byte delta
-	; $90..$cf: literal intensity, signed nibble delta
-	sub $50
+	ld l, a
+	ld a, e
+	call ReadDeltaNoteOperands
+	; GetMusicByte advances the channel's address past its operands.
+	push de ; tag and absolute note's volume/high frequency
+	ld a, l
+	ld d, h
+	ld hl, wChannel1MusicAddress - wChannel1
+	add hl, bc
+	ld [hli], a
+	ld [hl], d
+	pop de
+	ld hl, wChannel1Flags - wChannel1
+	add hl, bc
+	res SOUND_DELTA_NOTES, [hl]
+	ld a, d
+	cp delta_absolute_cmd
+	jr nc, .absolute
+	cp DELTA_NOTE_MORE
+	jr nc, .more
+	delta_note_delay 4
+	jr .type
+.more
+	set SOUND_DELTA_NOTES, [hl]
+	sub DELTA_NOTE_MORE
+.type
 	ld d, a
-	and $30
 	swap a
-	call .get_duration
+	and DELTA_NOTE_DURATION_MASK
 	push af ; duration
 	ld a, d
-	cp $40
-	jr c, .wide_delta
-	and $f
-	xor 8
-	sub 8
-	ld e, a ; signed nibble delta
-	ld a, [hli] ; intensity
+	cp DELTA_NOTE_NIBBLE
+	jr c, .wide
+	and DELTA_NOTE_NIBBLE_MASK
+	xor DELTA_NOTE_SIGN
+	sub DELTA_NOTE_SIGN
+	ld d, a ; signed nibble
+	ld a, e ; intensity
+	ld e, d
 	jr .delta
-.wide_delta
+.wide
+	delta_note_delay 5
 	swap a
-	and $f0
-	or 8
-	ld d, a ; intensity
-	ld a, [hli]
-	ld e, a ; signed byte delta
-	ld a, d
+	and AUD1ENV_INIT_VOLUME
+	or DELTA_NOTE_ENVELOPE
+	; e holds the signed byte delta.
 .delta
-	push hl ; next tag
+	; ParseSFXOrCry writes one frequency byte for noise and two for tone.
 	ld hl, wChannel1Intensity - wChannel1
 	add hl, bc
 	ld [hli], a
+	ld a, [wCurChannel]
+	ld d, a
+	and NUM_MUSIC_CHANS - 1
+	cp CHAN4
+	jr z, .noise
+	; ParseMusic.readnote also exposes channel 4 hits to the music player.
 	ld a, e
 	add [hl]
 	ld [hli], a
-	; Sign-extend e without disturbing carry.
-	bit 7, e
-	ld e, 0
-	jr z, .add_high
-	dec e
-.add_high
-	ld a, e
+	ld a, 0 ; no-optimize a = 0 (adc needs the low byte's carry)
 	adc [hl]
+	bit 7, e
+	jr z, .high
+	dec a
+.high
 	ld [hl], a
-	jr .finish
-
+	jr .tone
 .absolute
-	; $20..$27: duration index, envelope 8/1, 11-bit frequency, volume
-	sub $20
+	bit DELTA_NOTE_ABS_MORE_F, e
+	jr nz, .absolute_more
+	delta_note_delay 2
+	jr .absolute_duration
+.absolute_more
+	set SOUND_DELTA_NOTES, [hl]
+.absolute_duration
+	sub delta_absolute_cmd
 	srl a
-	ld e, a
+	push af ; duration
 	sbc a
-	and 9
-	xor 8 ; envelope 8 or 1
-	ld d, a
+	and DELTA_NOTE_ENVELOPE ^ DELTA_NOTE_ALT_ENV
+	xor DELTA_NOTE_ENVELOPE
+	ld d, a ; envelope
 	ld a, e
-	call .get_duration
-	push af
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	push hl
-	ld hl, wChannel1Intensity - wChannel1
-	add hl, bc
-	push af
-	and $f0
+	and AUD1ENV_INIT_VOLUME
 	or d
-	ld [hli], a
-	ld a, e
-	ld [hli], a
-	pop af
-	and 7
-	ld [hl], a
-	delta_note_delay 8
-	jr .finish
-
-.literal
-	push af
-	delta_note_delay 45
-	jr .raw
-.escaped
-	ld a, [hli] ; $28, full legacy duration
-	push af
-	delta_note_delay 40
-.raw
-	ld a, [hli] ; intensity
-	ld d, a
-	ld a, [hli] ; frequency lo
-	ld e, a
-	ld a, [wCurChannel]
-	cp CHAN8
-	jr z, .raw_noise
-	ld a, [hli]
-.raw_noise
-	push hl
 	ld hl, wChannel1Intensity - wChannel1
 	add hl, bc
-	ld [hl], d ; no-optimize *hl++|*hl-- = b|c|d|e (a holds the tonal frequency high byte)
-	inc hl
-	ld [hl], e ; no-optimize *hl++|*hl-- = b|c|d|e (a holds the tonal frequency high byte)
-	inc hl
-	jr nz, .raw_high
-	nop ; no-optimize nops (balance the two optional high-byte accesses)
-	jr .finish
-.raw_high
-	ld [hl], a
-.finish
-	ld a, [wCurChannel]
-	cp CHAN8
-	jr nz, .tone
-	dec hl
-.last_byte
-	ld a, [hl]
-	ld [wCurMusicByte], a ; final operand, as with ParseSFXOrCry
-	delta_note_delay 29
-	pop de
-	ld hl, wChannel1MusicAddress - wChannel1
-	add hl, bc
-	ld a, e
 	ld [hli], a
-	ld [hl], d
-	pop af
-	ret
+	ld a, [wCurMusicByte]
+	ld [hli], a
+	ld a, e
+	and HIGH((1 << DELTA_NOTE_PITCH_BITS) - 1)
+	ld [hl], a
 
+	ld [wCurMusicByte], a
+	delta_note_delay 23
+	jr .tone_delay
 .tone
-	; A stock tonal note fetches one more frequency byte than noise.
-	delta_note_delay 103
-	jr .last_byte
+	; GetMusicByte leaves the last uncompressed operand in wCurMusicByte.
+	ld [wCurMusicByte], a
+.tone_delay
+	delta_note_delay 105
+	jr .duration
 
-.get_duration
-	push hl
-	add LOW(.durations)
-	ld l, a
-	adc HIGH(.durations)
-	sub l
-	ld h, a
-	ld a, [hl]
-	pop hl
-	ret
-
-.durations
-	db 0, 2, 1, 5
+.noise
+	; ParseMusic.readnote also exposes channel 4 hits to the music player.
+	ld a, e
+	add [hl]
+	ld [hl], a
+	ld [wCurMusicByte], a
+	ld a, d
+	cp CHAN4
+	jr nz, .sfx_noise
+	ld a, [wChannelSelectorSwitches+3]
+	and a
+	jr nz, .muted_noise
+	ld [wNoiseHit], a ; packed durations fit in the low nibble
+.duration
+	delta_note_delay 1
+	pop af
+	jmp SetNoteDuration
+.sfx_noise
+	delta_note_delay 7
+.muted_noise
+	jr .duration ; no-optimize stub jump (matches the wNoiseHit write)

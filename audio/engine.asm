@@ -1126,10 +1126,9 @@ RestoreVolume:
 	ret
 
 ParseSFXOrCry:
-	; hl still points at Flags. GetMusicByte preserves the incremented
-	; intensity pointer below, paying for this test on literal streams.
+	; hl points to channel flags. A continued packet supplies the note tag.
 	bit SOUND_DELTA_NOTES, [hl]
-	jr nz, .delta_note
+	jr nz, DecodeDeltaNote
 	; turn noise sampling on
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
@@ -1157,8 +1156,7 @@ ParseSFXOrCry:
 	ld [hl], a
 	ret
 
-.delta_note
-	jmp ReadDeltaNote
+INCLUDE "audio/decode_delta_note.asm"
 
 GetNoiseSample:
 ; load ptr to sample header in wNoiseSampleAddress
@@ -1257,15 +1255,9 @@ MusicCommands:
 	dw Music_PanLeft ; stereo panning
 	dw Music_PanRight
 	dw Music_PanCenter
-	dw DoNothing ; $F0
-	dw DoNothing ; $F1
-	dw DoNothing ; $F2
-	dw DoNothing ; $F3
-	dw DoNothing ; $F4
-	dw DoNothing ; $F5
-	dw DoNothing ; $F6
-	dw DoNothing ; $F7
-	dw DoNothing ; $F8
+	rept noisesampleset_cmd - delta_notes_cmd
+		dw Music_DeltaNotes
+	endr
 	dw Music_ChangeNoiseSampleSet ; noisesampleset
 	dw Music_SetCondition ; setcondition
 	dw Music_JumpIf ; jumpif
@@ -2159,21 +2151,9 @@ _PlayCry::
 	push af
 	call LoadChannel
 
-	; LoadChannel leaves hl at MusicBank. Transfer the pointer's format bit
-	; to Flags, restoring the real ROMX address for the stock byte reader.
-	inc hl
-	inc hl ; MusicAddress + 1
-	ld a, [hl]
-	res 7, [hl]
-	rrca ; header bit 7 -> channel flag bit 6
-	assert SOUND_DELTA_NOTES == 6
-	and 1 << SOUND_DELTA_NOTES
-	or 1 << SOUND_CRY
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
-	or [hl]
-	ld [hl], a
-	set SOUND_CHANNEL_ON, [hl]
+	set SOUND_CRY, [hl]
 
 	inc hl ; Flags2
 	set SOUND_PITCH_OFFSET, [hl]
@@ -2199,7 +2179,7 @@ _PlayCry::
 	ld a, [wCryLength+1]
 	ld [hl], a
 .start
-	call SetLRTracks ; channel already enabled above
+	call StartChannel
 	ld a, [wStereoPanningMask]
 	and a
 	jr z, .next

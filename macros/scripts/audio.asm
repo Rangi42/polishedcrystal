@@ -8,12 +8,7 @@ MACRO channel
 	assert 0 < (\1) && (\1) <= NUM_CHANNELS, \
 		"channel id must be 1-{d:NUM_CHANNELS}"
 	dn (_num_channels << 2), \1 - 1 ; channel id
-	if DEF(_delta_note_header_{.})
-		assert BANK(\2) == BANK(DecodeDeltaNote)
-		dw (\2) | (DEF(_delta_note_channel_\2) << 15)
-	else
-		dw \2 ; address
-	endc
+	dw \2 ; address
 	DEF _num_channels = 0
 ENDM
 
@@ -29,30 +24,34 @@ MACRO rest
 	note 0, \1 ; length
 ENDM
 
+INCLUDE "macros/scripts/delta_notes.asm"
+
 MACRO square_note
-	_sfx_note 2, \#
+	_delta_note 2, \#
+ENDM
+
+MACRO raw_square_note
+	db \1 ; length
+	if \3 < 0
+		dn \2, AUD1ENV_UP | (\3 * -1) ; volume envelope
+	else
+		dn \2, \3 ; volume envelope
+	endc
+	dw \4 ; frequency
 ENDM
 
 MACRO noise_note
-	_sfx_note 1, \#
+	_delta_note 1, \#
 ENDM
 
-MACRO _sfx_note ; frequency width, length, volume, envelope, frequency
-	if DEF(_delta_note_channel_{.})
-		_encode_delta_note \#
+MACRO raw_noise_note
+	db \1 ; length
+	if \3 < 0
+		dn \2, AUD4ENV_UP | (\3 * -1) ; volume envelope
 	else
-		db \2 ; length
-		if (\4) < 0
-			dn \3, %1000 | -(\4)
-		else
-			dn \3, \4
-		endc
-		if (\1) == 1
-			db \5
-		else
-			dw \5
-		endc
+		dn \2, \3 ; volume envelope
 	endc
+	db \4 ; frequency
 ENDM
 
 ; MusicCommands indexes (see audio/engine.asm)
@@ -243,7 +242,9 @@ MACRO stereo_panning
 	endc
 ENDM
 
-	const_skip 9
+	const delta_notes_cmd ; $f0
+	const delta_absolute_cmd ; $f1; duration and envelope in the command index
+	const_skip 7
 
 	const noisesampleset_cmd ; $f9
 	; this gets output by toggle_noise
@@ -288,8 +289,5 @@ ENDM
 	const sound_ret_cmd ; $ff
 	assert sound_ret_cmd == $ff, "sound_ret_cmd must be $ff"
 MACRO sound_ret
-	if DEF(_delta_note_channel_{.})
-		DEF _delta_note_previous_frequency = 0
-	endc
 	db sound_ret_cmd
 ENDM
