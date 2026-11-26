@@ -14,10 +14,12 @@
 	charmap "<PLURAL>", $09
 DEF NUM_TEXT_COMMANDS EQU $0a
 
-	; unused: $0a - $4c
+	; unused: $0a - $4b
 	; (Low values can be used for additional text commands; high values can be
 	; used for additional n-grams; or existing n-grams can be shifted down to
 	; make room for additional special characters.)
+
+DEF MAP_PAIR_TEXT_MARKER EQU $4c
 
 	; n-grams: $4d - $51 (defined below)
 

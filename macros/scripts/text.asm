@@ -283,8 +283,14 @@ MACRO _dchr
 			DEF _compressing_text = 0
 			DEF _might_compress_text = 0
 			setcharmap default
+			if DEF(MAP_PAIR_TEXT) && DEF(PAIR_TEXT_CORPUS)
+				_pair_text_record
+			endc
 			; Declare the accumulated bytes
 			if _compressed_bytes < _raw_bytes - !!_compression_terminator
+				if DEF(MAP_PAIR_TEXT)
+					_try_map_pairs
+				endc
 				; Compression saves space; declare the compressed bytes
 				for _text_idx, _compressed_bytes
 					db _compressed_byte_{d:_text_idx}
@@ -294,6 +300,10 @@ MACRO _dchr
 				for _text_idx, _raw_bytes - !!_compression_terminator
 					db _raw_byte_{d:_text_idx}
 				endr
+			endc
+			if DEF(MAP_PAIR_TEXT) && DEF(PAIR_TEXT_CORPUS)
+.pair_text_end{d:_pair_record_id}:
+				DEF _pair_record_id += 1
 			endc
 			DEF _compression_terminator = 0
 		endc

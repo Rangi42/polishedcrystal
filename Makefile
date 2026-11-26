@@ -136,6 +136,25 @@ bsp: $(ROM_NAME).bsp
 
 huffman: crystal
 
+# Assemble map text again with byte ranges exported to the symbol file. Use
+# temporary outputs so verification never changes the normal objects or ROM.
+.PHONY: check-map-text check-map-text-vibe
+check-map-text-vibe: run_map_text_emulator := yes
+check-map-text-vibe: check-map-text
+
+check-map-text: crystal
+	@set -eu; tmp=$$(mktemp -d); trap 'rm -rf "$$tmp"' EXIT; \
+	$(RGBASM) $(RGBASMFLAGS) -DPAIR_TEXT_CORPUS -o "$$tmp/maps.o" data/maps/map_data.asm > "$$tmp/corpus"; \
+	$(RGBLINK) -p $(FILLER) -l layout.link -n "$$tmp/game.sym" -o "$$tmp/game.gbc" \
+		$(subst data/maps/map_data.o,"$$tmp/maps.o",$(crystal_obj)); \
+	$(RGBFIX) $(RGBFIXFLAGS) "$$tmp/game.gbc"; \
+	cmp $(ROM_NAME).$(EXTENSION) "$$tmp/game.gbc"; \
+	set -- "$$tmp/game.gbc" "$$tmp/game.sym" "$$tmp/corpus"; \
+	python3 utils/verify_map_text.py "$$@"; \
+	if test "$(run_map_text_emulator)" = yes; then \
+		cargo run --quiet --release --manifest-path utils/map_text_vibe/Cargo.toml -- "$$@"; \
+	fi
+
 
 rgbdscheck.o: rgbdscheck.asm
 	$Q$(RGBASM) -o $@ $<

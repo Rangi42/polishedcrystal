@@ -50,15 +50,15 @@ ShamoutiHotelRestaurantChallengeScript:
 
 .AlreadyAte:
 	writetext .AlreadyAteText
-	sjump ShamoutiHotelRestaurantLeaveScript
+	sjumpfwd ShamoutiHotelRestaurantLeaveScript
 
 .NeverMind:
 	writetext .NeverMindText
-	sjump ShamoutiHotelRestaurantLeaveScript
+	sjumpfwd ShamoutiHotelRestaurantLeaveScript
 
 .NotEnoughMoney:
 	writetext .NotEnoughMoneyText
-	sjump ShamoutiHotelRestaurantLeaveScript
+	sjumpfwd ShamoutiHotelRestaurantLeaveScript
 
 .GreetingText:
 	text "Welcome to the"

@@ -189,14 +189,16 @@ PlaceNextChar::
 	jr nc, _PlaceLiteralChar
 	cp SPECIALS_START
 	jr nc, _PlaceSpecialChar
-	cp NGRAMS_START
+	cp MAP_PAIR_TEXT_MARKER
 	jr nc, _PlaceNgramChar
 	dec de
 	jmp FinishString
 
 
 _PlaceNgramChar:
+	assert MAP_PAIR_TEXT_MARKER + 1 == NGRAMS_START
 	sub NGRAMS_START
+	jp c, DecompressString
 	push de
 	push hl
 	ld e, a
@@ -730,6 +732,13 @@ TextCommand_DAY::
 ; print the day of the week
 	call GetWeekday
 PrintDayOfWeek::
+	farjp _PrintDayOfWeek
+
+; Keep the weekday text and its printer together in switchable ROM to leave
+; room in ROM0 for the streaming decoder's bank-switch and refill routines.
+PUSHS
+SECTION "Weekday text", ROMX
+_PrintDayOfWeek:
 	push hl
 	push bc
 	ld c, a
@@ -766,6 +775,7 @@ PrintDayOfWeek::
 .Fri:    db "Fri@"
 .Satur:  db "Satur@"
 .Day:    db "day@"
+POPS
 
 DecompressString::
 	; save starting coords
@@ -778,17 +788,13 @@ DecompressString::
 
 	call SwapHLDE ; hl = string, de = current coords
 
-	inc hl ; skip "<CTXT>"
-
-	; start the contextual decoder at a word boundary
-	ld a, ' '
-	ldh [hCompressedTextBuffer], a
+	ld a, [hli]
+	call InitTextDecoder
 
 	; terminate buffer for printing each character
 	ld a, '@'
 	ldh [hCompressedTextBuffer+1], a
 
-	ld b, 1 ; start with no bits to read a byte right away
 .character_loop
 
 	push de ; push current coords
@@ -871,18 +877,10 @@ DecompressString::
 
 DecompressStringToRAM::
 ; input: hl = string, de = destination
-.outer_loop
-	ld a, [hl]
-	cp '<CTXT>'
-	jr nz, .copy_loop
-
-	inc hl ; skip "<CTXT>"
+	jr .copy_loop
 
 .do_decompression
-	; start the contextual decoder at a word boundary
-	ld a, ' '
-	ldh [hCompressedTextBuffer], a
-	ld b, 1 ; start with no bits to read a byte right away
+	call InitTextDecoder
 .decompress_loop
 
 	push de
@@ -903,6 +901,8 @@ DecompressStringToRAM::
 	ld a, [hli]
 	cp '<CTXT>'
 	jr z, .do_decompression
+	cp MAP_PAIR_TEXT_MARKER
+	jr z, .do_decompression
 	call CheckTerminatorChar
 	jr z, .append_terminator
 	ld [de], a
@@ -916,7 +916,60 @@ DecompressStringToRAM::
 	ld [de], a
 	ret
 
+InitTextDecoder:
+	; A is the marker, HL already points to the first payload byte.
+	cp MAP_PAIR_TEXT_MARKER
+	ld a, 0
+	jr nz, .set_mode
+	inc a
+.set_mode
+	ldh [hTextPairState], a
+	ld a, ' '
+	ldh [hCompressedTextBuffer], a
+	ld b, 1 ; the first bit triggers a refill
+	ret
+
 ReadHuffmanChar:
+	ldh a, [hTextPairState]
+	and a
+	jr z, ReadLegacyHuffmanChar
+	dec a
+	jr z, .read_token
+	; Only literal letters and spaces can be pending.
+	inc a
+	ld e, a
+	ld a, 1
+	ldh [hTextPairState], a
+	ld a, e
+	ret
+.read_token
+	ldh a, [hROMBank]
+	ldh [hTextSourceBank], a
+	ld a, BANK(ReadMapPairToken)
+	rst Bankswitch
+	call ReadMapPairToken
+	ld e, a
+	ldh a, [hTextSourceBank]
+	rst Bankswitch
+	ld a, e
+	ret
+
+; Called from the model bank. Read exactly one source byte, including when
+; the last compressed byte is at $7fff. Preserve the partial Huffman code.
+RefillMapPairBits::
+	push af
+	ldh a, [hTextSourceBank]
+	rst Bankswitch
+	ld a, [de]
+	inc de
+	ld c, a
+	ld b, 8
+	ld a, BANK(ReadMapPairToken)
+	rst Bankswitch
+	pop af
+	ret
+
+ReadLegacyHuffmanChar:
 	; Keep the compressed source pointer in de, leaving hl available for the
 	; context-specific tree base.
 	ld d, h
