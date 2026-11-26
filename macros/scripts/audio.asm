@@ -8,7 +8,12 @@ MACRO channel
 	assert 0 < (\1) && (\1) <= NUM_CHANNELS, \
 		"channel id must be 1-{d:NUM_CHANNELS}"
 	dn (_num_channels << 2), \1 - 1 ; channel id
-	dw \2 ; address
+	if DEF(_siren_header_{.})
+		assert BANK(\2) == BANK(DecodeSirenNote)
+		dw (\2) | (DEF(_siren_pack_\2) << 15)
+	else
+		dw \2 ; address
+	endc
 	DEF _num_channels = 0
 ENDM
 
@@ -25,23 +30,29 @@ MACRO rest
 ENDM
 
 MACRO square_note
-	db \1 ; length
-	if \3 < 0
-		dn \2, %1000 | (\3 * -1) ; volume envelope
-	else
-		dn \2, \3 ; volume envelope
-	endc
-	dw \4 ; frequency
+	_sfx_note 2, \#
 ENDM
 
 MACRO noise_note
-	db \1 ; length
-	if \3 < 0
-		dn \2, %1000 | (\3 * -1) ; volume envelope
+	_sfx_note 1, \#
+ENDM
+
+MACRO _sfx_note ; frequency width, length, volume, envelope, frequency
+	if DEF(_siren_pack_{.})
+		_siren_note \#
 	else
-		dn \2, \3 ; volume envelope
+		db \2 ; length
+		if (\4) < 0
+			dn \3, %1000 | -(\4)
+		else
+			dn \3, \4
+		endc
+		if (\1) == 1
+			db \5
+		else
+			dw \5
+		endc
 	endc
-	db \4 ; frequency
 ENDM
 
 ; MusicCommands indexes (see audio/engine.asm)
@@ -277,5 +288,8 @@ ENDM
 	const sound_ret_cmd ; $ff
 	assert sound_ret_cmd == $ff, "sound_ret_cmd must be $ff"
 MACRO sound_ret
+	if DEF(_siren_pack_{.})
+		DEF _siren_previous = 0
+	endc
 	db sound_ret_cmd
 ENDM

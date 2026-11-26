@@ -68,6 +68,18 @@ _LoadMusicWord::
 	rst Bankswitch
 	ret
 
+; Read the packed operands in their own bank. The tag has already gone
+; through ParseMusic, so duty, duty patterns and sound_ret use stock handlers.
+ReadSirenNote::
+	ld a, BANK(DecodeSirenNote)
+	rst Bankswitch
+	call DecodeSirenNote ; far-ok
+	ld e, a
+	ld a, BANK(SetNoteDuration)
+	rst Bankswitch
+	ld a, e
+	jmp SetNoteDuration ; far-ok
+
 CheckSpecialMapMusic:
 ; Returns z if the current map has a special music handler.
 

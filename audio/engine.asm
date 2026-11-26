@@ -1126,6 +1126,10 @@ RestoreVolume:
 	ret
 
 ParseSFXOrCry:
+	; hl still points at Flags. GetMusicByte preserves the incremented
+	; intensity pointer below, paying for this test on literal streams.
+	bit SOUND_PACKED_CRY, [hl]
+	jr nz, .siren
 	; turn noise sampling on
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
@@ -1137,11 +1141,9 @@ ParseSFXOrCry:
 	call GetMusicByte
 	ld hl, wChannel1Intensity - wChannel1
 	add hl, bc
-	ld [hl], a
+	ld [hli], a
 	; update lo frequency from next param
 	call GetMusicByte
-	ld hl, wChannel1FrequencyLo - wChannel1
-	add hl, bc
 	ld [hl], a
 	; are we on the last channel? (noise sampling)
 	ld a, [wCurChannel]
@@ -1154,6 +1156,9 @@ ParseSFXOrCry:
 	add hl, bc
 	ld [hl], a
 	ret
+
+.siren
+	jmp ReadSirenNote
 
 GetNoiseSample:
 ; load ptr to sample header in wNoiseSampleAddress
@@ -2154,9 +2159,21 @@ _PlayCry::
 	push af
 	call LoadChannel
 
+	; LoadChannel leaves hl at MusicBank. Transfer the pointer's format bit
+	; to Flags, restoring the real ROMX address for the stock byte reader.
+	inc hl
+	inc hl ; MusicAddress + 1
+	ld a, [hl]
+	res 7, [hl]
+	rrca ; header bit 7 -> channel flag bit 6
+	assert SOUND_PACKED_CRY == 6
+	and 1 << SOUND_PACKED_CRY
+	or 1 << SOUND_CRY
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc
-	set SOUND_CRY, [hl]
+	or [hl]
+	ld [hl], a
+	set SOUND_CHANNEL_ON, [hl]
 
 	inc hl ; Flags2
 	set SOUND_PITCH_OFFSET, [hl]
@@ -2182,7 +2199,7 @@ _PlayCry::
 	ld a, [wCryLength+1]
 	ld [hl], a
 .start
-	call StartChannel
+	call SetLRTracks ; channel already enabled above
 	ld a, [wStereoPanningMask]
 	and a
 	jr z, .next
