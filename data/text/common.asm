@@ -1029,12 +1029,12 @@ _BuenaRadioMidnightText8::
 
 SECTION "_BuenaRadioMidnightText9", ROMX
 _BuenaRadioMidnightText9::
-	text "I'm outta here!"
+	line "I'm outta here!"
 	done
 
 SECTION "_BuenaRadioMidnightText10", ROMX
 _BuenaRadioMidnightText10::
-	text "…"
+	line "…"
 	done
 
 SECTION "_BuenaOffTheAirText", ROMX
