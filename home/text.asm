@@ -194,7 +194,6 @@ PlaceNextChar::
 	dec de
 	jmp FinishString
 
-
 _PlaceNgramChar:
 	sub NGRAMS_START
 	push de
@@ -341,6 +340,7 @@ PromptText::
 	ld a, [wTextboxFlags]
 	bit NO_TEXT_PAUSE_F, a
 	jr nz, DoneText
+
 	push hl ; cursor for the next text command
 	push de
 	ld a, [wLinkMode]
@@ -357,7 +357,12 @@ PromptText::
 
 DoneText::
 	dec de
-	jmp FinishString
+	; fallthrough
+FinishString:
+	ld b, h
+	ld c, l
+	pop hl
+	ret
 
 PlaceTargetsName::
 	ldh a, [hBattleTurn]
@@ -701,11 +706,7 @@ TextCommand_DECIMAL::
 	or PRINTNUM_DELAY | PRINTNUM_LEFTALIGN
 	ld b, a
 	call PrintNum
-FinishString:
-	ld b, h
-	ld c, l
-	pop hl
-	ret
+	jmp FinishString
 
 TextCommand_PAUSE::
 ; wait for button press or 30 frames
@@ -751,7 +752,6 @@ DecompressString::
 
 	call SwapHLDE ; hl = string, de = current coords
 
-	; PlaceString is also called directly, outside the text command loop.
 	xor a ; TEXTSTOP_NONE
 	ldh [hStopPrintingString], a
 	inc hl ; skip "<CTXT>"
@@ -762,15 +762,7 @@ DecompressString::
 	ldh [hCompressedTextBuffer+1], a
 
 .character_loop
-
-	push de ; push current coords
-
 	call ReadHuffmanChar
-
-	; buffer character for printing
-	ldh [hCompressedTextBuffer], a
-
-	pop de ; pop current coords
 
 	push hl ; push string position
 	push bc ; push bit-reading state
@@ -848,40 +840,30 @@ DecompressString::
 
 DecompressStringToRAM::
 ; input: hl = string, de = destination
+; To maintain generic usage, this function will return on
+; any terminator encountered. It is up to the caller to decide
+; what to do with the given terminator returned in a.
 .copy_loop
 	ld a, [hli]
 	cp '<CTXT>'
 	jr z, .do_decompression
 	call CheckTerminatorChar
-	jr z, .append_terminator
 	ld [de], a
+	ret z
 	inc de
 	jr .copy_loop
 
 .do_decompression
 	call InitTextDecoder
 .decompress_loop
-
-	push de
 	call ReadHuffmanChar
-	pop de
-	ldh [hCompressedTextBuffer], a
-	; check for characters that signal end of compression
+	; Check for characters that signal end of compression
 	; (same ones that finish PlaceString)
 	call CheckTerminatorChar
-	jr z, .append_terminator
-
-	; Store decompressed char to WRAM and advance
 	ld [de], a
+	ret z
 	inc de
 	jr .decompress_loop
-
-.append_terminator
-	; to maintain generic usage, this function will return on
-	; any terminator encountered. it is up to the caller to decide
-	; what to do with the given terminator returned in a
-	ld [de], a
-	ret
 
 InitTextDecoder:
 	xor a
@@ -892,14 +874,14 @@ InitTextDecoder:
 	ret
 
 ReadHuffmanChar:
+	push de
 	ldh a, [hTextPendingChar]
 	and a
 	jr z, .read_token
 	ld e, a
 	xor a
 	ldh [hTextPendingChar], a
-	ld a, e
-	ret
+	jr .done
 
 .read_token
 	ldh a, [hROMBank]
@@ -910,7 +892,10 @@ ReadHuffmanChar:
 	ld e, a
 	ldh a, [hTextSourceBank]
 	rst Bankswitch
+.done
 	ld a, e
+	pop de
+	ldh [hCompressedTextBuffer], a
 	ret
 
 ; Fetch the next source byte into C, then restore the model bank and partial code in A.

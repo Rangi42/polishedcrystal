@@ -1,11 +1,19 @@
 ; Build RGBDS lookups from the same canonical groups used by the ROM reader.
+
+INCLUDE "data/text/huffman_model.inc"
+
+DEF _pair_index = 0
 MACRO x_pair_rule
 	DEF _left = \1
 	DEF _right = \2
 	DEF _text_pair_{02X:_left}{02X:_right} EQU _pair_index
 	DEF _pair_index += 1
 ENDM
+huffman_pair_rules
+PURGE x_pair_rule
+assert _pair_index <= FIRST_REGULAR_TEXT_CHAR
 
+DEF _context_byte = 0
 MACRO x_pair_contexts
 	rept _NARG
 		DEF _text_context_{02X:_context_byte} EQU \1
@@ -13,6 +21,9 @@ MACRO x_pair_contexts
 		shift
 	endr
 ENDM
+huffman_pair_contexts
+PURGE x_pair_contexts
+assert _context_byte == 256
 
 MACRO x_pair_codes
 	DEF _code <<= 1
@@ -25,17 +36,6 @@ MACRO x_pair_codes
 		shift
 	endr
 ENDM
-
-INCLUDE "data/text/huffman_model.inc"
-
-DEF _pair_index = 0
-	huffman_pairs
-assert _pair_index <= ' '
-
-DEF _context_byte = 0
-	huffman_contexts
-assert _context_byte == 256
-
 for _tree, NUM_HUFFMAN_TREES
 	DEF _code = 0
 	DEF _length = 0
@@ -49,8 +49,7 @@ for _tree, NUM_HUFFMAN_TREES
 		endc
 	endr
 endr
-
-PURGE x_pair_rule, x_pair_contexts, x_pair_codes
+PURGE x_pair_codes
 
 ; The context at a position only depends on the preceding source byte. Work
 ; backwards, comparing one literal plus the best remaining suffix against a
@@ -137,5 +136,5 @@ MACRO _pair_text_record
 	for _i, _raw_bytes
 		print "{02X:_raw_byte_{d:_i}}"
 	endr
-	println ""
+	println
 ENDM

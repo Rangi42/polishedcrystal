@@ -3,7 +3,7 @@
 ; Define x_pair_rule, x_pair_contexts, and x_pair_codes before invoking these
 ; X macros. The encoder builds lookups and the decoder emits ROM tables.
 ; https://en.wikipedia.org/wiki/X_macro
-MACRO huffman_pairs
+MACRO huffman_pair_rules
 	x_pair_rule 'e', ' '
 	x_pair_rule ' ', 't'
 	x_pair_rule 'o', 'u'
@@ -133,7 +133,7 @@ MACRO huffman_pairs
 	x_pair_rule 'c', 'e'
 ENDM
 
-MACRO huffman_contexts
+MACRO huffman_pair_contexts
 	x_pair_contexts 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
 	x_pair_contexts 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
 	x_pair_contexts 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2

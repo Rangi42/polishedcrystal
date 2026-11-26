@@ -18,12 +18,6 @@ DEF TEXTBOX_INNERX EQU TEXTBOX_X + 1
 DEF TEXTBOX_Y      EQU SCREEN_HEIGHT - TEXTBOX_HEIGHT
 DEF TEXTBOX_INNERY EQU TEXTBOX_Y + 2
 
-; hStopPrintingString
-	const_def
-	const TEXTSTOP_NONE  ; 0
-	const TEXTSTOP_END   ; 1: end the current text command loop
-	const TEXTSTOP_PAUSE ; 2: stop a nonblocking preview, including its callers
-
 ; see gfx/frames/*.png
 DEF TEXTBOX_FRAME_TILES EQU 8
 

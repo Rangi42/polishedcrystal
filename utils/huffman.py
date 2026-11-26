@@ -165,10 +165,10 @@ def render(pairs, contexts, trees):
 		"; Define x_pair_rule, x_pair_contexts, and x_pair_codes before invoking these",
 		"; X macros. The encoder builds lookups and the decoder emits ROM tables.",
 		"; https://en.wikipedia.org/wiki/X_macro",
-		"MACRO huffman_pairs",
+		"MACRO huffman_pair_rules",
 	]
 	lines.extend(f"\tx_pair_rule {symbols[left]}, {symbols[right]}" for left, right in pairs)
-	lines += ["ENDM", "", "MACRO huffman_contexts"]
+	lines += ["ENDM", "", "MACRO huffman_pair_contexts"]
 	for i in range(0, len(contexts), 16):
 		lines.append("\tx_pair_contexts " + ", ".join(str(c) for c in contexts[i:i + 16]))
 	lines += ["ENDM", "", f"DEF NUM_HUFFMAN_TREES EQU {len(trees)}"]
