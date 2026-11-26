@@ -1,7 +1,9 @@
-//! Run the linked Game Boy reader with vibe-emu-core. See docs/map_text.md.
+//! Run the linked Game Boy reader with vibe-emu-core. See docs/text_compression.md.
 use std::{collections::HashMap, env, fs};
 
 use vibe_emu_core::{cartridge::Cartridge, gameboy::GameBoy, hardware::Model};
+
+mod far_calls;
 
 type Symbols = HashMap<String, (u8, u16)>;
 
@@ -15,11 +17,8 @@ fn symbols(path: &str) -> Symbols {
         let Some((bank, addr)) = location.split_once(':') else {
             continue;
         };
-        let key = name
-            .rsplit_once(".pair_text_")
-            .map_or(name, |(_, record)| record);
         result.insert(
-            key.to_string(),
+            name.to_string(),
             (
                 u8::from_str_radix(bank, 16).unwrap(),
                 u16::from_str_radix(addr, 16).unwrap(),
@@ -60,7 +59,7 @@ struct Reader {
     read_char: u16,
     bank_shadow: u16,
     stack_top: u16,
-    timing: [Timing; 3],
+    timing: Timing,
 }
 
 impl Reader {
@@ -68,14 +67,11 @@ impl Reader {
     // The RAM API returns the terminator in A and leaves DE pointing at its copy.
     fn check(&mut self, bank: u8, start: u16, end: u16, raw: &[u8], implicit: bool) {
         let gb = &mut self.gb;
+        let bank = bank.max(1); // ROM0 is visible with any switchable bank selected.
         gb.mmu.write_byte(0x2000, bank);
         gb.mmu.write_byte(self.bank_shadow, bank);
-        let format = match gb.mmu.read_byte(start) {
-            0x4c => 2,
-            0x5d => 1,
-            _ => 0,
-        };
-        if format == 0 && implicit {
+        let compressed = start != end && gb.mmu.read_byte(start) == 0x5d;
+        if !compressed && implicit {
             // A raw inline fragment falls through into a text command. It is
             // consumed by PlaceString, not by the terminated-string RAM API.
             return;
@@ -105,7 +101,7 @@ impl Reader {
                     gb.mmu.cart.as_ref().unwrap().current_rom_bank(),
                     u16::from(bank)
                 );
-                self.timing[format].sample(gb.cpu.cycles - since + 24); // include CALL
+                self.timing.sample(gb.cpu.cycles - since + 24); // include CALL
                 index += 1;
                 call = None;
             }
@@ -129,7 +125,7 @@ impl Reader {
 
 fn main() {
     let args: Vec<_> = env::args().collect();
-    assert_eq!(args.len(), 4, "usage: verify-map-text ROM SYM CORPUS");
+    assert_eq!(args.len(), 4, "usage: verify-text ROM SYM CORPUS");
     let syms = symbols(&args[2]);
     let mut gb = GameBoy::new(Model::Cgb(Default::default()));
     gb.mmu
@@ -146,6 +142,7 @@ fn main() {
         timing: Default::default(),
     };
     let mut boundary = None;
+    let mut samples = far_calls::Samples::default();
     for line in fs::read_to_string(&args[3]).unwrap().lines() {
         let Some(record) = line.strip_prefix("PAIR ") else {
             continue;
@@ -158,37 +155,38 @@ fn main() {
             .chunks_exact(2)
             .map(|byte| u8::from_str_radix(std::str::from_utf8(byte).unwrap(), 16).unwrap())
             .collect();
-        let (bank, start) = syms[&format!("start{id}")];
-        let (_, end) = syms[&format!("end{id}")];
+        let (bank, start) = syms[&format!("{id}_start")];
+        let (_, end) = syms[&format!("{id}_end")];
         reader.check(bank, start, end, &raw, implicit);
+        if start == end || bank == 0 || reader.gb.mmu.read_byte(start) != 0x5d {
+            continue;
+        }
+        let rom = &reader.gb.mmu.cart.as_ref().unwrap().rom;
+        let offset = (usize::from(bank) - 1) * 0x4000 + usize::from(start);
+        let packed = &rom[offset..offset + usize::from(end - start)];
+        samples.collect(&raw, packed);
         let (terminator, glyphs) = raw.split_last().unwrap();
         if boundary.is_none()
-            && reader.gb.mmu.read_byte(start) == 0x4c
             && matches!(terminator, 0x52 | 0x53)
             && glyphs.len() <= 18
             && glyphs.iter().all(|&b| b >= 0x7f)
         {
-            let rom = &reader.gb.mmu.cart.as_ref().unwrap().rom;
-            let offset = (usize::from(bank) - 1) * 0x4000 + usize::from(start);
-            boundary = Some((rom[offset..offset + usize::from(end - start)].to_vec(), raw));
+            boundary = Some((packed.to_vec(), raw));
         }
     }
-    for (name, t) in ["singular", "pair"].iter().zip(&reader.timing[1..]) {
-        if t.characters != 0 {
-            println!(
-                "{name}: {} bytes, mean {} and max {} T-cycles",
-                t.characters,
-                t.total / t.characters,
-                t.maximum
-            );
-        }
-    }
+    let t = &reader.timing;
+    println!(
+        "{} compressed bytes, mean {:.1} and max {} T-cycles",
+        t.characters,
+        t.total as f64 / t.characters as f64,
+        t.maximum
+    );
     // Move a complete packed record in the emulator's private ROM copy only.
     // The reader must stop at $8000 without fetching a byte from VRAM.
     let (packed, raw) = boundary.expect("no pair records tested");
     let rom = &mut reader.gb.mmu.cart.as_mut().unwrap().rom;
     let mut bank = u8::try_from(rom.len() / 0x4000 - 1).unwrap();
-    if bank == syms["ReadMapPairToken"].0 {
+    if bank == syms["ReadHuffmanToken"].0 {
         bank -= 1;
     }
     let start = 0x8000 - u16::try_from(packed.len()).unwrap();
@@ -227,4 +225,5 @@ fn main() {
         assert_eq!(gb.mmu.read_byte(dest + i as u16), byte);
     }
     println!("Bank-end RAM and far-string display checks passed");
+    samples.check(gb, &syms);
 }

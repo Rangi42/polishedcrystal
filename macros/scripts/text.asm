@@ -7,8 +7,6 @@ DEF _compression_terminator = 0
 ; A terminator has stopped compressing text; see if we need to resume trying to compress.
 DEF _stopped_compressing_text = 0
 
-DEF _ctxt_context EQUS "b"
-
 ; Text commands
 
 MACRO text_start
@@ -155,13 +153,9 @@ MACRO page
 ENDM
 
 MACRO _dtxt
-	if DEF(HUFFMAN)
-		_print_huffman_text \#
-	endc
 	if _stopped_compressing_text && !_might_compress_text && !_compressing_text
 		DEF _might_compress_text = 1
 		DEF _compression_terminator = 0
-		REDEF _ctxt_context EQUS "b"
 	endc
 	DEF _stopped_compressing_text = 0
 	if !_might_compress_text && !_compressing_text
@@ -184,47 +178,18 @@ MACRO _dtxt
 	endc
 ENDM
 
-MACRO _print_huffman_text
-	rept _NARG
-		DEF _huffman_str EQUS \1
-		rept $7fff_ffff
-			if !STRLEN(#_huffman_str)
-				break
-			endc
-			DEF _huffman_sub EQUS STRCHAR(#_huffman_str, 0)
-			REDEF _huffman_str EQUS STRSLICE(#_huffman_str, STRLEN(#_huffman_sub))
-			println STRFMT("\"%#s\"", #_huffman_sub)
-			PURGE _huffman_sub
-		endr
-		PURGE _huffman_str
-		shift
-	endr
-ENDM
-
 MACRO _dchr
 	DEF _chr = CHARVAL(\1)
-	DEF _huffman_defined = 0
-	if DEF(___huffman_data_{_ctxt_context}_{02X:_chr}) && DEF(___huffman_length_{_ctxt_context}_{02X:_chr})
-		DEF _huffman_defined = 1
-		DEF _huffman_data = ___huffman_data_{_ctxt_context}_{02X:_chr}
-		DEF _huffman_length = ___huffman_length_{_ctxt_context}_{02X:_chr}
+	DEF _encodable = (_chr >= HUFFMAN_FIRST_SHIFTED_CHAR && _chr <= HUFFMAN_LAST_SHIFTED_CHAR) \
+		|| (_chr >= FIRST_REGULAR_TEXT_CHAR && _chr < HUFFMAN_FIRST_SHIFTED_TOKEN)
+	if _might_compress_text && _encodable
+		DEF _might_compress_text = 0
+		DEF _compressing_text = 1
+		DEF _raw_bytes = 0
+		setcharmap compressing
 	endc
-	if _might_compress_text && _huffman_defined
-		; We might compress text, and this character has a Huffman code
-		if _huffman_length < 8
-			; This character's Huffman code is smaller than a byte; start compressing
-			DEF _might_compress_text = 0
-			DEF _compressing_text = 1
-			DEF _ctxt_bits = 0
-			DEF _ctxt_length = 0
-			DEF _raw_bytes = 0
-			DEF _compressed_bytes = 1
-			DEF _compressed_byte_0 = '<CTXT>'
-			setcharmap compressing
-		endc
-	endc
-	if _compressing_text && !_huffman_defined
-		; We're compressing text, but this character does not have a Huffman code; don't compress after all
+	if _compressing_text && !_encodable
+		; A character outside the token alphabet makes this segment raw.
 		if DEF(DEBUG)
 			warn "Uncompressible character in text: {#02X:_chr}"
 		endc
@@ -244,65 +209,20 @@ MACRO _dchr
 			DEF _might_compress_text = 0
 		endc
 	else
-		; We're compressing text; count up the raw and compressed data
 		; Append the raw character
 		DEF _raw_byte_{d:_raw_bytes} = _chr
 		DEF _raw_bytes += 1
-		; Append the compressed bits
-		DEF _ctxt_bits = (_ctxt_bits << _huffman_length) | _huffman_data
-		DEF _ctxt_length += _huffman_length
-		rept 4 ; the longest Huffman code can be 31 bits, so this will ensure _ctxt_bits < 8
-			if _ctxt_length >= 8
-				; Append the compressed byte
-				DEF _compressed_byte_{d:_compressed_bytes} = _ctxt_bits >> (_ctxt_length - 8)
-				DEF _compressed_bytes += 1
-				; Drain the accumulated bits
-				DEF _ctxt_length -= 8
-				DEF _ctxt_bits &= (1 << _ctxt_length) - 1
-			endc
-		endr
-		if _chr == ' ' || ('<LNBRK>' <= _chr && _chr <= '<PARA>')
-			REDEF _ctxt_context EQUS "b"
-		elif _chr == 'A' || _chr == 'E' || _chr == 'I' || _chr == 'O' || _chr == 'U' \
-			|| _chr == 'a' || _chr == 'e' || _chr == 'i' || _chr == 'o' || _chr == 'u'
-			REDEF _ctxt_context EQUS "v"
-		else
-			REDEF _ctxt_context EQUS "o"
-		endc
 		if _chr == '@' || _chr == '<DONE>' || _chr == '<PROMPT>'
-			; We've reached the end of the text
-			if _ctxt_length > 0
-				; Append the compressed byte, padded with zero bits
-				DEF _compressed_byte_{d:_compressed_bytes} = _ctxt_bits << (8 - _ctxt_length)
-				DEF _compressed_bytes += 1
-				; Clear the accumulated bits
-				DEF _ctxt_length = 0
-				DEF _ctxt_bits = 0
-			endc
-			; Stop compressing text
+			; Compare this complete segment with its raw encoding.
 			DEF _compressing_text = 0
 			DEF _might_compress_text = 0
 			setcharmap default
-			if DEF(MAP_PAIR_TEXT) && DEF(PAIR_TEXT_CORPUS)
+			if DEF(HUFFMAN)
 				_pair_text_record
 			endc
-			; Declare the accumulated bytes
-			if _compressed_bytes < _raw_bytes - !!_compression_terminator
-				if DEF(MAP_PAIR_TEXT)
-					_try_map_pairs
-				endc
-				; Compression saves space; declare the compressed bytes
-				for _text_idx, _compressed_bytes
-					db _compressed_byte_{d:_text_idx}
-				endr
-			else
-				; Compression does not save space; declare the raw bytes
-				for _text_idx, _raw_bytes - !!_compression_terminator
-					db _raw_byte_{d:_text_idx}
-				endr
-			endc
-			if DEF(MAP_PAIR_TEXT) && DEF(PAIR_TEXT_CORPUS)
-.pair_text_end{d:_pair_record_id}:
+			_emit_text_segment
+			if DEF(HUFFMAN)
+.pair_text_{d:_pair_record_id}_end:
 				DEF _pair_record_id += 1
 			endc
 			DEF _compression_terminator = 0

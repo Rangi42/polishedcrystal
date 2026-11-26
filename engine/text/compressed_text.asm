@@ -1,19 +1,19 @@
 ; HL = source, BC = bit reader. Return one decoded byte in A, updated HL/BC.
-; All model accesses stay in this bank. RefillMapPairBits fetches only bytes
+; All model accesses stay in this bank. RefillHuffmanBits fetches only bytes
 ; consumed by the current code, and the caller restores the source bank.
-ReadMapPairToken::
+ReadHuffmanToken::
 	ld d, h
 	ld e, l
 	ldh a, [hCompressedTextBuffer]
-	add LOW(MapPairContexts)
+	add LOW(HuffmanContexts)
 	ld l, a
-	adc HIGH(MapPairContexts)
+	adc HIGH(HuffmanContexts)
 	sub l
 	ld h, a
 	ld a, [hl]
-	add LOW(MapPairTrees)
+	add LOW(HuffmanTrees)
 	ld l, a
-	adc HIGH(MapPairTrees)
+	adc HIGH(HuffmanTrees)
 	sub l
 	ld h, a
 	ld a, [hli]
@@ -26,7 +26,7 @@ ReadMapPairToken::
 	xor a
 .read_bit
 	dec b
-	call z, RefillMapPairBits
+	call z, RefillHuffmanBits
 	sla c
 	rla
 	sub [hl]
@@ -43,12 +43,12 @@ ReadMapPairToken::
 	sub l
 	ld h, a
 	ld a, [hl]
-	cp $ff
+	cp HUFFMAN_ESCAPE
 	jr nz, .got_token
 	ld a, 1 ; sentinel shifts out after eight bits
 .escape
 	dec b
-	call z, RefillMapPairBits
+	call z, RefillHuffmanBits
 	sla c
 	rla
 	jr nc, .escape
@@ -56,25 +56,25 @@ ReadMapPairToken::
 	cp ' '
 	jr nc, .literal
 	add a
-	add LOW(MapPairDictionary)
+	add LOW(HuffmanPairs)
 	ld l, a
-	adc HIGH(MapPairDictionary)
+	adc HIGH(HuffmanPairs)
 	sub l
 	ld h, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld a, h
-	ldh [hTextPairState], a
+	ldh [hTextPendingChar], a
 	ld a, l
 	jr .done
 .literal
-	cp FIRST_SHIFTED_LEAF_NODE_ID
+	cp HUFFMAN_FIRST_SHIFTED_TOKEN
 	jr c, .done
-	sub FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
+	sub HUFFMAN_TOKEN_SHIFT
 .done
 	ld h, d
 	ld l, e
 	ret
 
-INCLUDE "data/text/map_pair_text.asm"
+INCLUDE "data/text/compressed_text.asm"

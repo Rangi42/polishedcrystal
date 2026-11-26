@@ -62,7 +62,6 @@ INCLUDE "home/vwf.asm"
 ; data used within home
 INCLUDE "audio/alternate_music.asm"
 INCLUDE "data/text/ngrams.asm"
-INCLUDE "data/text/compressed_text.asm"
 INCLUDE "data/pokemon/variant_forms.asm"
 INCLUDE "data/maps/special_music.asm"
 

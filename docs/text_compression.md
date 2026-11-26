@@ -1,22 +1,15 @@
-# Map dialog compression
+# Text compression
 
-Map scripts use the usual text macros. For each segment, the assembler first
-compares raw text with the singular Huffman encoding (`<CTXT>`), which codes
-one character at a time. If that saves a byte, it also tries the map pair encoding
-(`<MAP_PAIR_TEXT_MARKER>`). The pair encoding must beat the singular encoding
-after counting the marker and rounding the payload up to whole bytes. Ties keep
-the first choice. Outside map scripts, the assembler chooses between raw text
-and the singular encoding.
+The text macros choose between raw charmap bytes and a Huffman stream marked
+with `<CTXT>`. Each compressible segment ends at `@`, `<DONE>`, or `<PROMPT>`.
+Before an inline command the macros supply an implicit `@` for the decoder.
+Raw text falls through to the command without storing the extra terminator.
+The assembler uses the compressed form only when it saves at least one byte,
+including the marker and the final padding.
 
-A segment ends at `@`, `<DONE>`, or `<PROMPT>`. Before an inline text command,
-the macros supply an implicit `@` for the compressed reader. A raw segment
-falls through to that command without storing the extra terminator.
-
-The raw/compressed choice also affects callers. When a compressed segment
-ends in `<DONE>` or `<PROMPT>`, the decoder sets `hStopPrintingString`. A
-nested `text_far` can then stop the caller's text command loop. Switching
-between singular and pair codes preserves this behavior because both use the
-same terminator handling.
+With either encoding, `text_far` resumes at the next command when its callee
+finishes. `text_farend` ends the current script after the callee finishes.
+A nonblocking preview stops its enclosing callers at a page or scroll break.
 
 ## How the pair format works
 
@@ -54,18 +47,17 @@ the source bank before returning a character to the printer.
 
 ## Updating the model
 
-The escape can represent any valid token, so editing map text does not require
-regenerating the tables. To retrain after a change to the corpus, run these
-commands from the project root after a default build:
+The escape can represent any valid token, so ordinary text edits use the
+checked-in model. To retrain on all text in the default build, run:
 
 ```sh
-rgbasm -E -Q8 -P includes.asm -DPAIR_TEXT_CORPUS -o /tmp/map-text.o data/maps/map_data.asm > /tmp/map-text.corpus
-python3 utils/pair_text.py /tmp/map-text.corpus data/text/map_pair_models.inc
+make huffman > /tmp/text.corpus
+python3 utils/huffman.py /tmp/text.corpus data/text/huffman_model.inc
 ```
 
 The corpus records the bytes after charmap expansion, including any implicit
 terminator. The trainer selects frequent pairs, then alternates between choosing
 tokens for those strings and fitting codes to the resulting counts. It keeps
 the model with the smallest combined table and padded payload size. To check
-the result, run `utils/check-map-text.sh`. It compares the linked streams with
+the result, run `utils/check-text.sh`. It compares the linked streams with
 the expanded source bytes and checks the encoder's choice for each segment.

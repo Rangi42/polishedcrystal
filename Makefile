@@ -66,13 +66,6 @@ EXTENSION := pocket
 RGBASMFLAGS += -DANALOGUE_POCKET -DNO_RTC
 RGBFIXFLAGS = -Weverything -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m MBC5+RAM+BATTERY -r 3 -L $(POCKET_LOGO)
 endif
-ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
-# Context models require token output to remain in source order.
-.NOTPARALLEL:
-Q := @
-RGBASMFLAGS += -DHUFFMAN
-endif
-
 rom_obj := \
 	main.o \
 	home.o \
@@ -134,7 +127,11 @@ freespace: crystal tools/bankends
 
 bsp: $(ROM_NAME).bsp
 
+# Emit the full corpus even if a normal build is already up to date.
 huffman: crystal
+	@set -e; for src in $(rom_obj:.o=.asm); do \
+		$(RGBASM) $(RGBASMFLAGS) -DHUFFMAN -o /dev/null "$$src"; \
+	done
 
 
 rgbdscheck.o: rgbdscheck.asm

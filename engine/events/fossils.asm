@@ -50,7 +50,7 @@ AskResurrectFossilScript::
 	verticalmenu
 	closewindow
 	ifequalfwd $1, ResurrectHelixFossil
-	ifequal $2, ResurrectOldAmber
+	ifequalfwd $2, ResurrectOldAmber
 	sjumpfwd .maybe_later
 
 .ask_dome_amber

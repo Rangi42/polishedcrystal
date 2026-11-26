@@ -1,47 +1,43 @@
-MACRO _huffman_branch_node
-	REDEF _branch_code EQUS "{node_prefix_\1_{02X:parent_node_id}}\2"
-	if DEF(___huffman_escape_\1_{_branch_code})
-		db CONTEXT_ESCAPE_NODE_ID
-	elif DEF(___huffman_char_\1_{_branch_code})
-			DEF x = CHARVAL(___huffman_char_\1_{_branch_code})
-			DEF ___huffman_leaf_node_\1_{02X:x} = 1
-			if FIRST_LEAF_NODE_ID <= x && x < FIRST_SHIFTED_LEAF_NODE_ID
-				; These characters directly correspond to the lower leaf IDs.
-				db x
-			elif FIRST_SHIFTED_LEAF_CHAR_ID <= x && x <= LAST_SHIFTED_LEAF_CHAR_ID
-				; Lower characters correspond to the higher leaf IDs.
-				db x + FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
-			else
-				fail "invalid contextual Huffman leaf character ${02x:x} for code {_branch_code}"
-			endc
+MACRO x_pair_rule
+	assert \1 == ' ' || (\1 >= 'A' && \1 <= 'Z') || (\1 >= 'a' && \1 <= 'z')
+	assert \2 == ' ' || (\2 >= 'A' && \2 <= 'Z') || (\2 >= 'a' && \2 <= 'z')
+	db \1, \2
+ENDM
+
+MACRO x_pair_contexts
+	rept _NARG
+		db 2 * (\1) ; byte offset in the pointer table
+		shift
+	endr
+ENDM
+
+MACRO x_pair_codes
+	if _emit_symbols
+		if _NARG
+			db \#
+		endc
 	else
-		DEF num_parent_nodes_\1 += 1
-		DEF node_prefix_\1_{02X:num_parent_nodes_\1} EQUS #_branch_code
-		db num_parent_nodes_\1
+		DEF _rank += _NARG
+		db _NARG
+		db .Symbols{d:tree} + _rank - @
 	endc
 ENDM
 
-MACRO huffman_tree
-	DEF num_parent_nodes_\1 = ROOT_NODE_ID
-	DEF node_prefix_\1_{02X:num_parent_nodes_\1} EQUS ""
-
-	for parent_node_id, ROOT_NODE_ID, FIRST_LEAF_NODE_ID
-		if !DEF(node_prefix_\1_{02X:parent_node_id})
-			break
-		endc
-		_huffman_branch_node \1, 0
-		_huffman_branch_node \1, 1
+HuffmanPairs:
+	huffman_pairs
+HuffmanContexts:
+	huffman_contexts
+HuffmanTrees:
+	for tree, NUM_HUFFMAN_TREES
+		dw .Tree{d:tree}
 	endr
-	assert num_parent_nodes_\1 < FIRST_LEAF_NODE_ID, "too many contextual Huffman parent nodes"
-
-	for x, 256
-		if DEF(___huffman_requires_leaf_\1_{02X:x})
-			assert DEF(___huffman_leaf_node_\1_{02X:x}), \
-				"unreachable contextual Huffman leaf character ${02x:x}"
-		endc
+	for tree, NUM_HUFFMAN_TREES
+.Tree{d:tree}:
+		DEF _rank = 0
+		DEF _emit_symbols = 0
+		huffman_tree_{d:tree}
+.Symbols{d:tree}:
+		DEF _emit_symbols = 1
+		huffman_tree_{d:tree}
 	endr
-ENDM
-
-TextCompressionHuffmanTreeBoundary: huffman_tree b
-TextCompressionHuffmanTreeVowel:    huffman_tree v
-TextCompressionHuffmanTreeOther:    huffman_tree o
+HuffmanModelEnd:

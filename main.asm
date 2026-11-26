@@ -748,6 +748,6 @@ SECTION "Weekday text", ROMX
 INCLUDE "engine/text/weekday.asm"
 
 
-SECTION "Map dialog decoder", ROMX
+SECTION "Text decoder", ROMX
 
-INCLUDE "engine/text/map_pair_text.asm"
+INCLUDE "engine/text/compressed_text.asm"

@@ -206,7 +206,7 @@ NEXTU
 ; ctxt
 hPlaceStringCoords:: dw
 hCompressedTextBuffer:: ds 2 ; one character and "@"
-hTextPairState:: db ; TEXTSTATE_* or the pending second character of a pair
+hTextPendingChar:: db ; second character of a pair, or zero
 hTextSourceBank:: db ; source bank while reading a pair token
 ENDU
 

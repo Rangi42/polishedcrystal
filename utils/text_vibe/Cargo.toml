@@ -1,5 +1,5 @@
 [package]
-name = "verify-map-text"
+name = "verify-text"
 version = "0.1.0"
 edition = "2024"
 publish = false

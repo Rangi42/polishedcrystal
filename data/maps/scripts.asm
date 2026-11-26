@@ -1,7 +1,3 @@
-; Enable the pair codec only for map script dialog.
-DEF MAP_PAIR_TEXT EQU 1
-INCLUDE "macros/scripts/map_pair_text.asm"
-
 SECTION "Pokemon Center Scripts 1", ROMX
 
 INCLUDE "maps/CherrygrovePokeCenter1F.asm"
@@ -1091,5 +1087,3 @@ INCLUDE "maps/Route48.asm"
 INCLUDE "maps/Route49.asm"
 
 ENDSECTION
-
-PURGE MAP_PAIR_TEXT

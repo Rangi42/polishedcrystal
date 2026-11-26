@@ -189,16 +189,14 @@ PlaceNextChar::
 	jr nc, _PlaceLiteralChar
 	cp SPECIALS_START
 	jr nc, _PlaceSpecialChar
-	cp '<MAP_PAIR_TEXT_MARKER>'
+	cp NGRAMS_START
 	jr nc, _PlaceNgramChar
 	dec de
 	jmp FinishString
 
 
 _PlaceNgramChar:
-	assert '<MAP_PAIR_TEXT_MARKER>' + 1 == NGRAMS_START
 	sub NGRAMS_START
-	jmp c, DecompressString
 	push de
 	push hl
 	ld e, a
@@ -302,11 +300,9 @@ ContText::
 	jmp NextChar
 
 StopAtNonblockingTextPause::
-	ld a, TRUE
+	ld a, TEXTSTOP_PAUSE
 	ldh [hStopPrintingString], a
-	pop hl
-	dec de
-	ret
+	jr DoneText
 
 Paragraph::
 	ld a, [wTextboxFlags]
@@ -345,6 +341,7 @@ PromptText::
 	ld a, [wTextboxFlags]
 	bit NO_TEXT_PAUSE_F, a
 	jr nz, DoneText
+	push hl ; cursor for the next text command
 	push de
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
@@ -355,12 +352,12 @@ PromptText::
 	cp LINK_COLOSSEUM
 	call nz, UnloadBlinkingCursor
 	pop de
+	pop hl
 	; fallthrough
 
 DoneText::
-	pop hl
 	dec de
-	ret
+	jmp FinishString
 
 PlaceTargetsName::
 	ldh a, [hBattleTurn]
@@ -551,17 +548,26 @@ FarString::
 	ret
 
 DoTextUntilTerminator::
+	assert TEXTSTOP_NONE == 0
 	xor a
 	ldh [hStopPrintingString], a
 .loop
 	ldh a, [hStopPrintingString]
 	and a
-	ret nz
+	jr nz, .stop
 	ld a, [hli]
 	call CheckTerminatorChar
 	ret z
 	call .TextCommand
 	jr .loop
+
+.stop
+	; A packed terminator ends this invocation. A preview pause unwinds all callers.
+	cp TEXTSTOP_END
+	ret nz
+	xor a ; TEXTSTOP_NONE
+	ldh [hStopPrintingString], a
+	ret
 
 .TextCommand:
 	cp NUM_TEXT_COMMANDS
@@ -745,7 +751,10 @@ DecompressString::
 
 	call SwapHLDE ; hl = string, de = current coords
 
-	ld a, [hli] ; skip "<CTXT>" or "<MAP_PAIR_TEXT_MARKER>"
+	; PlaceString is also called directly, outside the text command loop.
+	xor a ; TEXTSTOP_NONE
+	ldh [hStopPrintingString], a
+	inc hl ; skip "<CTXT>"
 	call InitTextDecoder
 
 	; terminate buffer for printing each character
@@ -807,10 +816,15 @@ DecompressString::
 	jr z, .end
 	assert '@' + 1 == '<PROMPT>'
 	dec a
+	jr z, .done
+	ldh a, [hStopPrintingString]
+	cp TEXTSTOP_PAUSE
 	jr nz, .character_loop
+	jr .end
 
 .done
-	inc a ; ld a, 1 since it's zero
+	assert TEXTSTOP_END == 1
+	inc a ; TEXTSTOP_END
 	ldh [hStopPrintingString], a
 
 .end
@@ -837,8 +851,6 @@ DecompressStringToRAM::
 .copy_loop
 	ld a, [hli]
 	cp '<CTXT>'
-	jr z, .do_decompression
-	cp '<MAP_PAIR_TEXT_MARKER>'
 	jr z, .do_decompression
 	call CheckTerminatorChar
 	jr z, .append_terminator
@@ -872,40 +884,29 @@ DecompressStringToRAM::
 	ret
 
 InitTextDecoder:
-	; A holds the compressed stream marker.
-	assert TEXTSTATE_COMPRESSED == 0
-	sub '<CTXT>'
-	jr z, .set_mode
-	ld a, TEXTSTATE_MAP_PAIR
-.set_mode
-	ldh [hTextPairState], a
+	xor a
+	ldh [hTextPendingChar], a
 	ld a, ' '
 	ldh [hCompressedTextBuffer], a
 	ld b, 1 ; the first bit triggers a refill
 	ret
 
 ReadHuffmanChar:
-	ldh a, [hTextPairState]
-	assert TEXTSTATE_COMPRESSED == 0
+	ldh a, [hTextPendingChar]
 	and a
-	jr z, ReadSingularHuffmanChar
-	assert TEXTSTATE_MAP_PAIR == 1
-	dec a
 	jr z, .read_token
-	; Only literal letters and spaces can be pending.
-	inc a
 	ld e, a
-	ld a, TEXTSTATE_MAP_PAIR
-	ldh [hTextPairState], a
+	xor a
+	ldh [hTextPendingChar], a
 	ld a, e
 	ret
 
 .read_token
 	ldh a, [hROMBank]
 	ldh [hTextSourceBank], a
-	ld a, BANK(ReadMapPairToken)
+	ld a, BANK(ReadHuffmanToken)
 	rst Bankswitch
-	call ReadMapPairToken
+	call ReadHuffmanToken
 	ld e, a
 	ldh a, [hTextSourceBank]
 	rst Bankswitch
@@ -913,7 +914,7 @@ ReadHuffmanChar:
 	ret
 
 ; Fetch the next source byte into C, then restore the model bank and partial code in A.
-RefillMapPairBits::
+RefillHuffmanBits::
 	push af
 	ldh a, [hTextSourceBank]
 	rst Bankswitch
@@ -921,104 +922,9 @@ RefillMapPairBits::
 	inc de
 	ld c, a
 	ld b, 8
-	ld a, BANK(ReadMapPairToken)
+	ld a, BANK(ReadHuffmanToken)
 	rst Bankswitch
 	pop af
-	ret
-
-ReadSingularHuffmanChar:
-	; Keep the compressed source pointer in de, leaving hl available for the
-	; context-specific tree base.
-	ld d, h
-	ld e, l
-
-	; Select a tree from the previous decoded character.
-	ldh a, [hCompressedTextBuffer]
-	cp ' '
-	jr z, .boundary
-	cp '<LNBRK>'
-	jr c, .check_vowel
-	cp '<PARA>' + 1
-	jr c, .boundary
-.check_vowel
-	and ~('A' ^ 'a') ; normalize lowercase letters to uppercase
-	cp 'A'
-	jr z, .vowel
-	cp 'E'
-	jr z, .vowel
-	cp 'I'
-	jr z, .vowel
-	cp 'O'
-	jr z, .vowel
-	cp 'U'
-	jr z, .vowel
-	ld hl, TextCompressionHuffmanTreeOther
-	jr .got_tree
-.boundary
-	ld hl, TextCompressionHuffmanTreeBoundary
-	jr .got_tree
-.vowel
-	ld hl, TextCompressionHuffmanTreeVowel
-.got_tree
-	assert ROOT_NODE_ID == $00
-	xor a
-.tree_loop
-	; "c = [de++]" when b reaches 0, then carry = next bit from c
-	dec b
-	jr nz, .no_reload
-	push af
-	ld a, [de]
-	ld c, a
-	inc de
-	ld b, 8
-	pop af
-.no_reload
-	sla c
-	; Temporarily advance hl from the selected tree base to node a/branch carry.
-	adc a
-	push hl
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a
-	; keep traversing the tree until a leaf node
-	ld a, [hl]
-	pop hl
-	cp FIRST_LEAF_NODE_ID
-	jr c, .tree_loop
-
-	cp CONTEXT_ESCAPE_NODE_ID
-	jr z, .literal
-
-	; shifted leaf node IDs correspond to lesser characters
-	; (since node IDs below the first leaf node ID must be parent nodes)
-	cp FIRST_SHIFTED_LEAF_NODE_ID
-	jr c, .done
-	sub FIRST_SHIFTED_LEAF_NODE_ID - FIRST_SHIFTED_LEAF_CHAR_ID
-	jr .done
-
-.literal
-	; An escape leaf is followed by one uncompressed character byte.
-	ld a, 1
-.literal_loop
-	dec b
-	jr nz, .literal_no_reload
-	push af
-	ld a, [de]
-	ld c, a
-	inc de
-	ld b, 8
-	pop af
-.literal_no_reload
-	sla c
-	rla
-	jr nc, .literal_loop
-
-.done
-	; Return the advanced compressed source pointer in hl.
-	ld h, d
-	ld l, e
 	ret
 
 CheckTerminatorChar:
