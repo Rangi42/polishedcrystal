@@ -70,10 +70,10 @@ _LoadMusicWord::
 
 ; Read the packed operands in their own bank. The tag has already gone
 ; through ParseMusic, so duty, duty patterns and sound_ret use stock handlers.
-ReadSirenNote::
-	ld a, BANK(DecodeSirenNote)
+ReadDeltaNote::
+	ld a, BANK(DecodeDeltaNote)
 	rst Bankswitch
-	call DecodeSirenNote ; far-ok
+	call DecodeDeltaNote ; far-ok
 	ld e, a
 	ld a, BANK(SetNoteDuration)
 	rst Bankswitch

@@ -27,10 +27,10 @@ INCLUDE "audio/custom-cries/porygon_z.asm"
 INCLUDE "audio/custom-cries/sylveon.asm"
 
 
-SECTION "Siren Cries", ROMX
+SECTION "Delta Note Streams", ROMX
 
-INCLUDE "audio/siren_decoder.asm"
-INCLUDE "macros/scripts/siren.asm"
-DEF _siren_previous = 0
-INCLUDE "audio/siren_cries.asm"
-PURGE _siren_previous
+INCLUDE "audio/decode_delta_note.asm"
+INCLUDE "macros/scripts/delta_notes.asm"
+DEF _delta_note_previous_frequency = 0
+INCLUDE "audio/delta_note_streams.asm"
+PURGE _delta_note_previous_frequency

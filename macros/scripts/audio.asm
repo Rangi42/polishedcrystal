@@ -8,9 +8,9 @@ MACRO channel
 	assert 0 < (\1) && (\1) <= NUM_CHANNELS, \
 		"channel id must be 1-{d:NUM_CHANNELS}"
 	dn (_num_channels << 2), \1 - 1 ; channel id
-	if DEF(_siren_header_{.})
-		assert BANK(\2) == BANK(DecodeSirenNote)
-		dw (\2) | (DEF(_siren_pack_\2) << 15)
+	if DEF(_delta_note_header_{.})
+		assert BANK(\2) == BANK(DecodeDeltaNote)
+		dw (\2) | (DEF(_delta_note_channel_\2) << 15)
 	else
 		dw \2 ; address
 	endc
@@ -38,8 +38,8 @@ MACRO noise_note
 ENDM
 
 MACRO _sfx_note ; frequency width, length, volume, envelope, frequency
-	if DEF(_siren_pack_{.})
-		_siren_note \#
+	if DEF(_delta_note_channel_{.})
+		_encode_delta_note \#
 	else
 		db \2 ; length
 		if (\4) < 0
@@ -288,8 +288,8 @@ ENDM
 	const sound_ret_cmd ; $ff
 	assert sound_ret_cmd == $ff, "sound_ret_cmd must be $ff"
 MACRO sound_ret
-	if DEF(_siren_pack_{.})
-		DEF _siren_previous = 0
+	if DEF(_delta_note_channel_{.})
+		DEF _delta_note_previous_frequency = 0
 	endc
 	db sound_ret_cmd
 ENDM

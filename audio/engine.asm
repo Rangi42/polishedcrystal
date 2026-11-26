@@ -1128,8 +1128,8 @@ RestoreVolume:
 ParseSFXOrCry:
 	; hl still points at Flags. GetMusicByte preserves the incremented
 	; intensity pointer below, paying for this test on literal streams.
-	bit SOUND_PACKED_CRY, [hl]
-	jr nz, .siren
+	bit SOUND_DELTA_NOTES, [hl]
+	jr nz, .delta_note
 	; turn noise sampling on
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
@@ -1157,8 +1157,8 @@ ParseSFXOrCry:
 	ld [hl], a
 	ret
 
-.siren
-	jmp ReadSirenNote
+.delta_note
+	jmp ReadDeltaNote
 
 GetNoiseSample:
 ; load ptr to sample header in wNoiseSampleAddress
@@ -2166,8 +2166,8 @@ _PlayCry::
 	ld a, [hl]
 	res 7, [hl]
 	rrca ; header bit 7 -> channel flag bit 6
-	assert SOUND_PACKED_CRY == 6
-	and 1 << SOUND_PACKED_CRY
+	assert SOUND_DELTA_NOTES == 6
+	and 1 << SOUND_DELTA_NOTES
 	or 1 << SOUND_CRY
 	ld hl, wChannel1Flags - wChannel1
 	add hl, bc

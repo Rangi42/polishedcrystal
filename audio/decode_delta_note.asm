@@ -1,7 +1,7 @@
 ; UpdateChannels writes each channel to the APU before processing the next
 ; one. Match the stock parser's per-note cost, including its banked operand
 ; reads, so writes and waveform phase stay at the same cycle within the frame.
-MACRO siren_delay ; machine cycles, clobbers a and flags
+MACRO delta_note_delay ; machine cycles, clobbers a and flags
 	assert 5 <= \1 && \1 < 1025
 	ld a, (\1 - 1) / 4
 .wait\@ ; load + loop = 4 * iterations + 1
@@ -15,7 +15,7 @@ ENDM
 ; Called in the same bank as the packed channel. bc = channel struct.
 ; Return the stock duration in a. Frequency holds the previous *unmodified*
 ; note (the pitch offset is applied later to wCurTrackFrequency).
-DecodeSirenNote:
+DecodeDeltaNote:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
 	set NOTE_NOISE_SAMPLING, [hl]
@@ -102,17 +102,17 @@ DecodeSirenNote:
 	pop af
 	and 7
 	ld [hl], a
-	siren_delay 8
+	delta_note_delay 8
 	jr .finish
 
 .literal
 	push af
-	siren_delay 45
+	delta_note_delay 45
 	jr .raw
 .escaped
 	ld a, [hli] ; $28, full legacy duration
 	push af
-	siren_delay 40
+	delta_note_delay 40
 .raw
 	ld a, [hli] ; intensity
 	ld d, a
@@ -143,7 +143,7 @@ DecodeSirenNote:
 .last_byte
 	ld a, [hl]
 	ld [wCurMusicByte], a ; final operand, as with ParseSFXOrCry
-	siren_delay 29
+	delta_note_delay 29
 	pop de
 	ld hl, wChannel1MusicAddress - wChannel1
 	add hl, bc
@@ -155,7 +155,7 @@ DecodeSirenNote:
 
 .tone
 	; A stock tonal note fetches one more frequency byte than noise.
-	siren_delay 103
+	delta_note_delay 103
 	jr .last_byte
 
 .get_duration
