@@ -29,11 +29,13 @@ ENDM
 INCLUDE "data/text/huffman_model.inc"
 
 DEF _pair_index = 0
-huffman_pairs
+	huffman_pairs
 assert _pair_index <= ' '
+
 DEF _context_byte = 0
-huffman_contexts
+	huffman_contexts
 assert _context_byte == 256
+
 for _tree, NUM_HUFFMAN_TREES
 	DEF _code = 0
 	DEF _length = 0

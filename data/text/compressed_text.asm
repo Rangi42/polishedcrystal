@@ -19,25 +19,26 @@ MACRO x_pair_codes
 	else
 		DEF _rank += _NARG
 		db _NARG
-		db .Symbols{d:tree} + _rank - @
+		dr .Symbols{d:tree} + _rank
 	endc
 ENDM
 
 HuffmanPairs:
 	huffman_pairs
+
 HuffmanContexts:
 	huffman_contexts
+
 HuffmanTrees:
 	for tree, NUM_HUFFMAN_TREES
 		dw .Tree{d:tree}
 	endr
 	for tree, NUM_HUFFMAN_TREES
-.Tree{d:tree}:
+	.Tree{d:tree}:
 		DEF _rank = 0
 		DEF _emit_symbols = 0
 		huffman_tree_{d:tree}
-.Symbols{d:tree}:
+	.Symbols{d:tree}:
 		DEF _emit_symbols = 1
 		huffman_tree_{d:tree}
 	endr
-HuffmanModelEnd:
