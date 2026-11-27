@@ -160,6 +160,7 @@ AbilityNames:
 	dw ArmorTail
 	dw MindsEye
 	dw MegaSol
+	dw Ripen
 	assert_table_length NUM_ABILITIES
 
 NoAbility:       rawchar "---@"
@@ -322,3 +323,4 @@ Sharpness:       rawchar "Sharpness@"
 ArmorTail:       rawchar "Armor Tail@"
 MindsEye:        rawchar "Mind's Eye@"
 MegaSol:         rawchar "Mega Sol@"
+Ripen:           rawchar "Ripen@"
