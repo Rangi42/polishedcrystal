@@ -346,7 +346,7 @@ MACRO map_object
 \1ObjectMovement::   db
 \1ObjectRadius::     db
 \1ObjectPalette::    db
-\1ObjectTimeOfDay::  db
+\1ObjectTimeOfDay::
 \1ObjectType::       db
 \1ObjectSightRange:: db
 \1ObjectScript::     dw

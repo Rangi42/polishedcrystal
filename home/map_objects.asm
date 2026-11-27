@@ -108,18 +108,14 @@ CheckObjectVisibility::
 CheckObjectTime::
 	ld hl, MAPOBJECT_TIMEOFDAY
 	add hl, bc
-	ld a, [hl]
-	cp -1
-	jr z, .timeofday_always
-	ld hl, .TimeOfDayValues_191e
-	ld a, [wTimeOfDay]
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hl]
-	ld hl, MAPOBJECT_TIMEOFDAY
-	add hl, bc
-	and [hl]
+; $46 | (x << 3) = the 'bit {x}, [hl]' opcode
+	ld a, [wTimeOfDay] ; 0/1/2/3 for morn/day/nite/eve
+	add a
+	add a
+	add a
+	or $46 + (4 << 3) ; the time of day bits are in the high nybble
+	ldh [hBitwiseFunctionOpcode], a
+	call hBitwiseFunction ; bit ([wTimeOfDay] + 4), [hl]
 	jr nz, .timeofday_always
 	scf
 	ret
@@ -127,12 +123,6 @@ CheckObjectTime::
 .timeofday_always
 	and a
 	ret
-
-.TimeOfDayValues_191e:
-	db 1 << MORN ; 1
-	db 1 << DAY  ; 2
-	db 1 << NITE ; 4
-	db 1 << EVE  ; 8
 
 _CopyObjectStruct::
 	ldh [hMapObjectIndexBuffer], a

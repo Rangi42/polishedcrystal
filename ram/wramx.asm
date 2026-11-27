@@ -1070,6 +1070,8 @@ wMap{d:n}Object:: map_object wMap{d:n}
 endr
 wMapObjectsEnd::
 
+	ds 21 ; unused
+
 wObjectMasks:: ds NUM_OBJECTS
 
 wVariableSprites:: ds $100 - SPRITE_VARS
