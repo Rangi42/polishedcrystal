@@ -354,6 +354,7 @@ Continue:
 	call Continue_CheckRTC_RestartClock
 	jmp c, CloseWindow
 	call Continue_CheckEGO_ResetInitialOptions
+	call .PrepareMap
 	ld a, $8
 	ld [wMusicFade], a
 	xor a ; MUSIC_NONE
@@ -366,18 +367,81 @@ Continue:
 	farcall FixPlayerEVsAndStats
 	farcall JumpRoamMons
 	farcall ClockContinue ; time-related
+	jmp FinishContinueFunction
+
+.PrepareMap:
+	; Clear the request in WRAM. Until the rebuilt map is saved, a reset
+	; must still reload the old on-disk snapshot with the request set.
+	ld hl, wStatusFlags3
+	ld b, [hl]
+	res STATUSFLAGS3_RELOAD_MAP_F, [hl]
+	res STATUSFLAGS3_RELOCATED_RETURN_WARP_F, [hl]
 	ld a, [wSpawnAfterChampion]
 	cp SPAWN_LANCE
 	jr z, .SpawnAfterE4
+	ld a, b
+	and (1 << STATUSFLAGS3_RELOAD_MAP_F) | (1 << STATUSFLAGS3_RELOCATED_RETURN_WARP_F)
+	push bc
+	call nz, .NotifyPatchedSave
+	pop bc
+	bit STATUSFLAGS3_RELOAD_MAP_F, b
 	ld a, MAPSETUP_CONTINUE
+	jr z, .enter
+
+	; The warp setup reloads blocks and objects. SPAWN_N_A keeps the
+	; saved map and coordinates, including the Pokécenter 2F return warp.
+	xor a
+	ld [wMapTileset], a ; force graphics to load on this cold entry
+	ld hl, wPlayerStruct ; LoadMapAttributes clears only the NPC structs
+	ld bc, OBJECT_LENGTH
+	rst ByteFill
+	ld a, SPAWN_N_A
+	ld [wDefaultSpawnpoint], a
+	ld a, MAPSETUP_WARP
+.enter
 	ldh [hMapEntryMethod], a
-	jr FinishContinueFunction
+	ret
 
 .SpawnAfterE4:
 	ld a, SPAWN_NEW_BARK
 	ld [wDefaultSpawnpoint], a
-	call PostCreditsSpawn
-	jr FinishContinueFunction
+	jr PostCreditsSpawn
+
+.NotifyPatchedSave:
+	ld a, [wMapNumber]
+	cp MAP_POKECENTER_2F
+	ret nz
+	ld a, [wMapGroup]
+	cp GROUP_POKECENTER_2F
+	ret nz
+	ld hl, .GoDownstairsText
+	bit STATUSFLAGS3_RELOCATED_RETURN_WARP_F, b
+	jmp z, PrintText
+	call PrintText
+
+	; The shared upstairs uses the previous map to determine its landmark.
+	call GetCurrentLandmark
+	ld e, a
+	farcall GetLandmarkName
+	ld hl, .NewDestinationText
+	jmp PrintText
+
+.GoDownstairsText:
+	text "Your save was"
+	line "successfully"
+	cont "patched."
+
+	para "Please go straight"
+	line "downstairs."
+	prompt
+
+.NewDestinationText:
+	text "The stairs now"
+	line "lead to"
+	cont ""
+	text_ram wStringBuffer1
+	text "."
+	prompt
 
 SpawnAfterLeaf:
 	ld a, SPAWN_HOME
