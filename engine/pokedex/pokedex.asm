@@ -2520,12 +2520,13 @@ _Pokedex_Search:
 
 .SearchOptionRanges:
 	db 2 ; by Number/by Name
-	db NUM_TYPES
-	db NUM_TYPES
-	db NUM_EGG_GROUPS
-	db NUM_EGG_GROUPS
-	db NUM_BODY_COLORS
-	db NUM_SHAPES
+	assert UNKNOWN_T == NUM_TYPES - 1
+	db NUM_TYPES ; discount UNKNOWN_T
+	db NUM_TYPES ; discount UNKNOWN_T
+	db NUM_EGG_GROUPS + 1
+	db NUM_EGG_GROUPS + 1
+	db NUM_BODY_COLORS + 1
+	db NUM_SHAPES + 1
 
 .SearchStringTableLocations:
 	dab .DexOrdering
