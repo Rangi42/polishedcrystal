@@ -366,7 +366,7 @@ SpriteMovementData::
 	db SPRITEMOVEFN_TINY_WINDOWS ; movement function
 	db DOWN ; facing
 	db OBJECT_ACTION_TINY_WINDOWS ; action
-	db WONT_DELETE | FIXED_FACING | SLIDING | EMOTE_OBJECT ; flags1
+	db FIXED_FACING | SLIDING | EMOTE_OBJECT ; flags1
 	db HIGH_PRIORITY ; flags2
 	db BG_ALIGNED ; palette flags
 
