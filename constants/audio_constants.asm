@@ -18,6 +18,22 @@
 DEF NUM_NOTES EQU const_value - 1
 	const CC ; d used for pitchoffset
 
+; Delta note tags encode the duration in the high nibble. Each tag has
+; two spellings: the higher one continues the packet on the next note.
+DEF DELTA_NOTE_BYTE     EQU $00 ; volume in low nibble; signed byte follows
+DEF DELTA_NOTE_NIBBLE   EQU $40 ; signed delta in low nibble; intensity follows
+DEF DELTA_NOTE_MORE     EQU $68
+DEF DELTA_NOTE_ENVELOPE EQU AUD1ENV_UP
+DEF DELTA_NOTE_ALT_ENV  EQU 1
+DEF DELTA_NOTE_PITCH_BITS EQU 11
+DEF DELTA_NOTE_ABS_MORE_F EQU DELTA_NOTE_PITCH_BITS - 8
+DEF DELTA_NOTE_ABS_MORE EQU 1 << DELTA_NOTE_ABS_MORE_F
+DEF DELTA_NOTE_SIGN EQU 1 << 3
+DEF DELTA_NOTE_NIBBLE_MASK EQU 2 * DELTA_NOTE_SIGN - 1
+DEF DELTA_NOTE_DURATION_MASK EQU (DELTA_NOTE_NIBBLE - 1) >> 4
+assert 2 * DELTA_NOTE_MORE == FIRST_MUSIC_CMD
+assert delta_absolute_cmd + 2 * (DELTA_NOTE_DURATION_MASK + 1) == noisesampleset_cmd
+
 ; channel
 ; ChannelPointers indexes (see audio/engine.asm)
 	const_def
@@ -76,6 +92,7 @@ DEF NOISE_CHAN_F EQU 2 ; bit set in CHAN5-CHAN7
 	const SOUND_SFX        ; 3
 	const SOUND_NOISE      ; 4
 	const SOUND_CRY        ; 5
+	const SOUND_DELTA_NOTES ; 6
 
 ; Flags2
 	const_def

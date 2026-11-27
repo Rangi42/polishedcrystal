@@ -24,24 +24,14 @@ MACRO rest
 	note 0, \1 ; length
 ENDM
 
+INCLUDE "macros/scripts/delta_notes.asm"
+
 MACRO square_note
-	db \1 ; length
-	if \3 < 0
-		dn \2, %1000 | (\3 * -1) ; volume envelope
-	else
-		dn \2, \3 ; volume envelope
-	endc
-	dw \4 ; frequency
+	_delta_note 2, \#
 ENDM
 
 MACRO noise_note
-	db \1 ; length
-	if \3 < 0
-		dn \2, %1000 | (\3 * -1) ; volume envelope
-	else
-		dn \2, \3 ; volume envelope
-	endc
-	db \4 ; frequency
+	_delta_note 1, \#
 ENDM
 
 ; MusicCommands indexes (see audio/engine.asm)
@@ -232,7 +222,9 @@ MACRO stereo_panning
 	endc
 ENDM
 
-	const_skip 9
+	const delta_notes_cmd ; $f0
+	const delta_absolute_cmd ; $f1; duration and envelope in the command index
+	const_skip 7
 
 	const noisesampleset_cmd ; $f9
 	; this gets output by toggle_noise

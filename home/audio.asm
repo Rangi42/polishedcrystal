@@ -68,6 +68,31 @@ _LoadMusicWord::
 	rst Bankswitch
 	ret
 
+; Read one packed note from bank a at hl. Return its tag in d, its final
+; operand in e, and hl at the next command. Absolute notes also return the
+; low frequency byte in wCurMusicByte. Like _LoadMusicByte, restore the
+; audio engine's bank before returning.
+ReadDeltaNoteOperands::
+	rst Bankswitch
+	ld a, [wCurMusicByte]
+	cp delta_notes_cmd
+	jr c, .tag
+	jr nz, .absolute
+	ld a, [hli] ; first delta tag after the marker
+.tag
+	ld d, a
+	jr .operand
+.absolute
+	ld d, a
+	ld a, [hli]
+	ld [wCurMusicByte], a
+.operand
+	ld a, [hli]
+	ld e, a
+	ld a, BANK(GetMusicByte)
+	rst Bankswitch
+	ret
+
 CheckSpecialMapMusic:
 ; Returns z if the current map has a special music handler.
 

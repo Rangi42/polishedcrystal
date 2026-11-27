@@ -1126,6 +1126,9 @@ RestoreVolume:
 	ret
 
 ParseSFXOrCry:
+	; hl points to channel flags. A continued packet supplies the note tag.
+	bit SOUND_DELTA_NOTES, [hl]
+	jr nz, DecodeDeltaNote
 	; turn noise sampling on
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
@@ -1137,11 +1140,9 @@ ParseSFXOrCry:
 	call GetMusicByte
 	ld hl, wChannel1Intensity - wChannel1
 	add hl, bc
-	ld [hl], a
+	ld [hli], a
 	; update lo frequency from next param
 	call GetMusicByte
-	ld hl, wChannel1FrequencyLo - wChannel1
-	add hl, bc
 	ld [hl], a
 	; are we on the last channel? (noise sampling)
 	ld a, [wCurChannel]
@@ -1154,6 +1155,8 @@ ParseSFXOrCry:
 	add hl, bc
 	ld [hl], a
 	ret
+
+INCLUDE "audio/decode_delta_note.asm"
 
 GetNoiseSample:
 ; load ptr to sample header in wNoiseSampleAddress
@@ -1252,15 +1255,9 @@ MusicCommands:
 	dw Music_PanLeft ; stereo panning
 	dw Music_PanRight
 	dw Music_PanCenter
-	dw DoNothing ; $F0
-	dw DoNothing ; $F1
-	dw DoNothing ; $F2
-	dw DoNothing ; $F3
-	dw DoNothing ; $F4
-	dw DoNothing ; $F5
-	dw DoNothing ; $F6
-	dw DoNothing ; $F7
-	dw DoNothing ; $F8
+	rept noisesampleset_cmd - delta_notes_cmd
+		dw Music_DeltaNotes
+	endr
 	dw Music_ChangeNoiseSampleSet ; noisesampleset
 	dw Music_SetCondition ; setcondition
 	dw Music_JumpIf ; jumpif
@@ -2399,7 +2396,11 @@ WaveSamples::
 INCLUDE "audio/wave_samples.asm"
 	assert_table_length NUM_WAVEFORMS
 
+; ReadNoiseSample consumes fixed-width records. Crystal Tracker rewrites
+; drumkits.asm when saving, so keep the format selection outside the file.
+DEF RAW_NOTES = 1
 INCLUDE "audio/drumkits.asm"
+DEF RAW_NOTES = 0
 
 MonoOrStereoTracks:
 ; bit corresponds to track #
