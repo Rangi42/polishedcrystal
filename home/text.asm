@@ -888,7 +888,7 @@ ReadHuffmanChar:
 	ldh [hTextSourceBank], a
 	ld a, BANK(ReadHuffmanToken)
 	rst Bankswitch
-	call ReadHuffmanToken
+	call ReadHuffmanToken ; far-ok
 	ld e, a
 	ldh a, [hTextSourceBank]
 	rst Bankswitch
