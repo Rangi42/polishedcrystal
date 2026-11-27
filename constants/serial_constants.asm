@@ -1,8 +1,33 @@
 ; wLinkMode
-	const_def 2
+	const_def
+	const LINK_NULL        ; 0
+	const_skip            ; 1
 	const LINK_TRADECENTER ; 2
 	const LINK_COLOSSEUM   ; 3
 	const LINK_ROOM_DUMMY  ; 4 (prevents linking with Polished Crystal before commit 35d5fafd, PR #708)
+
+; wChosenCableClubRoom (room requests are one less than wLinkMode)
+	const_def
+	const CABLECLUBROOM_NULL        ; 0
+	const CABLECLUBROOM_TRADECENTER ; 1
+	const CABLECLUBROOM_COLOSSEUM   ; 2
+
+; The low nybble is stage-dependent: room requests, party slots (0-5),
+; trade decisions (1-2), or the handshake actions below. READY also shares
+; its value with party slot 5; it is only a ready signal during setup.
+	const_def
+	const_skip $5                 ; $0-$4: room requests/party slots/trade decisions
+	const LINK_ACTION_READY         ; $5
+	const LINK_ACTION_READY_CONFIRM ; $6
+	const_skip $7                 ; $7-$d: unused handshake actions
+	const LINK_ACTION_FAILED        ; $e
+	const LINK_ACTION_CANCEL        ; $f
+
+; LinkTransfer packets contain a room high nybble and an action low nybble.
+DEF SERIAL_MODE_MASK   EQU $f0
+DEF SERIAL_ACTION_MASK EQU $0f
+; Link_EnsureSync uses this high nybble in place of a room.
+DEF SERIAL_SYNC_PREAMBLE_BYTE EQU $d0
 
 ; hSerialReceive high nybbles
 DEF SERIAL_TRADECENTER EQU $70
@@ -18,8 +43,10 @@ DEF CONNECTION_NOT_ESTABLISHED EQU $ff
 
 ; Similar to SERIAL_PREAMBLE_BYTE, signals the start of Polished-only link data.
 DEF SERIAL_POLISHED_PREAMBLE_BYTE     EQU $fb
-; length of a patch list (less than any of the signal bytes)
-DEF SERIAL_PATCH_LIST_LENGTH          EQU $fc
+; length of the patch-list buffers exchanged over the link cable
+DEF SERIAL_PATCH_LIST_LENGTH          EQU 200
+; size of each patch area (offsets must not have special values)
+DEF SERIAL_PATCH_DATA_SIZE            EQU $fc
 ; signals the start of an array of bytes transferred over the link cable
 DEF SERIAL_PREAMBLE_BYTE              EQU $fd
 ; this byte is used when there is no data to send
@@ -32,9 +59,14 @@ DEF SERIAL_PATCH_REPLACEMENT_BYTE     EQU $ff
 ; This is equal to (1 to 3 SERIAL_PREAMBLE_BYTEs) + 1 SERIAL_POLISHED_PREAMBLE_BYTE
 DEF SERIAL_POLISHED_MAX_PREAMBLE_LENGTH EQU 4
 
-DEF SERIAL_PREAMBLE_LENGTH    EQU 6
-DEF SERIAL_RN_PREAMBLE_LENGTH EQU 7
-DEF SERIAL_RNS_LENGTH         EQU 10
+DEF SERIAL_PREAMBLE_LENGTH       EQU 6
+DEF SERIAL_RN_PREAMBLE_LENGTH    EQU 7 ; preamble allowance in the exchange window
+DEF SERIAL_RN_SEND_PREAMBLE_LENGTH EQU 4 ; Polished's actual prepared RNG preamble
+DEF SERIAL_PATCH_PREAMBLE_LENGTH EQU 3
+DEF SERIAL_RNS_LENGTH            EQU 10
+
+; Polished Crystal sends one unused byte after the party payload.
+DEF SERIAL_PADDING_LENGTH EQU 1
 
 DEF SERIAL_MAIL_PREAMBLE_BYTE    EQU $20
 DEF SERIAL_MAIL_REPLACEMENT_BYTE EQU $21
@@ -62,6 +94,13 @@ DEF LINK_VERSION EQU 5
 ; This is the minimum link version allowed for trading
 ; Older versions use a different party patch-list origin.
 DEF LINK_MIN_TRADE_VERSION EQU 5
+
+; CheckCorrectLinkVersion return values
+	const_def
+	const LINK_VERSION_INCOMPATIBLE ; 0
+	const LINK_VERSION_COMPATIBLE   ; 1
+	const LINK_VERSION_PEER_TOO_OLD ; 2
+	const LINK_VERSION_SELF_TOO_OLD ; 3
 
 ; PerformLinkChecks error codes
 	const_def

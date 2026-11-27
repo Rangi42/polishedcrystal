@@ -11,8 +11,9 @@ Serial::
 	jr nz, .printer
 
 	ldh a, [hSerialConnectionStatus]
-	inc a ; is it equal to -1?
-	jr z, .init_player_number
+	assert CONNECTION_NOT_ESTABLISHED == $ff
+	inc a
+	jr z, .establish_connection
 
 	ldh a, [rSB]
 	ldh [hSerialReceive], a
@@ -30,7 +31,7 @@ Serial::
 	ldh [rSC], a
 	jr .player2
 
-.init_player_number
+.establish_connection
 	ldh a, [rSB]
 	cp USING_EXTERNAL_CLOCK
 	jr z, .player1
@@ -45,13 +46,14 @@ Serial::
 
 	xor a
 	ldh [rSB], a
-	ld a, $3
+; Writing rDIV resets the divider, regardless of the written value.
+	ld a, 3
 	ldh [rDIV], a
 
-.wait_bit_7
+.delay_loop
 	ldh a, [rDIV]
-	bit 7, a
-	jr nz, .wait_bit_7
+	bit 7, a ; repeat while the divider's high bit is set
+	jr nz, .delay_loop
 
 	xor a
 	ldh [rSC], a
@@ -64,7 +66,7 @@ Serial::
 	ldh [rSB], a
 
 .player2
-	ld a, $1
+	ld a, TRUE
 	ldh [hSerialReceivedNewData], a
 	ld a, SERIAL_NO_DATA_BYTE
 	ldh [hSerialSend], a
@@ -90,6 +92,7 @@ SafeLoadTempTileMapToTileMap::
 	ret
 
 LinkTransfer::
+; Send the local action in the low nybble, qualified by the selected room.
 	push bc
 	ld a, [wLinkMode]
 	cp LINK_TRADECENTER
@@ -105,7 +108,7 @@ LinkTransfer::
 	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	jr nz, .player_1
-	ld a, $1
+	ld a, SC_INTERNAL
 	ldh [rSC], a
 	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
@@ -116,15 +119,16 @@ LinkTransfer::
 	ret
 
 .Receive:
+; Accept a peer action only when its high nybble matches the room.
 	ldh a, [hSerialReceive]
 	ld [wOtherPlayerLinkMode], a
-	and $f0
+	and SERIAL_MODE_MASK
 	cp b
 	ret nz
 	xor a
 	ldh [hSerialReceive], a
 	ld a, [wOtherPlayerLinkMode]
-	and $f
+	and SERIAL_ACTION_MASK
 	ld [wOtherPlayerLinkAction], a
 	ret
 
@@ -135,7 +139,7 @@ LinkDataReceived::
 	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	ret nz
-	ld a, $1
+	ld a, SC_INTERNAL
 	ldh [rSC], a
 	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
