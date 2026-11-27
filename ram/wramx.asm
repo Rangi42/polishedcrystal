@@ -1078,6 +1078,10 @@ wVariableSprites:: ds $100 - SPRITE_VARS
 
 wStatusFlags3::
 	; 0 - judge machine
+	; 1 - load the rebuilt map on Continue
+	; 2 - show which destination the patcher selected for the Pokécenter 2F return warp
+	; Set the applicable bits at (wStatusFlags3 - wPlayerData) in both
+	; sPlayerData and sBackupPlayerData before updating their checksums.
 	db
 
 wEnteredMapFromContinue:: db
