@@ -1,59 +1,24 @@
 #!/usr/bin/env python3
-"""Generate the three context-specific Huffman code maps used by text.asm.
-
-Usage:
-
-    make tidy
-    make -j4 huffman > chars.txt
-    ./utils/huffman.py chars.txt constants/huffman_text.inc
-"""
-
-from __future__ import annotations
+"""Train the text codec from make huffman output."""
 
 import argparse
 import ast
 import heapq
-import json
 import re
 from collections import Counter
-from dataclasses import dataclass
 from pathlib import Path
 
 
-BOUNDARY_TOKENS = {
-	" ",
-	"<LNBRK>",
-	"<NEXT>",
-	"<LINE>",
-	"<CONT>",
-	"<PARA>",
-}
-TERMINATORS = {"@", "<DONE>", "<PROMPT>"}
-VOWELS = set("AEIOUaeiou")
-ESCAPE_TOKEN = "<CONTEXT_ESCAPE>"
+SPACE = 0x7f
+BOUNDARIES = {SPACE, *range(0x55, 0x5a)}
+VOWELS = {0x80, 0x84, 0x88, 0x8e, 0x94, 0xa0, 0xa4, 0xa8, 0xae, 0xb4}
+ESCAPE = 0xff
 
 
-@dataclass
-class Node:
-	frequency: int
-	token: str | None = None
-	left: "Node | None" = None
-	right: "Node | None" = None
-
-
-def context_after(previous: str | None) -> str:
-	if previous is None or previous in BOUNDARY_TOKENS:
-		return "b"
-	if previous in VOWELS:
-		return "v"
-	return "o"
-
-
-def read_token_order(charmap_path: Path) -> tuple[list[str], dict[str, int]]:
+def read_charmap(charmap_path):
 	pattern = re.compile(
 		r'^\s*charmap\s+("(?:[^"\\]|\\.)*")\s*,\s*\$([0-9a-fA-F]+)'
 	)
-	order: list[str] = []
 	values: dict[str, int] = {}
 	for line in charmap_path.read_text(encoding="utf-8").splitlines():
 		match = pattern.match(line)
@@ -62,146 +27,169 @@ def read_token_order(charmap_path: Path) -> tuple[list[str], dict[str, int]]:
 			value = int(match.group(2), 16)
 			if not (0x4D <= value <= 0x5C or 0x7F <= value <= 0xEB):
 				continue
-			order.append(token)
 			values[token] = value
-	return order, values
+	return values
 
 
-def read_frequencies(corpus_path: Path) -> dict[str, Counter[str]]:
-	frequencies = {context: Counter() for context in ("b", "v", "o")}
-	previous: str | None = None
-	for raw_line in corpus_path.read_text(encoding="utf-8").splitlines():
-		line = raw_line.strip()
-		if not (line.startswith('"') and line.endswith('"')):
-			continue
-		token = ast.literal_eval(line)
-		frequencies[context_after(previous)][token] += 1
-		previous = token
-		if token in TERMINATORS:
-			previous = None
-	return frequencies
+def records(path):
+	for line in path.read_text().splitlines():
+		if line.startswith("PAIR "):
+			_, label, implicit, data = line.split()
+			yield label, bool(int(implicit)), bytes.fromhex(data)
 
 
-def make_codes(frequencies: Counter[str], order: list[str]) -> dict[str, str]:
-	order_index = {token: index for index, token in enumerate(order)}
-	heap: list[tuple[int, int, Node]] = []
-	serial = 0
-	for token in sorted(frequencies, key=lambda value: order_index.get(value, len(order))):
-		heap.append((frequencies[token], serial, Node(frequencies[token], token=token)))
-		serial += 1
+def ranked(counts):
+	return sorted(counts, key=lambda token: (-counts[token], token))
+
+
+def pairable(byte):
+	return byte == SPACE or 0x80 <= byte <= 0x99 or 0xa0 <= byte <= 0xb9
+
+
+def literal(byte):
+	if 0x4d <= byte <= 0x5c:
+		return byte + 0xec - 0x4d
+	if SPACE <= byte <= 0xeb:
+		return byte
+	raise ValueError(f"unencodable byte ${byte:02x}")
+
+
+def token_lengths(groups):
+	"""Bit cost of every token, including the payload of an escape."""
+	direct = {t: n for n, group in enumerate(groups, 1) for t in group}
+	escaped = direct[ESCAPE] + 8
+	return [min(direct.get(t, escaped), escaped) for t in range(256)]
+
+
+def optimal_parse(data, pairs, contexts, lengths):
+	"""Return the shortest bit length and the first token of each optimal suffix."""
+	cost = [0] * (len(data) + 1)
+	choice = bytearray(len(data))
+	for i in range(len(data) - 1, -1, -1):
+		context = contexts[data[i - 1] if i else SPACE]
+		bits = lengths[context]
+		token = literal(data[i])
+		best = bits[token] + cost[i + 1]
+		if i + 1 < len(data):
+			pair = pairs.get((data[i], data[i + 1]))
+			if pair is not None and bits[pair] + cost[i + 2] <= best:
+				token = pair
+				best = bits[pair] + cost[i + 2]
+		cost[i] = best
+		choice[i] = token
+	return cost[0], choice
+
+
+def canonical_groups(frequencies):
+	# Rare tokens share an escape. Bound the direct alphabet so all symbols
+	# and group displacements fit in the reader's eight-bit arithmetic.
+	selected = [t for t in ranked(frequencies) if frequencies[t] >= 8][:160]
+	weights = {token: frequencies[token] for token in selected}
+	weights[ESCAPE] = 1 + sum(frequencies.values()) - sum(weights.values())
+	# Also give an unseen fallback context a complete binary tree.
+	if len(weights) == 1:
+		weights[SPACE] = 1
+	heap = [(weight, token, [token]) for token, weight in weights.items()]
 	heapq.heapify(heap)
+	lengths = Counter()
+	serial = 256
 	while len(heap) > 1:
-		left_frequency, _, left = heapq.heappop(heap)
-		right_frequency, _, right = heapq.heappop(heap)
-		frequency = left_frequency + right_frequency
-		heapq.heappush(
-			heap,
-			(frequency, serial, Node(frequency, left=left, right=right)),
-		)
+		a, _, left = heapq.heappop(heap)
+		b, _, right = heapq.heappop(heap)
+		leaves = left + right
+		lengths.update(leaves)
+		heapq.heappush(heap, (a + b, serial, leaves))
 		serial += 1
-	codes: dict[str, str] = {}
-	stack = [(heap[0][2], "")]
-	while stack:
-		node, prefix = stack.pop()
-		if node.token is not None:
-			codes[node.token] = prefix or "0"
-			continue
-		assert node.left is not None and node.right is not None
-		stack.append((node.right, prefix + "1"))
-		stack.append((node.left, prefix + "0"))
-	return codes
+	# RGBDS accumulates at most 7 pending bits, a code, and 8 escaped bits.
+	if max(lengths.values()) > 17:
+		raise ValueError("Huffman code exceeds the encoder's bit accumulator")
+	return [sorted(t for t in lengths if lengths[t] == n)
+	        for n in range(1, max(lengths.values()) + 1)]
 
 
-def render(
-	frequencies: dict[str, Counter[str]],
-	order: list[str],
-	values: dict[str, int],
-	target_parent_nodes: int,
-) -> str:
-	omit_count = sum(len(counts) - 1 for counts in frequencies.values()) - target_parent_nodes
-	if omit_count < 0:
-		raise SystemExit("target parent-node count is larger than the unpruned trees")
-	candidates = sorted(
-		(
-			(frequency, order.index(token), context, token)
-			for context, counts in frequencies.items()
-			for token, frequency in counts.items()
-		),
-		key=lambda item: (item[0], item[1], item[2]),
-	)
-	omitted = {context: set() for context in frequencies}
-	for _, _, context, token in candidates[:omit_count + len(frequencies)]:
-		# Adding one escape leaf cancels the first omitted leaf in each context.
-		omitted[context].add(token)
-	while sum(
-		len(counts) - len(omitted[context])
-		for context, counts in frequencies.items()
-	) > target_parent_nodes:
-		for _, _, context, token in candidates:
-			if token not in omitted[context]:
-				omitted[context].add(token)
-				break
+def parse_corpus(streams, pairs, contexts, lengths):
+	counts = [Counter() for _ in lengths]
+	payload = 0
+	for data in streams:
+		bits, choice = optimal_parse(data, pairs, contexts, lengths)
+		payload += (bits + 7) // 8
+		i = 0
+		while i < len(data):
+			token = choice[i]
+			context = contexts[data[i - 1] if i else SPACE]
+			counts[context][token] += 1
+			i += 2 if token < SPACE else 1
+	return counts, payload
+
+
+def train(streams):
+	previous = Counter()
+	adjacent = Counter()
+	for data in streams:
+		previous.update(b for b in data[:-1] if b not in BOUNDARIES)
+		adjacent.update((a, b) for a, b in zip(data, data[1:]) if pairable(a) and pairable(b))
+	# IDs below the literal space byte are available for exactly 127 flat pairs.
+	pairs = {pair: i for i, pair in enumerate(ranked(adjacent)[:SPACE])}
+	contexts = [0 if b in BOUNDARIES else 1 if b in VOWELS else 2 for b in range(256)]
+	frequent = ranked(previous)[:32]
+	for i, b in enumerate(frequent, 3):
+		contexts[b] = i
+	# Equal token costs seed the first histogram. Refit the code lengths to
+	# the paths actually chosen under the preceding model. Retain the best
+	# measured tables, charging both padded payloads and ROM table bytes.
+	counts, _ = parse_corpus(streams, pairs, contexts, [[1] * 256] * (3 + len(frequent)))
+	best_size = None
+	for _ in range(10):
+		trees = [canonical_groups(count) for count in counts]
+		lengths = [token_lengths(tree) for tree in trees]
+		new_counts, payload = parse_corpus(streams, pairs, contexts, lengths)
+		size = payload + sum(2 + len(group) for tree in trees for group in tree)
+		if best_size is None or size < best_size:
+			best_trees, best_size = trees, size
+		if new_counts == counts:
+			break
+		counts = new_counts
+	return pairs, contexts, best_trees
+
+
+def render(pairs, contexts, trees):
+	charmap = read_charmap(Path(__file__).resolve().parents[1] / "constants/charmap.asm")
+	symbols = {}
+	for char, byte in charmap.items():
+		quoted = "'" + char.replace("'", "\\'") + "'"
+		symbols[literal(byte)] = quoted if byte >= SPACE else quoted + " + HUFFMAN_TOKEN_SHIFT"
+
 	lines = [
-		"; Generated by utils/huffman.py; do not edit manually.",
-		"; Source corpus: make huffman",
-		"; Contexts: b = boundary/start, v = vowel, o = other.",
+		"; Generated by utils/huffman.py from the full text corpus.",
 		"",
+		"; Define x_pair_rule, x_pair_contexts, and x_pair_codes before invoking these",
+		"; X macros. The encoder builds lookups and the decoder emits ROM tables.",
+		"; https://en.wikipedia.org/wiki/X_macro",
+		"MACRO huffman_pair_rules",
 	]
-	for context in ("b", "v", "o"):
-		kept_frequencies = Counter(
-			{
-				token: frequency
-				for token, frequency in frequencies[context].items()
-				if token not in omitted[context]
-			}
-		)
-		kept_frequencies[ESCAPE_TOKEN] = sum(
-			frequencies[context][token] for token in omitted[context]
-		)
-		codes = make_codes(kept_frequencies, order + [ESCAPE_TOKEN])
-		parent_nodes = len(codes) - 1
-		lines.append(
-			f"; Context {context}: {len(codes)} leaves, {parent_nodes} parent nodes, "
-			f"{len(omitted[context])} escaped symbols"
-		)
-		lines.append(f"huffleaf {context}, {codes[ESCAPE_TOKEN]}")
-		for token in order:
-			quoted = json.dumps(token, ensure_ascii=False)
-			if token not in frequencies[context] or token in omitted[context]:
-				code = codes[ESCAPE_TOKEN] + f"{values[token]:08b}"
-				macro = "huffesc"
-			else:
-				code = codes[token]
-				macro = "huffmap"
-			lines.append(f"{macro} {context}, {quoted}, {code} ; {frequencies[context][token]}")
-		lines.append("")
-	return "\n".join(lines)
+	lines.extend(f"\tx_pair_rule {symbols[left]}, {symbols[right]}" for left, right in pairs)
+	lines += ["ENDM", "", "MACRO huffman_pair_contexts"]
+	for i in range(0, len(contexts), 16):
+		lines.append("\tx_pair_contexts " + ", ".join(str(c) for c in contexts[i:i + 16]))
+	lines += ["ENDM", "", f"DEF NUM_HUFFMAN_TREES EQU {len(trees)}"]
+	for index, groups in enumerate(trees):
+		lines.append(f"MACRO huffman_tree_{index}")
+		for group in groups:
+			tokens = ", ".join(symbols.get(t, f"${t:02x}") for t in group)
+			lines.append(("\tx_pair_codes " + tokens).rstrip())
+		lines.append("ENDM")
+	return "\n".join(lines + [""])
 
 
-def main() -> None:
-	parser = argparse.ArgumentParser()
+def main():
+	parser = argparse.ArgumentParser(description=__doc__)
 	parser.add_argument("corpus", type=Path)
-	parser.add_argument("output", type=Path, nargs="?")
-	parser.add_argument(
-		"--charmap", type=Path, default=Path("constants/charmap.asm")
-	)
-	parser.add_argument("--target-parent-nodes", type=int, default=260)
+	parser.add_argument("output", type=Path)
 	args = parser.parse_args()
-	order, values = read_token_order(args.charmap)
-	frequencies = read_frequencies(args.corpus)
-	unknown = set().union(*frequencies.values()) - set(order)
-	if unknown:
-		raise SystemExit(f"tokens missing from Huffman charmap declarations: {sorted(unknown)}")
-	output = render(
-		frequencies,
-		order,
-		values,
-		args.target_parent_nodes,
-	)
-	if args.output is None:
-		print(output)
-	else:
-		args.output.write_text(output, encoding="utf-8")
+	streams = [data for _, _, data in records(args.corpus)]
+	if not streams:
+		parser.error("no PAIR records in corpus")
+	args.output.write_text(render(*train(streams)))
 
 
 if __name__ == "__main__":

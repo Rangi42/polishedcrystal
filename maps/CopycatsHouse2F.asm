@@ -108,7 +108,7 @@ CopycatEnbyScript:
 	checkevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
 	iftrue CopycatReturnedLostItemScript
 	checkkeyitem LOST_ITEM
-	iftrue CopycatFoundLostItemScript
+	iftruefwd CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT, CopycatSpinMovement
 	faceplayer
 	loadmem wObject1Palette, 0
@@ -140,7 +140,7 @@ CopycatBetaScript:
 	checkevent EVENT_GOT_PASS_FROM_COPYCAT
 	iftruefwd .GotPass
 	checkevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
-	iftrue CopycatReturnedLostItemScript
+	iftruefwd CopycatReturnedLostItemScript
 	checkkeyitem LOST_ITEM
 	iftruefwd CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT, CopycatSpinMovement

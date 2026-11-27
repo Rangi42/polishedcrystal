@@ -1,0 +1,8 @@
+[package]
+name = "verify-text"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+vibe-emu-core = { path = "../../../vibeEmu/crates/vibe-emu-core" }

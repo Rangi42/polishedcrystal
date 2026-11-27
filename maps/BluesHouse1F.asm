@@ -46,7 +46,7 @@ DaisyScript:
 	waitbutton
 	special Special_DaisyMassage
 	ifequalfwd 0, .NoMassage
-	ifequal 1, .EggMassage
+	ifequalfwd 1, .EggMassage
 	setflag ENGINE_TEA_IN_BLUES_HOUSE
 	writetext .OkayText
 	waitbutton

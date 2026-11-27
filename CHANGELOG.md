@@ -57,7 +57,7 @@ Hotfix release.
 - Temporarily unable to trade pokemon holding mail in link trades to avoid mail corruption. Will be fixed in a future release.
 - Thief and Pickpocket can now put items into bag if one is already held.
 - Turn the player away from the bed in the Fast Ship after resting so they don't accidentally talk to the bed immediately after healing.
-- Turn the player away from the train attendant when arriving in Saffron/Goldenrod so the player doesn't re-initiate the arrival dialogue.
+- Turn the player away from the train attendant when arriving in Saffron/Goldenrod so the player doesn't re-initiate the arrival dialog.
 - Talking to an Pokemon in the overworld sets them seen in the pokedex.
 - Updated Piloswine and Skarmory's back sprites.
 - Updated Para's front animation sprite.
@@ -67,7 +67,7 @@ Hotfix release.
 ### Fixes
 
 - Fixed hurricane move animation.
-- Fix corrupted dialogue Prof. Elm dialogue after Egg hatch, but the player forgot to bring it with them.
+- Fix corrupted Prof. Elm dialog after Egg hatch, but the player forgot to bring it with them.
 - Fix corrupted text in People & Places radio due to Psychic Inver
 - Fix 3DS Virtual Console patches (labels must be <32 chars)
 - More accurate sram/wram mismatch error message.
@@ -497,7 +497,7 @@ Note: Some of these fixes may be intra-version fixes, and may not be all carried
 - Fixed scene transition for the SS Anne.
 - Museum painting crash fix.
 - Fixed Koffing and Mime Jr. evolution glitch so they can evolve into regional forms at any level.
-- Cleaned up some NPC dialogue to account for removed features.
+- Cleaned up some NPC dialog to account for removed features.
 - Updated some move tutor learnsets and TM/HM learnset to match newer gens more.
 - Removed unnecessary text.
 - Tons of audio fixes.
