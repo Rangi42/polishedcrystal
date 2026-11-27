@@ -124,6 +124,7 @@ TalkToTrainerAtBC::
 	ld hl, MAPOBJECT_TYPE
 	add hl, bc
 	ld a, [hl]
+	and $0f
 	cp OBJECTTYPE_GENERICTRAINER
 	push af
 
