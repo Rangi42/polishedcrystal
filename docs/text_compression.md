@@ -9,9 +9,7 @@ including the marker and the final padding.
 
 With either encoding, `text_far` resumes at the next command when its callee
 finishes. `text_farend` ends the current script after the callee finishes.
-`text_ram` resumes at the next command after its substituted string ends.
-A nonblocking preview stops its enclosing callers at a page or scroll break,
-including a break between a trainer's class and name.
+A nonblocking preview stops its enclosing callers at a page or scroll break.
 
 ## How the pair format works
 

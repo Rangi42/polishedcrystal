@@ -412,11 +412,7 @@ PlaceEnemysName::
 	bit NEWLINE_ENEMY_F, a
 	ld de, SpaceText
 	jr z, .no_wordwrap
-	bit NO_TEXT_PAUSE_F, a
 	ld de, ContChar
-	jr z, .no_wordwrap
-	pop de ; stop at <ENEMY> in the enclosing string, before printing the name
-	jmp StopAtNonblockingTextPause
 .no_wordwrap
 	rst PlaceString
 	push bc
@@ -633,9 +629,7 @@ TextCommand_RAM::
 	ld l, c
 	rst PlaceString
 	pop hl
-	; A terminator ends the substitution. A nonblocking pause also stops its caller.
-	ldh a, [hStopPrintingString]
-	jr DoTextUntilTerminator.stop
+	ret
 
 TextCommand_FAR::
 ; write text from a different bank
