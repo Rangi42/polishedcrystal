@@ -17,6 +17,9 @@ INCLUDE "gfx/tilesets/roofs_overcast.pal"
 
 ; The palettes below are used by `paletteswap` callbacks.
 
+SnowPalettes::
+INCLUDE "gfx/tilesets/palette-swap/snow.pal"
+
 GameCornerExteriorPalettes::
 INCLUDE "gfx/tilesets/palette-swap/game-corner.pal"
 

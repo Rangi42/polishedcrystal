@@ -4,6 +4,7 @@ BlackthornCity_MapScriptHeader:
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, BlackthornCityFlypointCallback
 	callback MAPCALLBACK_OBJECTS, BlackthornCitySantosCallback
+	callback MAPCALLBACK_CMDQUEUE, BlackthornCitySetUpPaletteSwap
 
 	def_warp_events
 	warp_event 18, 11, BLACKTHORN_GYM_1F, 1
@@ -54,6 +55,14 @@ BlackthornCitySantosCallback:
 .SantosAppears:
 	appear BLACKTHORNCITY_SANTOS
 	endcallback
+
+BlackthornCitySetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 30, 43, 4, 16, PAL_BG_YELLOW, PAL_BG_YELLOW, SnowPalettes
+	db -1 ; end
 
 BlackthornCitySignText:
 	text "Blackthorn City"

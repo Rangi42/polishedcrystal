@@ -2,6 +2,7 @@ Route44_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_CMDQUEUE, Route44SetUpPaletteSwap
 
 	def_warp_events
 	warp_event 56,  7, ICE_PATH_1F, 1
@@ -32,6 +33,14 @@ Route44_MapScriptHeader:
 
 	object_const_def
 	const ROUTE44_VETERAN_M
+
+Route44SetUpPaletteSwap:
+	usepaletteswap .PaletteSwap
+	endcallback
+
+.PaletteSwap:
+	paletteswap 48, 63, 0, 255, PAL_BG_YELLOW, PAL_BG_YELLOW, SnowPalettes
+	db -1 ; end
 
 Route44VeteranmScript:
 	checkevent EVENT_GOT_ROCKY_HELMET_FROM_ROUTE_44_LEADER
