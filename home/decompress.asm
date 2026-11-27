@@ -442,17 +442,18 @@ DEF LZ_SPECIAL_PACKLO0      EQU $fe ; (len 1..256)
 .pack_lookup
 	and $0f
 	push de
-	add LOW(.pack16_table)
+	assert LOW(LZPack16Table) & $0f == 0
+	or LOW(LZPack16Table)
 	ld e, a
-	adc HIGH(.pack16_table)
-	sub e
-	ld d, a
+	ld d, HIGH(LZPack16Table)
 	ld a, [de]
 	pop de
 	ld [hli], a
 	dec c
 	ret
 
-.pack16_table
+PUSHS "LZ pack16 dictionary", ROM0, ALIGN[4]
+LZPack16Table:
 	db $00, $ff, $01, $02, $03, $fe, $80, $07
 	db $c0, $7f, $04, $0f, $1f, $3f, $08, $fc
+POPS
