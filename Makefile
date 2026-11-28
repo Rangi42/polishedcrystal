@@ -12,7 +12,7 @@ ROMVERSION := 0x32
 
 FILLER := 0xff
 
-COPYRIGHT = @$(shell date '+%Y') $(AUTHOR) v$(VERSION)
+COPYRIGHT = @$(shell test -e .git && TZ=UTC0 git log -1 --no-show-signature --format=%cd --date=format-local:%Y HEAD 2>/dev/null || date '+%Y') $(AUTHOR) v$(VERSION)
 
 ifneq ($(wildcard rgbds/.*),)
 RGBDS ?= rgbds/
