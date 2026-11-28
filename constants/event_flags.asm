@@ -642,10 +642,10 @@
 
 ; More Johto story events
 	const EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
-	const_skip ; EVENT_SWITCH_1
-	const_skip ; EVENT_SWITCH_2
-	const_skip ; EVENT_SWITCH_3
-	const_skip ; EVENT_EMERGENCY_SWITCH
+	const_skip ; unused
+	const_skip ; unused
+	const_skip ; unused
+	const_skip ; unused
 	const EVENT_DOOR_1_OPEN
 	const EVENT_DOOR_2_OPEN
 	const EVENT_DOOR_3_OPEN
@@ -1890,8 +1890,8 @@
 	const EVENT_ILEX_FOREST_LASS
 	const EVENT_ILEX_FOREST_LYRA
 	const EVENT_ILEX_FOREST_CELEBI
-	const_skip ; EVENT_COPYCAT_1
-	const_skip ; EVENT_COPYCAT_2
+	const_skip ; unused
+	const_skip ; unused
 	const EVENT_GOLDENROD_SALE_OFF
 	const EVENT_GOLDENROD_SALE_ON
 	const EVENT_ILEX_FOREST_APPRENTICE
@@ -2021,13 +2021,13 @@
 	const EVENT_FLORIA_AT_FLOWER_SHOP
 	const EVENT_FLORIA_AT_SUDOWOODO
 	const EVENT_GOLDENROD_CITY_MOVE_TUTOR
-	const_skip ; EVENT_RED_FAIRY_BOOK
-	const_skip ; EVENT_BLUE_FAIRY_BOOK
-	const_skip ; EVENT_GREEN_FAIRY_BOOK
-	const_skip ; EVENT_BROWN_FAIRY_BOOK
-	const_skip ; EVENT_VIOLET_FAIRY_BOOK
-	const_skip ; EVENT_PINK_FAIRY_BOOK
-	const_skip ; EVENT_YELLOW_FAIRY_BOOK
+	const_skip ; unused
+	const_skip ; unused
+	const_skip ; unused
+	const_skip ; unused
+	const_skip ; unused
+	const_skip ; unused
+	const_skip ; unused
 	const EVENT_ROUTE_48_JESSIE
 	const EVENT_ROUTE_48_JAMES
 	const EVENT_ROUTE_48_NURSE
@@ -2189,7 +2189,7 @@
 	const EVENT_TRAINERS_IN_CERULEAN_GYM
 	const EVENT_VERMILION_CITY_SNORLAX
 	const EVENT_ROUTE_7_SNORLAX
-	const_skip ; EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	const_skip ; unused
 	const EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	const EVENT_LAV_RADIO_TOWER_POPULATION
 	const EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER
@@ -2355,10 +2355,10 @@
 	const EVENT_REMATCH_GYM_LEADER_1
 	const EVENT_REMATCH_GYM_LEADER_2
 	const EVENT_REMATCH_GYM_LEADER_3
-	const_skip ; EVENT_REMATCH_GYM_LEADER_4
-	const_skip ; EVENT_REMATCH_GYM_LEADER_5
-	const_skip ; EVENT_REMATCH_GYM_LEADER_6
-	const_skip ; EVENT_COPYCAT_3
+	const_skip ; unused
+	const_skip ; unused
+	const_skip ; unused
+	const_skip ; unused
 	const EVENT_CINNABAR_LAB_CRYS ; stitch-set
 	const EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	const EVENT_RUINS_OF_ALPH_CLIMAX_DONE
@@ -2390,8 +2390,8 @@
 	const EVENT_ROUTE_9_CUT_TREE
 	const EVENT_ROUTE_10_CUT_TREE_1
 	const EVENT_ROUTE_10_CUT_TREE_2
-	const_skip ; EVENT_ROUTE_10_CUT_TREE_3
-	const_skip ; EVENT_ROUTE_10_CUT_TREE_4
+	const_skip ; unused
+	const_skip ; unused
 	const EVENT_ROUTE_12_CUT_TREE_1
 	const EVENT_ROUTE_12_CUT_TREE_2
 	const EVENT_ROUTE_13_CUT_TREE
@@ -2412,7 +2412,7 @@
 	const EVENT_ROUTE_43_CUT_TREE
 	const EVENT_CELADON_CITY_CUT_TREE_1
 	const EVENT_FUCHSIA_CITY_CUT_TREE
-	const_skip ; EVENT_VERMILION_CITY_CUT_TREE
+	const_skip ; unused
 	const EVENT_VIOLET_CITY_CUT_TREE
 	const EVENT_VIRIDIAN_CITY_CUT_TREE_1
 	const EVENT_VIRIDIAN_CITY_CUT_TREE_2
@@ -2433,7 +2433,7 @@
 	const EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
 	const EVENT_CHERRYGROVE_BAY_CUT_TREE_1
 	const EVENT_BETA_IN_NAVEL_ROCK
-	const_skip ; EVENT_COPYCAT_4
+	const_skip ; unused
 	const EVENT_CINNABAR_LAB_BETA ; stitch-set
 
 ; Miscellaneous
