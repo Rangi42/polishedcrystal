@@ -1070,7 +1070,7 @@ wMap{d:n}Object:: map_object wMap{d:n}
 endr
 wMapObjectsEnd::
 
-	ds 21 ; unused (freed by packing the map objects in v3.3.0)
+	ds 21 ; unused
 
 wObjectMasks:: ds NUM_OBJECTS
 
@@ -1265,7 +1265,7 @@ wRuinsOfAlphOutsideSceneID:: db
 wRuinsOfAlphResearchCenterSceneID:: db
 wSeagallopFerryGatesSceneID:: db
 wCableCarGatesSceneID:: db
-	ds 1 ; unused (formerly wSeagallopFerryVermilionGateSceneID)
+	ds 1 ; unused
 wShamoutiHotelRestaurantSceneID:: db
 wSproutTower3FSceneID:: db
 wTeamRocketBaseB2FSceneID:: db
@@ -1481,7 +1481,7 @@ wPlayerDataEnd::
 
 wCurMapData::
 
-wVisitedSpawns:: flag_array NUM_SPAWNS ; unused: bits 3-7 of the last byte
+wVisitedSpawns:: flag_array NUM_SPAWNS
 
 wDigWarpNumber:: db
 wDigMapGroup:: db
@@ -1536,10 +1536,10 @@ wPartyMonNicknamesEnd::
 	ds 1 ; unused
 
 wPokedexFlags::
-wPokedexCaught:: flag_array NUM_UNIQUE_POKEMON ; unused: bits 2-7 of the last byte
+wPokedexCaught:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexCaught::
 
-wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON ; unused: bits 2-7 of the last byte
+wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexSeen::
 wEndPokedexFlags::
 
