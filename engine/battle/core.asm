@@ -1036,6 +1036,7 @@ GetPlayerSwitchTarget:
 
 	call ClearPalettes
 	call _LoadBattleFontsHPBar
+	call GetMonFrontpic ; the party status icons overwrite the enemy picture tiles
 	call CloseWindow
 	call ClearSprites
 	ld a, CGB_BATTLE_COLORS
